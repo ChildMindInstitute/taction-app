@@ -25,18 +25,18 @@
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "eject": "react-native-scripts eject",
-    "start":
-      "concurrently --kill-others \"storybook start -p 7007\" \"react-native-scripts start\"",
-    "android":
-      "concurrently --kill-others \"storybook start -p 7007\" \"react-native-scripts android\"",
-    "ios":
-      "concurrently --kill-others \"storybook start -p 7007\" \"react-native-scripts ios\"",
+    "start": "concurrently --kill-others \"storybook start -p 7007\" \"react-native-scripts start\"",
+    "android": "concurrently --kill-others \"storybook start -p 7007\" \"react-native-scripts android\"",
+    "ios": "concurrently --kill-others \"storybook start -p 7007\" \"react-native-scripts ios\"",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "precommit": "lint-staged",
     "storybook": "storybook start -p 7007"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "jest": {
     "preset": "jest-expo"
@@ -48,6 +48,7 @@
     "mobx-react": "^4.2.2",
     "native-base": "^2.3.2",
     "react": "16.0.0-alpha.12",
-    "react-native": "^0.47.0"
+    "react-native": "^0.47.0",
+    "react-navigation": "^1.0.0-beta.11"
   }
 }

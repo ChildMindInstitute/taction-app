@@ -8,7 +8,7 @@ const Logo = props => (
 
 Logo.propTypes = {
   source: PropTypes.node.isRequired,
-  imageDimensions: PropTypes.object
+  imageDimensions: PropTypes.number
 };
 
 export { Logo as default };

@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View } from "react-native";
-
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
@@ -8,6 +7,7 @@ import Welcome from "./components/Welcome";
 import Spinner from "./components/Spinner";
 import FormInput from "./components/FormInput";
 import Logo from "./components/Logo";
+import Dashboard from "./screens/Dashboard";
 import SplashScreen from "./screens/SplashScreen";
 import Login from "./screens/Login";
 import RegisterWithUs from "./components/RegisterWithUs";
@@ -15,6 +15,7 @@ import SubmitButton from "./components/Button";
 import ForgotPassword from "./components/ForgotPassword";
 import HeaderCommon from "./components/Header";
 import Drawer from "./components/Drawer";
+import Settings from "./screens/Settings";
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
 ));
@@ -84,9 +85,9 @@ storiesOf("Common", module)
       leftPress={() => {}}
       leftIconName="menu"
       headerStyle={{ backgroundColor: "#0067a0" }}
-    >
-      <Text style={{ color: "white" }}>CustomHeader</Text>
-    </HeaderCommon>
+      Title="CustomHeader"
+      TitleStyle={{ color: "white" }}
+    />
   ))
   .add("Drawer", () => <Drawer />);
 
@@ -134,5 +135,38 @@ storiesOf("Screens", module)
         marginTop: "20%",
         color: "#ccc"
       }}
+    />
+  ))
+  .add("Dashboard", () => (
+    <Dashboard
+      DrawerOpen={() => {}}
+      TotalPoints={100}
+      OnPressSubmitButton={action("resume-playing pressed")}
+      SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
+      SubmitButtonTextStyle={{ color: "white" }}
+      ExcerciseDataIcon="home"
+      ExcerciseData={[
+        { Name: "Spider", Points: 100 },
+        { Name: "Ball", Points: 80 }
+      ]}
+      ListItemPress={item => console.log(item)}
+    >
+      <Text>Time to earn some points</Text>
+    </Dashboard>
+  ))
+  .add("Settings", () => (
+    <Settings
+      PressMinimumDurationOfTouch={action("MinimumDurationOfTouch-clicked")}
+      MinimumDurationOfTouch="30sec"
+      PressTimerOfNext={action("TimerOfNext-clicked")}
+      TimerOfNext="30sec"
+      PressNoOfImagesPerSession={action("NoOfImagesPerSession-clicked")}
+      NoOfImagesPerSession={10}
+      NamePress={action("NamePress-clicked")}
+      Name="Arno"
+      PasswordPress={action("PasswordPress-clicked")}
+      Age={7}
+      AgePress={action("AgePress-clicked")}
+      Back={action("Back-clicked")}
     />
   ));

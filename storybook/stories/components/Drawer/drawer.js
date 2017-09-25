@@ -6,7 +6,7 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 const DrawerExample = DrawerNavigator(
   {
-    Home: { screen: About },
+    Home: { screen: Dashboard },
     Dashboard: { screen: Dashboard },
     About: { screen: About },
     Settings: { screen: Settings }

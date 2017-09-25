@@ -1,26 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-class Dashboard extends React.Component {
+import { StyleSheet, Text } from "react-native";
+import Dashboard from "../../screens/Dashboard";
+class DashboardExp extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text
-          button
-          onPress={() => this.props.navigation.navigate("DrawerOpen")}
-        >
-          This is Dashboard.js
-        </Text>
-      </View>
+      <Dashboard
+        DrawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
+        TotalPoints={100}
+        OnPressSubmitButton={() => {}}
+        SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
+        SubmitButtonTextStyle={{ color: "white" }}
+        ExcerciseDataIcon="home"
+        ExcerciseData={[
+          { Name: "Spider", Points: 100 },
+          { Name: "Ball", Points: 80 }
+        ]}
+        ListItemPress={item => console.log(item)}
+      >
+        <Text>Time to earn some points</Text>
+      </Dashboard>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
-module.exports = Dashboard;
+module.exports = DashboardExp;

@@ -19,13 +19,33 @@ import Settings from "./screens/Settings";
 import SettingsList from "./components/SettingsList";
 import DashboardList from "./components/DashboardList";
 import DashboardGreetings from "./components/DashboardGreetings";
-import ListOfChildren from "./components/ListOfChildren";
+import ListOfUsers from "./components/ListOfUsers";
 import LoginAs from "./screens/LoginAs";
+import Home from "./screens/Home";
 import Modal from "./components/Modal";
+import HomeContent from "./components/HomeContent";
+import HomeTimer from "./components/HomeTimer";
+import HomeFooter from "./components/HomeFooter";
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
 ));
-
+storiesOf("Home", module)
+  .add("HomeContent", () => (
+    <HomeContent
+      Image1={require("../../js/assets/ball1.jpg")}
+      Image2={require("../../js/assets/spiderman.jpg")}
+      Image3={require("../../js/assets/minion.jpg")}
+      Image4={require("../../js/assets/ball2.jpg")}
+    />
+  ))
+  .add("HomeTimer", () => (
+    <HomeTimer
+      TimeLeftDenomination="Min"
+      TimeLeft="02.17"
+      ViewStyle={{ position: "absolute", left: "35%", top: "35%" }}
+    />
+  ))
+  .add("HomeFooter", () => <HomeFooter />);
 storiesOf("LoginForm", module)
   .add("FormInputUName", () => (
     <FormInput
@@ -90,9 +110,9 @@ storiesOf("Settings", module).add("Settings List", () => (
     AgePress={action("AgePress-pressed")}
   />
 ));
-storiesOf("LoginAs", module).add("ListOfChildren", () => (
+storiesOf("LoginAs", module).add("ListOfUsers", () => (
   <View style={{ backgroundColor: "#0067a0" }}>
-    <ListOfChildren
+    <ListOfUsers
       ListStyle={{}}
       Data={[
         { Name: "Akarsh", isChecked: false },
@@ -247,5 +267,19 @@ storiesOf("Screens", module)
       CheckBoxPress={item => {
         item.isChecked = !item.isChecked;
       }}
+    />
+  ))
+  .add("Home", () => (
+    <Home
+      Back={action("Back-Pressed")}
+      TotalPoints={100}
+      TimeLeftDenomination={"Min"}
+      TimeLeft={"2.07"}
+      Image1={require("../../js/assets/ball1.jpg")}
+      Image2={require("../../js/assets/spiderman.jpg")}
+      Image3={require("../../js/assets/minion.jpg")}
+      Image4={require("../../js/assets/ball2.jpg")}
+      LeftImages={3}
+      TotalImages={10}
     />
   ));

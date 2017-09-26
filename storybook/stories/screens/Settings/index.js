@@ -3,19 +3,19 @@ import PropTypes from "prop-types";
 import SettingsList from "../../components/SettingsList";
 import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
+import styles from "./styles";
 const Settings = props => (
-  <Container style={{ flex: 1, backgroundColor: "#eee" }}>
+  <Container style={styles.Container}>
     <HeaderCommon
       isRightRequired={false}
-      leftIconStyle={{ color: "white" }}
+      leftIconStyle={styles.HeaderLeftStyle}
       leftPress={props.Back}
       leftIconName="arrow-back"
-      headerStyle={{ backgroundColor: "#0067a0" }}
+      headerStyle={styles.HeaderStyle}
       Title="Settings"
-      TitleStyle={{ color: "white" }}
-      RightStyle={{ flex: 1, flexDirection: "column", alignItems: "center" }}
+      TitleStyle={styles.HeaderLeftStyle}
     />
-    <View style={{ flex: 1, marginLeft: "-4%" }}>
+    <View style={styles.ContentStyle}>
       <SettingsList
         PressMinimumDurationOfTouch={props.PressMinimumDurationOfTouch}
         MinimumDurationOfTouch={props.MinimumDurationOfTouch}

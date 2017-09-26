@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
-import ListOfChildren from "../../components/ListOfChildren";
+import ListOfUsers from "../../components/ListOfUsers";
 import { View, Text } from "native-base";
 import styles from "./styles";
 const LoginAs = props => (
@@ -15,7 +15,7 @@ const LoginAs = props => (
       <Text style={styles.LoginAsText}>Login As</Text>
     </View>
     <View style={styles.SelectChildSpace}>
-      <ListOfChildren
+      <ListOfUsers
         ListStyle={props.ListStyle}
         Data={props.Data}
         ListItemPress={props.ListItemPress}

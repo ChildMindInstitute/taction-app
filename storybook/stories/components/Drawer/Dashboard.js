@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { Text } from "react-native";
 import Dashboard from "../../screens/Dashboard";
 class DashboardExp extends React.Component {
   render() {

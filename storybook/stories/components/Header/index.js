@@ -11,24 +11,23 @@ const CustomHeader = props => (
     <Body style={{ flex: 8 }}>
       <Text style={props.TitleStyle}>{props.Title}</Text>
     </Body>
-    <Right style={{ flex: 1, flexDirection: "column", alignItems: "center" }}>
+    <Right style={{ flex: 2, flexDirection: "column", alignItems: "center" }}>
       {props.isRightRequired ? props.children : <Text />}
     </Right>
   </Header>
 );
 
 CustomHeader.propTypes = {
-  RightStyle: PropTypes.object,
   rightIconName: PropTypes.string,
   rightIconStyle: PropTypes.object,
   rightButtonPress: PropTypes.func,
   isRightRequired: PropTypes.bool,
   leftIconName: PropTypes.string,
-  leftIconStyle: PropTypes.object,
+  leftIconStyle: PropTypes.number,
   leftPress: PropTypes.func,
-  headerStyle: PropTypes.object,
+  headerStyle: PropTypes.number,
   Title: PropTypes.string,
-  TitleStyle: PropTypes.object
+  TitleStyle: PropTypes.number
 };
 CustomHeader.defaultProps = {
   rightButtonPress: () => {},

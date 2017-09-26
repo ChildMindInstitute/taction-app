@@ -4,15 +4,16 @@ import SideBar from "./Sidebar";
 import About from "./About";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
+import HomeView from "./Home";
 const DrawerExample = DrawerNavigator(
   {
-    Home: { screen: Dashboard },
     Dashboard: { screen: Dashboard },
+    Home: { screen: HomeView },
     About: { screen: About },
     Settings: { screen: Settings }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Dashboard",
     contentOptions: {
       activeTintColor: "#e91e63"
     },

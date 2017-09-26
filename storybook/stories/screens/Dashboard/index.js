@@ -5,27 +5,37 @@ import DashboardList from "../../components/DashboardList";
 import Button from "../../components/Button";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Text } from "native-base";
+import { Image } from "react-native";
+import styles from "./styles";
 const Dashboard = props => (
-  <Container style={{ flex: 1, backgroundColor: "#eee" }}>
+  <Container style={styles.ContainerStyle}>
     <HeaderCommon
       isRightRequired={true}
-      leftIconStyle={{ color: "white" }}
+      leftIconStyle={styles.HeaderLeftStyle}
       leftPress={props.DrawerOpen}
       leftIconName="menu"
-      headerStyle={{ backgroundColor: "#0067a0" }}
+      headerStyle={styles.HeaderStyle}
       Title="Dashboard"
-      TitleStyle={{ color: "white" }}
-      RightStyle={{ flex: 1, flexDirection: "column", alignItems: "center" }}
+      TitleStyle={styles.HeaderLeftStyle}
     >
-      <View style={{ flex: 0.5 }} />
-      <Text style={{ color: "white", flex: 1 }}>{props.TotalPoints}</Text>
-      <Text style={{ fontSize: 6, color: "white", flex: 1 }}>points</Text>
+      <View style={styles.HeaderRightStyle}>
+        <View style={styles.HeaderRightImageSpace}>
+          <Image source={require("../../../../js/assets/star_filled.png")} />
+        </View>
+        <View style={styles.HeaderRightTextSpace}>
+          <View style={styles.HeaderRightTextAlign} />
+          <Text style={styles.HeaderRightTotalPointsStyle}>
+            {props.TotalPoints}
+          </Text>
+          <Text style={styles.HeaderRightTotalPointsTextStyle}>points</Text>
+        </View>
+      </View>
     </HeaderCommon>
-    <View style={{ flex: 1, marginLeft: "-4%" }}>
-      <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+    <View style={styles.ContentStyle}>
+      <View style={styles.GreetingsSpace}>
         <DashboardGreetings>{props.children}</DashboardGreetings>
       </View>
-      <View style={{ flex: 13 }}>
+      <View style={styles.ListSpace}>
         <DashboardList
           IconName={props.ExcerciseDataIcon}
           ListData={props.ExcerciseData}

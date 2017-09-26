@@ -45,7 +45,7 @@ const SettingsList = props => (
     </Separator>
     <ListItem icon button onPress={props.PressNoOfImagesPerSession}>
       <Body>
-        <Text>No Of Images Per Session</Text>
+        <Text style={{ fontSize: 14 }}>No Of Images Per Session</Text>
       </Body>
       <Right>
         <Text>{props.NoOfImagesPerSession}</Text>
@@ -54,7 +54,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.PressTimerOfNext}>
       <Body>
-        <Text>Timer Of Next</Text>
+        <Text style={{ fontSize: 14 }}>Timer Of Next</Text>
       </Body>
       <Right>
         <Text>{props.TimerOfNext}</Text>
@@ -63,7 +63,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.PressMinimumDurationOfTouch}>
       <Body>
-        <Text>Minimum Duration Of Touch</Text>
+        <Text style={{ fontSize: 14 }}>Min Duration Of Touch</Text>
       </Body>
       <Right>
         <Text>{props.MinimumDurationOfTouch}</Text>

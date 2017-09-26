@@ -6,7 +6,7 @@ const DashboardList = props => (
     style={props.ListStyle}
     dataArray={props.ListData}
     renderRow={item => (
-      <ListItem icon onPress={props.ListItemPress}>
+      <ListItem icon onPress={() => props.ListItemPress(item)}>
         <Left>
           <Icon name={props.IconName} style={{ color: "#0067a0" }} />
         </Left>

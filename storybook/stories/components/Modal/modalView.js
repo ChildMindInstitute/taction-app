@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container, Text } from "native-base";
 import ModalCommon from "./modal";
-import styles from "./styles";
 import ModalContent from "./ModalContent";
 class ModalView extends Component {
   constructor(props) {

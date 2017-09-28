@@ -51,6 +51,10 @@
     "react-native": "^0.47.0",
     "react-native-grid-component": "^1.0.7",
     "react-native-modal": "^4.0.0",
-    "react-navigation": "^1.0.0-beta.11"
+    "react-navigation": "^1.0.0-beta.11",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.6",
+    "reduxsauce": "^0.7.0"
   }
 }

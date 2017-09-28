@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     color: "#fff"
   },
-  Footer: { marginBottom: "20%" }
+  Footer: { marginTop: "50%" }
 });
 
 export default styles;

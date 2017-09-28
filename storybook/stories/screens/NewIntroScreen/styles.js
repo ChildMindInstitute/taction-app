@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   TopSpace: { flex: 1 },
   TopViewStyle: {
     flex: 2,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     alignItems: "center"
   },
   BottomViewSpace: {

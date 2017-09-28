@@ -71,10 +71,10 @@ class SideBar extends Component {
               </ListItem>
             )}
           />
+          <View style={styles.Footer}>
+            <Logo1 imageDimensions={styles.drawerImage} />
+          </View>
         </Content>
-        <View style={styles.Footer}>
-          <Logo1 imageDimensions={styles.drawerImage} />
-        </View>
       </Container>
     );
   }

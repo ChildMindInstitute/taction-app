@@ -13,11 +13,11 @@ import {
 const SettingsList = props => (
   <List style={props.ListStyle}>
     <Separator bordered>
-      <Text>Profile</Text>
+      <Text style={{ marginLeft: "5%" }}>Profile</Text>
     </Separator>
     <ListItem icon button onPress={props.NamePress}>
       <Body>
-        <Text>Name</Text>
+        <Text style={{ marginLeft: "5%" }}>Name</Text>
       </Body>
       <Right>
         <Text>{props.Name}</Text>
@@ -26,7 +26,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.AgePress}>
       <Body>
-        <Text>Age</Text>
+        <Text style={{ marginLeft: "5%" }}>Age</Text>
       </Body>
       <Right>
         <Text>{props.Age}</Text>
@@ -35,18 +35,20 @@ const SettingsList = props => (
     </ListItem>
     <ListItem button icon onPress={props.PasswordPress}>
       <Body>
-        <Text>Password</Text>
+        <Text style={{ marginLeft: "5%" }}>Password</Text>
       </Body>
       <Right>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
     <Separator bordered>
-      <Text>Game Settings</Text>
+      <Text style={{ marginLeft: "5%" }}>Game Settings</Text>
     </Separator>
     <ListItem icon button onPress={props.PressNoOfImagesPerSession}>
       <Body>
-        <Text style={{ fontSize: 14 }}>No Of Images Per Session</Text>
+        <Text style={{ fontSize: 14, marginLeft: "5%" }}>
+          No Of Images Per Session
+        </Text>
       </Body>
       <Right>
         <Text>{props.NoOfImagesPerSession}</Text>
@@ -55,7 +57,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon>
       <Body>
-        <Text style={{ fontSize: 14 }}>Random?</Text>
+        <Text style={{ fontSize: 14, marginLeft: "5%" }}>Random?</Text>
       </Body>
       <Right>
         <Switch
@@ -68,7 +70,9 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.PressMinimumDurationOfTouch}>
       <Body>
-        <Text style={{ fontSize: 14 }}>Min Duration Of Touch</Text>
+        <Text style={{ fontSize: 14, marginLeft: "5%" }}>
+          Min Duration Of Touch
+        </Text>
       </Body>
       <Right>
         <Text>{props.MinimumDurationOfTouch}</Text>
@@ -76,11 +80,11 @@ const SettingsList = props => (
       </Right>
     </ListItem>
     <Separator bordered>
-      <Text>General</Text>
+      <Text style={{ marginLeft: "5%" }}>General</Text>
     </Separator>
     <ListItem icon>
       <Body>
-        <Text style={{ fontSize: 14 }}>Sound</Text>
+        <Text style={{ fontSize: 14, marginLeft: "5%" }}>Sound</Text>
       </Body>
       <Right>
         <Switch
@@ -93,7 +97,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.PressAddPrizes}>
       <Body>
-        <Text style={{ fontSize: 14 }}>Add Prizes</Text>
+        <Text style={{ fontSize: 14, marginLeft: "5%" }}>Add Prizes</Text>
       </Body>
       <Right>
         <Icon name="arrow-forward" />

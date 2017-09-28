@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form, Input, Item, Label, Button, Text, View } from "native-base";
-import Logo from "../Logo";
+import { Button, Text } from "native-base";
+
 const LoginForm = props => (
   <Button
     transparent

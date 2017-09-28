@@ -19,7 +19,6 @@ const Settings = props => (
       <SettingsList
         PressMinimumDurationOfTouch={props.PressMinimumDurationOfTouch}
         MinimumDurationOfTouch={props.MinimumDurationOfTouch}
-        PressTimerOfNext={props.PressTimerOfNext}
         TimerOfNext={props.TimerOfNext}
         PressNoOfImagesPerSession={props.PressNoOfImagesPerSession}
         NoOfImagesPerSession={props.NoOfImagesPerSession}
@@ -28,6 +27,11 @@ const Settings = props => (
         Age={props.Age}
         PasswordPress={props.PasswordPress}
         AgePress={props.AgePress}
+        RandomSlider={props.RandomSlider}
+        RandomSliderValue={props.RandomSliderValue}
+        SoundSliderValue={props.SoundSliderValue}
+        SoundSlider={props.SoundSlider}
+        PressAddPrizes={props.PressAddPrizes}
       />
     </View>
   </Container>
@@ -35,7 +39,11 @@ const Settings = props => (
 
 Settings.propTypes = {
   PressMinimumDurationOfTouch: PropTypes.func,
-  PressTimerOfNext: PropTypes.func,
+  RandomSlider: PropTypes.func,
+  RandomSliderValue: PropTypes.bool,
+  SoundSliderValue: PropTypes.bool,
+  SoundSlider: PropTypes.func,
+  PressAddPrizes: PropTypes.func,
   PressNoOfImagesPerSession: PropTypes.func,
   MinimumDurationOfTouch: PropTypes.string,
   TimerOfNext: PropTypes.string,
@@ -48,9 +56,9 @@ Settings.propTypes = {
   Back: PropTypes.func
 };
 SettingsList.defaultProps = {
-  MinimumDurationOfTouch: () => {},
-  TimerOfNext: () => {},
-  NoOfImagesPerSession: () => {},
+  PressMinimumDurationOfTouch: () => {},
+  RandomSlider: () => {},
+  PressNoOfImagesPerSession: () => {},
   NamePress: () => {},
   PasswordPress: () => {},
   AgePress: () => {}

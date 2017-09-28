@@ -17,7 +17,12 @@ const styles = StyleSheet.create({
   HeaderRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
   HomeTimerStyle: { position: "absolute", left: "40%", top: "10%" },
   ExcerciseSpace: { flex: 2, marginTop: "-25%" },
-  ExcerciseText: { flex: 0.5, marginLeft: "5%" },
+  ExcerciseText: {
+    flex: 1,
+    alignSelf: "center",
+    fontSize: 22,
+    fontWeight: "bold"
+  },
   ExcerciseContentStyle: { flex: 10, backgroundColor: "white" },
   FooterStyle: { height: "17%" }
 });

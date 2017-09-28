@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
+import Logo1 from "../../components/Logo.1";
 import FormInput from "../../components/FormInput";
 import ForgotPassword from "../../components/ForgotPassword";
 import Button from "../../components/Button";
@@ -10,10 +11,7 @@ import styles from "./styles";
 const Login = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
     <View style={styles.TopSpace} />
-    <Logo
-      source={props.MainLogoSource}
-      imageDimensions={styles.MainLogoStyles}
-    />
+    <Logo imageDimensions={styles.MainLogoStyles} />
     <View style={styles.FormSpace}>
       <Form style={styles.FormStyle}>
         <FormInput
@@ -59,10 +57,7 @@ const Login = props => (
       />
     </View>
     <View style={styles.BottomLogoSpace}>
-      <Logo
-        source={props.SubLogoSource}
-        imageDimensions={styles.SubLogoStyles}
-      />
+      <Logo1 imageDimensions={styles.SubLogoStyles} />
     </View>
   </View>
 );
@@ -70,7 +65,6 @@ const Login = props => (
 Login.propTypes = {
   ViewStyle: PropTypes.object,
   BackgroundColor: PropTypes.string,
-  MainLogoSource: PropTypes.node.isRequired,
   UsernameChange: PropTypes.func,
   PasswordChange: PropTypes.func,
   ForgotPasswordTextStyle: PropTypes.object,
@@ -81,8 +75,7 @@ Login.propTypes = {
   SubmitButtonTextStyle: PropTypes.object,
   RegisterWithUsTextStyle: PropTypes.object,
   RegisterWithUsTextButtonStyle: PropTypes.object,
-  OnPressRegisterNow: PropTypes.func,
-  SubLogoSource: PropTypes.node.isRequired
+  OnPressRegisterNow: PropTypes.func
 };
 Login.defaultProps = {
   onPress: () => {},

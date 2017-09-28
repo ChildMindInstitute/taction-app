@@ -49,6 +49,7 @@
     "native-base": "^2.3.2",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.47.0",
+    "react-native-grid-component": "^1.0.7",
     "react-native-modal": "^4.0.0",
     "react-navigation": "^1.0.0-beta.11"
   }

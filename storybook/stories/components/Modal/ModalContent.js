@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text, View } from "native-base";
 import { Image } from "react-native";
+import Button from "../Button";
 class ModalContent extends Component {
   constructor(props) {
     super(props);
@@ -11,31 +12,77 @@ class ModalContent extends Component {
         <Text
           style={{
             color: "#eeae30",
-            fontWeight: "bold",
             fontSize: 32,
-            margin: "10%"
+            marginBottom: "3%"
           }}
         >
-          Congratulations!
+          {this.props.GreetingLine1}
         </Text>
-        <Image
-          source={require("../../../../js/assets/two_stars.png")}
-          style={{ width: 200, height: 60 }}
-        />
+        {this.props.Line2needed ? (
+          <Text
+            style={{
+              color: "#eeae30",
+              fontSize: 32,
+              marginBottom: "7%"
+            }}
+          >
+            {this.props.GreetingLine2}
+          </Text>
+        ) : (
+          <View />
+        )}
+        <Image source={this.props.Stars} style={{ width: 200, height: 60 }} />
         <Text
           style={{
             color: "white",
             fontSize: 26,
             fontStyle: "italic",
             fontWeight: "bold",
-            margin: "5%"
+            marginTop:"5%"
           }}
         >
-          100
+          {this.props.DisplayPoints}
         </Text>
-        <Text style={{ color: "white", fontSize: 14, margin: "5%" }}>
-          You have earned 10 points!
+        <Text style={{ color: "white", fontSize: 14 }}>
+          {this.props.Description}
         </Text>
+        {this.props.IsButtonNeeded ? (
+          <View style={{ alignContent: "center" }}>
+            <Button
+              OnPress={this.props.PlayNext}
+              ButtonText="Play Next Level &rarr;"
+              SubmitButtonStyle={{
+                backgroundColor: "#eeae30",
+                opacity: 1,
+                margin: "5%",
+                borderRadius: 50
+              }}
+              SubmitButtonTextStyle={{
+                color: "#ffffff",
+                fontSize: 20,
+                fontWeight: "bold"
+              }}
+            />
+            <Button
+              OnPress={this.props.PlayAgain}
+              ButtonText="Play Again &rarr;"
+              SubmitButtonStyle={{
+                backgroundColor: "#ffffff",
+                opacity: 1,
+                marginLeft: "10%",
+                marginRight: "10%",
+                borderRadius: 50
+              }}
+              SubmitButtonTextStyle={{
+                color: "#eeae30",
+                fontSize: 20,
+                fontWeight: "bold"
+              }}
+            />
+          </View>
+        ) : (
+          <View />
+        )}
       </View>
     );
   }

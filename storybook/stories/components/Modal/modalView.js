@@ -17,7 +17,16 @@ class ModalView extends Component {
       <Container>
         <ModalCommon
           isVisible={this.state.modalVisible}
-          Content={<ModalContent />}
+          Content={<ModalContent 
+            GreetingLine1="Spider" 
+          Line2needed={true} 
+          GreetingLine2="Level Completed" 
+          Stars={require("../../../../js/assets/all_stars.png")} 
+          DisplayPoints={120} 
+          Description="Time: 02.14 Min" 
+          IsButtonNeeded={true} 
+          PlayNext={()=>{alert("PlayNext Pressed")}} 
+          PlayAgain={()=>{alert("PlayAgain Pressed")}}/>}
           toggleVisiblity={() => {
             this.setModalVisible(false);
           }}

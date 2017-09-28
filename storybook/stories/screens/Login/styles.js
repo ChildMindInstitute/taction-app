@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  MainView: { flex: 1 },
+  MainView: { flex: 1,
+    backgroundColor:"#0067a0" },
   TopSpace: { flex: 2 },
   FormSpace: { flex: 3.5 },
   FormStyle: { flex: 1, marginTop: "10%" },

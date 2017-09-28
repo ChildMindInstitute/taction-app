@@ -39,7 +39,7 @@ const Home = props => (
     />
 
     <View style={styles.ExcerciseSpace}>
-      <Text style={styles.ExcerciseText}>Touch the Spider</Text>
+      <Text style={styles.ExcerciseText}>{props.Question}</Text>
       <HomeContent
         HomeContentStyle={styles.ExcerciseContentStyle}
         Image1={props.Image1}
@@ -58,6 +58,7 @@ const Home = props => (
 
 Home.propTypes = {
   Back: PropTypes.func,
+  Question: PropTypes.string,
   TotalPoints: PropTypes.number,
   TimeLeftDenomination: PropTypes.string,
   TimeLeft: PropTypes.string,

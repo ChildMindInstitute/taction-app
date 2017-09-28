@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
+import Logo1 from "../../components/Logo.1";
 import ListOfUsers from "../../components/ListOfUsers";
 import { View, Text } from "native-base";
 import styles from "./styles";
 const LoginAs = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
     <View style={styles.TopSpace} />
-    <Logo
-      source={props.MainLogoSource}
-      imageDimensions={styles.MainLogoStyles}
-    />
+    <Logo imageDimensions={styles.MainLogoStyles} />
     <View style={styles.LoginAsTextSpace}>
       <Text style={styles.LoginAsText}>Login As</Text>
     </View>
@@ -23,22 +21,17 @@ const LoginAs = props => (
       />
     </View>
     <View style={styles.BottomLogoSpace}>
-      <Logo
-        source={props.SubLogoSource}
-        imageDimensions={styles.SubLogoStyles}
-      />
+      <Logo1 imageDimensions={styles.SubLogoStyles} />
     </View>
   </View>
 );
 
 LoginAs.propTypes = {
   BackgroundColor: PropTypes.string,
-  MainLogoSource: PropTypes.node.isRequired,
   ListStyle: PropTypes.object,
   Data: PropTypes.array,
   ListItemPress: PropTypes.func,
-  CheckBoxPress: PropTypes.func,
-  SubLogoSource: PropTypes.node.isRequired
+  CheckBoxPress: PropTypes.func
 };
 LoginAs.defaultProps = {
   ListItemPress: () => {},

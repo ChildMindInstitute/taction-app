@@ -10,14 +10,46 @@ class DashboardExp extends React.Component {
         OnPressSubmitButton={() => {}}
         SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
         SubmitButtonTextStyle={{ color: "white" }}
-        ExcerciseDataIcon="home"
         ExcerciseData={[
-          { Name: "Spider", Points: 100 },
-          { Name: "Ball", Points: 80 }
+          {
+            Name: "Spider",
+            Points: 100,
+            Duration: "1:00",
+            Stars: require("../../../../js/assets/all_stars.png"),
+            IsContentVisible: false,
+            DataFolderContent: [
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg"),
+              require("../../../../js/assets/spiderman.jpg")
+            ]
+          },
+          {
+            Name: "Ball",
+            Duration: "1:00",
+            Points: 80,
+            Stars: require("../../../../js/assets/two_stars.png"),
+            IsContentVisible: false,
+            DataFolderContent: [
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg"),
+              require("../../../../js/assets/ball1.jpg")
+            ]
+          }
         ]}
+        IsContentVisible={true}
         ListItemPress={item => console.log(item)}
       >
-        <Text>Time to earn some points</Text>
+        <Text style={{ fontSize: 22 }}>Today Played Games</Text>
       </Dashboard>
     );
   }

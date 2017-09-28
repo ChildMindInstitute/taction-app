@@ -26,6 +26,8 @@ import Modal from "./components/Modal";
 import HomeContent from "./components/HomeContent";
 import HomeTimer from "./components/HomeTimer";
 import HomeFooter from "./components/HomeFooter";
+import NewIntro from "./screens/NewIntroScreen";
+import Consent from "./screens/Consent";
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
 ));
@@ -108,6 +110,11 @@ storiesOf("Settings", module).add("Settings List", () => (
     Age={7}
     PasswordPress={action("PasswordPress-pressed")}
     AgePress={action("AgePress-pressed")}
+    RandomSlider={value => alert(value)}
+    RandomSliderValue={true}
+    SoundSliderValue={false}
+    SoundSlider={value => alert(value)}
+    PressAddPrizes={action("PressAddPrizes-pressed")}
   />
 ));
 storiesOf("LoginAs", module).add("ListOfUsers", () => (
@@ -129,9 +136,43 @@ storiesOf("LoginAs", module).add("ListOfUsers", () => (
 storiesOf("Dashboard", module)
   .add("Dashboard List", () => (
     <DashboardList
-      IconName="home"
-      ListData={[{ Name: "Spider", Points: 100 }, { Name: "Ball", Points: 80 }]}
-      ListItemPress={item => alert(item.Name + " selected")}
+      ListData={[
+        {
+          Name: "Spider",
+          Points: 100,
+          Duration: "1:00",
+          Stars: require("../../js/assets/all_stars.png"),
+          IsContentVisible: true,
+          DataFolderContent: [
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg")
+          ]
+        },
+        {
+          Name: "Ball",
+          Duration: "1:00",
+          Points: 80,
+          Stars: require("../../js/assets/two_stars.png"),
+          IsContentVisible: true,
+          DataFolderContent: [
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg")
+          ]
+        }
+      ]}
+      ListItemPress={item => console.log(item)}
     />
   ))
   .add("Dashboard Greetings", () => (
@@ -146,12 +187,7 @@ storiesOf("Dashboard", module)
   ));
 
 storiesOf("Common", module)
-  .add("Logo", () => (
-    <Logo
-      source={require("../../js/assets/minion.jpg")}
-      imageDimensions={{ width: 200, height: 300 }}
-    />
-  ))
+  .add("Logo", () => <Logo imageDimensions={{ width: 200, height: 300 }} />)
   .add("Modal", () => <Modal />)
   .add("Base Color Spinner", () => <Spinner color="#0067a0" />)
   .add("HeaderCommon", () => (
@@ -170,8 +206,6 @@ storiesOf("Common", module)
 storiesOf("Screens", module)
   .add("Splash", () => (
     <SplashScreen
-      MainLogoSource={require("../../js/assets/minion.jpg")}
-      SubLogoSource={require("../../js/assets/minion.jpg")}
       ImageDimensions={{ width: 200, height: 300 }}
       backgroundColor="#0067a0"
       color="#ccc"
@@ -179,8 +213,6 @@ storiesOf("Screens", module)
   ))
   .add("Login", () => (
     <Login
-      MainLogoSource={require("../../js/assets/minion.jpg")}
-      SubLogoSource={require("../../js/assets/minion.jpg")}
       BackgroundColor="#0067a0"
       ViewStyle={{ flex: 1 }}
       UsernameChange={event => console.log(event.nativeEvent.text)}
@@ -226,11 +258,43 @@ storiesOf("Screens", module)
       OnPressSubmitButton={action("resume-playing pressed")}
       SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
       SubmitButtonTextStyle={{ color: "white" }}
-      ExcerciseDataIcon="home"
       ExcerciseData={[
-        { Name: "Spider", Points: 100 },
-        { Name: "Ball", Points: 80 }
+        {
+          Name: "Spider",
+          Points: 100,
+          Duration: "1:00",
+          Stars: require("../../js/assets/all_stars.png"),
+          IsContentVisible: true,
+          DataFolderContent: [
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg"),
+            require("../../js/assets/spiderman.jpg")
+          ]
+        },
+        {
+          Name: "Ball",
+          Duration: "1:00",
+          Points: 80,
+          Stars: require("../../js/assets/two_stars.png"),
+          IsContentVisible: false,
+          DataFolderContent: [
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg"),
+            require("../../js/assets/ball1.jpg")
+          ]
+        }
       ]}
+      IsContentVisible={true}
       ListItemPress={item => console.log(item)}
     >
       <Text>Time to earn some points</Text>
@@ -250,12 +314,15 @@ storiesOf("Screens", module)
       Age={7}
       AgePress={action("AgePress-clicked")}
       Back={action("Back-clicked")}
+      RandomSlider={value => action("value changed to-" + value)}
+      RandomSliderValue={true}
+      SoundSliderValue={false}
+      SoundSlider={value => action("value changed to-" + value)}
+      PressAddPrizes={action("PressAddPrizes-pressed")}
     />
   ))
   .add("LoginAs", () => (
     <LoginAs
-      MainLogoSource={require("../../js/assets/minion.jpg")}
-      SubLogoSource={require("../../js/assets/minion.jpg")}
       BackgroundColor="#0067a0"
       ListStyle={{}}
       Data={[
@@ -281,5 +348,37 @@ storiesOf("Screens", module)
       Image4={require("../../js/assets/ball2.jpg")}
       LeftImages={3}
       TotalImages={10}
+      Question="Tap on The Spider"
+    />
+  ))
+  .add("NewIntro", () => (
+    <NewIntro
+      TopViewBackgroundColor="rgba(0, 103, 158, 1)"
+      BottomViewBackGroundColor="rgba(255, 255, 255, 0.9)"
+      ScoreColor="rgba(0, 103, 158, 1)"
+      Score={1250}
+      Stars={require("../../js/assets/all_stars.png")}
+      PlayOnPress={action("Play-pressed")}
+      HowToPlayOnPress={action("HowToPlay-pressed")}
+    />
+  ))
+  .add("Consent", () => (
+    <Consent
+      TopText="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,as opposed to using the 'Content here."
+      Term1="Child mind institute access to data and recontract?"
+      Term2="Child mind institute access to data and recontract?"
+      Term3="Child mind institute access to data and recontract?"
+      Term4="Child mind institute access to data and recontract?"
+      SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
+      SubmitButtonTextStyle={{ color: "white" }}
+      Disabled={true}
+      Checked1={true}
+      Checked2={false}
+      Checked3={true}
+      Checked4={true}
+      CheckboxChange1={action("CheckboxChange1-done")}
+      CheckboxChange2={action("CheckboxChange2-done")}
+      CheckboxChange3={action("CheckboxChange3-done")}
+      CheckboxChange4={action("CheckboxChange4-done")}
     />
   ));

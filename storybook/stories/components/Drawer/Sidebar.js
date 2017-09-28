@@ -10,36 +10,33 @@ import {
   Left,
   View
 } from "native-base";
-
+import Logo from "../Logo";
+import Logo1 from "../Logo.1";
 import styles from "./styles";
-const drawerImage = require("../../../../js/assets/minion.jpg");
 
 const datas = [
   {
-    name: "Home",
-    route: "Home",
-    icon: "navigate",
-    bg: "#BE6F50"
-  },
-  {
     name: "Dashboard",
     route: "Dashboard",
-    icon: "home",
-    bg: "#AB6AED",
     types: "3"
+  },
+  {
+    name: "Settings",
+    route: "Settings"
+  },
+
+  {
+    name: "Images Folder",
+    route: "ImagesFolder"
   },
   {
     name: "About",
     route: "About",
-    icon: "image",
-    bg: "#cc0000",
     types: "2"
   },
   {
-    name: "Settings",
-    route: "Settings",
-    icon: "albums",
-    bg: "#C5F442"
+    name: "Logout",
+    route: "Logout"
   }
 ];
 
@@ -56,7 +53,7 @@ class SideBar extends Component {
           style={{ flex: 1, backgroundColor: "#0067a0", top: -1 }}
         >
           <View style={styles.drawerCover}>
-            <Image style={styles.drawerImage} source={drawerImage} />
+            <Logo imageDimensions={styles.drawerImage} />
           </View>
           <List
             dataArray={datas}
@@ -64,20 +61,20 @@ class SideBar extends Component {
               <ListItem
                 button
                 onPress={() => this.props.navigation.navigate(data.route)}
-                style={{ backgroundColor: "#0067a0" }}
+                style={{
+                  backgroundColor: "#0067a0",
+                  borderBottomColor: "#005d8f",
+                  borderBottomWidth: 1
+                }}
               >
-                <Left>
-                  <Icon
-                    active
-                    name={data.icon}
-                    style={{ color: "#fff", fontSize: 26, width: 30 }}
-                  />
-                  <Text style={styles.text}>{data.name}</Text>
-                </Left>
+                <Text style={styles.text}>{data.name}</Text>
               </ListItem>
             )}
           />
         </Content>
+        <View style={styles.Footer}>
+          <Logo1 imageDimensions={styles.drawerImage} />
+        </View>
       </Container>
     );
   }

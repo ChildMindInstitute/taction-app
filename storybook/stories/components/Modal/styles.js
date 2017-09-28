@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   mainContent: {
-    flex: 7
+    flex: 20
   },
   close: {
     color: "#eeae30"

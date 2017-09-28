@@ -112,7 +112,9 @@ const HomeFooter = props => {
         {renderProgress}
       </View>
       <View style={{ flex: 2 }}>
-        <Text>{props.Left + "/" + props.Total}</Text>
+        <Text style={{ color: "#0067a0", fontWeight: "bold" }}>
+          {props.Left + "/" + props.Total}
+        </Text>
       </View>
     </Footer>
   );

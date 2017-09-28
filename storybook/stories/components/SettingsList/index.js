@@ -7,7 +7,8 @@ import {
   Right,
   Body,
   Separator,
-  Icon
+  Icon,
+  Switch
 } from "native-base";
 const SettingsList = props => (
   <List style={props.ListStyle}>
@@ -52,13 +53,17 @@ const SettingsList = props => (
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    <ListItem icon button onPress={props.PressTimerOfNext}>
+    <ListItem icon>
       <Body>
-        <Text style={{ fontSize: 14 }}>Timer Of Next</Text>
+        <Text style={{ fontSize: 14 }}>Random?</Text>
       </Body>
       <Right>
-        <Text>{props.TimerOfNext}</Text>
-        <Icon name="arrow-forward" />
+        <Switch
+          onValueChange={value => {
+            props.RandomSlider(value);
+          }}
+          value={props.RandomSliderValue}
+        />
       </Right>
     </ListItem>
     <ListItem icon button onPress={props.PressMinimumDurationOfTouch}>
@@ -70,6 +75,30 @@ const SettingsList = props => (
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
+    <Separator bordered>
+      <Text>General</Text>
+    </Separator>
+    <ListItem icon>
+      <Body>
+        <Text style={{ fontSize: 14 }}>Sound</Text>
+      </Body>
+      <Right>
+        <Switch
+          onValueChange={value => {
+            props.SoundSlider(value);
+          }}
+          value={props.SoundSliderValue}
+        />
+      </Right>
+    </ListItem>
+    <ListItem icon button onPress={props.PressAddPrizes}>
+      <Body>
+        <Text style={{ fontSize: 14 }}>Add Prizes</Text>
+      </Body>
+      <Right>
+        <Icon name="arrow-forward" />
+      </Right>
+    </ListItem>
   </List>
 );
 
@@ -78,8 +107,12 @@ SettingsList.propTypes = {
   TimerOfNext: PropTypes.string,
   NoOfImagesPerSession: PropTypes.number,
   PressMinimumDurationOfTouch: PropTypes.func,
-  PressTimerOfNext: PropTypes.func,
+  RandomSlider: PropTypes.func,
+  SoundSliderValue: PropTypes.bool,
+  SoundSlider: PropTypes.func,
+  RandomSliderValue: PropTypes.bool,
   PressNoOfImagesPerSession: PropTypes.func,
+  PressAddPrizes: PropTypes.func,
   NamePress: PropTypes.func,
   PasswordPress: PropTypes.func,
   AgePress: PropTypes.func,

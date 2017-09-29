@@ -1,24 +1,33 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StackNavigator } from "react-navigation";
+import { Provider } from "react-redux";
+import { Root } from "native-base";
+import Splash from "./js/screens/SplashScreen";
+import LoginScreen from "./js/screens/Login";
+import ConsentScreen from "./js/screens/Consent";
 import StorybookUI from "./storybook";
-class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
-module.exports = __DEV__ ? StorybookUI : App;
+const App = StackNavigator(
+  {
+    //AddChild: { screen: Splash },
+    //AddFolder: { screen: Dashboard },
+    // AlmostThere: { screen: AddGroup },
+    Consent: { screen: ConsentScreen },
+    // Dashboard: { screen: AddTranscation },
+    // DashboardChild: { screen: AddTranscation },
+    // Game: { screen: AddTranscation },
+    // ImagesFolder: { screen: AddTranscation },
+    Login: { screen: LoginScreen },
+    // LoginAs: { screen: AddTranscation },
+    // NewIntroScreen: { screen: AddTranscation },
+    // Settings: { screen: AddTranscation },
+    // SignUp: { screen: AddTranscation },
+    SplashScreen: { screen: Splash }
+    //Welcome: { screen: AddTranscation }
+  },
+  { headerMode: "screen", initialRouteName: "SplashScreen" }
+);
+export default () => (
+  <Root>
+    <App />
+  </Root>
+);

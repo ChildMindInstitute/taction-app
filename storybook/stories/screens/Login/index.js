@@ -51,11 +51,7 @@ const Login = props => (
       />
     </View>
     <View style={styles.RegisterNowSpace}>
-      <RegisterWithUs
-        TextStyle={props.RegisterWithUsTextStyle}
-        TextButtonStyle={props.RegisterWithUsTextButtonStyle}
-        OnPressRegisterNow={props.OnPressRegisterNow}
-      />
+      <RegisterWithUs OnPressRegisterNow={props.OnPressRegisterNow} />
     </View>
     <View style={styles.BottomLogoSpace}>
       <Logo1 imageDimensions={styles.SubLogoStyles} />

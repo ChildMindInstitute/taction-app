@@ -1,7 +1,14 @@
 import { StyleSheet } from "react-native";
+import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainView: { flex: 1, backgroundColor: "#0067ae" },
-  TopSpace: { flex: 4, alignItems: "center", justifyContent: "center" },
+  MainOuterView: {
+    flex: 1,
+    backgroundColor: "#0067ae",
+    marginTop: Constants.statusBarHeight
+  },
+  ScrollViewSpaceSpace: { flex: 9 },
+  MainView: { flex: 1 },
+  TopSpace: { flex: 2, alignContent: "center", justifyContent: "center" },
   TopTextSpace: { flex: 4 },
   TopTextStyle: {
     marginLeft: "5%",
@@ -23,8 +30,11 @@ const styles = StyleSheet.create({
   ItemTextSpace: { flex: 8 },
   ItemCheckBoxSpace: { flex: 1 },
   ItemText: { color: "#fff", fontSize: 20, fontWeight: "300" },
-  ItemCheckBox: {},
+  ItemCheckBox: {
+    top: 10,
+    left: 0
+  },
   MainLogoStyles: { alignSelf: "center" },
-  SubmitButtonSpace: { flex: 0.9 }
+  SubmitButtonSpace: { flex: 1 }
 });
 export default styles;

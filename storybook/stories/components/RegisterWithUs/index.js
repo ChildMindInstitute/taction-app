@@ -1,17 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text } from "native-base";
+import { Text, Button, View } from "native-base";
 const RegisterWithUs = props => (
-  <Text style={props.TextStyle}>
-    Don't have an Account?{" "}
-    <Text
-      button
-      onPress={props.OnPressRegisterNow}
-      style={props.TextButtonStyle}
-    >
-      Register Now
+  <View
+    style={{
+      flex: 1,
+      flexDirection: "row"
+    }}
+  >
+    <Text style={{ marginTop: "5%", color: "#ccc" }}>
+      Don't have an Account?{" "}
     </Text>
-  </Text>
+    <Button
+      style={{ marginTop: "1.5%" }}
+      transparent
+      onPress={props.OnPressRegisterNow}
+    >
+      <Text style={{ color: "#ffffff", fontWeight: "bold" }}>Register Now</Text>
+    </Button>
+  </View>
 );
 
 RegisterWithUs.propTypes = {

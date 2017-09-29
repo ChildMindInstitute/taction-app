@@ -3,6 +3,7 @@ import { StackNavigator, NavigationActions } from "react-navigation";
 import { Text } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
 import Expo from "expo";
+import { StatusBar } from "react-native";
 const ExcerciseData = [
   {
     Name: "Spider",
@@ -144,19 +145,8 @@ class DashboardScreen extends Component {
           this.props.navigation.navigate("DrawerOpen");
         }}
         TotalPoints={100}
-        OnPressSubmitButton={() => {}}
-        SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
-        SubmitButtonTextStyle={{ color: "white" }}
         ExcerciseData={ExcerciseData}
-        IsContentVisible={this.state.IsContentVisible}
-        ListItemPress={(item => {
-          let previousState = this.state.IsContentVisible.slice();
-          previousState[ExcerciseData.indexOf(item)] = !previousState[
-            ExcerciseData.indexOf(item)
-          ];
-          this.setState({ IsContentVisible: previousState });
-          console.log(this.state);
-        }).bind(this)}
+        StatusBarStyle="light-content"
       >
         <Text style={{ fontSize: 22 }}>Today's Activities</Text>
       </Dashboard>

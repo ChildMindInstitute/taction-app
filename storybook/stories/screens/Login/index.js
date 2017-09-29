@@ -8,8 +8,10 @@ import Button from "../../components/Button";
 import RegisterWithUs from "../../components/RegisterWithUs";
 import { View, Form } from "native-base";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const Login = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.TopSpace}>
       <Logo />
     </View>

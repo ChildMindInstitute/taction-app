@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
-import { View, Text, CheckBox } from "native-base";
+import { View, Text } from "native-base";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const AlmostThere = props => (
   <View style={styles.MainView}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.TopSpace}>
       <Logo imageDimensions={styles.MainLogoStyles} />
     </View>

@@ -39,6 +39,7 @@ class LoginScreen extends Component {
           this.props.navigation.navigate("AlmostThere")}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "3%" }}
         SubmitButtonTextStyle={{ color: "white" }}
+        StatusBarStyle="light-content"
         ConfirmPassword={event => console.log(event.nativeEvent.text)}
         ChangeEmailChange={event => console.log(event.nativeEvent.text)}
       />

@@ -1,6 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainView: { flex: 1 },
+  MainView: {
+    flex: 1,
+    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
+  },
   TopSpace: {
     flex: 2,
     alignItems: "center",

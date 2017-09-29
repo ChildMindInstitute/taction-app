@@ -40,6 +40,7 @@ class SettingsScreen extends Component {
         }}
         PressAddPrizes={() => {}}
         Back={() => this.props.navigation.navigate("Dashboard")}
+        StatusBarStyle="light-content"
       />
     );
   }

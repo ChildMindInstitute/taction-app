@@ -1,6 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainView: { flex: 1, backgroundColor: "#0067ae" },
+  MainView: {
+    flex: 1,
+    backgroundColor: "#0067ae",
+    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
+  },
   TopSpace: { flex: 3, alignItems: "center", justifyContent: "center" },
 
   AlmostThereTextSpace: {

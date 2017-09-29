@@ -5,8 +5,10 @@ import Button from "../../components/Button";
 import { View, Text, CheckBox } from "native-base";
 import { ScrollView } from "react-native";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const Consent = props => (
   <View style={styles.MainOuterView}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.TopSpace}>
       <Logo imageDimensions={styles.MainLogoStyles} />
     </View>

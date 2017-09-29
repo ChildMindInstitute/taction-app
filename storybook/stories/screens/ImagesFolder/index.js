@@ -4,6 +4,7 @@ import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Button, Icon } from "native-base";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 let CheckedItems = [];
 class ListContent extends React.Component {
   static navigationOptions = {
@@ -33,6 +34,7 @@ class ListContent extends React.Component {
   render() {
     return (
       <Container style={styles.ContainerStyle}>
+        <StatusBar barStyle={this.props.StatusBarStyle} />
         <HeaderCommon
           isRightRequired={true}
           leftIconStyle={styles.HeaderLeftStyle}

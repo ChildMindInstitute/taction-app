@@ -5,8 +5,10 @@ import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const AddFolder = props => (
   <Container style={styles.ContainerStyle}>
+    <StatusBar barStyle={props.StatusBarStyle} />;
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}

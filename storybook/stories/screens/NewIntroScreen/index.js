@@ -6,8 +6,10 @@ import Button from "../../components/Button";
 import { View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const NewIntro = props => (
   <View style={styles.MainView}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <Logo2
       imageDimensions={{ position: "absolute", width: "100%", height: "100%" }}
     />

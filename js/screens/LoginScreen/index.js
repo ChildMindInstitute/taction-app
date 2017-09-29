@@ -29,6 +29,7 @@ class LoginScreen extends Component {
           flexDirection: "column",
           borderColor: "transparent"
         }}
+        StatusBarStyle="light-content"
         InputViewStyle={{ flex: 1, margin: "3%" }}
         PasswordChange={event => console.log(event.nativeEvent.text)}
         ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}

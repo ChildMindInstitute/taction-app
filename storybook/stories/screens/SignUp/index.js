@@ -5,9 +5,12 @@ import Logo1 from "../../components/Logo.1";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { View, Form } from "native-base";
+import { StatusBar } from "react-native";
+
 import styles from "./styles";
 const SignUp = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.TopSpace}>
       <Logo imageDimensions={styles.MainLogoStyles} />
     </View>

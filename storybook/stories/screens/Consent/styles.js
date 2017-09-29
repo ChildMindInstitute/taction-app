@@ -1,10 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
   MainOuterView: {
     flex: 1,
     backgroundColor: "#0067ae",
-    marginTop: Constants.statusBarHeight
+    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
   },
   ScrollViewSpaceSpace: { flex: 9 },
   MainView: { flex: 1 },

@@ -18,6 +18,7 @@ class AddFolderScreen extends Component {
         OnPressSaveButton={() => {
           navigate("Dashboard");
         }}
+        StatusBarStyle="light-content"
         OnPressSkipButton={() => {
           navigate("Dashboard");
         }}

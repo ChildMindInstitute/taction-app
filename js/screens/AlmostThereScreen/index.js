@@ -13,7 +13,7 @@ class AlmostThereScreen extends Component {
     setTimeout(() => {
       this.props.navigation.navigate("Welcome");
     }, 3000);
-    return <AlmostThere />;
+    return <AlmostThere StatusBarStyle="light-content" />;
   }
 }
 export default AlmostThereScreen;

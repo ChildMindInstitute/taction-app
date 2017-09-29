@@ -3,7 +3,7 @@ import { Content, Text, List, ListItem, Container, View } from "native-base";
 import Logo from "../Logo";
 import Logo1 from "../Logo.1";
 import styles from "./styles";
-
+import { StatusBar } from "react-native";
 const datas = [
   {
     name: "Dashboard",
@@ -41,6 +41,8 @@ class SideBar extends Component {
   render() {
     return (
       <Container>
+        <StatusBar barStyle="light-content" />
+
         <Content
           bounces={false}
           style={{ flex: 1, backgroundColor: "#0067a0", top: -1 }}

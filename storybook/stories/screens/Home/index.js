@@ -7,8 +7,10 @@ import HomeContent from "../../components/HomeContent";
 import { Container, Content, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const Home = props => (
   <Container style={{ backgroundColor: "#eee" }}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <HeaderCommon
       isRightRequired={true}
       leftIconStyle={styles.HeaderLeftStyle}

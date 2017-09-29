@@ -5,8 +5,10 @@ import Logo1 from "../../components/Logo.1";
 import ListOfUsers from "../../components/ListOfUsers";
 import { View, Text } from "native-base";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const LoginAs = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.TopSpace}>
       <Logo imageDimensions={styles.MainLogoStyles} />
     </View>

@@ -4,9 +4,11 @@ import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import Button from "../../components/Button";
 import { View, Text } from "native-base";
+import { StatusBar } from "react-native";
 import styles from "./styles";
 const Welcome = props => (
   <View style={styles.MainView}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.TopSpace}>
       <Logo imageDimensions={styles.MainLogoStyles} />
     </View>

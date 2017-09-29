@@ -7,8 +7,10 @@ import HeaderCommon from "../../components/Header";
 import { Container, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const Dashboard = props => (
   <Container style={styles.ContainerStyle}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}

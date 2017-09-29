@@ -4,9 +4,12 @@ import Loader from "../../components/Spinner";
 import Logo from "../../components/Logo.3";
 import Logo1 from "../../components/Logo.1";
 import { View } from "native-base";
+import { StatusBar } from "react-native";
 import styles from "./styles";
+
 const SplashScreen = props => (
   <View style={[styles.MainView, { backgroundColor: props.backgroundColor }]}>
+    <StatusBar barStyle={props.StatusBarStyle} />
     <View style={styles.LogoSpace} />
     <Logo imageDimensions={styles.LogoStyles} />
     <View style={styles.LodaerSpace} />

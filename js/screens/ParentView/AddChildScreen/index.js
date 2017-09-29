@@ -28,6 +28,7 @@ class AddChildScreen extends Component {
         ChildAgeChange={event => {
           console.log(event.nativeEvent.text);
         }}
+        StatusBarStyle="light-content"
         DrawerOpen={() => {
           this.props.navigation.navigate("DrawerOpen");
         }}

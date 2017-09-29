@@ -145,6 +145,7 @@ class ImagesFolderScreen extends Component {
         }}
         ExcerciseData={ExcerciseData}
         SwitchToggled={() => {}}
+        StatusBarStyle="light-content"
       />
     );
   }

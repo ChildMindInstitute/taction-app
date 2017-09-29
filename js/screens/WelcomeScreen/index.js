@@ -15,9 +15,20 @@ class WelcomeScreen extends Component {
     return (
       <Welcome
         OnPressSubmitButton={() =>
-          this.props.navigation.navigate("ParentDrawer")}
+          this.props.navigation.dispatch(
+            NavigationActions.reset({
+              index: 0,
+              actions: [
+                NavigationActions.navigate({
+                  params: { NewRegistration: "true" },
+                  routeName: "ParentDrawer"
+                })
+              ]
+            })
+          )}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
         SubmitButtonTextStyle={{ color: "white", fontWeight: "500" }}
+        StatusBarStyle="light-content"
       />
     );
   }

@@ -42,6 +42,7 @@ class ConsentScreen extends Component {
           this.setState({ Term3: !this.state.Term3 });
         }}
         OnPressSubmitButton={() => this.props.navigation.navigate("SignUp")}
+        StatusBarStyle="light-content"
       />
     );
   }

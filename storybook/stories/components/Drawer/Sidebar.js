@@ -1,15 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
-import {
-  Content,
-  Text,
-  List,
-  ListItem,
-  Icon,
-  Container,
-  Left,
-  View
-} from "native-base";
+import { Content, Text, List, ListItem, Container, View } from "native-base";
 import Logo from "../Logo";
 import Logo1 from "../Logo.1";
 import styles from "./styles";

@@ -1,9 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { List, ListItem, Text, Left, Right, Body, View } from "native-base";
+import {
+  List,
+  ListItem,
+  Text,
+  Left,
+  Right,
+  Body,
+  View,
+  Switch,
+  Badge,
+  CheckBox
+} from "native-base";
 import { Image } from "react-native";
 import Grid from "react-native-grid-component";
-const DashboardList = props => (
+const ImagesFolderList = props => (
   <List
     style={props.ListStyle}
     dataArray={props.ListData}
@@ -18,13 +29,27 @@ const DashboardList = props => (
         }}
       >
         <View style={{ flex: 1, flexDirection: "column" }}>
-          <View style={{ flex: 1, flexDirection: "row" }}>
-            <Left style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, flexDirection: "row", margin: "2%" }}>
+            <Left style={{ flex: 2, flexDirection: "row" }}>
               <View
                 style={{
-                  flex: 1,
-                  alignItems: "center",
+                  flex: 3,
+                  alignContent: "center",
                   justifyContent: "center"
+                }}
+              >
+                <CheckBox
+                  checked={true}
+                  onChange={checked => console.log("I am checked", checked)}
+                  style={{ backgroundColor: "#eeae30", borderColor: "#eeae30" }}
+                />
+              </View>
+              <View
+                style={{
+                  flex: 3,
+                  alignContent: "center",
+                  justifyContent: "center",
+                  marginTop: "-5%"
                 }}
               >
                 <Image
@@ -37,45 +62,39 @@ const DashboardList = props => (
 
               <View
                 style={{
-                  flex: 3,
-                  alignItems: "center"
+                  flex: 4,
+                  alignContent: "center"
                 }}
               >
                 <Text
                   style={{
                     fontSize: 20,
-                    color: "#0067a0",
-                    marginTop: "5%"
+                    color: "#0067a0"
                   }}
                 >
                   {item.Name}
                 </Text>
               </View>
             </Left>
-            <Body
-              style={{
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <Text style={{ fontSize: 20, color: "black" }}>
-                {item.Points}
-              </Text>
-              <Image source={item.Stars} style={{ width: 35, height: 12 }} />
-            </Body>
-            <Right style={{ flexDirection: "column" }}>
-              <View style={{ alignItems: "center" }}>
-                <Text note>Taps</Text>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginTop: "3%"
-                  }}
-                >
-                  <Text>{item.Taps + "/" + item.TotalTaps}</Text>
-                </View>
+            <Body>
+              <View
+                style={{
+                  alignContent: "center",
+                  justifyContent: "center",
+                  marginTop: "-5%"
+                }}
+              >
+                <Badge style={{ backgroundColor: "#eeae30" }}>
+                  <Text>{item.DataFolderContent.length}</Text>
+                </Badge>
               </View>
+            </Body>
+            <Right style={{ flexDirection: "column", marginTop: "-2%" }}>
+              <Switch
+                onTintColor="#eeae30"
+                value={item.IsAvailableToChild}
+                onValueChange={item => props.SwitchToggled(item)}
+              />
             </Right>
           </View>
           {item.IsContentVisible ? (
@@ -103,26 +122,7 @@ const DashboardList = props => (
                     resizeMethod="auto"
                     resizeMode="contain"
                     key={i}
-                  >
-                    <View
-                      style={{
-                        backgroundColor: "#000",
-                        alignItems: "center",
-                        marginTop: "63%",
-                        opacity: 0.65
-                      }}
-                    >
-                      <Text
-                        style={{
-                          color: "#ccc",
-                          fontSize: 14,
-                          margin: "2%"
-                        }}
-                      >
-                        {data.Taps}/{data.TotalTaps}{" "}
-                      </Text>
-                    </View>
-                  </Image>
+                  />
                 )}
                 data={item.DataFolderContent}
                 itemsPerRow={4}
@@ -137,10 +137,10 @@ const DashboardList = props => (
   />
 );
 
-DashboardList.propTypes = {
+ImagesFolderList.propTypes = {
   ListData: PropTypes.array,
   IconName: PropTypes.string,
   ListStyle: PropTypes.object
 };
 
-export { DashboardList as default };
+export { ImagesFolderList as default };

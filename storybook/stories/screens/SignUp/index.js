@@ -3,15 +3,13 @@ import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import FormInput from "../../components/FormInput";
-import ForgotPassword from "../../components/ForgotPassword";
 import Button from "../../components/Button";
-import RegisterWithUs from "../../components/RegisterWithUs";
 import { View, Form } from "native-base";
 import styles from "./styles";
-const Login = props => (
+const SignUp = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
     <View style={styles.TopSpace}>
-      <Logo />
+      <Logo imageDimensions={styles.MainLogoStyles} />
     </View>
     <View style={styles.FormSpace}>
       <Form style={styles.FormStyle}>
@@ -26,6 +24,15 @@ const Login = props => (
         />
         <FormInput
           IsPassword={true}
+          Label="Email"
+          OnChange={props.EmailChange}
+          InputStyle={props.InputStyle}
+          LabelStyle={props.InputLabelStyle}
+          ItemStyle={props.InputItemStyle}
+          ViewStyle={props.InputViewStyle}
+        />
+        <FormInput
+          IsPassword={true}
           Label="Password"
           OnChange={props.PasswordChange}
           InputStyle={props.InputStyle}
@@ -33,15 +40,18 @@ const Login = props => (
           ItemStyle={props.InputItemStyle}
           ViewStyle={props.InputViewStyle}
         />
+        <FormInput
+          IsPassword={true}
+          Label="ConfirmPassword"
+          OnChange={props.ConfirmPasswordChange}
+          InputStyle={props.InputStyle}
+          LabelStyle={props.InputLabelStyle}
+          ItemStyle={props.InputItemStyle}
+          ViewStyle={props.InputViewStyle}
+        />
       </Form>
     </View>
-    <View style={styles.ForgotPasswordSpace}>
-      <ForgotPassword
-        ForgotPasswordTextStyle={props.ForgotPasswordTextStyle}
-        ForgotPasswordButtonStyle={props.ForgotPasswordButtonStyle}
-        OnPressForgotPassword={props.OnPressForgotPassword}
-      />
-    </View>
+
     <View style={styles.SubmitButtonSpace}>
       <Button
         OnPress={props.OnPressSubmitButton}
@@ -50,41 +60,26 @@ const Login = props => (
         SubmitButtonTextStyle={props.SubmitButtonTextStyle}
       />
     </View>
-    <View style={styles.RegisterNowSpace}>
-      <RegisterWithUs
-        TextStyle={props.RegisterWithUsTextStyle}
-        TextButtonStyle={props.RegisterWithUsTextButtonStyle}
-        OnPressRegisterNow={props.OnPressRegisterNow}
-      />
-    </View>
     <View style={styles.BottomLogoSpace}>
       <Logo1 imageDimensions={styles.SubLogoStyles} />
     </View>
   </View>
 );
 
-Login.propTypes = {
-  ViewStyle: PropTypes.object,
+SignUp.propTypes = {
   BackgroundColor: PropTypes.string,
   UsernameChange: PropTypes.func,
   PasswordChange: PropTypes.func,
-  ForgotPasswordTextStyle: PropTypes.object,
-  ForgotPasswordButtonStyle: PropTypes.object,
-  OnPressForgotPassword: PropTypes.func,
+  ConfirmPasswordChange: PropTypes.func,
   OnPressSubmitButton: PropTypes.func,
-  SubmitButtonStyle: PropTypes.object,
-  SubmitButtonTextStyle: PropTypes.object,
-  RegisterWithUsTextStyle: PropTypes.object,
-  RegisterWithUsTextButtonStyle: PropTypes.object,
-  OnPressRegisterNow: PropTypes.func
+  EmailChange: PropTypes.func
 };
-Login.defaultProps = {
-  onPress: () => {},
-  OnPressForgotPassword: () => {},
-  OnPressRegisterNow: () => {},
+SignUp.defaultProps = {
+  EmailChange: () => {},
+  OnPressSubmitButton: () => {},
+  PasswordChange: () => {},
   UsernameChange: () => {},
-  SubmitButtonOnPress: () => {},
-  PasswordChange: () => {}
+  ConfirmPasswordChange: () => {}
 };
 
-export { Login as default };
+export { SignUp as default };

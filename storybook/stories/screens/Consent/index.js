@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Button from "../../components/Button";
-import { View, Text, Item, CheckBox, Body, Right } from "native-base";
+import { View, Text, CheckBox } from "native-base";
 import styles from "./styles";
 const Consent = props => (
   <View style={styles.MainView}>

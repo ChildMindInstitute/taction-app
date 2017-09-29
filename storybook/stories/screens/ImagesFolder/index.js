@@ -1,47 +1,48 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DashboardGreetings from "../../components/DashboardGreetings";
-import DashboardList from "../../components/DashboardList";
-import Button from "../../components/Button";
+import ImagesFolderList from "../../components/ImagesFolderList";
+import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Text } from "native-base";
-import { Image } from "react-native";
+import { Container, View, Button, Icon } from "native-base";
 import styles from "./styles";
-const Dashboard = props => (
+const ImagesFolder = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
-      isRightRequired={false}
+      isRightRequired={true}
       leftIconStyle={styles.HeaderLeftStyle}
       leftPress={props.DrawerOpen}
       leftIconName="menu"
       headerStyle={styles.HeaderStyle}
-      Title="Dashboard"
+      Title="Images Folder"
       TitleStyle={styles.HeaderLeftStyle}
-    />
+    >
+      <Button transparent onPress={props.OnDeleteButton}>
+        <Icon name="trash" style={{ color: "#fff" }} />
+      </Button>
+    </HeaderCommon>
     <View style={styles.ContentStyle}>
       <View style={styles.GreetingsSpace}>
-        <DashboardGreetings>{props.children}</DashboardGreetings>
+        <Button2
+          OnPress={props.OnPressSubmitButton}
+          SubmitButtonStyle={{
+            marginLeft: "32%",
+            marginRight: "32%",
+            backgroundColor: "#eeae30"
+          }}
+          ButtonText="+ AddFolder"
+        />
       </View>
       <View style={styles.ListSpace}>
-        <DashboardList
-          IconName={props.ExcerciseDataIcon}
+        <ImagesFolderList
           ListData={props.ExcerciseData}
           ListItemPress={props.ListItemPress}
         />
       </View>
     </View>
-    <View>
-      <Button
-        OnPress={props.OnPressSubmitButton}
-        SubmitButtonStyle={props.SubmitButtonStyle}
-        ButtonText="Resume Playing"
-        SubmitButtonTextStyle={props.SubmitButtonTextStyle}
-      />
-    </View>
   </Container>
 );
 
-Dashboard.propTypes = {
+ImagesFolder.propTypes = {
   DrawerOpen: PropTypes.func,
   TotalPoints: PropTypes.number,
   SubmitButtonTextStyle: PropTypes.object,
@@ -52,7 +53,7 @@ Dashboard.propTypes = {
   ListItemPress: PropTypes.func,
   children: PropTypes.node.isRequired
 };
-Dashboard.defaultProps = {
+ImagesFolder.defaultProps = {
   onPress: () => {},
   OnPressForgotPassword: () => {},
   OnPressRegisterNow: () => {},
@@ -61,4 +62,4 @@ Dashboard.defaultProps = {
   PasswordChange: () => {}
 };
 
-export { Dashboard as default };
+export { ImagesFolder as default };

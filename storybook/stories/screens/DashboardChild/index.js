@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import DashboardGreetings from "../../components/DashboardGreetings";
-import DashboardList from "../../components/DashboardList";
+import DashboardChildList from "../../components/DashboardChildList";
 import Button from "../../components/Button";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
-const Dashboard = props => (
+const DashboardChild = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
       isRightRequired={false}
@@ -23,36 +23,22 @@ const Dashboard = props => (
         <DashboardGreetings>{props.children}</DashboardGreetings>
       </View>
       <View style={styles.ListSpace}>
-        <DashboardList
-          IconName={props.ExcerciseDataIcon}
-          ListData={props.ExcerciseData}
-          ListItemPress={props.ListItemPress}
+        <DashboardChildList
+          ExcercisesAvailable={props.ExcercisesAvailable}
+          ItemPress={props.ItemPress}
         />
       </View>
-    </View>
-    <View>
-      <Button
-        OnPress={props.OnPressSubmitButton}
-        SubmitButtonStyle={props.SubmitButtonStyle}
-        ButtonText="Resume Playing"
-        SubmitButtonTextStyle={props.SubmitButtonTextStyle}
-      />
     </View>
   </Container>
 );
 
-Dashboard.propTypes = {
+DashboardChild.propTypes = {
   DrawerOpen: PropTypes.func,
-  TotalPoints: PropTypes.number,
-  SubmitButtonTextStyle: PropTypes.object,
-  SubmitButtonStyle: PropTypes.object,
-  OnPressSubmitButton: PropTypes.func,
-  ExcerciseDataIcon: PropTypes.string,
-  ExcerciseData: PropTypes.array,
-  ListItemPress: PropTypes.func,
+  ExcercisesAvailable: PropTypes.array,
+  ItemPress: PropTypes.func,
   children: PropTypes.node.isRequired
 };
-Dashboard.defaultProps = {
+DashboardChild.defaultProps = {
   onPress: () => {},
   OnPressForgotPassword: () => {},
   OnPressRegisterNow: () => {},
@@ -61,4 +47,4 @@ Dashboard.defaultProps = {
   PasswordChange: () => {}
 };
 
-export { Dashboard as default };
+export { DashboardChild as default };

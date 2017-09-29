@@ -7,8 +7,9 @@ import { View, Text } from "native-base";
 import styles from "./styles";
 const LoginAs = props => (
   <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
-    <View style={styles.TopSpace} />
-    <Logo imageDimensions={styles.MainLogoStyles} />
+    <View style={styles.TopSpace}>
+      <Logo imageDimensions={styles.MainLogoStyles} />
+    </View>
     <View style={styles.LoginAsTextSpace}>
       <Text style={styles.LoginAsText}>Login As</Text>
     </View>

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Loader from "../../components/Spinner";
-import Logo from "../../components/Logo";
+import Logo from "../../components/Logo.3";
 import Logo1 from "../../components/Logo.1";
 import { View } from "native-base";
 import styles from "./styles";

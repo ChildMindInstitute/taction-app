@@ -28,8 +28,170 @@ import HomeTimer from "./components/HomeTimer";
 import HomeFooter from "./components/HomeFooter";
 import NewIntro from "./screens/NewIntroScreen";
 import Consent from "./screens/Consent";
+import SignUp from "./screens/SignUp";
+import AlmostThere from "./screens/AlmostThere";
+import WelcomeApp from "./screens/Welcome";
+import AddChild from "./screens/AddChild";
+import AddFolder from "./screens/AddFolder";
+import ImagesFolderList from "./components/ImagesFolderList";
+import ImagesFolder from "./screens/ImagesFolder";
+import DashboardChildList from "./components/DashboardChildList";
+import DashboardChild from "./screens/DashboardChild";
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
+));
+storiesOf("DashboardChild", module).add("DashboardChildList", () => (
+  <DashboardChildList
+    ExcercisesAvailable={[
+      {
+        Name: "Spider",
+        Image: require("../../js/assets/spiderman.jpg"),
+        Stars: require("../../js/assets/all_stars.png"),
+        IsPlayed: false
+      },
+      {
+        Name: "Basketball",
+        Image: require("../../js/assets/ball1.jpg"),
+        Stars: require("../../js/assets/all_stars.png"),
+        IsPlayed: true
+      },
+      {
+        Name: "FootBall",
+        Image: require("../../js/assets/ball2.jpg"),
+        Stars: require("../../js/assets/all_stars.png"),
+        IsPlayed: false
+      },
+      {
+        Name: "Minion",
+        Image: require("../../js/assets/minion.jpg"),
+        Stars: require("../../js/assets/all_stars.png"),
+        IsPlayed: false
+      }
+    ]}
+  />
+));
+storiesOf("ImagesFolder", module).add("ImagesFolderList", () => (
+  <ImagesFolderList
+    ListData={[
+      {
+        Name: "Spider",
+        Points: 100,
+        Taps: 13,
+        TotalTaps: 20,
+        Stars: require("../../js/assets/all_stars.png"),
+        IsContentVisible: true,
+        DataFolderContent: [
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: false
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: false
+          },
+          {
+            Image: require("../../js/assets/spiderman.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: false
+          }
+        ]
+      },
+      {
+        Name: "Ball",
+        Taps: 13,
+        TotalTaps: 20,
+        Points: 80,
+        Stars: require("../../js/assets/two_stars.png"),
+        IsContentVisible: true,
+        DataFolderContent: [
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: true
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: false
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: false
+          },
+          {
+            Image: require("../../js/assets/ball1.jpg"),
+            Taps: 3,
+            TotalTaps: 8,
+            IsCompleted: false
+          }
+        ]
+      }
+    ]}
+    ListItemPress={item => console.log(item)}
+  />
 ));
 storiesOf("Home", module)
   .add("HomeContent", () => (
@@ -140,35 +302,117 @@ storiesOf("Dashboard", module)
         {
           Name: "Spider",
           Points: 100,
-          Duration: "1:00",
+          Taps: 13,
+          TotalTaps: 20,
           Stars: require("../../js/assets/all_stars.png"),
           IsContentVisible: true,
           DataFolderContent: [
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg")
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            }
           ]
         },
         {
           Name: "Ball",
-          Duration: "1:00",
+          Taps: 13,
+          TotalTaps: 20,
           Points: 80,
           Stars: require("../../js/assets/two_stars.png"),
           IsContentVisible: true,
           DataFolderContent: [
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg")
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            }
           ]
         }
       ]}
@@ -262,42 +506,124 @@ storiesOf("Screens", module)
         {
           Name: "Spider",
           Points: 100,
-          Duration: "1:00",
+          Taps: 13,
+          TotalTaps: 20,
           Stars: require("../../js/assets/all_stars.png"),
           IsContentVisible: true,
           DataFolderContent: [
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg"),
-            require("../../js/assets/spiderman.jpg")
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            }
           ]
         },
         {
           Name: "Ball",
-          Duration: "1:00",
+          Taps: 13,
+          TotalTaps: 20,
           Points: 80,
           Stars: require("../../js/assets/two_stars.png"),
-          IsContentVisible: false,
+          IsContentVisible: true,
           DataFolderContent: [
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg"),
-            require("../../js/assets/ball1.jpg")
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            }
           ]
         }
       ]}
       IsContentVisible={true}
       ListItemPress={item => console.log(item)}
     >
-      <Text>Time to earn some points</Text>
+      <Text style={{ fontSize: 22 }}>Today's Activities</Text>
     </Dashboard>
   ))
   .add("Settings", () => (
@@ -381,4 +707,236 @@ storiesOf("Screens", module)
       CheckboxChange3={action("CheckboxChange3-done")}
       CheckboxChange4={action("CheckboxChange4-done")}
     />
+  ))
+  .add("SignUp", () => (
+    <SignUp
+      BackgroundColor="#0067a0"
+      ViewStyle={{ flex: 1 }}
+      UsernameChange={event => console.log(event.nativeEvent.text)}
+      InputStyle={{
+        width: "102%",
+        backgroundColor: "white"
+      }}
+      InputLabelStyle={{
+        fontSize: 16,
+        color: "white",
+        alignSelf: "flex-start",
+        marginTop: "-10%"
+      }}
+      InputItemStyle={{
+        flex: 1,
+        flexDirection: "column",
+        margin: "1%"
+      }}
+      InputViewStyle={{ flex: 1, margin: "6%" }}
+      PasswordChange={event => console.log(event.nativeEvent.text)}
+      OnPressSubmitButton={action("form-submitted")}
+      SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
+      SubmitButtonTextStyle={{ color: "white" }}
+    />
+  ))
+  .add("Almost There", () => <AlmostThere />)
+  .add("Welcome", () => (
+    <WelcomeApp
+      OnPressSubmitButton={action("Got In-clicked")}
+      SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
+      SubmitButtonTextStyle={{ color: "white", fontWeight: "500" }}
+    />
+  ))
+  .add("Add Child", () => (
+    <AddChild
+      OnPressSaveButton={action("Save-clicked")}
+      OnPressSkipButton={action("Skip-clicked")}
+      ChildNameChange={action("ChildNameChanged")}
+      DrawerOpen={action("DrawerOpen")}
+    />
+  ))
+  .add("Add Folder", () => (
+    <AddFolder
+      OnPressSaveButton={action("Save-clicked")}
+      OnPressSkipButton={action("Skip-clicked")}
+      ChildNameChange={action("ChildNameChanged")}
+      DrawerOpen={action("DrawerOpen-clicked")}
+      OnPressAddImage={action("AddImage-clicked")}
+      FolderNameChange={action("ChildNameChanged")}
+    />
+  ))
+  .add("ImagesFolder", () => (
+    <ImagesFolder
+      DrawerOpen={() => {}}
+      TotalPoints={100}
+      OnPressSubmitButton={action("resume-playing pressed")}
+      SubmitButtonStyle={{ backgroundColor: "#eeae30" }}
+      SubmitButtonTextStyle={{ color: "white" }}
+      ExcerciseData={[
+        {
+          Name: "Spider",
+          Points: 100,
+          Taps: 13,
+          TotalTaps: 20,
+          Stars: require("../../js/assets/all_stars.png"),
+          IsContentVisible: true,
+          DataFolderContent: [
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/spiderman.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            }
+          ]
+        },
+        {
+          Name: "Ball",
+          Taps: 13,
+          TotalTaps: 20,
+          Points: 80,
+          Stars: require("../../js/assets/two_stars.png"),
+          IsContentVisible: true,
+          DataFolderContent: [
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: true
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            },
+            {
+              Image: require("../../js/assets/ball1.jpg"),
+              Taps: 3,
+              TotalTaps: 8,
+              IsCompleted: false
+            }
+          ]
+        }
+      ]}
+      IsContentVisible={true}
+      ListItemPress={item => console.log(item)}
+    >
+      <Text>Time to earn some points</Text>
+    </ImagesFolder>
+  ))
+  .add("Dashboard Child", () => (
+    <DashboardChild
+      DrawerOpen={() => {}}
+      ExcercisesAvailable={[
+        {
+          Name: "Spider",
+          Image: require("../../js/assets/spiderman.jpg"),
+          Stars: require("../../js/assets/all_stars.png"),
+          IsPlayed: true
+        },
+        {
+          Name: "Basketball",
+          Image: require("../../js/assets/ball1.jpg"),
+          Stars: require("../../js/assets/all_stars.png"),
+          IsPlayed: true
+        },
+        {
+          Name: "FootBall",
+          Image: require("../../js/assets/ball2.jpg"),
+          Stars: require("../../js/assets/all_stars.png"),
+          IsPlayed: false
+        },
+        {
+          Name: "Minion",
+          Image: require("../../js/assets/minion.jpg"),
+          Stars: require("../../js/assets/all_stars.png"),
+          IsPlayed: false
+        },
+        {
+          Name: "FootBall",
+          Image: require("../../js/assets/ball2.jpg"),
+          Stars: require("../../js/assets/all_stars.png"),
+          IsPlayed: false
+        },
+        {
+          Name: "Spider",
+          Image: require("../../js/assets/spiderman.jpg"),
+          Stars: require("../../js/assets/all_stars.png"),
+          IsPlayed: false
+        }
+      ]}
+      ItemPress={data => {
+        alert(data.Name);
+      }}
+    >
+      <Text style={{ fontSize: 20, fontWeight: "bold" }}>Choose Folder</Text>
+    </DashboardChild>
   ));

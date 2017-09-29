@@ -22,14 +22,14 @@ class LoginScreen extends Component {
         InputLabelStyle={{
           fontSize: 16,
           color: "white",
-          alignSelf: "flex-start",
-          marginTop: "-13%"
+          alignSelf: "flex-start"
         }}
         InputItemStyle={{
           flex: 1,
-          flexDirection: "column"
+          flexDirection: "column",
+          borderColor: "transparent"
         }}
-        InputViewStyle={{ flex: 1, margin: "6%" }}
+        InputViewStyle={{ flex: 1, margin: "3%" }}
         PasswordChange={event => console.log(event.nativeEvent.text)}
         ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}
         ForgotPasswordButtonStyle={{

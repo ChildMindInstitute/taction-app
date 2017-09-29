@@ -41,6 +41,7 @@ class ConsentScreen extends Component {
         CheckboxChange3={() => {
           this.setState({ Term3: !this.state.Term3 });
         }}
+        OnPressSubmitButton={() => this.props.navigation.navigate("SignUp")}
       />
     );
   }

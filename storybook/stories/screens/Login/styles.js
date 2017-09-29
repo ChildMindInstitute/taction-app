@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0067a0"
   },
   TopSpace: { flex: 5, alignItems: "center", justifyContent: "center" },
-  FormSpace: { flex: 4 },
+  FormSpace: { flex: 5 },
   FormStyle: { flex: 1, marginTop: "10%" },
   ForgotPasswordSpace: { flex: 0.25 },
   SubmitButtonSpace: { flex: 1 },

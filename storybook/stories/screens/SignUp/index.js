@@ -72,7 +72,32 @@ SignUp.propTypes = {
   PasswordChange: PropTypes.func,
   ConfirmPasswordChange: PropTypes.func,
   OnPressSubmitButton: PropTypes.func,
-  EmailChange: PropTypes.func
+  EmailChange: PropTypes.func,
+  SubmitButtonStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  SubmitButtonTextStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  InputStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  InputItemStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  InputViewStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ])
 };
 SignUp.defaultProps = {
   EmailChange: () => {},

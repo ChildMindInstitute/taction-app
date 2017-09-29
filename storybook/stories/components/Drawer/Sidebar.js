@@ -11,22 +11,25 @@ const datas = [
     types: "3"
   },
   {
-    name: "Settings",
-    route: "Settings"
+    name: "Add Child",
+    route: "AddChild"
   },
 
   {
-    name: "Images Folder",
-    route: "ImagesFolder"
+    name: "Settings",
+    route: "Settings"
   },
   {
-    name: "About",
-    route: "About",
+    name: "Images",
+    route: "Images",
     types: "2"
   },
   {
-    name: "Logout",
-    route: "Logout"
+    name: "About",
+    route: "About"
+  },
+  {
+    name: "Logout"
   }
 ];
 
@@ -50,7 +53,11 @@ class SideBar extends Component {
             renderRow={data => (
               <ListItem
                 button
-                onPress={() => this.props.navigation.navigate(data.route)}
+                onPress={(() => {
+                  if (data.name === "Logout")
+                    this.props.navigation.navigate("Login");
+                  else this.props.navigation.navigate(data.route);
+                }).bind(this)}
                 style={{
                   backgroundColor: "#0067a0",
                   borderBottomColor: "#005d8f",

@@ -10,8 +10,8 @@ const AddFolder = props => (
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.DrawerOpen}
-      leftIconName="menu"
+      leftPress={props.Back}
+      leftIconName="arrow-back"
       headerStyle={styles.HeaderStyle}
       Title="Setup"
       TitleStyle={styles.HeaderLeftStyle}
@@ -20,25 +20,29 @@ const AddFolder = props => (
       <View style={styles.MainSpace}>
         <FormInput
           IsPassword={false}
-          Label="Add new folder with Images"
+          Label="Add new folder with images"
           OnChange={event => props.FolderNameChange(event)}
           InputStyle={{
-            width: "102%",
+            width: "100%",
             backgroundColor: "white",
-            borderWidth: 1,
-            borderColor: "#0067a0"
+            borderColor: "#0067ae",
+            borderWidth: 1
           }}
           LabelStyle={{
             fontSize: 16,
-            alignSelf: "flex-start",
-            marginTop: "-20%"
+            alignSelf: "flex-start"
           }}
           ItemStyle={{
             flex: 1,
-            flexDirection: "column"
+            flexDirection: "column",
+            borderColor: "transparent"
           }}
-          ViewStyle={{ margin: "10%" }}
+          ViewStyle={{
+            flex: 0.18,
+            margin: "10%"
+          }}
         />
+
         <Button
           OnPress={props.OnPressAddImage}
           SubmitButtonStyle={{
@@ -53,6 +57,7 @@ const AddFolder = props => (
           ButtonText="Add Image"
           SubmitButtonTextStyle={{ color: "#0067a0" }}
         />
+        {props.children}
         <Button
           OnPress={props.OnPressSaveButton}
           SubmitButtonStyle={{
@@ -81,14 +86,14 @@ const AddFolder = props => (
 );
 
 AddFolder.propTypes = {
-  DrawerOpen: PropTypes.func,
+  Back: PropTypes.func,
   OnPressAddImage: PropTypes.func,
   FolderNameChange: PropTypes.func,
   OnPressSkipButton: PropTypes.func,
   OnPressSaveButton: PropTypes.func
 };
 AddFolder.defaultProps = {
-  DrawerOpen: () => {},
+  Back: () => {},
   OnPressAddImage: () => {},
   FolderNameChange: () => {},
   OnPressSkipButton: () => {},

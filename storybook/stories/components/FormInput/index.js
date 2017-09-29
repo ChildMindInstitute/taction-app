@@ -9,12 +9,14 @@ const FormInput = props => (
         style={props.InputStyle}
         onChange={props.OnChange}
         secureTextEntry={props.IsPassword}
+        keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
       />
     </Item>
   </View>
 );
 
 FormInput.propTypes = {
+  OnlyNumberEntry: PropTypes.bool,
   ViewStyle: PropTypes.object,
   InputStyle: PropTypes.object,
   Label: PropTypes.string,

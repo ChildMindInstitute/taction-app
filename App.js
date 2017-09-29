@@ -3,28 +3,28 @@ import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 import { Root } from "native-base";
 import Splash from "./js/screens/SplashScreen";
-import LoginScreen from "./js/screens/Login";
-import ConsentScreen from "./js/screens/Consent";
+import LoginScreen from "./js/screens/LoginScreen";
+import ConsentScreen from "./js/screens/ConsentScreen";
+import SignUpScreen from "./js/screens/SignUpScreen";
+import AlmostThereScreen from "./js/screens/AlmostThereScreen";
+import WelcomeScreen from "./js/screens/WelcomeScreen";
+import ParentDrawerScreen from "./js/screens/ParentDrawerScreen";
 import StorybookUI from "./storybook";
 const App = StackNavigator(
   {
-    //AddChild: { screen: Splash },
-    //AddFolder: { screen: Dashboard },
-    // AlmostThere: { screen: AddGroup },
+    AlmostThere: { screen: AlmostThereScreen },
     Consent: { screen: ConsentScreen },
-    // Dashboard: { screen: AddTranscation },
+    ParentDrawer: { screen: ParentDrawerScreen },
     // DashboardChild: { screen: AddTranscation },
     // Game: { screen: AddTranscation },
-    // ImagesFolder: { screen: AddTranscation },
     Login: { screen: LoginScreen },
     // LoginAs: { screen: AddTranscation },
     // NewIntroScreen: { screen: AddTranscation },
-    // Settings: { screen: AddTranscation },
-    // SignUp: { screen: AddTranscation },
-    SplashScreen: { screen: Splash }
-    //Welcome: { screen: AddTranscation }
+    SignUp: { screen: SignUpScreen },
+    SplashScreen: { screen: Splash },
+    Welcome: { screen: WelcomeScreen }
   },
-  { headerMode: "screen", initialRouteName: "SplashScreen" }
+  { initialRouteName: "SplashScreen" }
 );
 export default () => (
   <Root>

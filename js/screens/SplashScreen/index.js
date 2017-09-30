@@ -70,6 +70,7 @@ class Splash extends Component {
         ImageDimensions={{ width: 200, height: 300 }}
         backgroundColor="#0067a0"
         color="#ccc"
+        StatusBarStyle="light-content"
       />
     );
   }

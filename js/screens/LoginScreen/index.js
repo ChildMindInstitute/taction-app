@@ -22,14 +22,15 @@ class LoginScreen extends Component {
         InputLabelStyle={{
           fontSize: 16,
           color: "white",
-          alignSelf: "flex-start",
-          marginTop: "-13%"
+          alignSelf: "flex-start"
         }}
         InputItemStyle={{
           flex: 1,
-          flexDirection: "column"
+          flexDirection: "column",
+          borderColor: "transparent"
         }}
-        InputViewStyle={{ flex: 1, margin: "6%" }}
+        StatusBarStyle="light-content"
+        InputViewStyle={{ flex: 1, margin: "3%" }}
         PasswordChange={event => console.log(event.nativeEvent.text)}
         ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}
         ForgotPasswordButtonStyle={{
@@ -38,10 +39,14 @@ class LoginScreen extends Component {
           justifyContent: "flex-end"
         }}
         OnPressForgotPassword={() => {}}
-        OnPressSubmitButton={() => {}}
+        OnPressSubmitButton={() => {
+          this.props.navigation.navigate("LoginAs");
+        }}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
         SubmitButtonTextStyle={{ color: "white" }}
-        OnPressRegisterNow={() => this.props.navigation.navigate("Consent")}
+        OnPressRegisterNow={() => {
+          this.props.navigation.navigate("Consent");
+        }}
         RegisterWithUsTextButtonStyle={{
           color: "white",
           fontWeight: "bold"

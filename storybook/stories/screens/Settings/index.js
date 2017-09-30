@@ -4,6 +4,7 @@ import SettingsList from "../../components/SettingsList";
 import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const Settings = props => (
   <Container style={styles.Container}>
     <HeaderCommon

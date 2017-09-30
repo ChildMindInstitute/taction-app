@@ -1,8 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import { Constants } from "expo";
 const styles = StyleSheet.create({
   HeaderStyle: {
     backgroundColor: "#0067a0",
-    height: "40%"
+    height: "40%",
+    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
   },
   HeaderLeftStyle: { color: "white" },
   HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },

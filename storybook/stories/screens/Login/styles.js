@@ -1,11 +1,13 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import { Constants } from "expo";
 const styles = StyleSheet.create({
   MainView: {
     flex: 1,
-    backgroundColor: "#0067a0"
+    backgroundColor: "#0067a0",
+    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
   },
   TopSpace: { flex: 5, alignItems: "center", justifyContent: "center" },
-  FormSpace: { flex: 4 },
+  FormSpace: { flex: 5 },
   FormStyle: { flex: 1, marginTop: "10%" },
   ForgotPasswordSpace: { flex: 0.25 },
   SubmitButtonSpace: { flex: 1 },

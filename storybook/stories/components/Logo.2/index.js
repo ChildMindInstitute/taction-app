@@ -10,7 +10,11 @@ const Logo = props => (
 );
 
 Logo.propTypes = {
-  imageDimensions: PropTypes.number
+  imageDimensions: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ])
 };
 
 export { Logo as default };

@@ -7,6 +7,7 @@ import HeaderCommon from "../../components/Header";
 import { Container, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
+import { StatusBar } from "react-native";
 const Dashboard = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
@@ -27,21 +28,15 @@ const Dashboard = props => (
           IconName={props.ExcerciseDataIcon}
           ListData={props.ExcerciseData}
           ListItemPress={props.ListItemPress}
+          IsContentVisible={props.IsContentVisible}
         />
       </View>
-    </View>
-    <View>
-      <Button
-        OnPress={props.OnPressSubmitButton}
-        SubmitButtonStyle={props.SubmitButtonStyle}
-        ButtonText="Resume Playing"
-        SubmitButtonTextStyle={props.SubmitButtonTextStyle}
-      />
     </View>
   </Container>
 );
 
 Dashboard.propTypes = {
+  IsContentVisible: PropTypes.array,
   DrawerOpen: PropTypes.func,
   TotalPoints: PropTypes.number,
   SubmitButtonTextStyle: PropTypes.object,

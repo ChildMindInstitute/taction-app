@@ -27,8 +27,16 @@ CustomButton.propTypes = {
   IconName: PropTypes.string,
   IconColor: PropTypes.string,
   ButtonText: PropTypes.string,
-  SubmitButtonStyle: PropTypes.object,
-  SubmitButtonTextStyle: PropTypes.object
+  SubmitButtonStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  SubmitButtonTextStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ])
 };
 CustomButton.defaultProps = {
   onPress: () => {}

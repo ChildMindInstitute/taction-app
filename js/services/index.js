@@ -22,7 +22,12 @@ export default {
     }
   },
 
+  getAuth(){
+    return firebase.auth();
+  },
+
   createParent(email, password, username) {
+    
     return new Promise((resolve, reject) => {
       const auth = firebase.auth();
       auth

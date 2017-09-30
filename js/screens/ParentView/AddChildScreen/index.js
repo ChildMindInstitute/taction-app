@@ -12,15 +12,15 @@ class AddChildScreen extends Component {
   }
 
   render() {
-    const { state, navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
       <AddChild
         OnPressSaveButton={() => {
           //handle Save
-          navigate(state.params.IsNewRegistration ? "AddFolder" : "Dashboard");
+          navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
         }}
         OnPressSkipButton={() => {
-          navigate(state.params.IsNewRegistration ? "AddFolder" : "Dashboard");
+          navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
         }}
         ChildNameChange={event => {
           console.log(event.nativeEvent.text);

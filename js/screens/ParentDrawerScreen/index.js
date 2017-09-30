@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Drawer from "../../../storybook/stories/components/Drawer";
+import DrawerParent from "../../../storybook/stories/components/Drawer";
 class ParentDrawerScreen extends Component {
   static navigationOptions = {
     title: "ParentDrawerScreen",
@@ -9,7 +9,7 @@ class ParentDrawerScreen extends Component {
     super(props);
   }
   render() {
-    return <Drawer />;
+    return <DrawerParent NavProps={this.props.screenProps.parentNavigation} />;
   }
 }
 export default ParentDrawerScreen;

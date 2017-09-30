@@ -42,7 +42,9 @@ class LoginScreen extends Component {
         OnPressSubmitButton={() => {}}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
         SubmitButtonTextStyle={{ color: "white" }}
-        OnPressRegisterNow={() => this.props.navigation.navigate("Consent")}
+        OnPressRegisterNow={() => {
+          this.props.navigation.navigate("Consent");
+        }}
         RegisterWithUsTextButtonStyle={{
           color: "white",
           fontWeight: "bold"

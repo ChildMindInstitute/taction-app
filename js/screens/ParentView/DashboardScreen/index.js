@@ -4,6 +4,7 @@ import { Text } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
 import Expo from "expo";
 import { StatusBar } from "react-native";
+let count = 0;
 const ExcerciseData = [
   {
     Name: "Spider",
@@ -127,17 +128,12 @@ class DashboardScreen extends Component {
     title: "DashboardScreen",
     header: null
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      IsContentVisible: new Array(ExcerciseData.length).fill(false)
-    };
-    for (let i = 0; i < ExcerciseData.length; i++) {
-      ExcerciseData[i].IsContentVisible = this.state.IsContentVisible[i];
+  componentWillMount() {
+    if (this.props.IsNewRegistration && count <= 0) {
+      this.props.navigation.navigate("AddChild");
+      count++;
     }
-    console.log(ExcerciseData);
   }
-
   render() {
     return (
       <Dashboard

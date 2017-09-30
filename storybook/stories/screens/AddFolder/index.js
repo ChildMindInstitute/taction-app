@@ -8,7 +8,7 @@ import styles from "./styles";
 import { StatusBar } from "react-native";
 const AddFolder = props => (
   <Container style={styles.ContainerStyle}>
-    <StatusBar barStyle={props.StatusBarStyle} />;
+    <StatusBar barStyle={props.StatusBarStyle} />
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}

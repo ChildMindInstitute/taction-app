@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import Expo from "expo";
 class AddFolderScreen extends Component {
   static navigationOptions = {
     title: "AddFolderScreen",

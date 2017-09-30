@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { StackNavigator, NavigationActions } from "react-navigation";
 import { Content, Text, List, ListItem, Container, View } from "native-base";
 import Logo from "../Logo";
 import Logo1 from "../Logo.1";
@@ -29,7 +30,8 @@ const datas = [
     route: "About"
   },
   {
-    name: "Logout"
+    name: "Logout",
+    route: "Logout"
   }
 ];
 
@@ -42,7 +44,6 @@ class SideBar extends Component {
     return (
       <Container>
         <StatusBar barStyle="light-content" />
-
         <Content
           bounces={false}
           style={{ flex: 1, backgroundColor: "#0067a0", top: -1 }}
@@ -55,11 +56,9 @@ class SideBar extends Component {
             renderRow={data => (
               <ListItem
                 button
-                onPress={(() => {
-                  if (data.name === "Logout")
-                    this.props.navigation.navigate("Login");
-                  else this.props.navigation.navigate(data.route);
-                }).bind(this)}
+                onPress={() => {
+                  this.props.navigation.navigate(data.route);
+                }}
                 style={{
                   backgroundColor: "#0067a0",
                   borderBottomColor: "#005d8f",

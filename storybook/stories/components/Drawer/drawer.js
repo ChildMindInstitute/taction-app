@@ -7,16 +7,30 @@ import SettingsScreen from "../../../../js/screens/ParentView/SettingsScreen";
 import ImagesFolderScreen from "../../../../js/screens/ParentView/ImagesFolderScreen";
 import AddChildScreen from "../../../../js/screens/ParentView/AddChildScreen";
 import AddFolderScreen from "../../../../js/screens/ParentView/AddFolderScreen";
-import LoginScreen from "../../../../js/screens/LoginScreen";
-
-const DrawerExample = DrawerNavigator(
+import LogoutTemp from "../../../../js/screens/ParentView/LogoutTemp";
+const DrawerParent = DrawerNavigator(
   {
-    Dashboard: { screen: DashboardScreen },
-    AddChild: { screen: AddChildScreen },
+    Dashboard: {
+      screen: ({ screenProps, navigation }) => (
+        <DashboardScreen
+          IsNewRegistration={screenProps.state.params.NewRegistration}
+          navigation={navigation}
+        />
+      )
+    },
+    AddChild: {
+      screen: ({ screenProps, navigation }) => (
+        <AddChildScreen
+          IsNewRegistration={screenProps.state.params.NewRegistration}
+          navigation={navigation}
+        />
+      )
+    },
     Settings: { screen: SettingsScreen },
     Images: { screen: ImagesFolderScreen },
     About: { screen: AboutScreen },
-    AddFolder: { screen: AddFolderScreen }
+    AddFolder: { screen: AddFolderScreen },
+    Logout: { screen: NavProps => <LogoutTemp ParentNavProps={NavProps} /> }
   },
   {
     initialRouteName: "Dashboard",
@@ -27,4 +41,4 @@ const DrawerExample = DrawerNavigator(
   }
 );
 
-export default DrawerExample;
+export default DrawerParent;

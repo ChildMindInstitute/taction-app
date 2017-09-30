@@ -20,7 +20,7 @@ class WelcomeScreen extends Component {
               index: 0,
               actions: [
                 NavigationActions.navigate({
-                  params: { NewRegistration: "true" },
+                  params: { NewRegistration: true },
                   routeName: "ParentDrawer"
                 })
               ]

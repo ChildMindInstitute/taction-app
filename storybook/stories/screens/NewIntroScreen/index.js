@@ -8,54 +8,64 @@ import { Image } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const NewIntro = props => (
-  <View style={styles.MainView}>
-    <StatusBar barStyle={props.StatusBarStyle} />
-    <Logo2
-      imageDimensions={{ position: "absolute", width: "100%", height: "100%" }}
-    />
-    <View style={styles.TopSpace}>
-      <View
-        style={[
-          styles.TopViewStyle,
-          {
-            backgroundColor: props.TopViewBackgroundColor
-          }
-        ]}
-      >
-        <Logo />
-      </View>
-      <View
-        style={[
-          styles.BottomViewSpace,
-          {
-            backgroundColor: props.BottomViewBackGroundColor
-          }
-        ]}
-      >
-        <Text style={styles.TotalScoreTextStyle}>Total Score</Text>
-        <Text
+  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+    <View style={styles.MainView}>
+      <StatusBar
+        translucent={true}
+        backgroundColor="transparent"
+        barStyle={props.StatusBarStyle}
+      />
+      <Logo2
+        imageDimensions={{
+          position: "absolute",
+          width: "100%",
+          height: "100%"
+        }}
+      />
+      <View style={styles.TopSpace}>
+        <View
           style={[
-            styles.TotalScoreStyle,
+            styles.TopViewStyle,
             {
-              color: props.ScoreColor
+              backgroundColor: props.TopViewBackgroundColor
             }
           ]}
         >
-          {props.Score}
-        </Text>
-        <Image style={styles.StarsStyle} source={props.Stars} />
-        <Button
-          OnPress={props.PlayOnPress}
-          ButtonText="Play"
-          SubmitButtonStyle={styles.PlayButtonStyle}
-          SubmitButtonTextStyle={styles.PlayButtonTextStyle}
-        />
-        <Button
-          OnPress={props.HowToPlayOnPress}
-          ButtonText="How To Play"
-          SubmitButtonStyle={styles.HowToPlayButtonStyle}
-          SubmitButtonTextStyle={styles.HowToPlayButtonTextStyle}
-        />
+          <Logo />
+        </View>
+        <View
+          style={[
+            styles.BottomViewSpace,
+            {
+              backgroundColor: props.BottomViewBackGroundColor
+            }
+          ]}
+        >
+          <Text style={styles.TotalScoreTextStyle}>Total Score</Text>
+          <Text
+            style={[
+              styles.TotalScoreStyle,
+              {
+                color: props.ScoreColor
+              }
+            ]}
+          >
+            {props.Score}
+          </Text>
+          <Image style={styles.StarsStyle} source={props.Stars} />
+          <Button
+            OnPress={props.PlayOnPress}
+            ButtonText="Play"
+            SubmitButtonStyle={styles.PlayButtonStyle}
+            SubmitButtonTextStyle={styles.PlayButtonTextStyle}
+          />
+          <Button
+            OnPress={props.HowToPlayOnPress}
+            ButtonText="How To Play"
+            SubmitButtonStyle={styles.HowToPlayButtonStyle}
+            SubmitButtonTextStyle={styles.HowToPlayButtonTextStyle}
+          />
+        </View>
       </View>
     </View>
   </View>

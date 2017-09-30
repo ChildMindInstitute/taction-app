@@ -9,29 +9,33 @@ import { Image } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const DashboardChild = props => (
-  <Container style={styles.ContainerStyle}>
-    <StatusBar barStyle={props.StatusBarStyle} />
-    <HeaderCommon
-      isRightRequired={false}
-      leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.DrawerOpen}
-      leftIconName="menu"
-      headerStyle={styles.HeaderStyle}
-      Title="Dashboard"
-      TitleStyle={styles.HeaderLeftStyle}
-    />
-    <View style={styles.ContentStyle}>
-      <View style={styles.GreetingsSpace}>
-        <DashboardGreetings>{props.children}</DashboardGreetings>
+  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+    <Container style={styles.ContainerStyle}>
+      <StatusBar
+        translucent={true}
+        backgroundColor="transparent"
+        barStyle={props.StatusBarStyle}
+      />
+      <HeaderCommon
+        isRightRequired={false}
+        IsLeftAButton={false}
+        headerStyle={styles.HeaderStyle}
+        Title="Dashboard"
+        TitleStyle={styles.HeaderLeftStyle}
+      />
+      <View style={styles.ContentStyle}>
+        <View style={styles.GreetingsSpace}>
+          <DashboardGreetings>{props.children}</DashboardGreetings>
+        </View>
+        <View style={styles.ListSpace}>
+          <DashboardChildList
+            ExcercisesAvailable={props.ExcercisesAvailable}
+            ItemPress={props.ItemPress}
+          />
+        </View>
       </View>
-      <View style={styles.ListSpace}>
-        <DashboardChildList
-          ExcercisesAvailable={props.ExcercisesAvailable}
-          ItemPress={props.ItemPress}
-        />
-      </View>
-    </View>
-  </Container>
+    </Container>
+  </View>
 );
 
 DashboardChild.propTypes = {

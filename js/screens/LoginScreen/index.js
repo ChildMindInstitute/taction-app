@@ -39,7 +39,9 @@ class LoginScreen extends Component {
           justifyContent: "flex-end"
         }}
         OnPressForgotPassword={() => {}}
-        OnPressSubmitButton={() => {}}
+        OnPressSubmitButton={() => {
+          this.props.navigation.navigate("LoginAs");
+        }}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
         SubmitButtonTextStyle={{ color: "white" }}
         OnPressRegisterNow={() => {

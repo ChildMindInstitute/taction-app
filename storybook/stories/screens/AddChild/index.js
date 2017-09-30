@@ -8,7 +8,6 @@ import styles from "./styles";
 import { StatusBar } from "react-native";
 const AddChild = props => (
   <Container style={styles.ContainerStyle}>
-    <StatusBar barStyle={props.StatusBarStyle} />
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}
@@ -27,7 +26,7 @@ const AddChild = props => (
           InputStyle={{
             width: "100%",
             backgroundColor: "white",
-            borderColor: "#0067ae",
+            borderColor: "#0067a0",
             borderWidth: 1
           }}
           LabelStyle={{
@@ -53,7 +52,7 @@ const AddChild = props => (
           InputStyle={{
             width: "100%",
             backgroundColor: "white",
-            borderColor: "#0067ae",
+            borderColor: "#0067a0",
             borderWidth: 1
           }}
           LabelStyle={{

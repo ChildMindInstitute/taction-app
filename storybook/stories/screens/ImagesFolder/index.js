@@ -34,7 +34,6 @@ class ListContent extends React.Component {
   render() {
     return (
       <Container style={styles.ContainerStyle}>
-        <StatusBar barStyle={this.props.StatusBarStyle} />
         <HeaderCommon
           isRightRequired={true}
           leftIconStyle={styles.HeaderLeftStyle}

@@ -5,13 +5,12 @@ const { Platform, Dimensions } = React;
 const deviceHeight = Dimensions.get("window").height;
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  sidebar: {
-    flex: 1,
-    backgroundColor: "#0067a0"
+  ListSpace: {
+    flex: 12
   },
   drawerCover: {
+    flex: 3,
     alignSelf: "stretch",
-    // resizeMode: 'cover',
     height: deviceHeight / 3.5,
     width: null,
     position: "relative"
@@ -31,7 +30,12 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     color: "#fff"
   },
-  Footer: { marginTop: "50%" }
+  drawerImage2: {
+    alignSelf: "center",
+    height: 22,
+    width: 100
+  },
+  Footer: { flex: 2, marginTop: "30%" }
 });
 
 export default styles;

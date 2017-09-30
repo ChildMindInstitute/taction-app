@@ -3,7 +3,7 @@ import { Constants } from "expo";
 const styles = StyleSheet.create({
   MainView: {
     flex: 1,
-    backgroundColor: "#0067ae",
+    backgroundColor: "#0067a0",
     marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
   },
   TopSpace: { flex: 3, alignItems: "center", justifyContent: "center" },

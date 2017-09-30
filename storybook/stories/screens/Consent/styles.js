@@ -3,7 +3,7 @@ import { Constants } from "expo";
 const styles = StyleSheet.create({
   MainOuterView: {
     flex: 1,
-    backgroundColor: "#0067ae",
+    backgroundColor: "#0067a0",
     marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
   },
   ScrollViewSpaceSpace: { flex: 9 },

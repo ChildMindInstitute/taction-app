@@ -8,14 +8,20 @@ import { StatusBar } from "react-native";
 import styles from "./styles";
 
 const SplashScreen = props => (
-  <View style={[styles.MainView, { backgroundColor: props.backgroundColor }]}>
-    <StatusBar barStyle={props.StatusBarStyle} />
-    <View style={styles.LogoSpace} />
-    <Logo imageDimensions={styles.LogoStyles} />
-    <View style={styles.LodaerSpace} />
-    <Loader color={props.color} style={styles.LoaderStyle} />
-    <View style={styles.BottomLogoSpace}>
-      <Logo1 imageDimensions={styles.LogoStyles} />
+  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+    <View style={[styles.MainView, { backgroundColor: props.backgroundColor }]}>
+      <StatusBar
+        translucent={true}
+        backgroundColor="transparent"
+        barStyle={props.StatusBarStyle}
+      />
+      <View style={styles.LogoSpace} />
+      <Logo imageDimensions={styles.LogoStyles} />
+      <View style={styles.LodaerSpace} />
+      <Loader color={props.color} style={styles.LoaderStyle} />
+      <View style={styles.BottomLogoSpace}>
+        <Logo1 imageDimensions={styles.LogoStyles} />
+      </View>
     </View>
   </View>
 );

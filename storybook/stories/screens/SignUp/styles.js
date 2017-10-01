@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
   TopSpace: { flex: 3, alignItems: "center", justifyContent: "center" },
   FormSpace: { flex: 9 },
   FormStyle: { flex: 1, marginTop: "10%" },
-
   SubmitButtonSpace: { flex: 1 },
   MainLogoStyles: { alignSelf: "center" },
   BottomLogoSpace: { flex: 3, justifyContent: "center" },

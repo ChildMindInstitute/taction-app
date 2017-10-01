@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import { StackNavigator, NavigationActions } from "react-navigation";
 import SplashScreen from "../../../storybook/stories/screens/SplashScreen";
-import Db from '../../services';
+import Db from "../../services";
 import Expo from "expo";
-import store from '../../store';
+import store from "../../store";
 
-@connect (store=>{
+@connect(store => {
   return {
     parent: store.user.parent,
     child: store.user.child,
     loaded: store.loaded
-  }
-
+  };
 })
-
 class Splash extends Component {
   static navigationOptions = {
     title: "Splash",
@@ -33,35 +31,33 @@ class Splash extends Component {
     });
   }
 
-  componentDidMount(){
-    Db.getAuth().onAuthStateChanged((user)=>{
+  componentDidMount() {
+    Db.getAuth().onAuthStateChanged(user => {
       //console.log(this.props.loading,"logging loading prop");
-      if(user){
+      if (user) {
         this.props.dispatch({
-          type: 'SET_PARENT'
+          type: "SET_PARENT"
         });
         this.props.dispatch({
-          type: 'SET_CHILD'
+          type: "SET_CHILD"
         });
         if (this.props.loaded) {
-          this.props.navigation.dispatch(NavigationActions.reset({
-            index: 0,
-            actions: [
-              NavigationActions.navigate({routeName: "Consent"})
-            ]
-          }));
+          this.props.navigation.dispatch(
+            NavigationActions.reset({
+              index: 0,
+              actions: [NavigationActions.navigate({ routeName: "Consent" })]
+            })
+          );
         }
-        
-      }
-      else{
-        this.props.navigation.dispatch(NavigationActions.reset({
+      } else {
+        this.props.navigation.dispatch(
+          NavigationActions.reset({
             index: 0,
-            actions: [
-              NavigationActions.navigate({ routeName: "Login" })
-            ]
-          }));
+            actions: [NavigationActions.navigate({ routeName: "Login" })]
+          })
+        );
       }
-    })
+    });
   }
 
   render() {

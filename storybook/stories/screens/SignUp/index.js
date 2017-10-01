@@ -25,36 +25,28 @@ const SignUp = props => (
             IsPassword={false}
             Label="Username"
             OnChange={props.UsernameChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
+            LabelColor="white"
             ViewStyle={props.InputViewStyle}
           />
           <FormInput
             IsPassword={true}
             Label="Email"
+            LabelColor="white"
             OnChange={props.EmailChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
           />
           <FormInput
             IsPassword={true}
+            LabelColor="white"
             Label="Password"
             OnChange={props.PasswordChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
           />
           <FormInput
             IsPassword={true}
+            LabelColor="white"
             Label="ConfirmPassword"
             OnChange={props.ConfirmPasswordChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
           />
         </Form>

@@ -6,7 +6,7 @@ import FormInput from "../../components/FormInput";
 import ForgotPassword from "../../components/ForgotPassword";
 import Button from "../../components/Button";
 import RegisterWithUs from "../../components/RegisterWithUs";
-import { View, Form } from "native-base";
+import { View, Form, Text } from "native-base";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const Login = props => (
@@ -26,19 +26,19 @@ const Login = props => (
             IsPassword={false}
             Label="Username"
             OnChange={props.UsernameChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
+            Error={props.EmailHasError}
+            LabelColor={props.LabelColor}
+            ErrorText="Username Cannot Be Empty"
           />
           <FormInput
             IsPassword={true}
             Label="Password"
             OnChange={props.PasswordChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
+            Error={props.PasswordHasError}
+            LabelColor={props.LabelColor}
+            ErrorText="Password Cannot Be Empty"
           />
         </Form>
       </View>
@@ -57,6 +57,11 @@ const Login = props => (
           SubmitButtonTextStyle={props.SubmitButtonTextStyle}
         />
       </View>
+      <View style={styles.ErrorSpace}>
+        <Text style={styles.ErrorText}>
+          {props.HasSubmitError ? props.ErrorSubmissionText : " "}
+        </Text>
+      </View>
       <View style={styles.RegisterNowSpace}>
         <RegisterWithUs OnPressRegisterNow={props.OnPressRegisterNow} />
       </View>
@@ -68,6 +73,11 @@ const Login = props => (
 );
 
 Login.propTypes = {
+  HasSubmitError: PropTypes.bool,
+  ErrorSubmissionText: PropTypes.string,
+  LabelColor: PropTypes.string,
+  EmailHasError: PropTypes.bool,
+  PasswordHasError: PropTypes.bool,
   ViewStyle: PropTypes.object,
   BackgroundColor: PropTypes.string,
   UsernameChange: PropTypes.func,

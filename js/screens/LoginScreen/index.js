@@ -8,30 +8,34 @@ class LoginScreen extends Component {
   };
   constructor(props) {
     super(props);
+    this.UserName = "";
+    this.Password = "";
+    this.state = {
+      EmailHasError: false,
+      PasswordHasError: false,
+      SubmitError: false
+    };
   }
   render() {
     return (
       <Login
         BackgroundColor="#0067a0"
         ViewStyle={{ flex: 1 }}
-        UsernameChange={event => console.log(event.nativeEvent.text)}
-        InputStyle={{
-          width: "102%",
-          backgroundColor: "white"
+        UsernameChange={event => {
+          this.UserName = event.nativeEvent.text;
+          if (this.UserName == "") {
+            this.setState({ EmailHasError: true });
+          } else this.setState({ EmailHasError: false });
         }}
-        InputLabelStyle={{
-          fontSize: 16,
-          color: "white",
-          alignSelf: "flex-start"
-        }}
-        InputItemStyle={{
-          flex: 1,
-          flexDirection: "column",
-          borderColor: "transparent"
-        }}
+        LabelColor="white"
         StatusBarStyle="light-content"
         InputViewStyle={{ flex: 1, margin: "3%" }}
-        PasswordChange={event => console.log(event.nativeEvent.text)}
+        PasswordChange={event => {
+          this.Password = event.nativeEvent.text;
+          if (this.Password == "") {
+            this.setState({ PasswordHasError: true });
+          } else this.setState({ PasswordHasError: false });
+        }}
         ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}
         ForgotPasswordButtonStyle={{
           flex: 1,
@@ -40,7 +44,19 @@ class LoginScreen extends Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
-          this.props.navigation.navigate("LoginAs");
+          this.setState({ SubmitError: true });
+          if (this.state.SubmitError)
+            this.props.navigation.dispatch(
+              NavigationActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({
+                    params: { NewRegistration: true },
+                    routeName: "LoginAs"
+                  })
+                ]
+              })
+            );
         }}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
         SubmitButtonTextStyle={{ color: "white" }}
@@ -56,6 +72,10 @@ class LoginScreen extends Component {
           marginTop: "20%",
           color: "#ccc"
         }}
+        HasSubmitError={this.state.SubmitError}
+        ErrorSubmissionText="Username and Password Do not match"
+        EmailHasError={this.state.EmailHasError}
+        PasswordHasError={this.state.PasswordHasError}
       />
     );
   }

@@ -49,21 +49,6 @@ const AddChild = props => (
           Label="Age of Child"
           OnChange={event => props.ChildAgeChange(event)}
           OnlyNumberEntry={true}
-          InputStyle={{
-            width: "100%",
-            backgroundColor: "white",
-            borderColor: "#0067a0",
-            borderWidth: 1
-          }}
-          LabelStyle={{
-            fontSize: 16,
-            alignSelf: "flex-start"
-          }}
-          ItemStyle={{
-            flex: 1,
-            flexDirection: "column",
-            borderColor: "transparent"
-          }}
           ViewStyle={{
             flex: 0.15,
             margin: "10%"

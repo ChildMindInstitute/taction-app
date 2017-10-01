@@ -23,21 +23,6 @@ const AddFolder = props => (
           IsPassword={false}
           Label="Add new folder with images"
           OnChange={event => props.FolderNameChange(event)}
-          InputStyle={{
-            width: "100%",
-            backgroundColor: "white",
-            borderColor: "#0067a0",
-            borderWidth: 1
-          }}
-          LabelStyle={{
-            fontSize: 16,
-            alignSelf: "flex-start"
-          }}
-          ItemStyle={{
-            flex: 1,
-            flexDirection: "column",
-            borderColor: "transparent"
-          }}
           ViewStyle={{
             flex: 0.18,
             margin: "10%"

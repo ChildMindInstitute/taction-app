@@ -7,7 +7,9 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
   },
   TopSpace: { flex: 5, alignItems: "center", justifyContent: "center" },
-  FormSpace: { flex: 5 },
+  FormSpace: { flex: 4.5 },
+  ErrorSpace: { flex: 0.5, top: "5%", alignItems: "center" },
+  ErrorText: { color: "red" },
   FormStyle: { flex: 1, marginTop: "10%" },
   ForgotPasswordSpace: { flex: 0.25 },
   SubmitButtonSpace: { flex: 1 },

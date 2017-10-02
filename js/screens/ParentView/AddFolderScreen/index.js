@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-class AddFolderScreen extends Component {
+class AddFolderScreen extends React.Component {
   static navigationOptions = {
     title: "AddFolderScreen",
     header: null

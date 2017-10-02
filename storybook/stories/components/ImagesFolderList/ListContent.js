@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   ListItem,
   Text,
@@ -11,8 +11,9 @@ import {
   CheckBox
 } from "native-base";
 import { Image } from "react-native";
+import styles from "./styles";
 import Grid from "react-native-grid-component";
-class ListContent extends Component {
+class ListContent extends React.Component {
   static navigationOptions = {
     title: "ListContent",
     header: null
@@ -31,22 +32,13 @@ class ListContent extends Component {
         onPress={() => {
           this.setState({ IsContentVisible: !this.state.IsContentVisible });
         }}
-        style={{
-          flex: 1,
-          borderWidth: 1,
-          borderColor: "#ccc",
-          marginRight: 0
-        }}
+        style={styles.ListItemStyle}
       >
-        <View style={{ flex: 1, flexDirection: "column" }}>
-          <View style={{ flex: 1, flexDirection: "row", margin: "2%" }}>
-            <Left style={{ flex: 2, flexDirection: "row" }}>
+        <View style={styles.ListItemInnerViewStyle}>
+          <View style={styles.ListItemInnerViewInnerViewStyle}>
+            <Left style={styles.ListItemInnerViewInnerViewLeftStyle}>
               <View
-                style={{
-                  flex: 3,
-                  alignContent: "center",
-                  justifyContent: "center"
-                }}
+                style={styles.ListItemInnerViewInnerViewLeftInnerView1Style}
               >
                 <CheckBox
                   checked={this.state.checked}
@@ -54,87 +46,74 @@ class ListContent extends Component {
                     this.setState({ checked: !this.state.checked });
                     this.props.CheckBoxChange(this.props.ListItem, checked);
                   }}
-                  style={{ backgroundColor: "#eeae30", borderColor: "#eeae30" }}
+                  style={
+                    styles.ListItemInnerViewInnerViewLeftInnerView1CheckboxStyle
+                  }
                 />
               </View>
               <View
-                style={{
-                  flex: 3,
-                  alignContent: "center",
-                  justifyContent: "center",
-                  marginTop: "-5%"
-                }}
+                style={styles.ListItemInnerViewInnerViewLeftInnerView2Style}
               >
                 <Image
                   source={this.props.ListItem.DataFolderContent[0].Image}
-                  style={{ width: 35, height: 35 }}
+                  style={
+                    styles.ListItemInnerViewInnerViewLeftInnerView2ImageStyle
+                  }
                   resizeMethod="auto"
                   resizeMode="contain"
                 />
               </View>
 
               <View
-                style={{
-                  flex: 4,
-                  alignContent: "center"
-                }}
+                style={styles.ListItemInnerViewInnerViewLeftInnerView3Style}
               >
                 <Text
-                  style={{
-                    fontSize: 20,
-                    color: "#0067a0"
-                  }}
+                  style={
+                    styles.ListItemInnerViewInnerViewLeftInnerView3TextStyle
+                  }
                 >
                   {this.props.ListItem.Name}
                 </Text>
               </View>
             </Left>
             <Body>
-              <View
-                style={{
-                  alignContent: "center",
-                  justifyContent: "center",
-                  marginTop: "-5%"
-                }}
-              >
-                <Badge style={{ backgroundColor: "#eeae30" }}>
+              <View style={styles.ListItemInnerViewInnerViewBodyInnerViewStyle}>
+                <Badge
+                  style={
+                    styles.ListItemInnerViewInnerViewBodyInnerViewBadgeStyle
+                  }
+                >
                   <Text>{this.props.ListItem.DataFolderContent.length}</Text>
                 </Badge>
               </View>
             </Body>
-            <Right style={{ flexDirection: "column", marginTop: "-2%" }}>
+            <Right style={styles.ListItemInnerViewInnerViewRightStyle}>
               <Switch
                 onTintColor="#eeae30"
                 value={this.state.switched}
                 onValueChange={() => {
                   this.setState({ switched: !this.state.switched });
-                  this.props.SwitchToggled(this.props.ListItem);
+                  this.props.SwitchToggled(
+                    this.props.ListItem,
+                    !this.state.switched
+                  );
                 }}
               />
             </Right>
           </View>
           {this.state.IsContentVisible ? (
-            <View
-              style={{
-                flex: 3,
-                marginLeft: 0,
-                marginRight: "-5%",
-                marginBottom: "-3.75%"
-              }}
-            >
+            <View style={styles.ListItemInnerViewGridOuterViewStyle}>
               <Grid
-                style={{ flex: 1 }}
+                style={styles.ListItemInnerViewGridViewStyle}
                 renderItem={(data, i) => (
                   <Image
                     source={data.Image}
-                    style={{
-                      flex: 1,
-                      borderWidth: 0.4,
-                      borderColor: "#ccc",
-                      height: 80,
-                      width: 40,
-                      opacity: data.IsCompleted ? 1 : 0.7
-                    }}
+                    style={[
+                      styles.ListItemInnerViewGridItemImageStyle,
+                      {
+                        opacity: data.IsCompleted ? 1 : 0.7
+                      }
+                    ]}
                     resizeMethod="auto"
                     resizeMode="contain"
                     key={i}

@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import { Text } from "native-base";
 import DashboardChild from "../../../../storybook/stories/screens/DashboardChild";
-class WelcomeScreen extends Component {
+class WelcomeScreen extends React.Component {
   static navigationOptions = {
     title: "WelcomeScreen",
     header: null
@@ -53,6 +52,7 @@ class WelcomeScreen extends Component {
           }
         ]}
         ItemPress={data => {
+          //data handler
           this.props.navigation.navigate("GameScreen");
         }}
       >

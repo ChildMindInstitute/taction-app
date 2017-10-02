@@ -4,13 +4,13 @@ import HeaderCommon from "../../components/Header";
 import HomeFooter from "../../components/HomeFooter";
 import HomeTimer from "../../components/HomeTimer";
 import HomeContent from "../../components/HomeContent";
-import { Container, Content, View, Text } from "native-base";
+import { Container, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const Home = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
-    <Container style={{ backgroundColor: "#eee" }}>
+  <View style={styles.ContainerOuterViewStyle}>
+    <Container style={styles.ContainerStyle}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
@@ -39,25 +39,20 @@ const Home = props => (
           </View>
         </View>
       </HeaderCommon>
-      <HomeTimer
-        TimeLeftDenomination={props.TimeLeftDenomination}
-        TimeLeft={props.TimeLeft}
-        ViewStyle={styles.HomeTimerStyle}
-      />
-
       <View style={styles.ExcerciseSpace}>
         <Text style={styles.ExcerciseText}>{props.Question}</Text>
-        <HomeContent
-          HomeContentStyle={styles.ExcerciseContentStyle}
-          Image1={props.Image1}
-          Image2={props.Image2}
-          Image3={props.Image3}
-          Image4={props.Image4}
-          TickImage={props.TickImage}
-          CrossImage={props.CrossImage}
-          CorrectOption={props.CorrectOption}
-          Pressed={props.Pressed}
-        />
+        <View style={styles.ExcerciseContentStyle}>
+          <HomeContent
+            Image1={props.Image1}
+            Image2={props.Image2}
+            Image3={props.Image3}
+            Image4={props.Image4}
+            TickImage={props.TickImage}
+            CrossImage={props.CrossImage}
+            CorrectOption={props.CorrectOption}
+            Pressed={props.Pressed}
+          />
+        </View>
       </View>
       <HomeFooter
         FooterStyle={styles.FooterStyle}
@@ -65,6 +60,11 @@ const Home = props => (
         Total={props.TotalImages}
       />
     </Container>
+    <HomeTimer
+      TimeLeftDenomination={props.TimeLeftDenomination}
+      TimeLeft={props.TimeLeft}
+      ViewStyle={styles.HomeTimerStyle}
+    />
   </View>
 );
 

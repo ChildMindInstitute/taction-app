@@ -1,29 +1,35 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
+import { NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
-class LoginScreen extends Component {
+class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
     header: null
   };
   constructor(props) {
     super(props);
-    this.UserName = "";
-    this.Password = "";
+    this.Input = {
+      UserName: "",
+      Password: ""
+    };
+
     this.state = {
       EmailHasError: false,
       PasswordHasError: false,
-      SubmitError: false
+      HasSubmitError: false
+    };
+    this.Error = {
+      Username: "Required",
+      Password: "Required",
+      SubmitError: "Invalid Credentials"
     };
   }
   render() {
     return (
       <Login
-        BackgroundColor="#0067a0"
-        ViewStyle={{ flex: 1 }}
         UsernameChange={event => {
-          this.UserName = event.nativeEvent.text;
-          if (this.UserName == "") {
+          this.Input.UserName = event.nativeEvent.text;
+          if (this.Input.UserName == "") {
             this.setState({ EmailHasError: true });
           } else this.setState({ EmailHasError: false });
         }}
@@ -31,8 +37,8 @@ class LoginScreen extends Component {
         StatusBarStyle="light-content"
         InputViewStyle={{ flex: 1, margin: "3%" }}
         PasswordChange={event => {
-          this.Password = event.nativeEvent.text;
-          if (this.Password == "") {
+          this.Input.Password = event.nativeEvent.text;
+          if (this.Input.Password == "") {
             this.setState({ PasswordHasError: true });
           } else this.setState({ PasswordHasError: false });
         }}
@@ -44,8 +50,8 @@ class LoginScreen extends Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
-          this.setState({ SubmitError: true });
-          if (this.state.SubmitError)
+          this.setState({ HasSubmitError: true });
+          if (this.state.HasSubmitError)
             this.props.navigation.dispatch(
               NavigationActions.reset({
                 index: 0,
@@ -58,8 +64,7 @@ class LoginScreen extends Component {
               })
             );
         }}
-        SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
-        SubmitButtonTextStyle={{ color: "white" }}
+        Error={this.Error}
         OnPressRegisterNow={() => {
           this.props.navigation.navigate("Consent");
         }}
@@ -72,8 +77,7 @@ class LoginScreen extends Component {
           marginTop: "20%",
           color: "#ccc"
         }}
-        HasSubmitError={this.state.SubmitError}
-        ErrorSubmissionText="Username and Password Do not match"
+        HasSubmitError={this.state.HasSubmitError}
         EmailHasError={this.state.EmailHasError}
         PasswordHasError={this.state.PasswordHasError}
       />

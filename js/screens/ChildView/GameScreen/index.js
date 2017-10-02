@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import Home from "../../../../storybook/stories/screens/Home";
-class WelcomeScreen extends Component {
+class WelcomeScreen extends React.Component {
   static navigationOptions = {
     title: "WelcomeScreen",
     header: null
@@ -29,7 +28,7 @@ class WelcomeScreen extends Component {
         Pressed={item => {
           console.log(item);
         }}
-        LeftImages={3}
+        LeftImages={5}
         TotalImages={10}
         Question="Tap on The Spider"
       />

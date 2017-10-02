@@ -1,6 +1,7 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
+  MainOuterView: { flex: 1, backgroundColor: "#0067a0" },
   MainView: {
     flex: 1,
     backgroundColor: "#0067a0",
@@ -25,6 +26,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     marginBottom: "5%"
-  }
+  },
+  SubmitButtonStyle: { backgroundColor: "#eeae30", margin: "5%" },
+  SubmitButtonTextStyle: { color: "white", fontWeight: "500" }
 });
 export default styles;

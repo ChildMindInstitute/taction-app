@@ -1,13 +1,11 @@
-import { StyleSheet, Platform } from "react-native";
-import { Constants } from "expo";
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   MainView: {
     flex: 1,
-    backgroundColor: "#0067a0",
-    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
+    backgroundColor: "#0067a0"
   },
   TopSpace: { flex: 5, alignItems: "center", justifyContent: "center" },
-  FormSpace: { flex: 4.5 },
+  FormSpace: { flex: 5.3, margin: "2.5%" },
   ErrorSpace: { flex: 0.5, top: "5%", alignItems: "center" },
   ErrorText: { color: "red" },
   FormStyle: { flex: 1, marginTop: "10%" },
@@ -21,6 +19,8 @@ const styles = StyleSheet.create({
   },
   MainLogoStyles: { alignSelf: "center" },
   BottomLogoSpace: { flex: 3, justifyContent: "center" },
-  SubLogoStyles: { alignSelf: "center" }
+  SubLogoStyles: { alignSelf: "center" },
+  SubmitButtonStyle: { backgroundColor: "#eeae30", margin: "5%" },
+  SubmitButtonTextStyle: { color: "white" }
 });
 export default styles;

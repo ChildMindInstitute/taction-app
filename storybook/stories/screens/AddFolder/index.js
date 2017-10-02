@@ -5,7 +5,6 @@ import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 const AddFolder = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
@@ -23,48 +22,29 @@ const AddFolder = props => (
           IsPassword={false}
           Label="Add new folder with images"
           OnChange={event => props.FolderNameChange(event)}
-          ViewStyle={{
-            flex: 0.18,
-            margin: "10%"
-          }}
+          ViewStyle={styles.InputViewStyle}
         />
 
         <Button
           OnPress={props.OnPressAddImage}
-          SubmitButtonStyle={{
-            marginBottom: "5%",
-            marginLeft: "10%",
-            marginRight: "10%",
-            backgroundColor: "#ffffff"
-          }}
+          SubmitButtonStyle={styles.SubmitButton3Style}
           IsIconRequired={true}
           IconName="image"
           IconColor="#0067a0"
           ButtonText="Add Image"
-          SubmitButtonTextStyle={{ color: "#0067a0" }}
+          SubmitButtonTextStyle={styles.SubmitButton3TextStyle}
         />
         {props.children}
         <Button
           OnPress={props.OnPressSaveButton}
-          SubmitButtonStyle={{
-            marginBottom: "5%",
-            marginLeft: "10%",
-            marginRight: "10%",
-            backgroundColor: "#eeae30"
-          }}
+          SubmitButtonStyle={styles.SubmitButtonStyle}
           ButtonText="Save &rarr;"
         />
         <Button
           OnPress={props.OnPressSkipButton}
-          SubmitButtonStyle={{
-            backgroundColor: "transparent",
-            marginLeft: "10%",
-            marginRight: "10%",
-            borderWidth: 1,
-            borderColor: "#ccc"
-          }}
+          SubmitButtonStyle={styles.SubmitButton2Style}
           ButtonText="Skip"
-          SubmitButtonTextStyle={{ color: "#000" }}
+          SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
         />
       </View>
     </View>

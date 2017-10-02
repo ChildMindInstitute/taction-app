@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import AddChild from "../../../../storybook/stories/screens/AddChild";
-import Expo from "expo";
-class AddChildScreen extends Component {
+class AddChildScreen extends React.Component {
   static navigationOptions = {
     title: "AddChildScreen",
     header: null

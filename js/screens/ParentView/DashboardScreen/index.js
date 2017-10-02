@@ -1,9 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import { Text } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
-import Expo from "expo";
-import { StatusBar } from "react-native";
 let count = 0;
 const ExcerciseData = [
   {
@@ -123,7 +120,7 @@ const ExcerciseData = [
     ]
   }
 ];
-class DashboardScreen extends Component {
+class DashboardScreen extends React.Component {
   static navigationOptions = {
     title: "DashboardScreen",
     header: null

@@ -5,6 +5,7 @@ const { Platform, Dimensions } = React;
 const deviceHeight = Dimensions.get("window").height;
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
+  ContentStyle: { flex: 1, backgroundColor: "#0067a0" },
   ListSpace: {
     flex: 12
   },
@@ -35,7 +36,12 @@ const styles = StyleSheet.create({
     height: 22,
     width: 100
   },
-  Footer: { flex: 2, marginTop: "30%" }
+  Footer: { flex: 2, marginTop: "30%" },
+  ListItemStyle: {
+    backgroundColor: "#0067a0",
+    borderBottomColor: "#005d8f",
+    borderBottomWidth: 1
+  }
 });
 
 export default styles;

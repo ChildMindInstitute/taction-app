@@ -7,8 +7,8 @@ import { View, Text } from "native-base";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const LoginAs = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
-    <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
+  <View style={styles.MainOuterView}>
+    <View style={styles.MainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"

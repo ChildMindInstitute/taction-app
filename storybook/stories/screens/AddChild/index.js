@@ -5,7 +5,6 @@ import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 const AddChild = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
@@ -23,21 +22,6 @@ const AddChild = props => (
           IsPassword={false}
           Label="Name of Child"
           OnChange={event => props.ChildNameChange(event)}
-          InputStyle={{
-            width: "100%",
-            backgroundColor: "white",
-            borderColor: "#0067a0",
-            borderWidth: 1
-          }}
-          LabelStyle={{
-            fontSize: 16,
-            alignSelf: "flex-start"
-          }}
-          ItemStyle={{
-            flex: 1,
-            flexDirection: "column",
-            borderColor: "transparent"
-          }}
           ViewStyle={{
             flex: 0.15,
             marginLeft: "10%",
@@ -49,32 +33,18 @@ const AddChild = props => (
           Label="Age of Child"
           OnChange={event => props.ChildAgeChange(event)}
           OnlyNumberEntry={true}
-          ViewStyle={{
-            flex: 0.15,
-            margin: "10%"
-          }}
+          ViewStyle={styles.InputViewStyle}
         />
         <Button
           OnPress={props.OnPressSaveButton}
-          SubmitButtonStyle={{
-            marginBottom: "5%",
-            marginLeft: "10%",
-            marginRight: "10%",
-            backgroundColor: "#eeae30"
-          }}
+          SubmitButtonStyle={styles.SubmitButtonStyle}
           ButtonText="Save &rarr;"
         />
         <Button
           OnPress={props.OnPressSkipButton}
-          SubmitButtonStyle={{
-            backgroundColor: "transparent",
-            marginLeft: "10%",
-            marginRight: "10%",
-            borderWidth: 1,
-            borderColor: "#ccc"
-          }}
+          SubmitButtonStyle={styles.SubmitButton2Style}
           ButtonText="Skip"
-          SubmitButtonTextStyle={{ color: "#000" }}
+          SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
         />
       </View>
     </View>

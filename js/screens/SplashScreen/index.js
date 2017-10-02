@@ -1,19 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import { NavigationActions } from "react-navigation";
 import SplashScreen from "../../../storybook/stories/screens/SplashScreen";
 import Db from "../../services";
 import Expo from "expo";
-import store from "../../store";
 
-@connect(store => {
-  return {
-    parent: store.user.parent,
-    child: store.user.child,
-    loaded: store.loaded
-  };
-})
-class Splash extends Component {
+// @connect(store => {
+//   return {
+//     parent: store.user.parent,
+//     child: store.user.child,
+//     loaded: store.loaded
+//   };
+// })
+class Splash extends React.Component {
   static navigationOptions = {
     title: "Splash",
     header: null

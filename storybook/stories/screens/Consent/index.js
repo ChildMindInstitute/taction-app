@@ -7,7 +7,7 @@ import { ScrollView } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const Consent = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+  <View style={styles.MainOuterViewOuterView}>
     <View style={styles.MainOuterView}>
       <StatusBar
         translucent={true}

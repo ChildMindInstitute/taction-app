@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import { NavigationActions } from "react-navigation";
 class LogoutTemp extends React.Component {
   componentWillMount() {
     this.props.ParentNavProps.screenProps.dispatch(

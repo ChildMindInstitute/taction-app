@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
+import { NavigationActions } from "react-navigation";
 import Welcome from "../../../storybook/stories/screens/Welcome";
-import Expo from "expo";
-class WelcomeScreen extends Component {
+class WelcomeScreen extends React.Component {
   static navigationOptions = {
     title: "WelcomeScreen",
     header: null
@@ -26,8 +25,6 @@ class WelcomeScreen extends Component {
               ]
             })
           )}
-        SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
-        SubmitButtonTextStyle={{ color: "white", fontWeight: "500" }}
         StatusBarStyle="light-content"
       />
     );

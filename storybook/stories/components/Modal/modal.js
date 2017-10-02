@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, Right, Button } from "native-base";
 import Modal from "react-native-modal";
 import styles from "./styles";
-class ModalCommon extends Component {
+class ModalCommon extends React.Component {
   render() {
     return (
       <Modal

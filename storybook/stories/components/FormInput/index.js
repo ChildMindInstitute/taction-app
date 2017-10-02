@@ -1,48 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Input, Item, View, Text } from "native-base";
+import { Input, Item, View, Text, Icon, Button } from "native-base";
+import styles from "./styles";
 const FormInput = props => (
   <View style={props.ViewStyle}>
-    <Item
-      regular
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        borderColor: "transparent"
-      }}
-      error={props.Error}
-    >
+    <Item regular style={styles.ItemStyle} error={props.Error}>
       <Text
-        style={{
-          fontSize: 16,
-          color: props.LabelColor,
-          alignSelf: "flex-start"
-        }}
+        style={[
+          styles.LabelStyle,
+          {
+            color: props.LabelColor
+          }
+        ]}
       >
         {props.Label}
       </Text>
       <Input
-        style={{
-          width: "102%",
-          backgroundColor: "white",
-          borderWidth: 1,
-          borderColor: "#0067a0"
-        }}
+        style={styles.InputStyle}
         onChange={props.OnChange}
         secureTextEntry={props.IsPassword}
         keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
       />
-
-      <Text
-        style={{
-          position: "absolute",
-          top: "50%",
-          alignSelf: "flex-end",
-          color: "#EF3350"
-        }}
-      >
-        {props.Error ? props.ErrorText : " "}
-      </Text>
+      <View style={styles.ErrorViewStyle}>
+        {props.Error ? (
+          <Button disabled iconLeft style={styles.ErrorButtonStyle}>
+            <Icon
+              name="information-circle"
+              style={styles.ErrorContentStyle}
+              active={true}
+            />
+            <Text style={styles.ErrorContentStyle}>{props.ErrorText}</Text>
+          </Button>
+        ) : (
+          <Text> </Text>
+        )}
+      </View>
     </Item>
   </View>
 );
@@ -52,7 +44,11 @@ FormInput.propTypes = {
   LabelColor: PropTypes.string,
   ErrorText: PropTypes.string,
   OnlyNumberEntry: PropTypes.bool,
-  ViewStyle: PropTypes.object,
+  ViewStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
   Label: PropTypes.string,
   OnChange: PropTypes.func,
   IsPassword: PropTypes.bool

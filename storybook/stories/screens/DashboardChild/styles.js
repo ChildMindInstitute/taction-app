@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   ContentStyle: { flex: 1, marginLeft: "-4%" },
   GreetingsSpace: { flex: 2, alignItems: "center", justifyContent: "center" },
   ListSpace: { flex: 13 },
-  ContainerStyle: { flex: 1, backgroundColor: "#eee" }
+  ContainerStyle: { flex: 1, backgroundColor: "#eee" },
+  ContainerOuterView: { flex: 1, backgroundColor: "#0067a0" }
 });
 export default styles;

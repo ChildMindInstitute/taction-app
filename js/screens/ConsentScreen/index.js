@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import Consent from "../../../storybook/stories/screens/Consent";
-class ConsentScreen extends Component {
+class ConsentScreen extends React.Component {
   static navigationOptions = {
     title: "ConsentScreen",
     header: null

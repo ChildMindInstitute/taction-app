@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import AlmostThere from "../../../storybook/stories/screens/AlmostThere";
-class AlmostThereScreen extends Component {
+class AlmostThereScreen extends React.Component {
   static navigationOptions = {
     title: "AlmostThereScreen",
     header: null

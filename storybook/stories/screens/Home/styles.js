@@ -10,14 +10,18 @@ const styles = StyleSheet.create({
   HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
   HeaderRightImageSpace: { flex: 1, alignItems: "center" },
   HeaderRightTextSpace: {
-    flex: 1,
+    flex: 1.2,
     flexDirection: "column",
     alignItems: "center"
   },
-  HeaderRightTextAlign: { flex: 2.5 },
+  HeaderRightTextAlign: { flex: 3 },
   HeaderRightTotalPointsStyle: { color: "white", flex: 2 },
-  HeaderRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
-  HomeTimerStyle: { position: "absolute", left: "40%", top: "10%" },
+  HeaderRightTotalPointsTextStyle: { fontSize: 10, color: "white", flex: 1 },
+  HomeTimerStyle: {
+    position: "absolute",
+    left: Platform.OS === "ios" ? "40%" : "42%",
+    top: Platform.OS === "ios" ? "10%" : "15%"
+  },
   ExcerciseSpace: { flex: 2, marginTop: "-25%" },
   ExcerciseText: {
     flex: 1,
@@ -25,7 +29,9 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold"
   },
-  ExcerciseContentStyle: { flex: 10, backgroundColor: "white" },
-  FooterStyle: { height: "17%" }
+  ExcerciseContentStyle: { flex: 10, margin: "3%" },
+  FooterStyle: { height: "17%" },
+  ContainerOuterViewStyle: { flex: 1, backgroundColor: "#0067a0" },
+  ContainerStyle: { backgroundColor: "#eee" }
 });
 export default styles;

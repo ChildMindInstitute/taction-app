@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import DrawerParent from "../../../storybook/stories/components/Drawer";
 import { Constants } from "expo";
 import { View } from "native-base";
 import { StatusBar } from "react-native";
-class ParentDrawerScreen extends Component {
+class ParentDrawerScreen extends React.Component {
   static navigationOptions = {
     title: "ParentDrawerScreen",
     header: null

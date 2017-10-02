@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import NewIntro from "../../../../storybook/stories/screens/NewIntroScreen";
-import Expo from "expo";
-class OpeningScreen extends Component {
+class OpeningScreen extends React.Component {
   static navigationOptions = {
     title: "OpeningScreen",
     header: null

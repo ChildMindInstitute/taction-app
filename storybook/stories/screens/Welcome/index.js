@@ -7,7 +7,7 @@ import { View, Text } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
 const Welcome = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+  <View style={styles.MainOuterView}>
     <View style={styles.MainView}>
       <StatusBar
         translucent={true}
@@ -28,9 +28,9 @@ const Welcome = props => (
       </View>
       <Button
         OnPress={props.OnPressSubmitButton}
-        SubmitButtonStyle={props.SubmitButtonStyle}
+        SubmitButtonStyle={styles.SubmitButtonStyle}
+        SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
         ButtonText="Get in &rarr;"
-        SubmitButtonTextStyle={props.SubmitButtonTextStyle}
       />
       <View style={styles.BottomLogoSpace}>
         <Logo1 />

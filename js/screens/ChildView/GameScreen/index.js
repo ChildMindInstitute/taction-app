@@ -1,14 +1,13 @@
 import React from "react";
 import Home from "../../../../storybook/stories/screens/Home";
-class WelcomeScreen extends React.Component {
+class GameScreen extends React.Component {
   static navigationOptions = {
-    title: "WelcomeScreen",
+    title: "GameScreen",
     header: null
   };
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <Home
@@ -16,8 +15,8 @@ class WelcomeScreen extends React.Component {
           this.props.navigation.goBack();
         }}
         TotalPoints={100}
+        TimeLeft={180000}
         TimeLeftDenomination={"Min"}
-        TimeLeft={"2.07"}
         Image1={require("../../../assets/ball1.jpg")}
         Image2={require("../../../assets/spiderman.jpg")}
         Image3={require("../../../assets/minion.jpg")}
@@ -35,4 +34,4 @@ class WelcomeScreen extends React.Component {
     );
   }
 }
-export default WelcomeScreen;
+export default GameScreen;

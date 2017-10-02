@@ -73,7 +73,7 @@ Home.propTypes = {
   Question: PropTypes.string,
   TotalPoints: PropTypes.number,
   TimeLeftDenomination: PropTypes.string,
-  TimeLeft: PropTypes.string,
+  TimeLeft: PropTypes.number,
   Image1: PropTypes.node.isRequired,
   Image2: PropTypes.node.isRequired,
   Image3: PropTypes.node.isRequired,

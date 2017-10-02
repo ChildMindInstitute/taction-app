@@ -31,6 +31,6 @@ const NavigationDetails = StackNavigator(
     SplashScreen: { screen: Splash },
     Welcome: { screen: WelcomeScreen }
   },
-  { initialRouteName: "SplashScreen", headerMode: "none" }
+  { initialRouteName: "GameScreen", headerMode: "none" }
 );
 export default NavigationDetails;

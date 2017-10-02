@@ -61,8 +61,14 @@ class LoginScreen extends React.Component {
         StatusBarStyle="light-content"
         ConfirmPasswordChange={event => {
           this.Input.ConfirmPassword = event.nativeEvent.text;
-          if (this.Input.ConfirmPassword == this.Input.Password) {
+          if (
+            this.Input.ConfirmPassword == this.Input.Password &&
+            this.Input.Password != ""
+          ) {
             this.setState({ ConfirmPasswordError: false });
+          } else if (this.Input.Password == "") {
+            this.setState({ ConfirmPasswordError: true });
+            this.setState({ PasswordError: true });
           } else {
             this.setState({ ConfirmPasswordError: true });
           }

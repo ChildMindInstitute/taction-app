@@ -1,3 +1,4 @@
+import React from "react";
 import { StackNavigator } from "react-navigation";
 import Splash from "./screens/SplashScreen";
 import LoginScreen from "./screens/LoginScreen";

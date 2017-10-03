@@ -1,4 +1,3 @@
-import React from "react";
 import { StackNavigator } from "react-navigation";
 import Splash from "./screens/SplashScreen";
 import LoginScreen from "./screens/LoginScreen";
@@ -31,6 +30,6 @@ const NavigationDetails = StackNavigator(
     SplashScreen: { screen: Splash },
     Welcome: { screen: WelcomeScreen }
   },
-  { initialRouteName: "GameScreen", headerMode: "none" }
+  { initialRouteName: "SplashScreen", headerMode: "none" }
 );
 export default NavigationDetails;

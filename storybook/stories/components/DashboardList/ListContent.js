@@ -65,7 +65,7 @@ class ListContent extends React.Component {
             <View style={styles.ListItemGridViewStyle}>
               <Grid
                 style={styles.ListItemGrid}
-                renderItem={(data, i) => (
+                renderItem={data => (
                   <Image
                     source={data.Image}
                     style={[

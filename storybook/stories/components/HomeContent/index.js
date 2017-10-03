@@ -18,11 +18,34 @@ class HomeContent extends React.Component {
       IsSecondDisabled: false,
       IsThirdDisabled: false,
       IsFourthDisabled: false,
-      IsCorrect: false
+      continueReseting: true
     };
   }
-
+  reset() {
+    this.setState({
+      IsFirstTouched: false,
+      IsSecondTouched: false,
+      IsThirdTouched: false,
+      IsFourthTouched: false,
+      IsFirstDisabled: false,
+      IsSecondDisabled: false,
+      IsThirdDisabled: false,
+      IsFourthDisabled: false,
+      continueReseting: false
+    });
+  }
+  disableAll() {
+    this.setState({
+      IsFirstDisabled: true,
+      IsSecondDisabled: true,
+      IsThirdDisabled: true,
+      IsFourthDisabled: true
+    });
+  }
   render() {
+    if (this.props.HasToReset && this.state.continueReseting) {
+      this.reset();
+    }
     return (
       <View style={styles.MainView}>
         <Grid style={styles.GridView}>
@@ -36,7 +59,8 @@ class HomeContent extends React.Component {
                     IsFirstDisabled: true,
                     IsSecondDisabled: true,
                     IsThirdDisabled: true,
-                    IsFourthDisabled: true
+                    IsFourthDisabled: true,
+                    continueReseting: true
                   });
                   this.props.Pressed(1);
                 }}
@@ -57,7 +81,8 @@ class HomeContent extends React.Component {
                     IsFirstDisabled: true,
                     IsSecondDisabled: true,
                     IsThirdDisabled: true,
-                    IsFourthDisabled: true
+                    IsFourthDisabled: true,
+                    continueReseting: true
                   });
                   this.props.Pressed(2);
                 }}
@@ -80,7 +105,8 @@ class HomeContent extends React.Component {
                     IsFirstDisabled: true,
                     IsSecondDisabled: true,
                     IsThirdDisabled: true,
-                    IsFourthDisabled: true
+                    IsFourthDisabled: true,
+                    continueReseting: true
                   });
                   this.props.Pressed(3);
                 }}
@@ -101,7 +127,8 @@ class HomeContent extends React.Component {
                     IsFirstDisabled: true,
                     IsSecondDisabled: true,
                     IsThirdDisabled: true,
-                    IsFourthDisabled: true
+                    IsFourthDisabled: true,
+                    continueReseting: true
                   });
                   this.props.Pressed(4);
                 }}

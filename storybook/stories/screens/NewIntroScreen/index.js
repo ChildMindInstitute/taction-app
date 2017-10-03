@@ -46,6 +46,7 @@ const NewIntro = props => (
           >
             {props.Score}
           </Text>
+          {props.children}
           <Image style={styles.StarsStyle} source={props.Stars} />
           <Button
             OnPress={props.PlayOnPress}

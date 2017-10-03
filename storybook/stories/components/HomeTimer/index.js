@@ -9,25 +9,35 @@ class HomeTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 1
+      timer: this.props.TimeLeft,
+      timeUp: false,
+      interval: null
     };
     this.future = new Date().getTime() + this.props.TimeLeft;
   }
   returnMinSec(distance) {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    return minutes + ":" + seconds;
+    return (
+      (minutes ? minutes + ":" : "") +
+      (seconds < 10 && seconds != 0
+        ? "0" + seconds
+        : seconds >= 10 ? seconds : "00")
+    );
   }
-  render() {
+  componentDidMount() {
     let x = setInterval(() => {
       let now = new Date().getTime();
-      if (this.state.timer > 0) {
+      if (this.future - now >= 0) {
         this.setState({ timer: this.future - now });
       } else {
-        clearInterval(x);
         this.setState({ timer: "Expired" });
+        clearInterval(x);
       }
     }, 1000);
+    this.setState({ interval: x });
+  }
+  render() {
     return (
       <View style={this.props.ViewStyle}>
         <View style={styles.OuterCircle}>
@@ -36,10 +46,23 @@ class HomeTimer extends React.Component {
               {this.state.timer != "Expired" ? (
                 this.returnMinSec(this.state.timer)
               ) : (
-                this.state.timer
+                "Over"
               )}
             </Text>
-            <Text note>{this.props.TimeLeftDenomination}</Text>
+            {this.state.timer != "Expired" ? (
+              <View />
+            ) : (
+              this.props.FinishedFunc()
+            )}
+            <Text note>
+              {this.state.timer > 60000 ? (
+                "Min"
+              ) : this.state.timer != "Expired" ? (
+                "Sec"
+              ) : (
+                ""
+              )}
+            </Text>
           </View>
         </View>
       </View>

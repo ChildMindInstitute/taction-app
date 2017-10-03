@@ -51,6 +51,7 @@ const Home = props => (
             CrossImage={props.CrossImage}
             CorrectOption={props.CorrectOption}
             Pressed={props.Pressed}
+            HasToReset={props.HasToReset}
           />
         </View>
       </View>
@@ -59,16 +60,20 @@ const Home = props => (
         Left={props.LeftImages}
         Total={props.TotalImages}
       />
+      {props.children}
     </Container>
     <HomeTimer
       TimeLeftDenomination={props.TimeLeftDenomination}
       TimeLeft={props.TimeLeft}
       ViewStyle={styles.HomeTimerStyle}
+      FinishedFunc={props.FinishedFunc}
     />
   </View>
 );
 
 Home.propTypes = {
+  HasToReset: PropTypes.bool,
+  FinishedFunc: PropTypes.func,
   Back: PropTypes.func,
   Question: PropTypes.string,
   TotalPoints: PropTypes.number,

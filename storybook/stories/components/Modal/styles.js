@@ -21,13 +21,17 @@ const styles = StyleSheet.create({
   close: {
     color: "#eeae30"
   },
-  ContentMainViewStyle: { alignItems: "center", justifyContent: "center" },
+  ContentMainViewStyle: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1
+  },
   ContentMainViewTextStyle: {
     color: "#eeae30",
     fontSize: 32
   },
-  Text1: { marginBottom: "3%" },
-  Text2: { marginBottom: "7%" },
+  Text1: { marginBottom: "7%" },
+  Text2: { marginBottom: "3%" },
   ContentMainViewImageStyle: { width: 200, height: 60 },
   ContentMainViewPointsTextStyle: {
     color: "white",

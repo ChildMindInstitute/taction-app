@@ -28,28 +28,17 @@ class Splash extends React.Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
       FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
     });
-  }
-
-  componentDidMount(){
-    Db.getAuth().onAuthStateChanged((user)=>{
-      if(user){
+    await Db.getAuth().onAuthStateChanged(user => {
+      if (user) {
         this.props.dispatch({
           type: "SET_PARENT"
         });
         this.props.dispatch({
           type: "SET_CHILD"
         });
-        if (this.props.loaded) {
-          this.props.navigation.dispatch(NavigationActions.reset({
-            index: 0,
-            actions: [
-              NavigationActions.navigate({routeName: "Login"}) //to be changed to LoginAs
-            ]
-          }));
-        }
-      }
-      else{
-        this.props.navigation.dispatch(NavigationActions.reset({
+      } else {
+        this.props.navigation.dispatch(
+          NavigationActions.reset({
             index: 0,
             actions: [NavigationActions.navigate({ routeName: "Login" })]
           })
@@ -58,16 +47,14 @@ class Splash extends React.Component {
     });
   }
 
-  navigate(){
-    this.props.navigation.dispatch(NavigationActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
-      }));
-  }
-
   render() {
-    if(this.props.loaded){
-      this.navigate();
+    if (this.props.loaded) {
+      this.props.navigation.dispatch(
+        NavigationActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+        })
+      );
     }
     return (
       <SplashScreen

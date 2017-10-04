@@ -1,6 +1,10 @@
 import React from "react";
 import { NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
+import { connect } from "react-redux";
+@connect(store => {
+  return { loaded: store.loaded, user: store.user };
+})
 class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
@@ -29,14 +33,18 @@ class LoginScreen extends React.Component {
     this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });
     if(this.props.loaded){
       this.navigate();
+    } else {
+      this.setState({ HasSubmitError: true });
     }
   }
 
-  navigate(){
-      this.props.navigation.dispatch(NavigationActions.reset({
-          index: 0,
-          actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
-        }));
+  navigate() {
+    this.props.navigation.dispatch(
+      NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+      })
+    );
   }
 
   // componentWillMount(){
@@ -45,7 +53,7 @@ class LoginScreen extends React.Component {
   //   }
   // }
 
-  render() {    
+  render() {
     return (
       <Login
         UsernameChange={event => {
@@ -71,19 +79,7 @@ class LoginScreen extends React.Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
-          this.setState({ HasSubmitError: true });
-          if (this.state.HasSubmitError)
-            this.props.navigation.dispatch(
-              NavigationActions.reset({
-                index: 0,
-                actions: [
-                  NavigationActions.navigate({
-                    params: { NewRegistration: true },
-                    routeName: "LoginAs"
-                  })
-                ]
-              })
-            );
+          this.loginUser();
         }}
         Error={this.Error}
         OnPressRegisterNow={() => {

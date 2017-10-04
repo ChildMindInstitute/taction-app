@@ -4,10 +4,14 @@ import { StackNavigator, NavigationActions } from "react-navigation";
 import {connect} from 'react-redux';
 
 
-@connect()
+@connect(store=>{
+  return{
+    user: store.user
+  }
+})
 class LogoutTemp extends React.Component {
   componentWillMount() {
-
+    this.props.dispatch({type:'USER_SIGN_OUT'});
     this.props.ParentNavProps.screenProps.dispatch(
       NavigationActions.reset({
         index: 0,

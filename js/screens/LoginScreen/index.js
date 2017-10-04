@@ -26,7 +26,7 @@ class LoginScreen extends React.Component {
   }
 
   loginUser(){
-    this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: userName, password: password} });
+    this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });
     if(this.props.loaded){
       this.navigate();
     }

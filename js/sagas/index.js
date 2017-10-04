@@ -57,6 +57,11 @@ const addChild = function* addChild(){
   yield put({type:'SET_CHILD'});
 }
 
+const logoutUser= function* logoutUser(){
+  yield take('USER_SIGN_OUT');
+  yield call(Db.logoutUser);
+}
+
 const rootSaga = function* rootSaga() {
   console.log("root saga");
   yield all([
@@ -65,7 +70,8 @@ const rootSaga = function* rootSaga() {
     userSignIn(),
     setConsent(),
     userSignUp(),
-    addChild()
+    addChild(),
+    logoutUser()
   ]);
 }
 

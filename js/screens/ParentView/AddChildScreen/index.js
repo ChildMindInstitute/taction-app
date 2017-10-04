@@ -25,7 +25,7 @@ class AddChildScreen extends React.Component {
         type: "ADD_CHILD",
         payload: { name: childName, age: childAge }
       });
-      navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
+      this.props.navigation.navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
     }
   }
 

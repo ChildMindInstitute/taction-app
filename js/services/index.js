@@ -72,7 +72,7 @@ export default {
             totalScore: 0
           })
           .then(() => {
-            parent.set({ childID: newChild.key }).then(() => {
+            parent.update({ childID: newChild.key }).then(() => {
               resolve(newChild.key);
             });
           });
@@ -81,6 +81,10 @@ export default {
         reject(err);
       }
     });
+  },
+
+  logoutUser(){
+    firebase.auth().signOut();
   },
 
   getUser() {

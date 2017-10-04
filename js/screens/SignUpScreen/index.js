@@ -40,12 +40,12 @@ class LoginScreen extends React.Component {
   }
 
   signUp(){
-    if(password== cnfpassword){
+    if(this.Input.Password== this.Input.ConfirmPassword){
       this.props.dispatch({type:"USER_SIGNUP", payload:{
         consent: this.props.consent,
-        username: username,
-        email: email,
-        password: password
+        username: this.Input.Username,
+        email: this.Input.Email,
+        password: this.Input.Password
       }});
       this.props.navigation.navigate("AlmostThere");
     }else{
@@ -84,7 +84,7 @@ class LoginScreen extends React.Component {
           }
         }}
         OnPressSubmitButton={() =>
-          this.props.navigation.navigate("AlmostThere")}
+          this.signUp()}
         StatusBarStyle="light-content"
         ConfirmPasswordChange={event => {
           this.Input.ConfirmPassword = event.nativeEvent.text;

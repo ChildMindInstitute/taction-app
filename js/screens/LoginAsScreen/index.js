@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { StackNavigator, NavigationActions } from "react-navigation";
 import LoginAs from "../../../storybook/stories/screens/LoginAs";
-const data = [{ Name: "Shubham" }, { Name: "Praneet" }, { Name: "Arno" }];
+import {connect} from 'react-redux';
+
+
+var data = [];
+@connect(store=>{
+  return{
+    parent: store.user.parent,
+    child: store.user.child
+  }
+})
 class LoginAsScreen extends Component {
   static navigationOptions = {
     title: "LoginAsScreen",
@@ -9,6 +18,10 @@ class LoginAsScreen extends Component {
   };
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount(){
+    data=[{Name: this.props.parent.name}, {Name: this.props.child.childDetails.name}]
   }
 
   render() {

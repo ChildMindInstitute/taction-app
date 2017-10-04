@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { StackNavigator, NavigationActions } from "react-navigation";
 import Consent from "../../../storybook/stories/screens/Consent";
+import {connect} from 'react-redux';
+
+@connect(store=>{
+  return{
+    consent: store.consent
+  }
+})
 class ConsentScreen extends Component {
   static navigationOptions = {
     title: "ConsentScreen",
@@ -14,6 +21,16 @@ class ConsentScreen extends Component {
       Term3: false
     };
   }
+
+  setConsent(){
+    this.props.dispatch({type:'SET_CONSENT', payload: {
+      Term1: this.state.Term1,
+      Term2: this.state.Term2,
+      Term3: this.state.Term3
+    } });
+    this.props.navigation.navigate("SignUp");
+  }
+
   render() {
     return (
       <Consent
@@ -41,7 +58,7 @@ class ConsentScreen extends Component {
         CheckboxChange3={() => {
           this.setState({ Term3: !this.state.Term3 });
         }}
-        OnPressSubmitButton={() => this.props.navigation.navigate("SignUp")}
+        OnPressSubmitButton={() => this.setConsent()}
         StatusBarStyle="light-content"
       />
     );

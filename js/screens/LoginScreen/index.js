@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import { StackNavigator, NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
+import {connect} from 'react-redux';
+
+var userName;
+var password;
+
+
+@connect(store=>{
+  return{
+    user: store.user.parent,
+    loaded: store.loaded
+  }
+})
 class LoginScreen extends Component {
   static navigationOptions = {
     title: "LoginScreen",
@@ -9,12 +21,33 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
   }
-  render() {
+
+  loginUser(){
+    this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: userName, password: password} });
+    if(this.props.loaded){
+      this.navigate();
+    }
+  }
+
+  navigate(){
+      this.props.navigation.dispatch(NavigationActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+        }));
+  }
+
+  // componentWillMount(){
+  //   if (this.props.loaded) {
+  //     this.navigate();
+  //   }
+  // }
+
+  render() {    
     return (
       <Login
         BackgroundColor="#0067a0"
         ViewStyle={{ flex: 1 }}
-        UsernameChange={event => console.log(event.nativeEvent.text)}
+        UsernameChange={event => userName=event.nativeEvent.text}
         InputStyle={{
           width: "102%",
           backgroundColor: "white"
@@ -31,7 +64,7 @@ class LoginScreen extends Component {
         }}
         StatusBarStyle="light-content"
         InputViewStyle={{ flex: 1, margin: "3%" }}
-        PasswordChange={event => console.log(event.nativeEvent.text)}
+        PasswordChange={event => password= event.nativeEvent.text}
         ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}
         ForgotPasswordButtonStyle={{
           flex: 1,
@@ -40,7 +73,8 @@ class LoginScreen extends Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
-          this.props.navigation.navigate("LoginAs");
+          this.loginUser();
+          {/* this.props.navigation.navigate("LoginAs"); */}
         }}
         SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
         SubmitButtonTextStyle={{ color: "white" }}

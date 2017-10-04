@@ -27,9 +27,20 @@ const waitReducer= (state=false , action)=>{
     return state;
 }
 
+const consentReducer=  (state={}, action)=>{
+    switch(action.type){
+        case 'CONSENT':{
+            state=action.payload;
+            break;
+        }
+    }
+    return state;
+}
+
 const reducer =  combineReducers({
     user: userReducer,
-    loaded: waitReducer
+    loaded: waitReducer,
+    consent: consentReducer
 });
 
 export default reducer;

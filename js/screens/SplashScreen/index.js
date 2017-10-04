@@ -4,7 +4,6 @@ import { StackNavigator, NavigationActions } from "react-navigation";
 import SplashScreen from "../../../storybook/stories/screens/SplashScreen";
 import Db from '../../services';
 import Expo from "expo";
-import store from '../../store';
 
 @connect (store=>{
   return {
@@ -35,7 +34,6 @@ class Splash extends Component {
 
   componentDidMount(){
     Db.getAuth().onAuthStateChanged((user)=>{
-      //console.log(this.props.loading,"logging loading prop");
       if(user){
         this.props.dispatch({
           type: 'SET_PARENT'
@@ -47,11 +45,10 @@ class Splash extends Component {
           this.props.navigation.dispatch(NavigationActions.reset({
             index: 0,
             actions: [
-              NavigationActions.navigate({routeName: "Consent"})
+              NavigationActions.navigate({routeName: "Login"}) //to be changed to LoginAs
             ]
           }));
         }
-        
       }
       else{
         this.props.navigation.dispatch(NavigationActions.reset({
@@ -64,7 +61,17 @@ class Splash extends Component {
     })
   }
 
+  navigate(){
+    this.props.navigation.dispatch(NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "Login" })]
+      }));
+  }
+
   render() {
+    if(this.props.loaded){
+      this.navigate();
+    }
     return (
       <SplashScreen
         ImageDimensions={{ width: 200, height: 300 }}

@@ -35,12 +35,7 @@ class LoginScreen extends React.Component {
   }
 
   loginUser(){
-    this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });
-    if(this.props.loaded){
-      this.redirect();
-    }else if(this.props.error) {
-      this.setState({ HasSubmitError: true });
-    }
+    this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });    
   }
 
   componentDidUpdate(){

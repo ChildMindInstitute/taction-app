@@ -26,7 +26,7 @@ export default {
     return firebase.auth();
   },
 
-  createParent(email, password, username) {
+  createParent(email, password, username, consent) {
     
     return new Promise((resolve, reject) => {
       const auth = firebase.auth();
@@ -34,6 +34,8 @@ export default {
         .createUserWithEmailAndPassword(email, password)
         .then(user => {
           user.updateProfile({ displayName: username });
+          const database = firebase.database().ref('parent/'+user.uid);
+          database.set({consent: consent})
           resolve(user);
         })
         .catch(err => {
@@ -53,7 +55,7 @@ export default {
     });
   },
 
-  createChild(name) {
+  createChild(name, age) {
     return new Promise((resolve, reject) => {
       const auth = firebase.auth();
       const child = firebase.database().ref("child/");
@@ -63,6 +65,7 @@ export default {
         newChild
           .set({
             name: name,
+            age: age,
             highScore: 0,
             level: 0,
             parentID: auth.currentUser.uid,

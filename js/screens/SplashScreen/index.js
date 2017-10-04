@@ -73,6 +73,15 @@ class Splash extends React.Component {
     }
   }
 
+  navigate() {
+    this.props.navigation.dispatch(
+      NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+      })
+    );
+  }
+
   render() {
     if (!this.state.isLoading) {
       this.Execute();

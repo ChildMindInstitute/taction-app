@@ -24,6 +24,32 @@ class LoginScreen extends React.Component {
       SubmitError: "Invalid Credentials"
     };
   }
+
+  loginUser() {
+    this.props.dispatch({
+      type: "USER_SIGN_IN",
+      payload: { username: userName, password: password }
+    });
+    if (this.props.loaded) {
+      this.navigate();
+    }
+  }
+
+  navigate() {
+    this.props.navigation.dispatch(
+      NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+      })
+    );
+  }
+
+  // componentWillMount(){
+  //   if (this.props.loaded) {
+  //     this.navigate();
+  //   }
+  // }
+
   render() {
     return (
       <Login

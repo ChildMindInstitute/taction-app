@@ -1,6 +1,17 @@
 import React from "react";
 import SignUp from "../../../storybook/stories/screens/SignUp";
+import {connect} from 'react-redux';
+
+var username, email, password, cnfpassword;
+
+
 const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+@connect(store=>{
+  return{
+    consent: store.consent,
+    user: store.user
+  }
+})
 class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
@@ -27,6 +38,22 @@ class LoginScreen extends React.Component {
       Username: "Username Already Taken"
     };
   }
+
+  signUp(){
+    if(password== cnfpassword){
+      this.props.dispatch({type:"USER_SIGNUP", payload:{
+        consent: this.props.consent,
+        username: username,
+        email: email,
+        password: password
+      }});
+      this.props.navigation.navigate("AlmostThere");
+    }else{
+      console.log(username+":"+email+":"+password, "logging user data")
+      alert("password mismatch !!!");
+    }
+  }
+
   render() {
     return (
       <SignUp

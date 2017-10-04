@@ -1,8 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { NavigationActions } from "react-navigation";
+import { StackNavigator, NavigationActions } from "react-navigation";
+import {connect} from 'react-redux';
+
+
+@connect()
 class LogoutTemp extends React.Component {
   componentWillMount() {
+
     this.props.ParentNavProps.screenProps.dispatch(
       NavigationActions.reset({
         index: 0,

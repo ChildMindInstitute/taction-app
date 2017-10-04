@@ -13,7 +13,6 @@ const setParent = function* setParent(){
       emailVerified: user.emailVerified,
     } 
   })
-  //yield put({type:'USER_LOADED'});
 }
 
 const setChild = function* setChild() {
@@ -25,18 +24,17 @@ const setChild = function* setChild() {
     type: "CHILD",
     payload: child
   });
-  yield put({type: "USER_LOADED"});
+  yield put({type: 'USER_LOADED'})
 };
 
 const userSignIn = function* userSignIn(){
   var user = yield take("USER_SIGN_IN");
   console.log(user.payload, "inside user sign in saga");
-  yield put({type: "USER_LOADING"});
-
   try{  
+    yield put({type: "USER_LOADING"});
     yield call(Db.signIn, user.payload.username, user.payload.password);
-      yield put({type: "SET_PARENT"});
-      yield put({type: "SET_CHILD"});
+    yield put({type: "SET_PARENT"});
+    yield put({type: "SET_CHILD"});
   }catch(res){
     yield put({type:'ERROR_SIGNIN',payload:res})
   }  
@@ -67,17 +65,10 @@ const logoutUser= function* logoutUser(){
   yield put({type: 'CLEAR_STORE',});
 }
 
+
 const rootSaga = function* rootSaga() {
   console.log("root saga");
-  yield all([
-    setParent(),
-    setChild(),
-    userSignIn(),
-    setConsent(),
-    userSignUp(),
-    addChild(),
-    logoutUser()
-  ]);
+  yield all([userSignIn(), setParent(), setChild(), setConsent(), userSignUp(), addChild(), logoutUser()]);
 }
 
 export default rootSaga;

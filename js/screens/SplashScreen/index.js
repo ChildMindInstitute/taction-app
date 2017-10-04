@@ -30,10 +30,8 @@ class Splash extends React.Component {
     });
     Db.getAuth().onAuthStateChanged(user => {
       if (user) {
-        this.props.dispatch({
-          type: "SET_PARENT"
-        });
-        this.props.dispatch({type: "SET_CHILD"});
+        this.props.dispatch({type:"SET_PARENT"});
+        this.props.dispatch({ type: "SET_CHILD" });
       } else {
         this.props.navigation.dispatch(
           NavigationActions.reset({
@@ -45,7 +43,7 @@ class Splash extends React.Component {
     });
   }
 
-  render() {
+  componentDidUpdate(){
     if (this.props.loaded) {
       this.props.navigation.dispatch(
         NavigationActions.reset({
@@ -53,7 +51,11 @@ class Splash extends React.Component {
           actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
         })
       );
-    }
+    }    
+  }
+
+  render() {
+    
     return (
       <SplashScreen
         ImageDimensions={{ width: 200, height: 300 }}

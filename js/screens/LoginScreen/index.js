@@ -4,7 +4,10 @@ import Login from "../../../storybook/stories/screens/Login";
 import { connect } from "react-redux";
 
 @connect(store => {
-  return { loaded: store.loaded, user: store.user ,    error:store.error.signinError
+  return { 
+    loaded: store.loaded,
+    user: store.user ,    
+    error: store.error.signinError
 };
 })
 class LoginScreen extends React.Component {
@@ -34,13 +37,21 @@ class LoginScreen extends React.Component {
   loginUser(){
     this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });
     if(this.props.loaded){
-      this.navigate();
-    } else if(!this.props.error) {
+      this.redirect();
+    }else if(this.props.error) {
       this.setState({ HasSubmitError: true });
     }
   }
 
-  navigate() {
+  componentDidUpdate(){
+    if (this.props.loaded) {
+      this.redirect();
+    } else if (this.props.error) {
+      this.setState({ HasSubmitError: true });
+    }
+  }
+
+  redirect() {
     this.props.navigation.dispatch(
       NavigationActions.reset({
         index: 0,

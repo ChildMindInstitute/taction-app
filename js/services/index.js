@@ -51,6 +51,8 @@ export default {
         .signInWithEmailAndPassword(email, password)
         .then(user => {
           resolve(user);
+        }).catch(err=>{
+          reject(err);
         });
     });
   },

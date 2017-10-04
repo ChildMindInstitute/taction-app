@@ -4,7 +4,8 @@ import Login from "../../../storybook/stories/screens/Login";
 import { connect } from "react-redux";
 
 @connect(store => {
-  return { loaded: store.loaded, user: store.user };
+  return { loaded: store.loaded, user: store.user ,    error:store.error.signinError
+};
 })
 class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -34,7 +35,7 @@ class LoginScreen extends React.Component {
     this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });
     if(this.props.loaded){
       this.navigate();
-    } else {
+    } else if(!this.props.error) {
       this.setState({ HasSubmitError: true });
     }
   }

@@ -8,7 +8,7 @@ var data = [];
 @connect(store=>{
   return{
     parent: store.user.parent,
-    child: store.user.child
+    child: store.user.child,
   }
 })
 class LoginAsScreen extends React.Component {
@@ -21,7 +21,11 @@ class LoginAsScreen extends React.Component {
   }
 
   componentWillMount(){
-    data=[{Name: this.props.parent.name}, {Name: this.props.child.childDetails.name}]
+    if(this.props.child.childDetails==null){
+      data = [{ Name: this.props.parent.name }];
+    }else{
+      data=[{Name: this.props.parent.name}, {Name: this.props.child.childDetails.name}]
+    }
   }
 
   render() {

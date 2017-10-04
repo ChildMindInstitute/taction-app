@@ -33,9 +33,7 @@ class Splash extends React.Component {
         this.props.dispatch({
           type: "SET_PARENT"
         });
-        this.props.dispatch({
-          type: "SET_CHILD"
-        });
+        this.props.dispatch({type: "SET_CHILD"});
       } else {
         this.props.navigation.dispatch(
           NavigationActions.reset({

@@ -51,10 +51,21 @@ const consentReducer=  (state={}, action)=>{
     return state;
 }
 
+const errorReducer = (state={signinError:false}, action)=>{
+    switch(action.type){
+        case 'ERROR_SIGNIN':{
+            state={...state, signinError: true,errorVal:action.payload}
+            break;
+        }
+    }
+    return state;
+}
+
 const reducer =  combineReducers({
     user: userReducer,
     loaded: waitReducer,
-    consent: consentReducer
+    consent: consentReducer,
+    error: errorReducer
 });
 
 export default reducer;

@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
 import { connect } from "react-redux";
+
 @connect(store => {
   return { loaded: store.loaded, user: store.user };
 })
@@ -46,12 +47,6 @@ class LoginScreen extends React.Component {
       })
     );
   }
-
-  // componentWillMount(){
-  //   if (this.props.loaded) {
-  //     this.navigate();
-  //   }
-  // }
 
   render() {
     return (

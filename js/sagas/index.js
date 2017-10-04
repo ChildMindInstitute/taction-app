@@ -2,7 +2,6 @@ import {all,call, put, take} from 'redux-saga/effects';
 import Db from '../../js/services';
 
 const setParent = function* setParent(){
-  console.log("inside setParent")
   yield take('SET_PARENT');
   const user = Db.getAuth().currentUser;
   yield put({
@@ -17,7 +16,6 @@ const setParent = function* setParent(){
 }
 
 const setChild = function* setChild() {
-  console.log("inside Age");
   yield take("SET_CHILD");
   console.log("API call for child DATA");
   var child = yield call(Db.getChildFromParent);
@@ -48,11 +46,11 @@ const userSignUp = function* userSignUp(){
   var user = yield take('USER_SIGNUP');
   console.log(user.payload);
   yield call(Db.createParent, user.payload.email, user.payload.password, user.payload.username, user.payload.consent);
+  yield put({type:'SET_PARENT'});
 }
 
 const addChild = function* addChild(){
   var child = yield take('ADD_CHILD');
-  //console.log(child);
   yield call(Db.createChild, child.payload.name, child.payload.age);
   yield put({type:'SET_CHILD'});
 }
@@ -60,6 +58,7 @@ const addChild = function* addChild(){
 const logoutUser= function* logoutUser(){
   yield take('USER_SIGN_OUT');
   yield call(Db.logoutUser);
+  yield put({type: 'CLEAR_STORE',});
 }
 
 const rootSaga = function* rootSaga() {

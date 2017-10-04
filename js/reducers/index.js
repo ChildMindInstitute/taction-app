@@ -10,6 +10,11 @@ const userReducer = (state = {} , action) => {
           state = { ...state, child: action.payload };
           break;
       }
+
+      case 'CLEAR_STORE':{
+          state={};
+          break;
+      }
   }
   return state;
 };
@@ -22,6 +27,11 @@ const waitReducer= (state=false , action)=>{
         }
         case "USER_LOADED":{
             state = true;
+            break;
+        }
+        case "CLEAR_STORE":{
+            state=false;
+            break;
         }
     }
     return state;
@@ -31,6 +41,10 @@ const consentReducer=  (state={}, action)=>{
     switch(action.type){
         case 'CONSENT':{
             state=action.payload;
+            break;
+        }
+        case "CLEAR_STORE":{
+            state={};
             break;
         }
     }

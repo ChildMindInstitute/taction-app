@@ -1,5 +1,13 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
+import {connect} from'react-redux';
+
+@connect(store => {
+  return {
+    parent: store.user.parent,
+    child: store.user.child
+  };
+})
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
@@ -23,9 +31,9 @@ class SettingsScreen extends React.Component {
         PressNoOfImagesPerSession={() => {}}
         NoOfImagesPerSession={10}
         NamePress={() => {}}
-        Name="Arno"
+        Name={this.props.parent.name}
         PasswordPress={() => {}}
-        Age={7}
+        Age={this.props.child.childDetails.age}
         AgePress={() => {}}
         Back={() => {}}
         RandomSlider={value => {

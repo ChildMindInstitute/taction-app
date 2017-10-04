@@ -28,7 +28,7 @@ class Splash extends React.Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
       FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
     });
-    await Db.getAuth().onAuthStateChanged(user => {
+    Db.getAuth().onAuthStateChanged(user => {
       if (user) {
         this.props.dispatch({
           type: "SET_PARENT"

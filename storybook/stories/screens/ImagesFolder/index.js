@@ -4,7 +4,6 @@ import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Button, Icon } from "native-base";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 let CheckedItems = [];
 class ListContent extends React.Component {
   static navigationOptions = {
@@ -44,7 +43,10 @@ class ListContent extends React.Component {
           TitleStyle={styles.HeaderLeftStyle}
         >
           {this.state.CheckedItems.length > 0 ? (
-            <Button transparent onPress={this.props.OnDeleteButton}>
+            <Button
+              transparent
+              onPress={() => this.props.OnPressDeleteButton(CheckedItems)}
+            >
               <Icon name="trash" style={{ color: "#fff" }} />
             </Button>
           ) : (
@@ -55,12 +57,7 @@ class ListContent extends React.Component {
           <View style={styles.GreetingsSpace}>
             <Button2
               OnPress={this.props.OnPressSubmitButton}
-              SubmitButtonStyle={{
-                marginLeft: "32%",
-                marginRight: "32%",
-                backgroundColor: "#eeae30",
-                borderRadius: 50
-              }}
+              SubmitButtonStyle={styles.AddFolderButtonStyle}
               ButtonText="+ AddFolder"
             />
           </View>

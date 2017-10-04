@@ -1,83 +1,52 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, View } from "native-base";
 import { Image } from "react-native";
 import Button from "../Button";
-class ModalContent extends Component {
+import styles from "./styles";
+class ModalContent extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <View style={{ alignItems: "center", justifyContent: "center" }}>
-        <Text
-          style={{
-            color: "#eeae30",
-            fontSize: 32,
-            marginBottom: "3%"
-          }}
-        >
+      <View style={styles.ContentMainViewStyle}>
+        <Text style={[styles.ContentMainViewTextStyle, styles.Text1]}>
           {this.props.GreetingLine1}
         </Text>
         {this.props.Line2needed ? (
-          <Text
-            style={{
-              color: "#eeae30",
-              fontSize: 32,
-              marginBottom: "7%"
-            }}
-          >
+          <Text style={[styles.ContentMainViewTextStyle, styles.Text2]}>
             {this.props.GreetingLine2}
           </Text>
         ) : (
           <View />
         )}
-        <Image source={this.props.Stars} style={{ width: 200, height: 60 }} />
-        <Text
-          style={{
-            color: "white",
-            fontSize: 26,
-            fontStyle: "italic",
-            fontWeight: "bold",
-            marginTop:"5%"
-          }}
-        >
+        <Image
+          source={this.props.Stars}
+          style={styles.ContentMainViewImageStyle}
+        />
+        <Text style={styles.ContentMainViewPointsTextStyle}>
           {this.props.DisplayPoints}
         </Text>
-        <Text style={{ color: "white", fontSize: 14 }}>
+        <Text style={styles.ContentMainViewLevelDescriptionStyle}>
           {this.props.Description}
         </Text>
         {this.props.IsButtonNeeded ? (
-          <View style={{ alignContent: "center" }}>
+          <View style={styles.ContentMainViewInnerView}>
             <Button
               OnPress={this.props.PlayNext}
               ButtonText="Play Next Level &rarr;"
-              SubmitButtonStyle={{
-                backgroundColor: "#eeae30",
-                opacity: 1,
-                margin: "5%",
-                borderRadius: 50
-              }}
-              SubmitButtonTextStyle={{
-                color: "#ffffff",
-                fontSize: 20,
-                fontWeight: "bold"
-              }}
+              SubmitButtonStyle={styles.ContentMainViewInnerViewButton1Style}
+              SubmitButtonTextStyle={
+                styles.ContentMainViewInnerViewButton1TextStyle
+              }
             />
             <Button
               OnPress={this.props.PlayAgain}
               ButtonText="Play Again &rarr;"
-              SubmitButtonStyle={{
-                backgroundColor: "#ffffff",
-                opacity: 1,
-                marginLeft: "10%",
-                marginRight: "10%",
-                borderRadius: 50
-              }}
-              SubmitButtonTextStyle={{
-                color: "#eeae30",
-                fontSize: 20,
-                fontWeight: "bold"
-              }}
+              SubmitButtonStyle={styles.ContentMainViewInnerViewButton2Style}
+              SubmitButtonTextStyle={
+                styles.ContentMainViewInnerViewButton2TextStyle
+              }
             />
           </View>
         ) : (

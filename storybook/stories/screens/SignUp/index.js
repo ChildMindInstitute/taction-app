@@ -6,11 +6,10 @@ import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { View, Form } from "native-base";
 import { StatusBar } from "react-native";
-
 import styles from "./styles";
 const SignUp = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
-    <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
+  <View style={styles.MainOuterView}>
+    <View style={styles.MainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
@@ -25,37 +24,37 @@ const SignUp = props => (
             IsPassword={false}
             Label="Username"
             OnChange={props.UsernameChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
+            LabelColor="white"
             ViewStyle={props.InputViewStyle}
+            Error={props.UsernameError}
+            ErrorText={props.Error.Username}
           />
           <FormInput
-            IsPassword={true}
+            IsPassword={false}
             Label="Email"
+            LabelColor="white"
             OnChange={props.EmailChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
+            Error={props.EmailError}
+            ErrorText={props.Error.Email}
           />
           <FormInput
             IsPassword={true}
+            LabelColor="white"
             Label="Password"
             OnChange={props.PasswordChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
+            Error={props.PasswordError}
+            ErrorText={props.Error.Password}
           />
           <FormInput
             IsPassword={true}
+            LabelColor="white"
             Label="ConfirmPassword"
             OnChange={props.ConfirmPasswordChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
             ViewStyle={props.InputViewStyle}
+            Error={props.ConfirmPasswordError}
+            ErrorText={props.Error.ConfirmPassword}
           />
         </Form>
       </View>
@@ -63,9 +62,9 @@ const SignUp = props => (
       <View style={styles.SubmitButtonSpace}>
         <Button
           OnPress={props.OnPressSubmitButton}
-          SubmitButtonStyle={props.SubmitButtonStyle}
+          SubmitButtonStyle={styles.SubmitButtonStyle}
+          SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
           ButtonText="Submit &rarr;"
-          SubmitButtonTextStyle={props.SubmitButtonTextStyle}
         />
       </View>
       <View style={styles.BottomLogoSpace}>
@@ -76,12 +75,17 @@ const SignUp = props => (
 );
 
 SignUp.propTypes = {
+  ConfirmPasswordError: PropTypes.bool,
+  PasswordError: PropTypes.bool,
+  EmailError: PropTypes.bool,
+  UsernameError: PropTypes.bool,
   BackgroundColor: PropTypes.string,
   UsernameChange: PropTypes.func,
   PasswordChange: PropTypes.func,
   ConfirmPasswordChange: PropTypes.func,
   OnPressSubmitButton: PropTypes.func,
   EmailChange: PropTypes.func,
+  Error: PropTypes.object,
   SubmitButtonStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.number,

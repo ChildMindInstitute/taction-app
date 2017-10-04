@@ -1,20 +1,18 @@
-import React, { Component } from "react";
-import {connect} from 'react-redux';
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
+import { connect } from "react-redux";
+import { NavigationActions } from "react-navigation";
 import SplashScreen from "../../../storybook/stories/screens/SplashScreen";
-import Db from '../../services';
+import Db from "../../services";
 import Expo from "expo";
 
-@connect (store=>{
+@connect(store => {
   return {
     parent: store.user.parent,
     child: store.user.child,
     loaded: store.loaded
-  }
-
+  };
 })
-
-class Splash extends Component {
+class Splash extends React.Component {
   static navigationOptions = {
     title: "Splash",
     header: null
@@ -36,10 +34,10 @@ class Splash extends Component {
     Db.getAuth().onAuthStateChanged((user)=>{
       if(user){
         this.props.dispatch({
-          type: 'SET_PARENT'
+          type: "SET_PARENT"
         });
         this.props.dispatch({
-          type: 'SET_CHILD'
+          type: "SET_CHILD"
         });
         if (this.props.loaded) {
           this.props.navigation.dispatch(NavigationActions.reset({
@@ -53,18 +51,17 @@ class Splash extends Component {
       else{
         this.props.navigation.dispatch(NavigationActions.reset({
             index: 0,
-            actions: [
-              NavigationActions.navigate({ routeName: "Login" })
-            ]
-          }));
+            actions: [NavigationActions.navigate({ routeName: "Login" })]
+          })
+        );
       }
-    })
+    });
   }
 
   navigate(){
     this.props.navigation.dispatch(NavigationActions.reset({
         index: 0,
-        actions: [NavigationActions.navigate({ routeName: "Login" })]
+        actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
       }));
   }
 

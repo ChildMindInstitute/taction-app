@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
+import { NavigationActions } from "react-navigation";
 import LoginAs from "../../../storybook/stories/screens/LoginAs";
 import {connect} from 'react-redux';
 
@@ -11,7 +11,7 @@ var data = [];
     child: store.user.child
   }
 })
-class LoginAsScreen extends Component {
+class LoginAsScreen extends React.Component {
   static navigationOptions = {
     title: "LoginAsScreen",
     header: null
@@ -27,8 +27,6 @@ class LoginAsScreen extends Component {
   render() {
     return (
       <LoginAs
-        BackgroundColor="#0067a0"
-        ListStyle={{}}
         Data={data}
         CheckBoxPress={(item, checked) => {
           if (checked && data.indexOf(item) === 0) {
@@ -44,6 +42,7 @@ class LoginAsScreen extends Component {
               })
             );
           } else {
+            //ActionwithItemSelected
             this.props.navigation.dispatch(
               NavigationActions.reset({
                 index: 0,

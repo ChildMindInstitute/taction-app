@@ -2,12 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import DashboardGreetings from "../../components/DashboardGreetings";
 import DashboardList from "../../components/DashboardList";
-import Button from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Text } from "native-base";
-import { Image } from "react-native";
+import { Container, View } from "native-base";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 const Dashboard = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
@@ -24,12 +21,7 @@ const Dashboard = props => (
         <DashboardGreetings>{props.children}</DashboardGreetings>
       </View>
       <View style={styles.ListSpace}>
-        <DashboardList
-          IconName={props.ExcerciseDataIcon}
-          ListData={props.ExcerciseData}
-          ListItemPress={props.ListItemPress}
-          IsContentVisible={props.IsContentVisible}
-        />
+        <DashboardList ListData={props.ExcerciseData} />
       </View>
     </View>
   </Container>

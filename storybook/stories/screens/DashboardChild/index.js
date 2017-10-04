@@ -2,14 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import DashboardGreetings from "../../components/DashboardGreetings";
 import DashboardChildList from "../../components/DashboardChildList";
-import Button from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Text } from "native-base";
-import { Image } from "react-native";
+import { Container, View } from "native-base";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const DashboardChild = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+  <View style={styles.ContainerOuterView}>
     <Container style={styles.ContainerStyle}>
       <StatusBar
         translucent={true}

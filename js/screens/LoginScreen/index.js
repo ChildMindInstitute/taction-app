@@ -1,25 +1,28 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
+import { NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
-import {connect} from 'react-redux';
-
-var userName;
-var password;
-
-
-@connect(store=>{
-  return{
-    user: store.user.parent,
-    loaded: store.loaded
-  }
-})
-class LoginScreen extends Component {
+class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
     header: null
   };
   constructor(props) {
     super(props);
+    this.Input = {
+      UserName: "",
+      Password: ""
+    };
+
+    this.state = {
+      EmailHasError: false,
+      PasswordHasError: false,
+      HasSubmitError: false
+    };
+    this.Error = {
+      Username: "Required",
+      Password: "Required",
+      SubmitError: "Invalid Credentials"
+    };
   }
 
   loginUser(){
@@ -45,26 +48,21 @@ class LoginScreen extends Component {
   render() {    
     return (
       <Login
-        BackgroundColor="#0067a0"
-        ViewStyle={{ flex: 1 }}
-        UsernameChange={event => userName=event.nativeEvent.text}
-        InputStyle={{
-          width: "102%",
-          backgroundColor: "white"
+        UsernameChange={event => {
+          this.Input.UserName = event.nativeEvent.text;
+          if (this.Input.UserName == "") {
+            this.setState({ EmailHasError: true });
+          } else this.setState({ EmailHasError: false });
         }}
-        InputLabelStyle={{
-          fontSize: 16,
-          color: "white",
-          alignSelf: "flex-start"
-        }}
-        InputItemStyle={{
-          flex: 1,
-          flexDirection: "column",
-          borderColor: "transparent"
-        }}
+        LabelColor="white"
         StatusBarStyle="light-content"
         InputViewStyle={{ flex: 1, margin: "3%" }}
-        PasswordChange={event => password= event.nativeEvent.text}
+        PasswordChange={event => {
+          this.Input.Password = event.nativeEvent.text;
+          if (this.Input.Password == "") {
+            this.setState({ PasswordHasError: true });
+          } else this.setState({ PasswordHasError: false });
+        }}
         ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}
         ForgotPasswordButtonStyle={{
           flex: 1,
@@ -73,11 +71,21 @@ class LoginScreen extends Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
-          this.loginUser();
-          {/* this.props.navigation.navigate("LoginAs"); */}
+          this.setState({ HasSubmitError: true });
+          if (this.state.HasSubmitError)
+            this.props.navigation.dispatch(
+              NavigationActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({
+                    params: { NewRegistration: true },
+                    routeName: "LoginAs"
+                  })
+                ]
+              })
+            );
         }}
-        SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "5%" }}
-        SubmitButtonTextStyle={{ color: "white" }}
+        Error={this.Error}
         OnPressRegisterNow={() => {
           this.props.navigation.navigate("Consent");
         }}
@@ -90,6 +98,9 @@ class LoginScreen extends Component {
           marginTop: "20%",
           color: "#ccc"
         }}
+        HasSubmitError={this.state.HasSubmitError}
+        EmailHasError={this.state.EmailHasError}
+        PasswordHasError={this.state.PasswordHasError}
       />
     );
   }

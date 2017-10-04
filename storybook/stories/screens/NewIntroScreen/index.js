@@ -8,20 +8,14 @@ import { Image } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const NewIntro = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
+  <View style={styles.MainOuterView}>
     <View style={styles.MainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle={props.StatusBarStyle}
       />
-      <Logo2
-        imageDimensions={{
-          position: "absolute",
-          width: "100%",
-          height: "100%"
-        }}
-      />
+      <Logo2 imageDimensions={styles.BackgroundImage} />
       <View style={styles.TopSpace}>
         <View
           style={[
@@ -52,6 +46,7 @@ const NewIntro = props => (
           >
             {props.Score}
           </Text>
+          {props.children}
           <Image style={styles.StarsStyle} source={props.Stars} />
           <Button
             OnPress={props.PlayOnPress}

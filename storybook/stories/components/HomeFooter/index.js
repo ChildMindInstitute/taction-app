@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Footer, View, Text } from "native-base";
+import styles from "./styles";
 const HomeFooter = props => {
   let renderProgress = [];
   for (let i = 0; i < props.Left; i++) {
@@ -8,37 +9,21 @@ const HomeFooter = props => {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={{
-            flex: 1,
-            backgroundColor: "#eeae30",
-            borderTopLeftRadius: 50,
-            borderBottomLeftRadius: 50,
-            margin: "1%"
-          }}
+          style={[styles.LeftEndBar, styles.CompletedBarColor]}
         />
       );
     else if (renderProgress.length == props.Total - 1) {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={{
-            flex: 1,
-            backgroundColor: "#eeae30",
-            borderTopRightRadius: 50,
-            borderBottomRightRadius: 50,
-            margin: "1%"
-          }}
+          style={[styles.RightEndBar, styles.CompletedBarColor]}
         />
       );
     } else {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={{
-            flex: 1,
-            backgroundColor: "#eeae30",
-            margin: "1%"
-          }}
+          style={[styles.MiddleBar, styles.CompletedBarColor]}
         />
       );
     }
@@ -48,71 +33,30 @@ const HomeFooter = props => {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={{
-            flex: 1,
-            backgroundColor: "#fff",
-            borderTopLeftRadius: 50,
-            borderBottomLeftRadius: 50,
-            margin: "1%"
-          }}
+          style={[styles.LeftEndBar, styles.IncompleteBarColor]}
         />
       );
     else if (renderProgress.length == props.Total - 1) {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={{
-            flex: 1,
-            backgroundColor: "#fff",
-            borderTopRightRadius: 50,
-            borderBottomRightRadius: 50,
-            margin: "1%"
-          }}
+          style={[styles.RightEndBar, styles.IncompleteBarColor]}
         />
       );
     } else {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={{
-            flex: 1,
-            backgroundColor: "#fff",
-            margin: "1%"
-          }}
+          style={[styles.MiddleBar, styles.IncompleteBarColor]}
         />
       );
     }
   }
   return (
-    <Footer
-      style={[
-        {
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          backgroundColor: "white"
-        },
-        props.FooterStyle
-      ]}
-    >
-      <View
-        style={{
-          flex: 1,
-          borderRadius: 50,
-          width: "80%",
-          height: "0%",
-          borderColor: "#ccc",
-          borderWidth: 1,
-          borderStyle: "solid",
-          flexDirection: "row",
-          margin: "5%",
-          backgroundColor: "#eee"
-        }}
-      >
-        {renderProgress}
-      </View>
-      <View style={{ flex: 2 }}>
-        <Text style={{ color: "#0067a0", fontWeight: "bold" }}>
+    <Footer style={[styles.FooterStyle, props.FooterStyle]}>
+      <View style={styles.FooterInnerView1Style}>{renderProgress}</View>
+      <View style={styles.FooterInnerView2Style}>
+        <Text style={styles.FooterInnerView2TextStyle}>
           {props.Left + "/" + props.Total}
         </Text>
       </View>

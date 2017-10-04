@@ -6,68 +6,76 @@ import FormInput from "../../components/FormInput";
 import ForgotPassword from "../../components/ForgotPassword";
 import Button from "../../components/Button";
 import RegisterWithUs from "../../components/RegisterWithUs";
-import { View, Form } from "native-base";
+import { View, Form, Text } from "native-base";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const Login = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
-    <View style={[styles.MainView, { backgroundColor: props.BackgroundColor }]}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle={props.StatusBarStyle}
+  <View style={styles.MainView}>
+    <StatusBar
+      translucent={true}
+      backgroundColor="transparent"
+      barStyle={props.StatusBarStyle}
+    />
+    <View style={styles.TopSpace}>
+      <Logo />
+    </View>
+    <View style={styles.FormSpace}>
+      <Form style={styles.FormStyle}>
+        <FormInput
+          IsPassword={false}
+          Label="Username"
+          OnChange={props.UsernameChange}
+          ViewStyle={props.InputViewStyle}
+          Error={props.EmailHasError}
+          LabelColor={props.LabelColor}
+          ErrorText={props.Error.Username}
+        />
+        <FormInput
+          IsPassword={true}
+          Label="Password"
+          OnChange={props.PasswordChange}
+          ViewStyle={props.InputViewStyle}
+          Error={props.PasswordHasError}
+          LabelColor={props.LabelColor}
+          ErrorText={props.Error.Password}
+        />
+      </Form>
+    </View>
+    <View style={styles.ForgotPasswordSpace}>
+      <ForgotPassword
+        ForgotPasswordTextStyle={props.ForgotPasswordTextStyle}
+        ForgotPasswordButtonStyle={props.ForgotPasswordButtonStyle}
+        OnPressForgotPassword={props.OnPressForgotPassword}
       />
-      <View style={styles.TopSpace}>
-        <Logo />
-      </View>
-      <View style={styles.FormSpace}>
-        <Form style={styles.FormStyle}>
-          <FormInput
-            IsPassword={false}
-            Label="Username"
-            OnChange={props.UsernameChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
-            ViewStyle={props.InputViewStyle}
-          />
-          <FormInput
-            IsPassword={true}
-            Label="Password"
-            OnChange={props.PasswordChange}
-            InputStyle={props.InputStyle}
-            LabelStyle={props.InputLabelStyle}
-            ItemStyle={props.InputItemStyle}
-            ViewStyle={props.InputViewStyle}
-          />
-        </Form>
-      </View>
-      <View style={styles.ForgotPasswordSpace}>
-        <ForgotPassword
-          ForgotPasswordTextStyle={props.ForgotPasswordTextStyle}
-          ForgotPasswordButtonStyle={props.ForgotPasswordButtonStyle}
-          OnPressForgotPassword={props.OnPressForgotPassword}
-        />
-      </View>
-      <View style={styles.SubmitButtonSpace}>
-        <Button
-          OnPress={props.OnPressSubmitButton}
-          SubmitButtonStyle={props.SubmitButtonStyle}
-          ButtonText="Submit &rarr;"
-          SubmitButtonTextStyle={props.SubmitButtonTextStyle}
-        />
-      </View>
-      <View style={styles.RegisterNowSpace}>
-        <RegisterWithUs OnPressRegisterNow={props.OnPressRegisterNow} />
-      </View>
-      <View style={styles.BottomLogoSpace}>
-        <Logo1 imageDimensions={styles.SubLogoStyles} />
-      </View>
+    </View>
+    <View style={styles.SubmitButtonSpace}>
+      <Button
+        OnPress={props.OnPressSubmitButton}
+        SubmitButtonStyle={styles.SubmitButtonStyle}
+        SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
+        ButtonText="Submit &rarr;"
+      />
+    </View>
+    <View style={styles.ErrorSpace}>
+      <Text style={styles.ErrorText}>
+        {props.HasSubmitError ? props.Error.SubmitError : " "}
+      </Text>
+    </View>
+    <View style={styles.RegisterNowSpace}>
+      <RegisterWithUs OnPressRegisterNow={props.OnPressRegisterNow} />
+    </View>
+    <View style={styles.BottomLogoSpace}>
+      <Logo1 imageDimensions={styles.SubLogoStyles} />
     </View>
   </View>
 );
 
 Login.propTypes = {
+  Error: PropTypes.object,
+  HasSubmitError: PropTypes.bool,
+  LabelColor: PropTypes.string,
+  EmailHasError: PropTypes.bool,
+  PasswordHasError: PropTypes.bool,
   ViewStyle: PropTypes.object,
   BackgroundColor: PropTypes.string,
   UsernameChange: PropTypes.func,

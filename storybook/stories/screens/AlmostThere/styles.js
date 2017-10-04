@@ -1,6 +1,10 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
+  MainOuterView: {
+    flex: 1,
+    backgroundColor: "#0067a0"
+  },
   MainView: {
     flex: 1,
     backgroundColor: "#0067a0",

@@ -1,7 +1,5 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
-import Expo from "expo";
 const ExcerciseData = [
   {
     Name: "Spider",
@@ -120,7 +118,7 @@ const ExcerciseData = [
     ]
   }
 ];
-class ImagesFolderScreen extends Component {
+class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
     title: "ImagesFolderScreen",
     header: null
@@ -144,8 +142,11 @@ class ImagesFolderScreen extends Component {
           this.props.navigation.navigate("AddFolder");
         }}
         ExcerciseData={ExcerciseData}
-        SwitchToggled={() => {}}
+        SwitchToggled={(item, onOff) => {
+          console.log(item + " " + onOff);
+        }}
         StatusBarStyle="light-content"
+        OnPressDeleteButton={CheckedItems => console.log(CheckedItems)}
       />
     );
   }

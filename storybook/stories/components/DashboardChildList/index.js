@@ -3,52 +3,35 @@ import PropTypes from "prop-types";
 import { Text, View, Card } from "native-base";
 import { Image, TouchableOpacity } from "react-native";
 import Grid from "react-native-grid-component";
+import styles from "./styles";
 const DashboardChildList = props => (
-  <View style={{ flex: 1, margin: "5%", alignContent: "center" }}>
+  <View style={styles.MainView}>
     <Grid
-      style={{ flex: 1 }}
+      style={styles.GridStyle}
       renderItem={(data, i) => (
         <TouchableOpacity
           transparent
           onPress={() => props.ItemPress(data)}
-          style={{
-            opacity: data.IsPlayed ? 0.3 : 1,
-            height: 160,
-            width: 110,
-            marginLeft: "1%",
-            marginBottom: "3%"
-          }}
-          key={i + "    "}
+          style={[
+            styles.GridItemButtonStyle,
+            { opacity: data.IsPlayed ? 0.3 : 1 }
+          ]}
         >
-          <Card key={i + " "}>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "15%",
-                height: 100
-              }}
-              key={i}
-            >
+          <Card>
+            <View style={styles.CardView} key={i}>
               <Image
                 source={data.Image}
-                style={{ width: 50, height: 50 }}
+                style={styles.CardImage}
                 resizeMethod="auto"
                 resizeMode="contain"
-                key={i + "  "}
               />
-              <Text key={i + "   "} style={{ fontSize: 14 }}>
-                {data.Name}
-              </Text>
+              <Text style={styles.CardText}>{data.Name}</Text>
               {data.IsPlayed ? (
                 <Image
                   source={data.Stars}
-                  style={{ width: 50, height: 15 }}
+                  style={styles.CardStarImage}
                   resizeMethod="auto"
                   resizeMode="contain"
-                  key={i + "    "}
                 />
               ) : (
                 <View />

@@ -1,6 +1,12 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
+  BackgroundImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%"
+  },
+  MainOuterView: { flex: 1, backgroundColor: "#0067a0" },
   MainView: {
     flex: 1,
     marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0

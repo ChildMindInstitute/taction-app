@@ -17,6 +17,12 @@ const styles = StyleSheet.create({
   ContentStyle: { flex: 1, marginLeft: "-4%" },
   GreetingsSpace: { flex: 2, alignItems: "center", justifyContent: "center" },
   ListSpace: { flex: 13 },
-  ContainerStyle: { flex: 1, backgroundColor: "#eee" }
+  ContainerStyle: { flex: 1, backgroundColor: "#eee" },
+  AddFolderButtonStyle: {
+    marginLeft: "32%",
+    marginRight: "32%",
+    backgroundColor: "#eeae30",
+    borderRadius: 50
+  }
 });
 export default styles;

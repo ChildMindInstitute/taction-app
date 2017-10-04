@@ -6,10 +6,9 @@ import Logo1 from "../../components/Logo.1";
 import { View } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
-
 const SplashScreen = props => (
-  <View style={{ flex: 1, backgroundColor: "#0067a0" }}>
-    <View style={[styles.MainView, { backgroundColor: props.backgroundColor }]}>
+  <View style={styles.MainOuterView}>
+    <View style={styles.MainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"

@@ -1,41 +1,72 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { View, Text } from "native-base";
-const HomeTimer = props => (
-  <View style={[props.ViewStyle]}>
-    <View
-      style={{
-        position: "absolute",
-        borderRadius: 50,
-        backgroundColor: "#f2cd32",
-        width: 70,
-        height: 70
-      }}
-    >
-      <View
-        style={{
-          left: 5,
-          top: 5,
-          position: "relative",
-          borderRadius: 50,
-          backgroundColor: "#0067a0",
-          width: 60,
-          height: 60,
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <Text style={{ color: "white" }}>{props.TimeLeft}</Text>
-        <Text note>{props.TimeLeftDenomination}</Text>
+import styles from "./styles";
+class HomeTimer extends React.Component {
+  static navigationOptions = {
+    title: "HomeTimer",
+    header: null
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      timer: this.props.TimeLeft,
+      timeUp: false,
+      interval: null
+    };
+    this.future = new Date().getTime() + this.props.TimeLeft;
+  }
+  returnMinSec(distance) {
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    return (
+      (minutes ? minutes + ":" : "") +
+      (seconds < 10 && seconds != 0
+        ? "0" + seconds
+        : seconds >= 10 ? seconds : "00")
+    );
+  }
+  componentDidMount() {
+    let x = setInterval(() => {
+      let now = new Date().getTime();
+      if (this.future - now >= 0) {
+        this.setState({ timer: this.future - now });
+      } else {
+        this.setState({ timer: "Expired" });
+        clearInterval(x);
+      }
+    }, 1000);
+    this.setState({ interval: x });
+  }
+  render() {
+    return (
+      <View style={this.props.ViewStyle}>
+        <View style={styles.OuterCircle}>
+          <View style={styles.InnerCircle}>
+            <Text style={styles.TimeTextStyle}>
+              {this.state.timer != "Expired" ? (
+                this.returnMinSec(this.state.timer)
+              ) : (
+                "Over"
+              )}
+            </Text>
+            {this.state.timer != "Expired" ? (
+              <View />
+            ) : (
+              this.props.FinishedFunc()
+            )}
+            <Text note>
+              {this.state.timer > 60000 ? (
+                "Min"
+              ) : this.state.timer != "Expired" ? (
+                "Sec"
+              ) : (
+                ""
+              )}
+            </Text>
+          </View>
+        </View>
       </View>
-    </View>
-  </View>
-);
-
-HomeTimer.propTypes = {
-  TimeLeftDenomination: PropTypes.string,
-  TimeLeft: PropTypes.string,
-  ViewStyle: PropTypes.number
-};
-
-export { HomeTimer as default };
+    );
+  }
+}
+export default HomeTimer;

@@ -1,23 +1,42 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import SignUp from "../../../storybook/stories/screens/SignUp";
 import {connect} from 'react-redux';
 
 var username, email, password, cnfpassword;
 
+
+const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 @connect(store=>{
   return{
     consent: store.consent,
     user: store.user
   }
 })
-class LoginScreen extends Component {
+class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
     header: null
   };
   constructor(props) {
     super(props);
+    this.Input = {
+      ConfirmPassword: "",
+      Password: "",
+      Email: "",
+      Username: ""
+    };
+    this.state = {
+      ConfirmPasswordError: false,
+      PasswordError: false,
+      EmailError: false,
+      UsernameError: false
+    };
+    this.Error = {
+      ConfirmPassword: "Must Match Password",
+      Password: "Required",
+      Email: "Invalid Email ID",
+      Username: "Username Already Taken"
+    };
   }
 
   signUp(){
@@ -39,20 +58,13 @@ class LoginScreen extends Component {
     return (
       <SignUp
         BackgroundColor="#0067a0"
-        UsernameChange={event => username= event.nativeEvent.text}
-        InputStyle={{
-          width: "102%",
-          backgroundColor: "white"
-        }}
-        InputLabelStyle={{
-          fontSize: 16,
-          color: "white",
-          alignSelf: "flex-start"
-        }}
-        InputItemStyle={{
-          flex: 1,
-          flexDirection: "column",
-          borderColor: "transparent"
+        UsernameChange={event => {
+          this.Input.Username = event.nativeEvent.text;
+          if (this.Input.Username == "") {
+            this.setState({ UsernameError: true });
+          } else {
+            this.setState({ UsernameError: false });
+          }
         }}
         InputViewStyle={{
           flex: 1,
@@ -60,13 +72,47 @@ class LoginScreen extends Component {
           marginLeft: "5%",
           marginRight: "5%"
         }}
-        PasswordChange={event => password=event.nativeEvent.text}
-        OnPressSubmitButton={() => this.signUp()}
-        SubmitButtonStyle={{ backgroundColor: "#eeae30", margin: "3%" }}
-        SubmitButtonTextStyle={{ color: "white" }}
+        PasswordChange={event => {
+          this.Input.Password = event.nativeEvent.text;
+          if (this.Input.Password == "") {
+            this.setState({ PasswordError: true });
+          } else {
+            this.setState({ PasswordError: false });
+            if (this.Input.Password == this.Input.ConfirmPassword) {
+              this.setState({ ConfirmPasswordError: false });
+            }
+          }
+        }}
+        OnPressSubmitButton={() =>
+          this.props.navigation.navigate("AlmostThere")}
         StatusBarStyle="light-content"
-        ConfirmPasswordChange={event => cnfpassword= event.nativeEvent.text}
-        EmailChange={event => email= event.nativeEvent.text}
+        ConfirmPasswordChange={event => {
+          this.Input.ConfirmPassword = event.nativeEvent.text;
+          if (
+            this.Input.ConfirmPassword == this.Input.Password &&
+            this.Input.Password != ""
+          ) {
+            this.setState({ ConfirmPasswordError: false });
+          } else if (this.Input.Password == "") {
+            this.setState({ ConfirmPasswordError: true });
+            this.setState({ PasswordError: true });
+          } else {
+            this.setState({ ConfirmPasswordError: true });
+          }
+        }}
+        EmailChange={event => {
+          this.Input.Email = event.nativeEvent.text;
+          if (RegExEmail.test(this.Input.Email)) {
+            this.setState({ EmailError: false });
+          } else {
+            this.setState({ EmailError: true });
+          }
+        }}
+        ConfirmPasswordError={this.state.ConfirmPasswordError}
+        PasswordError={this.state.PasswordError}
+        EmailError={this.state.EmailError}
+        UsernameError={this.state.UsernameError}
+        Error={this.Error}
       />
     );
   }

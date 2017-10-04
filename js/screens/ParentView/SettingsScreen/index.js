@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import { StackNavigator, NavigationActions } from "react-navigation";
+import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
-import Expo from "expo";
-class SettingsScreen extends Component {
+class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
     header: null

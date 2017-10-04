@@ -54,6 +54,7 @@ const Login = props => (
         SubmitButtonStyle={styles.SubmitButtonStyle}
         SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
         ButtonText="Submit &rarr;"
+        Submitted={props.Submitted}
       />
     </View>
     <View style={styles.ErrorSpace}>
@@ -71,6 +72,7 @@ const Login = props => (
 );
 
 Login.propTypes = {
+  Submitted: PropTypes.bool,
   Error: PropTypes.object,
   HasSubmitError: PropTypes.bool,
   LabelColor: PropTypes.string,

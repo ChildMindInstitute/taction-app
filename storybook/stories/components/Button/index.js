@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Text, Icon, View } from "native-base";
+import { Button, Text, Icon, View, Spinner } from "native-base";
 const CustomButton = props => (
   <Button
     full
@@ -16,11 +16,16 @@ const CustomButton = props => (
     ) : (
       <View />
     )}
-    <Text style={props.SubmitButtonTextStyle}>{props.ButtonText}</Text>
+    {props.Submitted ? (
+      <Spinner color="white" />
+    ) : (
+      <Text style={props.SubmitButtonTextStyle}>{props.ButtonText}</Text>
+    )}
   </Button>
 );
 
 CustomButton.propTypes = {
+  Submitted: PropTypes.bool,
   IsIconRequired: PropTypes.bool,
   Disabled: PropTypes.bool,
   OnPress: PropTypes.func,

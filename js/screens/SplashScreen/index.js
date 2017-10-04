@@ -20,20 +20,20 @@ class Splash extends React.Component {
   constructor(props) {
     super(props);
     Db.initDb();
+    this.state = { UserAvailable: false, isLoading: false, UserLoaded: false };
+    this.MountExecute;
   }
   async componentWillMount() {
+    this.setState({ isLoading: true });
     await Expo.Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
       FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
     });
-  }
-
-  componentDidMount() {
-    Db.getAuth().onAuthStateChanged(user => {
-      //console.log(this.props.loading,"logging loading prop");
+    await Db.getAuth().onAuthStateChanged(user => {
       if (user) {
+        this.setState({ UserAvailable: true });
         this.props.dispatch({
           type: "SET_PARENT"
         });
@@ -41,25 +41,42 @@ class Splash extends React.Component {
           type: "SET_CHILD"
         });
         if (this.props.loaded) {
+          this.setState({ UserLoaded: true });
+        } else {
+          this.setState({ UserLoaded: false });
+        }
+      } else {
+        this.setState({ UserAvailable: false });
+      }
+    });
+    this.setState({ isLoading: false });
+  }
+  Execute() {
+    if (this.state.UserAvailable && this.state.UserLoaded) {
+      this.props.navigation.dispatch(
+        NavigationActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+        })
+      );
+    } else if (!this.state.UserAvailable) {
+      setTimeout(
+        () =>
           this.props.navigation.dispatch(
             NavigationActions.reset({
               index: 0,
-              actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+              actions: [NavigationActions.navigate({ routeName: "Login" })]
             })
-          );
-        }
-      } else {
-        this.props.navigation.dispatch(
-          NavigationActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({ routeName: "Login" })]
-          })
-        );
-      }
-    });
+          ),
+        1
+      );
+    }
   }
 
   render() {
+    if (!this.state.isLoading) {
+      this.Execute();
+    }
     return (
       <SplashScreen
         ImageDimensions={{ width: 200, height: 300 }}

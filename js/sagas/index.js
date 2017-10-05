@@ -1,4 +1,4 @@
-import {all,call, put, take, takeEvery} from 'redux-saga/effects';
+import {all,call, put, take, takeLatest} from 'redux-saga/effects';
 import Db from '../../js/services';
 
 const setParentEvery = function* setParentEvery(){
@@ -12,27 +12,26 @@ const setParentEvery = function* setParentEvery(){
       emailVerified: user.emailVerified,
     } 
   })
-  
+  console.log("setParentEvery");
 }
 
 const setParent = function* setParent(){
-  yield takeEvery('SET_PARENT', setParentEvery);
+  yield takeLatest('SET_PARENT', setParentEvery);
+  console.log("setParent");
 }
-
 const setChildEvery = function* setChildEvery(){
-  console.log("API call for child DATA");
   var child = yield call(Db.getChildFromParent);
-  console.log("API call returned");
   yield put({ 
     type: "CHILD",
     payload: child
   });
-  yield put({type: 'USER_LOADED'})
-  
+  yield put({type: 'USER_LOADED'}) ;
+  console.log("setchildevery");
 }
 
 const setChild = function* setChild() {
-  yield takeEvery("SET_CHILD",setChildEvery );
+  yield takeLatest("SET_CHILD",setChildEvery );
+  console.log("setChild")
 };
 
 const signIn = function* signIn(action){
@@ -48,21 +47,13 @@ const signIn = function* signIn(action){
 } 
 
 const userSignIn = function* userSignIn(){
-  var user = yield takeEvery("USER_SIGN_IN", signIn);
-  console.log(user, "logging takevery return");
+   yield takeLatest("USER_SIGN_IN", signIn);
 }
 
 const setConsent = function* setConsent(){
   var consent = yield take("SET_CONSENT");
   console.log(consent, "logging consent in saga");
   yield put({type: "CONSENT", payload: {Term1: consent.payload.Term1, Term2: consent.payload.Term2, Term3: consent.payload.Term3} });
-}
-
-const userSignUp = function* userSignUp(){
-  var user = yield take('USER_SIGNUP');
-  console.log(user.payload);
-  yield call(Db.createParent, user.payload.email, user.payload.password, user.payload.username, user.payload.consent);
-  yield put({type:'SET_PARENT'});
 }
 
 const addChild = function* addChild(){
@@ -78,13 +69,34 @@ const logoutUserEvery = function* logoutUserEvery(){
 }
 
 const logoutUser= function* logoutUser(){
-  yield takeEvery('USER_SIGN_OUT', logoutUserEvery);
+  console.log("logout");
+  yield takeLatest('USER_SIGN_OUT', logoutUserEvery);
 }
 
+const setNewParent = function* setNewParent() {
+  yield take("SET_NEW_PARENT");
+  console.log("setnewparent");
+  const user = Db.getAuth().currentUser;
+  yield put({
+    type: "PARENT",
+    payload: {
+      UID: user.uid,
+      name: user.displayName,
+      email: user.email,
+      emailVerified: user.emailVerified
+    }
+  });
+};
+
+const userSignUp = function* userSignUp(){
+  let user=yield take('USER_SIGNUP');  
+  yield call(Db.createParent, user.payload.email, user.payload.password, user.payload.username, user.payload.consent);
+  yield put({type:"SET_NEW_PARENT"});
+}
 
 const rootSaga = function* rootSaga() {
   console.log("root saga");
-  yield all([userSignIn(), setParent(), setChild(), setConsent(), userSignUp(), addChild(), logoutUser()]);
+  yield all([userSignUp(),setParent(), userSignIn(),logoutUser(),  setChild(), setConsent(),  addChild(), setNewParent() ]);
 }
 
 export default rootSaga;

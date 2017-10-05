@@ -52,13 +52,25 @@ const styles = StyleSheet.create({
     width: 40
   },
   ListItemGridItemInnerViewStyle: {
-    backgroundColor: "#000",
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#eee",
     alignItems: "center",
-    marginTop: "63%",
-    opacity: 0.65
+    marginTop: "63%"
   },
+  ListItemGridItemInnerViewInnerViewStyle: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center"
+  },
+  TickCrossImageDimenstions: { width: 20, height: 20 },
   ListItemGridItemInnerViewTextStyle: {
-    color: "#ccc",
+    color: "red",
+    fontSize: 14,
+    margin: "2%"
+  },
+  ListItemGridItemInnerViewText2Style: {
+    color: "green",
     fontSize: 14,
     margin: "2%"
   }

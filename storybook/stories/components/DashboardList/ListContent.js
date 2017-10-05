@@ -78,9 +78,38 @@ class ListContent extends React.Component {
                     resizeMode="contain"
                   >
                     <View style={styles.ListItemGridItemInnerViewStyle}>
-                      <Text style={styles.ListItemGridItemInnerViewTextStyle}>
-                        {data.Taps}/{data.TotalTaps}{" "}
-                      </Text>
+                      <View
+                        style={styles.ListItemGridItemInnerViewInnerViewStyle}
+                      >
+                        <Image
+                          source={require("../../../../js/assets/Tick.png")}
+                          style={styles.TickCrossImageDimenstions}
+                          resizeMode="contain"
+                          resizeMethod="auto"
+                        />
+                        <Text
+                          style={styles.ListItemGridItemInnerViewText2Style}
+                        >
+                          {data.Taps}
+                        </Text>
+                      </View>
+                      <View
+                        style={{
+                          flex: 1,
+                          flexDirection: "row",
+                          justifyContent: "center"
+                        }}
+                      >
+                        <Image
+                          source={require("../../../../js/assets/Cross.png")}
+                          style={styles.TickCrossImageDimenstions}
+                          resizeMode="contain"
+                          resizeMethod="auto"
+                        />
+                        <Text style={styles.ListItemGridItemInnerViewTextStyle}>
+                          {data.TotalTaps}
+                        </Text>
+                      </View>
                     </View>
                   </Image>
                 )}

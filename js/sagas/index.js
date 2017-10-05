@@ -1,8 +1,7 @@
-import {all,call, put, take} from 'redux-saga/effects';
+import {all,call, put, take, takeEvery} from 'redux-saga/effects';
 import Db from '../../js/services';
 
-const setParent = function* setParent(){
-  yield take('SET_PARENT');
+const setParentEvery = function* setParentEvery(){
   const user = Db.getAuth().currentUser;
   yield put({
     type: 'PARENT',
@@ -13,10 +12,14 @@ const setParent = function* setParent(){
       emailVerified: user.emailVerified,
     } 
   })
+  
 }
 
-const setChild = function* setChild() {
-  yield take("SET_CHILD");
+const setParent = function* setParent(){
+  yield takeEvery('SET_PARENT', setParentEvery);
+}
+
+const setChildEvery = function* setChildEvery(){
   console.log("API call for child DATA");
   var child = yield call(Db.getChildFromParent);
   console.log("API call returned");
@@ -25,19 +28,28 @@ const setChild = function* setChild() {
     payload: child
   });
   yield put({type: 'USER_LOADED'})
+  
+}
+
+const setChild = function* setChild() {
+  yield takeEvery("SET_CHILD",setChildEvery );
 };
 
-const userSignIn = function* userSignIn(){
-  var user = yield take("USER_SIGN_IN");
-  console.log(user.payload, "inside user sign in saga");
+const signIn = function* signIn(action){
+  console.log(action.payload, "inside user sign in saga");
   try{  
     yield put({type: "USER_LOADING"});
-    yield call(Db.signIn, user.payload.username, user.payload.password);
+    yield call(Db.signIn, action.payload.username, action.payload.password);
     yield put({type: "SET_PARENT"});
     yield put({type: "SET_CHILD"});
   }catch(res){
     yield put({type:'ERROR_SIGNIN',payload:res})
   }  
+} 
+
+const userSignIn = function* userSignIn(){
+  var user = yield takeEvery("USER_SIGN_IN", signIn);
+  console.log(user, "logging takevery return");
 }
 
 const setConsent = function* setConsent(){
@@ -59,10 +71,14 @@ const addChild = function* addChild(){
   yield put({type:'SET_CHILD'});
 }
 
-const logoutUser= function* logoutUser(){
-  yield take('USER_SIGN_OUT');
+const logoutUserEvery = function* logoutUserEvery(){
   yield call(Db.logoutUser);
   yield put({type: 'CLEAR_STORE',});
+  
+}
+
+const logoutUser= function* logoutUser(){
+  yield takeEvery('USER_SIGN_OUT', logoutUserEvery);
 }
 
 

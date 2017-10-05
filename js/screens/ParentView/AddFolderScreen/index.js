@@ -1,8 +1,16 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { ActionSheet, View, List, ListItem, Text } from "native-base";
-var BUTTONS = ["Camera", "Gallery", "App", "Cancel"];
-var CANCEL_INDEX = 3;
+import { ActionSheet, View, List } from "native-base";
+import ListItemCustom from "./ListItem";
+import { Image, CameraRoll } from "react-native";
+const BUTTONS = ["Camera", "Gallery", "App", "Cancel"];
+const CANCEL_INDEX = 3;
+const data = [
+  require("../../../assets/ball2.jpg"),
+  require("../../../assets/ball1.jpg"),
+  require("../../../assets/ball1.jpg"),
+  require("../../../assets/ball2.jpg")
+];
 class AddFolderScreen extends React.Component {
   static navigationOptions = {
     title: "AddFolderScreen",
@@ -39,14 +47,12 @@ class AddFolderScreen extends React.Component {
           console.log(event.nativeEvent.text);
         }}
       >
-        <View>
+        <View style={{ backgroundColor: "#eee" }}>
           <List
             horizontal={true}
-            dataArray={[1, 2, 3, 4, 5, 6]}
-            renderRow={data => (
-              <ListItem>
-                <Text>{data}</Text>
-              </ListItem>
+            dataArray={data}
+            renderRow={item => (
+              <ListItemCustom item={item} ItemPress={() => {}} />
             )}
           />
         </View>

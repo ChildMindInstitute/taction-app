@@ -130,9 +130,11 @@ export default {
         newExe
           .set({
             exerciseName: name,
-            imagesTouched: 0,
+            currectTaps: 0,
+            wrongTaps:0,
+            totalTaps: 0,
             score: 0,
-            status: "active",
+            status: false,
             totalDuration: 0
           })
           .then(() => {
@@ -188,15 +190,15 @@ export default {
         const metadata = {
           contentType: "image/jpeg"
         };
-        // console.log(image.base64,"logging image data");
         const storageRef = store.child(exeID + "/" + newImg.key + ".jpg");
         storageRef.put(bytes, metadata).then(() => {
           storageRef.getDownloadURL().then(URL => {
             newImg
               .set({
-                duration: 0,
+                correctTaps:0,
+                wrongTaps:0,
                 score: 0,
-                status: "active",
+                status: false,
                 touchDuration: 0,
                 url: URL,
                 waitTime: 0

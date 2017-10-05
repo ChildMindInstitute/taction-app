@@ -10,7 +10,7 @@ const input = [
 ];
 const totalLevels = 10;
 const correctArrayItem = 1;
-const time = 5000;
+const time = 180000;
 class GameScreen extends React.Component {
   static navigationOptions = {
     title: "GameScreen",

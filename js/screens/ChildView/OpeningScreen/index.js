@@ -2,6 +2,14 @@ import React from "react";
 import NewIntro from "../../../../storybook/stories/screens/NewIntroScreen";
 import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
+import {connect} from 'react-redux';
+
+@connect(store=>{
+  return{
+    child: store.user.child.childDetails,
+    childID: store.user.child.childID
+  }
+})
 class OpeningScreen extends React.Component {
   static navigationOptions = {
     title: "OpeningScreen",
@@ -22,7 +30,7 @@ class OpeningScreen extends React.Component {
         TopViewBackgroundColor="rgba(0, 103, 158, 1)"
         BottomViewBackGroundColor="rgba(255, 255, 255, 0.9)"
         ScoreColor="rgba(0, 103, 158, 1)"
-        Score={1250}
+        Score={this.props.child.totalScore}
         Stars={require("../../../assets/all_stars.png")}
         PlayOnPress={() => {
           this.props.navigation.navigate("DashboardChild");

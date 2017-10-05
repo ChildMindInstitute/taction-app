@@ -35,8 +35,18 @@ export default {
         .then(user => {
           user.updateProfile({ displayName: username });
           const database = firebase.database().ref('parent/'+user.uid);
-          database.set({consent: consent})
-          resolve(user);
+          database
+            .set({ 
+              consent: consent,
+              settings: {
+                imagesPerSession: 25,
+                maxImageDuration: 10,
+                sound: true,
+                random: false
+              }
+            })
+            .then(() => resolve(user));
+          
         })
         .catch(err => {
           reject(err);

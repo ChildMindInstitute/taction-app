@@ -21,8 +21,9 @@ class AddFolderScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null,
-      SaveFolderButtonText: undefined
+      data: dataNext,
+      SaveFolderButtonText: undefined,
+      SaveDisabled: true
     };
     dataNext = [];
   }
@@ -65,6 +66,21 @@ class AddFolderScreen extends React.Component {
             }
           );
         }}
+        ErrorDisplay={
+          this.state.SaveFolderButtonText &&
+          this.state.SaveFolderButtonText != ""
+        }
+        SaveButtonStyle={{
+          marginBottom: "5%",
+          marginLeft: "10%",
+          marginRight: "10%",
+          backgroundColor: this.state.SaveFolderButtonText
+            ? this.state.SaveDisabled && this.state.SaveFolderButtonText != ""
+              ? "rgba(238, 174, 48, 0.5)"
+              : "rgba(238, 174, 48, 1)"
+            : "rgba(238, 174, 48, 0.5)"
+        }}
+        SaveDisabled={this.state.SaveDisabled}
         SaveFolderButtonText={
           "Save" +
           (this.state.SaveFolderButtonText
@@ -73,7 +89,6 @@ class AddFolderScreen extends React.Component {
         }
         FolderNameChange={event => {
           this.setState({ SaveFolderButtonText: event.nativeEvent.text });
-          console.log(event.nativeEvent.text);
         }}
       >
         <View
@@ -90,13 +105,21 @@ class AddFolderScreen extends React.Component {
             renderRow={item => (
               <ListItemCustom
                 item={item}
-                ItemPress={(checked, index) => {
+                ItemPress={((checked, index) => {
                   if (checked && selectedIndexes.indexOf(index) == -1) {
                     selectedIndexes.push(index);
+                    if (this.state.SaveDisabled)
+                      this.setState({ SaveDisabled: false });
                   } else {
                     selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
+                    if (
+                      selectedIndexes.length == 0 &&
+                      !this.state.SaveDisabled
+                    ) {
+                      this.setState({ SaveDisabled: true });
+                    }
                   }
-                }}
+                }).bind(this)}
                 data={dataNext}
               />
             )}

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View } from "native-base";
+import { Container, View, Text } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
 const AddFolder = props => (
@@ -24,7 +24,9 @@ const AddFolder = props => (
           OnChange={event => props.FolderNameChange(event)}
           ViewStyle={styles.InputViewStyle}
         />
-
+        <Text style={{ color: "red", alignSelf: "center", marginBottom: "4%" }}>
+          {!props.ErrorDisplay ? "Folder Name Cannot Be Empty" : " "}
+        </Text>
         <Button
           OnPress={props.OnPressAddImage}
           SubmitButtonStyle={styles.SubmitButton3Style}
@@ -37,8 +39,9 @@ const AddFolder = props => (
         {props.children}
         <Button
           OnPress={props.OnPressSaveButton}
-          SubmitButtonStyle={styles.SubmitButtonStyle}
+          SubmitButtonStyle={props.SaveButtonStyle}
           ButtonText={props.SaveFolderButtonText}
+          Disabled={props.SaveDisabled}
           ExtraText="&rarr;"
         />
         <Button
@@ -53,12 +56,14 @@ const AddFolder = props => (
 );
 
 AddFolder.propTypes = {
+  SaveDisabled: PropTypes.bool,
   SaveFolderButtonText: PropTypes.string,
   Back: PropTypes.func,
   OnPressAddImage: PropTypes.func,
   FolderNameChange: PropTypes.func,
   OnPressSkipButton: PropTypes.func,
-  OnPressSaveButton: PropTypes.func
+  OnPressSaveButton: PropTypes.func,
+  DisabledOpacity: PropTypes.bool
 };
 AddFolder.defaultProps = {
   Back: () => {},

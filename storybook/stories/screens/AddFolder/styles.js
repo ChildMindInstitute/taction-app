@@ -17,12 +17,6 @@ const styles = StyleSheet.create({
   ContentStyle: { flex: 1 },
   MainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
   ContainerStyle: { flex: 1, backgroundColor: "#eee" },
-  SubmitButtonStyle: {
-    marginBottom: "5%",
-    marginLeft: "10%",
-    marginRight: "10%",
-    backgroundColor: "#eeae30"
-  },
   SubmitButton2Style: {
     backgroundColor: "transparent",
     marginLeft: "10%",
@@ -33,7 +27,10 @@ const styles = StyleSheet.create({
   SubmitButton2TextStyle: { color: "#000" },
   InputViewStyle: {
     flex: 0.25,
-    margin: "10%"
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginTop: "10%",
+    marginBottom: "4%"
   },
   SubmitButton3Style: {
     marginBottom: "5%",

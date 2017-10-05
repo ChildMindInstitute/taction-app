@@ -31,14 +31,15 @@ const AddFolder = props => (
           IsIconRequired={true}
           IconName="image"
           IconColor="#0067a0"
-          ButtonText="Add Image"
+          ButtonText="Add Images"
           SubmitButtonTextStyle={styles.SubmitButton3TextStyle}
         />
         {props.children}
         <Button
           OnPress={props.OnPressSaveButton}
           SubmitButtonStyle={styles.SubmitButtonStyle}
-          ButtonText="Save &rarr;"
+          ButtonText={props.SaveFolderButtonText}
+          ExtraText="&rarr;"
         />
         <Button
           OnPress={props.OnPressSkipButton}
@@ -52,6 +53,7 @@ const AddFolder = props => (
 );
 
 AddFolder.propTypes = {
+  SaveFolderButtonText: PropTypes.string,
   Back: PropTypes.func,
   OnPressAddImage: PropTypes.func,
   FolderNameChange: PropTypes.func,

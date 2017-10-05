@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   SubmitButton2TextStyle: { color: "#000" },
   InputViewStyle: {
-    flex: 0.18,
+    flex: 0.25,
     margin: "10%"
   },
   SubmitButton3Style: {

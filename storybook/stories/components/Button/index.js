@@ -19,12 +19,15 @@ const CustomButton = props => (
     {props.Submitted ? (
       <Spinner color="white" />
     ) : (
-      <Text style={props.SubmitButtonTextStyle}>{props.ButtonText}</Text>
+      <Text style={props.SubmitButtonTextStyle}>
+        {props.ButtonText} {props.ExtraText}
+      </Text>
     )}
   </Button>
 );
 
 CustomButton.propTypes = {
+  ExtraText: PropTypes.string,
   Submitted: PropTypes.bool,
   IsIconRequired: PropTypes.bool,
   Disabled: PropTypes.bool,

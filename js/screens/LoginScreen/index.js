@@ -4,11 +4,11 @@ import Login from "../../../storybook/stories/screens/Login";
 import { connect } from "react-redux";
 
 @connect(store => {
-  return { 
+  return {
     loaded: store.loaded,
-    user: store.user ,    
+    user: store.user,
     error: store.error.signinError
-};
+  };
 })
 class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -25,7 +25,8 @@ class LoginScreen extends React.Component {
     this.state = {
       EmailHasError: false,
       PasswordHasError: false,
-      HasSubmitError: false
+      HasSubmitError: false,
+      Submitted: false
     };
     this.Error = {
       Username: "Required",
@@ -34,15 +35,20 @@ class LoginScreen extends React.Component {
     };
   }
 
-  loginUser(){
-    this.props.dispatch({type: "USER_SIGN_IN", payload:{ username: this.Input.UserName, password: this.Input.Password} });    
+  loginUser() {
+    this.props.dispatch({
+      type: "USER_SIGN_IN",
+      payload: { username: this.Input.UserName, password: this.Input.Password }
+    });
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     if (this.props.loaded) {
       this.redirect();
+      this.setState({ Submitted: false });
     } else if (this.props.error) {
       this.setState({ HasSubmitError: true });
+      this.setState({ Submitted: false });
     }
   }
 
@@ -81,6 +87,7 @@ class LoginScreen extends React.Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
+          this.setState({ Submitted: true });
           this.loginUser();
         }}
         Error={this.Error}
@@ -96,6 +103,7 @@ class LoginScreen extends React.Component {
           marginTop: "20%",
           color: "#ccc"
         }}
+        Submitted={this.state.Submitted}
         HasSubmitError={this.state.HasSubmitError}
         EmailHasError={this.state.EmailHasError}
         PasswordHasError={this.state.PasswordHasError}

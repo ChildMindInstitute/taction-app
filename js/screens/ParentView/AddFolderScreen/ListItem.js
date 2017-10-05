@@ -17,13 +17,16 @@ class ListItemCustom extends React.Component {
       <ListItem
         onPress={checked => {
           this.setState({ checked: !this.state.checked });
-          this.props.ItemPress(checked, this.props.item);
+          this.props.ItemPress(
+            checked,
+            this.props.data.indexOf(this.props.item)
+          );
         }}
         style={{ width: 100, height: 100 }}
       >
         <View>
           <Image
-            source={this.props.item}
+            source={{ uri: this.props.item.uri }}
             style={{ width: 100, height: 100 }}
             resizeMethod="auto"
             resizeMode="contain"

@@ -45,7 +45,7 @@ export default {
                 random: false
               }
             })
-            .then(() => resolve(user));
+            .then(() =>resolve(user));
           
         })
         .catch(err => {
@@ -265,5 +265,19 @@ export default {
         reject(err);
       }
     });
+  },
+
+  verifyEmail(){
+    const auth = firebase.auth();
+    return new Promise((resolve, reject)=>{
+      try{
+        auth.currentUser.sendEmailVerification().then(()=>{
+          resolve('success');
+        })
+      }catch(err){
+        reject(err);
+      }
+    })
   }
+  
 };

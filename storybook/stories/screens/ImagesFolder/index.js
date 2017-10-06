@@ -1,6 +1,5 @@
 import React from "react";
 import ImagesFolderList from "../../components/ImagesFolderList";
-import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Button, Icon } from "native-base";
 import styles from "./styles";
@@ -34,37 +33,50 @@ class ListContent extends React.Component {
     return (
       <Container style={styles.ContainerStyle}>
         <HeaderCommon
-          isRightRequired={true}
+          isRightRequired={false}
           leftIconStyle={styles.HeaderLeftStyle}
           leftPress={this.props.DrawerOpen}
           leftIconName="menu"
           headerStyle={styles.HeaderStyle}
           Title="Images Folder"
           TitleStyle={styles.HeaderLeftStyle}
-        >
-          {this.state.CheckedItems.length > 0 ? (
-            <Button
-              transparent
-              onPress={() => this.props.OnPressDeleteButton(CheckedItems)}
-            >
-              <Icon name="trash" style={{ color: "#fff" }} />
-            </Button>
-          ) : (
-            <View />
-          )}
-        </HeaderCommon>
+        />
         <View style={styles.ContentStyle}>
           <View style={styles.GreetingsSpace}>
-            <Button2
-              OnPress={this.props.OnPressSubmitButton}
-              SubmitButtonStyle={styles.AddFolderButtonStyle}
-              ButtonText="+ AddFolder"
-            />
+            <View style={styles.GreetingsSpaceInnerView}>
+              <Button
+                style={styles.AddButton}
+                onPress={this.props.OnPressSubmitButton}
+              >
+                <Icon name="add" style={styles.AddButtonIcon} />
+              </Button>
+              <Button
+                style={styles.OtherButtons}
+                onPress={() => this.props.OnPressDeleteButton(CheckedItems)}
+                disabled={this.state.CheckedItems.length <= 0}
+              >
+                <Icon name="remove" style={styles.OtherButtonIcons} />
+              </Button>
+              <Button
+                style={styles.OtherButtons}
+                onPress={() => this.props.OnPressMoveUp(CheckedItems[0])}
+                disabled={!(this.state.CheckedItems.length == 1)}
+              >
+                <Icon name="arrow-up" style={styles.OtherButtonIcons} />
+              </Button>
+              <Button
+                style={styles.OtherButtons}
+                onPress={() => this.props.OnPressMoveDown(CheckedItems[0])}
+                disabled={!(this.state.CheckedItems.length == 1)}
+              >
+                <Icon name="arrow-down" style={styles.OtherButtonIcons} />
+              </Button>
+            </View>
           </View>
           <View style={styles.ListSpace}>
             <ImagesFolderList
               CheckBoxChange={(ListItem, checked) => {
-                this.MaintainCheckedItems(ListItem, checked);
+                this.MaintainCheckedItems(ListItem, !checked);
               }}
               ListData={this.props.ExcerciseData}
               SwitchToggled={this.props.SwitchToggled}

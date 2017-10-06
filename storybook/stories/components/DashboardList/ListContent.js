@@ -85,7 +85,7 @@ class ListContent extends React.Component {
                       { fontSize: 22 }
                     ]}
                   >
-                    {this.props.ListData.WrongCorrectTaps}
+                    {this.props.ListData.WrongTaps}
                   </Text>
                   <Image
                     source={require("../../../../js/assets/Cross.png")}
@@ -139,7 +139,7 @@ class ListContent extends React.Component {
                           resizeMethod="auto"
                         />
                         <Text style={styles.ListItemGridItemInnerViewTextStyle}>
-                          {data.WrongCorrectTaps}
+                          {data.WrongTaps}
                         </Text>
                       </View>
                     </View>

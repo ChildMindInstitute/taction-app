@@ -6,7 +6,7 @@ const ExcerciseData = [
   {
     Name: "Spider",
     Points: 100,
-    Taps: 13,
+    CorrectTaps: 13,
     WrongTaps: 20,
     Stars: require("../../../assets/all_stars.png"),
     IsContentVisible: true,
@@ -63,7 +63,7 @@ const ExcerciseData = [
   },
   {
     Name: "Ball",
-    Taps: 13,
+    CorrectTaps: 13,
     WrongTaps: 20,
     Points: 80,
     Stars: require("../../../assets/two_stars.png"),

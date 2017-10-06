@@ -100,8 +100,9 @@ export default {
     firebase.auth().signOut();
   },
 
-  getUser() {
-    return firebase.auth().currentUser;
+  async getUser() {
+    const snapshot = await firebase.database().ref('parent/'+firebase.auth().currentUser.uid).once('value');
+    return snapshot.val();
   },
 
   async getChildFromParent() {
@@ -130,7 +131,7 @@ export default {
         newExe
           .set({
             exerciseName: name,
-            currectTaps: 0,
+            correctTaps: 0,
             wrongTaps:0,
             totalTaps: 0,
             score: 0,
@@ -164,9 +165,8 @@ export default {
               .ref("exercise/" + exe.val().exerciseId);
             exeRef.once("value").then(snapshot => {
               response.push({
-                exerciseName: snapshot.val().exerciseName,
-                score: snapshot.val().score,
-                exerciseID: snapshot.key
+                folderDetails:snapshot.val(),
+                folderID: snapshot.key
               });
               if (response.length == numExe) {
                 resolve(response);
@@ -233,7 +233,7 @@ export default {
             imgRef.once("value").then(snapshot => {
               response.push({
                 imageID: snapshot.key,
-                URL: snapshot.val().url
+                imageDetails: snapshot.val()
               });
               if (response.length == numImg) {
                 resolve(response);

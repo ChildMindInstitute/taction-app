@@ -7,56 +7,56 @@ const ExcerciseData = [
     Name: "Spider",
     Points: 100,
     Taps: 13,
-    TotalTaps: 20,
+    WrongTaps: 20,
     Stars: require("../../../assets/all_stars.png"),
     IsContentVisible: true,
     DataFolderContent: [
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: false
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: false
       },
       {
         Image: require("../../../assets/spiderman.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: false
       }
     ]
@@ -64,57 +64,57 @@ const ExcerciseData = [
   {
     Name: "Ball",
     Taps: 13,
-    TotalTaps: 20,
+    WrongTaps: 20,
     Points: 80,
     Stars: require("../../../assets/two_stars.png"),
     IsContentVisible: true,
     DataFolderContent: [
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: true
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: false
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: false
       },
       {
         Image: require("../../../assets/ball1.jpg"),
-        Taps: 3,
-        TotalTaps: 8,
+        CorrectTaps: 3,
+        WrongTaps: 8,
         IsCompleted: false
       }
     ]

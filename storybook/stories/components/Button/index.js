@@ -20,7 +20,6 @@ const CustomButton = props => (
       <Spinner color="white" />
     ) : props.IsTextRequired ? (
       <View>
-        {" "}
         <Text style={props.SubmitButtonTextStyle}>
           {props.ButtonText} {props.ExtraText}
         </Text>
@@ -54,7 +53,7 @@ CustomButton.propTypes = {
 };
 CustomButton.defaultProps = {
   onPress: () => {},
-  IsTextRequired: false
+  IsTextRequired: true
 };
 
 export { CustomButton as default };

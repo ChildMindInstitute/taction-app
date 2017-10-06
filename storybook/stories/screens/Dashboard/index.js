@@ -28,15 +28,8 @@ const Dashboard = props => (
 );
 
 Dashboard.propTypes = {
-  IsContentVisible: PropTypes.array,
   DrawerOpen: PropTypes.func,
-  TotalPoints: PropTypes.number,
-  SubmitButtonTextStyle: PropTypes.object,
-  SubmitButtonStyle: PropTypes.object,
-  OnPressSubmitButton: PropTypes.func,
-  ExcerciseDataIcon: PropTypes.string,
   ExcerciseData: PropTypes.array,
-  ListItemPress: PropTypes.func,
   children: PropTypes.node.isRequired
 };
 Dashboard.defaultProps = {

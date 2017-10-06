@@ -50,13 +50,7 @@ class ListContent extends React.Component {
             </Body>
             <Right style={styles.ListItemRightStyle}>
               <View style={styles.ListItemRightViewStyle}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: "column",
-                    alignItems: "center"
-                  }}
-                >
+                <View style={styles.ListItemRightViewInnerViewStyle}>
                   <Text
                     style={[
                       styles.ListItemGridItemInnerViewText2Style,
@@ -72,13 +66,7 @@ class ListContent extends React.Component {
                     resizeMethod="auto"
                   />
                 </View>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: "column",
-                    alignItems: "center"
-                  }}
-                >
+                <View style={styles.ListItemRightViewInnerViewStyle}>
                   <Text
                     style={[
                       styles.ListItemGridItemInnerViewTextStyle,
@@ -107,7 +95,7 @@ class ListContent extends React.Component {
                     style={[
                       styles.ListItemGridItemStyle,
                       {
-                        opacity: data.IsCompleted ? 1 : 0.7
+                        opacity: data.IsCompleted ? 1 : 0.4
                       }
                     ]}
                     resizeMethod="auto"

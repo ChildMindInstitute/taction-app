@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
   ListItemRightStyle: { flexDirection: "row" },
   ListItemRightViewStyle: { alignItems: "center", flexDirection: "row" },
   ListItemRightViewInnerViewStyle: {
-    flexDirection: "row",
-    marginTop: "3%"
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center"
   },
   ListItemGridViewStyle: {
     flex: 3,

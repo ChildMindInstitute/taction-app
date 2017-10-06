@@ -9,7 +9,6 @@ const ExcerciseData = [
     CorrectTaps: 13,
     WrongTaps: 20,
     Stars: require("../../../assets/all_stars.png"),
-    IsContentVisible: true,
     DataFolderContent: [
       {
         Image: require("../../../assets/spiderman.jpg"),
@@ -67,7 +66,6 @@ const ExcerciseData = [
     WrongTaps: 20,
     Points: 80,
     Stars: require("../../../assets/two_stars.png"),
-    IsContentVisible: true,
     DataFolderContent: [
       {
         Image: require("../../../assets/ball1.jpg"),
@@ -137,9 +135,7 @@ class DashboardScreen extends React.Component {
         DrawerOpen={() => {
           this.props.navigation.navigate("DrawerOpen");
         }}
-        TotalPoints={100}
         ExcerciseData={ExcerciseData}
-        StatusBarStyle="light-content"
       >
         <Text style={{ fontSize: 22 }}>Today's Activities</Text>
       </Dashboard>

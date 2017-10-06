@@ -21,6 +21,9 @@ class SettingsScreen extends React.Component {
     };
   }
 
+  componenetDidUpdate(){
+    this.setState({Random: this.props.parent.settings.random, Sound: this.props.parent.settings.sound})
+  }
   render() {
     return (
       <Settings
@@ -29,7 +32,7 @@ class SettingsScreen extends React.Component {
         PressTimerOfNext={() => {}}
         TimerOfNext="30sec"
         PressNoOfImagesPerSession={() => {}}
-        NoOfImagesPerSession={10}
+        NoOfImagesPerSession={this.props.parent.settings.imagesPerSession}
         NamePress={() => {}}
         Name={this.props.parent.name}
         PasswordPress={() => {}}

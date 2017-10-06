@@ -30,7 +30,6 @@ class Splash extends React.Component {
     });
     let unsubscribe= Db.getAuth().onAuthStateChanged(user => {
       if (user && (!this.props.newUser)) {
-        console.log(this.props.newUser,'this should not fire on registration')
         this.props.dispatch({type:"SET_PARENT"});
         this.props.dispatch({ type: "SET_CHILD" });
         unsubscribe();

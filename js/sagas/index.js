@@ -3,6 +3,8 @@ import Db from '../../js/services';
 
 const setParentEvery = function* setParentEvery(){
   const user = Db.getAuth().currentUser;
+  const parent= yield call(Db.getUser);
+  console.log(parent.settings, "logging current parent object");
   yield put({
     type: 'PARENT',
     payload:{
@@ -10,14 +12,13 @@ const setParentEvery = function* setParentEvery(){
       name: user.displayName,
       email: user.email,
       emailVerified: user.emailVerified,
+      settings: parent.settings
     } 
   })
-  console.log("setParentEvery");
 }
 
 const setParent = function* setParent(){
   yield takeLatest('SET_PARENT', setParentEvery);
-  console.log("setParent");
 }
 const setChildEvery = function* setChildEvery(){
   var child = yield call(Db.getChildFromParent);
@@ -26,16 +27,13 @@ const setChildEvery = function* setChildEvery(){
     payload: child
   });
   yield put({type: 'USER_LOADED'}) ;
-  console.log("setchildevery");
 }
 
 const setChild = function* setChild() {
   yield takeLatest("SET_CHILD",setChildEvery );
-  console.log("setChild")
 };
 
 const signIn = function* signIn(action){
-  console.log(action.payload, "inside user sign in saga");
   try{  
     yield put({type: "USER_LOADING"});
     yield call(Db.signIn, action.payload.username, action.payload.password);
@@ -52,7 +50,6 @@ const userSignIn = function* userSignIn(){
 
 const setConsent = function* setConsent(){
   var consent = yield take("SET_CONSENT");
-  console.log(consent, "logging consent in saga");
   yield put({type: "CONSENT", payload: {Term1: consent.payload.Term1, Term2: consent.payload.Term2, Term3: consent.payload.Term3} });
 }
 
@@ -69,7 +66,6 @@ const logoutUserEvery = function* logoutUserEvery(){
 }
 
 const logoutUser= function* logoutUser(){
-  console.log("logout");
   yield takeLatest('USER_SIGN_OUT', logoutUserEvery);
 }
 
@@ -82,7 +78,6 @@ const userSignUp = function* userSignUp(){
 
 const addFolder = function* addFolder(action){
   let folderID =  yield call(Db.addExercise, action.payload.childID, action.payload.name);
-  console.log(folderID,"hgfsjhgdcjhdfjvajhvhjdgviudhvjhgd");
   yield put({type: 'SET_FOLDER', payload:{id: folderID}});
 }
 
@@ -119,9 +114,20 @@ const watchSetImage = function* watchSetImage(){
   yield takeLatest('SET_IMAGE', setImage);
 }
 
+const setFolderList = function* setFolderList(action){
+  let folderList = yield call(Db.fetchExeriseList, action.payload);
+  for(let i in folderList){
+    folderList[i].imageList = yield call(Db.fetchImageList, folderList[i].folderID);
+  }
+  console.log(folderList);
+}
+
+const watchSetFolderList = function* watchSetFolderList(){
+  yield takeLatest('SET_FOLDER_LIST', setFolderList);
+}
+
 const rootSaga = function* rootSaga() {
-  console.log("root saga");
-  yield all([userSignUp(),setParent(), userSignIn(),logoutUser(),  setChild(), setConsent(),  addChild(), watchAddFolder(), watchSetFolder(), watchAddImage(), watchSetImage() ]);
+  yield all([userSignUp(),setParent(), userSignIn(),logoutUser(),  setChild(), setConsent(),  addChild(), watchAddFolder(), watchSetFolder(), watchAddImage(), watchSetImage(), watchSetFolderList() ]);
 }
 
 export default rootSaga;

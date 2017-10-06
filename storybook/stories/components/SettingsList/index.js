@@ -8,6 +8,7 @@ import {
   Body,
   Separator,
   Icon,
+  View,
   Switch
 } from "native-base";
 import styles from "./styles";
@@ -25,15 +26,30 @@ const SettingsList = props => (
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    <ListItem icon button onPress={props.AgePress}>
-      <Body>
-        <Text style={styles.Margin}>Age</Text>
-      </Body>
-      <Right>
-        <Text>{props.Age}</Text>
-        <Icon name="arrow-forward" />
-      </Right>
-    </ListItem>
+    {props.ChildExists ? (
+      <View>
+        <ListItem icon button onPress={props.NameChildPress}>
+          <Body>
+            <Text style={styles.Margin}>Name of Child</Text>
+          </Body>
+          <Right>
+            <Text>{props.NameChild}</Text>
+            <Icon name="arrow-forward" />
+          </Right>
+        </ListItem>
+        <ListItem icon button onPress={props.AgePress}>
+          <Body>
+            <Text style={styles.Margin}>{"Age of " + props.NameChild}</Text>
+          </Body>
+          <Right>
+            <Text>{props.Age}</Text>
+            <Icon name="arrow-forward" />
+          </Right>
+        </ListItem>
+      </View>
+    ) : (
+      <View />
+    )}
     <ListItem button icon onPress={props.PasswordPress}>
       <Body>
         <Text style={styles.Margin}>Password</Text>
@@ -108,6 +124,9 @@ const SettingsList = props => (
 );
 
 SettingsList.propTypes = {
+  ChildExists: PropTypes.bool,
+  NameChild: PropTypes.string,
+  NameChildPress: PropTypes.func,
   MinimumDurationOfTouch: PropTypes.string,
   TimerOfNext: PropTypes.string,
   NoOfImagesPerSession: PropTypes.number,
@@ -122,7 +141,7 @@ SettingsList.propTypes = {
   PasswordPress: PropTypes.func,
   AgePress: PropTypes.func,
   Name: PropTypes.string,
-  Age: PropTypes.number
+  Age: PropTypes.string
 };
 
 export { SettingsList as default };

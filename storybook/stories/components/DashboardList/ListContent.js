@@ -50,13 +50,49 @@ class ListContent extends React.Component {
             </Body>
             <Right style={styles.ListItemRightStyle}>
               <View style={styles.ListItemRightViewStyle}>
-                <Text note>Taps</Text>
-                <View style={styles.ListItemRightViewInnerViewStyle}>
-                  <Text>
-                    {this.props.ListData.Taps +
-                      "/" +
-                      this.props.ListData.TotalTaps}
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: "column",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text
+                    style={[
+                      styles.ListItemGridItemInnerViewText2Style,
+                      { fontSize: 22 }
+                    ]}
+                  >
+                    {this.props.ListData.CorrectTaps}
                   </Text>
+                  <Image
+                    source={require("../../../../js/assets/Tick.png")}
+                    style={styles.TickCrossImageDimenstions}
+                    resizeMode="contain"
+                    resizeMethod="auto"
+                  />
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: "column",
+                    alignItems: "center"
+                  }}
+                >
+                  <Text
+                    style={[
+                      styles.ListItemGridItemInnerViewTextStyle,
+                      { fontSize: 22 }
+                    ]}
+                  >
+                    {this.props.ListData.WrongCorrectTaps}
+                  </Text>
+                  <Image
+                    source={require("../../../../js/assets/Cross.png")}
+                    style={styles.TickCrossImageDimenstions}
+                    resizeMode="contain"
+                    resizeMethod="auto"
+                  />
                 </View>
               </View>
             </Right>
@@ -90,15 +126,11 @@ class ListContent extends React.Component {
                         <Text
                           style={styles.ListItemGridItemInnerViewText2Style}
                         >
-                          {data.Taps}
+                          {data.CorrectTaps}
                         </Text>
                       </View>
                       <View
-                        style={{
-                          flex: 1,
-                          flexDirection: "row",
-                          justifyContent: "center"
-                        }}
+                        style={styles.ListItemGridItemInnerViewInnerViewStyle}
                       >
                         <Image
                           source={require("../../../../js/assets/Cross.png")}
@@ -107,7 +139,7 @@ class ListContent extends React.Component {
                           resizeMethod="auto"
                         />
                         <Text style={styles.ListItemGridItemInnerViewTextStyle}>
-                          {data.TotalTaps}
+                          {data.WrongCorrectTaps}
                         </Text>
                       </View>
                     </View>

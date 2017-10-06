@@ -3,16 +3,20 @@ import AddFolder from "../../../../storybook/stories/screens/AddFolder";
 import { ActionSheet, View, List } from "native-base";
 import ListItemCustom from "./ListItem";
 import { ImagePicker } from "expo";
+import {connect} from 'react-redux';
+//import {decode} from 'base64-arraybuffer';
+
 let dataNext = [];
 let selectedIndexes = [];
 const BUTTONS = ["Camera", "Gallery", "App", "Cancel"];
 const CANCEL_INDEX = 3;
-const data = [
-  require("../../../assets/ball2.jpg"),
-  require("../../../assets/ball1.jpg"),
-  require("../../../assets/ball1.jpg"),
-  require("../../../assets/ball2.jpg")
-];
+
+@connect(store=>{
+  return{
+    child: store.user.child,
+    folder: store.folder
+  }
+})
 class AddFolderScreen extends React.Component {
   static navigationOptions = {
     title: "AddFolderScreen",
@@ -27,16 +31,25 @@ class AddFolderScreen extends React.Component {
     };
     dataNext = [];
   }
+
+  async AddFolder(){
+    await this.props.dispatch({type:'ADD_FOLDER', payload:{childID: this.props.child.childID, name: this.state.SaveFolderButtonText}});
+    
+    //this.props.navigation.navigate("Dashboard");
+  }
+
+  componentDidUpdate(){
+  if(this.props.folder.folderID){  
+    for(let i in selectedIndexes){
+        this.props.dispatch({type:'ADD_IMAGE', payload:{exeID: this.props.folder.folderID, bytes: dataNext[selectedIndexes[i]].base64}});
+      }
+    }    
+  }
+
   updateImage() {
     ImagePicker.launchImageLibraryAsync({ base64: true }).then(image => {
       dataNext.push(image);
       this.setState({ data: dataNext });
-      //let storageref = storage.child('images/'+auth.currentUser.uid+".jpeg");
-      //storageref.putString(image.base64, 'base64').then((snapshot)=>{
-      //console.log('file uploaded');
-      //storageref.getDownloadURL().then((url)=>{
-      //  auth.currentUser.updateProfile({photoURL: url});
-      //})
     });
   }
 
@@ -45,7 +58,7 @@ class AddFolderScreen extends React.Component {
     return (
       <AddFolder
         OnPressSaveButton={() => {
-          navigate("Dashboard");
+          this.AddFolder();
         }}
         StatusBarStyle="light-content"
         OnPressSkipButton={() => {

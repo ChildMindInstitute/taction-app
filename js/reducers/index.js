@@ -61,11 +61,33 @@ const errorReducer = (state={signinError:false}, action)=>{
     return state;
 }
 
+const folderReducer = (state={folderID:null}, action)=>{
+    switch(action.type){
+        case 'FOLDER':{
+            state=action.payload;
+            break;
+        }
+    }
+    return state;
+}
+
+const imageReducer = (state={}, action)=>{
+    switch(action.type){
+        case 'IMAGE':{
+            state=action.payload;
+            break;
+        }
+    }
+    return state;
+}
+
 const reducer =  combineReducers({
     user: userReducer,
     loaded: waitReducer,
     consent: consentReducer,
-    error: errorReducer
+    error: errorReducer,
+    folder: folderReducer,
+    image: imageReducer
 });
 
 export default reducer;

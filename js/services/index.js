@@ -1,4 +1,5 @@
 import * as firebase from "firebase";
+import {decode} from 'base64-arraybuffer';
 
 const config = {
   apiKey: "AIzaSyCRjJ3k7AmjPowyhdWswv56xfvdyEo_Thc",
@@ -114,7 +115,6 @@ export default {
         .once("value");
       return { childDetails: childRef.val(), childID: CID };
     } catch (err) {
-      //console.log(err);
       throw err;
     }
   },
@@ -180,8 +180,10 @@ export default {
     });
   },
 
-  addImage(exeID, bytes) {
+  addImage(exeID, byte) {
+    console.log('inside addimage service');
     return new Promise((resolve, reject) => {
+      const bytes = decode(byte);
       const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
       const imageRef = firebase.database().ref("image");
       const store = firebase.storage().ref();
@@ -261,7 +263,7 @@ export default {
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try {
         exeRef.once("value").then(snapshot => {
-          resolve(snapshot.val());
+          resolve({folderDetails:snapshot.val(), folderID: exeID});
         });
       } catch (err) {
         reject(err);

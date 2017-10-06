@@ -81,13 +81,25 @@ const imageReducer = (state={}, action)=>{
     return state;
 }
 
+const dasboardListReducer = (state=[], action)=>{
+    switch(action.type){
+        case 'DASHBOARD_LIST':{
+            console.log(action.payload,"easrtfghhbkdfghbjbdfhbkjfd")
+            state=action.payload;
+            break;
+        }
+    }
+    return state;
+}
+
 const reducer =  combineReducers({
     user: userReducer,
     loaded: waitReducer,
     consent: consentReducer,
     error: errorReducer,
     folder: folderReducer,
-    image: imageReducer
+    image: imageReducer,
+    dashboardList: dasboardListReducer
 });
 
 export default reducer;

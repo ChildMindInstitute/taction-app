@@ -140,6 +140,7 @@ const setDashboardList = function* setDashboardList(action){
       })
     }
     dashboardList.push({
+      FolderID: action.payload[i].folderID,
       Name: action.payload[i].folderDetails.exerciseName,
       CorrectTaps: action.payload[i].folderDetails.correctTaps,
       WrongTaps: action.payload[i].folderDetails.wrongTaps,

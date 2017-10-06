@@ -73,30 +73,55 @@ const logoutUser= function* logoutUser(){
   yield takeLatest('USER_SIGN_OUT', logoutUserEvery);
 }
 
-const setNewParent = function* setNewParent() {
-  yield take("SET_NEW_PARENT");
-  console.log("setnewparent");
-  const user = Db.getAuth().currentUser;
-  yield put({
-    type: "PARENT",
-    payload: {
-      UID: user.uid,
-      name: user.displayName,
-      email: user.email,
-      emailVerified: user.emailVerified
-    }
-  });
-};
-
 const userSignUp = function* userSignUp(){
   let user=yield take('USER_SIGNUP');  
   yield call(Db.createParent, user.payload.email, user.payload.password, user.payload.username, user.payload.consent);
-  yield put({type:"SET_NEW_PARENT"});
+  yield put({type:"SET_PARENT"});
+}
+
+const addFolder = function* addFolder(action){
+  let folderID =  yield call(Db.addExercise, action.payload.childID, action.payload.name);
+  console.log(folderID,"hgfsjhgdcjhdfjvajhvhjdgviudhvjhgd");
+  yield put({type: 'SET_FOLDER', payload:{id: folderID}});
+}
+
+const watchAddFolder = function* watchAddFolder(){
+  yield takeLatest('ADD_FOLDER', addFolder);
+}
+
+const setFolder = function* setFolder(action){
+  let folder = yield call(Db.getExercise, action.payload.id);
+  yield put({type:'FOLDER', payload: folder})
+}
+
+const watchSetFolder = function* watchSetFolder(){
+  yield takeLatest('SET_FOLDER', setFolder);
+}
+
+const addImage = function* addImage(action){
+  try{
+    let imageID= yield call(Db.addImage, action.payload.exeID, action.payload.bytes);
+    yield put({type:'SET_IMAGE', payload: imageID});
+  }catch(err){
+    console.log(err);
+  }
+}
+
+const watchAddImage = function* watchAddImage(){
+  yield takeLatest('ADD_IMAGE', addImage);
+}
+
+const setImage = function* setImage(action){
+  yield put({type:'IMAGE', payload: action.payload.imageID});
+}
+
+const watchSetImage = function* watchSetImage(){
+  yield takeLatest('SET_IMAGE', setImage);
 }
 
 const rootSaga = function* rootSaga() {
   console.log("root saga");
-  yield all([userSignUp(),setParent(), userSignIn(),logoutUser(),  setChild(), setConsent(),  addChild(), setNewParent() ]);
+  yield all([userSignUp(),setParent(), userSignIn(),logoutUser(),  setChild(), setConsent(),  addChild(), watchAddFolder(), watchSetFolder(), watchAddImage(), watchSetImage() ]);
 }
 
 export default rootSaga;

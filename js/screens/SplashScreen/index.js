@@ -9,7 +9,7 @@ import Expo from "expo";
   return {
     parent: store.user.parent,
     child: store.user.child,
-    loaded: store.loaded
+    loaded: store.loaded,
   };
 })
 class Splash extends React.Component {
@@ -28,11 +28,14 @@ class Splash extends React.Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
       FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
     });
-    Db.getAuth().onAuthStateChanged(user => {
-      if (user) {
+    let unsubscribe= Db.getAuth().onAuthStateChanged(user => {
+      if (user && (!this.props.newUser)) {
+        console.log(this.props.newUser,'this should not fire on registration')
         this.props.dispatch({type:"SET_PARENT"});
         this.props.dispatch({ type: "SET_CHILD" });
+        unsubscribe();
       } else {
+        unsubscribe();
         this.props.navigation.dispatch(
           NavigationActions.reset({
             index: 0,

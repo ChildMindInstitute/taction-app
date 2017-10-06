@@ -32,12 +32,18 @@ const Settings = props => (
         SoundSliderValue={props.SoundSliderValue}
         SoundSlider={props.SoundSlider}
         PressAddPrizes={props.PressAddPrizes}
+        ChildExists={props.ChildExists}
+        NameChild={props.NameChild}
+        NameChildPress={props.NameChildPress}
       />
     </View>
   </Container>
 );
 
 Settings.propTypes = {
+  ChildExists: PropTypes.bool,
+  NameChild: PropTypes.string,
+  NameChildPress: PropTypes.func,
   PressMinimumDurationOfTouch: PropTypes.func,
   RandomSlider: PropTypes.func,
   RandomSliderValue: PropTypes.bool,
@@ -50,7 +56,7 @@ Settings.propTypes = {
   NoOfImagesPerSession: PropTypes.number,
   NamePress: PropTypes.func,
   Name: PropTypes.string,
-  Age: PropTypes.number,
+  Age: PropTypes.string,
   PasswordPress: PropTypes.func,
   AgePress: PropTypes.func,
   Back: PropTypes.func

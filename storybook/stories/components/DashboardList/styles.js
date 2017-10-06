@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
   },
   ListItemBodyTextStyle: { fontSize: 20, color: "black" },
   ListItemBodyImageStyle: { width: 35, height: 12 },
-  ListItemRightStyle: { flexDirection: "column" },
-  ListItemRightViewStyle: { alignItems: "center" },
+  ListItemRightStyle: { flexDirection: "row" },
+  ListItemRightViewStyle: { alignItems: "center", flexDirection: "row" },
   ListItemRightViewInnerViewStyle: {
     flexDirection: "row",
     marginTop: "3%"

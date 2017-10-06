@@ -1,6 +1,6 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
-import {connect} from'react-redux';
+import { connect } from "react-redux";
 
 @connect(store => {
   return {
@@ -33,7 +33,11 @@ class SettingsScreen extends React.Component {
         NamePress={() => {}}
         Name={this.props.parent.name}
         PasswordPress={() => {}}
-        Age={this.props.child.childDetails.age}
+        Age={
+          this.props.child.childDetails
+            ? this.props.child.childDetails.age
+            : "0"
+        }
         AgePress={() => {}}
         Back={() => {}}
         RandomSlider={value => {
@@ -44,6 +48,13 @@ class SettingsScreen extends React.Component {
         SoundSlider={value => {
           this.setState({ Sound: value });
         }}
+        ChildExists={this.props.child.childDetails ? true : false}
+        NameChild={
+          this.props.child.childDetails
+            ? this.props.child.childDetails.name
+            : ""
+        }
+        NameChildPress={() => {}}
         PressAddPrizes={() => {}}
         Back={() => this.props.navigation.navigate("Dashboard")}
         StatusBarStyle="light-content"

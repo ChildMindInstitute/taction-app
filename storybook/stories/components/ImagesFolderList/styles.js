@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
   },
   ListItemInnerViewInnerViewLeftInnerView3TextStyle: {
     fontSize: 20,
-    color: "#0067a0"
+    color: "#0067a0",
+    fontWeight: "bold"
   },
   ListItemInnerViewInnerViewBodyInnerViewStyle: {
     alignContent: "center",
@@ -43,7 +44,9 @@ const styles = StyleSheet.create({
     marginTop: "-5%"
   },
   ListItemInnerViewInnerViewBodyInnerViewBadgeStyle: {
-    backgroundColor: "#eeae30"
+    color: "#0067a0",
+    fontSize: 20,
+    fontWeight: "400"
   },
   ListItemInnerViewInnerViewRightStyle: {
     flexDirection: "column",

@@ -147,6 +147,8 @@ class ImagesFolderScreen extends React.Component {
         }}
         StatusBarStyle="light-content"
         OnPressDeleteButton={CheckedItems => console.log(CheckedItems)}
+        OnPressMoveDown={CheckedItem => console.log(CheckedItem)}
+        OnPressMoveUp={CheckedItem => console.log(CheckedItem)}
       />
     );
   }

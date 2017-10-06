@@ -1,16 +1,7 @@
 import React from "react";
-import {
-  ListItem,
-  Text,
-  Left,
-  Right,
-  Body,
-  View,
-  Switch,
-  Badge,
-  CheckBox
-} from "native-base";
+import { ListItem, Text, Left, Right, Body, View, Switch } from "native-base";
 import { Image } from "react-native";
+import CheckBox from "react-native-checkbox";
 import styles from "./styles";
 import Grid from "react-native-grid-component";
 class ListContent extends React.Component {
@@ -41,14 +32,12 @@ class ListContent extends React.Component {
                 style={styles.ListItemInnerViewInnerViewLeftInnerView1Style}
               >
                 <CheckBox
+                  label=""
                   checked={this.state.checked}
-                  onPress={checked => {
+                  onChange={checked => {
                     this.setState({ checked: !this.state.checked });
                     this.props.CheckBoxChange(this.props.ListItem, checked);
                   }}
-                  style={
-                    styles.ListItemInnerViewInnerViewLeftInnerView1CheckboxStyle
-                  }
                 />
               </View>
               <View
@@ -78,13 +67,13 @@ class ListContent extends React.Component {
             </Left>
             <Body>
               <View style={styles.ListItemInnerViewInnerViewBodyInnerViewStyle}>
-                <Badge
+                <Text
                   style={
                     styles.ListItemInnerViewInnerViewBodyInnerViewBadgeStyle
                   }
                 >
-                  <Text>{this.props.ListItem.DataFolderContent.length}</Text>
-                </Badge>
+                  {"(" + this.props.ListItem.DataFolderContent.length + ")"}
+                </Text>
               </View>
             </Body>
             <Right style={styles.ListItemInnerViewInnerViewRightStyle}>

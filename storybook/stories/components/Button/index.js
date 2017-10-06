@@ -18,15 +18,21 @@ const CustomButton = props => (
     )}
     {props.Submitted ? (
       <Spinner color="white" />
+    ) : props.IsTextRequired ? (
+      <View>
+        {" "}
+        <Text style={props.SubmitButtonTextStyle}>
+          {props.ButtonText} {props.ExtraText}
+        </Text>
+      </View>
     ) : (
-      <Text style={props.SubmitButtonTextStyle}>
-        {props.ButtonText} {props.ExtraText}
-      </Text>
+      <View />
     )}
   </Button>
 );
 
 CustomButton.propTypes = {
+  IsTextRequired: PropTypes.bool,
   ExtraText: PropTypes.string,
   Submitted: PropTypes.bool,
   IsIconRequired: PropTypes.bool,
@@ -47,7 +53,8 @@ CustomButton.propTypes = {
   ])
 };
 CustomButton.defaultProps = {
-  onPress: () => {}
+  onPress: () => {},
+  IsTextRequired: false
 };
 
 export { CustomButton as default };

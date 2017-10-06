@@ -76,6 +76,7 @@ const logoutUser= function* logoutUser(){
 const userSignUp = function* userSignUp(){
   let user=yield take('USER_SIGNUP');  
   yield call(Db.createParent, user.payload.email, user.payload.password, user.payload.username, user.payload.consent);
+  yield call(Db.verifyEmail);
   yield put({type:"SET_PARENT"});
 }
 
@@ -100,8 +101,7 @@ const watchSetFolder = function* watchSetFolder(){
 
 const addImage = function* addImage(action){
   try{
-    let imageID= yield call(Db.addImage, action.payload.exeID, action.payload.bytes);
-    yield put({type:'SET_IMAGE', payload: imageID});
+    yield call(Db.addImage, action.payload.exeID, action.payload.bytes);
   }catch(err){
     console.log(err);
   }

@@ -4,12 +4,6 @@ import Dashboard from "../../../../storybook/stories/screens/Dashboard";
 import {connect} from 'react-redux';
 let count = 0;
 
-@connect(store=>{
-  return{
-    child: store.user.child,
-    dashboardList: store.dashboardList
-  }
-})
 class DashboardScreen extends React.Component {
   static navigationOptions = {
     title: "DashboardScreen",
@@ -40,4 +34,12 @@ class DashboardScreen extends React.Component {
     );
   }
 }
-export default DashboardScreen;
+
+const mapStateToProps = (store)=>{
+    return { child: store.user.child, dashboardList: store.dashboardList };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);

@@ -4,19 +4,12 @@ import { ActionSheet, View, List } from "native-base";
 import ListItemCustom from "./ListItem";
 import { ImagePicker } from "expo";
 import {connect} from 'react-redux';
-//import {decode} from 'base64-arraybuffer';
 
 let dataNext = [];
 let selectedIndexes = [];
 const BUTTONS = ["Camera", "Gallery", "App", "Cancel"];
 const CANCEL_INDEX = 3;
 
-@connect(store=>{
-  return{
-    child: store.user.child,
-    folder: store.folder
-  }
-})
 class AddFolderScreen extends React.Component {
   static navigationOptions = {
     title: "AddFolderScreen",
@@ -145,4 +138,13 @@ class AddFolderScreen extends React.Component {
     );
   }
 }
-export default AddFolderScreen;
+
+const mapStateToProps = (store)=>{
+    return { child: store.user.child, folder: store.folder };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{dispatch}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddFolderScreen);

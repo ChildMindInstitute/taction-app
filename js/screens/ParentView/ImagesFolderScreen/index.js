@@ -47,4 +47,13 @@ class ImagesFolderScreen extends React.Component {
     );
   }
 }
-export default ImagesFolderScreen;
+
+const mapStateToProps = (store)=>{
+    return { dashboardList: store.dashboardList };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImagesFolderScreen);

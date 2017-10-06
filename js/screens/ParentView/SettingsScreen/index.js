@@ -2,12 +2,6 @@ import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
 
-@connect(store => {
-  return {
-    parent: store.user.parent,
-    child: store.user.child
-  };
-})
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
@@ -65,4 +59,13 @@ class SettingsScreen extends React.Component {
     );
   }
 }
-export default SettingsScreen;
+
+const mapStateToProps = (store)=>{
+  return { parent: store.user.parent, child: store.user.child };
+}
+
+// const mapDispatchToProps = (dispatch)=>{
+//   return (dispatch)
+// }
+
+export default connect(mapStateToProps, null)(SettingsScreen);

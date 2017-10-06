@@ -3,13 +3,6 @@ import { NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
 import { connect } from "react-redux";
 
-@connect(store => {
-  return {
-    loaded: store.loaded,
-    user: store.user,
-    error: store.error.signinError
-  };
-})
 class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
@@ -111,4 +104,12 @@ class LoginScreen extends React.Component {
     );
   }
 }
-export default LoginScreen;
+
+const mapStateToProps = (store)=>{
+    return { loaded: store.loaded, user: store.user, error: store.error.signinError };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

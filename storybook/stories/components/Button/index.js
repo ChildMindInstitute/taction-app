@@ -20,7 +20,6 @@ const CustomButton = props => (
       <Spinner color="white" />
     ) : props.IsTextRequired ? (
       <View>
-        {" "}
         <Text style={props.SubmitButtonTextStyle}>
           {props.ButtonText} {props.ExtraText}
         </Text>

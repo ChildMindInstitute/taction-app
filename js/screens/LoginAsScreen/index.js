@@ -5,12 +5,6 @@ import {connect} from 'react-redux';
 
 
 var data = [];
-@connect(store=>{
-  return{
-    parent: store.user.parent,
-    child: store.user.child,
-  }
-})
 class LoginAsScreen extends React.Component {
   static navigationOptions = {
     title: "LoginAsScreen",
@@ -64,4 +58,13 @@ class LoginAsScreen extends React.Component {
     );
   }
 }
-export default LoginAsScreen;
+
+const mapStateToProps = (store) =>{
+    return { parent: store.user.parent, child: store.user.child };
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return {dispatch}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginAsScreen);

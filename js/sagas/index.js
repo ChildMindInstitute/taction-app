@@ -133,6 +133,7 @@ const setDashboardList = function* setDashboardList(action){
     let DataFolderContent=[];
     for(let j in action.payload[i].imageList){
       DataFolderContent.push({
+        ImageID: action.payload[i].imageList[j].imageID,
         Image:{uri:action.payload[i].imageList[j].imageDetails.url},
         CorrectTaps: action.payload[i].imageList[j].imageDetails.correctTaps,
         WrongTaps: action.payload[i].imageList[j].imageDetails.wrongTaps,
@@ -146,7 +147,8 @@ const setDashboardList = function* setDashboardList(action){
       WrongTaps: action.payload[i].folderDetails.wrongTaps,
       Points: action.payload[i].folderDetails.score,
       Stars: require("../assets/all_stars.png"),
-      DataFolderContent: DataFolderContent
+      DataFolderContent: DataFolderContent,
+      Status: action.payload[i].folderDetails.status
     })
   }
   console.log(dashboardList, "dashboardList");
@@ -155,6 +157,16 @@ const setDashboardList = function* setDashboardList(action){
 
 const watchSetDashboardList = function* watchSetDashboardList(){
   yield takeLatest('SET_DASHBOARD_LIST', setDashboardList);
+}
+
+const setFolderStatus = function* setFolderStatus(action){
+  console.log(action.payload, "loggng toggle payload");
+  let update= {status: action.payload.status}
+  yield call(Db.updateExercise,action.payload.folderID,update);
+}
+
+const watchSetFolderStatus = function* watchSetFolderStatus(){
+  yield takeLatest('SET_FOLDER_STATUS', setFolderStatus);
 }
 
 const rootSaga = function* rootSaga() {
@@ -171,7 +183,8 @@ const rootSaga = function* rootSaga() {
     watchAddImage(), 
     watchSetImage(), 
     watchSetFolderList(),
-    watchSetDashboardList()
+    watchSetDashboardList(),
+    watchSetFolderStatus()
   ]);
 }
 

@@ -284,6 +284,21 @@ export default {
         reject(err);
       }
     })
+  },
+
+  updateExercise(exeID, update){
+    return new Promise((resolve, reject)=>{
+      const exeRef = firebase.database().ref("exercise/" + exeID);
+      try{
+        console.log(update, "logging update object");
+        console.log(exeID, "logging exeID");
+        exeRef.update(update).then(()=>{
+          resolve(exeID);
+        })
+      }catch(err){
+        reject(err);
+      }
+    })
   }
   
 };

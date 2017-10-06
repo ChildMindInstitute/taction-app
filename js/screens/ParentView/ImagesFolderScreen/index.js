@@ -20,6 +20,10 @@ class ImagesFolderScreen extends React.Component {
     };
   }
 
+  toggleStatus(onOff, folderID){
+    this.props.dispatch({type:"SET_FOLDER_STATUS", payload: {status:onOff, folderID: folderID}});
+  }
+
   render() {
     return (
       <ImagesFolder
@@ -33,9 +37,10 @@ class ImagesFolderScreen extends React.Component {
         ExcerciseData={this.props.dashboardList}
         SwitchToggled={(item, onOff) => {
           console.log(item.FolderID + " " + onOff);
+          this.toggleStatus(onOff, item.FolderID);
         }}
         StatusBarStyle="light-content"
-        OnPressDeleteButton={CheckedItems => console.log(CheckedItems)}
+        OnPressDeleteButton={CheckedItems => console.log(CheckedItems[0].FolderID)}
         OnPressMoveDown={CheckedItem => console.log(CheckedItem)}
         OnPressMoveUp={CheckedItem => console.log(CheckedItem)}
       />

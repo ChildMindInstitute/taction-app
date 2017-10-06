@@ -42,12 +42,15 @@ class AddFolderScreen extends React.Component {
   if(this.props.folder.folderID){  
     for(let i in selectedIndexes){
         this.props.dispatch({type:'ADD_IMAGE', payload:{exeID: this.props.folder.folderID, bytes: dataNext[selectedIndexes[i]].base64}});
+        if(i==(selectedIndexes.length-1)){
+          this.props.navigation.navigate('Dashboard');
+        }
       }
     }    
   }
 
   updateImage() {
-    ImagePicker.launchImageLibraryAsync({ base64: true }).then(image => {
+    ImagePicker.launchImageLibraryAsync({ base64: true, quality: 0 }).then(image => {
       dataNext.push(image);
       this.setState({ data: dataNext });
     });

@@ -1,5 +1,7 @@
 import React from "react";
 import AlmostThere from "../../../storybook/stories/screens/AlmostThere";
+import Db from '../../services';
+
 class AlmostThereScreen extends React.Component {
   static navigationOptions = {
     title: "AlmostThereScreen",
@@ -8,10 +10,11 @@ class AlmostThereScreen extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     setTimeout(() => {
       this.props.navigation.navigate("Welcome");
-    }, 3000);
+    }, 2000);
     return <AlmostThere StatusBarStyle="light-content" />;
   }
 }

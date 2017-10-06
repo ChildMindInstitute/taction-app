@@ -181,8 +181,8 @@ export default {
   },
 
   addImage(exeID, byte) {
-    console.log('inside addimage service');
     return new Promise((resolve, reject) => {
+      console.log("inside addimage service");
       const bytes = decode(byte);
       const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
       const imageRef = firebase.database().ref("image");
@@ -193,7 +193,9 @@ export default {
           contentType: "image/jpeg"
         };
         const storageRef = store.child(exeID + "/" + newImg.key + ".jpg");
+        // debugger;
         storageRef.put(bytes, metadata).then(() => {
+          // debugger;
           storageRef.getDownloadURL().then(URL => {
             newImg
               .set({

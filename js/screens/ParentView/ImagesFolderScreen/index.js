@@ -2,11 +2,6 @@ import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
 import {connect} from 'react-redux';
 
-@connect(store=>{
-  return{
-    dashboardList: store.dashboardList
-  }
-})
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
     title: "ImagesFolderScreen",

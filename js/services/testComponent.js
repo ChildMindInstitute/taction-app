@@ -113,8 +113,8 @@ class Test extends React.Component {
       Object.keys(res.images).map((item, index) => {
         count++;
       });
-      console.log(count, "logging image count");
-      console.log(res, "logging exercise details");
+      // console.log(count, "logging image count");
+      // console.log(res, "logging exercise details");
     });
   }
 

@@ -73,7 +73,7 @@ class GameScreen extends React.Component {
         TickImage={require("../../../assets/Tick.png")}
         CorrectOption={this.state.correctOption}
         Pressed={item => {
-          console.log(item);
+          // console.log(item);
           //count Points logic
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel < totalLevels)

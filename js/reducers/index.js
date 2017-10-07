@@ -84,7 +84,7 @@ const imageReducer = (state={}, action)=>{
 const dasboardListReducer = (state=[], action)=>{
     switch(action.type){
         case 'DASHBOARD_LIST':{
-            console.log(action.payload,"easrtfghhbkdfghbjbdfhbkjfd")
+            // console.log(action.payload,"easrtfghhbkdfghbjbdfhbkjfd")
             state=action.payload;
             break;
         }

@@ -43,7 +43,7 @@ class LoginScreen extends React.Component {
       }});
       this.props.navigation.navigate("AlmostThere");
     }else{
-      console.log(username+":"+email+":"+password, "logging user data")
+      // console.log(username+":"+email+":"+password, "logging user data")
       alert("password mismatch !!!");
     }
   }

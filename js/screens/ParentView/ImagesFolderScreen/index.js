@@ -31,7 +31,7 @@ class ImagesFolderScreen extends React.Component {
         }}
         ExcerciseData={this.props.dashboardList}
         SwitchToggled={(item, onOff) => {
-          console.log(item.FolderID + " " + onOff);
+          // console.log(item.FolderID + " " + onOff);
           this.toggleStatus(onOff, item.FolderID);
         }}
         StatusBarStyle="light-content"

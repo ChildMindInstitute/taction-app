@@ -182,7 +182,7 @@ export default {
 
   addImage(exeID, byte) {
     return new Promise((resolve, reject) => {
-      console.log("inside addimage service");
+      // console.log("inside addimage service");
       const bytes = decode(byte);
       const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
       const imageRef = firebase.database().ref("image");
@@ -290,8 +290,8 @@ export default {
     return new Promise((resolve, reject)=>{
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try{
-        console.log(update, "logging update object");
-        console.log(exeID, "logging exeID");
+        // console.log(update, "logging update object");
+        // console.log(exeID, "logging exeID");
         exeRef.update(update).then(()=>{
           resolve(exeID);
         })

@@ -4,7 +4,7 @@ import Db from '../../js/services';
 const setParentEvery = function* setParentEvery(){
   const user = Db.getAuth().currentUser;
   const parent= yield call(Db.getUser);
-  console.log(parent.settings, "logging current parent object");
+  // console.log(parent.settings, "logging current parent object");
   yield put({
     type: 'PARENT',
     payload:{
@@ -151,7 +151,7 @@ const setDashboardList = function* setDashboardList(action){
       Status: action.payload[i].folderDetails.status
     })
   }
-  console.log(dashboardList, "dashboardList");
+  // console.log(dashboardList, "dashboardList");
   yield put({type:'DASHBOARD_LIST', payload: dashboardList});
 }
 
@@ -160,7 +160,7 @@ const watchSetDashboardList = function* watchSetDashboardList(){
 }
 
 const setFolderStatus = function* setFolderStatus(action){
-  console.log(action.payload, "loggng toggle payload");
+  // console.log(action.payload, "loggng toggle payload");
   let update= {status: action.payload.status}
   yield call(Db.updateExercise,action.payload.folderID,update);
 }

@@ -3,12 +3,6 @@ import { NavigationActions } from "react-navigation";
 import Welcome from "../../../storybook/stories/screens/Welcome";
 import {connect} from 'react-redux';
 
-
-@connect(store=>{
-  return{
-    parent: store.user.parent
-  }
-})
 class WelcomeScreen extends React.Component {
   static navigationOptions = {
     title: "WelcomeScreen",
@@ -55,4 +49,13 @@ class WelcomeScreen extends React.Component {
     );
   }
 }
-export default WelcomeScreen;
+
+const mapStateToProps = (store)=>{
+    return { parent: store.user.parent };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);

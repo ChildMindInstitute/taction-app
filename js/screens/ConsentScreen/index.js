@@ -2,11 +2,6 @@ import React from "react";
 import Consent from "../../../storybook/stories/screens/Consent";
 import {connect} from 'react-redux';
 
-@connect(store=>{
-  return{
-    consent: store.consent
-  }
-})
 class ConsentScreen extends React.Component {
   static navigationOptions = {
     title: "ConsentScreen",
@@ -63,4 +58,12 @@ class ConsentScreen extends React.Component {
     );
   }
 }
-export default ConsentScreen;
+
+const mapStateToProps = (store)=>{
+  return { consent: store.consent };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ConsentScreen);

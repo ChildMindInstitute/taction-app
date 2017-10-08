@@ -4,12 +4,6 @@ import Expo from "expo";
 import {connect} from 'react-redux';
 
 var childName, childAge;
-@connect(store => {
-  return {
-    user: store.user,
-    loaded: store.loaded
-  };
-})
 class AddChildScreen extends React.Component {
   static navigationOptions = {
     title: "AddChildScreen",
@@ -54,4 +48,12 @@ class AddChildScreen extends React.Component {
     );
   }
 }
-export default AddChildScreen;
+
+const mapStateToProps = (store)=>{
+    return { user: store.user, loaded: store.loaded };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{dispatch}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AddChildScreen);

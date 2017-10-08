@@ -13,7 +13,7 @@ class ListContent extends React.Component {
     super(props);
     this.state = {
       checked: false,
-      switched: false,
+      switched: this.props.ListItem.Status,
       IsContentVisible: false
     };
   }

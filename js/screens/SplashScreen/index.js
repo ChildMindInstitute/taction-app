@@ -5,13 +5,6 @@ import SplashScreen from "../../../storybook/stories/screens/SplashScreen";
 import Db from "../../services";
 import Expo from "expo";
 
-@connect(store => {
-  return {
-    parent: store.user.parent,
-    child: store.user.child,
-    loaded: store.loaded,
-  };
-})
 class Splash extends React.Component {
   static navigationOptions = {
     title: "Splash",
@@ -69,4 +62,14 @@ class Splash extends React.Component {
   }
 }
 
-export default Splash;
+const mapStateToProps = (store)=>{
+  return { parent: store.user.parent, child: store.user.child, loaded: store.loaded };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    dispatch
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);

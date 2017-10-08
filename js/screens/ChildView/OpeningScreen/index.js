@@ -4,12 +4,6 @@ import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
 import {connect} from 'react-redux';
 
-@connect(store=>{
-  return{
-    child: store.user.child.childDetails,
-    childID: store.user.child.childID
-  }
-})
 class OpeningScreen extends React.Component {
   static navigationOptions = {
     title: "OpeningScreen",
@@ -57,4 +51,12 @@ class OpeningScreen extends React.Component {
     );
   }
 }
-export default OpeningScreen;
+
+const mapStateToProps = (store)=>{
+    return { child: store.user.child.childDetails, childID: store.user.child.childID };
+}
+
+mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+export default connect(mapStateToProps, null)(OpeningScreen);

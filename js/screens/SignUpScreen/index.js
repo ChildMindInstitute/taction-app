@@ -6,12 +6,6 @@ var username, email, password, cnfpassword;
 
 
 const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-@connect(store=>{
-  return{
-    consent: store.consent,
-    user: store.user
-  }
-})
 class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "LoginScreen",
@@ -49,7 +43,7 @@ class LoginScreen extends React.Component {
       }});
       this.props.navigation.navigate("AlmostThere");
     }else{
-      console.log(username+":"+email+":"+password, "logging user data")
+      // console.log(username+":"+email+":"+password, "logging user data")
       alert("password mismatch !!!");
     }
   }
@@ -117,4 +111,13 @@ class LoginScreen extends React.Component {
     );
   }
 }
-export default LoginScreen;
+
+const mapStateToProps = (store)=>{
+    return { consent: store.consent, user: store.user };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{dispatch}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

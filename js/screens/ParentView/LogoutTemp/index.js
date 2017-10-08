@@ -3,12 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { StackNavigator, NavigationActions } from "react-navigation";
 import {connect} from 'react-redux';
 
-
-@connect(store=>{
-  return{
-    user: store.user
-  }
-})
 class LogoutTemp extends React.Component {
   componentWillMount() {
     this.props.dispatch({type:'USER_SIGN_OUT'});
@@ -40,4 +34,13 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
-module.exports = LogoutTemp;
+
+const mapStateToProps = (store)=>{
+  return { user: store.user };
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+
+export default  connect(mapStateToProps, mapDispatchToProps)(LogoutTemp);

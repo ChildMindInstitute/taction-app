@@ -59,7 +59,7 @@ class GameScreen extends React.Component {
     return 4;
   }
 
-  componentDidMount(){
+  componentWillMount(){
     totalLevels= this.props.settings.imagesPerSession
   }
 

@@ -24,6 +24,7 @@ class GameScreen extends React.Component {
       i2: this.randomAssign(),
       i3: this.randomAssign(),
       i4: this.randomAssign(),
+      time: time,
       correctOption: 0,
       currentLevel: 1,
       reset: false,
@@ -62,7 +63,7 @@ class GameScreen extends React.Component {
           this.props.navigation.goBack();
         }}
         TotalPoints={100}
-        TimeLeft={time}
+        TimeLeft={this.state.time}
         TimeLeftDenomination={"Min"}
         Image1={input[this.state.i1]}
         Image2={input[this.state.i2]}
@@ -91,8 +92,7 @@ class GameScreen extends React.Component {
                 this.state.i2,
                 this.state.i3
               );
-              this.setState({ correctOption: x });
-              this.setState({ reset: false });
+              this.setState({ correctOption: x, reset: false });
             }, 500);
           else setTimeout(() => this.setModalVisible(true), 2000);
         }}
@@ -113,6 +113,7 @@ class GameScreen extends React.Component {
               Stars={require("../../../../js/assets/all_stars.png")}
               DisplayPoints={120}
               Description="Time: 02.14 Min"
+              PlayLaterText="Play Later"
               IsButtonNeeded={true}
               PlayNext={() => {
                 alert("PlayNext Pressed");
@@ -120,12 +121,13 @@ class GameScreen extends React.Component {
               PlayAgain={() => {
                 alert("PlayAgain Pressed");
               }}
+              toggleVisiblity={() => {
+                //replace goBack with logout logic
+                this.props.navigation.goBack();
+                this.setModalVisible(false);
+              }}
             />
           }
-          toggleVisiblity={() => {
-            this.setModalVisible(false);
-            this.props.navigation.goBack();
-          }}
         />
       </Home>
     );

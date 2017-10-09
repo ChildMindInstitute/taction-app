@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
   ContentMainViewStyle: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 1
+    flex: 1,
+    margin: "5%"
   },
   ContentMainViewTextStyle: {
     color: "#eeae30",
@@ -41,10 +42,12 @@ const styles = StyleSheet.create({
     marginTop: "5%"
   },
   ContentMainViewLevelDescriptionStyle: { color: "white", fontSize: 14 },
-  ContentMainViewInnerView: { alignContent: "center" },
+  ContentMainViewInnerView: { alignContent: "center", flex: 4 },
   ContentMainViewInnerViewButton1Style: {
     backgroundColor: "#eeae30",
-    margin: "5%",
+    width: "100%",
+    marginLeft: "2%",
+    marginRight: "2%",
     borderRadius: 50
   },
   ContentMainViewInnerViewButton1TextStyle: {
@@ -54,8 +57,8 @@ const styles = StyleSheet.create({
   },
   ContentMainViewInnerViewButton2Style: {
     backgroundColor: "#ffffff",
-    marginLeft: "10%",
-    marginRight: "10%",
+    marginLeft: "4%",
+    marginRight: "4%",
     borderRadius: 50
   },
   ContentMainViewInnerViewButton2TextStyle: {

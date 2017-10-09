@@ -4,11 +4,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#0067a0"
   },
-  TopSpace: { flex: 5, alignItems: "center", justifyContent: "center" },
-  FormSpace: { flex: 5.3, margin: "2.5%" },
-  ErrorSpace: { flex: 0.5, top: "5%", alignItems: "center" },
-  ErrorText: { color: "red" },
-  FormStyle: { flex: 1, marginTop: "10%" },
+  TopSpace: {
+    flex: 4,
+    alignItems: "center",
+    justifyContent: "center",
+    top: "5%"
+  },
+  FormSpace: { flex: 4, margin: "2.5%" },
+  ErrorSpace: {
+    flex: 1,
+    alignItems: "center",
+    width: "100%",
+    flexDirection: "row"
+  },
+  ErrorText: { color: "white" },
+  FormStyle: { flex: 1 },
   ForgotPasswordSpace: { flex: 0.25 },
   SubmitButtonSpace: { flex: 1 },
   RegisterNowSpace: {

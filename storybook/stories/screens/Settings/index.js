@@ -17,8 +17,8 @@ const Settings = props => (
     />
     <View style={styles.ContentStyle}>
       <SettingsList
-        PressMinimumDurationOfTouch={props.PressMinimumDurationOfTouch}
-        MinimumDurationOfTouch={props.MinimumDurationOfTouch}
+        PressMaximumImageDuration={props.PressMaximumImageDuration}
+        MaximumImageDuration={props.MaximumImageDuration}
         TimerOfNext={props.TimerOfNext}
         PressNoOfImagesPerSession={props.PressNoOfImagesPerSession}
         NoOfImagesPerSession={props.NoOfImagesPerSession}
@@ -44,14 +44,14 @@ Settings.propTypes = {
   ChildExists: PropTypes.bool,
   NameChild: PropTypes.string,
   NameChildPress: PropTypes.func,
-  PressMinimumDurationOfTouch: PropTypes.func,
+  PressMaximumImageDuration: PropTypes.func,
   RandomSlider: PropTypes.func,
   RandomSliderValue: PropTypes.bool,
   SoundSliderValue: PropTypes.bool,
   SoundSlider: PropTypes.func,
   PressAddPrizes: PropTypes.func,
   PressNoOfImagesPerSession: PropTypes.func,
-  MinimumDurationOfTouch: PropTypes.string,
+  MaximumImageDuration: PropTypes.string,
   TimerOfNext: PropTypes.string,
   NoOfImagesPerSession: PropTypes.number,
   NamePress: PropTypes.func,

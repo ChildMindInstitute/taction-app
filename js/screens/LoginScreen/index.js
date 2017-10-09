@@ -24,24 +24,34 @@ class LoginScreen extends React.Component {
     this.Error = {
       Username: "Required",
       Password: "Required",
-      SubmitError: "Invalid Credentials"
+      SubmitError: "Please Enter A Valid UserName and Password"
     };
   }
 
   loginUser() {
-    this.props.dispatch({
-      type: "USER_SIGN_IN",
-      payload: { username: this.Input.UserName, password: this.Input.Password }
-    });
+    if (this.Input.UserName != "" && this.Input.Password != "") {
+      this.setState({ Submitted: true });
+      this.props.dispatch({
+        type: "USER_SIGN_IN",
+        payload: {
+          username: this.Input.UserName,
+          password: this.Input.Password
+        }
+      });
+    } else if (this.Input.UserName == "" && this.Input.Password == "") {
+      this.setState({ Submitted: false });
+    }
   }
 
   componentDidUpdate() {
     if (this.props.loaded) {
       this.redirect();
       this.setState({ Submitted: false });
-    } else if (this.props.error) {
-      this.setState({ HasSubmitError: true });
-      this.setState({ Submitted: false });
+    } else if (this.props.error && !this.state.HasSubmitError) {
+      this.setState({
+        HasSubmitError: true,
+        Submitted: false
+      });
     }
   }
 
@@ -80,7 +90,7 @@ class LoginScreen extends React.Component {
         }}
         OnPressForgotPassword={() => {}}
         OnPressSubmitButton={() => {
-          this.setState({ Submitted: true });
+          this.setState({ Submitted: true, HasSubmitError: false });
           this.loginUser();
         }}
         Error={this.Error}
@@ -105,11 +115,15 @@ class LoginScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (store)=>{
-    return { loaded: store.loaded, user: store.user, error: store.error.signinError };
-}
+const mapStateToProps = store => {
+  return {
+    loaded: store.loaded,
+    user: store.user,
+    error: store.error.signinError
+  };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

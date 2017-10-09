@@ -119,7 +119,6 @@ const setFolderList = function* setFolderList(action){
   for(let i in folderList){
     folderList[i].imageList = yield call(Db.fetchImageList, folderList[i].folderID);
   }
-  // console.log(folderList);
   yield put({type:'SET_DASHBOARD_LIST', payload:folderList});
 }
 
@@ -151,7 +150,6 @@ const setDashboardList = function* setDashboardList(action){
       Status: action.payload[i].folderDetails.status
     })
   }
-  // console.log(dashboardList, "dashboardList");
   yield put({type:'DASHBOARD_LIST', payload: dashboardList});
 }
 
@@ -160,13 +158,37 @@ const watchSetDashboardList = function* watchSetDashboardList(){
 }
 
 const setFolderStatus = function* setFolderStatus(action){
-  // console.log(action.payload, "loggng toggle payload");
   let update= {status: action.payload.status}
   yield call(Db.updateExercise,action.payload.folderID,update);
 }
 
 const watchSetFolderStatus = function* watchSetFolderStatus(){
   yield takeLatest('SET_FOLDER_STATUS', setFolderStatus);
+}
+
+const setChildFolder = function* setChildFolder(action){
+  let folderList = yield call(Db.fetchExeriseList, action.payload)
+  for(let i in folderList){
+    console.log(folderList);
+    if(folderList[i].folderDetails.status && (!folderList[i].folderDetails.isPLayed)){
+      yield put({type:'SET_FOLDER', payload:{id:folderList[i].folderID}});
+      yield put({type: 'SET_IMAGE_LIST', payload:folderList[i].folderID});
+    }
+  }
+
+}
+
+const watchSetChildFolder = function* watchSetChildFolder(){
+  yield takeLatest('SET_CHILD_FOLDER', setChildFolder)
+}
+
+const setChildImageList = function* setChildImageList(action){
+  let imageList= yield call(Db.fetchImageList, action.payload);
+  yield put({type:'IMAGE_LIST', payload:imageList });
+}
+
+const watchSetChildImageList = function* watchSetChildImageList(){
+  yield takeLatest('SET_IMAGE_LIST', setChildImageList);
 }
 
 const rootSaga = function* rootSaga() {
@@ -184,7 +206,9 @@ const rootSaga = function* rootSaga() {
     watchSetImage(), 
     watchSetFolderList(),
     watchSetDashboardList(),
-    watchSetFolderStatus()
+    watchSetFolderStatus(),
+    watchSetChildFolder(),
+    watchSetChildImageList()
   ]);
 }
 

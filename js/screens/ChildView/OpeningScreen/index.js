@@ -18,6 +18,14 @@ class OpeningScreen extends React.Component {
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
+
+  componentWillMount() {
+    this.props.dispatch({
+      type: "SET_CHILD_FOLDER",
+      payload: this.props.childID
+    });
+  }
+
   render() {
     return (
       <NewIntro
@@ -63,4 +71,4 @@ const mapStateToProps = store => {
 mapDispatchToProps = dispatch => {
   return { dispatch };
 };
-export default connect(mapStateToProps, null)(OpeningScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(OpeningScreen);

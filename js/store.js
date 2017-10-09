@@ -6,7 +6,7 @@ import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducer, applyMiddleware(sagaMiddleware, logger));
+const store = createStore(reducer, applyMiddleware(logger, sagaMiddleware));
 
 // store.subscribe(() => {
 //   console.log("store changed", store.getState());

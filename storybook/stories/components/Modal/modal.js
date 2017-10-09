@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Right, Button } from "native-base";
+import { View } from "native-base";
 import Modal from "react-native-modal";
 import styles from "./styles";
 class ModalCommon extends React.Component {
@@ -12,13 +12,6 @@ class ModalCommon extends React.Component {
         style={styles.MainModal}
       >
         <View style={styles.view1}>
-          <View style={styles.view2}>
-            <Right>
-              <Button transparent onPress={this.props.toggleVisiblity}>
-                <Text style={styles.close}>X</Text>
-              </Button>
-            </Right>
-          </View>
           <View style={styles.mainContent}>{this.props.Content}</View>
         </View>
       </Modal>

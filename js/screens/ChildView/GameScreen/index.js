@@ -2,7 +2,7 @@ import React from "react";
 import Home from "../../../../storybook/stories/screens/Home";
 import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 const input = [
   require("../../../assets/ball1.jpg"),
@@ -26,6 +26,7 @@ class GameScreen extends React.Component {
       i2: this.randomAssign(),
       i3: this.randomAssign(),
       i4: this.randomAssign(),
+      time: time,
       correctOption: 0,
       currentLevel: 1,
       reset: false,
@@ -99,8 +100,7 @@ class GameScreen extends React.Component {
                 this.state.i2,
                 this.state.i3
               );
-              this.setState({ correctOption: x });
-              this.setState({ reset: false });
+              this.setState({ correctOption: x, reset: false });
             }, 500);
           else setTimeout(() => this.setModalVisible(true), 2000);
         }}
@@ -121,6 +121,7 @@ class GameScreen extends React.Component {
               Stars={require("../../../../js/assets/all_stars.png")}
               DisplayPoints={120}
               Description="Time: 02.14 Min"
+              PlayLaterText="Play Later"
               IsButtonNeeded={true}
               PlayNext={() => {
                 alert("PlayNext Pressed");
@@ -128,29 +129,30 @@ class GameScreen extends React.Component {
               PlayAgain={() => {
                 alert("PlayAgain Pressed");
               }}
+              toggleVisiblity={() => {
+                //replace goBack with logout logic
+                this.props.navigation.goBack();
+                this.setModalVisible(false);
+              }}
             />
           }
-          toggleVisiblity={() => {
-            this.setModalVisible(false);
-            this.props.navigation.goBack();
-          }}
         />
       </Home>
     );
   }
 }
 
-const mapStateToProps = (store)=>{
-  return{
+const mapStateToProps = store => {
+  return {
     child: store.user.child,
     folder: store.folder,
     imageList: store.currentImageList,
     // nextFolder
     settings: store.user.parent.settings
-  }  
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

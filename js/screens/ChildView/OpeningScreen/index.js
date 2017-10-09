@@ -19,16 +19,18 @@ class OpeningScreen extends React.Component {
     this.setState({ modalVisible: visible });
   }
 
-  componentWillMount(){
-    this.props.dispatch({type:'SET_CHILD_FOLDER', payload:this.props.childID});
+  componentWillMount() {
+    this.props.dispatch({
+      type: "SET_CHILD_FOLDER",
+      payload: this.props.childID
+    });
   }
 
-
   render() {
-    return( 
+    return (
       <NewIntro
         TopViewBackgroundColor="rgba(0, 103, 158, 1)"
-        BottomViewBackGroundColor="rgba(255, 255, 255, 0.9)"
+        BottomViewBackGroundColor="rgba(255, 255, 255,1)"
         ScoreColor="rgba(0, 103, 158, 1)"
         Score={this.props.child.totalScore}
         Stars={require("../../../assets/all_stars.png")}
@@ -47,12 +49,15 @@ class OpeningScreen extends React.Component {
               DisplayPoints={120}
               Description="Time To Earn Some Points"
               IsButtonNeeded={false}
+              toggleVisiblity={() => {
+                this.setModalVisible(false);
+              }}
+              PlayLaterText="CLOSE"
             />
           }
-          toggleVisiblity={() => {
-            this.setModalVisible(false);
-          }} />
-      </NewIntro>);
+        />
+      </NewIntro>
+    );
   }
 }
 
@@ -63,7 +68,7 @@ const mapStateToProps = store => {
   };
 };
 
-mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
-}
+mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(OpeningScreen);

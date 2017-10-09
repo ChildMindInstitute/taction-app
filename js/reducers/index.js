@@ -57,6 +57,10 @@ const errorReducer = (state={signinError:false}, action)=>{
             state={...state, signinError: true,errorVal:action.payload}
             break;
         }
+        case 'CLEAR_STORE':{
+            state={...state, signinError: false,errorVal:action.payload}
+            break;
+        }
     }
     return state;
 }
@@ -84,9 +88,17 @@ const imageReducer = (state={}, action)=>{
 const dasboardListReducer = (state=[], action)=>{
     switch(action.type){
         case 'DASHBOARD_LIST':{
-            // console.log(action.payload,"easrtfghhbkdfghbjbdfhbkjfd")
             state=action.payload;
             break;
+        }
+    }
+    return state;
+}
+
+const imageListReducer = (state=[], action)=>{
+    switch (action.type){
+        case 'IMAGE_LIST':{
+            state=action.payload;
         }
     }
     return state;
@@ -99,7 +111,8 @@ const reducer =  combineReducers({
     error: errorReducer,
     folder: folderReducer,
     image: imageReducer,
-    dashboardList: dasboardListReducer
+    dashboardList: dasboardListReducer,
+    currentImageList: imageListReducer
 });
 
 export default reducer;

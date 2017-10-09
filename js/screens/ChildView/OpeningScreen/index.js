@@ -18,37 +18,20 @@ class OpeningScreen extends React.Component {
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
+
+  componentWillMount(){
+    this.props.dispatch({type:'SET_CHILD_FOLDER', payload:this.props.childID});
+  }
+
+
   render() {
-    return (
-      <NewIntro
-        TopViewBackgroundColor="rgba(0, 103, 158, 1)"
-        BottomViewBackGroundColor="rgba(255, 255, 255, 0.9)"
-        ScoreColor="rgba(0, 103, 158, 1)"
-        Score={this.props.child.totalScore}
-        Stars={require("../../../assets/all_stars.png")}
-        PlayOnPress={() => {
+    return <NewIntro TopViewBackgroundColor="rgba(0, 103, 158, 1)" BottomViewBackGroundColor="rgba(255, 255, 255, 0.9)" ScoreColor="rgba(0, 103, 158, 1)" Score={this.props.child.totalScore} Stars={require("../../../assets/all_stars.png")} PlayOnPress={() => {
           this.props.navigation.navigate("DashboardChild");
-        }}
-        HowToPlayOnPress={() => {}}
-      >
-        <ModalCommon
-          isVisible={this.state.modalVisible}
-          Content={
-            <ModalContent
-              GreetingLine1="Welcome Back"
-              Line2needed={false}
-              Stars={require("../../../../js/assets/all_stars.png")}
-              DisplayPoints={120}
-              Description="Time To Earn Some Points"
-              IsButtonNeeded={false}
-            />
-          }
-          toggleVisiblity={() => {
+        }} HowToPlayOnPress={() => {}}>
+        <ModalCommon isVisible={this.state.modalVisible} Content={<ModalContent GreetingLine1="Welcome Back" Line2needed={false} Stars={require("../../../../js/assets/all_stars.png")} DisplayPoints={this.props.child.totalScore} Description="Time To Earn Some Points" IsButtonNeeded={false} />} toggleVisiblity={() => {
             this.setModalVisible(false);
-          }}
-        />
-      </NewIntro>
-    );
+          }} />
+      </NewIntro>;
   }
 }
 
@@ -59,4 +42,4 @@ const mapStateToProps = (store)=>{
 mapDispatchToProps = (dispatch)=>{
   return {dispatch}
 }
-export default connect(mapStateToProps, null)(OpeningScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(OpeningScreen);

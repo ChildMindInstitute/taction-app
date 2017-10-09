@@ -2,13 +2,15 @@ import React from "react";
 import Home from "../../../../storybook/stories/screens/Home";
 import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
+import {connect} from 'react-redux';
+
 const input = [
   require("../../../assets/ball1.jpg"),
   require("../../../assets/spiderman.jpg"),
   require("../../../assets/minion.jpg"),
   require("../../../assets/ball2.jpg")
 ];
-const totalLevels = 10;
+let totalLevels = 10;
 const correctArrayItem = 1;
 const time = 180000;
 class GameScreen extends React.Component {
@@ -27,7 +29,8 @@ class GameScreen extends React.Component {
       correctOption: 0,
       currentLevel: 1,
       reset: false,
-      modalVisible: false
+      modalVisible: false,
+      currentImage: {}
     };
     this.state.correctOption = this.correctOptionDecision(
       this.state.i1,
@@ -55,13 +58,18 @@ class GameScreen extends React.Component {
     }
     return 4;
   }
+
+  componentDidMount(){
+    totalLevels= this.props.settings.imagesPerSession
+  }
+
   render() {
     return (
       <Home
         Back={() => {
           this.props.navigation.goBack();
         }}
-        TotalPoints={100}
+        TotalPoints={this.props.child.childDetails.totalScore}
         TimeLeft={time}
         TimeLeftDenomination={"Min"}
         Image1={input[this.state.i1]}
@@ -73,7 +81,7 @@ class GameScreen extends React.Component {
         TickImage={require("../../../assets/Tick.png")}
         CorrectOption={this.state.correctOption}
         Pressed={item => {
-          // console.log(item);
+          //console.log(item);
           //count Points logic
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel < totalLevels)
@@ -131,4 +139,18 @@ class GameScreen extends React.Component {
     );
   }
 }
-export default GameScreen;
+
+const mapStateToProps = (store)=>{
+  return{
+    child: store.user.child,
+    folder: store.folder,
+    imageList: store.currentImageList,
+    // nextFolder
+    settings: store.user.parent.settings
+  }  
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

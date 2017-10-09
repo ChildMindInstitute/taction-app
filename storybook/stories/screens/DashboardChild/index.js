@@ -11,8 +11,8 @@ const DashboardChild = props => (
     <Container style={styles.ContainerStyle}>
       <StatusBar
         translucent={true}
-        backgroundColor="transparent"
-        barStyle={props.StatusBarStyle}
+        backgroundColor="#0067a0"
+        barStyle="light-content"
       />
       <HeaderCommon
         isRightRequired={false}

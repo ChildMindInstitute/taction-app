@@ -6,7 +6,7 @@ import FormInput from "../../components/FormInput";
 import ForgotPassword from "../../components/ForgotPassword";
 import Button from "../../components/Button";
 import RegisterWithUs from "../../components/RegisterWithUs";
-import { View, Form, Text } from "native-base";
+import { View, Form, Text, Icon, Left, Body } from "native-base";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const Login = props => (
@@ -18,6 +18,29 @@ const Login = props => (
     />
     <View style={styles.TopSpace}>
       <Logo />
+    </View>
+    <View
+      style={[
+        styles.ErrorSpace,
+        { backgroundColor: props.HasSubmitError ? "#EF3350" : "transparent" }
+      ]}
+    >
+      {props.HasSubmitError ? (
+        <Left style={{ flex: 1 }}>
+          <Icon
+            name="information-circle"
+            active={true}
+            style={{ color: "white" }}
+          />
+        </Left>
+      ) : (
+        <View />
+      )}
+      <Body style={{ flex: 9 }}>
+        <Text style={styles.ErrorText}>
+          {props.HasSubmitError ? props.Error.SubmitError : " "}
+        </Text>
+      </Body>
     </View>
     <View style={styles.FormSpace}>
       <Form style={styles.FormStyle}>
@@ -57,11 +80,7 @@ const Login = props => (
         Submitted={props.Submitted}
       />
     </View>
-    <View style={styles.ErrorSpace}>
-      <Text style={styles.ErrorText}>
-        {props.HasSubmitError ? props.Error.SubmitError : " "}
-      </Text>
-    </View>
+
     <View style={styles.RegisterNowSpace}>
       <RegisterWithUs OnPressRegisterNow={props.OnPressRegisterNow} />
     </View>

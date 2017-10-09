@@ -4,7 +4,7 @@ import { Image } from "react-native";
 
 const Logo = props => (
   <Image
-    source={require("../../../../js/assets/Logo.png")}
+    source={require("../../../../js/assets/LogoHorizontal.png")}
     style={props.imageDimensions}
   />
 );

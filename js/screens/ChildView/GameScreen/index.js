@@ -102,7 +102,7 @@ class GameScreen extends React.Component {
               this.setState({ correctOption: x });
               this.setState({ reset: false });
             }, 500);
-          else setTimeout(() => this.props.navigation.goBack(), 2000);
+          else setTimeout(() => this.setModalVisible(true), 2000);
         }}
         FinishedFunc={() => {
           setTimeout(() => this.setModalVisible(true), 1000);

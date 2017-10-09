@@ -15,7 +15,7 @@ import styles from "./styles";
 const SettingsList = props => (
   <List style={props.ListStyle}>
     <Separator bordered>
-      <Text style={styles.Margin}>Profile</Text>
+      <Text style={styles.Margin}>PROFILE</Text>
     </Separator>
     <ListItem icon button onPress={props.NamePress}>
       <Body>
@@ -59,7 +59,7 @@ const SettingsList = props => (
       </Right>
     </ListItem>
     <Separator bordered>
-      <Text style={styles.Margin}>Game Settings</Text>
+      <Text style={styles.Margin}>GAME</Text>
     </Separator>
     <ListItem icon button onPress={props.PressNoOfImagesPerSession}>
       <Body>
@@ -85,19 +85,19 @@ const SettingsList = props => (
         />
       </Right>
     </ListItem>
-    <ListItem icon button onPress={props.PressMinimumDurationOfTouch}>
+    <ListItem icon button onPress={props.PressMaximumImageDuration}>
       <Body>
         <Text style={[styles.Margin, styles.FontSize]}>
-          Min Duration Of Touch
+          Maximum Image Duration
         </Text>
       </Body>
       <Right>
-        <Text>{props.MinimumDurationOfTouch}</Text>
+        <Text>{props.MaximumImageDuration}</Text>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
     <Separator bordered>
-      <Text style={styles.Margin}>General</Text>
+      <Text style={styles.Margin}>GENERAL</Text>
     </Separator>
     <ListItem icon>
       <Body>
@@ -127,10 +127,10 @@ SettingsList.propTypes = {
   ChildExists: PropTypes.bool,
   NameChild: PropTypes.string,
   NameChildPress: PropTypes.func,
-  MinimumDurationOfTouch: PropTypes.string,
+  MaximumImageDuration: PropTypes.string,
   TimerOfNext: PropTypes.string,
   NoOfImagesPerSession: PropTypes.number,
-  PressMinimumDurationOfTouch: PropTypes.func,
+  PressMaximumImageDuration: PropTypes.func,
   RandomSlider: PropTypes.func,
   SoundSliderValue: PropTypes.bool,
   SoundSlider: PropTypes.func,

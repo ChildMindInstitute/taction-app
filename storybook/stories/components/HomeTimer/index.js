@@ -25,7 +25,7 @@ class HomeTimer extends React.Component {
         : seconds >= 10 ? seconds : "00")
     );
   }
-  componentDidMount() {
+  componentWillMount() {
     let x = setInterval(() => {
       let now = new Date().getTime();
       if (this.future - now >= 0) {
@@ -37,17 +37,18 @@ class HomeTimer extends React.Component {
     }, 1000);
     this.setState({ interval: x });
   }
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
+  }
   render() {
     return (
       <View style={this.props.ViewStyle}>
         <View style={styles.OuterCircle}>
           <View style={styles.InnerCircle}>
             <Text style={styles.TimeTextStyle}>
-              {this.state.timer != "Expired" ? (
-                this.returnMinSec(this.state.timer)
-              ) : (
-                "Over"
-              )}
+              {this.state.timer != "Expired"
+                ? this.returnMinSec(this.state.timer)
+                : "Over"}
             </Text>
             {this.state.timer != "Expired" ? (
               <View />
@@ -55,13 +56,9 @@ class HomeTimer extends React.Component {
               this.props.FinishedFunc()
             )}
             <Text note>
-              {this.state.timer > 60000 ? (
-                "Min"
-              ) : this.state.timer != "Expired" ? (
-                "Sec"
-              ) : (
-                ""
-              )}
+              {this.state.timer > 60000
+                ? "Min"
+                : this.state.timer != "Expired" ? "Sec" : ""}
             </Text>
           </View>
         </View>

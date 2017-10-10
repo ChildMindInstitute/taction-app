@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
   ContainerStyle: { flex: 1, backgroundColor: "#eee" },
   AddButton: {
     borderRadius: 50,
-    backgroundColor: "#eeae30",
+    backgroundColor: "#fff",
     flex: 1
   },
-  AddButtonIcon: { color: "#fff", fontWeight: "bold" },
+  AddButtonIcon: { color: "#eeae30", fontWeight: "bold" },
   OtherButtons: {
     borderRadius: 50,
     backgroundColor: "#fff",

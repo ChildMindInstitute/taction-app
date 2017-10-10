@@ -43,8 +43,12 @@ class HomeContent extends React.Component {
     });
   }
   render() {
-    if (this.props.HasToReset && this.state.continueReseting) {
+    if (
+      (this.props.HasToReset && this.state.continueReseting) ||
+      this.props.IsTimeExpired
+    ) {
       this.reset();
+      this.props.TimeExpiredCounterSwitch();
     }
     return (
       <View style={styles.MainView}>

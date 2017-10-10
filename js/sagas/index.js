@@ -200,6 +200,17 @@ const setChildFolder = function* setChildFolder(action) {
         payload: { id: folderList[i].folderID }
       });
       yield put({ type: "SET_IMAGE_LIST", payload: folderList[i].folderID });
+      for (let j = ++i; j < folderList.length; j++) {
+        if (
+          folderList[i].folderDetails.status &&
+          !folderList[i].folderDetails.isPLayed
+        ) {
+          let nextFolder = yield call(Db.getExercise, folderList[i].folderID);
+          yield put({ type: "NEXT_FOLDER", payload: nextFolder });
+          break;
+        }
+      }
+      break;
     }
   }
 };

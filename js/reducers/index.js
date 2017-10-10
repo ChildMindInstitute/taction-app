@@ -104,6 +104,16 @@ const imageListReducer = (state=[], action)=>{
     return state;
 }
 
+const nextFolderReducer = (state={}, action)=>{
+    switch(action.type){
+        case 'NEXT_FOLDER':{
+            state = action.payload;
+            break;
+        }
+    }
+    return state;
+}
+
 const reducer =  combineReducers({
     user: userReducer,
     loaded: waitReducer,
@@ -112,7 +122,8 @@ const reducer =  combineReducers({
     folder: folderReducer,
     image: imageReducer,
     dashboardList: dasboardListReducer,
-    currentImageList: imageListReducer
+    currentImageList: imageListReducer,
+    nextFolder: nextFolderReducer
 });
 
 export default reducer;

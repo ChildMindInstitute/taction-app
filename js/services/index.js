@@ -155,7 +155,7 @@ export default {
       var response = [];
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/exercises/");
+        .ref("child/" + childID + "/exercises/").orderByChild('order');
       try {
         childRef.on("value", snapshot => {
           var numExe = snapshot.numChildren();
@@ -290,8 +290,6 @@ export default {
     return new Promise((resolve, reject)=>{
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try{
-        // console.log(update, "logging update object");
-        // console.log(exeID, "logging exeID");
         exeRef.update(update).then(()=>{
           resolve(exeID);
         })

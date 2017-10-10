@@ -3,6 +3,8 @@ import DrawerParent from "../../../storybook/stories/components/Drawer";
 import { Constants } from "expo";
 import { View } from "native-base";
 import { StatusBar } from "react-native";
+import {connect} from 'react-redux';
+
 class ParentDrawerScreen extends React.Component {
   static navigationOptions = {
     title: "ParentDrawerScreen",
@@ -37,4 +39,9 @@ class ParentDrawerScreen extends React.Component {
     );
   }
 }
-export default ParentDrawerScreen;
+
+const mapStateToProps = (store)=>{
+  return { child: store.user.child}
+}
+
+export default connect(mapStateToProps, null)(ParentDrawerScreen);

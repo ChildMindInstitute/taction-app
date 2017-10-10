@@ -1,7 +1,7 @@
 import React from "react";
-import { Text } from "native-base";
+import { Text, View, Spinner } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 let count = 0;
 
 class DashboardScreen extends React.Component {
@@ -16,30 +16,50 @@ class DashboardScreen extends React.Component {
     }
   }
 
-  componentDidMount(){
-    this.props.dispatch({type:'SET_FOLDER_LIST', payload:this.props.child.childID});
+  componentDidMount() {
+    this.props.dispatch({
+      type: "SET_FOLDER_LIST",
+      payload: this.props.child.childID
+    });
   }
-
 
   render() {
     return (
-      <Dashboard
-        DrawerOpen={() => {
-          this.props.navigation.navigate("DrawerOpen");
-        }}
-        ExcerciseData={this.props.dashboardList}
-      >
-        <Text style={{ fontSize: 22 }}>Today's Activities</Text>
-      </Dashboard>
+      <View style={{ flex: 1 }}>
+        <Dashboard
+          DrawerOpen={() => {
+            this.props.navigation.navigate("DrawerOpen");
+          }}
+          ExcerciseData={this.props.dashboardList}
+        >
+          <Text style={{ fontSize: 22 }}>Today's Activities</Text>
+        </Dashboard>
+        {this.props.loaded ? (
+          <View />
+        ) : (
+          <Spinner
+            color="#0067a0"
+            style={{
+              position: "absolute",
+              left: "45%",
+              top: "50%"
+            }}
+          />
+        )}
+      </View>
     );
   }
 }
 
-const mapStateToProps = (store)=>{
-    return { child: store.user.child, dashboardList: store.dashboardList };
-}
+const mapStateToProps = store => {
+  return {
+    child: store.user.child,
+    dashboardList: store.dashboardList,
+    loaded: store.loaded
+  };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);

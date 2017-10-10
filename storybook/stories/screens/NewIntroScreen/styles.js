@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   HowToPlayButtonStyle: {
-    backgroundColor: "#ffffff",
-    opacity: 1,
+    backgroundColor: "#eee",
+    borderWidth: 1,
+    borderColor: "#eee",
     marginLeft: "10%",
     marginRight: "10%",
     borderRadius: 50

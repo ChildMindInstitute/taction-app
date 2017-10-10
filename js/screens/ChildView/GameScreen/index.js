@@ -32,7 +32,8 @@ class GameScreen extends React.Component {
       currentLevel: 1,
       reset: false,
       modalVisible: false,
-      currentImage: {}
+      currentImage: {},
+      isLast: false
     };
     this.state.correctOption = this.correctOptionDecision(
       this.state.i1,
@@ -87,7 +88,7 @@ class GameScreen extends React.Component {
         CrossImage={require("../../../assets/Cross.png")}
         TickImage={require("../../../assets/Tick.png")}
         CorrectOption={this.state.correctOption}
-        IsLast={this.state.currentLevel < totalLevels ? false : true}
+        IsLast={this.state.isLast}
         TimeExpiredImageShuffle={() => {
           //No Points for this Image
           this.options = [0, 1, 2, 3];
@@ -107,7 +108,10 @@ class GameScreen extends React.Component {
               );
               this.setState({ correctOption: x });
             }, 500);
-          else setTimeout(() => this.setModalVisible(true), 2000);
+          else {
+            this.setState({ isLast: true });
+            setTimeout(() => this.setModalVisible(true), 2000);
+          }
         }}
         Pressed={item => {
           //console.log(item);

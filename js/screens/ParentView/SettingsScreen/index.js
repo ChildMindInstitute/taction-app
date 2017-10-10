@@ -21,21 +21,32 @@ class SettingsScreen extends React.Component {
   }
   findRoutes(value) {
     switch (this.state.promptTitle) {
-      case "Name":
-        console.log(value);
-        //firebase Action
+      case "Name":{
+        this.props.dispatch({type:'UPDATE_PARENT', payload: value});
         break;
+      }
       case "Age":
-        console.log(value);
-        //firebase Action
+        this.props.dispatch({type:'UPDATE_CHILD', payload:{id: this.props.child.childID, update:{age: value}}});
         break;
       case "Name of Child":
-        console.log(value);
-        //firebase Action
+        this.props.dispatch({
+          type: "UPDATE_CHILD",
+          payload: {
+            id: this.props.child.childID,
+            update: { name: value }
+          }
+        });
         break;
     }
   }
   componenetDidUpdate() {
+    this.setState({
+      Random: this.props.parent.settings.random,
+      Sound: this.props.parent.settings.sound
+    });
+  }
+
+  componentDidMount(){
     this.setState({
       Random: this.props.parent.settings.random,
       Sound: this.props.parent.settings.sound
@@ -71,20 +82,57 @@ class SettingsScreen extends React.Component {
               },
               buttonIndex => {
                 switch (buttonIndex) {
-                  case 0:
-                    //setMaxDurationTo5
+                  case 0:{
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          maxImageDuration: 5
+                        }
+                      }
+                    });
                     break;
-                  case 1:
-                    //setMaxDurationTo19
+                  }
+                  case 1:{
+                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          maxImageDuration: 10
+                        }
+                      }
+                    });
                     break;
-                  case 2:
-                    //setMaxDurationTo25
+                  }
+                  case 2:{
+                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          maxImageDuration: 25
+                        }
+                      }
+                    });
                     break;
-                  case 3:
-                    //setMaxDurationTo50
+                  }
+                  case 3:{
+                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          maxImageDuration: 50
+                        }
+                      }
+                    });
                     break;
-                  case 4:
-                  //setMaxDurationTo100
+                  }
+                  case 4:{
+                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          maxImageDuration: 100
+                        }
+                      }
+                    });
+                    break;
+                  }
                 }
               }
             );
@@ -101,19 +149,52 @@ class SettingsScreen extends React.Component {
               buttonIndex => {
                 switch (buttonIndex) {
                   case 0:
-                    //setMaxDurationTo5
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          imagesPerSession: 5
+                        }
+                      }
+                    });
                     break;
                   case 1:
-                    //setMaxDurationTo19
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          imagesPerSession: 10
+                        }
+                      }
+                    });
                     break;
                   case 2:
-                    //setMaxDurationTo25
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          imagesPerSession: 25
+                        }
+                      }
+                    });
                     break;
                   case 3:
-                    //setMaxDurationTo50
+                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          imagesPerSession: 50
+                        }
+                      }
+                    });
                     break;
                   case 4:
-                  //setMaxDurationTo100
+                  this.props.dispatch({type: "UPDATE_SETTINGS",
+                    payload: {
+                      update: {
+                        imagesPerSession: 100
+                      }
+                    }
+                  });
                 }
               }
             );
@@ -142,11 +223,27 @@ class SettingsScreen extends React.Component {
           }}
           RandomSlider={value => {
             this.setState({ Random: value });
+            this.props.dispatch({
+              type: "UPDATE_SETTINGS",
+              payload: {
+                update: {
+                  random: value
+                }
+              }
+            });
           }}
           RandomSliderValue={this.state.Random}
           SoundSliderValue={this.state.Sound}
           SoundSlider={value => {
             this.setState({ Sound: value });
+            this.props.dispatch({
+              type: "UPDATE_SETTINGS",
+              payload: {
+                update: {
+                  sound: value
+                }
+              }
+            });
           }}
           ChildExists={this.props.child.childDetails ? true : false}
           NameChild={
@@ -174,8 +271,8 @@ const mapStateToProps = store => {
   return { parent: store.user.parent, child: store.user.child };
 };
 
-// const mapDispatchToProps = (dispatch)=>{
-//   return (dispatch)
-// }
+const mapDispatchToProps = (dispatch)=>{
+  return {dispatch}
+};
 
-export default connect(mapStateToProps, null)(SettingsScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

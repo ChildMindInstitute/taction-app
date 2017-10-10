@@ -1,4 +1,4 @@
-import { all, put, take } from "redux-saga/effects";
+import { all } from "redux-saga/effects";
 import watchSetParent from './setParent';
 import watchSetChild from './setChild';
 import watchSignIn from './signIn';
@@ -15,6 +15,9 @@ import watchSetDashboardList from './setDashboardList';
 import watchSetFolderStatus from './setFolderStatus';
 import watchSetChildFolder from './setChildFolder';
 import watchSetChildImageList from './setChildImageList';
+import watchUpdateParent from './updateParent';
+import watchUpdateChild from './updateChild';
+import watchUpdateSettings from './updateSettings';
 
 
 const rootSaga = function* rootSaga() {
@@ -34,7 +37,10 @@ const rootSaga = function* rootSaga() {
     watchSetDashboardList(),
     watchSetFolderStatus(),
     watchSetChildFolder(),
-    watchSetChildImageList()
+    watchSetChildImageList(),
+    watchUpdateParent(),
+    watchUpdateChild(),
+    watchUpdateSettings()
   ]);
 };
 

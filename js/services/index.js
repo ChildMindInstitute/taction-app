@@ -299,6 +299,44 @@ export default {
         reject(err);
       }
     })
+  },
+
+  updateParent(name){
+    return new Promise ((resolve, reject)=>{
+      try{
+        firebase.auth().currentUser.updateProfile({displayName: name}).then(()=>{
+          resolve();
+        })
+      }catch(err){
+        reject(err);
+      }
+    })
+  },
+
+  updateChild(childID, update){
+    return new Promise((resolve, reject) => {
+      const childRef = firebase.database().ref("child/" + childID);
+      try {
+        childRef.update(update).then(() => {
+          resolve(childID);
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  },
+
+  updateSettings(update){
+    return new Promise((resolve, reject) => {
+      const childRef = firebase.database().ref("parent/" + firebase.auth().currentUser.uid+"/settings/");
+      try {
+        childRef.update(update).then(() => {
+          resolve();
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
   
 };

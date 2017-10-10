@@ -8,90 +8,97 @@ import { Container, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
-const Home = props => (
-  <View style={styles.ContainerOuterViewStyle}>
-    <Container style={styles.ContainerStyle}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle={props.StatusBarStyle}
-      />
-      <HeaderCommon
-        isRightRequired={true}
-        leftIconStyle={styles.HeaderLeftStyle}
-        leftPress={props.Back}
-        leftIconName="arrow-back"
-        headerStyle={styles.HeaderStyle}
-        Title=""
-        TitleStyle={styles.HeaderLeftStyle}
-      >
-        <View style={styles.HeaderRightStyle}>
-          <View style={styles.HeaderRightImageSpace}>
-            <Image source={require("../../../../js/assets/star_filled.png")} />
-          </View>
-          <View style={styles.HeaderRightTextSpace}>
-            <View style={styles.HeaderRightTextAlign} />
-            <Text style={styles.HeaderRightTotalPointsStyle}>
-              {props.TotalPoints}
-            </Text>
-            <Text style={styles.HeaderRightTotalPointsTextStyle}>points</Text>
-            <View style={styles.HeaderRightTextAlign} />
-          </View>
-        </View>
-      </HeaderCommon>
-      <View style={styles.ExcerciseSpace}>
-        <Text style={styles.ExcerciseText}>{props.Question}</Text>
-        <View style={styles.ExcerciseContentStyle}>
-          <HomeContent
-            Image1={props.Image1}
-            Image2={props.Image2}
-            Image3={props.Image3}
-            Image4={props.Image4}
-            TickImage={props.TickImage}
-            CrossImage={props.CrossImage}
-            CorrectOption={props.CorrectOption}
-            Pressed={props.Pressed}
-            HasToReset={props.HasToReset}
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      CurrentLevelAnswerSubmitted: false,
+      TimeExpired: false
+    };
+  }
+  render() {
+    return (
+      <View style={styles.ContainerOuterViewStyle}>
+        <Container style={styles.ContainerStyle}>
+          <StatusBar
+            translucent={true}
+            backgroundColor="transparent"
+            barStyle={this.props.StatusBarStyle}
           />
-        </View>
+          <HeaderCommon
+            isRightRequired={true}
+            leftIconStyle={styles.HeaderLeftStyle}
+            leftPress={this.props.Back}
+            leftIconName="arrow-back"
+            headerStyle={styles.HeaderStyle}
+            Title=""
+            TitleStyle={styles.HeaderLeftStyle}
+          >
+            <View style={styles.HeaderRightStyle}>
+              <View style={styles.HeaderRightImageSpace}>
+                <Image
+                  source={require("../../../../js/assets/star_filled.png")}
+                />
+              </View>
+              <View style={styles.HeaderRightTextSpace}>
+                <View style={styles.HeaderRightTextAlign} />
+                <Text style={styles.HeaderRightTotalPointsStyle}>
+                  {this.props.TotalPoints}
+                </Text>
+                <Text style={styles.HeaderRightTotalPointsTextStyle}>
+                  points
+                </Text>
+                <View style={styles.HeaderRightTextAlign} />
+              </View>
+            </View>
+          </HeaderCommon>
+          <View style={styles.ExcerciseSpace}>
+            <Text style={styles.ExcerciseText}>{this.props.Question}</Text>
+            <View style={styles.ExcerciseContentStyle}>
+              <HomeContent
+                Image1={this.props.Image1}
+                Image2={this.props.Image2}
+                Image3={this.props.Image3}
+                Image4={this.props.Image4}
+                TickImage={this.props.TickImage}
+                CrossImage={this.props.CrossImage}
+                CorrectOption={this.props.CorrectOption}
+                Pressed={item => {
+                  this.setState({ CurrentLevelAnswerSubmitted: true });
+                  this.props.Pressed(item);
+                }}
+                HasToReset={this.props.HasToReset}
+                IsTimeExpired={this.state.TimeExpired}
+                TimeExpiredCounterSwitch={() =>
+                  this.setState({ TimeExpired: false })}
+                IsLast={this.props.IsLast}
+              />
+            </View>
+          </View>
+          <HomeFooter
+            FooterStyle={styles.FooterStyle}
+            Left={this.props.LeftImages}
+            Total={this.props.TotalImages}
+          />
+          {this.props.children}
+        </Container>
+        <HomeTimer
+          TimeLeftDenomination={this.props.TimeLeftDenomination}
+          TimeLeft={this.props.TimeLeft}
+          ViewStyle={styles.HomeTimerStyle}
+          FinishedFunc={this.props.FinishedFunc}
+          CurrentLevelAnswerSubmitted={this.state.CurrentLevelAnswerSubmitted}
+          CurrentLevelAnswerSubmittedSwitch={() => {
+            this.setState({ CurrentLevelAnswerSubmitted: false });
+          }}
+          TimeExpiredFunc={() => {
+            this.setState({ TimeExpired: true });
+            this.props.TimeExpiredImageShuffle();
+          }}
+        />
       </View>
-      <HomeFooter
-        FooterStyle={styles.FooterStyle}
-        Left={props.LeftImages}
-        Total={props.TotalImages}
-      />
-      {props.children}
-    </Container>
-    <HomeTimer
-      TimeLeftDenomination={props.TimeLeftDenomination}
-      TimeLeft={props.TimeLeft}
-      ViewStyle={styles.HomeTimerStyle}
-      FinishedFunc={props.FinishedFunc}
-    />
-  </View>
-);
-
-Home.propTypes = {
-  HasToReset: PropTypes.bool,
-  FinishedFunc: PropTypes.func,
-  Back: PropTypes.func,
-  Question: PropTypes.string,
-  TotalPoints: PropTypes.number,
-  TimeLeftDenomination: PropTypes.string,
-  TimeLeft: PropTypes.number,
-  Image1: PropTypes.node.isRequired,
-  Image2: PropTypes.node.isRequired,
-  Image3: PropTypes.node.isRequired,
-  Image4: PropTypes.node.isRequired,
-  TickImage: PropTypes.node.isRequired,
-  CrossImage: PropTypes.node.isRequired,
-  CorrectOption: PropTypes.node.isRequired,
-  Pressed: PropTypes.func,
-  LeftImages: PropTypes.number,
-  TotalImages: PropTypes.number
-};
-Home.defaultProps = {
-  Back: () => {}
-};
+    );
+  }
+}
 
 export { Home as default };

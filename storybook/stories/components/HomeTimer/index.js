@@ -28,11 +28,26 @@ class HomeTimer extends React.Component {
   componentWillMount() {
     let x = setInterval(() => {
       let now = new Date().getTime();
-      if (this.future - now >= 0) {
+      if (this.future - now >= 0 && !this.props.CurrentLevelAnswerSubmitted) {
         this.setState({ timer: this.future - now });
-      } else {
-        this.setState({ timer: "Expired" });
-        clearInterval(x);
+      } else if (
+        this.future - now >= 0 &&
+        this.props.CurrentLevelAnswerSubmitted
+      ) {
+        if (!this.props.IsLast) {
+          {
+            this.future = new Date().getTime() + this.props.TimeLeft;
+            this.props.CurrentLevelAnswerSubmittedSwitch();
+          }
+        } else clearInterval(x);
+      } else if (
+        this.future - now < 0 &&
+        !this.props.CurrentLevelAnswerSubmitted
+      ) {
+        if (!this.props.IsLast) {
+          this.future = new Date().getTime() + this.props.TimeLeft;
+          this.props.TimeExpiredFunc();
+        } else clearInterval(x);
       }
     }, 1000);
     this.setState({ interval: x });

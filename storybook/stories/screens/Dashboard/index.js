@@ -1,44 +1,67 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DashboardGreetings from "../../components/DashboardGreetings";
-import DashboardList from "../../components/DashboardList";
-import HeaderCommon from "../../components/Header";
-import { Container, View } from "native-base";
+import {
+  Container,
+  View,
+  Header,
+  Tabs,
+  Tab,
+  Left,
+  Icon,
+  Body,
+  Button,
+  Text,
+  Right
+} from "native-base";
+import DashBoardContent from "../DashboardContent";
 import styles from "./styles";
 const Dashboard = props => (
   <Container style={styles.ContainerStyle}>
-    <HeaderCommon
-      isRightRequired={false}
-      leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.DrawerOpen}
-      leftIconName="menu"
-      headerStyle={styles.HeaderStyle}
-      Title="Dashboard"
-      TitleStyle={styles.HeaderLeftStyle}
-    />
-    <View style={styles.ContentStyle}>
-      <View style={styles.GreetingsSpace}>
-        <DashboardGreetings>{props.children}</DashboardGreetings>
-      </View>
-      <View style={styles.ListSpace}>
-        <DashboardList ListData={props.ExcerciseData} />
-      </View>
-    </View>
+    <Header
+      hasTabs
+      renderTabBar={() => <ScrollableTab />}
+      style={styles.HeaderStyle}
+    >
+      <Left style={styles.LeftStyle}>
+        <Button transparent onPress={props.leftPress}>
+          <Icon name="menu" style={styles.HeaderLeftStyle} />
+        </Button>
+      </Left>
+      <Body style={styles.BodyStyle}>
+        <Text style={styles.BodyTitleStyle}>Dashboard</Text>
+      </Body>
+      <Right style={styles.RightStyle} />
+    </Header>
+    <Tabs initialPage={0}>
+      <Tab
+        heading="Today's Activities"
+        activeTabStyle={{ backgroundColor: "#0067a0" }}
+        activeTextStyle={{ color: "#ffffff" }}
+      >
+        <DashBoardContent ExcerciseData={props.ExcerciseDataToday}>
+          <Text>Today's Activities</Text>
+        </DashBoardContent>
+      </Tab>
+      <Tab
+        heading="Month's Activities"
+        activeTabStyle={{ backgroundColor: "#0067a0" }}
+        activeTextStyle={{ color: "#ffffff" }}
+      >
+        <DashBoardContent ExcerciseData={props.ExcerciseDataMonth}>
+          <Text>Month's Activities</Text>
+        </DashBoardContent>
+      </Tab>
+    </Tabs>
   </Container>
 );
 
 Dashboard.propTypes = {
-  DrawerOpen: PropTypes.func,
-  ExcerciseData: PropTypes.array,
-  children: PropTypes.node.isRequired
+  ExcerciseDataToday: PropTypes.array,
+  ExcerciseDataMonth: PropTypes.array,
+  leftPress: PropTypes.func
 };
 Dashboard.defaultProps = {
-  onPress: () => {},
-  OnPressForgotPassword: () => {},
-  OnPressRegisterNow: () => {},
-  UsernameChange: () => {},
-  SubmitButtonOnPress: () => {},
-  PasswordChange: () => {}
+  leftPress: () => {}
 };
 
 export { Dashboard as default };

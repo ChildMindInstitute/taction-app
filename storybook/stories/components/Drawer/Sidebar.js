@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import Logo1 from "../Logo.1";
 import styles from "./styles";
 import { StatusBar } from "react-native";
+import { connect } from "react-redux";
 const datas = [
   {
     name: "Dashboard",
@@ -56,7 +57,15 @@ class SideBar extends React.Component {
                   onPress={() => {
                     this.props.navigation.navigate(data.route);
                   }}
-                  style={styles.ListItemStyle}
+                  style={[
+                    styles.ListItemStyle,
+                    {
+                      display:
+                        data.name == "Add Child" && this.props.child
+                          ? "none"
+                          : "flex"
+                    }
+                  ]}
                 >
                   <Text style={styles.text}>{data.name}</Text>
                 </ListItem>
@@ -72,4 +81,8 @@ class SideBar extends React.Component {
   }
 }
 
-export default SideBar;
+const mapStateToProps = store => {
+  return { child: store.user.child };
+};
+
+export default connect(mapStateToProps, null)(SideBar);

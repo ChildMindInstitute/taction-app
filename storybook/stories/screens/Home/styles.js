@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   ContainerOuterViewStyle: { flex: 1, backgroundColor: "#0067a0" },
   ContainerStyle: {
     backgroundColor: "#eee",
-    marginTop: Constants.statusBarHeight
+    marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
   }
 });
 export default styles;

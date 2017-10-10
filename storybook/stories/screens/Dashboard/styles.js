@@ -3,6 +3,12 @@ const styles = StyleSheet.create({
   HeaderStyle: {
     backgroundColor: "#0067a0"
   },
+  LeftStyle: { flex: 2 },
+  LeftLogoStyle: { width: 50, height: 50 },
+  BodyStyle: { flex: 8, alignContent: "center" },
+  BodyTitleStyle: { alignSelf: "center", color: "white" },
+  RightStyle: { flex: 2, flexDirection: "column", alignItems: "center" },
+
   HeaderLeftStyle: { color: "white" },
   HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
   HeaderRightImageSpace: { flex: 1, alignItems: "center" },

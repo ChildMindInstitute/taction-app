@@ -57,8 +57,10 @@ class AddFolderScreen extends React.Component {
       base64: true,
       quality: 0
     }).then(image => {
-      dataNext.push(image);
-      this.setState({ data: dataNext });
+      if (image) {
+        dataNext.push(image);
+        this.setState({ data: dataNext });
+      }
     });
   }
   updateCameraImage() {

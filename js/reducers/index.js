@@ -57,6 +57,11 @@ const errorReducer = (state = { signinError: false }, action) => {
       state = { ...state, signinError: true };
       break;
     }
+    case "NO_ERROR_SIGNIN": {
+      state = { ...state, signinError: false };
+      break;
+    }
+
     case "CLEAR_STORE": {
       state = { ...state, signinError: false };
       break;

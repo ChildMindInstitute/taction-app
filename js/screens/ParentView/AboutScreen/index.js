@@ -36,7 +36,7 @@ class About extends React.Component {
           <Text>
             This open source app comes out of the Innovative Technologies Lab at
             the Child Mind Institute. For more information, please contact
-            <Text style={{ color: "#0067a0" }}>arno@childmind.org</Text>.
+            <Text style={{ color: "#0067a0" }}> arno@childmind.org</Text>.
           </Text>
         </View>
         <Footer

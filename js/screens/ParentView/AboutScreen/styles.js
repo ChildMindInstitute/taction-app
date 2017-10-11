@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
   HeaderLeftStyle: { color: "white" },
   container: {
     marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight,
-    flex: 1
+    flex: 1,
+    backgroundColor: "#eee"
   }
 });
 export default styles;

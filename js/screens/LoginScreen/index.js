@@ -43,14 +43,17 @@ class LoginScreen extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.loaded) {
-      this.redirect();
-      this.setState({ Submitted: false });
-    } else if (this.props.error && !this.state.HasSubmitError) {
-      {
-        this.setState({
-          HasSubmitError: true
-        });
+    if (this.state.Submitted) {
+      if (this.props.loaded && !this.props.error) {
+        this.redirect();
+        this.setState({ Submitted: false, HasSubmitError: false });
+      } else if (this.props.error && !this.state.HasSubmitError) {
+        {
+          this.setState({
+            HasSubmitError: true,
+            Submitted: false
+          });
+        }
       }
     }
   }

@@ -42,7 +42,8 @@ class HomeContent extends React.Component {
       IsFourthDisabled: true
     });
   }
-  render() {
+
+  componentDidUpdate(){
     if (
       (this.props.HasToReset && this.state.continueReseting) ||
       this.props.IsTimeExpired
@@ -50,6 +51,10 @@ class HomeContent extends React.Component {
       this.reset();
       this.props.TimeExpiredCounterSwitch();
     }
+  }
+
+  render() {
+    
     return (
       <View style={styles.MainView}>
         <Grid style={styles.GridView}>

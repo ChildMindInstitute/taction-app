@@ -18,7 +18,7 @@ import watchSetChildImageList from './setChildImageList';
 import watchUpdateParent from './updateParent';
 import watchUpdateChild from './updateChild';
 import watchUpdateSettings from './updateSettings';
-
+import watchSetRandomImageList from './setRandomImageList';
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -40,7 +40,8 @@ const rootSaga = function* rootSaga() {
     watchSetChildImageList(),
     watchUpdateParent(),
     watchUpdateChild(),
-    watchUpdateSettings()
+    watchUpdateSettings(),
+    watchSetRandomImageList()
   ]);
 };
 

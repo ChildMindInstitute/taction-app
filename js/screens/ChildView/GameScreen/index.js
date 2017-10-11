@@ -4,16 +4,16 @@ import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
 import { connect } from "react-redux";
 
-let input = [
-  require("../../../assets/ball1.jpg"),
-  require("../../../assets/spiderman.jpg"),
-  require("../../../assets/minion.jpg"),
-  require("../../../assets/ball2.jpg")
-];
+// let input = [
+//   require("../../../assets/ball1.jpg"),
+//   require("../../../assets/spiderman.jpg"),
+//   require("../../../assets/minion.jpg"),
+//   require("../../../assets/ball2.jpg")
+// ];
 let totalLevels = 10;
-const correctArrayItem = 1;
-const time = 25000;
-
+const correctArrayItem = 0;
+let time;
+let index, randomIndex;
 class GameScreen extends React.Component {
   static navigationOptions = {
     title: "GameScreen",
@@ -33,6 +33,12 @@ class GameScreen extends React.Component {
       reset: false,
       modalVisible: false,
       currentImage: {},
+      input: [
+        require("../../../assets/ball1.jpg"),
+        require("../../../assets/spiderman.jpg"),
+        require("../../../assets/minion.jpg"),
+        require("../../../assets/ball2.jpg")
+      ],
       isLast: false
     };
     this.state.correctOption = this.correctOptionDecision(
@@ -64,11 +70,66 @@ class GameScreen extends React.Component {
 
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;
+    time = this.props.settings.maxImageDuration*1000;
   }
 
-  async componentDidMount() {
-    await this.setState({ currentImage: this.props.imageList[3] });
-    input[1] = { uri: this.state.currentImage.imageDetails.url };
+  componentDidMount() {
+    console.log('component did mount this should not run more than once');
+    let something = this.state.input.slice();
+    let image;
+    if(this.props.settings.random){
+      index = (Math.floor(Math.random() * this.props.imageList.length));
+      image= this.props.imageList[index];
+      something[0]={ uri: image.url };
+    }else{
+      index = 0;
+      image = this.props.imageList[index];
+      something[0] = { uri: image.url };
+    }
+    for(let i=1; i<4;i++){
+      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
+      something[i] = { uri: this.props.randomImage[randomIndex].url };
+    }
+    this.setState({currentImage:image , input: something });
+  }
+
+  updateCorrectScore(){
+    let something = this.state.input.slice();
+    let image;
+    if (this.props.settings.random) {
+      index = Math.floor(Math.random() * this.props.imageList.length);
+      image = this.props.imageList[index];
+      something[0] = { uri: image.url };
+    } else {
+      index = 0;
+      image = this.props.imageList[index];
+      something[0] = { uri: image.url };
+    }
+    for (let i = 1; i < 4; i++) {
+      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
+      something[i] = { uri: this.props.randomImage[randomIndex].url };
+    }
+    this.setState({ currentImage: image, input: something });
+    console.log(image);
+  }
+
+  updateWrongScore(){
+    let something = this.state.input.slice();
+    let image;
+    if (this.props.settings.random) {
+      index = Math.floor(Math.random() * this.props.imageList.length);
+      image = this.props.imageList[index];
+      something[0] = { uri: image.url };
+    } else {
+      index = 0;
+      image = this.props.imageList[index];
+      something[0] = { uri: image.url };
+    }
+    for (let i = 1; i < 4; i++) {
+      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
+      something[i] = { uri: this.props.randomImage[randomIndex].url };
+    }
+    this.setState({ currentImage: image, input: something });
   }
 
   render() {
@@ -80,10 +141,10 @@ class GameScreen extends React.Component {
         TotalPoints={this.props.child.childDetails.totalScore}
         TimeLeft={time}
         TimeLeftDenomination={"Min"}
-        Image1={input[this.state.i1]}
-        Image2={input[this.state.i2]}
-        Image3={input[this.state.i3]}
-        Image4={input[this.state.i4]}
+        Image1={this.state.input[this.state.i1]}
+        Image2={this.state.input[this.state.i2]}
+        Image3={this.state.input[this.state.i3]}
+        Image4={this.state.input[this.state.i4]}
         HasToReset={this.state.reset}
         CrossImage={require("../../../assets/Cross.png")}
         TickImage={require("../../../assets/Tick.png")}
@@ -112,6 +173,7 @@ class GameScreen extends React.Component {
             this.setState({ isLast: true });
             setTimeout(() => this.setModalVisible(true), 2000);
           }
+          this.updateWrongScore();
         }}
         Pressed={item => {
           //console.log(item);
@@ -135,6 +197,11 @@ class GameScreen extends React.Component {
               this.setState({ correctOption: x, reset: false });
             }, 500);
           else setTimeout(() => this.setModalVisible(true), 2000);
+          if (item == this.state.correctOption) {
+            this.updateCorrectScore();
+          } else {
+            this.updateWrongScore();
+          }
         }}
         FinishedFunc={() => {
           setTimeout(() => this.setModalVisible(true), 1000);
@@ -151,7 +218,7 @@ class GameScreen extends React.Component {
               Line2needed={true}
               GreetingLine2="Level Completed"
               Stars={require("../../../../js/assets/all_stars.png")}
-              DisplayPoints={120}
+              DisplayPoints={this.props.child.childDetails.totalScore}
               Description="Time: 02.14 Min"
               PlayLaterText="Play Later"
               IsButtonNeeded={true}
@@ -180,6 +247,7 @@ const mapStateToProps = store => {
     folder: store.folder,
     imageList: store.currentImageList,
     nextFolder: store.nextFolder,
+    randomImage: store.randomImage,
     settings: store.user.parent.settings
   };
 };

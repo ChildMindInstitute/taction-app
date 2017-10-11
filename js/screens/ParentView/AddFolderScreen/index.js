@@ -27,8 +27,6 @@ class AddFolderScreen extends React.Component {
 
   async AddFolder(){
     await this.props.dispatch({type:'ADD_FOLDER', payload:{childID: this.props.child.childID, name: this.state.SaveFolderButtonText}});
-    
-    //this.props.navigation.navigate("Dashboard");
   }
 
   componentDidUpdate(){

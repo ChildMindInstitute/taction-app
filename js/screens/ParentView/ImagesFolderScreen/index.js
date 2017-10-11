@@ -19,6 +19,10 @@ class ImagesFolderScreen extends React.Component {
     this.props.dispatch({type:"SET_FOLDER_STATUS", payload: {status:onOff, folderID: folderID}});
   }
 
+  // componentWillMount(){
+  //   this.props.dsipatch({type:'SET_ORDER_LIST'})
+  // }
+
   render() {
     return (
       <ImagesFolder
@@ -31,7 +35,6 @@ class ImagesFolderScreen extends React.Component {
         }}
         ExcerciseData={this.props.dashboardList}
         SwitchToggled={(item, onOff) => {
-          // console.log(item.FolderID + " " + onOff);
           this.toggleStatus(onOff, item.FolderID);
         }}
         StatusBarStyle="light-content"
@@ -44,7 +47,7 @@ class ImagesFolderScreen extends React.Component {
 }
 
 const mapStateToProps = (store)=>{
-    return { dashboardList: store.dashboardList };
+    return { dashboardList: store.dashboardList , };
 }
 
 const mapDispatchToProps = (dispatch)=>{

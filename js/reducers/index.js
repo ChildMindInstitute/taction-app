@@ -114,6 +114,16 @@ const nextFolderReducer = (state={}, action)=>{
     return state;
 }
 
+const randomImageListReducer = (state=[], action)=>{
+  switch(action.type){
+    case 'RANDOM_IMAGE_LIST':{
+      state=action.payload;
+      break;
+    }
+  }
+  return state
+}
+
 const reducer =  combineReducers({
     user: userReducer,
     loaded: waitReducer,
@@ -123,7 +133,8 @@ const reducer =  combineReducers({
     image: imageReducer,
     dashboardList: dasboardListReducer,
     currentImageList: imageListReducer,
-    nextFolder: nextFolderReducer
+    nextFolder: nextFolderReducer,
+    randomImage: randomImageListReducer
 });
 
 export default reducer;

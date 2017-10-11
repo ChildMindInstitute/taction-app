@@ -155,7 +155,7 @@ export default {
       var response = [];
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/exercises/").orderByChild('order');
+        .ref("child/" + childID + "/exercises/");
       try {
         childRef.on("value", snapshot => {
           var numExe = snapshot.numChildren();
@@ -165,7 +165,7 @@ export default {
               .ref("exercise/" + exe.val().exerciseId);
             exeRef.once("value").then(snapshot => {
               response.push({
-                folderDetails:snapshot.val(),
+                folderDetails: snapshot.val(),
                 folderID: snapshot.key
               });
               if (response.length == numExe) {
@@ -335,6 +335,24 @@ export default {
         reject(err);
       }
     });
+  },
+
+  fetchRandomImageList(){
+    return new Promise((resolve, reject)=>{
+      const listRef= firebase.database().ref('auxilary/images/');
+      try{
+        let list=[];
+        listRef.once('value').then((snapshot)=>{
+          snapshot.forEach(img=>{
+            list.push(img.val());
+          })
+          //console.log(list);
+          resolve(list)
+        })
+      }catch(err){
+        reject(err)
+      }
+    })
   }
   
 };

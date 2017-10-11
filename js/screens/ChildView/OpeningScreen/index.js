@@ -20,6 +20,7 @@ class OpeningScreen extends React.Component {
   }
 
   componentWillMount() {
+    this.props.dispatch({type:"SET_RANDOM_IMAGE_LIST"});  
     this.props.dispatch({
       type: "SET_CHILD_FOLDER",
       payload: this.props.childID
@@ -46,7 +47,7 @@ class OpeningScreen extends React.Component {
               GreetingLine1="Welcome Back"
               Line2needed={false}
               Stars={require("../../../../js/assets/all_stars.png")}
-              DisplayPoints={120}
+              DisplayPoints={this.props.child.totalScore}
               Description="Time To Earn Some Points"
               IsButtonNeeded={false}
               toggleVisiblity={() => {
@@ -68,7 +69,7 @@ const mapStateToProps = store => {
   };
 };
 
-mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return { dispatch };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(OpeningScreen);

@@ -19,6 +19,8 @@ import watchUpdateParent from './updateParent';
 import watchUpdateChild from './updateChild';
 import watchUpdateSettings from './updateSettings';
 import watchSetRandomImageList from './setRandomImageList';
+import watchUpdateImageScore from './updateImageScore';
+import watchUpdateFolderScore from './updateFolderScore';
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -41,7 +43,9 @@ const rootSaga = function* rootSaga() {
     watchUpdateParent(),
     watchUpdateChild(),
     watchUpdateSettings(),
-    watchSetRandomImageList()
+    watchSetRandomImageList(),
+    watchUpdateImageScore(),
+    watchUpdateFolderScore()
   ]);
 };
 

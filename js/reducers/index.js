@@ -105,6 +105,11 @@ const imageListReducer = (state=[], action)=>{
         case 'IMAGE_LIST':{
             state=action.payload;
         }
+        case 'IMAGE_SCORE':{
+          console.log(action.payload, 'logging in reducer');
+          state[action.payload.index]=action.payload.image;
+          break;
+        }
     }
     return state;
 }

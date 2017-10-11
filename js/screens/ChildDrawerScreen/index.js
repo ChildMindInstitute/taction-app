@@ -1,12 +1,12 @@
 import React from "react";
-import DrawerParent from "../../../storybook/stories/components/Drawer";
+import DrawerChild from "../../../storybook/stories/components/DrawerChild";
 import { Constants } from "expo";
 import { View } from "native-base";
 import { StatusBar, Platform } from "react-native";
 
-class ParentDrawerScreen extends React.Component {
+class ChildDrawerScreen extends React.Component {
   static navigationOptions = {
-    title: "ParentDrawerScreen",
+    title: "ChildDrawerScreen",
     header: null
   };
   constructor(props) {
@@ -32,11 +32,11 @@ class ParentDrawerScreen extends React.Component {
             translucent={true}
             barStyle="light-content"
           />
-          <DrawerParent NavProps={this.props.screenProps.parentNavigation} />
+          <DrawerChild NavProps={this.props.screenProps.parentNavigation} />
         </View>
       </View>
     );
   }
 }
 
-export default ParentDrawerScreen;
+export default ChildDrawerScreen;

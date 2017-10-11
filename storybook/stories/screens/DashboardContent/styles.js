@@ -1,5 +1,4 @@
-import { StyleSheet, Platform } from "react-native";
-import { Constants } from "expo";
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   HeaderStyle: {
     backgroundColor: "#0067a0"
@@ -18,11 +17,6 @@ const styles = StyleSheet.create({
   ContentStyle: { flex: 1, marginLeft: "-4%" },
   GreetingsSpace: { flex: 2, alignItems: "center", justifyContent: "center" },
   ListSpace: { flex: 13 },
-  ContainerStyle: {
-    flex: 1,
-    backgroundColor: "#eee",
-    marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
-  },
-  ContainerOuterView: { flex: 1, backgroundColor: "#0067a0" }
+  ContainerStyle: { flex: 1, backgroundColor: "#eee" }
 });
 export default styles;

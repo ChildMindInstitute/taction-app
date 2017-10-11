@@ -5,11 +5,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#0067a0"
   },
   HeaderLeftStyle: { color: "white" },
-  ContentStyle: { flex: 1, marginLeft: "-4%" },
-  ContainerStyle: {
-    flex: 1,
-    backgroundColor: "#eee",
-    marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+  container: {
+    marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight,
+    flex: 1
   }
 });
 export default styles;

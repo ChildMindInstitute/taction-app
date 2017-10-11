@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     width: "102%",
     backgroundColor: "white",
     borderWidth: 1,
+    height: 40,
     borderColor: "#0067a0"
   },
   ErrorViewStyle: {
@@ -20,12 +21,10 @@ const styles = StyleSheet.create({
     top: "30%",
     alignSelf: "flex-end"
   },
-  ErrorButtonStyle: {
-    justifyContent: "center",
-    backgroundColor: "transparent"
-  },
   ErrorContentStyle: {
-    color: "#EF3350"
+    color: "#EF3350",
+    top: 7,
+    right: 3
   }
 });
 

@@ -7,28 +7,15 @@ import { StatusBar } from "react-native";
 import { connect } from "react-redux";
 const datas = [
   {
-    name: "Dashboard",
-    route: "Dashboard",
+    name: "Game",
+    route: "GameNavigator",
     types: "3"
-  },
-  {
-    name: "Add Child",
-    route: "AddChild"
-  },
-
-  {
-    name: "Settings",
-    route: "Settings"
-  },
-  {
-    name: "Images",
-    route: "Images",
-    types: "2"
   },
   {
     name: "About",
     route: "About"
   },
+
   {
     name: "Logout",
     route: "Logout"
@@ -57,15 +44,7 @@ class SideBar extends React.Component {
                   onPress={() => {
                     this.props.navigation.navigate(data.route);
                   }}
-                  style={[
-                    styles.ListItemStyle,
-                    {
-                      display:
-                        data.name == "Add Child" && this.props.child
-                          ? "none"
-                          : "flex"
-                    }
-                  ]}
+                  style={styles.ListItemStyle}
                 >
                   <Text style={styles.text}>{data.name}</Text>
                 </ListItem>

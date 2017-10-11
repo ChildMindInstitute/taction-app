@@ -51,7 +51,6 @@ const Login = props => (
           ViewStyle={props.InputViewStyle}
           Error={props.EmailHasError}
           LabelColor={props.LabelColor}
-          ErrorText={props.Error.Username}
         />
         <FormInput
           IsPassword={true}
@@ -60,7 +59,6 @@ const Login = props => (
           ViewStyle={props.InputViewStyle}
           Error={props.PasswordHasError}
           LabelColor={props.LabelColor}
-          ErrorText={props.Error.Password}
         />
       </Form>
     </View>

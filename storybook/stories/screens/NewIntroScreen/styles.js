@@ -9,7 +9,10 @@ const styles = StyleSheet.create({
   MainOuterView: { flex: 1, backgroundColor: "#0067a0" },
   MainView: {
     flex: 1,
-    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
+    marginTop:
+      Platform.OS !== "ios"
+        ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+        : 0
   },
   TopSpace: { flex: 1 },
   TopViewStyle: {

@@ -27,13 +27,12 @@ class DashboardScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Dashboard
-          DrawerOpen={() => {
+          leftPress={() => {
             this.props.navigation.navigate("DrawerOpen");
           }}
-          ExcerciseData={this.props.dashboardList}
-        >
-          <Text style={{ fontSize: 22 }}>Today's Activities</Text>
-        </Dashboard>
+          ExcerciseDataMonth={this.props.dashboardList}
+          ExcerciseDataToday={this.props.dashboardList}
+        />
         {this.props.loaded ? (
           <View />
         ) : (

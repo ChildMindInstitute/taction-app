@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Input, Item, View, Text, Icon, Button } from "native-base";
+import { Input, Item, View, Text, Icon } from "native-base";
 import styles from "./styles";
 const FormInput = props => (
   <View style={props.ViewStyle}>
@@ -15,24 +15,23 @@ const FormInput = props => (
       >
         {props.Label}
       </Text>
-      <Input
-        style={styles.InputStyle}
-        onChange={props.OnChange}
-        secureTextEntry={props.IsPassword}
-        keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
-      />
+      <View style={styles.InputStyle}>
+        <Input
+          style={{ borderColor: props.Error ? "red" : "white", borderWidth: 1 }}
+          onChange={props.OnChange}
+          secureTextEntry={props.IsPassword}
+          keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
+        />
+      </View>
       <View style={styles.ErrorViewStyle}>
         {props.Error ? (
-          <Button disabled iconLeft style={styles.ErrorButtonStyle}>
-            <Icon
-              name="information-circle"
-              style={styles.ErrorContentStyle}
-              active={true}
-            />
-            <Text style={styles.ErrorContentStyle}>{props.ErrorText}</Text>
-          </Button>
+          <Icon
+            name="information-circle"
+            style={styles.ErrorContentStyle}
+            active={true}
+          />
         ) : (
-          <Text> </Text>
+          <View />
         )}
       </View>
     </Item>

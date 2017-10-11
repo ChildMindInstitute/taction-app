@@ -8,7 +8,10 @@ const styles = StyleSheet.create({
   MainView: {
     flex: 1,
     backgroundColor: "#0067a0",
-    marginTop: Platform.OS !== "ios" ? Constants.statusBarHeight : 0
+    marginTop:
+      Platform.OS !== "ios"
+        ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+        : 0
   },
   TopSpace: { flex: 3, alignItems: "center", justifyContent: "center" },
 

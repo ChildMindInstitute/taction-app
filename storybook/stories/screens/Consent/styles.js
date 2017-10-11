@@ -11,26 +11,29 @@ const styles = StyleSheet.create({
         : 0
   },
   ScrollViewSpaceSpace: { flex: 9 },
-  MainView: { flex: 1 },
-  TopSpace: { flex: 2, alignContent: "center", justifyContent: "center" },
+  MainView: { flex: 1, margin: "5%" },
+  TopSpace: {
+    flex: 2,
+    alignContent: "center",
+    justifyContent: "center",
+    margin: "5%"
+  },
   TopTextSpace: { flex: 4 },
   TopTextStyle: {
-    marginLeft: "5%",
-    marginRight: "5%",
-    marginTop: "5%",
     color: "#ffffff"
   },
   Seperator: {
     borderBottomWidth: 2,
     borderBottomColor: "#ccc",
     opacity: 0.8,
-    margin: "5%",
-    flex: 1
+    flex: 1,
+    marginTop: "5%",
+    marginBottom: "5%"
   },
-  ConsentTextSpace: { flex: 0.5, marginLeft: "5%" },
+  ConsentTextSpace: { flex: 0.5 },
   ConsentText: { color: "#fff", fontSize: 20, fontWeight: "500" },
-  TermsSpace: { flex: 5, flexDirection: "column", marginBottom: "15%" },
-  TermsItem: { flex: 1, flexDirection: "row", margin: "5%" },
+  TermsSpace: { flex: 5, flexDirection: "column" },
+  TermsItem: { flex: 1, flexDirection: "row" },
   ItemTextSpace: { flex: 8 },
   ItemCheckBoxSpace: { flex: 1 },
   ItemText: { color: "#fff", fontSize: 20, fontWeight: "300" },

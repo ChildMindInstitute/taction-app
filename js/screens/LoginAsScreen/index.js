@@ -1,8 +1,7 @@
 import React from "react";
 import { NavigationActions } from "react-navigation";
 import LoginAs from "../../../storybook/stories/screens/LoginAs";
-import {connect} from 'react-redux';
-
+import { connect } from "react-redux";
 
 var data = [];
 class LoginAsScreen extends React.Component {
@@ -14,11 +13,14 @@ class LoginAsScreen extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
-    if(this.props.child.childDetails==null || this.props.child==null){
+  componentWillMount() {
+    if (this.props.child.childDetails == null || this.props.child == null) {
       data = [{ Name: this.props.parent.name }];
-    }else{
-      data=[{Name: this.props.parent.name}, {Name: this.props.child.childDetails.name}]
+    } else {
+      data = [
+        { Name: this.props.parent.name },
+        { Name: this.props.child.childDetails.name }
+      ];
     }
   }
 
@@ -47,7 +49,7 @@ class LoginAsScreen extends React.Component {
                 actions: [
                   NavigationActions.navigate({
                     params: { NewRegistration: false },
-                    routeName: "OpeningScreen"
+                    routeName: "ChildDrawer"
                   })
                 ]
               })
@@ -59,12 +61,12 @@ class LoginAsScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (store) =>{
-    return { parent: store.user.parent, child: store.user.child };
-}
+const mapStateToProps = store => {
+  return { parent: store.user.parent, child: store.user.child };
+};
 
-const mapDispatchToProps = (dispatch) =>{
-  return {dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginAsScreen);

@@ -30,7 +30,6 @@ class LoginScreen extends React.Component {
 
   loginUser() {
     if (this.Input.UserName != "" && this.Input.Password != "") {
-      this.setState({ Submitted: true });
       this.props.dispatch({
         type: "USER_SIGN_IN",
         payload: {
@@ -48,10 +47,11 @@ class LoginScreen extends React.Component {
       this.redirect();
       this.setState({ Submitted: false });
     } else if (this.props.error && !this.state.HasSubmitError) {
-      this.setState({
-        HasSubmitError: true,
-        Submitted: false
-      });
+      {
+        this.setState({
+          HasSubmitError: true
+        });
+      }
     }
   }
 
@@ -89,10 +89,10 @@ class LoginScreen extends React.Component {
           justifyContent: "flex-end"
         }}
         OnPressForgotPassword={() => {}}
-        OnPressSubmitButton={() => {
+        OnPressSubmitButton={(() => {
           this.setState({ Submitted: true, HasSubmitError: false });
           this.loginUser();
-        }}
+        }).bind(this)}
         Error={this.Error}
         OnPressRegisterNow={() => {
           this.props.navigation.navigate("Consent");

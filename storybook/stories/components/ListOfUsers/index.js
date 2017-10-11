@@ -7,7 +7,11 @@ const ListOfChildren = props => (
     style={props.ListStyle}
     dataArray={props.Data}
     renderRow={item => (
-      <ListContent item={item} CheckBoxPress={props.CheckBoxPress} />
+      <ListContent
+        item={item}
+        ListItemPress={props.ListItemPress}
+        index={props.Data.indexOf(item)}
+      />
     )}
   />
 );
@@ -15,7 +19,7 @@ const ListOfChildren = props => (
 ListOfChildren.propTypes = {
   ListStyle: PropTypes.object,
   Data: PropTypes.array,
-  CheckBoxPress: PropTypes.func
+  ListItemPress: PropTypes.func
 };
 ListOfChildren.defaultProps = {
   ListItemPress: () => {},

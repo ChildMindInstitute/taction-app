@@ -25,7 +25,6 @@ const LoginAs = props => (
           ListStyle={props.ListStyle}
           Data={props.Data}
           ListItemPress={props.ListItemPress}
-          CheckBoxPress={props.CheckBoxPress}
         />
       </View>
       <View style={styles.BottomLogoSpace}>

@@ -70,31 +70,11 @@ class GameScreen extends React.Component {
 
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;
-    time = this.props.settings.maxImageDuration*1000;
+    time = this.props.settings.maxImageDuration * 1000;
   }
 
   componentDidMount() {
-    console.log('component did mount this should not run more than once');
-    let something = this.state.input.slice();
-    let image;
-    if(this.props.settings.random){
-      index = (Math.floor(Math.random() * this.props.imageList.length));
-      image= this.props.imageList[index];
-      something[0]={uri: image.imageDetails.url};
-    }else{
-      index = this.state.currentLevel - 1;
-      image = this.props.imageList[index];
-      something[0] = { uri: image.imageDetails.url };
-    }
-    for(let i=1; i<4;i++){
-      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
-      something[i] = { uri: this.props.randomImage[randomIndex].url };
-    }
-    this.setState({currentImage:image , input: something });
-  }
-
-  updateCorrectScore(){
-    console.log("update correct score this should not run more than once");
+    console.log("component did mount this should not run more than once");
     let something = this.state.input.slice();
     let image;
     if (this.props.settings.random) {
@@ -102,7 +82,7 @@ class GameScreen extends React.Component {
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     } else {
-      index = this.state.currentLevel-1;
+      index = this.state.currentLevel - 1;
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     }
@@ -113,7 +93,27 @@ class GameScreen extends React.Component {
     this.setState({ currentImage: image, input: something });
   }
 
-  updateWrongScore(){
+  updateCorrectScore() {
+    console.log("update correct score this should not run more than once");
+    let something = this.state.input.slice();
+    let image;
+    if (this.props.settings.random) {
+      index = Math.floor(Math.random() * this.props.imageList.length);
+      image = this.props.imageList[index];
+      something[0] = { uri: image.imageDetails.url };
+    } else {
+      index = this.state.currentLevel - 1;
+      image = this.props.imageList[index];
+      something[0] = { uri: image.imageDetails.url };
+    }
+    for (let i = 1; i < 4; i++) {
+      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
+      something[i] = { uri: this.props.randomImage[randomIndex].url };
+    }
+    this.setState({ currentImage: image, input: something });
+  }
+
+  updateWrongScore() {
     console.log("update wrong score this should not run more than once");
     let something = this.state.input.slice();
     let image;
@@ -153,7 +153,7 @@ class GameScreen extends React.Component {
         IsLast={this.state.isLast}
         TimeExpiredImageShuffle={() => {
           //No Points for this Image
-          
+
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel < totalLevels)
             setTimeout(() => {
@@ -177,7 +177,6 @@ class GameScreen extends React.Component {
             this.setState({ isLast: true });
             setTimeout(() => this.setModalVisible(true), 2000);
           }
-          
         }}
         Pressed={item => {
           //console.log(item);
@@ -206,7 +205,6 @@ class GameScreen extends React.Component {
               }
             }, 500);
           else setTimeout(() => this.setModalVisible(true), 2000);
-          
         }}
         FinishedFunc={() => {
           setTimeout(() => this.setModalVisible(true), 1000);

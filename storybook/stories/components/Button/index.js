@@ -52,7 +52,8 @@ CustomButton.propTypes = {
 };
 CustomButton.defaultProps = {
   onPress: () => {},
-  IsTextRequired: true
+  IsTextRequired: true,
+  ExtraText: ""
 };
 
 export { CustomButton as default };

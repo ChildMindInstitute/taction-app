@@ -258,6 +258,7 @@ class GameScreen extends React.Component {
               DisplayPoints={this.props.child.childDetails.totalScore}
               Description="Time: 02.14 Min"
               PlayLaterText="Play Later"
+              NextLevelName={this.props.nextFolder.folderDetails.exerciseName}
               IsButtonNeeded={true}
               PlayNext={() => {
                 alert("PlayNext Pressed");

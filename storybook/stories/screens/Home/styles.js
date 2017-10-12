@@ -7,15 +7,35 @@ const styles = StyleSheet.create({
   },
   HeaderLeftStyle: { color: "white" },
   HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
-  HeaderRightImageSpace: { flex: 1, alignItems: "center" },
+  HeaderRightImageSpace: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
   HeaderRightTextSpace: {
     flex: 1.2,
     flexDirection: "column",
     alignItems: "center"
   },
-  HeaderRightTextAlign: { flex: 3 },
-  HeaderRightTotalPointsStyle: { color: "white", flex: 2 },
-  HeaderRightTotalPointsTextStyle: { fontSize: 10, color: "white", flex: 1 },
+  HeaderRightTotalPointsStyle: {
+    color: "white"
+  },
+  HeaderRightTotalPointsTextStyle: {
+    fontSize: 10,
+    color: "white"
+  },
+  HeaderRightTotalPointsViewStyle: {
+    flex: 1,
+    alignItems: "flex-end",
+    flexDirection: "row",
+    display: "flex"
+  },
+  HeaderRightTotalPointsTextViewStyle: {
+    flex: 1,
+    alignItems: "flex-start",
+    flexDirection: "row",
+    display: "flex"
+  },
   HomeTimerStyle: {
     position: "absolute",
     left: "42%",

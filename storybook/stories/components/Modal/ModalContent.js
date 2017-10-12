@@ -10,7 +10,7 @@ class ModalContent extends React.Component {
   render() {
     return (
       <View style={styles.ContentMainViewStyle}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1.3 }}>
           <Text style={[styles.ContentMainViewTextStyle, styles.Text1]}>
             {this.props.GreetingLine1}
           </Text>
@@ -45,7 +45,8 @@ class ModalContent extends React.Component {
             <View style={{ flex: 1 }}>
               <Button2
                 OnPress={this.props.PlayNext}
-                ButtonText="Play Next Level &rarr;"
+                ButtonText={"Play Level " + this.props.NextLevelName}
+                ExtraText=" &rarr;"
                 SubmitButtonStyle={styles.ContentMainViewInnerViewButton1Style}
                 SubmitButtonTextStyle={
                   styles.ContentMainViewInnerViewButton1TextStyle

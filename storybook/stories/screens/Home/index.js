@@ -41,14 +41,16 @@ class Home extends React.Component {
                 />
               </View>
               <View style={styles.HeaderRightTextSpace}>
-                <View style={styles.HeaderRightTextAlign} />
-                <Text style={styles.HeaderRightTotalPointsStyle}>
-                  {this.props.TotalPoints}
-                </Text>
-                <Text style={styles.HeaderRightTotalPointsTextStyle}>
-                  points
-                </Text>
-                <View style={styles.HeaderRightTextAlign} />
+                <View style={styles.HeaderRightTotalPointsViewStyle}>
+                  <Text style={styles.HeaderRightTotalPointsStyle}>
+                    {this.props.TotalPoints}
+                  </Text>
+                </View>
+                <View style={styles.HeaderRightTotalPointsTextViewStyle}>
+                  <Text style={styles.HeaderRightTotalPointsTextStyle}>
+                    points
+                  </Text>
+                </View>
               </View>
             </View>
           </HeaderCommon>

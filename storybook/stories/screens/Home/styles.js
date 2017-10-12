@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
   HeaderLeftStyle: { color: "white" },
   HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
   HeaderRightImageSpace: {
-    flex: 1,
+    flex: 7,
     alignItems: "center",
     justifyContent: "center"
   },
   HeaderRightTextSpace: {
-    flex: 1.2,
+    flex: 25,
     flexDirection: "column",
     alignItems: "center"
   },
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
   HeaderRightTotalPointsTextStyle: {
-    fontSize: 10,
+    fontSize: 12,
     color: "white"
   },
   HeaderRightTotalPointsViewStyle: {

@@ -12,7 +12,8 @@ class OpeningScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true
+      modalVisible: true,
+      IsPlayDisabled: true
     };
   }
   setModalVisible(visible) {
@@ -27,7 +28,11 @@ class OpeningScreen extends React.Component {
       payload: this.props.childID
     });
   }
-
+  componentDidUpdate() {
+    if (this.props.folder.folderID && this.state.IsPlayDisabled) {
+      this.setState({ IsPlayDisabled: false });
+    }
+  }
   render() {
     return (
       <NewIntro
@@ -39,7 +44,7 @@ class OpeningScreen extends React.Component {
         PlayOnPress={() => {
           this.props.navigation.navigate("GameScreen");
         }}
-        IsPlayDisabled={!this.props.folder.folderID}
+        IsPlayDisabled={this.state.IsPlayDisabled}
         HowToPlayOnPress={() => {}}
       >
         <ModalCommon

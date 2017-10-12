@@ -35,7 +35,7 @@ class OpeningScreen extends React.Component {
         BottomViewBackGroundColor="rgba(255, 255, 255,1)"
         ScoreColor="rgba(0, 103, 158, 1)"
         Score={this.props.child.totalScore}
-        Stars={require("../../../assets/all_stars.png")}
+        Stars={require("../../../assets/Asset_5.png")}
         PlayOnPress={() => {
           this.props.navigation.navigate("GameScreen");
         }}

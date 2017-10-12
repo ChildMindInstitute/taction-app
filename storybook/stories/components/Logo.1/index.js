@@ -4,7 +4,7 @@ import { Image } from "react-native";
 
 const Logo = props => (
   <Image
-    source={require("../../../../js/assets/CMI-Logo.png")}
+    source={require("../../../../js/assets/CMI_white_h_logo.png")}
     style={props.imageDimensions}
   />
 );

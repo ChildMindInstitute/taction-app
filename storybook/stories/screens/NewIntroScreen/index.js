@@ -51,8 +51,11 @@ const NewIntro = props => (
           <Button
             OnPress={props.PlayOnPress}
             ButtonText="Play"
-            Disabled={this.props.IsPlayDisabled}
-            SubmitButtonStyle={styles.PlayButtonStyle}
+            Disabled={props.IsPlayDisabled}
+            SubmitButtonStyle={[
+              styles.PlayButtonStyle,
+              { opacity: props.IsPlayDisabled ? 0.5 : 1 }
+            ]}
             SubmitButtonTextStyle={styles.PlayButtonTextStyle}
           />
           <Button

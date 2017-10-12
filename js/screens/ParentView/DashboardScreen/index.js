@@ -30,8 +30,8 @@ class DashboardScreen extends React.Component {
           leftPress={() => {
             this.props.navigation.navigate("DrawerOpen");
           }}
-          ExcerciseDataMonth={this.props.dashboardList}
-          ExcerciseDataToday={this.props.dashboardList}
+          ExcerciseDataMonth={this.props.monthList}
+          ExcerciseDataToday={this.props.todayList}
         />
         {this.props.loaded ? (
           <View />
@@ -54,6 +54,8 @@ const mapStateToProps = store => {
   return {
     child: store.user.child,
     dashboardList: store.dashboardList,
+    todayList: store.todayList,
+    monthList: store.monthList,
     loaded: store.loaded
   };
 };

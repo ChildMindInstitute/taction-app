@@ -1,5 +1,5 @@
 import { put, takeLatest } from "redux-saga/effects";
-
+import calculate from "../componentsCommon/calcutateStars";
 const setDashboardList = function* setDashboardList(action) {
   let dashboardList = [];
   let todayList = [];
@@ -35,7 +35,10 @@ const setDashboardList = function* setDashboardList(action) {
         CorrectTaps: action.payload[i].folderDetails.correctTaps,
         WrongTaps: action.payload[i].folderDetails.wrongTaps,
         Points: action.payload[i].folderDetails.score,
-        Stars: require("../assets/all_stars.png"),
+        Stars: calculate(
+          action.payload[i].folderDetails.correctTaps,
+          action.payload[i].folderDetails.wrongTaps
+        ),
         DataFolderContent: DataFolderContent,
         Status: action.payload[i].folderDetails.status
       });
@@ -47,7 +50,10 @@ const setDashboardList = function* setDashboardList(action) {
         CorrectTaps: action.payload[i].folderDetails.correctTaps,
         WrongTaps: action.payload[i].folderDetails.wrongTaps,
         Points: action.payload[i].folderDetails.score,
-        Stars: require("../assets/all_stars.png"),
+        Stars: calculate(
+          action.payload[i].folderDetails.correctTaps,
+          action.payload[i].folderDetails.wrongTaps
+        ),
         DataFolderContent: DataFolderContent,
         Status: action.payload[i].folderDetails.status
       });

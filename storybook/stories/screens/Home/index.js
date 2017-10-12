@@ -38,6 +38,9 @@ class Home extends React.Component {
               <View style={styles.HeaderRightImageSpace}>
                 <Image
                   source={require("../../../../js/assets/star_filled.png")}
+                  style={{ width: 30, height: 30 }}
+                  resizeMethod="auto"
+                  resizeMode="contain"
                 />
               </View>
               <View style={styles.HeaderRightTextSpace}>

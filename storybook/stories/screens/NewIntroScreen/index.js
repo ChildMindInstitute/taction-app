@@ -25,7 +25,7 @@ const NewIntro = props => (
             }
           ]}
         >
-          <Logo />
+          <Logo imageDimensions={styles.LogoStyle} />
         </View>
         <View
           style={[
@@ -59,7 +59,11 @@ const NewIntro = props => (
             Disabled={props.IsPlayDisabled}
             SubmitButtonStyle={[
               styles.PlayButtonStyle,
-              { opacity: props.IsPlayDisabled ? 0.5 : 1 }
+              {
+                backgroundColor: props.IsPlayDisabled
+                  ? "rgba(238, 174, 48, 0.5)"
+                  : "rgba(238, 174, 48, 1)"
+              }
             ]}
             SubmitButtonTextStyle={styles.PlayButtonTextStyle}
           />

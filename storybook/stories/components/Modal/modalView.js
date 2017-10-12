@@ -22,7 +22,7 @@ class ModalView extends React.Component {
               GreetingLine1="Spider"
               Line2needed={true}
               GreetingLine2="Level Completed"
-              Stars={require("../../../../js/assets/Asset_5.png")}
+              Stars={require("../../../../js/assets/all_stars.png")}
               DisplayPoints={120}
               Description="Time: 02.14 Min"
               IsButtonNeeded={true}

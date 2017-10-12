@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   },
   LoginAsTextSpace: { flex: 0.5, marginLeft: "5%" },
   LoginAsText: { color: "white" },
-  MainLogoStyles: { alignSelf: "center" },
-  BottomLogoSpace: { flex: 3, justifyContent: "center" },
-  SubLogoStyles: { alignSelf: "center" }
+  MainLogoStyles: { alignSelf: "center", height: 100, width: 100 },
+  BottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
+  SubLogoStyles: { alignSelf: "center", height: 40, width: 120 }
 });
 export default styles;

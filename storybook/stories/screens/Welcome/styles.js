@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
         ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
         : 0
   },
+  MainLogoStyles: { height: 100, width: 100 },
+  BottomLogoStyle: { height: 40, width: 120 },
   TopSpace: { flex: 3, alignItems: "center", justifyContent: "center" },
 
   WelcomeTextSpace: {

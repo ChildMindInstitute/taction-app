@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  MainLogoStyles: { alignSelf: "center" },
-  BottomLogoSpace: { flex: 3, justifyContent: "center" },
-  SubLogoStyles: { alignSelf: "center" },
+  MainLogoStyles: { alignSelf: "center", height: 100, width: 100 },
+  BottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
+  SubLogoStyles: { alignSelf: "center", height: 40, width: 120 },
   SubmitButtonStyle: { backgroundColor: "#eeae30", margin: "5%" },
   SubmitButtonTextStyle: { color: "white" }
 });

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   ListItemBodyTextStyle: { fontSize: 20, color: "black" },
-  ListItemBodyImageStyle: { width: 35, height: 12 },
+  ListItemBodyImageStyle: { width: 100, height: 30 },
   ListItemRightStyle: { flexDirection: "row" },
   ListItemRightViewStyle: { alignItems: "center", flexDirection: "row" },
   ListItemRightViewInnerViewStyle: {

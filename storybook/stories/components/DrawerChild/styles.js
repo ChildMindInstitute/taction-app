@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
   },
   drawerImage: {
     top: "25%",
-    alignSelf: "center"
+    alignSelf: "center",
+    height: 100,
+    width: 100
   },
   listItemContainer: {
     flexDirection: "row",
@@ -33,8 +35,8 @@ const styles = StyleSheet.create({
   },
   drawerImage2: {
     alignSelf: "center",
-    height: 22,
-    width: 100
+    height: 40,
+    width: 120
   },
   Footer: { flex: 2, marginTop: "30%" },
   ListItemStyle: {

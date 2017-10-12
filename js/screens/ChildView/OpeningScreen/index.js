@@ -12,7 +12,8 @@ class OpeningScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true
+      modalVisible: true,
+      IsPlayDisabled: true
     };
   }
   setModalVisible(visible) {
@@ -27,7 +28,11 @@ class OpeningScreen extends React.Component {
       payload: this.props.childID
     });
   }
-
+  componentDidUpdate() {
+    if (this.props.folder.folderID && this.state.IsPlayDisabled) {
+      this.setState({ IsPlayDisabled: false });
+    }
+  }
   render() {
     return (
       <NewIntro
@@ -35,11 +40,11 @@ class OpeningScreen extends React.Component {
         BottomViewBackGroundColor="rgba(255, 255, 255,1)"
         ScoreColor="rgba(0, 103, 158, 1)"
         Score={this.props.child.totalScore}
-        Stars={require("../../../assets/Asset_5.png")}
+        Stars={require("../../../assets/all_stars.png")}
         PlayOnPress={() => {
           this.props.navigation.navigate("GameScreen");
         }}
-        IsPlayDisabled={!this.props.folder.folderID}
+        IsPlayDisabled={this.state.IsPlayDisabled}
         HowToPlayOnPress={() => {}}
       >
         <ModalCommon
@@ -48,7 +53,7 @@ class OpeningScreen extends React.Component {
             <ModalContent
               GreetingLine1="Welcome Back"
               Line2needed={false}
-              Stars={require("../../../../js/assets/Asset_5.png")}
+              Stars={require("../../../../js/assets/all_stars.png")}
               DisplayPoints={this.props.child.totalScore}
               Description="Time To Earn Some Points"
               IsButtonNeeded={false}

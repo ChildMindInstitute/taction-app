@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   MainModal: {
-    marginTop: "35%",
+    marginTop: "25%",
     marginBottom: "35%"
   },
   view1: {

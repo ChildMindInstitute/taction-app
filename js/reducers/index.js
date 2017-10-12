@@ -100,6 +100,26 @@ const dasboardListReducer = (state = [], action) => {
   return state;
 };
 
+const todayListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "TODAY_LIST": {
+      state = action.payload;
+      break;
+    }
+  }
+  return state;
+};
+
+const monthListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "MONTH_LIST": {
+      state = action.payload;
+      break;
+    }
+  }
+  return state;
+};
+
 const imageListReducer = (state = [], action) => {
   switch (action.type) {
     case "IMAGE_LIST": {
@@ -141,6 +161,8 @@ const reducer = combineReducers({
   folder: folderReducer,
   image: imageReducer,
   dashboardList: dasboardListReducer,
+  todayList: todayListReducer,
+  monthList: monthListReducer,
   currentImageList: imageListReducer,
   nextFolder: nextFolderReducer,
   randomImage: randomImageListReducer

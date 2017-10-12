@@ -39,6 +39,7 @@ class OpeningScreen extends React.Component {
         PlayOnPress={() => {
           this.props.navigation.navigate("GameScreen");
         }}
+        IsPlayDisabled={!this.props.folder.folderID}
         HowToPlayOnPress={() => {}}
       >
         <ModalCommon
@@ -66,7 +67,8 @@ class OpeningScreen extends React.Component {
 const mapStateToProps = store => {
   return {
     child: store.user.child.childDetails,
-    childID: store.user.child.childID
+    childID: store.user.child.childID,
+    folder: store.folder
   };
 };
 

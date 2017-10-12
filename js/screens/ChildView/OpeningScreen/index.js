@@ -20,7 +20,8 @@ class OpeningScreen extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch({type:"SET_RANDOM_IMAGE_LIST"});  
+    this.props.dispatch({ type: "SET_CHILD" });
+    this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({
       type: "SET_CHILD_FOLDER",
       payload: this.props.childID

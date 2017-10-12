@@ -21,11 +21,11 @@ const userReducer = (state = {}, action) => {
 
 const waitReducer = (state = false, action) => {
   switch (action.type) {
-    case "USER_LOADING": {
+    case "LOADING": {
       state = false;
       break;
     }
-    case "USER_LOADED": {
+    case "LOADED": {
       state = true;
       break;
     }
@@ -90,61 +90,61 @@ const imageReducer = (state = {}, action) => {
   return state;
 };
 
-const dasboardListReducer = (state=[], action)=>{
-    switch(action.type){
-        case 'DASHBOARD_LIST':{
-            state=action.payload;
-            break;
-        }
-    }
-    return state;
-  };
-  
-const imageListReducer = (state=[], action)=>{
-    switch (action.type){
-        case 'IMAGE_LIST':{
-            state=action.payload;
-        }
-        case 'IMAGE_SCORE':{
-          console.log(action.payload, 'logging in reducer');
-          state[action.payload.index]=action.payload.image;
-          break;
-        }
-    }
-    return state;
-}
-
-const nextFolderReducer = (state={}, action)=>{
-    switch(action.type){
-        case 'NEXT_FOLDER':{
-            state = action.payload;
-            break;
-        }
-    }
-    return state;
-}
-
-const randomImageListReducer = (state=[], action)=>{
-  switch(action.type){
-    case 'RANDOM_IMAGE_LIST':{
-      state=action.payload;
+const dasboardListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "DASHBOARD_LIST": {
+      state = action.payload;
       break;
     }
   }
-  return state
-}
+  return state;
+};
 
-const reducer =  combineReducers({
-    user: userReducer,
-    loaded: waitReducer,
-    consent: consentReducer,
-    error: errorReducer,
-    folder: folderReducer,
-    image: imageReducer,
-    dashboardList: dasboardListReducer,
-    currentImageList: imageListReducer,
-    nextFolder: nextFolderReducer,
-    randomImage: randomImageListReducer
+const imageListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "IMAGE_LIST": {
+      state = action.payload;
+    }
+    case "IMAGE_SCORE": {
+      console.log(action.payload, "logging in reducer");
+      state[action.payload.index] = action.payload.image;
+      break;
+    }
+  }
+  return state;
+};
+
+const nextFolderReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "NEXT_FOLDER": {
+      state = action.payload;
+      break;
+    }
+  }
+  return state;
+};
+
+const randomImageListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "RANDOM_IMAGE_LIST": {
+      state = action.payload;
+      break;
+    }
+  }
+  return state;
+};
+
+const reducer = combineReducers({
+  user: userReducer,
+  loaded: waitReducer,
+  consent: consentReducer,
+  error: errorReducer,
+  folder: folderReducer,
+  image: imageReducer,
+  dashboardList: dasboardListReducer,
+  currentImageList: imageListReducer,
+  nextFolder: nextFolderReducer,
+  randomImage: randomImageListReducer
 });
 
 export default reducer;

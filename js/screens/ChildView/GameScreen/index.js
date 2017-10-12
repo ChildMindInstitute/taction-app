@@ -4,12 +4,6 @@ import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
 import { connect } from "react-redux";
 
-// let input = [
-//   require("../../../assets/ball1.jpg"),
-//   require("../../../assets/spiderman.jpg"),
-//   require("../../../assets/minion.jpg"),
-//   require("../../../assets/ball2.jpg")
-// ];
 let totalLevels = 10;
 const correctArrayItem = 0;
 let time;
@@ -154,8 +148,18 @@ class GameScreen extends React.Component {
   updateFolderScore() {
     this.props.dispatch({
       type: "UPDATE_FOLDER_SCORE",
-      payload: { imageList: this.props.imageList, folder: this.props.folder, child: this.props.child }
+      payload: {
+        imageList: this.props.imageList,
+        folder: this.props.folder,
+        child: this.props.child
+      }
     });
+  }
+
+  componentDidUpdate() {
+    if (this.props.loaded) {
+      this.setModalVisible(true);
+    }
   }
 
   render() {
@@ -177,8 +181,6 @@ class GameScreen extends React.Component {
         CorrectOption={this.state.correctOption}
         IsLast={this.state.isLast}
         TimeExpiredImageShuffle={() => {
-          //No Points for this Image
-
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel < totalLevels)
             setTimeout(() => {
@@ -205,8 +207,6 @@ class GameScreen extends React.Component {
           }
         }}
         Pressed={(item => {
-          //console.log(item);
-          //count Points logic
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel < totalLevels)
             setTimeout(() => {
@@ -232,7 +232,6 @@ class GameScreen extends React.Component {
             }, 500);
           else {
             this.updateFolderScore();
-            setTimeout(() => this.setModalVisible(true), 2000);
           }
         }).bind(this)}
         //FinishedFunc={() => {
@@ -262,7 +261,6 @@ class GameScreen extends React.Component {
                 alert("PlayAgain Pressed");
               }}
               toggleVisiblity={() => {
-                //replace goBack with logout logic
                 this.props.navigation.goBack();
                 this.setModalVisible(false);
               }}
@@ -281,7 +279,8 @@ const mapStateToProps = store => {
     imageList: store.currentImageList,
     nextFolder: store.nextFolder,
     randomImage: store.randomImage,
-    settings: store.user.parent.settings
+    settings: store.user.parent.settings,
+    loaded: store.loaded
   };
 };
 

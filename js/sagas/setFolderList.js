@@ -2,7 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import Db from "../../js/services";
 
 const setFolderList = function* setFolderList(action) {
-  yield put({ type: "USER_LOADING" });
+  yield put({ type: "LOADING" });
   let folderList = yield call(Db.fetchExeriseList, action.payload);
   for (let i in folderList) {
     folderList[i].imageList = yield call(
@@ -11,7 +11,7 @@ const setFolderList = function* setFolderList(action) {
     );
   }
   yield put({ type: "SET_DASHBOARD_LIST", payload: folderList });
-  yield put({ type: "USER_LOADED" });
+  yield put({ type: "LOADED" });
 };
 
 const watchSetFolderList = function* watchSetFolderList() {

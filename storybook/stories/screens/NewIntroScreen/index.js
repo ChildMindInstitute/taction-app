@@ -51,6 +51,7 @@ const NewIntro = props => (
           <Button
             OnPress={props.PlayOnPress}
             ButtonText="Play"
+            Disabled={this.props.IsPlayDisabled}
             SubmitButtonStyle={styles.PlayButtonStyle}
             SubmitButtonTextStyle={styles.PlayButtonTextStyle}
           />
@@ -67,6 +68,7 @@ const NewIntro = props => (
 );
 
 NewIntro.propTypes = {
+  IsPlayDisabled: PropTypes.bool,
   BackgroundLogo: PropTypes.number,
   TopViewBackgroundColor: PropTypes.string,
   MainLogo: PropTypes.number,

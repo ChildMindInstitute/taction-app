@@ -1,0 +1,44 @@
+import { call, put, takeLatest } from "redux-saga/effects";
+import Db from "../../js/services";
+
+const updateFolderScore = function* updateFolderScore(action) {
+  let list = action.payload.imageList;
+  let folder = action.payload.folder;
+  let child = action.payload.child;
+  for (let i = 0;i< list.length; i++) {
+    folder.folderDetails.correctTaps += list[i].imageDetails.correctTaps;
+    folder.folderDetails.wrongTaps += list[i].imageDetails.wrongTaps;
+    folder.folderDetails.score += list[i].imageDetails.score;
+    folder.folderDetails.isPlayed = true;
+    yield call(Db.updateImage, list[i].imageID, {
+      correctTaps: list[i].imageDetails.correctTaps,
+      wrongTaps: list[i].imageDetails.wrongTaps,
+      score: list[i].imageDetails.score,
+      status: true
+    });
+  }
+  child.childDetails.totalScore += folder.folderDetails.score;
+  if (folder.folderDetails.score > child.childDetails.highScore) {
+    child.childDetails.highScore = folder.folderDetails.score;
+  }
+
+  yield call(Db.updateExercise, folder.folderID, {
+    correctTaps: folder.folderDetails.correctTaps,
+    wrongTaps: folder.folderDetails.wrongTaps,
+    score: folder.folderDetails.score,
+    isPlayed: folder.folderDetails.isPlayed
+  });
+  yield call(Db.updateChild, child.childID, {
+    totalScore: child.childDetails.totalScore,
+    highScore: child.childDetails.highScore
+  });
+
+  yield put({ type: "FOLDER", payload: folder });
+  yield put({ type: "CHILD", payload: child });
+};
+
+const watchUpdateFolderScore = function* watchUpdateFolderScore() {
+  yield takeLatest("UPDATE_FOLDER_SCORE", updateFolderScore);
+};
+
+export default watchUpdateFolderScore;

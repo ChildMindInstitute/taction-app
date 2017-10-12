@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import {decode} from 'base64-arraybuffer';
+import { decode } from "base64-arraybuffer";
 
 const config = {
   apiKey: "AIzaSyCRjJ3k7AmjPowyhdWswv56xfvdyEo_Thc",
@@ -23,21 +23,20 @@ export default {
     }
   },
 
-  getAuth(){
+  getAuth() {
     return firebase.auth();
   },
 
   createParent(email, password, username, consent) {
-    
     return new Promise((resolve, reject) => {
       const auth = firebase.auth();
       auth
         .createUserWithEmailAndPassword(email, password)
         .then(user => {
           user.updateProfile({ displayName: username });
-          const database = firebase.database().ref('parent/'+user.uid);
+          const database = firebase.database().ref("parent/" + user.uid);
           database
-            .set({ 
+            .set({
               consent: consent,
               settings: {
                 imagesPerSession: 25,
@@ -46,8 +45,7 @@ export default {
                 random: false
               }
             })
-            .then(() =>resolve(user));
-          
+            .then(() => resolve(user));
         })
         .catch(err => {
           reject(err);
@@ -62,7 +60,8 @@ export default {
         .signInWithEmailAndPassword(email, password)
         .then(user => {
           resolve(user);
-        }).catch(err=>{
+        })
+        .catch(err => {
           reject(err);
         });
     });
@@ -96,19 +95,25 @@ export default {
     });
   },
 
-  logoutUser(){
+  logoutUser() {
     firebase.auth().signOut();
   },
 
   async getUser() {
-    const snapshot = await firebase.database().ref('parent/'+firebase.auth().currentUser.uid).once('value');
+    const snapshot = await firebase
+      .database()
+      .ref("parent/" + firebase.auth().currentUser.uid)
+      .once("value");
     return snapshot.val();
   },
 
   async getChildFromParent() {
     const auth = firebase.auth();
     try {
-      const snapshot = await firebase.database().ref("parent/" + auth.currentUser.uid).once("value");
+      const snapshot = await firebase
+        .database()
+        .ref("parent/" + auth.currentUser.uid)
+        .once("value");
       const CID = snapshot.val().childID;
       const childRef = await firebase
         .database()
@@ -132,7 +137,7 @@ export default {
           .set({
             exerciseName: name,
             correctTaps: 0,
-            wrongTaps:0,
+            wrongTaps: 0,
             totalTaps: 0,
             score: 0,
             status: false,
@@ -199,8 +204,8 @@ export default {
           storageRef.getDownloadURL().then(URL => {
             newImg
               .set({
-                correctTaps:0,
-                wrongTaps:0,
+                correctTaps: 0,
+                wrongTaps: 0,
                 score: 0,
                 status: false,
                 touchDuration: 0,
@@ -265,7 +270,7 @@ export default {
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try {
         exeRef.once("value").then(snapshot => {
-          resolve({folderDetails:snapshot.val(), folderID: exeID});
+          resolve({ folderDetails: snapshot.val(), folderID: exeID });
         });
       } catch (err) {
         reject(err);
@@ -273,45 +278,48 @@ export default {
     });
   },
 
-  verifyEmail(){
+  verifyEmail() {
     const auth = firebase.auth();
-    return new Promise((resolve, reject)=>{
-      try{
-        auth.currentUser.sendEmailVerification().then(()=>{
-          resolve('success');
-        })
-      }catch(err){
+    return new Promise((resolve, reject) => {
+      try {
+        auth.currentUser.sendEmailVerification().then(() => {
+          resolve("success");
+        });
+      } catch (err) {
         reject(err);
       }
-    })
+    });
   },
 
-  updateExercise(exeID, update){
-    return new Promise((resolve, reject)=>{
+  updateExercise(exeID, update) {
+    return new Promise((resolve, reject) => {
       const exeRef = firebase.database().ref("exercise/" + exeID);
-      try{
-        exeRef.update(update).then(()=>{
+      try {
+        exeRef.update(update).then(() => {
           resolve(exeID);
-        })
-      }catch(err){
+        });
+      } catch (err) {
         reject(err);
       }
-    })
+    });
   },
 
-  updateParent(name){
-    return new Promise ((resolve, reject)=>{
-      try{
-        firebase.auth().currentUser.updateProfile({displayName: name}).then(()=>{
-          resolve();
-        })
-      }catch(err){
+  updateParent(name) {
+    return new Promise((resolve, reject) => {
+      try {
+        firebase
+          .auth()
+          .currentUser.updateProfile({ displayName: name })
+          .then(() => {
+            resolve();
+          });
+      } catch (err) {
         reject(err);
       }
-    })
+    });
   },
 
-  updateChild(childID, update){
+  updateChild(childID, update) {
     return new Promise((resolve, reject) => {
       const childRef = firebase.database().ref("child/" + childID);
       try {
@@ -324,9 +332,11 @@ export default {
     });
   },
 
-  updateSettings(update){
+  updateSettings(update) {
     return new Promise((resolve, reject) => {
-      const childRef = firebase.database().ref("parent/" + firebase.auth().currentUser.uid+"/settings/");
+      const childRef = firebase
+        .database()
+        .ref("parent/" + firebase.auth().currentUser.uid + "/settings/");
       try {
         childRef.update(update).then(() => {
           resolve();
@@ -337,22 +347,36 @@ export default {
     });
   },
 
-  fetchRandomImageList(){
-    return new Promise((resolve, reject)=>{
-      const listRef= firebase.database().ref('auxilary/images/');
-      try{
-        let list=[];
-        listRef.once('value').then((snapshot)=>{
-          snapshot.forEach(img=>{
+  fetchRandomImageList() {
+    return new Promise((resolve, reject) => {
+      const listRef = firebase.database().ref("auxilary/images/");
+      try {
+        let list = [];
+        listRef.once("value").then(snapshot => {
+          snapshot.forEach(img => {
             list.push(img.val());
-          })
+          });
           //console.log(list);
-          resolve(list)
-        })
-      }catch(err){
-        reject(err)
+          resolve(list);
+        });
+      } catch (err) {
+        reject(err);
       }
-    })
+    });
+  },
+
+  updateImage(imgID, update) {
+    console.log(imgID, "logging image id in service");
+    console.log(update, "logging image id in service");
+    return new Promise((resolve, reject) => {
+      const imgRef = firebase.database().ref("image/" + imgID);
+      try {
+        imgRef.update(update).then(() => {
+          resolve(imgID);
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
-  
 };

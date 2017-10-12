@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 let totalLevels = 10;
 const correctArrayItem = 0;
 let time;
-let index, randomIndex;
+let index, randomIndex, image;
 class GameScreen extends React.Component {
   static navigationOptions = {
     title: "GameScreen",
@@ -74,9 +74,7 @@ class GameScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log("component did mount this should not run more than once");
     let something = this.state.input.slice();
-    let image;
     if (this.props.settings.random) {
       index = Math.floor(Math.random() * this.props.imageList.length);
       image = this.props.imageList[index];
@@ -94,15 +92,23 @@ class GameScreen extends React.Component {
   }
 
   updateCorrectScore() {
-    console.log("update correct score this should not run more than once");
+    ++image.imageDetails.correctTaps;
+    ++image.imageDetails.score;
+    this.props.dispatch({
+      type: "UPDATE_IMAGE_SCORE",
+      payload: { index: index, image: image }
+    });
+
     let something = this.state.input.slice();
-    let image;
     if (this.props.settings.random) {
       index = Math.floor(Math.random() * this.props.imageList.length);
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     } else {
-      index = this.state.currentLevel - 1;
+      ++index;
+      if (index >= this.props.imageList.length) {
+        index = 0;
+      }
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     }
@@ -114,15 +120,27 @@ class GameScreen extends React.Component {
   }
 
   updateWrongScore() {
-    console.log("update wrong score this should not run more than once");
+    console.log("wrong scoreeee");
+    ++image.imageDetails.wrongTaps;
+    if (image.imageDetails.score > 0) {
+      --image.imageDetails.score;
+    }
+
+    this.props.dispatch({
+      type: "UPDATE_IMAGE_SCORE",
+      payload: { index: index, image: image }
+    });
+
     let something = this.state.input.slice();
-    let image;
     if (this.props.settings.random) {
       index = Math.floor(Math.random() * this.props.imageList.length);
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     } else {
-      index = this.state.currentLevel - 1;
+      ++index;
+      if (index >= this.props.imageList.length) {
+        index = 0;
+      }
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     }
@@ -131,6 +149,17 @@ class GameScreen extends React.Component {
       something[i] = { uri: this.props.randomImage[randomIndex].url };
     }
     this.setState({ currentImage: image, input: something });
+  }
+
+  updateFolderScore() {
+    this.props.dispatch({
+      type: "UPDATE_FOLDER_SCORE",
+      payload: {
+        imageList: this.props.imageList,
+        folder: this.props.folder,
+        child: this.props.child
+      }
+    });
   }
 
   render() {
@@ -175,10 +204,11 @@ class GameScreen extends React.Component {
             }, 500);
           else {
             this.setState({ isLast: true });
+
             setTimeout(() => this.setModalVisible(true), 2000);
           }
         }}
-        Pressed={item => {
+        Pressed={(item => {
           //console.log(item);
           //count Points logic
           this.options = [0, 1, 2, 3];
@@ -197,18 +227,22 @@ class GameScreen extends React.Component {
                 this.state.i2,
                 this.state.i3
               );
-              this.setState({ correctOption: x, reset: false });
               if (item == this.state.correctOption) {
                 this.updateCorrectScore();
               } else {
                 this.updateWrongScore();
               }
+              this.setState({ correctOption: x, reset: false });
             }, 500);
-          else setTimeout(() => this.setModalVisible(true), 2000);
-        }}
-        FinishedFunc={() => {
-          setTimeout(() => this.setModalVisible(true), 1000);
-        }}
+          else {
+            this.updateFolderScore();
+            setTimeout(() => this.setModalVisible(true), 2000);
+          }
+        }).bind(this)}
+        //FinishedFunc={() => {
+        //  this.updateFolderScore();
+        //  setTimeout(() => this.setModalVisible(true), 1000);
+        //}}
         LeftImages={this.state.currentLevel}
         TotalImages={totalLevels}
         Question={"Tap on The " + this.props.folder.folderDetails.exerciseName}

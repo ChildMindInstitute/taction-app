@@ -162,6 +162,23 @@ class GameScreen extends React.Component {
     }
   }
 
+  playNext() {
+    this.props.dispatch({
+      type: "SET_CHILD_FOLDER",
+      payload: this.props.child.childID
+    });
+  }
+
+  PlayAgain() {
+    this.props.dispatch({
+      type: "SET_PLAY_AGAIN",
+      payload: {
+        childID: this.props.child.childID,
+        exeID: this.props.folder.folderID
+      }
+    });
+  }
+
   render() {
     return (
       <Home
@@ -234,10 +251,6 @@ class GameScreen extends React.Component {
             this.updateFolderScore();
           }
         }).bind(this)}
-        //FinishedFunc={() => {
-        //  this.updateFolderScore();
-        //  setTimeout(() => this.setModalVisible(true), 1000);
-        //}}
         LeftImages={this.state.currentLevel}
         TotalImages={totalLevels}
         Question={"Tap on The " + this.props.folder.folderDetails.exerciseName}
@@ -256,10 +269,10 @@ class GameScreen extends React.Component {
               NextLevelName={this.props.nextFolder.folderDetails.exerciseName}
               IsButtonNeeded={true}
               PlayNext={() => {
-                alert("PlayNext Pressed");
+                this.playNext();
               }}
               PlayAgain={() => {
-                alert("PlayAgain Pressed");
+                this.PlayAgain();
               }}
               toggleVisiblity={() => {
                 this.props.navigation.goBack();

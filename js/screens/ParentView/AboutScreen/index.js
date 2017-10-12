@@ -46,7 +46,7 @@ class About extends React.Component {
             justifyContent: "center"
           }}
         >
-          <Logo1 />
+          <Logo1 imageDimensions={styles.BottomLogoStyle} />
         </Footer>
       </View>
     );

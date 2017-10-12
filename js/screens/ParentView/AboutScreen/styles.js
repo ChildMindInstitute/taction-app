@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight,
     flex: 1,
     backgroundColor: "#eee"
+  },
+  BottomLogoStyle: {
+    height: 40,
+    width: 120
   }
 });
 export default styles;

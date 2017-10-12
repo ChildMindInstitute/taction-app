@@ -22,8 +22,6 @@ const FormInput = props => (
           secureTextEntry={props.IsPassword}
           keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
         />
-      </View>
-      <View style={styles.ErrorViewStyle}>
         {props.Error ? (
           <Icon
             name="information-circle"

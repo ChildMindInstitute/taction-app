@@ -8,14 +8,16 @@ const styles = StyleSheet.create({
     flex: 4,
     alignItems: "center",
     justifyContent: "center",
-    top: "5%"
+    top: "3%"
   },
   FormSpace: { flex: 4, margin: "2.5%" },
   ErrorSpace: {
     flex: 1,
     alignItems: "center",
     width: "100%",
-    flexDirection: "row"
+    flexDirection: "row",
+    paddingLeft: "5%",
+    paddingRight: "5%"
   },
   ErrorText: { color: "white" },
   FormStyle: { flex: 1 },

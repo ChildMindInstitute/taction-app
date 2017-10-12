@@ -3,7 +3,7 @@ import AddFolder from "../../../../storybook/stories/screens/AddFolder";
 import { ActionSheet, View, List } from "native-base";
 import ListItemCustom from "./ListItem";
 import { ImagePicker } from "expo";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 let dataNext = [];
 let selectedIndexes = [];
@@ -25,23 +25,46 @@ class AddFolderScreen extends React.Component {
     dataNext = [];
   }
 
-  async AddFolder(){
-    await this.props.dispatch({type:'ADD_FOLDER', payload:{childID: this.props.child.childID, name: this.state.SaveFolderButtonText}});
+  async AddFolder() {
+    await this.props.dispatch({
+      type: "ADD_FOLDER",
+      payload: {
+        childID: this.props.child.childID,
+        name: this.state.SaveFolderButtonText
+      }
+    });
   }
 
-  componentDidUpdate(){
-  if(this.props.folder.folderID){  
-    for(let i in selectedIndexes){
-        this.props.dispatch({type:'ADD_IMAGE', payload:{exeID: this.props.folder.folderID, bytes: dataNext[selectedIndexes[i]].base64}});
-        if(i==(selectedIndexes.length-1)){
-          this.props.navigation.navigate('Dashboard');
+  componentDidUpdate() {
+    if (this.props.folder.folderID) {
+      for (let i in selectedIndexes) {
+        this.props.dispatch({
+          type: "ADD_IMAGE",
+          payload: {
+            exeID: this.props.folder.folderID,
+            bytes: dataNext[selectedIndexes[i]].base64
+          }
+        });
+        if (i == selectedIndexes.length - 1) {
+          this.props.navigation.navigate("Dashboard");
         }
       }
-    }    
+    }
   }
 
   updateImage() {
-    ImagePicker.launchImageLibraryAsync({ base64: true, quality: 0 }).then(image => {
+    ImagePicker.launchImageLibraryAsync({
+      base64: true,
+      quality: 0
+    }).then(image => {
+      if (image) {
+        dataNext.push(image);
+        this.setState({ data: dataNext });
+      }
+    });
+  }
+  updateCameraImage() {
+    ImagePicker.launchCameraAsync({ base64: true, quality: 0 }).then(image => {
       dataNext.push(image);
       this.setState({ data: dataNext });
     });
@@ -67,6 +90,9 @@ class AddFolderScreen extends React.Component {
               title: "Select Image"
             },
             buttonIndex => {
+              if (buttonIndex == 0) {
+                this.updateCameraImage();
+              }
               if (buttonIndex == 1) {
                 this.updateImage();
               }
@@ -137,12 +163,12 @@ class AddFolderScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (store)=>{
-    return { child: store.user.child, folder: store.folder };
-}
+const mapStateToProps = store => {
+  return { child: store.user.child, folder: store.folder };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return{dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddFolderScreen);

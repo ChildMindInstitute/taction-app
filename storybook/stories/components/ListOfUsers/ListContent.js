@@ -8,13 +8,18 @@ class ListContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked1: true,
+      checked2: false
     };
   }
   render() {
     return (
       <ListItem
         noBorder
+        button
+        onPress={() => {
+          this.props.ListItemPress(this.props.item);
+        }}
         style={{ backgroundColor: "white", margin: "2%", marginRight: "5%" }}
       >
         <Body>
@@ -23,11 +28,13 @@ class ListContent extends React.Component {
         <Right>
           <CheckBox
             button
-            checked={this.state.checked}
-            onPress={checked => {
-              this.setState({ checked: !this.state.checked });
-              this.props.CheckBoxPress(this.props.item, checked);
-            }}
+            checked={
+              this.props.index == 0 ? this.state.checked1 : this.state.checked2
+            }
+            onPress={() =>
+              this.props.index == 0
+                ? this.setState({ checked1: !this.state.checked1 })
+                : this.setState({ checked2: !this.state.checked2 })}
           />
         </Right>
       </ListItem>

@@ -28,8 +28,8 @@ class LoginAsScreen extends React.Component {
     return (
       <LoginAs
         Data={data}
-        CheckBoxPress={(item, checked) => {
-          if (checked && data.indexOf(item) === 0) {
+        ListItemPress={item => {
+          if (data.indexOf(item) === 0) {
             this.props.navigation.dispatch(
               NavigationActions.reset({
                 index: 0,
@@ -42,7 +42,6 @@ class LoginAsScreen extends React.Component {
               })
             );
           } else {
-            //ActionwithItemSelected
             this.props.navigation.dispatch(
               NavigationActions.reset({
                 index: 0,

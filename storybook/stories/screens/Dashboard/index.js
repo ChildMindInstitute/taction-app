@@ -35,6 +35,8 @@ const Dashboard = props => (
     <Tabs initialPage={0} tabBarUnderlineStyle={{ backgroundColor: "#0067a0" }}>
       <Tab
         heading="Today's Activities"
+        activeTabStyle={{ backgroundColor: "#F8F8F8" }}
+        tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
         <DashBoardContent ExcerciseData={props.ExcerciseDataToday}>
@@ -43,6 +45,8 @@ const Dashboard = props => (
       </Tab>
       <Tab
         heading="Month's Activities"
+        activeTabStyle={{ backgroundColor: "#F8F8F8" }}
+        tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
         <DashBoardContent ExcerciseData={props.ExcerciseDataMonth}>

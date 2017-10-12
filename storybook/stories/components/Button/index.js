@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Text, Icon, View, Spinner } from "native-base";
 const CustomButton = props => (
   <Button
+    iconLeft
     full
     style={props.SubmitButtonStyle}
     disabled={props.Disabled}
@@ -19,11 +20,9 @@ const CustomButton = props => (
     {props.Submitted ? (
       <Spinner color="white" />
     ) : props.IsTextRequired ? (
-      <View>
-        <Text style={props.SubmitButtonTextStyle}>
-          {props.ButtonText} {props.ExtraText}
-        </Text>
-      </View>
+      <Text style={props.SubmitButtonTextStyle}>
+        {props.ButtonText} {props.ExtraText}
+      </Text>
     ) : (
       <View />
     )}

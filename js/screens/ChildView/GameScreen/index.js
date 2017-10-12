@@ -26,6 +26,7 @@ class GameScreen extends React.Component {
       currentLevel: 1,
       reset: false,
       modalVisible: false,
+      gameFinished: false,
       currentImage: {},
       input: [
         require("../../../assets/ball1.jpg"),
@@ -157,8 +158,9 @@ class GameScreen extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.loaded) {
+    if (this.props.loaded && this.state.gameFinished) {
       this.setModalVisible(true);
+      this.setState({ gameFinished: false });
     }
   }
 
@@ -219,8 +221,8 @@ class GameScreen extends React.Component {
             }, 500);
           else {
             this.setState({ isLast: true });
-
-            setTimeout(() => this.setModalVisible(true), 2000);
+            this.updateFolderScore();
+            this.setState({ gameFinished: true });
           }
         }}
         Pressed={(item => {
@@ -248,7 +250,9 @@ class GameScreen extends React.Component {
               this.setState({ correctOption: x, reset: false });
             }, 500);
           else {
+            this.setState({ isLast: true });
             this.updateFolderScore();
+            this.setState({ gameFinished: true });
           }
         }).bind(this)}
         LeftImages={this.state.currentLevel}
@@ -262,11 +266,16 @@ class GameScreen extends React.Component {
               GreetingLine1={this.props.folder.folderDetails.exerciseName}
               Line2needed={true}
               GreetingLine2="Level Completed"
-              Stars={require("../../../../js/assets/all_stars.png")}
+              Stars={require("../../../../js/assets/Asset_5.png")}
               DisplayPoints={this.props.child.childDetails.totalScore}
               Description="Time: 02.14 Min"
               PlayLaterText="Play Later"
-              NextLevelName={this.props.nextFolder.folderDetails.exerciseName}
+              NextLevelName={
+                this.props.nextFolder.folderDetails
+                  ? this.props.nextFolder.folderDetails.exerciseName
+                  : ""
+              }
+              PlayNextDisabled={!this.props.nextFolder.folderDetails}
               IsButtonNeeded={true}
               PlayNext={() => {
                 this.playNext();

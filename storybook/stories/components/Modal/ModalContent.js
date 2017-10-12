@@ -49,7 +49,11 @@ class ModalContent extends React.Component {
                 OnPress={this.props.PlayNext}
                 ButtonText={"Play Level " + this.props.NextLevelName}
                 ExtraText=" &rarr;"
-                SubmitButtonStyle={styles.ContentMainViewInnerViewButton1Style}
+                Disabled={this.props.PlayNextDisabled}
+                SubmitButtonStyle={[
+                  styles.ContentMainViewInnerViewButton1Style,
+                  { display: this.props.PlayNextDisabled ? "none" : "flex" }
+                ]}
                 SubmitButtonTextStyle={
                   styles.ContentMainViewInnerViewButton1TextStyle
                 }

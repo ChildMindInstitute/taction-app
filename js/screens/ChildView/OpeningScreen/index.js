@@ -48,7 +48,7 @@ class OpeningScreen extends React.Component {
             <ModalContent
               GreetingLine1="Welcome Back"
               Line2needed={false}
-              Stars={require("../../../../js/assets/all_stars.png")}
+              Stars={require("../../../../js/assets/Asset_5.png")}
               DisplayPoints={this.props.child.totalScore}
               Description="Time To Earn Some Points"
               IsButtonNeeded={false}

@@ -7,7 +7,7 @@ const setChildFolder = function* setChildFolder(action) {
     console.log(folderList);
     if (
       folderList[i].folderDetails.status &&
-      !folderList[i].folderDetails.isPLayed
+      !folderList[i].folderDetails.isPlayed
     ) {
       yield put({
         type: "SET_FOLDER",
@@ -24,6 +24,7 @@ const setChildFolder = function* setChildFolder(action) {
           break;
         }
       }
+      yield put({ type: "LOADING" });
       break;
     }
   }

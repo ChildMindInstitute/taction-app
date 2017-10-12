@@ -7,7 +7,7 @@ const setChild = function* setChild() {
     type: "CHILD",
     payload: child
   });
-  yield put({ type: "USER_LOADED" });
+  yield put({ type: "LOADED" });
 };
 
 const watchSetChild = function* watchSetChild() {

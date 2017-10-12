@@ -156,12 +156,6 @@ class GameScreen extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    if (this.props.loaded) {
-      this.setModalVisible(true);
-    }
-  }
-
   playNext() {
     this.props.dispatch({
       type: "SET_CHILD_FOLDER",
@@ -214,7 +208,6 @@ class GameScreen extends React.Component {
                 this.state.i3
               );
               this.setState({ correctOption: x });
-              //debugger;
               this.updateWrongScore();
             }, 500);
           else {

@@ -16,11 +16,12 @@ const styles = StyleSheet.create({
     flex: 2,
     alignContent: "center",
     justifyContent: "center",
-    margin: "5%"
+    marginTop: "5%"
   },
   TopTextSpace: { flex: 4 },
   TopTextStyle: {
-    color: "#ffffff"
+    color: "#ffffff",
+    fontSize: 18
   },
   Seperator: {
     borderBottomWidth: 2,
@@ -30,13 +31,13 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginBottom: "5%"
   },
-  ConsentTextSpace: { flex: 0.5 },
-  ConsentText: { color: "#fff", fontSize: 20, fontWeight: "500" },
+  ConsentTextSpace: { flex: 0.5, marginBottom: "5%" },
+  ConsentText: { color: "#fff", fontSize: 22, fontWeight: "500" },
   TermsSpace: { flex: 5, flexDirection: "column" },
-  TermsItem: { flex: 1, flexDirection: "row" },
+  TermsItem: { flex: 1, flexDirection: "row", marginBottom: "5%" },
   ItemTextSpace: { flex: 8 },
   ItemCheckBoxSpace: { flex: 1 },
-  ItemText: { color: "#fff", fontSize: 20, fontWeight: "300" },
+  ItemText: { color: "#fff", fontSize: 18 },
   ItemCheckBox: {
     top: 10,
     left: 0

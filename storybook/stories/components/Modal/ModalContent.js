@@ -28,6 +28,8 @@ class ModalContent extends React.Component {
           <Image
             source={this.props.Stars}
             style={styles.ContentMainViewImageStyle}
+            resizeMethod="auto"
+            resizeMode="contain"
           />
         </View>
         <View style={{ flex: 2 }}>

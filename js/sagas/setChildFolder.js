@@ -4,7 +4,7 @@ import Db from "../../js/services";
 const setChildFolder = function* setChildFolder(action) {
   let folderList = yield call(Db.fetchExeriseList, action.payload);
   for (let i in folderList) {
-    console.log(folderList);
+    // console.log(folderList);
     if (
       folderList[i].folderDetails.status &&
       !folderList[i].folderDetails.isPlayed

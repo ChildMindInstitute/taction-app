@@ -293,6 +293,9 @@ export default {
 
   updateExercise(exeID, update) {
     return new Promise((resolve, reject) => {
+      let timeStamp = new Date().toDateString();
+      update = { ...update, timeStamp: timeStamp };
+      console.log(update, "logging current date");
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try {
         exeRef.update(update).then(() => {
@@ -366,8 +369,6 @@ export default {
   },
 
   updateImage(imgID, update) {
-    console.log(imgID, "logging image id in service");
-    console.log(update, "logging image id in service");
     return new Promise((resolve, reject) => {
       const imgRef = firebase.database().ref("image/" + imgID);
       try {

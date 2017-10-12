@@ -5,6 +5,10 @@ const updateFolderScore = function* updateFolderScore(action) {
   let list = action.payload.imageList;
   let folder = action.payload.folder;
   let child = action.payload.child;
+  child.childDetails.score -= folder.folderDetails.score;
+  folder.folderDetails.correctTaps = 0;
+  folder.folderDetails.wrongTaps = 0;
+  folder.folderDetails.score = 0;
   for (let i = 0; i < list.length; i++) {
     folder.folderDetails.correctTaps += list[i].imageDetails.correctTaps;
     folder.folderDetails.wrongTaps += list[i].imageDetails.wrongTaps;
@@ -35,7 +39,6 @@ const updateFolderScore = function* updateFolderScore(action) {
 
   yield put({ type: "FOLDER", payload: folder });
   yield put({ type: "CHILD", payload: child });
-  debugger;
   yield put({ type: "LOADED" });
 };
 

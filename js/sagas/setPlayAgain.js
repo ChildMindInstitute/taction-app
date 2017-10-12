@@ -4,6 +4,7 @@ import Db from "../../js/services";
 const setPlayAgain = function* setPlayAgain(action) {
   let childID = action.payload.childID;
   let exeID = action.payload.exeID;
+
   yield call(Db.updateExercise, exeID, { isPlayed: false });
   yield put({ type: "SET_CHILD_FOLDER", payload: childID });
 };

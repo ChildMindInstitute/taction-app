@@ -5,6 +5,7 @@ const updateFolderScore = function* updateFolderScore(action) {
   let list = action.payload.imageList;
   let folder = action.payload.folder;
   let child = action.payload.child;
+  console.log(folder.folderDetails.score);
   child.childDetails.score -= folder.folderDetails.score;
   folder.folderDetails.correctTaps = 0;
   folder.folderDetails.wrongTaps = 0;
@@ -21,6 +22,8 @@ const updateFolderScore = function* updateFolderScore(action) {
       status: true
     });
   }
+  console.log(folder.folderDetails.score);
+
   child.childDetails.totalScore += folder.folderDetails.score;
   if (folder.folderDetails.score > child.childDetails.highScore) {
     child.childDetails.highScore = folder.folderDetails.score;

@@ -6,7 +6,6 @@ const setDashboardList = function* setDashboardList(action) {
   let monthList = [];
   let currentDate = new Date().toDateString();
   let currentMonth = currentDate.slice(4, 7);
-  console.log(currentMonth, "logging current month");
   for (let i in action.payload) {
     let DataFolderContent = [];
     for (let j in action.payload[i].imageList) {

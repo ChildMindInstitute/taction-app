@@ -1,9 +1,8 @@
 import React from "react";
 import SignUp from "../../../storybook/stories/screens/SignUp";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 var username, email, password, cnfpassword;
-
 
 const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 class LoginScreen extends React.Component {
@@ -33,17 +32,19 @@ class LoginScreen extends React.Component {
     };
   }
 
-  signUp(){
-    if(this.Input.Password== this.Input.ConfirmPassword){
-      this.props.dispatch({type:"USER_SIGNUP", payload:{
-        consent: this.props.consent,
-        username: this.Input.Username,
-        email: this.Input.Email,
-        password: this.Input.Password
-      }});
+  signUp() {
+    if (this.Input.Password == this.Input.ConfirmPassword) {
+      this.props.dispatch({
+        type: "USER_SIGNUP",
+        payload: {
+          consent: this.props.consent,
+          username: this.Input.Username,
+          email: this.Input.Email,
+          password: this.Input.Password
+        }
+      });
       this.props.navigation.navigate("AlmostThere");
-    }else{
-      // console.log(username+":"+email+":"+password, "logging user data")
+    } else {
       alert("password mismatch !!!");
     }
   }
@@ -77,8 +78,7 @@ class LoginScreen extends React.Component {
             }
           }
         }}
-        OnPressSubmitButton={() =>
-          this.signUp()}
+        OnPressSubmitButton={() => this.signUp()}
         StatusBarStyle="light-content"
         ConfirmPasswordChange={event => {
           this.Input.ConfirmPassword = event.nativeEvent.text;
@@ -112,12 +112,12 @@ class LoginScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (store)=>{
-    return { consent: store.consent, user: store.user };
-}
+const mapStateToProps = store => {
+  return { consent: store.consent, user: store.user };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return{dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

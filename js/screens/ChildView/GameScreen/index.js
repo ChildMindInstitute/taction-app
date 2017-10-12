@@ -3,6 +3,7 @@ import Home from "../../../../storybook/stories/screens/Home";
 import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
 import { connect } from "react-redux";
+import { NavigationActions } from "react-navigation";
 
 let totalLevels = 10;
 const correctArrayItem = 0;
@@ -28,6 +29,7 @@ class GameScreen extends React.Component {
       modalVisible: false,
       gameFinished: false,
       currentImage: {},
+      currentFolder: {},
       input: [
         require("../../../assets/ball1.jpg"),
         require("../../../assets/spiderman.jpg"),
@@ -83,7 +85,11 @@ class GameScreen extends React.Component {
       randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
       something[i] = { uri: this.props.randomImage[randomIndex].url };
     }
-    this.setState({ currentImage: image, input: something });
+    this.setState({
+      currentImage: image,
+      input: something,
+      currentFolder: this.props.folder
+    });
   }
 
   updateCorrectScore() {
@@ -165,10 +171,24 @@ class GameScreen extends React.Component {
   }
 
   playNext() {
+    this.setModalVisible(false);
     this.props.dispatch({
       type: "SET_CHILD_FOLDER",
       payload: this.props.child.childID
     });
+    setTimeout(() => {
+      //this.props.navigation.goBack();
+      this.props.navigation.dispatch(
+        NavigationActions.reset({
+          index: 1,
+          actions: [
+            NavigationActions.navigate({ routeName: "IntroScreen" }),
+            NavigationActions.navigate({ routeName: "GameScreen" })
+          ]
+        })
+      );
+      // this.props.navigation.navigate("GameScreen");
+    }, 2000);
   }
 
   PlayAgain() {
@@ -176,9 +196,22 @@ class GameScreen extends React.Component {
       type: "SET_PLAY_AGAIN",
       payload: {
         childID: this.props.child.childID,
-        exeID: this.props.folder.folderID
+        exeID: this.state.currentFolder.folderID
       }
     });
+    setTimeout(() => {
+      this.props.navigation.dispatch(
+        NavigationActions.reset({
+          index: 1,
+          actions: [
+            NavigationActions.navigate({
+              routeName: "IntroScreen"
+            }),
+            NavigationActions.navigate({ routeName: "GameScreen" })
+          ]
+        })
+      );
+    }, 2000);
   }
 
   render() {

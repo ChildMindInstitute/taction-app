@@ -16,15 +16,12 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: "#0067a0"
   },
-  ErrorViewStyle: {
-    position: "absolute",
-    top: "30%",
-    alignSelf: "flex-end"
-  },
   ErrorContentStyle: {
     color: "#EF3350",
-    top: 7,
-    right: 3
+    alignSelf: "flex-end",
+    position: "absolute",
+    top: 2.5,
+    right: 8
   }
 });
 

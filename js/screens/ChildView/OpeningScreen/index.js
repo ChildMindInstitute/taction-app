@@ -45,7 +45,9 @@ class OpeningScreen extends React.Component {
           this.props.navigation.navigate("GameScreen");
         }}
         IsPlayDisabled={this.state.IsPlayDisabled}
-        HowToPlayOnPress={() => {}}
+        HowToPlayOnPress={() => {
+          this.props.navigation.navigate("HowToPlayScreen");
+        }}
       >
         <ModalCommon
           isVisible={this.state.modalVisible}

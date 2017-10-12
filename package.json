@@ -53,6 +53,7 @@
     "react-native-grid-component": "^1.0.7",
     "react-native-modal": "^4.0.0",
     "react-native-prompt": "^1.0.0",
+    "react-native-swipeable-parallax-carousel": "^1.1.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",

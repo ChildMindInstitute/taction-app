@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
   LogoSpace: { flex: 2 },
   LodaerSpace: { flex: 1 },
   LoaderStyle: { alignSelf: "center", flex: 1, margin: "10%" },
-  BottomLogoSpace: { flex: 1 },
-  LogoStyles: { alignSelf: "center" }
+  BottomLogoSpace: { flex: 1, justifyContent: "flex-end" },
+  LogoStyles: { alignSelf: "center" },
+  LogoStyles2: { alignSelf: "center", height: 40, width: 120 }
 });
 export default styles;

@@ -14,7 +14,11 @@ const styles = StyleSheet.create({
         : 0
   },
   TopSpace: { flex: 3, alignItems: "center", justifyContent: "center" },
-
+  BottomLogoStyle: { height: 40, width: 120 },
+  MainLogoStyle: {
+    height: 100,
+    width: 100
+  },
   AlmostThereTextSpace: {
     flex: 1,
     alignItems: "center",

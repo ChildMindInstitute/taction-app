@@ -13,7 +13,7 @@ const AlmostThere = props => (
         barStyle={props.StatusBarStyle}
       />
       <View style={styles.TopSpace}>
-        <Logo imageDimensions={styles.MainLogoStyles} />
+        <Logo imageDimensions={styles.MainLogoStyle} />
       </View>
       <View style={styles.AlmostThereTextSpace}>
         <Text style={styles.AlmostThereText}>Almost There!</Text>
@@ -26,7 +26,7 @@ const AlmostThere = props => (
         <Text style={styles.ConfirmTextStyle}>your registration.</Text>
       </View>
       <View style={styles.BottomLogoSpace}>
-        <Logo1 />
+        <Logo1 imageDimensions={styles.BottomLogoStyle} />
       </View>
     </View>
   </View>

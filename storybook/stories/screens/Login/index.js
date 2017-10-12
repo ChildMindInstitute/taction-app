@@ -17,7 +17,7 @@ const Login = props => (
       barStyle={props.StatusBarStyle}
     />
     <View style={styles.TopSpace}>
-      <Logo />
+      <Logo imageDimensions={styles.MainLogoStyles} />
     </View>
     <View
       style={[

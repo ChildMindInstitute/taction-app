@@ -19,7 +19,7 @@ const setDashboardList = function* setDashboardList(action) {
       CorrectTaps: action.payload[i].folderDetails.correctTaps,
       WrongTaps: action.payload[i].folderDetails.wrongTaps,
       Points: action.payload[i].folderDetails.score,
-      Stars: require("../assets/Asset_5.png"),
+      Stars: require("../assets/all_stars.png"),
       DataFolderContent: DataFolderContent,
       Status: action.payload[i].folderDetails.status
     });

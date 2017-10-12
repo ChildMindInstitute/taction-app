@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   SubmitButtonSpace: { flex: 1 },
   MainLogoStyles: { alignSelf: "center" },
   BottomLogoSpace: { flex: 3, justifyContent: "center" },
-  SubLogoStyles: { alignSelf: "center" },
+  SubLogoStyles: { alignSelf: "center", height: 40, width: 120 },
   SubmitButtonStyle: { backgroundColor: "#eeae30", margin: "5%" },
   SubmitButtonTextStyle: { color: "white" }
 });

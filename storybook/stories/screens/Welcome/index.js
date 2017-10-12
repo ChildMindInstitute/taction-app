@@ -33,7 +33,7 @@ const Welcome = props => (
         ButtonText="Get in &rarr;"
       />
       <View style={styles.BottomLogoSpace}>
-        <Logo1 />
+        <Logo1 imageDimensions={styles.BottomLogoStyle} />
       </View>
     </View>
   </View>

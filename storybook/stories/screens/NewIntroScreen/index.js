@@ -25,7 +25,7 @@ const NewIntro = props => (
             }
           ]}
         >
-          <Logo />
+          <Logo imageDimensions={styles.LogoStyle} />
         </View>
         <View
           style={[

@@ -19,7 +19,7 @@ const SplashScreen = props => (
       <View style={styles.LodaerSpace} />
       <Loader color={props.color} style={styles.LoaderStyle} />
       <View style={styles.BottomLogoSpace}>
-        <Logo1 imageDimensions={styles.LogoStyles} />
+        <Logo1 imageDimensions={styles.LogoStyles2} />
       </View>
     </View>
   </View>

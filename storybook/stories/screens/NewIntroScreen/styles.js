@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   StarsStyle: {
-    width: "30%",
-    height: "8%",
+    width: 160,
+    height: 70,
     margin: "5%",
     marginBottom: "10%"
   },
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     margin: "5%",
     borderRadius: 50
   },
+  LogoStyle: { width: 100, height: 100 },
   PlayButtonTextStyle: {
     color: "#fff",
     fontSize: 20,

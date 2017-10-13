@@ -9,11 +9,11 @@ const updateFolderScore = function* updateFolderScore(action) {
   folder.folderDetails.correctTaps = 0;
   folder.folderDetails.wrongTaps = 0;
   folder.folderDetails.score = 0;
+  folder.folderDetails.isPlayed = true;
   for (let i = 0; i < list.length; i++) {
     folder.folderDetails.correctTaps += list[i].imageDetails.correctTaps;
     folder.folderDetails.wrongTaps += list[i].imageDetails.wrongTaps;
     folder.folderDetails.score += list[i].imageDetails.score;
-    folder.folderDetails.isPlayed = true;
     yield call(Db.updateImage, list[i].imageID, {
       correctTaps: list[i].imageDetails.correctTaps,
       wrongTaps: list[i].imageDetails.wrongTaps,
@@ -21,6 +21,7 @@ const updateFolderScore = function* updateFolderScore(action) {
       status: true
     });
   }
+
   child.childDetails.totalScore += folder.folderDetails.score;
   if (folder.folderDetails.score > child.childDetails.highScore) {
     child.childDetails.highScore = folder.folderDetails.score;

@@ -14,11 +14,12 @@ const setChildFolder = function* setChildFolder(action) {
       });
       yield put({ type: "SET_IMAGE_LIST", payload: folderList[i].folderID });
       for (let j = ++i; j < folderList.length; j++) {
+        let nextFolder = undefined;
         if (
           folderList[i].folderDetails.status &&
           !folderList[i].folderDetails.isPLayed
         ) {
-          let nextFolder = yield call(Db.getExercise, folderList[i].folderID);
+          nextFolder = yield call(Db.getExercise, folderList[i].folderID);
           yield put({ type: "NEXT_FOLDER", payload: nextFolder });
           break;
         }

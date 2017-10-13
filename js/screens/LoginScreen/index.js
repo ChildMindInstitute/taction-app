@@ -120,7 +120,7 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = store => {
   return {
-    loaded: store.loaded,
+    loaded: store.loaded.userLoaded,
     user: store.user,
     error: store.error.signinError
   };

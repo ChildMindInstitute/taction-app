@@ -21,9 +21,9 @@ class Splash extends React.Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
       FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
     });
-    let unsubscribe= Db.getAuth().onAuthStateChanged(user => {
-      if (user && (!this.props.newUser)) {
-        this.props.dispatch({type:"SET_PARENT"});
+    let unsubscribe = Db.getAuth().onAuthStateChanged(user => {
+      if (user && !this.props.newUser) {
+        this.props.dispatch({ type: "SET_PARENT" });
         this.props.dispatch({ type: "SET_CHILD" });
         unsubscribe();
       } else {
@@ -38,7 +38,7 @@ class Splash extends React.Component {
     });
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     if (this.props.loaded) {
       this.props.navigation.dispatch(
         NavigationActions.reset({
@@ -46,11 +46,10 @@ class Splash extends React.Component {
           actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
         })
       );
-    }    
+    }
   }
 
   render() {
-    
     return (
       <SplashScreen
         ImageDimensions={{ width: 200, height: 300 }}
@@ -62,14 +61,18 @@ class Splash extends React.Component {
   }
 }
 
-const mapStateToProps = (store)=>{
-  return { parent: store.user.parent, child: store.user.child, loaded: store.loaded };
-}
+const mapStateToProps = store => {
+  return {
+    parent: store.user.parent,
+    child: store.user.child,
+    loaded: store.loaded.userLoaded
+  };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return{
+const mapDispatchToProps = dispatch => {
+  return {
     dispatch
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Splash);

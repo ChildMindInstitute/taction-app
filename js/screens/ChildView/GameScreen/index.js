@@ -163,7 +163,7 @@ class GameScreen extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.loaded && this.state.gameFinished) {
+    if (this.props.gameOver && this.state.gameFinished) {
       this.setModalVisible(true);
       this.setState({ gameFinished: false });
     }
@@ -348,7 +348,7 @@ const mapStateToProps = store => {
     nextFolder: store.nextFolder,
     randomImage: store.randomImage,
     settings: store.user.parent.settings,
-    loaded: store.loaded
+    gameOver: store.loaded.gameOver
   };
 };
 

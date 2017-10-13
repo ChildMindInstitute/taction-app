@@ -56,7 +56,7 @@ const mapStateToProps = store => {
     dashboardList: store.dashboardList,
     todayList: store.todayList,
     monthList: store.monthList,
-    loaded: store.loaded
+    loaded: store.loaded.dashboardLoaded
   };
 };
 

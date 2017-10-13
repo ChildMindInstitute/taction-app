@@ -40,6 +40,7 @@ const updateFolderScore = function* updateFolderScore(action) {
 
   yield put({ type: "FOLDER", payload: folder });
   yield put({ type: "SET_CHILD" });
+  yield put({ type: "GAME_OVER" });
 };
 
 const watchUpdateFolderScore = function* watchUpdateFolderScore() {

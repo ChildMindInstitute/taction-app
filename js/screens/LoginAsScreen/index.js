@@ -35,7 +35,7 @@ class LoginAsScreen extends React.Component {
                 index: 0,
                 actions: [
                   NavigationActions.navigate({
-                    params: { NewRegistration: false, showModal: true },
+                    params: { NewRegistration: false },
                     routeName: "ParentDrawer"
                   })
                 ]
@@ -47,7 +47,7 @@ class LoginAsScreen extends React.Component {
                 index: 0,
                 actions: [
                   NavigationActions.navigate({
-                    params: { NewRegistration: false },
+                    params: { NewRegistration: false, showModal: true },
                     routeName: "ChildDrawer"
                   })
                 ]

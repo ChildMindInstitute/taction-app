@@ -12,7 +12,11 @@ class OpeningScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true,
+      modalVisible: this.props.screenProps.state.params.showModal
+        ? this.props.navigation.state.params
+          ? this.props.navigation.state.params.showModal
+          : true
+        : false,
       IsPlayDisabled: true
     };
   }

@@ -78,7 +78,7 @@ class LoginScreen extends React.Component {
         }}
         LabelColor="white"
         StatusBarStyle="light-content"
-        InputViewStyle={{ flex: 1, margin: "3%" }}
+        InputViewStyle={{ flex: 1 }}
         PasswordChange={event => {
           this.Input.Password = event.nativeEvent.text;
           if (this.Input.Password == "") {
@@ -106,7 +106,6 @@ class LoginScreen extends React.Component {
         }}
         RegisterWithUsTextStyle={{
           alignSelf: "center",
-          marginTop: "20%",
           color: "#ccc"
         }}
         Submitted={this.state.Submitted}

@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     marginTop:
       Platform.OS !== "ios"
         ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
-        : 0
+        : 0,
+    margin: "5%"
   },
   LogoSpace: { flex: 2 },
   LodaerSpace: { flex: 1 },

@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     top: 10,
     left: 0
   },
-  MainLogoStyles: { alignSelf: "center" },
+  MainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   SubmitButtonSpace: { flex: 1 }
 });
 export default styles;

@@ -6,9 +6,15 @@ import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { View, Form } from "native-base";
 import { StatusBar } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 import styles from "./styles";
 const SignUp = props => (
-  <View style={styles.MainOuterView}>
+  <KeyboardAvoidingView
+    style={styles.MainOuterView}
+    behavior="position"
+    contentContainerStyle={styles.MainOuterView}
+    keyboardVerticalOffset={-170}
+  >
     <View style={styles.MainView}>
       <StatusBar
         translucent={true}
@@ -65,13 +71,15 @@ const SignUp = props => (
           SubmitButtonStyle={styles.SubmitButtonStyle}
           SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
           ButtonText="Submit &rarr;"
+          Submitted={props.Submitted}
+          Disabled={props.Disabled}
         />
       </View>
       <View style={styles.BottomLogoSpace}>
         <Logo1 imageDimensions={styles.SubLogoStyles} />
       </View>
     </View>
-  </View>
+  </KeyboardAvoidingView>
 );
 
 SignUp.propTypes = {

@@ -20,6 +20,7 @@ class LoginScreen extends React.Component {
     };
     this.state = {
       ConfirmPasswordError: false,
+      Submitted: false,
       PasswordError: false,
       EmailError: false,
       UsernameError: false
@@ -33,7 +34,10 @@ class LoginScreen extends React.Component {
   }
 
   signUp() {
-    if (this.Input.Password == this.Input.ConfirmPassword) {
+    if (
+      this.Input.Password == this.Input.ConfirmPassword &&
+      !this.state.EmailError
+    ) {
       this.props.dispatch({
         type: "USER_SIGNUP",
         payload: {
@@ -44,7 +48,9 @@ class LoginScreen extends React.Component {
         }
       });
       this.props.navigation.navigate("AlmostThere");
-    } else {
+    } else if (this.state.EmailError) {
+      alert("Invalid Email");
+    } else if (this.Input.Password != this.Input.ConfirmPassword) {
       alert("password mismatch !!!");
     }
   }
@@ -62,10 +68,7 @@ class LoginScreen extends React.Component {
           }
         }}
         InputViewStyle={{
-          flex: 1,
-          margin: "2.5%",
-          marginLeft: "5%",
-          marginRight: "5%"
+          flex: 1
         }}
         PasswordChange={event => {
           this.Input.Password = event.nativeEvent.text;
@@ -78,7 +81,17 @@ class LoginScreen extends React.Component {
             }
           }
         }}
-        OnPressSubmitButton={() => this.signUp()}
+        OnPressSubmitButton={() => {
+          this.setState({ Submitted: true });
+          this.signUp();
+        }}
+        Submitted={this.state.Submitted}
+        Disabled={
+          !this.state.ConfirmPasswordError &&
+          !this.state.EmailError &&
+          !this.state.PasswordError &&
+          !this.state.UsernameError
+        }
         StatusBarStyle="light-content"
         ConfirmPasswordChange={event => {
           this.Input.ConfirmPassword = event.nativeEvent.text;

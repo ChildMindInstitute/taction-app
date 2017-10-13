@@ -22,12 +22,21 @@ class ImagesFolderScreen extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    if (this.props.folderRemoved) {
+      this.props.navigation.navigate("Dashboard");
+    }
+  }
+
   // componentWillMount(){
   //   this.props.dsipatch({type:'SET_ORDER_LIST'})
   // }
 
   removeItems(items) {
-    this.props.dispatch({ type: "REMOVE_FOLDERS", payload: items });
+    this.props.dispatch({
+      type: "REMOVE_FOLDERS",
+      payload: { items: items, childID: this.props.childID }
+    });
   }
 
   render() {
@@ -57,7 +66,11 @@ class ImagesFolderScreen extends React.Component {
 }
 
 const mapStateToProps = store => {
-  return { dashboardList: store.dashboardList };
+  return {
+    childID: store.user.child.childID,
+    dashboardList: store.dashboardList,
+    folderRemoved: store.folderRemoved
+  };
 };
 
 const mapDispatchToProps = dispatch => {

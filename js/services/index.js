@@ -126,6 +126,7 @@ export default {
 
   addExercise(childID, name) {
     return new Promise((resolve, reject) => {
+      let timeStamp = new Date().toDateString();
       const childRef = firebase
         .database()
         .ref("child/" + childID + "/exercises/");
@@ -139,6 +140,7 @@ export default {
             wrongTaps: 0,
             totalTaps: 0,
             score: 0,
+            timeStamp: timeStamp,
             status: false,
             totalDuration: 0
           })
@@ -163,6 +165,9 @@ export default {
       try {
         childRef.on("value", snapshot => {
           var numExe = snapshot.numChildren();
+          if (numExe == 0) {
+            resolve(response);
+          }
           snapshot.forEach(exe => {
             var exeRef = firebase
               .database()
@@ -196,9 +201,7 @@ export default {
           contentType: "image/jpeg"
         };
         const storageRef = store.child(exeID + "/" + newImg.key + ".jpg");
-        // debugger;
         storageRef.put(bytes, metadata).then(() => {
-          // debugger;
           storageRef.getDownloadURL().then(URL => {
             newImg
               .set({
@@ -375,5 +378,53 @@ export default {
         reject(err);
       }
     });
-  }
+  },
+
+  removeFolder(exeID, childID) {
+    return new Promise((resolve, reject) => {
+      const childRef = firebase
+        .database()
+        .ref("child/" + childID + "/exercises");
+      const exeRef = firebase.database().ref("exercise/" + exeID);
+      const storageRef = firebase
+        .storage()
+        .ref()
+        .child("/" + exeID + "/");
+      const imgListRef = firebase
+        .database()
+        .ref("exercise/" + exeID + "/images");
+      try {
+        imgListRef.once("value").then(snapshot => {
+          let count = 1;
+          let numImg = snapshot.numChildren();
+          snapshot.forEach(img => {
+            var imgRef = firebase.database().ref("image/" + img.val().imageID);
+            imgRef.remove();
+            ++count;
+            if (count == numImg) {
+              exeRef.remove().then(() => {
+                childRef.once("value").then(snapshot => {
+                  snapshot.forEach(exe => {
+                    console.log(exe.key, "logging child exe key");
+                    if (exeID == exe.val().exerciseId) {
+                      firebase
+                        .database()
+                        .ref("child/" + childID + "/exercises/" + exe.key)
+                        .remove()
+                        .then(() => resolve());
+                    }
+                  });
+                });
+              });
+            }
+          });
+        });
+      } catch (err) {
+        console.log(err);
+        reject(err);
+      }
+    });
+  },
+
+  resetPassword(email) {}
 };

@@ -28,7 +28,7 @@ const setChildFolder = function* setChildFolder(action) {
       break;
     }
   }
-  yield put({ type: "LOADING" });
+  yield put({ type: "GAME_STARTED" });
 };
 
 const watchSetChildFolder = function* watchSetChildFolder() {

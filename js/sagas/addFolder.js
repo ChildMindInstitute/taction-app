@@ -1,7 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import Db from "../../js/services";
 
-
 const addFolder = function* addFolder(action) {
   let folderID = yield call(
     Db.addExercise,
@@ -15,4 +14,4 @@ const watchAddFolder = function* watchAddFolder() {
   yield takeLatest("ADD_FOLDER", addFolder);
 };
 
-export default watchAddFolder
+export default watchAddFolder;

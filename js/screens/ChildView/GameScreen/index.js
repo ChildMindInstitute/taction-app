@@ -234,7 +234,7 @@ class GameScreen extends React.Component {
         IsLast={this.state.isLast}
         TimeExpiredImageShuffle={() => {
           this.options = [0, 1, 2, 3];
-          if (this.state.currentLevel < totalLevels)
+          if (this.state.currentLevel + 1 <= totalLevels)
             setTimeout(() => {
               this.setState({
                 i1: this.randomAssign(),
@@ -259,7 +259,7 @@ class GameScreen extends React.Component {
         }}
         Pressed={(item => {
           this.options = [0, 1, 2, 3];
-          if (this.state.currentLevel < totalLevels)
+          if (this.state.currentLevel + 1 <= totalLevels)
             setTimeout(() => {
               this.setState({
                 i1: this.randomAssign(),

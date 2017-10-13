@@ -13,21 +13,22 @@ const setChildFolder = function* setChildFolder(action) {
         payload: { id: folderList[i].folderID }
       });
       yield put({ type: "SET_IMAGE_LIST", payload: folderList[i].folderID });
+      let nextFolder = {};
       for (let j = ++i; j < folderList.length; j++) {
-        let nextFolder = undefined;
         if (
-          folderList[i].folderDetails.status &&
-          !folderList[i].folderDetails.isPLayed
+          folderList[j].folderDetails.status &&
+          !folderList[j].folderDetails.isPlayed
         ) {
-          nextFolder = yield call(Db.getExercise, folderList[i].folderID);
-          yield put({ type: "NEXT_FOLDER", payload: nextFolder });
+          nextFolder = yield call(Db.getExercise, folderList[j].folderID);
+
           break;
         }
       }
-      yield put({ type: "LOADING" });
+      yield put({ type: "NEXT_FOLDER", payload: nextFolder });
       break;
     }
   }
+  yield put({ type: "LOADING" });
 };
 
 const watchSetChildFolder = function* watchSetChildFolder() {

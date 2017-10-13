@@ -24,7 +24,7 @@ class OpeningScreen extends React.Component {
     this.setState({ modalVisible: visible });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({

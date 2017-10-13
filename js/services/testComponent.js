@@ -99,7 +99,6 @@ class Test extends React.Component {
     Db.getChildFromParent()
       .then(res => {
         this.setState({ childDetails: res.childDetails, childID: res.childID });
-        console.log(res, "logging getchild response");
       })
       .catch(error => {
         console.log(error);
@@ -113,8 +112,6 @@ class Test extends React.Component {
       Object.keys(res.images).map((item, index) => {
         count++;
       });
-      // console.log(count, "logging image count");
-      // console.log(res, "logging exercise details");
     });
   }
 

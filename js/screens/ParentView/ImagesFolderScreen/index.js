@@ -1,6 +1,6 @@
 import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
@@ -15,13 +15,20 @@ class ImagesFolderScreen extends React.Component {
     };
   }
 
-  toggleStatus(onOff, folderID){
-    this.props.dispatch({type:"SET_FOLDER_STATUS", payload: {status:onOff, folderID: folderID}});
+  toggleStatus(onOff, folderID) {
+    this.props.dispatch({
+      type: "SET_FOLDER_STATUS",
+      payload: { status: onOff, folderID: folderID }
+    });
   }
 
   // componentWillMount(){
   //   this.props.dsipatch({type:'SET_ORDER_LIST'})
   // }
+
+  removeItems(items) {
+    this.props.dispatch({ type: "REMOVE_FOLDERS", payload: items });
+  }
 
   render() {
     return (
@@ -38,7 +45,10 @@ class ImagesFolderScreen extends React.Component {
           this.toggleStatus(onOff, item.FolderID);
         }}
         StatusBarStyle="light-content"
-        OnPressDeleteButton={CheckedItems => console.log(CheckedItems[0].FolderID)}
+        OnPressDeleteButton={CheckedItems => {
+          console.log(CheckedItems[0].FolderID);
+          this.removeItems(CheckedItems);
+        }}
         OnPressMoveDown={CheckedItem => console.log(CheckedItem)}
         OnPressMoveUp={CheckedItem => console.log(CheckedItem)}
       />
@@ -46,12 +56,12 @@ class ImagesFolderScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (store)=>{
-    return { dashboardList: store.dashboardList , };
-}
+const mapStateToProps = store => {
+  return { dashboardList: store.dashboardList };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImagesFolderScreen);

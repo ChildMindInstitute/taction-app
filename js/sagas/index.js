@@ -22,6 +22,7 @@ import watchSetRandomImageList from "./setRandomImageList";
 import watchUpdateImageScore from "./updateImageScore";
 import watchUpdateFolderScore from "./updateFolderScore";
 import watchSetPlayAgain from "./setPlayAgain";
+import watchRemoveFolders from "./removeFolders";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -47,7 +48,8 @@ const rootSaga = function* rootSaga() {
     watchSetRandomImageList(),
     watchUpdateImageScore(),
     watchUpdateFolderScore(),
-    watchSetPlayAgain()
+    watchSetPlayAgain(),
+    watchRemoveFolders()
   ]);
 };
 

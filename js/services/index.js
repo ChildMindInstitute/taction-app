@@ -13,7 +13,6 @@ const config = {
 export default {
   initDb() {
     try {
-      console.log("initializing firebase");
       firebase.initializeApp(config);
     } catch (err) {
       console.log(err);
@@ -187,7 +186,6 @@ export default {
 
   addImage(exeID, byte) {
     return new Promise((resolve, reject) => {
-      // console.log("inside addimage service");
       const bytes = decode(byte);
       const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
       const imageRef = firebase.database().ref("image");
@@ -295,7 +293,6 @@ export default {
     return new Promise((resolve, reject) => {
       let timeStamp = new Date().toDateString();
       update = { ...update, timeStamp: timeStamp };
-      console.log(update, "logging current date");
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try {
         exeRef.update(update).then(() => {
@@ -359,7 +356,6 @@ export default {
           snapshot.forEach(img => {
             list.push(img.val());
           });
-          //console.log(list);
           resolve(list);
         });
       } catch (err) {

@@ -121,7 +121,6 @@ class GameScreen extends React.Component {
   }
 
   updateWrongScore() {
-    console.log("wrong scoreeee");
     ++image.imageDetails.wrongTaps;
     if (image.imageDetails.score > 0) {
       --image.imageDetails.score;

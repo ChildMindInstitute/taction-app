@@ -21,6 +21,9 @@ class OpeningScreen extends React.Component {
   }
 
   componentDidMount() {
+    //let { navigate, params } = this.props.navigation;
+    console.log(this.props.navigation.state, "logging nav param");
+
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({

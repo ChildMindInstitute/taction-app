@@ -181,7 +181,10 @@ class GameScreen extends React.Component {
         NavigationActions.reset({
           index: 1,
           actions: [
-            NavigationActions.navigate({ routeName: "IntroScreen" }),
+            NavigationActions.navigate({
+              params: { showModal: false },
+              routeName: "IntroScreen"
+            }),
             NavigationActions.navigate({ routeName: "GameScreen" })
           ]
         })
@@ -204,6 +207,7 @@ class GameScreen extends React.Component {
           index: 1,
           actions: [
             NavigationActions.navigate({
+              params: { showModal: false },
               routeName: "IntroScreen"
             }),
             NavigationActions.navigate({ routeName: "GameScreen" })
@@ -316,12 +320,14 @@ class GameScreen extends React.Component {
               }}
               toggleVisiblity={() => {
                 this.setModalVisible(false);
-                //this.props.navigation.goBack();
                 this.props.navigation.dispatch(
                   NavigationActions.reset({
                     index: 0,
                     actions: [
-                      NavigationActions.navigate({ routeName: "IntroScreen" })
+                      NavigationActions.navigate({
+                        params: { showModal: false },
+                        routeName: "IntroScreen"
+                      })
                     ]
                   })
                 );

@@ -12,7 +12,11 @@ class OpeningScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true,
+      modalVisible: this.props.screenProps.state.params.showModal
+        ? this.props.navigation.state.params
+          ? this.props.navigation.state.params.showModal
+          : true
+        : false,
       IsPlayDisabled: true
     };
   }
@@ -21,9 +25,6 @@ class OpeningScreen extends React.Component {
   }
 
   componentDidMount() {
-    //let { navigate, params } = this.props.navigation;
-    console.log(this.props.navigation.state, "logging nav param");
-
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({

@@ -24,7 +24,7 @@ class GameScreen extends React.Component {
       i4: this.randomAssign(),
       time: time,
       correctOption: 0,
-      currentLevel: 1,
+      currentLevel: 0,
       reset: false,
       modalVisible: false,
       gameFinished: false,
@@ -77,7 +77,7 @@ class GameScreen extends React.Component {
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     } else {
-      index = this.state.currentLevel - 1;
+      index = this.state.currentLevel;
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     }
@@ -315,8 +315,16 @@ class GameScreen extends React.Component {
                 this.PlayAgain();
               }}
               toggleVisiblity={() => {
-                this.props.navigation.goBack();
                 this.setModalVisible(false);
+                //this.props.navigation.goBack();
+                this.props.navigation.dispatch(
+                  NavigationActions.reset({
+                    index: 0,
+                    actions: [
+                      NavigationActions.navigate({ routeName: "IntroScreen" })
+                    ]
+                  })
+                );
               }}
             />
           }

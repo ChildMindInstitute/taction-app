@@ -24,7 +24,7 @@ class LoginScreen extends React.Component {
     this.Error = {
       Username: "Required",
       Password: "Required",
-      SubmitError: "Please Enter A Valid UserName and Password"
+      SubmitError: "Please enter a valid userName and password"
     };
   }
 
@@ -47,7 +47,11 @@ class LoginScreen extends React.Component {
       if (this.props.loaded && !this.props.error) {
         this.redirect();
         this.setState({ Submitted: false, HasSubmitError: false });
-      } else if (this.props.error && !this.state.HasSubmitError) {
+      } else if (
+        this.props.loaded &&
+        this.props.error &&
+        !this.state.HasSubmitError
+      ) {
         {
           this.setState({
             HasSubmitError: true,

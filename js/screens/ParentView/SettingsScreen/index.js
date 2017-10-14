@@ -21,12 +21,15 @@ class SettingsScreen extends React.Component {
   }
   findRoutes(value) {
     switch (this.state.promptTitle) {
-      case "Name":{
-        this.props.dispatch({type:'UPDATE_PARENT', payload: value});
+      case "Name": {
+        this.props.dispatch({ type: "UPDATE_PARENT", payload: value });
         break;
       }
       case "Age":
-        this.props.dispatch({type:'UPDATE_CHILD', payload:{id: this.props.child.childID, update:{age: value}}});
+        this.props.dispatch({
+          type: "UPDATE_CHILD",
+          payload: { id: this.props.child.childID, update: { age: value } }
+        });
         break;
       case "Name of Child":
         this.props.dispatch({
@@ -46,7 +49,7 @@ class SettingsScreen extends React.Component {
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       Random: this.props.parent.settings.random,
       Sound: this.props.parent.settings.sound
@@ -82,7 +85,7 @@ class SettingsScreen extends React.Component {
               },
               buttonIndex => {
                 switch (buttonIndex) {
-                  case 0:{
+                  case 0: {
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -93,8 +96,9 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   }
-                  case 1:{
-                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                  case 1: {
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
                       payload: {
                         update: {
                           maxImageDuration: 10
@@ -103,8 +107,9 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   }
-                  case 2:{
-                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                  case 2: {
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
                       payload: {
                         update: {
                           maxImageDuration: 25
@@ -113,8 +118,9 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   }
-                  case 3:{
-                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                  case 3: {
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
                       payload: {
                         update: {
                           maxImageDuration: 50
@@ -123,8 +129,9 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   }
-                  case 4:{
-                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                  case 4: {
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
                       payload: {
                         update: {
                           maxImageDuration: 100
@@ -179,7 +186,8 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   case 3:
-                    this.props.dispatch({type: "UPDATE_SETTINGS",
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
                       payload: {
                         update: {
                           imagesPerSession: 50
@@ -188,13 +196,14 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   case 4:
-                  this.props.dispatch({type: "UPDATE_SETTINGS",
-                    payload: {
-                      update: {
-                        imagesPerSession: 100
+                    this.props.dispatch({
+                      type: "UPDATE_SETTINGS",
+                      payload: {
+                        update: {
+                          imagesPerSession: 100
+                        }
                       }
-                    }
-                  });
+                    });
                 }
               }
             );
@@ -259,7 +268,7 @@ class SettingsScreen extends React.Component {
             });
           }}
           PressAddPrizes={() => {}}
-          Back={() => this.props.navigation.navigate("Dashboard")}
+          DrawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
           StatusBarStyle="light-content"
         />
       </View>
@@ -271,8 +280,8 @@ const mapStateToProps = store => {
   return { parent: store.user.parent, child: store.user.child };
 };
 
-const mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import DashboardGreetings from "../../components/DashboardGreetings";
 import DashboardList from "../../components/DashboardList";
-import { Container, View } from "native-base";
+import { Container, View, Text } from "native-base";
 import styles from "./styles";
 const DashboardContent = props => (
   <Container style={styles.ContainerStyle}>

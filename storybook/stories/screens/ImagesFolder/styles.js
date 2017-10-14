@@ -19,30 +19,29 @@ const styles = StyleSheet.create({
     flex: 2,
     alignContent: "center",
     justifyContent: "center",
-    flexDirection: "row"
+    flexDirection: "row",
+    paddingTop: "5%"
   },
   GreetingsSpaceInnerView: {
     flex: 1,
     flexDirection: "row",
-    marginTop: "5%",
-    marginBottom: "5%",
-    marginLeft: "10%",
-    marginRight: "10%"
+    height: 45
   },
   ListSpace: { flex: 13 },
   ContainerStyle: { flex: 1, backgroundColor: "#eee" },
-  AddButton: {
-    borderRadius: 50,
-    backgroundColor: "#fff",
-    flex: 1
-  },
-  AddButtonIcon: { color: "#eeae30", fontWeight: "bold" },
-  OtherButtons: {
+  Buttons: {
     borderRadius: 50,
     backgroundColor: "#fff",
     flex: 1,
-    marginLeft: "13%"
+    justifyContent: "center",
+    alignSelf: "center",
+    borderColor: "#aaa",
+    borderWidth: 1
   },
-  OtherButtonIcons: { color: "#eeae30", fontWeight: "bold" }
+  ButtonIcons: { color: "#eeae30", fontWeight: "bold" },
+  GreetingsSpaceInnerViewInnerView: {
+    flex: 1,
+    alignSelf: "center"
+  }
 });
 export default styles;

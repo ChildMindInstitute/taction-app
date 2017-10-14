@@ -17,10 +17,10 @@ class About extends React.Component {
           isRightRequired={false}
           leftIconStyle={styles.HeaderLeftStyle}
           leftPress={() => {
-            this.props.navigation.goBack();
+            this.props.navigation.navigate("DrawerOpen");
           }}
           headerStyle={styles.HeaderStyle}
-          leftIconName="arrow-back"
+          leftIconName="menu"
           Title="About"
           TitleStyle={styles.HeaderLeftStyle}
         />
@@ -33,6 +33,7 @@ class About extends React.Component {
             images, pair the app with a child's app to monitor the childs
             progress, and add prizes to motivate the player to win more points.
           </Text>
+          <Text> </Text>
           <Text>
             This open source app comes out of the Innovative Technologies Lab at
             the Child Mind Institute. For more information, please contact

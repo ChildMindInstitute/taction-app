@@ -14,9 +14,11 @@ import {
 import styles from "./styles";
 const SettingsList = props => (
   <List style={props.ListStyle}>
-    <Separator bordered>
-      <Text style={styles.Margin}>PROFILE</Text>
-    </Separator>
+    <ListItem itemDivider>
+      <Text note style={styles.Margin}>
+        PROFILE
+      </Text>
+    </ListItem>
     <ListItem icon button onPress={props.NamePress}>
       <Body>
         <Text style={styles.Margin}>Name</Text>
@@ -30,7 +32,7 @@ const SettingsList = props => (
       <View>
         <ListItem icon button onPress={props.NameChildPress}>
           <Body>
-            <Text style={styles.Margin}>Name of Child</Text>
+            <Text style={styles.Margin}>Name of child</Text>
           </Body>
           <Right>
             <Text>{props.NameChild}</Text>
@@ -58,14 +60,14 @@ const SettingsList = props => (
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    <Separator bordered>
-      <Text style={styles.Margin}>GAME</Text>
-    </Separator>
+    <ListItem itemDivider bordered>
+      <Text note style={styles.Margin}>
+        GAME
+      </Text>
+    </ListItem>
     <ListItem icon button onPress={props.PressNoOfImagesPerSession}>
       <Body>
-        <Text style={[styles.Margin, styles.FontSize]}>
-          No Of Images Per Session
-        </Text>
+        <Text style={styles.Margin}>Images per session</Text>
       </Body>
       <Right>
         <Text>{props.NoOfImagesPerSession}</Text>
@@ -74,47 +76,49 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon>
       <Body>
-        <Text style={[styles.Margin, styles.FontSize]}>Random?</Text>
+        <Text style={styles.Margin}>Random image order</Text>
       </Body>
       <Right>
         <Switch
           onValueChange={value => {
             props.RandomSlider(value);
           }}
+          onTintColor="#eeae30"
           value={props.RandomSliderValue}
         />
       </Right>
     </ListItem>
     <ListItem icon button onPress={props.PressMaximumImageDuration}>
       <Body>
-        <Text style={[styles.Margin, styles.FontSize]}>
-          Maximum Image Duration
-        </Text>
+        <Text style={styles.Margin}>Maximum image duration</Text>
       </Body>
       <Right>
         <Text>{props.MaximumImageDuration}</Text>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    <Separator bordered>
-      <Text style={styles.Margin}>GENERAL</Text>
-    </Separator>
+    <ListItem itemDivider bordered>
+      <Text note style={styles.Margin}>
+        GENERAL
+      </Text>
+    </ListItem>
     <ListItem icon>
       <Body>
-        <Text style={[styles.Margin, styles.FontSize]}>Sound</Text>
+        <Text style={styles.Margin}>Sound</Text>
       </Body>
       <Right>
         <Switch
           onValueChange={value => {
             props.SoundSlider(value);
           }}
+          onTintColor="#eeae30"
           value={props.SoundSliderValue}
         />
       </Right>
     </ListItem>
     <ListItem icon button onPress={props.PressAddPrizes}>
       <Body>
-        <Text style={[styles.Margin, styles.FontSize]}>Add Prizes</Text>
+        <Text style={styles.Margin}>Add prizes</Text>
       </Body>
       <Right>
         <Icon name="arrow-forward" />

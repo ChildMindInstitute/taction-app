@@ -5,7 +5,14 @@ const CustomButton = props => (
   <Button
     iconLeft
     full
-    style={props.SubmitButtonStyle}
+    style={[
+      {
+        backgroundColor: props.Disabled
+          ? "rgba(238, 174, 48, 0.7)"
+          : "rgba(238, 174, 48, 1)"
+      },
+      props.SubmitButtonStyle
+    ]}
     disabled={props.Disabled}
     onPress={props.OnPress}
   >

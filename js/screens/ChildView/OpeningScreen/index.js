@@ -40,9 +40,9 @@ class OpeningScreen extends React.Component {
   render() {
     return (
       <NewIntro
-        TopViewBackgroundColor="rgba(0, 103, 158, 1)"
-        BottomViewBackGroundColor="rgba(255, 255, 255,1)"
-        ScoreColor="rgba(0, 103, 158, 1)"
+        TopViewBackgroundColor="#0067a0"
+        BottomViewBackGroundColor="#ffffff"
+        ScoreColor="#0067a0"
         Score={this.props.child.totalScore}
         Stars={require("../../../assets/all_stars.png")}
         PlayOnPress={() => {

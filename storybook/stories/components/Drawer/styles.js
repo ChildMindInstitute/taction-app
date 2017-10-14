@@ -1,16 +1,21 @@
 const React = require("react-native");
 
 const { Platform, Dimensions } = React;
-
+import { Constants } from "expo";
 const deviceHeight = Dimensions.get("window").height;
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  ContentStyle: { flex: 1, backgroundColor: "#0067a0" },
+  ContainerStyle: { flex: 1, backgroundColor: "#0067a0" },
+  ContentStyle: {
+    flex: 1,
+    backgroundColor: "#0067a0",
+    marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+  },
   ListSpace: {
     flex: 12
   },
   drawerCover: {
-    flex: 3,
+    flex: 6,
     alignSelf: "stretch",
     height: deviceHeight / 3.5,
     width: null,
@@ -29,8 +34,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: Platform.OS === "ios" ? "500" : "400",
-    fontSize: 16,
-    marginLeft: 20,
+    fontSize: 18,
+
+    marginLeft: "5%",
     color: "#fff"
   },
   drawerImage2: {
@@ -42,7 +48,8 @@ const styles = StyleSheet.create({
   ListItemStyle: {
     backgroundColor: "#0067a0",
     borderBottomColor: "#005d8f",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    marginBottom: "5%"
   }
 });
 

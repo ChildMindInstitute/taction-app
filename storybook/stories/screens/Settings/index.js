@@ -9,8 +9,8 @@ const Settings = props => (
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.Back}
-      leftIconName="arrow-back"
+      leftPress={props.DrawerOpen}
+      leftIconName="menu"
       headerStyle={styles.HeaderStyle}
       Title="Settings"
       TitleStyle={styles.HeaderLeftStyle}

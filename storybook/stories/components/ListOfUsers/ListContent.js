@@ -20,7 +20,11 @@ class ListContent extends React.Component {
         onPress={() => {
           this.props.ListItemPress(this.props.item);
         }}
-        style={{ backgroundColor: "white", margin: "2%", marginRight: "5%" }}
+        style={{
+          backgroundColor: "white",
+          marginLeft: 0,
+          marginBottom: "5%"
+        }}
       >
         <Body>
           <Text>{this.props.item.Name}</Text>

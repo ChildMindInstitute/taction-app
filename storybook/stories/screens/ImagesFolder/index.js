@@ -48,94 +48,110 @@ class ListContent extends React.Component {
         <View style={styles.ContentStyle}>
           <View style={styles.GreetingsSpace}>
             <View style={styles.GreetingsSpaceInnerView}>
-              <Button
-                style={[
-                  styles.AddButton,
-                  {
-                    backgroundColor: this.state.pressed ? "#eeae30" : "#ffffff"
-                  }
-                ]}
-                onPress={this.props.OnPressSubmitButton}
-                onPressIn={() => this.setState({ pressed: true })}
-                onPressOut={() => this.setState({ pressed: false })}
-              >
-                <Icon
-                  name="add"
+              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+                <Button
                   style={[
-                    styles.AddButtonIcon,
+                    styles.Buttons,
                     {
-                      color: this.state.pressed ? "#ffffff" : "#eeae30"
+                      backgroundColor: this.state.pressed
+                        ? "#eeae30"
+                        : "#ffffff"
                     }
                   ]}
-                />
-              </Button>
-              <Button
-                style={[
-                  styles.OtherButtons,
-                  {
-                    backgroundColor: this.state.pressed1 ? "#eeae30" : "#ffffff"
-                  }
-                ]}
-                onPress={() => this.props.OnPressDeleteButton(CheckedItems)}
-                disabled={this.state.CheckedItems.length <= 0}
-                onPressIn={() => this.setState({ pressed1: true })}
-                onPressOut={() => this.setState({ pressed1: false })}
-              >
-                <Icon
-                  name="remove"
+                  onPress={this.props.OnPressSubmitButton}
+                  onPressIn={() => this.setState({ pressed: true })}
+                  onPressOut={() => this.setState({ pressed: false })}
+                >
+                  <Icon
+                    name="add"
+                    style={[
+                      styles.ButtonIcons,
+                      {
+                        color: this.state.pressed ? "#ffffff" : "#eeae30"
+                      }
+                    ]}
+                  />
+                </Button>
+              </View>
+              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+                <Button
                   style={[
-                    styles.OtherButtonIcons,
+                    styles.Buttons,
                     {
-                      color: this.state.pressed1 ? "#ffffff" : "#eeae30"
+                      backgroundColor: this.state.pressed1
+                        ? "#eeae30"
+                        : "#ffffff"
                     }
                   ]}
-                />
-              </Button>
-              <Button
-                style={[
-                  styles.OtherButtons,
-                  ,
-                  {
-                    backgroundColor: this.state.pressed2 ? "#eeae30" : "#ffffff"
-                  }
-                ]}
-                onPress={() => this.props.OnPressMoveUp(CheckedItems[0])}
-                disabled={!(this.state.CheckedItems.length == 1)}
-                onPressIn={() => this.setState({ pressed2: true })}
-                onPressOut={() => this.setState({ pressed2: false })}
-              >
-                <Icon
-                  name="arrow-up"
+                  onPress={() => this.props.OnPressDeleteButton(CheckedItems)}
+                  disabled={this.state.CheckedItems.length <= 0}
+                  onPressIn={() => this.setState({ pressed1: true })}
+                  onPressOut={() => this.setState({ pressed1: false })}
+                >
+                  <Icon
+                    name="remove"
+                    style={[
+                      styles.ButtonIcons,
+                      {
+                        color: this.state.pressed1 ? "#ffffff" : "#eeae30"
+                      }
+                    ]}
+                  />
+                </Button>
+              </View>
+              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+                <Button
                   style={[
-                    styles.OtherButtonIcons,
+                    styles.Buttons,
+                    ,
                     {
-                      color: this.state.pressed2 ? "#ffffff" : "#eeae30"
+                      backgroundColor: this.state.pressed2
+                        ? "#eeae30"
+                        : "#ffffff"
                     }
                   ]}
-                />
-              </Button>
-              <Button
-                style={[
-                  styles.OtherButtons,
-                  {
-                    backgroundColor: this.state.pressed3 ? "#eeae30" : "#ffffff"
-                  }
-                ]}
-                onPress={() => this.props.OnPressMoveDown(CheckedItems[0])}
-                disabled={!(this.state.CheckedItems.length == 1)}
-                onPressIn={() => this.setState({ pressed3: true })}
-                onPressOut={() => this.setState({ pressed3: false })}
-              >
-                <Icon
-                  name="arrow-down"
+                  onPress={() => this.props.OnPressMoveUp(CheckedItems[0])}
+                  disabled={!(this.state.CheckedItems.length == 1)}
+                  onPressIn={() => this.setState({ pressed2: true })}
+                  onPressOut={() => this.setState({ pressed2: false })}
+                >
+                  <Icon
+                    name="arrow-up"
+                    style={[
+                      styles.ButtonIcons,
+                      {
+                        color: this.state.pressed2 ? "#ffffff" : "#eeae30"
+                      }
+                    ]}
+                  />
+                </Button>
+              </View>
+              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+                <Button
                   style={[
-                    styles.OtherButtonIcons,
+                    styles.Buttons,
                     {
-                      color: this.state.pressed3 ? "#ffffff" : "#eeae30"
+                      backgroundColor: this.state.pressed3
+                        ? "#eeae30"
+                        : "#ffffff"
                     }
                   ]}
-                />
-              </Button>
+                  onPress={() => this.props.OnPressMoveDown(CheckedItems[0])}
+                  disabled={!(this.state.CheckedItems.length == 1)}
+                  onPressIn={() => this.setState({ pressed3: true })}
+                  onPressOut={() => this.setState({ pressed3: false })}
+                >
+                  <Icon
+                    name="arrow-down"
+                    style={[
+                      styles.ButtonIcons,
+                      {
+                        color: this.state.pressed3 ? "#ffffff" : "#eeae30"
+                      }
+                    ]}
+                  />
+                </Button>
+              </View>
             </View>
           </View>
           <View style={styles.ListSpace}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Content, Text, List, ListItem, View, Container } from "native-base";
+import { Text, List, ListItem, View } from "native-base";
 import Logo from "../Logo";
 import Logo1 from "../Logo.1";
 import styles from "./styles";
@@ -42,9 +42,9 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <Container>
+      <View style={styles.ContainerStyle}>
         <StatusBar barStyle="light-content" />
-        <Content bounces={false} style={styles.ContentStyle}>
+        <View style={styles.ContentStyle}>
           <View style={styles.drawerCover}>
             <Logo imageDimensions={styles.drawerImage} />
           </View>
@@ -75,8 +75,8 @@ class SideBar extends React.Component {
           <View style={styles.Footer}>
             <Logo1 imageDimensions={styles.drawerImage2} />
           </View>
-        </Content>
-      </Container>
+        </View>
+      </View>
     );
   }
 }

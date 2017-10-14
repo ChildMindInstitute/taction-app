@@ -2,8 +2,6 @@ import React from "react";
 import SignUp from "../../../storybook/stories/screens/SignUp";
 import { connect } from "react-redux";
 
-var username, email, password, cnfpassword;
-
 const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +21,8 @@ class LoginScreen extends React.Component {
       Submitted: false,
       PasswordError: false,
       EmailError: false,
-      UsernameError: false
+      UsernameError: false,
+      HasToNavigate: false
     };
     this.Error = {
       ConfirmPassword: "Must Match Password",
@@ -32,7 +31,12 @@ class LoginScreen extends React.Component {
       Username: "Username Already Taken"
     };
   }
-
+  componentDidUpdate() {
+    if (this.props.loaded && this.state.Submitted) {
+      this.setState({ Submitted: false, HasToNavigate: true });
+      this.props.navigation.navigate("AlmostThere");
+    }
+  }
   signUp() {
     if (
       this.Input.Password == this.Input.ConfirmPassword &&
@@ -47,11 +51,6 @@ class LoginScreen extends React.Component {
           password: this.Input.Password
         }
       });
-      this.props.navigation.navigate("AlmostThere");
-    } else if (this.state.EmailError) {
-      alert("Invalid Email");
-    } else if (this.Input.Password != this.Input.ConfirmPassword) {
-      alert("password mismatch !!!");
     }
   }
 
@@ -87,10 +86,14 @@ class LoginScreen extends React.Component {
         }}
         Submitted={this.state.Submitted}
         Disabled={
-          !this.state.ConfirmPasswordError &&
-          !this.state.EmailError &&
-          !this.state.PasswordError &&
-          !this.state.UsernameError
+          this.state.ConfirmPasswordError ||
+          this.state.EmailError ||
+          this.state.PasswordError ||
+          this.state.UsernameError ||
+          (this.Input.ConfirmPassword == "" ||
+            this.Input.Email == "" ||
+            this.Input.Password == "" ||
+            this.Input.Username == "")
         }
         StatusBarStyle="light-content"
         ConfirmPasswordChange={event => {
@@ -126,7 +129,11 @@ class LoginScreen extends React.Component {
 }
 
 const mapStateToProps = store => {
-  return { consent: store.consent, user: store.user };
+  return {
+    consent: store.consent,
+    user: store.user,
+    loaded: store.loaded.userLoaded
+  };
 };
 
 const mapDispatchToProps = dispatch => {

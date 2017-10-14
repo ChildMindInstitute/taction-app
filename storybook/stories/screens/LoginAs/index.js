@@ -22,7 +22,7 @@ const LoginAs = props => (
       </View>
       <View style={styles.SelectChildSpace}>
         <ListOfUsers
-          ListStyle={props.ListStyle}
+          ListStyle={null}
           Data={props.Data}
           ListItemPress={props.ListItemPress}
         />

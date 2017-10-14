@@ -1,5 +1,6 @@
 import React from "react";
-import { ListItem, Text, Right, Body, CheckBox } from "native-base";
+import { ListItem, Text, Right, Body } from "native-base";
+import CheckBox from "../CheckboxCustom";
 class ListContent extends React.Component {
   static navigationOptions = {
     title: "ListContent",
@@ -27,11 +28,12 @@ class ListContent extends React.Component {
         }}
       >
         <Body>
-          <Text>{this.props.item.Name}</Text>
+          <Text style={{ fontSize: 22, fontWeight: "500", color: "#0067a0" }}>
+            {this.props.item.Name}
+          </Text>
         </Body>
         <Right>
           <CheckBox
-            button
             checked={
               this.props.index == 0 ? this.state.checked1 : this.state.checked2
             }
@@ -39,6 +41,9 @@ class ListContent extends React.Component {
               this.props.index == 0
                 ? this.setState({ checked1: !this.state.checked1 })
                 : this.setState({ checked2: !this.state.checked2 })}
+            checkedbackgroundColor="#0067a0"
+            BorderColor="#0067a0"
+            TickColor="#ffffff"
           />
         </Right>
       </ListItem>

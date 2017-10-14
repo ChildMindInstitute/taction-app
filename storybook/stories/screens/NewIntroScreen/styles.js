@@ -26,43 +26,41 @@ const styles = StyleSheet.create({
   },
   TotalScoreTextStyle: {
     color: "#eeae30",
-    fontSize: 20,
-    fontWeight: "bold",
-    margin: "5%"
+    fontSize: 26,
+    fontWeight: "500",
+    margin: "5%",
+    marginTop: "8%"
   },
   TotalScoreStyle: {
-    fontSize: 42,
-    fontWeight: "bold"
+    fontSize: 60,
+    fontWeight: "500"
   },
   StarsStyle: {
     width: 160,
     height: 70,
-    margin: "5%",
-    marginBottom: "10%"
+    margin: "5%"
   },
   PlayButtonStyle: {
     backgroundColor: "#eeae30",
     opacity: 1,
     margin: "5%",
-    borderRadius: 50
+    borderRadius: 50,
+    height: 55
   },
   LogoStyle: { width: 100, height: 100 },
   PlayButtonTextStyle: {
     color: "#fff",
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold"
   },
   HowToPlayButtonStyle: {
-    backgroundColor: "#eee",
-    borderWidth: 1,
-    borderColor: "#eee",
-    marginLeft: "10%",
-    marginRight: "10%",
+    marginLeft: "15%",
+    marginRight: "15%",
     borderRadius: 50
   },
   HowToPlayButtonTextStyle: {
-    color: "#eeae30",
-    fontSize: 20,
+    color: "#fff",
+    fontSize: 18,
     fontWeight: "bold"
   }
 });

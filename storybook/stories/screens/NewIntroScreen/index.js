@@ -35,7 +35,7 @@ const NewIntro = props => (
             }
           ]}
         >
-          <Text style={styles.TotalScoreTextStyle}>Total Score</Text>
+          <Text style={styles.TotalScoreTextStyle}>TOTAL SCORE</Text>
           <Text
             style={[
               styles.TotalScoreStyle,
@@ -57,14 +57,7 @@ const NewIntro = props => (
             OnPress={props.PlayOnPress}
             ButtonText="Play"
             Disabled={props.IsPlayDisabled}
-            SubmitButtonStyle={[
-              styles.PlayButtonStyle,
-              {
-                backgroundColor: props.IsPlayDisabled
-                  ? "rgba(238, 174, 48, 0.5)"
-                  : "rgba(238, 174, 48, 1)"
-              }
-            ]}
+            SubmitButtonStyle={styles.PlayButtonStyle}
             SubmitButtonTextStyle={styles.PlayButtonTextStyle}
           />
           <Button

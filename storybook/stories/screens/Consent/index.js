@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Button from "../../components/Button";
-import { View, Text, CheckBox } from "native-base";
+import { View, Text } from "native-base";
+import CheckBox from "../../components/CheckboxCustom";
 import { ScrollView } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
@@ -33,7 +34,9 @@ const Consent = props => (
                   <CheckBox
                     onPress={props.CheckboxChange1}
                     checked={props.Checked1}
-                    style={styles.ItemCheckBox}
+                    checkedbackgroundColor="#ffffff"
+                    BorderColor="#ffffff"
+                    TickColor="#0067a0"
                   />
                 </View>
                 <View style={styles.ItemTextSpace}>
@@ -45,7 +48,9 @@ const Consent = props => (
                   <CheckBox
                     onPress={props.CheckboxChange2}
                     checked={props.Checked2}
-                    style={styles.ItemCheckBox}
+                    checkedbackgroundColor="#ffffff"
+                    BorderColor="#ffffff"
+                    TickColor="#0067a0"
                   />
                 </View>
                 <View style={styles.ItemTextSpace}>
@@ -57,7 +62,9 @@ const Consent = props => (
                   <CheckBox
                     onPress={props.CheckboxChange3}
                     checked={props.Checked3}
-                    style={styles.ItemCheckBox}
+                    checkedbackgroundColor="#ffffff"
+                    BorderColor="#ffffff"
+                    TickColor="#0067a0"
                   />
                 </View>
                 <View style={styles.ItemTextSpace}>

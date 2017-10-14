@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Spinner } from "native-base";
+import { View, Spinner } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
 import { connect } from "react-redux";
 let count = 0;

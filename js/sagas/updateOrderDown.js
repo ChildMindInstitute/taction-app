@@ -4,7 +4,7 @@ import Db from "../../js/services";
 const updateOrderDown = function* updateOrderDown(action) {
   let orderList = action.payload.orderList;
   let folderID = action.payload.folderID;
-  for (let i in orderList) {
+  for (let i = 0; i < orderList.length; i++) {
     if (orderList[i].exerciseID == folderID) {
       if (orderList[i].order < orderList.length - 1) {
         yield call(

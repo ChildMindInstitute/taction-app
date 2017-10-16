@@ -83,7 +83,10 @@ const consentReducer = (state = {}, action) => {
   return state;
 };
 
-const errorReducer = (state = { signinError: false }, action) => {
+const errorReducer = (
+  state = { signinError: false, signUpError: false },
+  action
+) => {
   switch (action.type) {
     case "ERROR_SIGNIN": {
       state = { ...state, signinError: true };
@@ -91,6 +94,16 @@ const errorReducer = (state = { signinError: false }, action) => {
     }
     case "NO_ERROR_SIGNIN": {
       state = { ...state, signinError: false };
+      break;
+    }
+
+    case "ERROR_SIGNUP": {
+      state = { ...state, signUpError: true };
+      break;
+    }
+
+    case "NO_ERROR_SIGNUP": {
+      state = { ...state, signUpError: false };
       break;
     }
 

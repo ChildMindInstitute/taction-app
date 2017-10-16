@@ -23,6 +23,9 @@ import watchUpdateImageScore from "./updateImageScore";
 import watchUpdateFolderScore from "./updateFolderScore";
 import watchSetPlayAgain from "./setPlayAgain";
 import watchRemoveFolders from "./removeFolders";
+import watchOrderList from "./setOrderList";
+import watchUpdateOrderUp from "./updateOrderUp";
+import watchUpdateOrderDown from "./updateOrderDown";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -49,7 +52,10 @@ const rootSaga = function* rootSaga() {
     watchUpdateImageScore(),
     watchUpdateFolderScore(),
     watchSetPlayAgain(),
-    watchRemoveFolders()
+    watchRemoveFolders(),
+    watchOrderList(),
+    watchUpdateOrderUp(),
+    watchUpdateOrderDown()
   ]);
 };
 

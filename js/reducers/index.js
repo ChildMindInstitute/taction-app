@@ -195,6 +195,16 @@ const tempWaitReducer = (state = false, action) => {
   return state;
 };
 
+const orderListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "ORDER_LIST": {
+      state = action.payload;
+      break;
+    }
+  }
+  return state;
+};
+
 const reducer = combineReducers({
   user: userReducer,
   loaded: waitReducer,
@@ -208,7 +218,8 @@ const reducer = combineReducers({
   currentImageList: imageListReducer,
   nextFolder: nextFolderReducer,
   randomImage: randomImageListReducer,
-  folderRemoved: tempWaitReducer
+  folderRemoved: tempWaitReducer,
+  orderList: orderListReducer
 });
 
 export default reducer;

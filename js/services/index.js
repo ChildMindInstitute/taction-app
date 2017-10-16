@@ -161,7 +161,8 @@ export default {
       var response = [];
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/exercises/");
+        .ref("child/" + childID + "/exercises/")
+        .orderByChild("order");
       try {
         childRef.on("value", snapshot => {
           var numExe = snapshot.numChildren();
@@ -181,6 +182,65 @@ export default {
                 resolve(response);
               }
             });
+          });
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  },
+
+  fetchOrderList(childID) {
+    return new Promise((resolve, reject) => {
+      var response = [];
+      const childRef = firebase
+        .database()
+        .ref("child/" + childID + "/exercises/")
+        .orderByChild("order");
+      try {
+        childRef.on("value", snapshot => {
+          var numExe = snapshot.numChildren();
+          if (numExe == 0) {
+            resolve(response);
+          }
+          snapshot.forEach(exe => {
+            response.push({
+              order: exe.val().order,
+              exerciseID: exe.val().exerciseId
+            });
+            if (response.length == numExe) {
+              resolve(response);
+            }
+          });
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
+  },
+
+  updateOrder(childID, folder1ID, order1, folder2ID, order2) {
+    return new Promise((resolve, reject) => {
+      const childRef = firebase
+        .database()
+        .ref("child/" + childID + "/exercises/")
+        .orderByChild("order");
+      try {
+        childRef.on("value", snapshot => {
+          var numExe = snapshot.numChildren();
+          if (numExe == 0) {
+            resolve();
+          }
+          snapshot.forEach(exe => {
+            let exeRef = firebase
+              .database()
+              .ref("child/" + childID + "/exercises/" + exe.key);
+            if (exe.val().exerciseId == folder2ID) {
+              exeRef.update({ order: order2 });
+            } else if (exe.val().exerciseId == folder1ID) {
+              exeRef.update({ order: order1 });
+              resolve();
+            }
           });
         });
       } catch (err) {

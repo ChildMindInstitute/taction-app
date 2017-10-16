@@ -58,8 +58,27 @@ class ImagesFolderScreen extends React.Component {
           console.log(CheckedItems[0].FolderID);
           this.removeItems(CheckedItems);
         }}
-        OnPressMoveDown={CheckedItem => console.log(CheckedItem)}
-        OnPressMoveUp={CheckedItem => console.log(CheckedItem)}
+        OnPressMoveDown={CheckedItem => {
+          console.log(CheckedItem);
+          this.props.dispatch({
+            type: "UPDATE_ORDER_DOWN",
+            payload: {
+              childID: this.props.childID,
+              folderID: CheckedItem.FolderID,
+              orderList: this.props.orderList
+            }
+          });
+        }}
+        OnPressMoveUp={CheckedItem => {
+          this.props.dispatch({
+            type: "UPDATE_ORDER_UP",
+            payload: {
+              childID: this.props.childID,
+              folderID: CheckedItem.FolderID,
+              orderList: this.props.orderList
+            }
+          });
+        }}
       />
     );
   }
@@ -69,7 +88,8 @@ const mapStateToProps = store => {
   return {
     childID: store.user.child.childID,
     dashboardList: store.dashboardList,
-    folderRemoved: store.folderRemoved
+    folderRemoved: store.folderRemoved,
+    orderList: store.orderList
   };
 };
 

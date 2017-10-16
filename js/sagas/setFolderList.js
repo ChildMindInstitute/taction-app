@@ -4,14 +4,16 @@ import Db from "../../js/services";
 const setFolderList = function* setFolderList(action) {
   yield put({ type: "DASHBOARD_LOADING" });
   try {
+    let orderList = yield call(Db.fetchOrderList, action.payload);
+    console.log(orderList);
     let folderList = yield call(Db.fetchExeriseList, action.payload);
-    console.log(folderList, "logging exercise list in set folder list");
     for (let i in folderList) {
       folderList[i].imageList = yield call(
         Db.fetchImageList,
         folderList[i].folderID
       );
     }
+    yield put({ type: "SET_ORDER_LIST", payload: orderList });
     yield put({ type: "SET_DASHBOARD_LIST", payload: folderList });
     yield put({ type: "DASHBOARD_LOADED" });
   } catch (err) {

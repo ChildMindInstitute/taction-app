@@ -1,6 +1,7 @@
 import React from "react";
 import { NetInfo } from "react-native";
 import { connect } from "react-redux";
+import { Toast } from "native-base";
 import { NavigationActions } from "react-navigation";
 import SplashScreen from "../../../storybook/stories/screens/SplashScreen";
 import Db from "../../services";
@@ -37,6 +38,21 @@ class Splash extends React.Component {
         );
       }
     });
+  }
+
+  componentDidMount() {
+    function handleConnectivityChange(isConnected) {
+      {
+        isConnected
+          ? {}
+          : Toast.show({
+              text: "No Internet Connection!",
+              position: "bottom",
+              buttonText: "Okay"
+            });
+      }
+    }
+    NetInfo.isConnected.addEventListener("change", handleConnectivityChange);
   }
 
   componentDidUpdate() {

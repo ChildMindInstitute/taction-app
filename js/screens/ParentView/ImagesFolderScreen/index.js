@@ -1,7 +1,7 @@
 import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
 import { connect } from "react-redux";
-
+import { Alert } from "react-native";
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
     title: "ImagesFolderScreen",
@@ -55,8 +55,19 @@ class ImagesFolderScreen extends React.Component {
         }}
         StatusBarStyle="light-content"
         OnPressDeleteButton={CheckedItems => {
-          console.log(CheckedItems[0].FolderID);
-          this.removeItems(CheckedItems);
+          Alert.alert(
+            "Delete Folders",
+            "Are you sure you want to delete these folders?",
+            [
+              {
+                text: "OK",
+                onPress: () => {
+                  this.removeItems(CheckedItems);
+                }
+              },
+              { text: "Cancel", onPress: () => {} }
+            ]
+          );
         }}
         OnPressMoveDown={CheckedItem => {
           console.log(CheckedItem);

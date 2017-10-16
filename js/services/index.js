@@ -78,6 +78,8 @@ export default {
             name: name,
             age: age,
             highScore: 0,
+            correctTaps: 0,
+            wrongTaps: 0,
             level: 0,
             parentID: auth.currentUser.uid,
             totalScore: 0

@@ -4,6 +4,7 @@ import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
 import { connect } from "react-redux";
 import { NavigationActions } from "react-navigation";
+import calculate from "../../../componentsCommon/calcutateStars";
 
 let totalLevels = 10;
 const correctArrayItem = 0;
@@ -299,7 +300,10 @@ class GameScreen extends React.Component {
               GreetingLine1={this.props.folder.folderDetails.exerciseName}
               Line2needed={true}
               GreetingLine2="Level Completed"
-              Stars={require("../../../../js/assets/all_stars.png")}
+              Stars={calculate(
+                this.props.child.correctTaps,
+                this.props.child.wrongTaps
+              )}
               DisplayPoints={this.props.child.childDetails.totalScore}
               Description="Time: 02.14 Min"
               PlayLaterText="Play Later"

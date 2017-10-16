@@ -2,6 +2,7 @@ import React from "react";
 import NewIntro from "../../../../storybook/stories/screens/NewIntroScreen";
 import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
+import { calculate } from "../../../componentsCommon/calcutateStars";
 import { connect } from "react-redux";
 
 class OpeningScreen extends React.Component {
@@ -44,7 +45,10 @@ class OpeningScreen extends React.Component {
         BottomViewBackGroundColor="#ffffff"
         ScoreColor="#0067a0"
         Score={this.props.child.totalScore}
-        Stars={require("../../../assets/all_stars.png")}
+        Stars={calculate(
+          this.props.child.correctTaps,
+          this.props.child.wrongTaps
+        )}
         PlayOnPress={() => {
           this.props.navigation.navigate("GameScreen");
         }}
@@ -59,7 +63,10 @@ class OpeningScreen extends React.Component {
             <ModalContent
               GreetingLine1="Welcome Back"
               Line2needed={false}
-              Stars={require("../../../../js/assets/all_stars.png")}
+              Stars={calculate(
+                this.props.child.correctTaps,
+                this.props.child.wrongTaps
+              )}
               DisplayPoints={this.props.child.totalScore}
               Description="Time To Earn Some Points"
               IsButtonNeeded={false}

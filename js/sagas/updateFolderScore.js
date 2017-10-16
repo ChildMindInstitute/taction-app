@@ -6,6 +6,8 @@ const updateFolderScore = function* updateFolderScore(action) {
   let folder = action.payload.folder;
   let child = action.payload.child;
   child.childDetails.totalScore -= folder.folderDetails.score;
+  child.childDetails.correctTaps -= folder.folderDetails.correctTaps;
+  child.childDetails.wrongTaps -= folder.folderDetails.wrongTaps;
   folder.folderDetails.correctTaps = 0;
   folder.folderDetails.wrongTaps = 0;
   folder.folderDetails.score = 0;
@@ -23,6 +25,8 @@ const updateFolderScore = function* updateFolderScore(action) {
   }
 
   child.childDetails.totalScore += folder.folderDetails.score;
+  child.childDetails.correctTaps += folder.folderDetails.correctTaps;
+  child.childDetails.wrongTaps += folder.folderDetails.wrongTaps;
   if (folder.folderDetails.score > child.childDetails.highScore) {
     child.childDetails.highScore = folder.folderDetails.score;
   }
@@ -34,6 +38,8 @@ const updateFolderScore = function* updateFolderScore(action) {
     isPlayed: folder.folderDetails.isPlayed
   });
   yield call(Db.updateChild, child.childID, {
+    correctTaps: child.childDetails.correctTaps,
+    wrongTaps: child.childDetails.wrongTaps,
     totalScore: child.childDetails.totalScore,
     highScore: child.childDetails.highScore
   });

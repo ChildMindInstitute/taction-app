@@ -146,8 +146,12 @@ export default {
           })
           .then(() => {
             var exercise = childRef.push();
-            exercise.set({ exerciseId: newExe.key, order: childRef.numChildren() }).then(() => {
-              resolve(newExe.key);
+            childRef.once("value").then(snapshot => {
+              exercise
+                .set({ exerciseId: newExe.key, order: snapshot.numChildren() })
+                .then(() => {
+                  resolve(newExe.key);
+                });
             });
           });
       } catch (err) {

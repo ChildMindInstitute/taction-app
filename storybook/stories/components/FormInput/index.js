@@ -17,7 +17,10 @@ const FormInput = props => (
       </Text>
       <View style={styles.InputStyle}>
         <Input
-          style={{ borderColor: props.Error ? "red" : "white", borderWidth: 1 }}
+          style={{
+            borderColor: props.Error ? "red" : "white",
+            borderWidth: 1.5
+          }}
           onChange={props.OnChange}
           secureTextEntry={props.IsPassword}
           keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}

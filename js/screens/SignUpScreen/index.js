@@ -1,6 +1,7 @@
 import React from "react";
 import SignUp from "../../../storybook/stories/screens/SignUp";
 import { connect } from "react-redux";
+import { NavigationActions } from "react-navigation";
 
 const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 class LoginScreen extends React.Component {
@@ -71,15 +72,24 @@ class LoginScreen extends React.Component {
         }}
         PasswordChange={event => {
           this.Input.Password = event.nativeEvent.text;
-          if (this.Input.Password == "") {
+          if (this.Input.Password == "" || this.Input.Password.length < 6) {
             this.setState({ PasswordError: true });
           } else {
             this.setState({ PasswordError: false });
             if (this.Input.Password == this.Input.ConfirmPassword) {
               this.setState({ ConfirmPasswordError: false });
+            } else {
+              this.setState({ ConfirmPasswordError: true });
             }
           }
         }}
+        LoginRedirectPress={() =>
+          this.props.navigation.dispatch(
+            NavigationActions.reset({
+              index: 0,
+              actions: [NavigationActions.navigate({ routeName: "Login" })]
+            })
+          )}
         OnPressSubmitButton={() => {
           this.setState({ Submitted: true });
           this.signUp();

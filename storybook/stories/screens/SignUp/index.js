@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import FormInput from "../../components/FormInput";
-import Button from "../../components/Button";
-import { View, Form } from "native-base";
+import Button2 from "../../components/Button";
+import { View, Form, Text, Button } from "native-base";
 import { StatusBar } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
 import styles from "./styles";
@@ -66,14 +66,25 @@ const SignUp = props => (
       </View>
 
       <View style={styles.SubmitButtonSpace}>
-        <Button
+        <Button2
           OnPress={props.OnPressSubmitButton}
-          SubmitButtonStyle={styles.SubmitButtonStyle}
           SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
           ButtonText="Submit &rarr;"
           Submitted={props.Submitted}
           Disabled={props.Disabled}
         />
+      </View>
+      <View style={styles.AlreadyHaveAnAccountSpace}>
+        <Text style={styles.AlreadyHaveAnAccountTextColor}>
+          Already have an account?
+        </Text>
+        <Button
+          transparent
+          style={styles.LoginRedirectButtonStyle}
+          onPress={props.LoginRedirectPress}
+        >
+          <Text style={styles.LoginRedirectButtonTextStyle}>Login</Text>
+        </Button>
       </View>
       <View style={styles.BottomLogoSpace}>
         <Logo1 imageDimensions={styles.SubLogoStyles} />
@@ -86,6 +97,7 @@ SignUp.propTypes = {
   ConfirmPasswordError: PropTypes.bool,
   PasswordError: PropTypes.bool,
   EmailError: PropTypes.bool,
+  LoginRedirectPress: PropTypes.func,
   UsernameError: PropTypes.bool,
   BackgroundColor: PropTypes.string,
   UsernameChange: PropTypes.func,

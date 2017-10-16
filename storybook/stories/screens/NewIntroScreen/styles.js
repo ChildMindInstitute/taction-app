@@ -41,8 +41,6 @@ const styles = StyleSheet.create({
     margin: "5%"
   },
   PlayButtonStyle: {
-    backgroundColor: "#eeae30",
-    opacity: 1,
     margin: "5%",
     borderRadius: 50,
     height: 55

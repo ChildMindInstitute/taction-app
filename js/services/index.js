@@ -350,9 +350,12 @@ export default {
     const auth = firebase.auth();
     return new Promise((resolve, reject) => {
       try {
-        auth.currentUser.sendEmailVerification().then(() => {
-          resolve("success");
-        });
+        auth.currentUser
+          .sendEmailVerification()
+          .then(() => {
+            resolve("success");
+          })
+          .catch(err => {});
       } catch (err) {
         reject(err);
       }

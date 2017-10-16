@@ -11,7 +11,6 @@ const userSignUp = function* userSignUp() {
     user.payload.username,
     user.payload.consent
   );
-  yield call(Db.verifyEmail);
   yield put({ type: "SET_PARENT" });
   yield put({ type: "USER_LOADED" });
 };

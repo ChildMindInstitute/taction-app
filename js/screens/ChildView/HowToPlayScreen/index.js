@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, View } from "native-base";
 import { StatusBar } from "react-native";
-import SwipeableParallaxCarousel from "react-native-swipeable-parallax-carousel";
+import SwipeableParallaxCarousel from "../../../../storybook/stories/components/Carousel";
 import { Constants } from "expo";
 const datacarousel = [
   {

@@ -2,7 +2,7 @@ import React from "react";
 import NewIntro from "../../../../storybook/stories/screens/NewIntroScreen";
 import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
-import { calculate } from "../../../componentsCommon/calcutateStars";
+import calculate from "../../../componentsCommon/calcutateStars";
 import { connect } from "react-redux";
 
 class OpeningScreen extends React.Component {

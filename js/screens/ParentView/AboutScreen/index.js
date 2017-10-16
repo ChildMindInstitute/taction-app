@@ -2,7 +2,7 @@ import React from "react";
 import { View, StatusBar } from "react-native";
 import HeaderCommon from "../../../../storybook/stories/components/Header";
 import styles from "./styles";
-import Logo1 from "../../../../storybook/stories/components/Logo.1";
+import Logo5 from "../../../../storybook/stories/components/Logo.5";
 import { Text, Footer } from "native-base";
 class About extends React.Component {
   render() {
@@ -42,12 +42,12 @@ class About extends React.Component {
         </View>
         <Footer
           style={{
-            backgroundColor: "#0067a0",
+            backgroundColor: "transparent",
             alignItems: "center",
             justifyContent: "center"
           }}
         >
-          <Logo1 imageDimensions={styles.BottomLogoStyle} />
+          <Logo5 imageDimensions={styles.BottomLogoStyle} />
         </Footer>
       </View>
     );

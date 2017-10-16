@@ -13,7 +13,8 @@ import {
   Form,
   Input,
   Button,
-  Text
+  Text,
+  View
 } from "native-base";
 import Db from "./Db";
 const { ImagePicker } = Expo;
@@ -117,8 +118,8 @@ class Test extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Content>
+      <View>
+        <View>
           <Text style={{ marginTop: 25 }}>
             Add User Screen/ Register Screen
           </Text>
@@ -253,8 +254,8 @@ class Test extends React.Component {
             totalDuration: {this.state.exerciseDetails.totalDuration}{" "}
           </Text>
           <Text>Image Count: {} </Text>
-        </Content>
-      </Container>
+        </View>
+      </View>
     );
   }
 }

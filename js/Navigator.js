@@ -9,6 +9,8 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import ParentDrawerScreen from "./screens/ParentDrawerScreen";
 import LoginAsScreen from "./screens/LoginAsScreen";
 import DrawerChild from "./screens/ChildDrawerScreen";
+import HowToPlayScreen from "./screens/ChildView/HowToPlayScreen";
+
 const NavigationDetails = StackNavigator(
   {
     AlmostThere: { screen: AlmostThereScreen },

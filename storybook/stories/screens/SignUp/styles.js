@@ -26,7 +26,21 @@ const styles = StyleSheet.create({
   MainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   BottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
   SubLogoStyles: { alignSelf: "center", height: 40, width: 120 },
-  SubmitButtonStyle: { backgroundColor: "#eeae30" },
-  SubmitButtonTextStyle: { color: "white" }
+  SubmitButtonTextStyle: { color: "white" },
+  AlreadyHaveAnAccountSpace: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    alignSelf: "center",
+    marginTop: "5%"
+  },
+  AlreadyHaveAnAccountTextColor: { color: "#ccc" },
+  LoginRedirectButtonStyle: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    alignSelf: "flex-end",
+    height: 20
+  },
+  LoginRedirectButtonTextStyle: { color: "#fff", fontWeight: "bold" }
 });
 export default styles;

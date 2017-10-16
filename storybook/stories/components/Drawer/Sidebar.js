@@ -54,9 +54,6 @@ class SideBar extends React.Component {
               renderRow={data => (
                 <ListItem
                   button
-                  onPress={() => {
-                    this.props.navigation.navigate(data.route);
-                  }}
                   style={[
                     styles.ListItemStyle,
                     {
@@ -66,6 +63,9 @@ class SideBar extends React.Component {
                           : "flex"
                     }
                   ]}
+                  onPress={() => {
+                    this.props.navigation.navigate(data.route);
+                  }}
                 >
                   <Text style={styles.text}>{data.name}</Text>
                 </ListItem>

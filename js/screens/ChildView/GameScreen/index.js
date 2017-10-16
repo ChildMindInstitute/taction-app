@@ -176,7 +176,6 @@ class GameScreen extends React.Component {
       payload: this.props.child.childID
     });
     setTimeout(() => {
-      //this.props.navigation.goBack();
       this.props.navigation.dispatch(
         NavigationActions.reset({
           index: 1,
@@ -189,7 +188,6 @@ class GameScreen extends React.Component {
           ]
         })
       );
-      // this.props.navigation.navigate("GameScreen");
     }, 2000);
   }
 

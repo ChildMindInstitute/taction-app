@@ -146,7 +146,7 @@ export default {
           })
           .then(() => {
             var exercise = childRef.push();
-            exercise.set({ exerciseId: newExe.key }).then(() => {
+            exercise.set({ exerciseId: newExe.key, order: childRef.numChildren() }).then(() => {
               resolve(newExe.key);
             });
           });

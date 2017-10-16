@@ -5,7 +5,6 @@ const setFolderList = function* setFolderList(action) {
   yield put({ type: "DASHBOARD_LOADING" });
   try {
     let orderList = yield call(Db.fetchOrderList, action.payload);
-    console.log(orderList);
     let folderList = yield call(Db.fetchExeriseList, action.payload);
     for (let i in folderList) {
       folderList[i].imageList = yield call(

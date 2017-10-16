@@ -1,6 +1,6 @@
 import React from "react";
 import AlmostThere from "../../../storybook/stories/screens/AlmostThere";
-import Db from '../../services';
+import Db from "../../services";
 
 class AlmostThereScreen extends React.Component {
   static navigationOptions = {
@@ -9,6 +9,9 @@ class AlmostThereScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
+    Db.verifyEmail();
   }
 
   render() {

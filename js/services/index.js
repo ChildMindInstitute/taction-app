@@ -140,13 +140,14 @@ export default {
             wrongTaps: 0,
             totalTaps: 0,
             score: 0,
+            isPlayed: false,
             timeStamp: timeStamp,
             status: false,
             totalDuration: 0
           })
           .then(() => {
-            var exercise = childRef.push();
             childRef.once("value").then(snapshot => {
+              var exercise = childRef.push();
               exercise
                 .set({ exerciseId: newExe.key, order: snapshot.numChildren() })
                 .then(() => {

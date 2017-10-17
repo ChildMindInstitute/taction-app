@@ -26,6 +26,7 @@ import watchRemoveFolders from "./removeFolders";
 import watchOrderList from "./setOrderList";
 import watchUpdateOrderUp from "./updateOrderUp";
 import watchUpdateOrderDown from "./updateOrderDown";
+import watchResetPassword from "./resetPassword";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -55,7 +56,8 @@ const rootSaga = function* rootSaga() {
     watchRemoveFolders(),
     watchOrderList(),
     watchUpdateOrderUp(),
-    watchUpdateOrderDown()
+    watchUpdateOrderDown(),
+    watchResetPassword()
   ]);
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Toast } from "native-base";
 import { NavigationActions } from "react-navigation";
 import Login from "../../../storybook/stories/screens/Login";
 import { connect } from "react-redux";
@@ -95,7 +96,17 @@ class LoginScreen extends React.Component {
           alignSelf: "flex-end",
           justifyContent: "flex-end"
         }}
-        OnPressForgotPassword={() => {}}
+        OnPressForgotPassword={() => {
+          this.props.dispatch({
+            type: "RESET_PASSWORD",
+            payload: this.Input.UserName
+          });
+          Toast.show({
+            text: "A password reset mail has been sent!",
+            position: "bottom",
+            buttonText: "Okay"
+          });
+        }}
         OnPressSubmitButton={(() => {
           this.setState({ Submitted: true, HasSubmitError: false });
           this.loginUser();

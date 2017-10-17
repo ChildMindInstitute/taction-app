@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderColor: "#ccc",
-    marginRight: 0
+    marginRight: 0,
+    padding: "2%"
   },
   ListItem1stViewStyle: { flex: 1, flexDirection: "column" },
   ListItem2ndViewStyle: { flex: 1, flexDirection: "row" },
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   ListItemBodyTextStyle: { fontSize: 20, color: "black" },
-  ListItemBodyImageStyle: { width: 100, height: 30 },
+  ListItemBodyImageStyle: { width: 60, height: 20 },
   ListItemRightStyle: { flexDirection: "row" },
   ListItemRightViewStyle: { alignItems: "center", flexDirection: "row" },
   ListItemRightViewInnerViewStyle: {

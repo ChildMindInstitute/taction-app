@@ -14,18 +14,20 @@ const styles = StyleSheet.create({
   HeaderRightTextAlign: { flex: 1 },
   HeaderRightTotalPointsStyle: { color: "white", flex: 2 },
   HeaderRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
-  ContentStyle: { flex: 1, marginLeft: "-4%" },
+  ContentStyle: { flex: 1, marginLeft: "-4%", paddingTop: "1%" },
   GreetingsSpace: {
-    flex: 2,
+    flex: 1.3,
     alignContent: "center",
     justifyContent: "center",
-    flexDirection: "row",
-    paddingTop: "5%"
+    flexDirection: "row"
   },
   GreetingsSpaceInnerView: {
     flex: 1,
     flexDirection: "row",
-    height: 45
+    height: 50,
+    justifyContent: "center",
+    marginLeft: "5%",
+    marginRight: "5%"
   },
   ListSpace: { flex: 13 },
   ContainerStyle: { flex: 1, backgroundColor: "#eee" },
@@ -35,10 +37,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",
-    borderColor: "#aaa",
-    borderWidth: 1
+    borderColor: "#ccc",
+    borderWidth: 1,
+    width: 50
   },
-  ButtonIcons: { color: "#eeae30", fontWeight: "bold" },
+  ButtonIcons: { color: "#eeae30" },
   GreetingsSpaceInnerViewInnerView: {
     flex: 1,
     alignSelf: "center"

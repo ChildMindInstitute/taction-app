@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: "5%"
   },
-  AlreadyHaveAnAccountTextColor: { color: "#ccc" },
+  AlreadyHaveAnAccountTextColor: { color: "#fff", opacity: 0.8 },
   LoginRedirectButtonStyle: {
     paddingTop: 0,
     paddingBottom: 0,

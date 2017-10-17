@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem, Text, Left, Right, Body, View } from "native-base";
+import { ListItem, Text, Left, Right, Body, View, Icon } from "native-base";
 import { Image } from "react-native";
 import Grid from "react-native-grid-component";
 import styles from "./styles";
@@ -68,11 +68,9 @@ class ListContent extends React.Component {
                   >
                     {this.props.ListData.CorrectTaps}
                   </Text>
-                  <Image
-                    source={require("../../../../js/assets/Tick.png")}
-                    style={styles.TickCrossImageDimenstions}
-                    resizeMode="contain"
-                    resizeMethod="auto"
+                  <Icon
+                    name="md-checkmark"
+                    style={{ fontSize: 30, color: "green" }}
                   />
                 </View>
                 <View style={styles.ListItemRightViewInnerViewStyle}>
@@ -84,11 +82,9 @@ class ListContent extends React.Component {
                   >
                     {this.props.ListData.WrongTaps}
                   </Text>
-                  <Image
-                    source={require("../../../../js/assets/Cross.png")}
-                    style={styles.TickCrossImageDimenstions}
-                    resizeMode="contain"
-                    resizeMethod="auto"
+                  <Icon
+                    name="md-close"
+                    style={{ fontSize: 30, color: "red" }}
                   />
                 </View>
               </View>
@@ -112,11 +108,9 @@ class ListContent extends React.Component {
                       <View
                         style={styles.ListItemGridItemInnerViewInnerViewStyle}
                       >
-                        <Image
-                          source={require("../../../../js/assets/Tick.png")}
-                          style={styles.TickCrossImageDimenstions}
-                          resizeMode="contain"
-                          resizeMethod="auto"
+                        <Icon
+                          name="md-checkmark"
+                          style={{ fontSize: 20, color: "green" }}
                         />
                         <Text
                           style={styles.ListItemGridItemInnerViewText2Style}
@@ -127,11 +121,9 @@ class ListContent extends React.Component {
                       <View
                         style={styles.ListItemGridItemInnerViewInnerViewStyle}
                       >
-                        <Image
-                          source={require("../../../../js/assets/Cross.png")}
-                          style={styles.TickCrossImageDimenstions}
-                          resizeMode="contain"
-                          resizeMethod="auto"
+                        <Icon
+                          name="md-close"
+                          style={{ fontSize: 20, color: "red" }}
                         />
                         <Text style={styles.ListItemGridItemInnerViewTextStyle}>
                           {data.WrongTaps}

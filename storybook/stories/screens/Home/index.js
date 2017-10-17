@@ -23,7 +23,7 @@ class Home extends React.Component {
           <StatusBar
             translucent={true}
             backgroundColor="transparent"
-            barStyle={this.props.StatusBarStyle}
+            barStyle="light-content"
           />
           <HeaderCommon
             isRightRequired={true}

@@ -6,10 +6,14 @@ class ModalCommon extends React.Component {
   render() {
     return (
       <Modal
+        backdropColor="#000"
+        backdropOpacity={1}
+        backdropTransitionInTiming={300}
+        backdropTransitionOutTiming={300}
         animationType="slide"
         transparent={true}
         visible={this.props.isVisible}
-        style={styles.MainModal}
+        style={[styles.MainModal, this.props.ExtraModalStyle]}
       >
         <View style={styles.view1}>
           <View style={styles.mainContent}>{this.props.Content}</View>

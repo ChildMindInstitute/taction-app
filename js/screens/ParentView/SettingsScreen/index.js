@@ -1,6 +1,7 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
+import { StatusBar } from "react-native";
 import Prompt from "react-native-prompt";
 import { View, ActionSheet } from "native-base";
 class SettingsScreen extends React.Component {
@@ -56,6 +57,7 @@ class SettingsScreen extends React.Component {
     });
   }
   render() {
+    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={{ flex: 1 }}>
         <Prompt

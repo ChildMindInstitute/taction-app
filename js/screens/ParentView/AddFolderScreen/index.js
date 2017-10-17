@@ -19,8 +19,9 @@ class AddFolderScreen extends React.Component {
     super(props);
     this.state = {
       data: dataNext,
-      SaveFolderButtonText: undefined,
-      SaveDisabled: true
+      SaveFolderButtonText: " ",
+      SaveDisabled: true,
+      focussed: false
     };
     dataNext = [];
   }
@@ -100,9 +101,11 @@ class AddFolderScreen extends React.Component {
           );
         }}
         ErrorDisplay={
-          this.state.SaveFolderButtonText &&
-          this.state.SaveFolderButtonText != ""
+          this.state.SaveFolderButtonText == "" && this.state.focussed
         }
+        onFocus={() => {
+          this.setState({ focussed: true });
+        }}
         SaveButtonStyle={{
           marginBottom: "5%",
           marginLeft: "10%",

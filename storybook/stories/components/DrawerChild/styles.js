@@ -46,9 +46,10 @@ const styles = StyleSheet.create({
   },
   Footer: { flex: 2, marginTop: "30%" },
   ListItemStyle: {
-    backgroundColor: "transparent",
+    backgroundColor: "#0067a0",
     borderBottomWidth: 0,
-    marginBottom: "5%"
+    padding: "5%",
+    height: 70
   }
 });
 

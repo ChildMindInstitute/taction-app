@@ -17,7 +17,8 @@ class CheckBox extends Component {
           borderColor: this.props.BorderColor
             ? this.props.BorderColor
             : "transparent",
-          width: 30
+          width: 30,
+          height: 30
         }}
         onPress={this.props.onPress}
       >
@@ -27,9 +28,10 @@ class CheckBox extends Component {
               this.props.checked === true
                 ? this.props.TickColor ? this.props.TickColor : "#ffffff"
                 : "transparent",
-            fontSize: 25,
+            fontSize: 42,
             backgroundColor: "transparent",
-            left: 7
+            left: 6,
+            top: -8
           }}
           name={
             Platform.OS === "ios" ? "ios-checkmark-outline" : "md-checkmark"

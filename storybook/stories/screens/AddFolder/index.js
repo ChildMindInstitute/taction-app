@@ -23,9 +23,11 @@ const AddFolder = props => (
           Label="Add new folder with images"
           OnChange={event => props.FolderNameChange(event)}
           ViewStyle={styles.InputViewStyle}
+          Placeholder="Folder name (such as 'Spider')"
+          onFocus={props.onFocus}
         />
         <Text style={{ color: "red", alignSelf: "center", marginBottom: "4%" }}>
-          {!props.ErrorDisplay ? "Folder Name Cannot Be Empty" : " "}
+          {props.ErrorDisplay ? "Folder Name Cannot Be Empty" : " "}
         </Text>
         <Button
           OnPress={props.OnPressAddImage}

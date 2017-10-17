@@ -63,6 +63,7 @@ class SideBar extends React.Component {
                           : "flex"
                     }
                   ]}
+                  underlayColor="#0067a0"
                   onPress={() => {
                     this.props.navigation.navigate(data.route);
                   }}

@@ -4,8 +4,14 @@ import SettingsList from "../../components/SettingsList";
 import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
 import styles from "./styles";
+import { StatusBar, ScrollView } from "react-native";
 const Settings = props => (
   <Container style={styles.Container}>
+    <StatusBar
+      translucent={true}
+      backgroundColor="transparent"
+      barStyle="light-content"
+    />
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.HeaderLeftStyle}
@@ -15,7 +21,7 @@ const Settings = props => (
       Title="Settings"
       TitleStyle={styles.HeaderLeftStyle}
     />
-    <View style={styles.ContentStyle}>
+    <ScrollView style={styles.ContentStyle}>
       <SettingsList
         PressMaximumImageDuration={props.PressMaximumImageDuration}
         MaximumImageDuration={props.MaximumImageDuration}
@@ -36,7 +42,7 @@ const Settings = props => (
         NameChild={props.NameChild}
         NameChildPress={props.NameChildPress}
       />
-    </View>
+    </ScrollView>
   </Container>
 );
 

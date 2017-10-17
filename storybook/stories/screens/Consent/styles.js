@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   TermsSpace: { flex: 5, flexDirection: "column" },
   TermsItem: { flex: 1, flexDirection: "row", marginBottom: "5%" },
   ItemTextSpace: { flex: 8 },
-  ItemCheckBoxSpace: { flex: 1 },
+  ItemCheckBoxSpace: { flex: 1, marginRight: "3%" },
   ItemText: { color: "#fff", fontSize: 18 },
   ItemCheckBox: {
     top: 10,

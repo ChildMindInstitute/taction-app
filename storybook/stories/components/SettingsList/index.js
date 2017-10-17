@@ -11,17 +11,15 @@ import {
   View,
   Switch
 } from "native-base";
-import styles from "./styles";
+const margin = { marginLeft: "5%" };
 const SettingsList = props => (
   <List style={props.ListStyle}>
-    <ListItem itemDivider>
-      <Text note style={styles.Margin}>
-        PROFILE
-      </Text>
-    </ListItem>
+    <Separator bordered>
+      <Text style={margin}>PROFILE</Text>
+    </Separator>
     <ListItem icon button onPress={props.NamePress}>
       <Body>
-        <Text style={styles.Margin}>Name</Text>
+        <Text style={margin}>Name</Text>
       </Body>
       <Right>
         <Text>{props.Name}</Text>
@@ -32,7 +30,7 @@ const SettingsList = props => (
       <View>
         <ListItem icon button onPress={props.NameChildPress}>
           <Body>
-            <Text style={styles.Margin}>Name of child</Text>
+            <Text style={margin}>Name of child</Text>
           </Body>
           <Right>
             <Text>{props.NameChild}</Text>
@@ -41,7 +39,7 @@ const SettingsList = props => (
         </ListItem>
         <ListItem icon button onPress={props.AgePress}>
           <Body>
-            <Text style={styles.Margin}>{"Age of " + props.NameChild}</Text>
+            <Text style={margin}>{"Age of " + props.NameChild}</Text>
           </Body>
           <Right>
             <Text>{props.Age}</Text>
@@ -54,20 +52,19 @@ const SettingsList = props => (
     )}
     <ListItem button icon onPress={props.PasswordPress}>
       <Body>
-        <Text style={styles.Margin}>Password</Text>
+        <Text style={margin}>Password</Text>
       </Body>
       <Right>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    <ListItem itemDivider bordered>
-      <Text note style={styles.Margin}>
-        GAME
-      </Text>
-    </ListItem>
+
+    <Separator bordered>
+      <Text style={margin}>GAME</Text>
+    </Separator>
     <ListItem icon button onPress={props.PressNoOfImagesPerSession}>
       <Body>
-        <Text style={styles.Margin}>Images per session</Text>
+        <Text style={margin}>Images per session</Text>
       </Body>
       <Right>
         <Text>{props.NoOfImagesPerSession}</Text>
@@ -76,7 +73,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon>
       <Body>
-        <Text style={styles.Margin}>Random image order</Text>
+        <Text style={margin}>Random image order</Text>
       </Body>
       <Right>
         <Switch
@@ -90,21 +87,19 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.PressMaximumImageDuration}>
       <Body>
-        <Text style={styles.Margin}>Maximum image duration</Text>
+        <Text style={margin}>Maximum image duration</Text>
       </Body>
       <Right>
         <Text>{props.MaximumImageDuration}</Text>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    <ListItem itemDivider bordered>
-      <Text note style={styles.Margin}>
-        GENERAL
-      </Text>
-    </ListItem>
+    <Separator bordered>
+      <Text style={margin}>GENERAL</Text>
+    </Separator>
     <ListItem icon>
       <Body>
-        <Text style={styles.Margin}>Sound</Text>
+        <Text style={margin}>Sound</Text>
       </Body>
       <Right>
         <Switch
@@ -118,7 +113,7 @@ const SettingsList = props => (
     </ListItem>
     <ListItem icon button onPress={props.PressAddPrizes}>
       <Body>
-        <Text style={styles.Margin}>Add prizes</Text>
+        <Text style={margin}>Add prizes</Text>
       </Body>
       <Right>
         <Icon name="arrow-forward" />

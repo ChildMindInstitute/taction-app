@@ -63,7 +63,7 @@ class ListContent extends React.Component {
                   onPressOut={() => this.setState({ pressed: false })}
                 >
                   <Icon
-                    name="add"
+                    name="md-add"
                     style={[
                       styles.ButtonIcons,
                       {
@@ -89,7 +89,7 @@ class ListContent extends React.Component {
                   onPressOut={() => this.setState({ pressed1: false })}
                 >
                   <Icon
-                    name="remove"
+                    name="md-remove"
                     style={[
                       styles.ButtonIcons,
                       {

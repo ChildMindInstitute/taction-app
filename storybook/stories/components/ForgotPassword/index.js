@@ -8,7 +8,7 @@ const LoginForm = props => (
     onPress={props.OnPressForgotPassword}
     style={props.ForgotPasswordButtonStyle}
   >
-    <Text style={props.ForgotPasswordTextStyle}>Forgot Password?</Text>
+    <Text style={props.ForgotPasswordTextStyle}>Forgot password?</Text>
   </Button>
 );
 

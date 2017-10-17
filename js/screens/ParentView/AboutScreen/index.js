@@ -8,11 +8,6 @@ class About extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar
-          backgroundColor="#0067a0"
-          translucent={true}
-          barStyle="light-content"
-        />
         <HeaderCommon
           isRightRequired={false}
           leftIconStyle={styles.HeaderLeftStyle}
@@ -44,7 +39,8 @@ class About extends React.Component {
           style={{
             backgroundColor: "transparent",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
+            borderTopWidth: 0
           }}
         >
           <Logo5 imageDimensions={styles.BottomLogoStyle} />

@@ -85,39 +85,6 @@ class SwipeableParallaxCarousel extends Component {
       toValue: { x: 0, y: 0 }
     }).start();
   }
-  _getOverlay(overlayPath, height) {
-    if (overlayPath)
-      return (
-        <Image
-          source={overlayPath}
-          style={[styles.overlay, { height, width: this.state.screenWidth }]}
-        />
-      );
-    return null;
-  }
-  _getTitle(item, titleColor) {
-    if (item.title) {
-      return (
-        <View
-          style={[
-            styles.itemTitleContainer,
-            this._getTitleAlign(),
-            this._getTitlePadding()
-          ]}
-        >
-          <Text style={[styles.itemTitle, { color: titleColor }]}>
-            {item.title}
-          </Text>
-          {item.subtitle && (
-            <Text style={[styles.itemSubtitle, { color: titleColor }]}>
-              {item.subtitle}
-            </Text>
-          )}
-        </View>
-      );
-    }
-    return null;
-  }
   _getTitleAlign() {
     if (this.props.align === "center") return { alignItems: "center" };
     if (this.props.align === "right") return { alignItems: "flex-end" };
@@ -156,7 +123,7 @@ class SwipeableParallaxCarousel extends Component {
     return { left: margin, zIndex, elevation: zIndex };
   }
   _renderItems() {
-    const { data, height, overlayPath, titleColor } = this.props;
+    const { data, height } = this.props;
     return data.map((item, index) => {
       return (
         <Animated.View
@@ -169,10 +136,12 @@ class SwipeableParallaxCarousel extends Component {
           ]}
         >
           <View style={styles.touchableContainer} activeOpacity={0.98}>
-            <ImageBackground source={item.imagePath} style={styles.itemImage}>
-              {this._getOverlay(overlayPath, height)}
-              {this._getTitle(item, titleColor)}
-            </ImageBackground>
+            <ImageBackground
+              source={item.imagePath}
+              style={styles.itemImage}
+              resizeMethod="auto"
+              resizeMode="scale"
+            />
           </View>
           <View
             style={{

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   MainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
   ContainerStyle: { flex: 1, backgroundColor: "#eee" },
   SubmitButton2Style: {
-    backgroundColor: "transparent",
+    backgroundColor: "#fff",
     marginLeft: "10%",
     marginRight: "10%",
     borderWidth: 1,

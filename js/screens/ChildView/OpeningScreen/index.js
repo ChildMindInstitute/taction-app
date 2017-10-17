@@ -4,6 +4,7 @@ import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
 import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
 import calculate from "../../../componentsCommon/calcutateStars";
 import { connect } from "react-redux";
+import { View } from "react-native";
 
 class OpeningScreen extends React.Component {
   static navigationOptions = {
@@ -40,44 +41,48 @@ class OpeningScreen extends React.Component {
   }
   render() {
     return (
-      <NewIntro
-        TopViewBackgroundColor="#0067a0"
-        BottomViewBackGroundColor="#ffffff"
-        ScoreColor="#0067a0"
-        Score={this.props.child.totalScore}
-        Stars={calculate(
-          this.props.child.correctTaps,
-          this.props.child.wrongTaps
-        )}
-        PlayOnPress={() => {
-          this.props.navigation.navigate("GameScreen");
-        }}
-        IsPlayDisabled={this.state.IsPlayDisabled}
-        HowToPlayOnPress={() => {
-          this.props.navigation.navigate("HowToPlayScreen");
-        }}
-      >
+      <View style={{ flex: 1 }}>
+        <NewIntro
+          TopViewBackgroundColor="#0067a0"
+          BottomViewBackGroundColor="#ffffff"
+          ScoreColor="#0067a0"
+          Score={this.props.child.totalScore}
+          Stars={calculate(
+            this.props.child.correctTaps,
+            this.props.child.wrongTaps
+          )}
+          PlayOnPress={() => {
+            this.props.navigation.navigate("GameScreen");
+          }}
+          IsPlayDisabled={this.state.IsPlayDisabled}
+          HowToPlayOnPress={() => {
+            this.props.navigation.navigate("HowToPlayScreen");
+          }}
+        />
         <ModalCommon
           isVisible={this.state.modalVisible}
           Content={
             <ModalContent
               GreetingLine1="Welcome Back"
               Line2needed={false}
+              IsDescriptionLine2Required={true}
               Stars={calculate(
                 this.props.child.correctTaps,
                 this.props.child.wrongTaps
               )}
+              IsCloseButtonRequired={true}
               DisplayPoints={this.props.child.totalScore}
-              Description="Time To Earn Some Points"
+              Description="You have earned 1000 points today!"
+              DescriptionLine2="50 more to achieve a prize!"
+              NextPrizeDescription="Day outing in water park"
               IsButtonNeeded={false}
               toggleVisiblity={() => {
                 this.setModalVisible(false);
               }}
-              PlayLaterText="CLOSE"
             />
           }
         />
-      </NewIntro>
+      </View>
     );
   }
 }

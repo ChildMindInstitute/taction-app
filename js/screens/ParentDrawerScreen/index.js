@@ -20,6 +20,11 @@ class ParentDrawerScreen extends React.Component {
           backgroundColor: "#0067a0"
         }}
       >
+        <StatusBar
+          backgroundColor="transparent"
+          translucent={true}
+          barStyle="light-content"
+        />
         <View
           style={{
             flex: 1,
@@ -27,11 +32,6 @@ class ParentDrawerScreen extends React.Component {
             marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
           }}
         >
-          <StatusBar
-            backgroundColor="#0067a0"
-            translucent={true}
-            barStyle="light-content"
-          />
           <DrawerParent NavProps={this.props.screenProps.parentNavigation} />
         </View>
       </View>

@@ -295,6 +295,10 @@ class GameScreen extends React.Component {
       >
         <ModalCommon
           isVisible={this.state.modalVisible}
+          ExtraModalStyle={{
+            paddingTop: "20%",
+            paddingBottom: "20%"
+          }}
           Content={
             <ModalContent
               GreetingLine1={this.props.folder.folderDetails.exerciseName}
@@ -304,8 +308,11 @@ class GameScreen extends React.Component {
                 this.props.child.correctTaps,
                 this.props.child.wrongTaps
               )}
+              PlayLaterRequired={true}
               DisplayPoints={this.props.child.childDetails.totalScore}
-              Description="Time: 02.14 Min"
+              Description="Record Time for this level: 134 seconds!"
+              ExtraDescriptionStyle={{ fontSize: 14 }}
+              StarExtraStyle={{ width: 200, height: 60 }}
               PlayLaterText="Play Later"
               NextLevelName={
                 this.props.nextFolder.folderDetails

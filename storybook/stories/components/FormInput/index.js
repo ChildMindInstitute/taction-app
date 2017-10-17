@@ -24,6 +24,8 @@ const FormInput = props => (
           onChange={props.OnChange}
           secureTextEntry={props.IsPassword}
           keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
+          placeholder={props.Placeholder}
+          onFocus={props.onFocus}
         />
         {props.Error ? (
           <Icon

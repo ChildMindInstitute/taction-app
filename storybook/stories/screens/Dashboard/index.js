@@ -14,9 +14,11 @@ import {
   Right
 } from "native-base";
 import DashBoardContent from "../DashboardContent";
+import { StatusBar } from "react-native";
 import styles from "./styles";
 const Dashboard = props => (
   <Container style={styles.ContainerStyle}>
+    <StatusBar barStyle="light-content" />
     <Header
       hasTabs
       renderTabBar={() => <ScrollableTab />}

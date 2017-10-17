@@ -18,34 +18,36 @@ const AddChild = props => (
     />
     <View style={styles.ContentStyle}>
       <View style={styles.MainSpace}>
-        <FormInput
-          IsPassword={false}
-          Label="Name of Child"
-          OnChange={event => props.ChildNameChange(event)}
-          ViewStyle={{
-            flex: 0.15,
-            marginLeft: "10%",
-            marginRight: "10%"
-          }}
-        />
-        <FormInput
-          IsPassword={false}
-          Label="Age of Child"
-          OnChange={event => props.ChildAgeChange(event)}
-          OnlyNumberEntry={true}
-          ViewStyle={styles.InputViewStyle}
-        />
-        <Button
-          OnPress={props.OnPressSaveButton}
-          SubmitButtonStyle={styles.SubmitButtonStyle}
-          ButtonText="Save &rarr;"
-        />
-        <Button
-          OnPress={props.OnPressSkipButton}
-          SubmitButtonStyle={styles.SubmitButton2Style}
-          ButtonText="Skip"
-          SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
-        />
+        <View style={{ flex: 3 }}>
+          <FormInput
+            IsPassword={false}
+            Label="Name of child"
+            OnChange={event => props.ChildNameChange(event)}
+            ViewStyle={styles.InputViewStyle}
+          />
+          <FormInput
+            IsPassword={false}
+            Label="Age of child"
+            OnChange={event => props.ChildAgeChange(event)}
+            OnlyNumberEntry={true}
+            ViewStyle={styles.InputViewStyle}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            OnPress={props.OnPressSaveButton}
+            SubmitButtonStyle={styles.SubmitButtonStyle}
+            ButtonText="Save &rarr;"
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            OnPress={props.OnPressSkipButton}
+            SubmitButtonStyle={styles.SubmitButton2Style}
+            ButtonText="Skip"
+            SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
+          />
+        </View>
       </View>
     </View>
   </Container>

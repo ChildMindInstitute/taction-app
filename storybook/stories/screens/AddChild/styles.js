@@ -14,26 +14,29 @@ const styles = StyleSheet.create({
   HeaderRightTextAlign: { flex: 1 },
   HeaderRightTotalPointsStyle: { color: "white", flex: 2 },
   HeaderRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
-  ContentStyle: { flex: 1 },
+  ContentStyle: {
+    flex: 1,
+    paddingLeft: "5%",
+    paddingRight: "5%",
+    paddingTop: "40%",
+    paddingBottom: "40%"
+  },
   MainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
-  ContainerStyle: { flex: 1, backgroundColor: "#eee" },
+  ContainerStyle: {
+    flex: 1,
+    backgroundColor: "#eee"
+  },
   SubmitButtonStyle: {
-    marginBottom: "5%",
-    marginLeft: "10%",
-    marginRight: "10%",
     backgroundColor: "#eeae30"
   },
   SubmitButton2Style: {
-    backgroundColor: "transparent",
-    marginLeft: "10%",
-    marginRight: "10%",
+    backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "#ccc"
   },
   SubmitButton2TextStyle: { color: "#000" },
   InputViewStyle: {
-    flex: 0.15,
-    margin: "10%"
+    flex: 1
   }
 });
 export default styles;

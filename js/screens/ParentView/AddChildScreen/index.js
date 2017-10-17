@@ -1,7 +1,7 @@
 import React from "react";
 import AddChild from "../../../../storybook/stories/screens/AddChild";
 import Expo from "expo";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 var childName, childAge;
 class AddChildScreen extends React.Component {
@@ -19,7 +19,9 @@ class AddChildScreen extends React.Component {
         type: "ADD_CHILD",
         payload: { name: childName, age: childAge }
       });
-      this.props.navigation.navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
+      this.props.navigation.navigate(
+        this.props.IsNewRegistration ? "AddFolder" : "Dashboard"
+      );
     }
   }
 
@@ -28,7 +30,6 @@ class AddChildScreen extends React.Component {
     return (
       <AddChild
         OnPressSaveButton={() => {
-          //handle Save
           this.addChild();
         }}
         OnPressSkipButton={() => {
@@ -40,7 +41,6 @@ class AddChildScreen extends React.Component {
         ChildAgeChange={event => {
           childAge = event.nativeEvent.text;
         }}
-        StatusBarStyle="light-content"
         DrawerOpen={() => {
           this.props.navigation.navigate("DrawerOpen");
         }}
@@ -49,11 +49,11 @@ class AddChildScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (store)=>{
-    return { user: store.user, loaded: store.loaded };
-}
+const mapStateToProps = store => {
+  return { user: store.user, loaded: store.loaded };
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return{dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(AddChildScreen);

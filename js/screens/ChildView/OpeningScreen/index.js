@@ -63,7 +63,7 @@ class OpeningScreen extends React.Component {
           isVisible={this.state.modalVisible}
           Content={
             <ModalContent
-              GreetingLine1="Welcome Back"
+              GreetingLine1="Welcome back"
               Line2needed={false}
               IsDescriptionLine2Required={true}
               Stars={calculate(

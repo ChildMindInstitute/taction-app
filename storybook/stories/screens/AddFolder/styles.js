@@ -11,31 +11,29 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center"
   },
+  SaveButtonStyle: {},
   HeaderRightTextAlign: { flex: 1 },
   HeaderRightTotalPointsStyle: { color: "white", flex: 2 },
   HeaderRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
-  ContentStyle: { flex: 1 },
+  ContentStyle: {
+    flex: 1,
+    paddingLeft: "5%",
+    paddingRight: "5%",
+    paddingTop: "40%",
+    paddingBottom: "40%"
+  },
   MainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
   ContainerStyle: { flex: 1, backgroundColor: "#eee" },
   SubmitButton2Style: {
     backgroundColor: "#fff",
-    marginLeft: "10%",
-    marginRight: "10%",
     borderWidth: 1,
     borderColor: "#ccc"
   },
   SubmitButton2TextStyle: { color: "#000" },
   InputViewStyle: {
-    flex: 0.25,
-    marginLeft: "10%",
-    marginRight: "10%",
-    marginTop: "10%",
-    marginBottom: "4%"
+    flex: 0.25
   },
   SubmitButton3Style: {
-    marginBottom: "5%",
-    marginLeft: "10%",
-    marginRight: "10%",
     backgroundColor: "#ffffff"
   },
   SubmitButton3TextStyle: { color: "#0067a0" }

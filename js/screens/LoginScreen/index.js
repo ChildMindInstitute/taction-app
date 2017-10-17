@@ -90,7 +90,7 @@ class LoginScreen extends React.Component {
             this.setState({ PasswordHasError: true });
           } else this.setState({ PasswordHasError: false });
         }}
-        ForgotPasswordTextStyle={{ color: "white", fontWeight: "bold" }}
+        ForgotPasswordTextStyle={{ color: "white" }}
         ForgotPasswordButtonStyle={{
           flex: 1,
           alignSelf: "flex-end",

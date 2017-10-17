@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end"
   },
-  MainViewText: { color: "#ccc" },
+  MainViewText: { color: "#fff", opacity: 0.8 },
   MainViewButton: {
     alignSelf: "flex-end",
     paddingTop: 0,

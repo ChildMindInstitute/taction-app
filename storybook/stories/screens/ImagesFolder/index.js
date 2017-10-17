@@ -2,6 +2,7 @@ import React from "react";
 import ImagesFolderList from "../../components/ImagesFolderList";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Button, Icon } from "native-base";
+import { StatusBar } from "react-native";
 import styles from "./styles";
 let CheckedItems = [];
 class ListContent extends React.Component {
@@ -36,6 +37,7 @@ class ListContent extends React.Component {
   render() {
     return (
       <Container style={styles.ContainerStyle}>
+        <StatusBar barStyle="light-content" />
         <HeaderCommon
           isRightRequired={false}
           leftIconStyle={styles.HeaderLeftStyle}

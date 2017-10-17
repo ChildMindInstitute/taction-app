@@ -38,8 +38,23 @@ class ListContent extends React.Component {
                     this.setState({ checked: !this.state.checked });
                     this.props.CheckBoxChange(this.props.ListItem, checked);
                   }}
+                  checkboxStyle={{
+                    borderRadius: 0,
+                    borderWidth: 1,
+                    borderColor: "#ccc"
+                  }}
+                  uncheckedImage={require("../../../../js/assets/Empty.png")}
+                  checkedImage={require("../../../../js/assets/chkbxTick.png")}
                 />
               </View>
+            </Left>
+            <Body
+              style={{
+                flexDirection: "row",
+                alignItems: "flex-start",
+                flex: 8
+              }}
+            >
               <View
                 style={styles.ListItemInnerViewInnerViewLeftInnerView2Style}
               >
@@ -64,8 +79,6 @@ class ListContent extends React.Component {
                   {this.props.ListItem.Name}
                 </Text>
               </View>
-            </Left>
-            <Body>
               <View style={styles.ListItemInnerViewInnerViewBodyInnerViewStyle}>
                 <Text
                   style={

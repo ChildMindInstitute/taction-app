@@ -4,17 +4,23 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderColor: "#ccc",
-    marginRight: 0
+    marginRight: 0,
+    paddingLeft: "2%",
+    paddingRight: "2%"
   },
-  ListItemInnerViewStyle: { flex: 1, flexDirection: "column" },
+  ListItemInnerViewStyle: { flex: 1.6, flexDirection: "column" },
   ListItemInnerViewInnerViewStyle: {
     flex: 1,
     flexDirection: "row",
     margin: "2%"
   },
-  ListItemInnerViewInnerViewLeftStyle: { flex: 2, flexDirection: "row" },
+  ListItemInnerViewInnerViewLeftStyle: {
+    flex: 1,
+    alignContent: "center",
+    justifyContent: "center"
+  },
   ListItemInnerViewInnerViewLeftInnerView1Style: {
-    flex: 3,
+    flex: 1,
     alignContent: "center",
     justifyContent: "center"
   },
@@ -23,15 +29,15 @@ const styles = StyleSheet.create({
     borderColor: "#eeae30"
   },
   ListItemInnerViewInnerViewLeftInnerView2Style: {
-    flex: 3,
     alignContent: "center",
     justifyContent: "center",
-    marginTop: "-5%"
+    marginRight: "2%"
   },
   ListItemInnerViewInnerViewLeftInnerView2ImageStyle: { width: 35, height: 35 },
   ListItemInnerViewInnerViewLeftInnerView3Style: {
-    flex: 4,
-    alignContent: "center"
+    alignContent: "center",
+    justifyContent: "center",
+    marginRight: "5%"
   },
   ListItemInnerViewInnerViewLeftInnerView3TextStyle: {
     fontSize: 20,
@@ -40,17 +46,17 @@ const styles = StyleSheet.create({
   },
   ListItemInnerViewInnerViewBodyInnerViewStyle: {
     alignContent: "center",
-    justifyContent: "center",
-    marginTop: "-5%"
+    justifyContent: "center"
   },
   ListItemInnerViewInnerViewBodyInnerViewBadgeStyle: {
     color: "#0067a0",
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "400"
   },
   ListItemInnerViewInnerViewRightStyle: {
     flexDirection: "column",
-    marginTop: "-2%"
+    marginTop: "-2%",
+    flex: 3
   },
   ListItemInnerViewGridOuterViewStyle: {
     flex: 3,

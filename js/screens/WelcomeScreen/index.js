@@ -16,7 +16,7 @@ class WelcomeScreen extends React.Component {
   }
 
   async redirect() {
-    this.props.dispatch({ type: "SET_PARENT" });
+    await this.props.dispatch({ type: "SET_PARENT" });
     if (this.props.parent.emailVerified) {
       this.props.navigation.dispatch(
         NavigationActions.reset({
@@ -30,7 +30,7 @@ class WelcomeScreen extends React.Component {
         })
       );
     } else {
-      await alert("PLease Verify Your Email");
+      alert("PLease Verify Your Email");
       this.props.navigation.dispatch(
         NavigationActions.reset({
           index: 0,

@@ -121,6 +121,10 @@ const folderReducer = (state = { folderID: null }, action) => {
       state = action.payload;
       break;
     }
+    case "CLEAR_STORE": {
+      state = { folderID: null };
+      break;
+    }
   }
   return state;
 };
@@ -129,6 +133,10 @@ const imageReducer = (state = {}, action) => {
   switch (action.type) {
     case "IMAGE": {
       state = action.payload;
+      break;
+    }
+    case "CLEAR_STORE": {
+      state = {};
       break;
     }
   }
@@ -141,6 +149,10 @@ const dasboardListReducer = (state = [], action) => {
       state = action.payload;
       break;
     }
+    case "CLEAR_STORE": {
+      state = [];
+      break;
+    }
   }
   return state;
 };
@@ -151,6 +163,10 @@ const todayListReducer = (state = [], action) => {
       state = action.payload;
       break;
     }
+    case "CLEAR_STORE": {
+      state = [];
+      break;
+    }
   }
   return state;
 };
@@ -159,6 +175,10 @@ const monthListReducer = (state = [], action) => {
   switch (action.type) {
     case "MONTH_LIST": {
       state = action.payload;
+      break;
+    }
+    case "CLEAR_STORE": {
+      state = [];
       break;
     }
   }
@@ -174,6 +194,10 @@ const imageListReducer = (state = [], action) => {
       state[action.payload.index] = action.payload.image;
       break;
     }
+    case "CLEAR_STORE": {
+      state = [];
+      break;
+    }
   }
   return state;
 };
@@ -182,6 +206,10 @@ const nextFolderReducer = (state = {}, action) => {
   switch (action.type) {
     case "NEXT_FOLDER": {
       state = action.payload;
+      break;
+    }
+    case "CLEAR_STORE": {
+      state = {};
       break;
     }
   }
@@ -194,6 +222,10 @@ const randomImageListReducer = (state = [], action) => {
       state = action.payload;
       break;
     }
+    case "CLEAR_STORE": {
+      state = [];
+      break;
+    }
   }
   return state;
 };
@@ -204,6 +236,10 @@ const tempWaitReducer = (state = false, action) => {
       state = true;
       break;
     }
+    case "CLEAR_STORE": {
+      state = false;
+      break;
+    }
   }
   return state;
 };
@@ -212,6 +248,10 @@ const orderListReducer = (state = [], action) => {
   switch (action.type) {
     case "ORDER_LIST": {
       state = action.payload;
+      break;
+    }
+    case "CLEAR_STORE": {
+      state = [];
       break;
     }
   }

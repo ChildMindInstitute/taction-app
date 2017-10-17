@@ -26,6 +26,10 @@ export default {
     return firebase.auth();
   },
 
+  reloadUser() {
+    firebase.auth().currentUser.reload();
+  },
+
   createParent(email, password, username, consent) {
     return new Promise((resolve, reject) => {
       const auth = firebase.auth();

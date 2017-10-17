@@ -16,42 +16,100 @@ const AddFolder = props => (
       Title="Setup"
       TitleStyle={styles.HeaderLeftStyle}
     />
-    <View style={styles.ContentStyle}>
+    <View
+      style={[
+        styles.ContentStyle,
+        {
+          paddingBottom: props.children ? "15%" : "40%",
+          paddingTop: props.ErrorDisplay ? "35%" : "40%"
+        }
+      ]}
+    >
       <View style={styles.MainSpace}>
-        <FormInput
-          IsPassword={false}
-          Label="Add new folder with images"
-          OnChange={event => props.FolderNameChange(event)}
-          ViewStyle={styles.InputViewStyle}
-          Placeholder="Folder name (such as 'Spider')"
-          onFocus={props.onFocus}
-        />
-        <Text style={{ color: "red", alignSelf: "center", marginBottom: "4%" }}>
-          {props.ErrorDisplay ? "Folder Name Cannot Be Empty" : " "}
-        </Text>
-        <Button
-          OnPress={props.OnPressAddImage}
-          SubmitButtonStyle={styles.SubmitButton3Style}
-          IsIconRequired={true}
-          IconName="image"
-          IconColor="#0067a0"
-          ButtonText="Add Images"
-          SubmitButtonTextStyle={styles.SubmitButton3TextStyle}
-        />
-        {props.children}
-        <Button
-          OnPress={props.OnPressSaveButton}
-          SubmitButtonStyle={props.SaveButtonStyle}
-          ButtonText={props.SaveFolderButtonText}
-          Disabled={props.SaveDisabled}
-          ExtraText="&rarr;"
-        />
-        <Button
-          OnPress={props.OnPressSkipButton}
-          SubmitButtonStyle={styles.SubmitButton2Style}
-          ButtonText="Skip"
-          SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
-        />
+        <View
+          style={{
+            flex: 2,
+            alignContent: "center",
+            justifyContent: "center"
+          }}
+        >
+          <FormInput
+            IsPassword={false}
+            Label="Add new folder with images"
+            OnChange={event => props.FolderNameChange(event)}
+            ViewStyle={styles.InputViewStyle}
+            Placeholder="Folder name (such as 'Spider')"
+            onFocus={props.onFocus}
+          />
+        </View>
+        {props.ErrorDisplay ? (
+          <Text style={{ color: "red", alignSelf: "center" }}>
+            Folder name cannot be empty
+          </Text>
+        ) : (
+          false
+        )}
+        <View style={{ flex: 3 }}>
+          <View
+            style={{
+              flex: 1,
+              alignContent: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Button
+              OnPress={props.OnPressAddImage}
+              SubmitButtonStyle={styles.SubmitButton3Style}
+              IsIconRequired={true}
+              IconName="image"
+              IconColor="#0067a0"
+              ButtonText="Add Images"
+              SubmitButtonTextStyle={styles.SubmitButton3TextStyle}
+            />
+          </View>
+          {props.children ? (
+            <View
+              style={{
+                flex: 2,
+                alignContent: "center",
+                justifyContent: "center"
+              }}
+            >
+              {props.children}
+            </View>
+          ) : (
+            <View />
+          )}
+          <View
+            style={{
+              flex: 1,
+              alignContent: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Button
+              OnPress={props.OnPressSaveButton}
+              SubmitButtonStyle={styles.SaveButtonStyle}
+              ButtonText={props.SaveFolderButtonText}
+              Disabled={props.SaveDisabled}
+              ExtraText="&rarr;"
+            />
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignContent: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Button
+              OnPress={props.OnPressSkipButton}
+              SubmitButtonStyle={styles.SubmitButton2Style}
+              ButtonText="Skip"
+              SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
+            />
+          </View>
+        </View>
       </View>
     </View>
   </Container>

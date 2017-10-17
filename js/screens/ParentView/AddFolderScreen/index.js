@@ -106,16 +106,6 @@ class AddFolderScreen extends React.Component {
         onFocus={() => {
           this.setState({ focussed: true });
         }}
-        SaveButtonStyle={{
-          marginBottom: "5%",
-          marginLeft: "10%",
-          marginRight: "10%",
-          backgroundColor: this.state.SaveFolderButtonText
-            ? this.state.SaveDisabled && this.state.SaveFolderButtonText != ""
-              ? "rgba(238, 174, 48, 0.5)"
-              : "rgba(238, 174, 48, 1)"
-            : "rgba(238, 174, 48, 0.5)"
-        }}
         SaveDisabled={this.state.SaveDisabled}
         SaveFolderButtonText={
           "Save" +
@@ -127,40 +117,41 @@ class AddFolderScreen extends React.Component {
           this.setState({ SaveFolderButtonText: event.nativeEvent.text });
         }}
       >
-        <View
-          style={{
-            backgroundColor: "#eee",
-            marginLeft: "5%",
-            marginRight: "5%",
-            marginBottom: "5%"
-          }}
-        >
-          <List
-            horizontal={true}
-            dataArray={dataNext}
-            renderRow={item => (
-              <ListItemCustom
-                item={item}
-                ItemPress={((checked, index) => {
-                  if (checked && selectedIndexes.indexOf(index) == -1) {
-                    selectedIndexes.push(index);
-                    if (this.state.SaveDisabled)
-                      this.setState({ SaveDisabled: false });
-                  } else {
-                    selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
-                    if (
-                      selectedIndexes.length == 0 &&
-                      !this.state.SaveDisabled
-                    ) {
-                      this.setState({ SaveDisabled: true });
+        {dataNext.length > 0 ? (
+          <View
+            style={{
+              backgroundColor: "#eee"
+            }}
+          >
+            <List
+              horizontal={true}
+              dataArray={dataNext}
+              renderRow={item => (
+                <ListItemCustom
+                  item={item}
+                  ItemPress={((checked, index) => {
+                    if (checked && selectedIndexes.indexOf(index) == -1) {
+                      selectedIndexes.push(index);
+                      if (this.state.SaveDisabled)
+                        this.setState({ SaveDisabled: false });
+                    } else {
+                      selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
+                      if (
+                        selectedIndexes.length == 0 &&
+                        !this.state.SaveDisabled
+                      ) {
+                        this.setState({ SaveDisabled: true });
+                      }
                     }
-                  }
-                }).bind(this)}
-                data={dataNext}
-              />
-            )}
-          />
-        </View>
+                  }).bind(this)}
+                  data={dataNext}
+                />
+              )}
+            />
+          </View>
+        ) : (
+          false
+        )}
       </AddFolder>
     );
   }

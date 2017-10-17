@@ -1,6 +1,6 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { ActionSheet, View, List } from "native-base";
+import { ActionSheet, View, List, Toast } from "native-base";
 import ListItemCustom from "./ListItem";
 import { ImagePicker } from "expo";
 import { connect } from "react-redux";
@@ -76,7 +76,15 @@ class AddFolderScreen extends React.Component {
     return (
       <AddFolder
         OnPressSaveButton={() => {
-          this.AddFolder();
+          if (this.props.child && this.props.child.childID) {
+            this.AddFolder();
+          } else {
+            Toast.show({
+              text: "Please add a child before adding a folder",
+              position: "bottom",
+              buttonText: "Okay"
+            });
+          }
         }}
         StatusBarStyle="light-content"
         OnPressSkipButton={() => {

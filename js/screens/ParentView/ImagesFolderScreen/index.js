@@ -2,6 +2,7 @@ import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
 import { connect } from "react-redux";
 import { Alert } from "react-native";
+import { Toast } from "native-base";
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
     title: "ImagesFolderScreen",
@@ -47,7 +48,15 @@ class ImagesFolderScreen extends React.Component {
         }}
         TotalPoints={100}
         OnPressSubmitButton={() => {
-          this.props.navigation.navigate("AddFolder");
+          if (this.props.child && this.props.childID) {
+            this.props.navigation.navigate("AddFolder");
+          } else {
+            Toast.show({
+              text: "No child Added yet!",
+              position: "bottom",
+              buttonText: "Okay"
+            });
+          }
         }}
         ExcerciseData={this.props.dashboardList}
         SwitchToggled={(item, onOff) => {
@@ -97,6 +106,7 @@ class ImagesFolderScreen extends React.Component {
 
 const mapStateToProps = store => {
   return {
+    child: store.user.child,
     childID: store.user.child.childID,
     dashboardList: store.dashboardList,
     folderRemoved: store.folderRemoved,

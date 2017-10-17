@@ -109,7 +109,7 @@ const mapStateToProps = store => {
     child: store.user.child,
     childID: store.user.child.childID,
     dashboardList: store.dashboardList,
-    folderRemoved: store.folderRemoved,
+    folderRemoved: store.loaded.folderRemoved,
     orderList: store.orderList
   };
 };

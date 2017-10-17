@@ -2,6 +2,7 @@ import React from "react";
 import SignUp from "../../../storybook/stories/screens/SignUp";
 import { connect } from "react-redux";
 import { NavigationActions } from "react-navigation";
+import { Toast } from "native-base";
 
 const RegExEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 class LoginScreen extends React.Component {
@@ -36,6 +37,16 @@ class LoginScreen extends React.Component {
     if (this.props.loaded && this.state.Submitted) {
       this.setState({ Submitted: false, HasToNavigate: true });
       this.props.navigation.navigate("AlmostThere");
+    }
+
+    if (this.props.error && this.state.Submitted) {
+      Toast.show({
+        text: "The email address is already in use by another account.!",
+        position: "bottom",
+        buttonText: "Okay"
+      });
+      this.props.dispatch({ type: "NO_ERROR_SIGNUP" });
+      this.setState({ Submitted: false });
     }
   }
   signUp() {
@@ -142,7 +153,8 @@ const mapStateToProps = store => {
   return {
     consent: store.consent,
     user: store.user,
-    loaded: store.loaded.userLoaded
+    loaded: store.loaded.userLoaded,
+    error: store.error.signUpError
   };
 };
 

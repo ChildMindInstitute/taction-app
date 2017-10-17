@@ -11,7 +11,11 @@ class AlmostThereScreen extends React.Component {
     super(props);
   }
   componentDidMount() {
-    Db.verifyEmail();
+    try {
+      Db.verifyEmail();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {

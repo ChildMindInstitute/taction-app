@@ -1,9 +1,9 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
-import { StatusBar } from "react-native";
+import { Alert, StatusBar } from "react-native";
 import Prompt from "react-native-prompt";
-import { View, ActionSheet } from "native-base";
+import { View, ActionSheet, Toast } from "native-base";
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
@@ -219,7 +219,32 @@ class SettingsScreen extends React.Component {
             });
           }}
           Name={this.props.parent.name}
-          PasswordPress={() => {}}
+          PasswordPress={() => {
+            Alert.alert(
+              "Reset paswword",
+              "Are you sure you want to reset the password?",
+              [
+                {
+                  text: "OK",
+                  onPress: () => {
+                    this.props.dispatch({
+                      type: "RESET_PASSWORD",
+                      payload: this.props.parent.email
+                    });
+                    Toast.show({
+                      text: "A password reset mail has been sent!",
+                      position: "bottom",
+                      buttonText: "Okay"
+                    });
+                  }
+                },
+                {
+                  text: "Cancel",
+                  onPress: () => {}
+                }
+              ]
+            );
+          }}
           Age={
             this.props.child.childDetails
               ? this.props.child.childDetails.age

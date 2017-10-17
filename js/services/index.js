@@ -497,5 +497,7 @@ export default {
     });
   },
 
-  resetPassword(email) {}
+  resetPassword(email) {
+    firebase.auth().sendPasswordResetEmail(email);
+  }
 };

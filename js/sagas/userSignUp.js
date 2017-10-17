@@ -1,11 +1,11 @@
-import { call, put, take } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import Db from "../../js/services";
 
-const userSignUp = function* userSignUp() {
-  let user = yield take("USER_SIGNUP");
+const userSignUp = function* userSignUp(action) {
+  let user = action;
+  yield put({ type: "NO_ERROR_SIGNUP" });
+  yield put({ type: "USER_LOADING" });
   try {
-    yield put({ type: "NO_ERROR_SIGNUP" });
-    yield put({ type: "USER_LOADING" });
     yield call(
       Db.createParent,
       user.payload.email,
@@ -17,7 +17,12 @@ const userSignUp = function* userSignUp() {
     yield put({ type: "USER_LOADED" });
   } catch (err) {
     yield put({ type: "ERROR_SIGNUP" });
+    yield put({ type: "USER_LOADED" });
   }
 };
 
-export default userSignUp;
+const watchUserSignUp = function* watchUserSignUp() {
+  yield takeLatest("USER_SIGNUP", userSignUp);
+};
+
+export default watchUserSignUp;

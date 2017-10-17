@@ -52,7 +52,10 @@ class Splash extends React.Component {
             });
       }
     }
-    NetInfo.isConnected.addEventListener("change", handleConnectivityChange);
+    NetInfo.isConnected.addEventListener(
+      "connectionChange",
+      handleConnectivityChange
+    );
   }
 
   componentDidUpdate() {

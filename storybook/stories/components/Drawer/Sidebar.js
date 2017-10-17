@@ -58,7 +58,9 @@ class SideBar extends React.Component {
                     styles.ListItemStyle,
                     {
                       display:
-                        data.name == "Add Child" && this.props.child.childID
+                        data.name == "Add Child" &&
+                        this.props.child &&
+                        this.props.child.childID
                           ? "none"
                           : "flex"
                     }

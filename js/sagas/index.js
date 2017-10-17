@@ -3,7 +3,7 @@ import watchSetParent from "./setParent";
 import watchSetChild from "./setChild";
 import watchSignIn from "./signIn";
 import setConsent from "./setConsent";
-import userSignUp from "./userSignUp";
+import watchUserSignUp from "./userSignUp";
 import addChild from "./addChild";
 import watchLogoutUser from "./logoutUser";
 import watchAddFolder from "./addFolder";
@@ -29,7 +29,7 @@ import watchUpdateOrderDown from "./updateOrderDown";
 
 const rootSaga = function* rootSaga() {
   yield all([
-    userSignUp(),
+    watchUserSignUp(),
     watchSetParent(),
     watchSignIn(),
     watchLogoutUser(),

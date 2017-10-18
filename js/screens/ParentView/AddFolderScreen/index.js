@@ -19,7 +19,8 @@ class AddFolderScreen extends React.Component {
     super(props);
     this.state = {
       data: dataNext,
-      SaveFolderButtonText: " ",
+      selectedIndexes: selectedIndexes,
+      SaveFolderButtonText: "",
       SaveDisabled: true,
       focussed: false
     };
@@ -37,13 +38,25 @@ class AddFolderScreen extends React.Component {
   }
 
   componentDidUpdate() {
+    if (
+      this.state.SaveDisabled &&
+      this.state.SaveFolderButtonText != "" &&
+      dataNext.length > 0
+    ) {
+      this.setState({ SaveDisabled: false });
+    } else if (
+      !this.state.SaveDisabled &&
+      this.state.SaveFolderButtonText == ""
+    ) {
+      this.setState({ SaveDisabled: true });
+    }
     if (this.props.folder.folderID) {
-      for (let i in selectedIndexes) {
+      for (let i in dataNext) {
         this.props.dispatch({
           type: "ADD_IMAGE",
           payload: {
             exeID: this.props.folder.folderID,
-            bytes: dataNext[selectedIndexes[i]].base64
+            bytes: dataNext[i].base64
           }
         });
         if (i == selectedIndexes.length - 1) {
@@ -86,11 +99,22 @@ class AddFolderScreen extends React.Component {
             });
           }
         }}
+        DelPress={() => {
+          for (let i in selectedIndexes) {
+            dataNext.splice(selectedIndexes[i], 1);
+            selectedIndexes.splice(i, 1);
+          }
+          if (this.state.data.length == 0) {
+            this.setState({ SaveDisabled: true });
+          }
+          this.setState({ data: dataNext });
+        }}
+        IsRightRequired={this.state.selectedIndexes.length > 0}
         StatusBarStyle="light-content"
         OnPressSkipButton={() => {
           navigate("Dashboard");
         }}
-        Back={() => this.props.navigation.navigate("Images")}
+        DrawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
         OnPressAddImage={() => {
           ActionSheet.show(
             {
@@ -125,7 +149,7 @@ class AddFolderScreen extends React.Component {
           this.setState({ SaveFolderButtonText: event.nativeEvent.text });
         }}
       >
-        {dataNext.length > 0 ? (
+        {this.state.data.length > 0 ? (
           <View
             style={{
               backgroundColor: "#eee"
@@ -133,24 +157,17 @@ class AddFolderScreen extends React.Component {
           >
             <List
               horizontal={true}
-              dataArray={dataNext}
+              dataArray={this.state.data}
               renderRow={item => (
                 <ListItemCustom
                   item={item}
                   ItemPress={((checked, index) => {
                     if (checked && selectedIndexes.indexOf(index) == -1) {
                       selectedIndexes.push(index);
-                      if (this.state.SaveDisabled)
-                        this.setState({ SaveDisabled: false });
                     } else {
                       selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
-                      if (
-                        selectedIndexes.length == 0 &&
-                        !this.state.SaveDisabled
-                      ) {
-                        this.setState({ SaveDisabled: true });
-                      }
                     }
+                    this.setState({ selectedIndexes: selectedIndexes });
                   }).bind(this)}
                   data={dataNext}
                 />

@@ -140,7 +140,7 @@ class SwipeableParallaxCarousel extends Component {
               source={item.imagePath}
               style={styles.itemImage}
               resizeMethod="auto"
-              resizeMode="scale"
+              resizeMode="cover"
             />
           </View>
           <View

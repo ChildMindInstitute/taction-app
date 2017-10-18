@@ -13,7 +13,7 @@ const NewIntro = props => (
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
-        barStyle={props.StatusBarStyle}
+        barStyle="light-content"
       />
       <Logo2 imageDimensions={styles.BackgroundImage} />
       <View style={styles.TopSpace}>

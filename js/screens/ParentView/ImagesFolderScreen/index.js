@@ -71,6 +71,7 @@ class ImagesFolderScreen extends React.Component {
               {
                 text: "OK",
                 onPress: () => {
+                  debugger;
                   this.removeItems(CheckedItems);
                 }
               },

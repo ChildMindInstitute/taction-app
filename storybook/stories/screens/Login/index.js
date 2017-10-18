@@ -21,7 +21,7 @@ const Login = props => (
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
-        barStyle={props.StatusBarStyle}
+        barStyle="light-content"
       />
       <View style={styles.TopSpace}>
         <Logo imageDimensions={styles.MainLogoStyles} />

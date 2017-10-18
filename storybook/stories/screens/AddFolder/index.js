@@ -1,21 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../../components/Button";
+import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Text } from "native-base";
+import { Container, View, Text, Button, Icon } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
 const AddFolder = props => (
   <Container style={styles.ContainerStyle}>
     <HeaderCommon
-      isRightRequired={false}
+      isRightRequired={props.IsRightRequired}
       leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.Back}
-      leftIconName="arrow-back"
+      leftPress={props.DrawerOpen}
+      leftIconName="menu"
       headerStyle={styles.HeaderStyle}
       Title="Setup"
       TitleStyle={styles.HeaderLeftStyle}
-    />
+    >
+      <Button transparent onPress={props.DelPress}>
+        <Icon name="trash" style={{ color: "white" }} />
+      </Button>
+    </HeaderCommon>
     <View
       style={[
         styles.ContentStyle,
@@ -57,7 +61,7 @@ const AddFolder = props => (
               justifyContent: "center"
             }}
           >
-            <Button
+            <Button2
               OnPress={props.OnPressAddImage}
               SubmitButtonStyle={styles.SubmitButton3Style}
               IsIconRequired={true}
@@ -87,7 +91,7 @@ const AddFolder = props => (
               justifyContent: "center"
             }}
           >
-            <Button
+            <Button2
               OnPress={props.OnPressSaveButton}
               SubmitButtonStyle={styles.SaveButtonStyle}
               ButtonText={props.SaveFolderButtonText}
@@ -102,7 +106,7 @@ const AddFolder = props => (
               justifyContent: "center"
             }}
           >
-            <Button
+            <Button2
               OnPress={props.OnPressSkipButton}
               SubmitButtonStyle={styles.SubmitButton2Style}
               ButtonText="Skip"

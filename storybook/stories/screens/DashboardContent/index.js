@@ -5,20 +5,20 @@ import DashboardList from "../../components/DashboardList";
 import { Container, View, Text } from "native-base";
 import styles from "./styles";
 const DashboardContent = props => (
-  <Container style={styles.ContainerStyle}>
-    <View style={styles.ContentStyle}>
-      <View style={styles.GreetingsSpace}>
+  <Container style={styles.containerStyle}>
+    <View style={styles.contentStyle}>
+      <View style={styles.greetingsSpace}>
         <DashboardGreetings>{props.children}</DashboardGreetings>
       </View>
-      <View style={styles.ListSpace}>
-        <DashboardList ListData={props.ExcerciseData} />
+      <View style={styles.listSpace}>
+        <DashboardList listData={props.excerciseData} />
       </View>
     </View>
   </Container>
 );
 
 DashboardContent.propTypes = {
-  ExcerciseData: PropTypes.array,
+  excerciseData: PropTypes.array,
   children: PropTypes.node.isRequired
 };
 DashboardContent.defaultProps = {};

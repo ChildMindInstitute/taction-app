@@ -6,46 +6,46 @@ import { Container, View } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
 const AddChild = props => (
-  <Container style={styles.ContainerStyle}>
+  <Container style={styles.containerStyle}>
     <HeaderCommon
       isRightRequired={false}
-      leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.DrawerOpen}
+      leftIconStyle={styles.headerLeftStyle}
+      leftPress={props.drawerOpen}
       leftIconName="menu"
-      headerStyle={styles.HeaderStyle}
-      Title="Setup"
-      TitleStyle={styles.HeaderLeftStyle}
+      headerStyle={styles.headerStyle}
+      title="Setup"
+      titleStyle={styles.headerLeftStyle}
     />
-    <View style={styles.ContentStyle}>
-      <View style={styles.MainSpace}>
+    <View style={styles.contentStyle}>
+      <View style={styles.mainSpace}>
         <View style={{ flex: 3 }}>
           <FormInput
-            IsPassword={false}
-            Label="Name of child"
-            OnChange={event => props.ChildNameChange(event)}
-            ViewStyle={styles.InputViewStyle}
+            isPassword={false}
+            label="Name of child"
+            onChange={event => props.childNameChange(event)}
+            viewStyle={styles.inputViewStyle}
           />
           <FormInput
-            IsPassword={false}
-            Label="Age of child"
-            OnChange={event => props.ChildAgeChange(event)}
-            OnlyNumberEntry={true}
-            ViewStyle={styles.InputViewStyle}
+            isPassword={false}
+            label="Age of child"
+            onChange={event => props.childAgeChange(event)}
+            onlyNumberEntry={true}
+            viewStyle={styles.inputViewStyle}
           />
         </View>
         <View style={{ flex: 1 }}>
           <Button
-            OnPress={props.OnPressSaveButton}
-            SubmitButtonStyle={styles.SubmitButtonStyle}
-            ButtonText="Save &rarr;"
+            onPress={props.onPressSaveButton}
+            submitButtonStyle={styles.submitButtonStyle}
+            buttonText="Save &rarr;"
           />
         </View>
         <View style={{ flex: 1 }}>
           <Button
-            OnPress={props.OnPressSkipButton}
-            SubmitButtonStyle={styles.SubmitButton2Style}
-            ButtonText="Skip"
-            SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
+            onPress={props.onPressSkipButton}
+            submitButtonStyle={styles.submitButton2Style}
+            buttonText="Skip"
+            submitButtonTextStyle={styles.submitButton2TextStyle}
           />
         </View>
       </View>
@@ -54,17 +54,17 @@ const AddChild = props => (
 );
 
 AddChild.propTypes = {
-  ChildAgeChange: PropTypes.func,
-  ChildNameChange: PropTypes.func,
-  DrawerOpen: PropTypes.func,
-  OnPressSkipButton: PropTypes.func,
-  OnPressSaveButton: PropTypes.func
+  childAgeChange: PropTypes.func,
+  childNameChange: PropTypes.func,
+  drawerOpen: PropTypes.func,
+  onPressSkipButton: PropTypes.func,
+  onPressSaveButton: PropTypes.func
 };
 AddChild.defaultProps = {
-  ChildNameChange: () => {},
-  DrawerOpen: () => {},
-  OnPressSkipButton: () => {},
-  OnPressSaveButton: () => {}
+  childNameChange: () => {},
+  drawerOpen: () => {},
+  onPressSkipButton: () => {},
+  onPressSaveButton: () => {}
 };
 
 export { AddChild as default };

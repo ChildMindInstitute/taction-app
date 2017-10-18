@@ -75,28 +75,27 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <Login
-        UsernameChange={event => {
+        usernameChange={event => {
           this.Input.UserName = event.nativeEvent.text;
           if (this.Input.UserName == "") {
             this.setState({ EmailHasError: true });
           } else this.setState({ EmailHasError: false });
         }}
-        LabelColor="white"
-        StatusBarStyle="light-content"
-        InputViewStyle={{ flex: 1 }}
-        PasswordChange={event => {
+        labelColor="white"
+        inputViewStyle={{ flex: 1 }}
+        passwordChange={event => {
           this.Input.Password = event.nativeEvent.text;
           if (this.Input.Password == "") {
             this.setState({ PasswordHasError: true });
           } else this.setState({ PasswordHasError: false });
         }}
-        ForgotPasswordTextStyle={{ color: "white" }}
-        ForgotPasswordButtonStyle={{
+        forgotPasswordTextStyle={{ color: "white" }}
+        forgotPasswordButtonStyle={{
           flex: 1,
           alignSelf: "flex-end",
           justifyContent: "flex-end"
         }}
-        OnPressForgotPassword={() => {
+        onPressForgotPassword={() => {
           this.props.dispatch({
             type: "RESET_PASSWORD",
             payload: this.Input.UserName
@@ -107,26 +106,26 @@ class LoginScreen extends React.Component {
             buttonText: "Okay"
           });
         }}
-        OnPressSubmitButton={(() => {
+        onPressSubmitButton={(() => {
           this.setState({ Submitted: true, HasSubmitError: false });
           this.loginUser();
         }).bind(this)}
-        Error={this.Error}
-        OnPressRegisterNow={() => {
+        error={this.Error}
+        onPressRegisterNow={() => {
           this.props.navigation.navigate("Consent");
         }}
-        RegisterWithUsTextButtonStyle={{
+        registerWithUsTextButtonStyle={{
           color: "white",
           fontWeight: "bold"
         }}
-        RegisterWithUsTextStyle={{
+        registerWithUsTextStyle={{
           alignSelf: "center",
           color: "#ccc"
         }}
-        Submitted={this.state.Submitted}
-        HasSubmitError={this.state.HasSubmitError}
-        EmailHasError={this.state.EmailHasError}
-        PasswordHasError={this.state.PasswordHasError}
+        submitted={this.state.Submitted}
+        hasSubmitError={this.state.HasSubmitError}
+        emailHasError={this.state.EmailHasError}
+        passwordHasError={this.state.PasswordHasError}
       />
     );
   }

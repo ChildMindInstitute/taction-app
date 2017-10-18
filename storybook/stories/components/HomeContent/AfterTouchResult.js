@@ -5,15 +5,13 @@ import styles from "./styles";
 class AfterTouchResult extends React.Component {
   render() {
     return (
-      <View style={styles.AfterTouchStyle}>
+      <View style={styles.afterTouchStyle}>
         <Image
-          style={styles.AfterTouchResultStyle}
+          style={styles.afterTouchResultStyle}
           source={
-            this.props.CorrectOption == this.props.CurrentOption ? (
-              this.props.TickImage
-            ) : (
-              this.props.CrossImage
-            )
+            this.props.correctOption == this.props.currentOption
+              ? this.props.tickImage
+              : this.props.crossImage
           }
         />
       </View>

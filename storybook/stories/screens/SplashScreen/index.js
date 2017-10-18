@@ -7,33 +7,26 @@ import { View } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
 const SplashScreen = props => (
-  <View style={styles.MainOuterView}>
-    <View style={styles.MainView}>
+  <View style={styles.mainOuterView}>
+    <View style={styles.mainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle="light-content"
       />
-      <View style={styles.LogoSpace} />
-      <Logo imageDimensions={styles.LogoStyles} />
-      <View style={styles.LodaerSpace} />
-      <Loader color={props.color} style={styles.LoaderStyle} />
-      <View style={styles.BottomLogoSpace}>
-        <Logo1 imageDimensions={styles.LogoStyles2} />
+      <View style={styles.logoSpace} />
+      <Logo imageDimensions={styles.logoStyles} />
+      <View style={styles.lodaerSpace} />
+      <Loader color={props.color} style={styles.loaderStyle} />
+      <View style={styles.bottomLogoSpace}>
+        <Logo1 imageDimensions={styles.logoStyles2} />
       </View>
     </View>
   </View>
 );
 
 SplashScreen.propTypes = {
-  backgroundColor: PropTypes.string,
-  color: PropTypes.string,
-  ImageDimensions: PropTypes.object
-};
-SplashScreen.defaultProps = {
-  onPress: () => {},
-  onPressForgotPassword: () => {},
-  onPressRegisterNow: () => {}
+  color: PropTypes.string
 };
 
 export { SplashScreen as default };

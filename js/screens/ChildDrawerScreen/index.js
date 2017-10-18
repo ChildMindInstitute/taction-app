@@ -32,7 +32,7 @@ class ChildDrawerScreen extends React.Component {
             translucent={true}
             barStyle="light-content"
           />
-          <DrawerChild NavProps={this.props.screenProps.parentNavigation} />
+          <DrawerChild navProps={this.props.screenProps.parentNavigation} />
         </View>
       </View>
     );

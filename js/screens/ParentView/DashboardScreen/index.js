@@ -3,7 +3,7 @@ import { View, Spinner, Toast } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
 import { connect } from "react-redux";
 let count = 0;
-
+import { StatusBar } from "react-native";
 class DashboardScreen extends React.Component {
   static navigationOptions = {
     title: "DashboardScreen",
@@ -41,14 +41,15 @@ class DashboardScreen extends React.Component {
   }
 
   render() {
+    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={{ flex: 1 }}>
         <Dashboard
           leftPress={() => {
             this.props.navigation.navigate("DrawerOpen");
           }}
-          ExcerciseDataMonth={this.props.monthList}
-          ExcerciseDataToday={this.props.todayList}
+          excerciseDataMonth={this.props.monthList}
+          excerciseDataToday={this.props.todayList}
         />
         {this.props.loaded || !this.state.childExists ? (
           <View />

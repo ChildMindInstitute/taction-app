@@ -4,7 +4,7 @@ import HeaderCommon from "../../components/Header";
 import { Container, View, Button, Icon } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
-let CheckedItems = [];
+let checkedItems = [];
 class ListContent extends React.Component {
   static navigationOptions = {
     title: "ListContent",
@@ -13,61 +13,61 @@ class ListContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      CheckedItems: [],
+      checkedItems: [],
       pressed: false,
       pressed1: false,
       pressed2: false,
       pressed3: false
     };
-    this.MaintainCheckedItems = this.MaintainCheckedItems.bind(this);
+    this.maintainCheckedItems = this.maintainCheckedItems.bind(this);
   }
-  MaintainCheckedItems(ListItem, checked) {
-    if (this.state.CheckedItems.indexOf(ListItem) == -1 && checked) {
-      CheckedItems.push(ListItem);
+  maintainCheckedItems(listItem, checked) {
+    if (this.state.checkedItems.indexOf(listItem) == -1 && checked) {
+      checkedItems.push(listItem);
       this.setState({
-        CheckedItems: CheckedItems
+        checkedItems: checkedItems
       });
     } else {
-      CheckedItems.splice(CheckedItems.indexOf(ListItem), 1);
+      checkedItems.splice(checkedItems.indexOf(listItem), 1);
       this.setState({
-        CheckedItems: CheckedItems
+        checkedItems: checkedItems
       });
     }
   }
   render() {
     return (
-      <Container style={styles.ContainerStyle}>
+      <Container style={styles.containerStyle}>
         <StatusBar barStyle="light-content" backgroundColor="transparent" />
         <HeaderCommon
           isRightRequired={false}
-          leftIconStyle={styles.HeaderLeftStyle}
-          leftPress={this.props.DrawerOpen}
+          leftIconStyle={styles.headerLeftStyle}
+          leftPress={this.props.drawerOpen}
           leftIconName="menu"
-          headerStyle={styles.HeaderStyle}
-          Title="Images Folder"
-          TitleStyle={styles.HeaderLeftStyle}
+          headerStyle={styles.headerStyle}
+          title="Images Folder"
+          titleStyle={styles.headerLeftStyle}
         />
-        <View style={styles.ContentStyle}>
-          <View style={styles.GreetingsSpace}>
-            <View style={styles.GreetingsSpaceInnerView}>
-              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+        <View style={styles.contentStyle}>
+          <View style={styles.greetingsSpace}>
+            <View style={styles.greetingsSpaceInnerView}>
+              <View style={styles.greetingsSpaceInnerViewInnerView}>
                 <Button
                   style={[
-                    styles.Buttons,
+                    styles.buttons,
                     {
                       backgroundColor: this.state.pressed
                         ? "#eeae30"
                         : "#ffffff"
                     }
                   ]}
-                  onPress={this.props.OnPressSubmitButton}
+                  onPress={this.props.onPressSubmitButton}
                   onPressIn={() => this.setState({ pressed: true })}
                   onPressOut={() => this.setState({ pressed: false })}
                 >
                   <Icon
                     name="md-add"
                     style={[
-                      styles.ButtonIcons,
+                      styles.buttonIcons,
                       {
                         color: this.state.pressed ? "#ffffff" : "#eeae30"
                       }
@@ -75,25 +75,25 @@ class ListContent extends React.Component {
                   />
                 </Button>
               </View>
-              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+              <View style={styles.greetingsSpaceInnerViewInnerView}>
                 <Button
                   style={[
-                    styles.Buttons,
+                    styles.buttons,
                     {
                       backgroundColor: this.state.pressed1
                         ? "#eeae30"
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => this.props.OnPressDeleteButton(CheckedItems)}
-                  disabled={this.state.CheckedItems.length <= 0}
+                  onPress={() => this.props.onPressDeleteButton(checkedItems)}
+                  disabled={this.state.checkedItems.length <= 0}
                   onPressIn={() => this.setState({ pressed1: true })}
                   onPressOut={() => this.setState({ pressed1: false })}
                 >
                   <Icon
                     name="md-remove"
                     style={[
-                      styles.ButtonIcons,
+                      styles.buttonIcons,
                       {
                         color: this.state.pressed1 ? "#ffffff" : "#eeae30"
                       }
@@ -101,10 +101,10 @@ class ListContent extends React.Component {
                   />
                 </Button>
               </View>
-              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+              <View style={styles.greetingsSpaceInnerViewInnerView}>
                 <Button
                   style={[
-                    styles.Buttons,
+                    styles.buttons,
                     ,
                     {
                       backgroundColor: this.state.pressed2
@@ -112,15 +112,15 @@ class ListContent extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => this.props.OnPressMoveUp(CheckedItems[0])}
-                  disabled={!(this.state.CheckedItems.length == 1)}
+                  onPress={() => this.props.onPressMoveUp(checkedItems[0])}
+                  disabled={!(this.state.checkedItems.length == 1)}
                   onPressIn={() => this.setState({ pressed2: true })}
                   onPressOut={() => this.setState({ pressed2: false })}
                 >
                   <Icon
                     name="arrow-up"
                     style={[
-                      styles.ButtonIcons,
+                      styles.buttonIcons,
                       {
                         color: this.state.pressed2 ? "#ffffff" : "#eeae30"
                       }
@@ -128,25 +128,25 @@ class ListContent extends React.Component {
                   />
                 </Button>
               </View>
-              <View style={styles.GreetingsSpaceInnerViewInnerView}>
+              <View style={styles.greetingsSpaceInnerViewInnerView}>
                 <Button
                   style={[
-                    styles.Buttons,
+                    styles.buttons,
                     {
                       backgroundColor: this.state.pressed3
                         ? "#eeae30"
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => this.props.OnPressMoveDown(CheckedItems[0])}
-                  disabled={!(this.state.CheckedItems.length == 1)}
+                  onPress={() => this.props.onPressMoveDown(checkedItems[0])}
+                  disabled={!(this.state.checkedItems.length == 1)}
                   onPressIn={() => this.setState({ pressed3: true })}
                   onPressOut={() => this.setState({ pressed3: false })}
                 >
                   <Icon
                     name="arrow-down"
                     style={[
-                      styles.ButtonIcons,
+                      styles.buttonIcons,
                       {
                         color: this.state.pressed3 ? "#ffffff" : "#eeae30"
                       }
@@ -156,13 +156,13 @@ class ListContent extends React.Component {
               </View>
             </View>
           </View>
-          <View style={styles.ListSpace}>
+          <View style={styles.listSpace}>
             <ImagesFolderList
-              CheckBoxChange={(ListItem, checked) => {
-                this.MaintainCheckedItems(ListItem, !checked);
+              checkBoxChange={(listItem, checked) => {
+                this.maintainCheckedItems(listItem, !checked);
               }}
-              ListData={this.props.ExcerciseData}
-              SwitchToggled={this.props.SwitchToggled}
+              listData={this.props.excerciseData}
+              switchToggled={this.props.switchToggled}
             />
           </View>
         </View>

@@ -1,13 +1,13 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { ActionSheet, View, List, Toast } from "native-base";
+import { ActionSheet, List, Toast } from "native-base";
 import ListItemCustom from "./ListItem";
 import { ImagePicker } from "expo";
 import { connect } from "react-redux";
-
+import { StatusBar } from "react-native";
 let dataNext = [];
 let selectedIndexes = [];
-const BUTTONS = ["Camera", "Gallery", "App", "Cancel"];
+const BUTTONS = ["Camera", "Gallery", "Stock Images", "Cancel"];
 const CANCEL_INDEX = 3;
 
 class AddFolderScreen extends React.Component {
@@ -20,9 +20,10 @@ class AddFolderScreen extends React.Component {
     this.state = {
       data: dataNext,
       selectedIndexes: selectedIndexes,
-      SaveFolderButtonText: "",
-      SaveDisabled: true,
-      focussed: false
+      saveFolderButtonText: "",
+      saveDisabled: true,
+      focussed: false,
+      somethingDeleted: false
     };
     dataNext = [];
   }
@@ -32,23 +33,23 @@ class AddFolderScreen extends React.Component {
       type: "ADD_FOLDER",
       payload: {
         childID: this.props.child.childID,
-        name: this.state.SaveFolderButtonText
+        name: this.state.saveFolderButtonText
       }
     });
   }
 
   componentDidUpdate() {
     if (
-      this.state.SaveDisabled &&
-      this.state.SaveFolderButtonText != "" &&
+      this.state.saveDisabled &&
+      this.state.saveFolderButtonText != "" &&
       dataNext.length > 0
     ) {
-      this.setState({ SaveDisabled: false });
+      this.setState({ saveDisabled: false });
     } else if (
-      !this.state.SaveDisabled &&
-      this.state.SaveFolderButtonText == ""
+      !this.state.saveDisabled &&
+      this.state.saveFolderButtonText == ""
     ) {
-      this.setState({ SaveDisabled: true });
+      this.setState({ saveDisabled: true });
     }
     if (this.props.folder.folderID) {
       for (let i in dataNext) {
@@ -71,7 +72,7 @@ class AddFolderScreen extends React.Component {
       base64: true,
       quality: 0
     }).then(image => {
-      if (image) {
+      if (!image.cancelled) {
         dataNext.push(image);
         this.setState({ data: dataNext });
       }
@@ -86,9 +87,10 @@ class AddFolderScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    StatusBar.setBarStyle("light-content", true);
     return (
       <AddFolder
-        OnPressSaveButton={() => {
+        onPressSaveButton={() => {
           if (this.props.child && this.props.child.childID) {
             this.AddFolder();
           } else {
@@ -99,23 +101,23 @@ class AddFolderScreen extends React.Component {
             });
           }
         }}
-        DelPress={() => {
+        delPress={() => {
           for (let i in selectedIndexes) {
             dataNext.splice(selectedIndexes[i], 1);
             selectedIndexes.splice(i, 1);
           }
           if (this.state.data.length == 0) {
-            this.setState({ SaveDisabled: true });
+            this.setState({ saveDisabled: true });
           }
-          this.setState({ data: dataNext });
+          this.setState({ data: dataNext, somethingDeleted: true });
         }}
-        IsRightRequired={this.state.selectedIndexes.length > 0}
-        StatusBarStyle="light-content"
-        OnPressSkipButton={() => {
+        checkBoxReset={this.state.somethingDeleted}
+        isRightRequired={this.state.selectedIndexes.length > 0}
+        onPressSkipButton={() => {
           navigate("Dashboard");
         }}
-        DrawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
-        OnPressAddImage={() => {
+        drawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
+        onPressAddImage={() => {
           ActionSheet.show(
             {
               options: BUTTONS,
@@ -124,7 +126,7 @@ class AddFolderScreen extends React.Component {
             },
             buttonIndex => {
               if (buttonIndex == 0) {
-                this.updateCameraImage();
+                this.updateCameraImage.bind(this);
               }
               if (buttonIndex == 1) {
                 this.updateImage();
@@ -132,48 +134,42 @@ class AddFolderScreen extends React.Component {
             }
           );
         }}
-        ErrorDisplay={
-          this.state.SaveFolderButtonText == "" && this.state.focussed
+        errorDisplay={
+          this.state.saveFolderButtonText == "" && this.state.focussed
         }
         onFocus={() => {
           this.setState({ focussed: true });
         }}
-        SaveDisabled={this.state.SaveDisabled}
-        SaveFolderButtonText={
+        saveDisabled={this.state.saveDisabled}
+        saveFolderButtonText={
           "Save" +
-          (this.state.SaveFolderButtonText
-            ? " to " + this.state.SaveFolderButtonText
+          (this.state.saveFolderButtonText
+            ? " to " + this.state.saveFolderButtonText
             : "")
         }
-        FolderNameChange={event => {
-          this.setState({ SaveFolderButtonText: event.nativeEvent.text });
+        folderNameChange={event => {
+          this.setState({ saveFolderButtonText: event.nativeEvent.text });
         }}
       >
         {this.state.data.length > 0 ? (
-          <View
-            style={{
-              backgroundColor: "#eee"
-            }}
-          >
-            <List
-              horizontal={true}
-              dataArray={this.state.data}
-              renderRow={item => (
-                <ListItemCustom
-                  item={item}
-                  ItemPress={((checked, index) => {
-                    if (checked && selectedIndexes.indexOf(index) == -1) {
-                      selectedIndexes.push(index);
-                    } else {
-                      selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
-                    }
-                    this.setState({ selectedIndexes: selectedIndexes });
-                  }).bind(this)}
-                  data={dataNext}
-                />
-              )}
-            />
-          </View>
+          <List
+            horizontal={true}
+            dataArray={this.state.data}
+            renderRow={item => (
+              <ListItemCustom
+                item={item}
+                ItemPress={((checked, index) => {
+                  if (checked && selectedIndexes.indexOf(index) == -1) {
+                    selectedIndexes.push(index);
+                  } else {
+                    selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
+                  }
+                  this.setState({ selectedIndexes: selectedIndexes });
+                }).bind(this)}
+                data={dataNext}
+              />
+            )}
+          />
         ) : (
           false
         )}

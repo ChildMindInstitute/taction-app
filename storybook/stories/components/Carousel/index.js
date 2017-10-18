@@ -193,7 +193,7 @@ class SwipeableParallaxCarousel extends Component {
       return (
         <View style={styles.navigationContainer}>
           <Left style={{ flex: 2 }}>
-            <Button transparent onPress={() => this.props.SkipPress()}>
+            <Button transparent onPress={() => this.props.skipPress()}>
               <Text style={{ fontSize: 20, color: "#aaa" }}>Skip</Text>
             </Button>
           </Left>

@@ -1,18 +1,18 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  MainView: {
+  mainView: {
     flex: 1,
     flexDirection: "row",
     alignItems: "flex-end"
   },
-  MainViewText: { color: "#fff", opacity: 0.8 },
-  MainViewButton: {
+  mainViewText: { color: "#fff", opacity: 0.8 },
+  mainViewButton: {
     alignSelf: "flex-end",
     paddingTop: 0,
     paddingBottom: 0,
     height: 20
   },
-  MainViewButtonText: {
+  mainViewButtonText: {
     color: "#ffffff",
     fontWeight: "bold"
   }

@@ -11,53 +11,53 @@ const setDashboardList = function* setDashboardList(action) {
       let DataFolderContent = [];
       for (let j in action.payload[i].imageList) {
         DataFolderContent.push({
-          ImageID: action.payload[i].imageList[j].imageID,
-          Image: { uri: action.payload[i].imageList[j].imageDetails.url },
-          CorrectTaps: action.payload[i].imageList[j].imageDetails.correctTaps,
-          WrongTaps: action.payload[i].imageList[j].imageDetails.wrongTaps,
-          IsCompleted: action.payload[i].imageList[j].imageDetails.status
+          imageID: action.payload[i].imageList[j].imageID,
+          image: { uri: action.payload[i].imageList[j].imageDetails.url },
+          correctTaps: action.payload[i].imageList[j].imageDetails.correctTaps,
+          wrongTaps: action.payload[i].imageList[j].imageDetails.wrongTaps,
+          isCompleted: action.payload[i].imageList[j].imageDetails.status
         });
       }
       dashboardList.push({
-        FolderID: action.payload[i].folderID,
-        Name: action.payload[i].folderDetails.exerciseName,
-        CorrectTaps: action.payload[i].folderDetails.correctTaps,
-        WrongTaps: action.payload[i].folderDetails.wrongTaps,
-        Points: action.payload[i].folderDetails.score,
-        Stars: require("../assets/all_stars.png"),
-        DataFolderContent: DataFolderContent,
-        Status: action.payload[i].folderDetails.status
+        folderID: action.payload[i].folderID,
+        name: action.payload[i].folderDetails.exerciseName,
+        correctTaps: action.payload[i].folderDetails.correctTaps,
+        wrongTaps: action.payload[i].folderDetails.wrongTaps,
+        points: action.payload[i].folderDetails.score,
+        stars: require("../assets/all-stars.png"),
+        dataFolderContent: DataFolderContent,
+        status: action.payload[i].folderDetails.status
       });
       if (action.payload[i].folderDetails.timeStamp == currentDate) {
         todayList.push({
-          FolderID: action.payload[i].folderID,
-          Name: action.payload[i].folderDetails.exerciseName,
-          CorrectTaps: action.payload[i].folderDetails.correctTaps,
-          WrongTaps: action.payload[i].folderDetails.wrongTaps,
-          Points: action.payload[i].folderDetails.score,
-          Stars: calculate(
+          folderID: action.payload[i].folderID,
+          name: action.payload[i].folderDetails.exerciseName,
+          correctTaps: action.payload[i].folderDetails.correctTaps,
+          wrongTaps: action.payload[i].folderDetails.wrongTaps,
+          points: action.payload[i].folderDetails.score,
+          stars: calculate(
             action.payload[i].folderDetails.correctTaps,
             action.payload[i].folderDetails.wrongTaps
           ),
-          DataFolderContent: DataFolderContent,
-          Status: action.payload[i].folderDetails.status
+          dataFolderContent: DataFolderContent,
+          status: action.payload[i].folderDetails.status
         });
       }
       if (
         action.payload[i].folderDetails.timeStamp.slice(4, 7) == currentMonth
       ) {
         monthList.push({
-          FolderID: action.payload[i].folderID,
-          Name: action.payload[i].folderDetails.exerciseName,
-          CorrectTaps: action.payload[i].folderDetails.correctTaps,
-          WrongTaps: action.payload[i].folderDetails.wrongTaps,
-          Points: action.payload[i].folderDetails.score,
-          Stars: calculate(
+          folderID: action.payload[i].folderID,
+          name: action.payload[i].folderDetails.exerciseName,
+          correctTaps: action.payload[i].folderDetails.correctTaps,
+          wrongTaps: action.payload[i].folderDetails.wrongTaps,
+          points: action.payload[i].folderDetails.score,
+          stars: calculate(
             action.payload[i].folderDetails.correctTaps,
             action.payload[i].folderDetails.wrongTaps
           ),
-          DataFolderContent: DataFolderContent,
-          Status: action.payload[i].folderDetails.status
+          dataFolderContent: DataFolderContent,
+          status: action.payload[i].folderDetails.status
         });
       }
     }

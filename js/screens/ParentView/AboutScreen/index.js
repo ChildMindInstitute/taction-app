@@ -6,18 +6,19 @@ import Logo5 from "../../../../storybook/stories/components/Logo.5";
 import { Text, Footer } from "native-base";
 class About extends React.Component {
   render() {
+    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={styles.container}>
         <HeaderCommon
           isRightRequired={false}
-          leftIconStyle={styles.HeaderLeftStyle}
+          leftIconStyle={styles.headerLeftStyle}
           leftPress={() => {
             this.props.navigation.navigate("DrawerOpen");
           }}
-          headerStyle={styles.HeaderStyle}
+          headerStyle={styles.headerStyle}
           leftIconName="menu"
-          Title="About"
-          TitleStyle={styles.HeaderLeftStyle}
+          title="About"
+          titleStyle={styles.headerLeftStyle}
         />
         <View style={{ flex: 9, margin: "4%" }}>
           <Text>
@@ -43,7 +44,7 @@ class About extends React.Component {
             borderTopWidth: 0
           }}
         >
-          <Logo5 imageDimensions={styles.BottomLogoStyle} />
+          <Logo5 imageDimensions={styles.bottomLogoStyle} />
         </Footer>
       </View>
     );

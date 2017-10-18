@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  OuterCircle: {
+  outerCircle: {
     position: "absolute",
     borderRadius: 50,
     backgroundColor: "#eeae30",
     width: 70,
     height: 70
   },
-  InnerCircle: {
+  innerCircle: {
     left: 5,
     top: 5,
     position: "relative",
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  TimeTextStyle: { color: "white" }
+  timeTextStyle: { color: "white" }
 });
 
 export default styles;

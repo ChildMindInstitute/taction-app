@@ -8,67 +8,67 @@ import { ScrollView } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const Consent = props => (
-  <View style={styles.MainOuterViewOuterView}>
-    <View style={styles.MainOuterView}>
+  <View style={styles.mainOuterViewOuterView}>
+    <View style={styles.mainOuterView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle="light-content"
       />
-      <View style={styles.TopSpace}>
-        <Logo imageDimensions={styles.MainLogoStyles} />
+      <View style={styles.topSpace}>
+        <Logo imageDimensions={styles.mainLogoStyles} />
       </View>
-      <View style={styles.ScrollViewSpaceSpace}>
+      <View style={styles.scrollViewSpaceSpace}>
         <ScrollView>
-          <View style={styles.MainView}>
-            <View style={styles.TopTextSpace}>
-              <Text style={styles.TopTextStyle}>{props.TopText}</Text>
-              <View style={styles.Seperator} />
+          <View style={styles.mainView}>
+            <View style={styles.topTextSpace}>
+              <Text style={styles.topTextStyle}>{props.topText}</Text>
+              <View style={styles.seperator} />
             </View>
-            <View style={styles.ConsentTextSpace}>
-              <Text style={styles.ConsentText}>Consent</Text>
+            <View style={styles.consentTextSpace}>
+              <Text style={styles.consentText}>Consent</Text>
             </View>
-            <View style={styles.TermsSpace}>
-              <View style={styles.TermsItem}>
-                <View style={styles.ItemCheckBoxSpace}>
+            <View style={styles.termsSpace}>
+              <View style={styles.termsItem}>
+                <View style={styles.itemCheckBoxSpace}>
                   <CheckBox
-                    onPress={props.CheckboxChange1}
-                    checked={props.Checked1}
+                    onPress={props.checkboxChange1}
+                    checked={props.checked1}
                     checkedbackgroundColor="#ffffff"
-                    BorderColor="#ffffff"
-                    TickColor="#0067a0"
+                    borderColor="#ffffff"
+                    tickColor="#0067a0"
                   />
                 </View>
-                <View style={styles.ItemTextSpace}>
-                  <Text style={styles.ItemText}>{props.Term1}</Text>
+                <View style={styles.itemTextSpace}>
+                  <Text style={styles.itemText}>{props.term1}</Text>
                 </View>
               </View>
-              <View style={styles.TermsItem}>
-                <View style={styles.ItemCheckBoxSpace}>
+              <View style={styles.termsItem}>
+                <View style={styles.itemCheckBoxSpace}>
                   <CheckBox
-                    onPress={props.CheckboxChange2}
-                    checked={props.Checked2}
+                    onPress={props.checkboxChange2}
+                    checked={props.checked2}
                     checkedbackgroundColor="#ffffff"
-                    BorderColor="#ffffff"
-                    TickColor="#0067a0"
+                    borderColor="#ffffff"
+                    tickColor="#0067a0"
                   />
                 </View>
-                <View style={styles.ItemTextSpace}>
-                  <Text style={styles.ItemText}>{props.Term2}</Text>
+                <View style={styles.itemTextSpace}>
+                  <Text style={styles.itemText}>{props.term2}</Text>
                 </View>
               </View>
-              <View style={styles.TermsItem}>
-                <View style={styles.ItemCheckBoxSpace}>
+              <View style={styles.termsItem}>
+                <View style={styles.itemCheckBoxSpace}>
                   <CheckBox
-                    onPress={props.CheckboxChange3}
-                    checked={props.Checked3}
+                    onPress={props.checkboxChange3}
+                    checked={props.checked3}
                     checkedbackgroundColor="#ffffff"
-                    BorderColor="#ffffff"
-                    TickColor="#0067a0"
+                    borderColor="#ffffff"
+                    tickColor="#0067a0"
                   />
                 </View>
-                <View style={styles.ItemTextSpace}>
-                  <Text style={styles.ItemText}>{props.Term3}</Text>
+                <View style={styles.itemTextSpace}>
+                  <Text style={styles.itemText}>{props.term3}</Text>
                 </View>
               </View>
             </View>
@@ -76,31 +76,31 @@ const Consent = props => (
         </ScrollView>
       </View>
       <Button
-        OnPress={props.OnPressSubmitButton}
-        SubmitButtonStyle={props.SubmitButtonStyle}
-        ButtonText="Next &rarr;"
-        Disabled={props.Disabled}
-        SubmitButtonTextStyle={props.SubmitButtonTextStyle}
+        onPress={props.onPressSubmitButton}
+        submitButtonStyle={props.submitButtonStyle}
+        buttonText="Next &rarr;"
+        disabled={props.disabled}
+        submitButtonTextStyle={props.submitButtonTextStyle}
       />
     </View>
   </View>
 );
 
 Consent.propTypes = {
-  SubmitButtonTextStyle: PropTypes.object,
-  SubmitButtonStyle: PropTypes.object,
-  OnPressSubmitButton: PropTypes.func,
-  Disabled: PropTypes.bool,
-  CheckboxChange1: PropTypes.func,
-  Checked1: PropTypes.bool,
-  CheckboxChange2: PropTypes.func,
-  Checked2: PropTypes.bool,
-  CheckboxChange3: PropTypes.func,
-  Checked3: PropTypes.bool,
-  Term1: PropTypes.string,
-  Term2: PropTypes.string,
-  Term3: PropTypes.string,
-  TopText: PropTypes.string
+  submitButtonTextStyle: PropTypes.object,
+  submitButtonStyle: PropTypes.object,
+  onPressSubmitButton: PropTypes.func,
+  disabled: PropTypes.bool,
+  checkboxChange1: PropTypes.func,
+  checked1: PropTypes.bool,
+  checkboxChange2: PropTypes.func,
+  checked2: PropTypes.bool,
+  checkboxChange3: PropTypes.func,
+  checked3: PropTypes.bool,
+  term1: PropTypes.string,
+  term2: PropTypes.string,
+  term3: PropTypes.string,
+  topText: PropTypes.string
 };
 Consent.defaultProps = {
   OnPressSubmitButton: () => {},

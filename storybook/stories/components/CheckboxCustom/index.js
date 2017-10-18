@@ -14,8 +14,8 @@ class CheckBox extends Component {
             : "transparent",
           borderRadius: 100,
           borderWidth: 1,
-          borderColor: this.props.BorderColor
-            ? this.props.BorderColor
+          borderColor: this.props.borderColor
+            ? this.props.borderColor
             : "transparent",
           width: 30,
           height: 30
@@ -26,7 +26,7 @@ class CheckBox extends Component {
           style={{
             color:
               this.props.checked === true
-                ? this.props.TickColor ? this.props.TickColor : "#ffffff"
+                ? this.props.tickColor ? this.props.tickColor : "#ffffff"
                 : "transparent",
             fontSize: 42,
             backgroundColor: "transparent",

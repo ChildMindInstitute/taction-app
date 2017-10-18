@@ -43,39 +43,39 @@ class OpeningScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <NewIntro
-          TopViewBackgroundColor="#0067a0"
-          BottomViewBackGroundColor="#ffffff"
-          ScoreColor="#0067a0"
-          Score={this.props.child.totalScore}
-          Stars={calculate(
+          topViewBackgroundColor="#0067a0"
+          bottomViewBackGroundColor="#ffffff"
+          scoreColor="#0067a0"
+          score={this.props.child.totalScore}
+          stars={calculate(
             this.props.child.correctTaps,
             this.props.child.wrongTaps
           )}
-          PlayOnPress={() => {
+          playOnPress={() => {
             this.props.navigation.navigate("GameScreen");
           }}
-          IsPlayDisabled={this.state.IsPlayDisabled}
-          HowToPlayOnPress={() => {
+          isPlayDisabled={this.state.IsPlayDisabled}
+          howToPlayOnPress={() => {
             this.props.navigation.navigate("HowToPlayScreen");
           }}
         />
         <ModalCommon
           isVisible={this.state.modalVisible}
-          Content={
+          content={
             <ModalContent
-              GreetingLine1="Welcome back"
-              Line2needed={false}
-              IsDescriptionLine2Required={true}
-              Stars={calculate(
+              greetingLine1="Welcome back"
+              line2needed={false}
+              isDescriptionLine2Required={true}
+              stars={calculate(
                 this.props.child.correctTaps,
                 this.props.child.wrongTaps
               )}
-              IsCloseButtonRequired={true}
-              DisplayPoints={this.props.child.totalScore}
-              Description="You have earned 1000 points today!"
-              DescriptionLine2="50 more to achieve a prize!"
-              NextPrizeDescription="Day outing in water park"
-              IsButtonNeeded={false}
+              isCloseButtonRequired={true}
+              displayPoints={this.props.child.totalScore}
+              description="You have earned 1000 points today!"
+              descriptionLine2="50 more to achieve a prize!"
+              nextPrizeDescription="Day outing in water park"
+              isButtonNeeded={false}
               toggleVisiblity={() => {
                 this.setModalVisible(false);
               }}

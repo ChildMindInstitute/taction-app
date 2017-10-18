@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import SettingsList from "../../components/SettingsList";
 import HeaderCommon from "../../components/Header";
-import { Container, View } from "native-base";
+import { Container } from "native-base";
 import styles from "./styles";
 import { StatusBar, ScrollView } from "react-native";
 const Settings = props => (
-  <Container style={styles.Container}>
+  <Container style={styles.container}>
     <StatusBar
       translucent={true}
       backgroundColor="transparent"
@@ -14,33 +14,33 @@ const Settings = props => (
     />
     <HeaderCommon
       isRightRequired={false}
-      leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.DrawerOpen}
+      leftIconStyle={styles.headerLeftStyle}
+      leftPress={props.drawerOpen}
       leftIconName="menu"
-      headerStyle={styles.HeaderStyle}
-      Title="Settings"
-      TitleStyle={styles.HeaderLeftStyle}
+      headerStyle={styles.headerStyle}
+      title="Settings"
+      titleStyle={styles.headerLeftStyle}
     />
-    <ScrollView style={styles.ContentStyle}>
+    <ScrollView style={styles.contentStyle}>
       <SettingsList
-        PressMaximumImageDuration={props.PressMaximumImageDuration}
-        MaximumImageDuration={props.MaximumImageDuration}
-        TimerOfNext={props.TimerOfNext}
-        PressNoOfImagesPerSession={props.PressNoOfImagesPerSession}
-        NoOfImagesPerSession={props.NoOfImagesPerSession}
-        NamePress={props.NamePress}
-        Name={props.Name}
-        Age={props.Age}
-        PasswordPress={props.PasswordPress}
-        AgePress={props.AgePress}
-        RandomSlider={props.RandomSlider}
-        RandomSliderValue={props.RandomSliderValue}
-        SoundSliderValue={props.SoundSliderValue}
-        SoundSlider={props.SoundSlider}
-        PressAddPrizes={props.PressAddPrizes}
-        ChildExists={props.ChildExists}
-        NameChild={props.NameChild}
-        NameChildPress={props.NameChildPress}
+        pressMaximumImageDuration={props.pressMaximumImageDuration}
+        maximumImageDuration={props.maximumImageDuration}
+        timerOfNext={props.timerOfNext}
+        pressNoOfImagesPerSession={props.pressNoOfImagesPerSession}
+        noOfImagesPerSession={props.noOfImagesPerSession}
+        namePress={props.namePress}
+        name={props.name}
+        age={props.age}
+        passwordPress={props.passwordPress}
+        agePress={props.agePress}
+        randomSlider={props.randomSlider}
+        randomSliderValue={props.randomSliderValue}
+        soundSliderValue={props.soundSliderValue}
+        soundSlider={props.soundSlider}
+        pressAddPrizes={props.pressAddPrizes}
+        childExists={props.childExists}
+        nameChild={props.nameChild}
+        mameChildPress={props.nameChildPress}
       />
     </ScrollView>
   </Container>

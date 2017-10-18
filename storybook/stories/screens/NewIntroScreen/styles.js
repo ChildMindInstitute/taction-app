@@ -1,62 +1,62 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
-  BackgroundImage: {
+  backgroundImage: {
     position: "absolute",
     width: "100%",
     height: "100%"
   },
-  MainOuterView: { flex: 1, backgroundColor: "#0067a0" },
-  MainView: {
+  mainOuterView: { flex: 1, backgroundColor: "#0067a0" },
+  mainView: {
     flex: 1,
     marginTop:
       Platform.OS !== "ios"
         ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
         : 0
   },
-  TopSpace: { flex: 1 },
-  TopViewStyle: {
+  topSpace: { flex: 1 },
+  topViewStyle: {
     flex: 2,
     justifyContent: "center",
     alignItems: "center"
   },
-  BottomViewSpace: {
+  bottomViewSpace: {
     flex: 5,
     alignItems: "center"
   },
-  TotalScoreTextStyle: {
+  totalScoreTextStyle: {
     color: "#eeae30",
     fontSize: 26,
     fontWeight: "500",
     margin: "5%",
     marginTop: "8%"
   },
-  TotalScoreStyle: {
+  totalScoreStyle: {
     fontSize: 60,
     fontWeight: "500"
   },
-  StarsStyle: {
+  starsStyle: {
     width: 160,
     height: 70,
     margin: "5%"
   },
-  PlayButtonStyle: {
+  playButtonStyle: {
     margin: "5%",
     borderRadius: 50,
     height: 55
   },
-  LogoStyle: { width: 100, height: 100 },
-  PlayButtonTextStyle: {
+  logoStyle: { width: 100, height: 100 },
+  playButtonTextStyle: {
     color: "#fff",
     fontSize: 22,
     fontWeight: "bold"
   },
-  HowToPlayButtonStyle: {
+  howToPlayButtonStyle: {
     marginLeft: "15%",
     marginRight: "15%",
     borderRadius: 50
   },
-  HowToPlayButtonTextStyle: {
+  howToPlayButtonTextStyle: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold"

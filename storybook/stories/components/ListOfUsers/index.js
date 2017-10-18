@@ -4,25 +4,24 @@ import { List } from "native-base";
 import ListContent from "./ListContent";
 const ListOfChildren = props => (
   <List
-    style={props.ListStyle}
-    dataArray={props.Data}
+    style={props.listStyle}
+    dataArray={props.data}
     renderRow={item => (
       <ListContent
         item={item}
-        ListItemPress={props.ListItemPress}
-        index={props.Data.indexOf(item)}
+        listItemPress={props.listItemPress}
+        index={props.data.indexOf(item)}
       />
     )}
   />
 );
 
 ListOfChildren.propTypes = {
-  ListStyle: PropTypes.object,
-  Data: PropTypes.array,
-  ListItemPress: PropTypes.func
+  listStyle: PropTypes.object,
+  data: PropTypes.array,
+  listItemPress: PropTypes.func
 };
 ListOfChildren.defaultProps = {
-  ListItemPress: () => {},
-  CheckBoxPress: () => {}
+  listItemPress: () => {}
 };
 export { ListOfChildren as default };

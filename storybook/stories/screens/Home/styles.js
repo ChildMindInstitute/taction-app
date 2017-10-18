@@ -1,57 +1,57 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
-  HeaderStyle: {
+  headerStyle: {
     backgroundColor: "#0067a0",
     height: "40%"
   },
-  HeaderLeftStyle: { color: "white" },
-  HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
-  HeaderRightImageSpace: {
+  headerLeftStyle: { color: "white" },
+  headerRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
+  headerRightImageSpace: {
     flex: 7,
     alignItems: "center",
     justifyContent: "center"
   },
-  HeaderRightTextSpace: {
+  headerRightTextSpace: {
     flex: 25,
     flexDirection: "column",
     alignItems: "center"
   },
-  HeaderRightTotalPointsStyle: {
+  headerRightTotalPointsStyle: {
     color: "white"
   },
-  HeaderRightTotalPointsTextStyle: {
+  headerRightTotalPointsTextStyle: {
     fontSize: 12,
     color: "white"
   },
-  HeaderRightTotalPointsViewStyle: {
+  headerRightTotalPointsViewStyle: {
     flex: 1,
     alignItems: "flex-end",
     flexDirection: "row",
     display: "flex"
   },
-  HeaderRightTotalPointsTextViewStyle: {
+  headerRightTotalPointsTextViewStyle: {
     flex: 1,
     alignItems: "flex-start",
     flexDirection: "row",
     display: "flex"
   },
-  HomeTimerStyle: {
+  homeTimerStyle: {
     position: "absolute",
     left: "42%",
     top: "13%"
   },
-  ExcerciseSpace: { flex: 2, marginTop: "-25%" },
-  ExcerciseText: {
+  excerciseSpace: { flex: 2, marginTop: "-25%" },
+  excerciseText: {
     flex: 1,
     alignSelf: "center",
     fontSize: 22,
     fontWeight: "bold"
   },
-  ExcerciseContentStyle: { flex: 10, margin: "3%" },
-  FooterStyle: { height: "17%" },
-  ContainerOuterViewStyle: { flex: 1, backgroundColor: "#0067a0" },
-  ContainerStyle: {
+  excerciseContentStyle: { flex: 10, margin: "3%" },
+  footerStyle: { height: "17%" },
+  containerOuterViewStyle: { flex: 1, backgroundColor: "#0067a0" },
+  containerStyle: {
     backgroundColor: "#eee",
     marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
   }

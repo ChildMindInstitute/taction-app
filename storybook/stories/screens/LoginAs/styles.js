@@ -1,11 +1,11 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainOuterView: {
+  mainOuterView: {
     flex: 1,
     backgroundColor: "#0067a0"
   },
-  MainView: {
+  mainView: {
     flex: 1,
     backgroundColor: "#0067a0",
     margin: "5%",
@@ -14,19 +14,19 @@ const styles = StyleSheet.create({
         ? Platform.OS == "ios" ? "5%" : Constants.statusBarHeight
         : 0
   },
-  TopSpace: {
+  topSpace: {
     flex: 6,
     alignItems: "center",
     justifyContent: "center"
   },
-  SelectChildSpace: {
+  selectChildSpace: {
     flex: 7,
     justifyContent: "center"
   },
-  LoginAsTextSpace: { flex: 0.5, marginTop: "5%", marginBottom: "5%" },
-  LoginAsText: { color: "white" },
-  MainLogoStyles: { alignSelf: "center", height: 100, width: 100 },
-  BottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
-  SubLogoStyles: { alignSelf: "center", height: 40, width: 120 }
+  loginAsTextSpace: { flex: 0.5, marginTop: "5%", marginBottom: "5%" },
+  loginAsText: { color: "white" },
+  mainLogoStyles: { alignSelf: "center", height: 100, width: 100 },
+  bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
+  subLogoStyles: { alignSelf: "center", height: 40, width: 120 }
 });
 export default styles;

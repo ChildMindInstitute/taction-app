@@ -5,28 +5,28 @@ import Logo from "../Logo";
 import styles from "./styles";
 const CustomHeader = props => (
   <Header style={props.headerStyle}>
-    <Left style={styles.LeftStyle}>
-      {props.IsLeftAButton ? (
+    <Left style={styles.leftStyle}>
+      {props.isLeftAButton ? (
         <Button transparent onPress={props.leftPress}>
           <Icon name={props.leftIconName} style={props.leftIconStyle} />
         </Button>
       ) : (
-        <Logo imageDimensions={styles.LeftLogoStyle} />
+        <Logo imageDimensions={styles.leftLogoStyle} />
       )}
     </Left>
-    <Body style={styles.BodyStyle}>
-      <Text style={[props.TitleStyle, styles.BodyTitleStyle]}>
-        {props.Title}
+    <Body style={styles.bodyStyle}>
+      <Text style={[props.titleStyle, styles.bodyTitleStyle]}>
+        {props.title}
       </Text>
     </Body>
-    <Right style={styles.RightStyle}>
+    <Right style={styles.rightStyle}>
       {props.isRightRequired ? props.children : <Text />}
     </Right>
   </Header>
 );
 
 CustomHeader.propTypes = {
-  IsLeftAButton: PropTypes.bool,
+  isLeftAButton: PropTypes.bool,
   rightIconName: PropTypes.string,
   rightIconStyle: PropTypes.object,
   rightButtonPress: PropTypes.func,
@@ -35,11 +35,11 @@ CustomHeader.propTypes = {
   leftIconStyle: PropTypes.number,
   leftPress: PropTypes.func,
   headerStyle: PropTypes.number,
-  Title: PropTypes.string,
-  TitleStyle: PropTypes.number
+  title: PropTypes.string,
+  titleStyle: PropTypes.number
 };
 CustomHeader.defaultProps = {
-  IsLeftAButton: true,
+  isLeftAButton: true,
   rightButtonPress: () => {},
   menuPress: () => {}
 };

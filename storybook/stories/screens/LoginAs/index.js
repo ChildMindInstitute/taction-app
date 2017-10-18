@@ -7,28 +7,28 @@ import { View, Text } from "native-base";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const LoginAs = props => (
-  <View style={styles.MainOuterView}>
-    <View style={styles.MainView}>
+  <View style={styles.mainOuterView}>
+    <View style={styles.mainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle="light-content"
       />
-      <View style={styles.TopSpace}>
-        <Logo imageDimensions={styles.MainLogoStyles} />
+      <View style={styles.topSpace}>
+        <Logo imageDimensions={styles.mainLogoStyles} />
       </View>
-      <View style={styles.LoginAsTextSpace}>
-        <Text style={styles.LoginAsText}>Login As</Text>
+      <View style={styles.loginAsTextSpace}>
+        <Text style={styles.loginAsText}>Login As</Text>
       </View>
-      <View style={styles.SelectChildSpace}>
+      <View style={styles.selectChildSpace}>
         <ListOfUsers
-          ListStyle={null}
-          Data={props.Data}
-          ListItemPress={props.ListItemPress}
+          listStyle={null}
+          data={props.data}
+          listItemPress={props.listItemPress}
         />
       </View>
-      <View style={styles.BottomLogoSpace}>
-        <Logo1 imageDimensions={styles.SubLogoStyles} />
+      <View style={styles.bottomLogoSpace}>
+        <Logo1 imageDimensions={styles.subLogoStyles} />
       </View>
     </View>
   </View>

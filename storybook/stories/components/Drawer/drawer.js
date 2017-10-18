@@ -13,7 +13,7 @@ const DrawerParent = DrawerNavigator(
     Dashboard: {
       screen: ({ screenProps, navigation }) => (
         <DashboardScreen
-          IsNewRegistration={screenProps.state.params.NewRegistration}
+          isNewRegistration={screenProps.state.params.NewRegistration}
           navigation={navigation}
         />
       )
@@ -21,7 +21,7 @@ const DrawerParent = DrawerNavigator(
     AddChild: {
       screen: ({ screenProps, navigation }) => (
         <AddChildScreen
-          IsNewRegistration={screenProps.state.params.NewRegistration}
+          isNewRegistration={screenProps.state.params.NewRegistration}
           navigation={navigation}
         />
       )
@@ -30,7 +30,7 @@ const DrawerParent = DrawerNavigator(
     Images: { screen: ImagesFolderScreen },
     About: { screen: AboutScreen },
     AddFolder: { screen: AddFolderScreen },
-    Logout: { screen: NavProps => <LogoutTemp ParentNavProps={NavProps} /> }
+    Logout: { screen: navProps => <LogoutTemp parentNavProps={navProps} /> }
   },
   {
     initialRouteName: "Dashboard",

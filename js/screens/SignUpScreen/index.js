@@ -19,40 +19,40 @@ class LoginScreen extends React.Component {
       Username: ""
     };
     this.state = {
-      ConfirmPasswordError: false,
-      Submitted: false,
-      PasswordError: false,
-      EmailError: false,
-      UsernameError: false,
-      HasToNavigate: false
+      confirmPasswordError: false,
+      submitted: false,
+      passwordError: false,
+      emailError: false,
+      usernameError: false,
+      hasToNavigate: false
     };
-    this.Error = {
-      ConfirmPassword: "Must Match Password",
-      Password: "Required",
-      Email: "Invalid Email ID",
-      Username: "Username Already Taken"
+    this.error = {
+      confirmPassword: "Must Match Password",
+      password: "Required",
+      email: "Invalid Email ID",
+      username: "Username Already Taken"
     };
   }
   componentDidUpdate() {
-    if (this.props.loaded && this.state.Submitted) {
-      this.setState({ Submitted: false, HasToNavigate: true });
+    if (this.props.loaded && this.state.submitted) {
+      this.setState({ submitted: false, hasToNavigate: true });
       this.props.navigation.navigate("AlmostThere");
     }
 
-    if (this.props.error && this.state.Submitted) {
+    if (this.props.error && this.state.submitted) {
       Toast.show({
         text: "The email address is already in use by another account.!",
         position: "bottom",
         buttonText: "Ok"
       });
       this.props.dispatch({ type: "NO_ERROR_SIGNUP" });
-      this.setState({ Submitted: false });
+      this.setState({ submitted: false });
     }
   }
   signUp() {
     if (
-      this.Input.Password == this.Input.ConfirmPassword &&
-      !this.state.EmailError
+      this.Input.password == this.Input.confirmPassword &&
+      !this.state.emailError
     ) {
       this.props.dispatch({
         type: "USER_SIGNUP",
@@ -69,81 +69,80 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <SignUp
-        BackgroundColor="#0067a0"
-        UsernameChange={event => {
-          this.Input.Username = event.nativeEvent.text;
-          if (this.Input.Username == "") {
-            this.setState({ UsernameError: true });
+        backgroundColor="#0067a0"
+        usernameChange={event => {
+          this.Input.uername = event.nativeEvent.text;
+          if (this.Input.username == "") {
+            this.setState({ usernameError: true });
           } else {
-            this.setState({ UsernameError: false });
+            this.setState({ usernameError: false });
           }
         }}
-        InputViewStyle={{
+        inputViewStyle={{
           flex: 1
         }}
-        PasswordChange={event => {
-          this.Input.Password = event.nativeEvent.text;
-          if (this.Input.Password == "" || this.Input.Password.length < 6) {
+        passwordChange={event => {
+          this.Input.password = event.nativeEvent.text;
+          if (this.Input.password == "" || this.Input.password.length < 6) {
             this.setState({ PasswordError: true });
           } else {
             this.setState({ PasswordError: false });
-            if (this.Input.Password == this.Input.ConfirmPassword) {
-              this.setState({ ConfirmPasswordError: false });
+            if (this.Input.password == this.Input.confirmPassword) {
+              this.setState({ confirmPasswordError: false });
             } else {
-              this.setState({ ConfirmPasswordError: true });
+              this.setState({ confirmPasswordError: true });
             }
           }
         }}
-        LoginRedirectPress={() =>
+        loginRedirectPress={() =>
           this.props.navigation.dispatch(
             NavigationActions.reset({
               index: 0,
               actions: [NavigationActions.navigate({ routeName: "Login" })]
             })
           )}
-        OnPressSubmitButton={() => {
-          this.setState({ Submitted: true });
+        onPressSubmitButton={() => {
+          this.setState({ submitted: true });
           this.signUp();
         }}
-        Submitted={this.state.Submitted}
-        Disabled={
-          this.state.ConfirmPasswordError ||
-          this.state.EmailError ||
-          this.state.PasswordError ||
-          this.state.UsernameError ||
-          (this.Input.ConfirmPassword == "" ||
-            this.Input.Email == "" ||
-            this.Input.Password == "" ||
-            this.Input.Username == "")
+        submitted={this.state.submitted}
+        disabled={
+          this.state.confirmPasswordError ||
+          this.state.emailError ||
+          this.state.passwordError ||
+          this.state.usernameError ||
+          (this.Input.confirmPassword == "" ||
+            this.Input.email == "" ||
+            this.Input.password == "" ||
+            this.Input.username == "")
         }
-        StatusBarStyle="light-content"
-        ConfirmPasswordChange={event => {
+        confirmPasswordChange={event => {
           this.Input.ConfirmPassword = event.nativeEvent.text;
           if (
-            this.Input.ConfirmPassword == this.Input.Password &&
-            this.Input.Password != ""
+            this.Input.confirmPassword == this.Input.password &&
+            this.Input.password != ""
           ) {
-            this.setState({ ConfirmPasswordError: false });
-          } else if (this.Input.Password == "") {
-            this.setState({ ConfirmPasswordError: true });
+            this.setState({ confirmPasswordError: false });
+          } else if (this.Input.password == "") {
+            this.setState({ confirmPasswordError: true });
             this.setState({ PasswordError: true });
           } else {
-            this.setState({ ConfirmPasswordError: true });
+            this.setState({ confirmPasswordError: true });
           }
         }}
-        EmailChange={event => {
-          this.Input.Email = event.nativeEvent.text;
-          if (RegExEmail.test(this.Input.Email)) {
-            this.setState({ EmailError: false });
+        emailChange={event => {
+          this.Input.email = event.nativeEvent.text;
+          if (RegExEmail.test(this.Input.email)) {
+            this.setState({ emailError: false });
           } else {
-            this.setState({ EmailError: true });
+            this.setState({ emailError: true });
           }
         }}
-        ConfirmPasswordError={this.state.ConfirmPasswordError}
-        PasswordError={this.state.PasswordError}
-        EmailError={this.state.EmailError}
-        UsernameError={this.state.UsernameError}
-        Error={this.Error}
+        confirmPasswordError={this.state.confirmPasswordError}
+        passwordError={this.state.passwordError}
+        emailError={this.state.emailError}
+        usernameError={this.state.usernameError}
+        error={this.error}
       />
     );
   }

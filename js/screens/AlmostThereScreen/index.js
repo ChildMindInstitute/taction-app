@@ -22,7 +22,7 @@ class AlmostThereScreen extends React.Component {
     setTimeout(() => {
       this.props.navigation.navigate("Welcome");
     }, 2000);
-    return <AlmostThere StatusBarStyle="light-content" />;
+    return <AlmostThere />;
   }
 }
 export default AlmostThereScreen;

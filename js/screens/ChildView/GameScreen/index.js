@@ -32,10 +32,10 @@ class GameScreen extends React.Component {
       currentImage: {},
       currentFolder: {},
       input: [
-        require("../../../assets/ball1.jpg"),
+        require("../../../assets/ball-1.jpg"),
         require("../../../assets/spiderman.jpg"),
         require("../../../assets/minion.jpg"),
-        require("../../../assets/ball2.jpg")
+        require("../../../assets/ball-2.jpg")
       ],
       isLast: false
     };
@@ -219,22 +219,22 @@ class GameScreen extends React.Component {
   render() {
     return (
       <Home
-        Back={() => {
+        back={() => {
           this.props.navigation.goBack();
         }}
-        TotalPoints={this.props.child.childDetails.totalScore}
-        TimeLeft={time}
-        TimeLeftDenomination={"Min"}
-        Image1={this.state.input[this.state.i1]}
-        Image2={this.state.input[this.state.i2]}
-        Image3={this.state.input[this.state.i3]}
-        Image4={this.state.input[this.state.i4]}
-        HasToReset={this.state.reset}
-        CrossImage={require("../../../assets/Cross.png")}
-        TickImage={require("../../../assets/Tick.png")}
-        CorrectOption={this.state.correctOption}
-        IsLast={this.state.isLast}
-        TimeExpiredImageShuffle={() => {
+        totalPoints={this.props.child.childDetails.totalScore}
+        timeLeft={time}
+        timeLeftDenomination={"Min"}
+        image1={this.state.input[this.state.i1]}
+        image2={this.state.input[this.state.i2]}
+        image3={this.state.input[this.state.i3]}
+        image4={this.state.input[this.state.i4]}
+        hasToReset={this.state.reset}
+        crossImage={require("../../../assets/cross.png")}
+        tickImage={require("../../../assets/tick.png")}
+        correctOption={this.state.correctOption}
+        isLast={this.state.isLast}
+        timeExpiredImageShuffle={() => {
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel + 1 <= totalLevels) {
             setTimeout(() => {
@@ -259,7 +259,7 @@ class GameScreen extends React.Component {
             this.setState({ gameFinished: true });
           }
         }}
-        Pressed={(item => {
+        pressed={(item => {
           this.options = [0, 1, 2, 3];
           if (this.state.currentLevel + 1 <= totalLevels)
             setTimeout(() => {
@@ -289,42 +289,42 @@ class GameScreen extends React.Component {
             this.setState({ gameFinished: true });
           }
         }).bind(this)}
-        LeftImages={this.state.currentLevel}
-        TotalImages={totalLevels}
-        Question={"Tap on The " + this.props.folder.folderDetails.exerciseName}
+        leftImages={this.state.currentLevel}
+        totalImages={totalLevels}
+        question={"Tap on The " + this.props.folder.folderDetails.exerciseName}
       >
         <ModalCommon
           isVisible={this.state.modalVisible}
-          ExtraModalStyle={{
+          extraModalStyle={{
             paddingTop: "20%",
             paddingBottom: "20%"
           }}
-          Content={
+          content={
             <ModalContent
-              GreetingLine1={this.props.folder.folderDetails.exerciseName}
-              Line2needed={true}
-              GreetingLine2="Level Completed"
-              Stars={calculate(
+              greetingLine1={this.props.folder.folderDetails.exerciseName}
+              line2needed={true}
+              greetingLine2="Level Completed"
+              stars={calculate(
                 this.props.child.correctTaps,
                 this.props.child.wrongTaps
               )}
-              PlayLaterRequired={true}
-              DisplayPoints={this.props.child.childDetails.totalScore}
-              Description="Record Time for this level: 134 seconds!"
-              ExtraDescriptionStyle={{ fontSize: 14 }}
-              StarExtraStyle={{ width: 200, height: 60 }}
-              PlayLaterText="Play Later"
-              NextLevelName={
+              playLaterRequired={true}
+              displayPoints={this.props.child.childDetails.totalScore}
+              description="Record Time for this level: 134 seconds!"
+              extraDescriptionStyle={{ fontSize: 14 }}
+              starExtraStyle={{ width: 200, height: 60 }}
+              playLaterText="Play Later"
+              nextLevelName={
                 this.props.nextFolder.folderDetails
                   ? this.props.nextFolder.folderDetails.exerciseName
                   : ""
               }
-              PlayNextDisabled={!this.props.nextFolder.folderDetails}
-              IsButtonNeeded={true}
-              PlayNext={() => {
+              playNextDisabled={!this.props.nextFolder.folderDetails}
+              isButtonNeeded={true}
+              playNext={() => {
                 this.playNext();
               }}
-              PlayAgain={() => {
+              playAgain={() => {
                 this.PlayAgain();
               }}
               toggleVisiblity={() => {

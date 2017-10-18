@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  MainView: {
+  mainView: {
     flex: 1,
     flexDirection: "column",
     borderColor: "#ccc",
@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
     elevation: 1,
     backgroundColor: "white"
   },
-  ImageStyle: {
+  imageStyle: {
     height: 100,
     width: 100
   },
-  GridView: { left: "-2.7%" },
-  GridRowColItem: { alignItems: "center", justifyContent: "center" },
-  AfterTouchStyle: {
+  gridView: { left: "-2.7%" },
+  gridRowColItem: { alignItems: "center", justifyContent: "center" },
+  afterTouchStyle: {
     position: "absolute",
     height: 145,
     width: 158.5,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "rgba(0,0,0,.4)"
   },
-  AfterTouchResultStyle: { height: 80, width: 80 }
+  afterTouchResultStyle: { height: 80, width: 80 }
 });
 
 export default styles;

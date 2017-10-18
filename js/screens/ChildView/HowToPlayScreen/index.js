@@ -7,12 +7,12 @@ const datacarousel = [
   {
     id: 339964,
     tooTipText: "Touch the correct picture as fast as you can to earn point!",
-    imagePath: require("../../../assets/HowToPlayScreen1.jpg")
+    imagePath: require("../../../assets/how-to-play-screen-1.jpg")
   },
   {
     id: 315635,
     tooTipText: "Collect points as you play!",
-    imagePath: require("../../../assets/HowToPlayScreen2.png")
+    imagePath: require("../../../assets/how-to-play-screen-2.png")
   }
 ];
 class HowToPlayScreen extends React.Component {
@@ -41,7 +41,7 @@ class HowToPlayScreen extends React.Component {
               data={datacarousel}
               height="100%"
               navigation="true"
-              SkipPress={() => this.props.navigation.goBack()}
+              skipPress={() => this.props.navigation.goBack()}
             />
           </Container>
         </View>

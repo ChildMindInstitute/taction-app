@@ -17,18 +17,18 @@ const DashboardChild = props => (
       <HeaderCommon
         isRightRequired={false}
         IsLeftAButton={false}
-        headerStyle={styles.HeaderStyle}
-        Title="Dashboard"
-        TitleStyle={styles.HeaderLeftStyle}
+        headerStyle={styles.headerStyle}
+        title="Dashboard"
+        titleStyle={styles.headerLeftStyle}
       />
-      <View style={styles.ContentStyle}>
-        <View style={styles.GreetingsSpace}>
+      <View style={styles.contentStyle}>
+        <View style={styles.greetingsSpace}>
           <DashboardGreetings>{props.children}</DashboardGreetings>
         </View>
         <View style={styles.ListSpace}>
           <DashboardChildList
-            ExcercisesAvailable={props.ExcercisesAvailable}
-            ItemPress={props.ItemPress}
+            excercisesAvailable={props.excercisesAvailable}
+            itemPress={props.itemPress}
           />
         </View>
       </View>

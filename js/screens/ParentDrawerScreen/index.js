@@ -32,7 +32,7 @@ class ParentDrawerScreen extends React.Component {
             marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
           }}
         >
-          <DrawerParent NavProps={this.props.screenProps.parentNavigation} />
+          <DrawerParent navProps={this.props.screenProps.parentNavigation} />
         </View>
       </View>
     );

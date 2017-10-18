@@ -6,30 +6,30 @@ import { Container, View, Text, Button, Icon } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
 const AddFolder = props => (
-  <Container style={styles.ContainerStyle}>
+  <Container style={styles.containerStyle}>
     <HeaderCommon
-      isRightRequired={props.IsRightRequired}
-      leftIconStyle={styles.HeaderLeftStyle}
-      leftPress={props.DrawerOpen}
+      isRightRequired={props.isRightRequired}
+      leftIconStyle={styles.headerLeftStyle}
+      leftPress={props.drawerOpen}
       leftIconName="menu"
-      headerStyle={styles.HeaderStyle}
-      Title="Setup"
-      TitleStyle={styles.HeaderLeftStyle}
+      headerStyle={styles.headerStyle}
+      title="Setup"
+      titleStyle={styles.headerLeftStyle}
     >
-      <Button transparent onPress={props.DelPress}>
+      <Button transparent onPress={props.delPress}>
         <Icon name="trash" style={{ color: "white" }} />
       </Button>
     </HeaderCommon>
     <View
       style={[
-        styles.ContentStyle,
+        styles.contentStyle,
         {
           paddingBottom: props.children ? "15%" : "40%",
-          paddingTop: props.ErrorDisplay ? "35%" : "40%"
+          paddingTop: props.errorDisplay ? "35%" : "40%"
         }
       ]}
     >
-      <View style={styles.MainSpace}>
+      <View style={styles.mainSpace}>
         <View
           style={{
             flex: 2,
@@ -38,15 +38,15 @@ const AddFolder = props => (
           }}
         >
           <FormInput
-            IsPassword={false}
-            Label="Add new folder with images"
-            OnChange={event => props.FolderNameChange(event)}
-            ViewStyle={styles.InputViewStyle}
-            Placeholder="Folder name (such as 'Spider')"
+            isPassword={false}
+            label="Add new folder with images"
+            onChange={event => props.FolderNameChange(event)}
+            viewStyle={styles.inputViewStyle}
+            placeholder="Folder name (such as 'Spider')"
             onFocus={props.onFocus}
           />
         </View>
-        {props.ErrorDisplay ? (
+        {props.errorDisplay ? (
           <Text style={{ color: "red", alignSelf: "center" }}>
             Folder name cannot be empty
           </Text>
@@ -62,13 +62,13 @@ const AddFolder = props => (
             }}
           >
             <Button2
-              OnPress={props.OnPressAddImage}
-              SubmitButtonStyle={styles.SubmitButton3Style}
-              IsIconRequired={true}
-              IconName="image"
-              IconColor="#0067a0"
-              ButtonText="Add Images"
-              SubmitButtonTextStyle={styles.SubmitButton3TextStyle}
+              onPress={props.onPressAddImage}
+              submitButtonStyle={styles.submitButton3Style}
+              isIconRequired={true}
+              iconName="image"
+              iconColor="#0067a0"
+              buttonText="Add Images"
+              submitButtonTextStyle={styles.submitButton3TextStyle}
             />
           </View>
           {props.children ? (
@@ -92,11 +92,11 @@ const AddFolder = props => (
             }}
           >
             <Button2
-              OnPress={props.OnPressSaveButton}
-              SubmitButtonStyle={styles.SaveButtonStyle}
-              ButtonText={props.SaveFolderButtonText}
-              Disabled={props.SaveDisabled}
-              ExtraText="&rarr;"
+              onPress={props.onPressSaveButton}
+              submitButtonStyle={styles.saveButtonStyle}
+              buttonText={props.saveFolderButtonText}
+              disabled={props.saveDisabled}
+              extraText="&rarr;"
             />
           </View>
           <View
@@ -107,10 +107,10 @@ const AddFolder = props => (
             }}
           >
             <Button2
-              OnPress={props.OnPressSkipButton}
-              SubmitButtonStyle={styles.SubmitButton2Style}
-              ButtonText="Skip"
-              SubmitButtonTextStyle={styles.SubmitButton2TextStyle}
+              onPress={props.onPressSkipButton}
+              submitButtonStyle={styles.submitButton2Style}
+              buttonText="Skip"
+              submitButtonTextStyle={styles.submitButton2TextStyle}
             />
           </View>
         </View>
@@ -120,21 +120,21 @@ const AddFolder = props => (
 );
 
 AddFolder.propTypes = {
-  SaveDisabled: PropTypes.bool,
-  SaveFolderButtonText: PropTypes.string,
-  Back: PropTypes.func,
-  OnPressAddImage: PropTypes.func,
-  FolderNameChange: PropTypes.func,
-  OnPressSkipButton: PropTypes.func,
-  OnPressSaveButton: PropTypes.func,
-  DisabledOpacity: PropTypes.bool
+  saveDisabled: PropTypes.bool,
+  saveFolderButtonText: PropTypes.string,
+  drawerOpen: PropTypes.func,
+  onPressAddImage: PropTypes.func,
+  folderNameChange: PropTypes.func,
+  onPressSkipButton: PropTypes.func,
+  onPressSaveButton: PropTypes.func,
+  disabledOpacity: PropTypes.bool
 };
 AddFolder.defaultProps = {
-  Back: () => {},
-  OnPressAddImage: () => {},
-  FolderNameChange: () => {},
-  OnPressSkipButton: () => {},
-  OnPressSaveButton: () => {}
+  drawerOpen: () => {},
+  onPressAddImage: () => {},
+  folderNameChange: () => {},
+  onPressSkipButton: () => {},
+  onPressSaveButton: () => {}
 };
 
 export { AddFolder as default };

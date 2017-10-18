@@ -10,143 +10,142 @@ class HomeContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      IsFirstTouched: false,
-      IsSecondTouched: false,
-      IsThirdTouched: false,
-      IsFourthTouched: false,
-      IsFirstDisabled: false,
-      IsSecondDisabled: false,
-      IsThirdDisabled: false,
-      IsFourthDisabled: false,
+      isFirstTouched: false,
+      isSecondTouched: false,
+      isThirdTouched: false,
+      isFourthTouched: false,
+      isFirstDisabled: false,
+      isSecondDisabled: false,
+      isThirdDisabled: false,
+      isFourthDisabled: false,
       continueReseting: true
     };
   }
   reset() {
     this.setState({
-      IsFirstTouched: false,
-      IsSecondTouched: false,
-      IsThirdTouched: false,
-      IsFourthTouched: false,
-      IsFirstDisabled: false,
-      IsSecondDisabled: false,
-      IsThirdDisabled: false,
-      IsFourthDisabled: false,
+      isFirstTouched: false,
+      isSecondTouched: false,
+      isThirdTouched: false,
+      isFourthTouched: false,
+      isFirstDisabled: false,
+      isSecondDisabled: false,
+      isThirdDisabled: false,
+      isFourthDisabled: false,
       continueReseting: false
     });
   }
   disableAll() {
     this.setState({
-      IsFirstDisabled: true,
-      IsSecondDisabled: true,
-      IsThirdDisabled: true,
-      IsFourthDisabled: true
+      isFirstDisabled: true,
+      isSecondDisabled: true,
+      isThirdDisabled: true,
+      isFourthDisabled: true
     });
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     if (
-      (this.props.HasToReset && this.state.continueReseting) ||
-      this.props.IsTimeExpired
+      (this.props.hasToReset && this.state.continueReseting) ||
+      this.props.isTimeExpired
     ) {
       this.reset();
-      this.props.TimeExpiredCounterSwitch();
+      this.props.timeExpiredCounterSwitch();
     }
   }
 
   render() {
-    
     return (
-      <View style={styles.MainView}>
-        <Grid style={styles.GridView}>
-          <Row style={styles.GridRowColItem}>
-            <Col style={styles.GridRowColItem}>
+      <View style={styles.mainView}>
+        <Grid style={styles.gridView}>
+          <Row style={styles.gridRowColItem}>
+            <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.IsFirstDisabled}
+                Disabled={this.state.isFirstDisabled}
                 OnPress={() => {
                   this.setState({
-                    IsFirstTouched: true,
-                    IsFirstDisabled: true,
-                    IsSecondDisabled: true,
-                    IsThirdDisabled: true,
-                    IsFourthDisabled: true,
+                    isFirstTouched: true,
+                    isFirstDisabled: true,
+                    isSecondDisabled: true,
+                    isThirdDisabled: true,
+                    isFourthDisabled: true,
                     continueReseting: true
                   });
-                  this.props.Pressed(1);
+                  this.props.pressed(1);
                 }}
-                Image={this.props.Image1}
-                Result={this.state.IsFirstTouched}
-                CorrectOption={this.props.CorrectOption}
+                Image={this.props.image1}
+                Result={this.state.isFirstTouched}
+                CorrectOption={this.props.correctOption}
                 CurrentOption={1}
-                TickImage={this.props.TickImage}
-                CrossImage={this.props.CrossImage}
+                TickImage={this.props.tickImage}
+                CrossImage={this.props.crossImage}
               />
             </Col>
-            <Col style={styles.GridRowColItem}>
+            <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.IsSecondDisabled}
+                Disabled={this.state.gsSecondDisabled}
                 OnPress={() => {
                   this.setState({
-                    IsSecondTouched: true,
-                    IsFirstDisabled: true,
-                    IsSecondDisabled: true,
-                    IsThirdDisabled: true,
-                    IsFourthDisabled: true,
+                    isSecondTouched: true,
+                    isFirstDisabled: true,
+                    isSecondDisabled: true,
+                    isThirdDisabled: true,
+                    isFourthDisabled: true,
                     continueReseting: true
                   });
-                  this.props.Pressed(2);
+                  this.props.pressed(2);
                 }}
-                Image={this.props.Image2}
-                Result={this.state.IsSecondTouched}
-                CorrectOption={this.props.CorrectOption}
+                Image={this.props.image2}
+                Result={this.state.isSecondTouched}
+                CorrectOption={this.props.correctOption}
                 CurrentOption={2}
-                TickImage={this.props.TickImage}
-                CrossImage={this.props.CrossImage}
+                TickImage={this.props.tickImage}
+                CrossImage={this.props.crossImage}
               />
             </Col>
           </Row>
-          <Row style={styles.GridRowColItem}>
-            <Col style={styles.GridRowColItem}>
+          <Row style={styles.gridRowColItem}>
+            <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.IsThirdDisabled}
+                Disabled={this.state.isThirdDisabled}
                 OnPress={() => {
                   this.setState({
-                    IsThirdTouched: true,
-                    IsFirstDisabled: true,
-                    IsSecondDisabled: true,
-                    IsThirdDisabled: true,
-                    IsFourthDisabled: true,
+                    isThirdTouched: true,
+                    isFirstDisabled: true,
+                    isSecondDisabled: true,
+                    isThirdDisabled: true,
+                    isFourthDisabled: true,
                     continueReseting: true
                   });
-                  this.props.Pressed(3);
+                  this.props.pressed(3);
                 }}
-                Image={this.props.Image3}
-                Result={this.state.IsThirdTouched}
-                CorrectOption={this.props.CorrectOption}
+                Image={this.props.image3}
+                Result={this.state.isThirdTouched}
+                CorrectOption={this.props.correctOption}
                 CurrentOption={3}
-                TickImage={this.props.TickImage}
-                CrossImage={this.props.CrossImage}
+                TickImage={this.props.tickImage}
+                CrossImage={this.props.crossImage}
               />
             </Col>
-            <Col style={styles.GridRowColItem}>
+            <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.IsFourthDisabled}
+                Disabled={this.state.isFourthDisabled}
                 OnPress={() => {
                   this.setState({
-                    IsFourthTouched: true,
-                    IsFirstDisabled: true,
-                    IsSecondDisabled: true,
-                    IsThirdDisabled: true,
-                    IsFourthDisabled: true,
+                    isFourthTouched: true,
+                    isFirstDisabled: true,
+                    isSecondDisabled: true,
+                    isThirdDisabled: true,
+                    isFourthDisabled: true,
                     continueReseting: true
                   });
-                  this.props.Pressed(4);
+                  this.props.pressed(4);
                 }}
-                Image={this.props.Image4}
-                Result={this.state.IsFourthTouched}
-                CorrectOption={this.props.CorrectOption}
+                Image={this.props.image4}
+                Result={this.state.isFourthTouched}
+                CorrectOption={this.props.correctOption}
                 CurrentOption={4}
-                TickImage={this.props.TickImage}
-                CrossImage={this.props.CrossImage}
+                TickImage={this.props.tickImage}
+                CrossImage={this.props.crossImage}
               />
             </Col>
           </Row>

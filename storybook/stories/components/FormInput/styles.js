@@ -1,23 +1,23 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  ItemStyle: {
+  itemStyle: {
     flex: 1,
     flexDirection: "column",
     borderColor: "transparent"
   },
-  LabelStyle: {
+  labelStyle: {
     fontSize: 16,
     alignSelf: "flex-start",
     paddingBottom: 5
   },
-  InputStyle: {
+  inputStyle: {
     width: "102%",
     backgroundColor: "white",
     borderWidth: 1,
     height: 40,
     borderColor: "#0067a0"
   },
-  ErrorContentStyle: {
+  errorContentStyle: {
     color: "#EF3350",
     alignSelf: "flex-end",
     position: "absolute",

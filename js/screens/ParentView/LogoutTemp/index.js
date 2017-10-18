@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { StackNavigator, NavigationActions } from "react-navigation";
-import {connect} from 'react-redux';
+import { NavigationActions } from "react-navigation";
+import { connect } from "react-redux";
 
 class LogoutTemp extends React.Component {
   componentWillMount() {
-    this.props.dispatch({type:'USER_SIGN_OUT'});
-    this.props.ParentNavProps.screenProps.dispatch(
+    this.props.dispatch({ type: "USER_SIGN_OUT" });
+    this.props.parentNavProps.screenProps.dispatch(
       NavigationActions.reset({
         index: 0,
         actions: [
@@ -19,7 +19,7 @@ class LogoutTemp extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Text>This is LogoutTemp.js</Text>
       </View>
     );
@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (store)=>{
+const mapStateToProps = store => {
   return { user: store.user };
-}
+};
 
-const mapDispatchToProps = (dispatch)=>{
-  return {dispatch}
-}
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
 
-export default  connect(mapStateToProps, mapDispatchToProps)(LogoutTemp);
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutTemp);

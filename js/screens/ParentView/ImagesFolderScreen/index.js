@@ -1,7 +1,7 @@
 import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
 import { connect } from "react-redux";
-import { Alert } from "react-native";
+import { Alert, StatusBar } from "react-native";
 import { Toast } from "native-base";
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
@@ -28,11 +28,6 @@ class ImagesFolderScreen extends React.Component {
       this.props.navigation.navigate("Dashboard");
     }
   }
-
-  // componentWillMount(){
-  //   this.props.dsipatch({type:'SET_ORDER_LIST'})
-  // }
-
   removeItems(items) {
     this.props.dispatch({
       type: "REMOVE_FOLDERS",
@@ -41,13 +36,14 @@ class ImagesFolderScreen extends React.Component {
   }
 
   render() {
+    StatusBar.setBarStyle("light-content", true);
     return (
       <ImagesFolder
-        DrawerOpen={() => {
+        drawerOpen={() => {
           this.props.navigation.navigate("DrawerOpen");
         }}
-        TotalPoints={100}
-        OnPressSubmitButton={() => {
+        totalPoints={100}
+        onPressSubmitButton={() => {
           if (this.props.child && this.props.childID) {
             this.props.navigation.navigate("AddFolder");
           } else {
@@ -58,12 +54,11 @@ class ImagesFolderScreen extends React.Component {
             });
           }
         }}
-        ExcerciseData={this.props.dashboardList}
-        SwitchToggled={(item, onOff) => {
-          this.toggleStatus(onOff, item.FolderID);
+        excerciseData={this.props.dashboardList}
+        switchToggled={(item, onOff) => {
+          this.toggleStatus(onOff, item.folderID);
         }}
-        StatusBarStyle="light-content"
-        OnPressDeleteButton={CheckedItems => {
+        onPressDeleteButton={checkedItems => {
           Alert.alert(
             "Delete Folders",
             "Are you sure you want to delete these folders?",
@@ -72,30 +67,30 @@ class ImagesFolderScreen extends React.Component {
                 text: "OK",
                 onPress: () => {
                   debugger;
-                  this.removeItems(CheckedItems);
+                  this.removeItems(checkedItems);
                 }
               },
               { text: "Cancel", onPress: () => {} }
             ]
           );
         }}
-        OnPressMoveDown={CheckedItem => {
-          console.log(CheckedItem);
+        onPressMoveDown={checkedItem => {
+          console.log(checkedItem);
           this.props.dispatch({
             type: "UPDATE_ORDER_DOWN",
             payload: {
               childID: this.props.childID,
-              folderID: CheckedItem.FolderID,
+              folderID: checkedItem.folderID,
               orderList: this.props.orderList
             }
           });
         }}
-        OnPressMoveUp={CheckedItem => {
+        onPressMoveUp={checkedItem => {
           this.props.dispatch({
             type: "UPDATE_ORDER_UP",
             payload: {
               childID: this.props.childID,
-              folderID: CheckedItem.FolderID,
+              folderID: checkedItem.folderID,
               orderList: this.props.orderList
             }
           });

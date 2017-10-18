@@ -3,34 +3,34 @@ import PropTypes from "prop-types";
 import { Input, Item, View, Text, Icon } from "native-base";
 import styles from "./styles";
 const FormInput = props => (
-  <View style={props.ViewStyle}>
-    <Item regular style={styles.ItemStyle} error={props.Error}>
+  <View style={props.viewStyle}>
+    <Item regular style={styles.itemStyle} error={props.error}>
       <Text
         style={[
-          styles.LabelStyle,
+          styles.labelStyle,
           {
-            color: props.LabelColor
+            color: props.labelColor
           }
         ]}
       >
-        {props.Label}
+        {props.label}
       </Text>
-      <View style={styles.InputStyle}>
+      <View style={styles.inputStyle}>
         <Input
           style={{
-            borderColor: props.Error ? "red" : "white",
+            borderColor: props.error ? "red" : "white",
             borderWidth: 1.5
           }}
-          onChange={props.OnChange}
-          secureTextEntry={props.IsPassword}
-          keyboardType={props.OnlyNumberEntry ? "numeric" : "default"}
-          placeholder={props.Placeholder}
+          onChange={props.onChange}
+          secureTextEntry={props.isPassword}
+          keyboardType={props.onlyNumberEntry ? "numeric" : "default"}
+          placeholder={props.placeholder}
           onFocus={props.onFocus}
         />
-        {props.Error ? (
+        {props.error ? (
           <Icon
             name="information-circle"
-            style={styles.ErrorContentStyle}
+            style={styles.errorContentStyle}
             active={true}
           />
         ) : (
@@ -42,18 +42,18 @@ const FormInput = props => (
 );
 
 FormInput.propTypes = {
-  Error: PropTypes.bool,
-  LabelColor: PropTypes.string,
-  ErrorText: PropTypes.string,
-  OnlyNumberEntry: PropTypes.bool,
-  ViewStyle: PropTypes.oneOfType([
+  error: PropTypes.bool,
+  labelColor: PropTypes.string,
+  errorText: PropTypes.string,
+  onlyNumberEntry: PropTypes.bool,
+  viewStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.number,
     PropTypes.array
   ]),
-  Label: PropTypes.string,
-  OnChange: PropTypes.func,
-  IsPassword: PropTypes.bool
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  isPassword: PropTypes.bool
 };
 FormInput.defaultProps = {
   onPress: () => {},

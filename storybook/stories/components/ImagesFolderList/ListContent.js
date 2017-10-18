@@ -13,38 +13,38 @@ class ListContent extends React.Component {
     super(props);
     this.state = {
       checked: false,
-      switched: this.props.ListItem.Status,
-      IsContentVisible: false
+      switched: this.props.listItem.status,
+      isContentVisible: false
     };
   }
   render() {
     return (
       <ListItem
         onPress={() => {
-          this.setState({ IsContentVisible: !this.state.IsContentVisible });
+          this.setState({ isContentVisible: !this.state.isContentVisible });
         }}
-        style={styles.ListItemStyle}
+        style={styles.listItemStyle}
       >
-        <View style={styles.ListItemInnerViewStyle}>
-          <View style={styles.ListItemInnerViewInnerViewStyle}>
-            <Left style={styles.ListItemInnerViewInnerViewLeftStyle}>
+        <View style={styles.listItemInnerViewStyle}>
+          <View style={styles.listItemInnerViewInnerViewStyle}>
+            <Left style={styles.listItemInnerViewInnerViewLeftStyle}>
               <View
-                style={styles.ListItemInnerViewInnerViewLeftInnerView1Style}
+                style={styles.listItemInnerViewInnerViewLeftInnerView1Style}
               >
                 <CheckBox
                   label=""
                   checked={this.state.checked}
                   onChange={checked => {
                     this.setState({ checked: !this.state.checked });
-                    this.props.CheckBoxChange(this.props.ListItem, checked);
+                    this.props.checkBoxChange(this.props.listItem, checked);
                   }}
                   checkboxStyle={{
                     borderRadius: 0,
                     borderWidth: 1,
                     borderColor: "#ccc"
                   }}
-                  uncheckedImage={require("../../../../js/assets/Empty.png")}
-                  checkedImage={require("../../../../js/assets/chkbxTick.png")}
+                  uncheckedImage={require("../../../../js/assets/empty.png")}
+                  checkedImage={require("../../../../js/assets/chkbx-tick.png")}
                 />
               </View>
             </Left>
@@ -56,12 +56,12 @@ class ListContent extends React.Component {
               }}
             >
               <View
-                style={styles.ListItemInnerViewInnerViewLeftInnerView2Style}
+                style={styles.listItemInnerViewInnerViewLeftInnerView2Style}
               >
                 <Image
-                  source={this.props.ListItem.DataFolderContent[0].Image}
+                  source={this.props.listItem.dataFolderContent[0].image}
                   style={
-                    styles.ListItemInnerViewInnerViewLeftInnerView2ImageStyle
+                    styles.listItemInnerViewInnerViewLeftInnerView2ImageStyle
                   }
                   resizeMethod="auto"
                   resizeMode="contain"
@@ -69,51 +69,51 @@ class ListContent extends React.Component {
               </View>
 
               <View
-                style={styles.ListItemInnerViewInnerViewLeftInnerView3Style}
+                style={styles.listItemInnerViewInnerViewLeftInnerView3Style}
               >
                 <Text
                   style={
-                    styles.ListItemInnerViewInnerViewLeftInnerView3TextStyle
+                    styles.listItemInnerViewInnerViewLeftInnerView3TextStyle
                   }
                 >
-                  {this.props.ListItem.Name}
+                  {this.props.listItem.name}
                 </Text>
               </View>
-              <View style={styles.ListItemInnerViewInnerViewBodyInnerViewStyle}>
+              <View style={styles.listItemInnerViewInnerViewBodyInnerViewStyle}>
                 <Text
                   style={
-                    styles.ListItemInnerViewInnerViewBodyInnerViewBadgeStyle
+                    styles.listItemInnerViewInnerViewBodyInnerViewBadgeStyle
                   }
                 >
-                  {"(" + this.props.ListItem.DataFolderContent.length + ")"}
+                  {"(" + this.props.listItem.dataFolderContent.length + ")"}
                 </Text>
               </View>
             </Body>
-            <Right style={styles.ListItemInnerViewInnerViewRightStyle}>
+            <Right style={styles.listItemInnerViewInnerViewRightStyle}>
               <Switch
                 onTintColor="#eeae30"
                 value={this.state.switched}
                 onValueChange={() => {
                   this.setState({ switched: !this.state.switched });
-                  this.props.SwitchToggled(
-                    this.props.ListItem,
+                  this.props.switchToggled(
+                    this.props.listItem,
                     !this.state.switched
                   );
                 }}
               />
             </Right>
           </View>
-          {this.state.IsContentVisible ? (
-            <View style={styles.ListItemInnerViewGridOuterViewStyle}>
+          {this.state.isContentVisible ? (
+            <View style={styles.listItemInnerViewGridOuterViewStyle}>
               <Grid
-                style={styles.ListItemInnerViewGridViewStyle}
+                style={styles.listItemInnerViewGridViewStyle}
                 renderItem={(data, i) => (
                   <Image
-                    source={data.Image}
+                    source={data.image}
                     style={[
-                      styles.ListItemInnerViewGridItemImageStyle,
+                      styles.listItemInnerViewGridItemImageStyle,
                       {
-                        opacity: data.IsCompleted ? 1 : 0.7
+                        opacity: data.isCompleted ? 1 : 0.7
                       }
                     ]}
                     resizeMethod="auto"
@@ -121,7 +121,7 @@ class ListContent extends React.Component {
                     key={i}
                   />
                 )}
-                data={this.props.ListItem.DataFolderContent}
+                data={this.props.listItem.dataFolderContent}
                 itemsPerRow={4}
               />
             </View>

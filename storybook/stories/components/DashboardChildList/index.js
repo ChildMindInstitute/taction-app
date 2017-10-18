@@ -5,31 +5,31 @@ import { Image, TouchableOpacity } from "react-native";
 import Grid from "react-native-grid-component";
 import styles from "./styles";
 const DashboardChildList = props => (
-  <View style={styles.MainView}>
+  <View style={styles.mainView}>
     <Grid
-      style={styles.GridStyle}
+      style={styles.gridStyle}
       renderItem={(data, i) => (
         <TouchableOpacity
           transparent
-          onPress={() => props.ItemPress(data)}
+          onPress={() => props.itemPress(data)}
           style={[
-            styles.GridItemButtonStyle,
-            { opacity: data.IsPlayed ? 0.3 : 1 }
+            styles.gridItemButtonStyle,
+            { opacity: data.isPlayed ? 0.3 : 1 }
           ]}
         >
           <Card>
-            <View style={styles.CardView} key={i}>
+            <View style={styles.cardView} key={i}>
               <Image
-                source={data.Image}
-                style={styles.CardImage}
+                source={data.image}
+                style={styles.cardImage}
                 resizeMethod="auto"
                 resizeMode="contain"
               />
-              <Text style={styles.CardText}>{data.Name}</Text>
+              <Text style={styles.cardText}>{data.name}</Text>
               {data.IsPlayed ? (
                 <Image
-                  source={data.Stars}
-                  style={styles.CardStarImage}
+                  source={data.stars}
+                  style={styles.cardStarImage}
                   resizeMethod="auto"
                   resizeMode="contain"
                 />
@@ -40,7 +40,7 @@ const DashboardChildList = props => (
           </Card>
         </TouchableOpacity>
       )}
-      data={props.ExcercisesAvailable}
+      data={props.excercisesAvailable}
       itemsPerRow={3}
     />
   </View>

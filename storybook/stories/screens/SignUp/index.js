@@ -10,84 +10,84 @@ import { KeyboardAvoidingView } from "react-native";
 import styles from "./styles";
 const SignUp = props => (
   <KeyboardAvoidingView
-    style={styles.MainOuterView}
+    style={styles.mainOuterView}
     behavior="position"
-    contentContainerStyle={styles.MainOuterView}
+    contentContainerStyle={styles.mainOuterView}
     keyboardVerticalOffset={-170}
   >
-    <View style={styles.MainView}>
+    <View style={styles.mainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle="light-content"
       />
-      <View style={styles.TopSpace}>
-        <Logo imageDimensions={styles.MainLogoStyles} />
+      <View style={styles.topSpace}>
+        <Logo imageDimensions={styles.mainLogoStyles} />
       </View>
-      <View style={styles.FormSpace}>
-        <Form style={styles.FormStyle}>
+      <View style={styles.formSpace}>
+        <Form style={styles.formStyle}>
           <FormInput
-            IsPassword={false}
-            Label="Username"
-            OnChange={props.UsernameChange}
-            LabelColor="white"
-            ViewStyle={props.InputViewStyle}
-            Error={props.UsernameError}
-            ErrorText={props.Error.Username}
+            isPassword={false}
+            label="Username"
+            onChange={props.usernameChange}
+            labelColor="white"
+            viewStyle={props.inputViewStyle}
+            error={props.usernameError}
+            errorText={props.error.username}
           />
           <FormInput
-            IsPassword={false}
-            Label="Email"
-            LabelColor="white"
-            OnChange={props.EmailChange}
-            ViewStyle={props.InputViewStyle}
-            Error={props.EmailError}
-            ErrorText={props.Error.Email}
+            isPassword={false}
+            label="Email"
+            labelColor="white"
+            onChange={props.emailChange}
+            viewStyle={props.inputViewStyle}
+            error={props.emailError}
+            errorText={props.error.email}
           />
           <FormInput
-            IsPassword={true}
-            LabelColor="white"
-            Label="Password"
-            OnChange={props.PasswordChange}
-            ViewStyle={props.InputViewStyle}
-            Error={props.PasswordError}
-            ErrorText={props.Error.Password}
+            isPassword={true}
+            labelColor="white"
+            label="Password"
+            onChange={props.passwordChange}
+            viewStyle={props.inputViewStyle}
+            error={props.passwordError}
+            errorText={props.error.password}
           />
           <FormInput
-            IsPassword={true}
-            LabelColor="white"
-            Label="ConfirmPassword"
-            OnChange={props.ConfirmPasswordChange}
-            ViewStyle={props.InputViewStyle}
-            Error={props.ConfirmPasswordError}
-            ErrorText={props.Error.ConfirmPassword}
+            isPassword={true}
+            labelColor="white"
+            label="ConfirmPassword"
+            onChange={props.confirmPasswordChange}
+            viewStyle={props.inputViewStyle}
+            error={props.confirmPasswordError}
+            errorText={props.error.confirmPassword}
           />
         </Form>
       </View>
 
-      <View style={styles.SubmitButtonSpace}>
+      <View style={styles.submitButtonSpace}>
         <Button2
-          OnPress={props.OnPressSubmitButton}
-          SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
-          ButtonText="Submit &rarr;"
-          Submitted={props.Submitted}
-          Disabled={props.Disabled}
+          onPress={props.onPressSubmitButton}
+          submitButtonTextStyle={styles.submitButtonTextStyle}
+          buttonText="Submit &rarr;"
+          submitted={props.submitted}
+          disabled={props.disabled}
         />
       </View>
-      <View style={styles.AlreadyHaveAnAccountSpace}>
-        <Text style={styles.AlreadyHaveAnAccountTextColor}>
+      <View style={styles.alreadyHaveAnAccountSpace}>
+        <Text style={styles.alreadyHaveAnAccountTextColor}>
           Already have an account?
         </Text>
         <Button
           transparent
-          style={styles.LoginRedirectButtonStyle}
-          onPress={props.LoginRedirectPress}
+          style={styles.loginRedirectButtonStyle}
+          onPress={props.loginRedirectPress}
         >
-          <Text style={styles.LoginRedirectButtonTextStyle}>Login</Text>
+          <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
         </Button>
       </View>
-      <View style={styles.BottomLogoSpace}>
-        <Logo1 imageDimensions={styles.SubLogoStyles} />
+      <View style={styles.BottomlogoSpace}>
+        <Logo1 imageDimensions={styles.subLogoStyles} />
       </View>
     </View>
   </KeyboardAvoidingView>

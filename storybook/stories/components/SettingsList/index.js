@@ -13,36 +13,36 @@ import {
 } from "native-base";
 const margin = { marginLeft: "5%" };
 const SettingsList = props => (
-  <List style={props.ListStyle}>
+  <List style={props.listStyle}>
     <Separator bordered>
       <Text style={margin}>PROFILE</Text>
     </Separator>
-    <ListItem icon button onPress={props.NamePress}>
+    <ListItem icon button onPress={props.namePress}>
       <Body>
         <Text style={margin}>Name</Text>
       </Body>
       <Right>
-        <Text>{props.Name}</Text>
+        <Text>{props.name}</Text>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
-    {props.ChildExists ? (
+    {props.childExists ? (
       <View>
-        <ListItem icon button onPress={props.NameChildPress}>
+        <ListItem icon button onPress={props.nameChildPress}>
           <Body>
             <Text style={margin}>Name of child</Text>
           </Body>
           <Right>
-            <Text>{props.NameChild}</Text>
+            <Text>{props.nameChild}</Text>
             <Icon name="arrow-forward" />
           </Right>
         </ListItem>
-        <ListItem icon button onPress={props.AgePress}>
+        <ListItem icon button onPress={props.agePress}>
           <Body>
-            <Text style={margin}>{"Age of " + props.NameChild}</Text>
+            <Text style={margin}>{"Age of " + props.nameChild}</Text>
           </Body>
           <Right>
-            <Text>{props.Age}</Text>
+            <Text>{props.age}</Text>
             <Icon name="arrow-forward" />
           </Right>
         </ListItem>
@@ -50,7 +50,7 @@ const SettingsList = props => (
     ) : (
       <View />
     )}
-    <ListItem button icon onPress={props.PasswordPress}>
+    <ListItem button icon onPress={props.passwordPress}>
       <Body>
         <Text style={margin}>Password</Text>
       </Body>
@@ -62,12 +62,12 @@ const SettingsList = props => (
     <Separator bordered>
       <Text style={margin}>GAME</Text>
     </Separator>
-    <ListItem icon button onPress={props.PressNoOfImagesPerSession}>
+    <ListItem icon button onPress={props.pressNoOfImagesPerSession}>
       <Body>
         <Text style={margin}>Images per session</Text>
       </Body>
       <Right>
-        <Text>{props.NoOfImagesPerSession}</Text>
+        <Text>{props.noOfImagesPerSession}</Text>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
@@ -78,19 +78,19 @@ const SettingsList = props => (
       <Right>
         <Switch
           onValueChange={value => {
-            props.RandomSlider(value);
+            props.randomSlider(value);
           }}
           onTintColor="#eeae30"
-          value={props.RandomSliderValue}
+          value={props.randomSliderValue}
         />
       </Right>
     </ListItem>
-    <ListItem icon button onPress={props.PressMaximumImageDuration}>
+    <ListItem icon button onPress={props.pressMaximumImageDuration}>
       <Body>
         <Text style={margin}>Maximum image duration</Text>
       </Body>
       <Right>
-        <Text>{props.MaximumImageDuration}</Text>
+        <Text>{props.maximumImageDuration}</Text>
         <Icon name="arrow-forward" />
       </Right>
     </ListItem>
@@ -104,14 +104,14 @@ const SettingsList = props => (
       <Right>
         <Switch
           onValueChange={value => {
-            props.SoundSlider(value);
+            props.soundSlider(value);
           }}
           onTintColor="#eeae30"
-          value={props.SoundSliderValue}
+          value={props.soundSliderValue}
         />
       </Right>
     </ListItem>
-    <ListItem icon button onPress={props.PressAddPrizes}>
+    <ListItem icon button onPress={props.pressAddPrizes}>
       <Body>
         <Text style={margin}>Add prizes</Text>
       </Body>

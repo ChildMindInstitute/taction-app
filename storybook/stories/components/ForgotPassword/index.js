@@ -5,17 +5,17 @@ import { Button, Text } from "native-base";
 const LoginForm = props => (
   <Button
     transparent
-    onPress={props.OnPressForgotPassword}
-    style={props.ForgotPasswordButtonStyle}
+    onPress={props.onPressForgotPassword}
+    style={props.forgotPasswordButtonStyle}
   >
-    <Text style={props.ForgotPasswordTextStyle}>Forgot password?</Text>
+    <Text style={props.forgotPasswordTextStyle}>Forgot password?</Text>
   </Button>
 );
 
 LoginForm.propTypes = {
-  ForgotPasswordTextStyle: PropTypes.object,
-  ForgotPasswordButtonStyle: PropTypes.object,
-  OnPressForgotPassword: PropTypes.func
+  forgotPasswordTextStyle: PropTypes.object,
+  forgotPasswordButtonStyle: PropTypes.object,
+  onPressForgotPassword: PropTypes.func
 };
 LoginForm.defaultProps = {
   onPressForgotPassword: () => {}

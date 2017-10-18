@@ -12,14 +12,14 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      CurrentLevelAnswerSubmitted: false,
-      TimeExpired: false
+      currentLevelAnswerSubmitted: false,
+      timeExpired: false
     };
   }
   render() {
     return (
-      <View style={styles.ContainerOuterViewStyle}>
-        <Container style={styles.ContainerStyle}>
+      <View style={styles.containerOuterViewStyle}>
+        <Container style={styles.containerStyle}>
           <StatusBar
             translucent={true}
             backgroundColor="transparent"
@@ -27,78 +27,78 @@ class Home extends React.Component {
           />
           <HeaderCommon
             isRightRequired={true}
-            leftIconStyle={styles.HeaderLeftStyle}
-            leftPress={this.props.Back}
+            leftIconStyle={styles.headerLeftStyle}
+            leftPress={this.props.back}
             leftIconName="arrow-back"
-            headerStyle={styles.HeaderStyle}
-            Title=""
-            TitleStyle={styles.HeaderLeftStyle}
+            headerStyle={styles.headerStyle}
+            title=""
+            titleStyle={styles.headerLeftStyle}
           >
-            <View style={styles.HeaderRightStyle}>
-              <View style={styles.HeaderRightImageSpace}>
+            <View style={styles.headerRightStyle}>
+              <View style={styles.headerRightImageSpace}>
                 <Image
-                  source={require("../../../../js/assets/star_filled.png")}
+                  source={require("../../../../js/assets/star-filled.png")}
                   style={{ width: 30, height: 30 }}
                   resizeMethod="auto"
                   resizeMode="contain"
                 />
               </View>
-              <View style={styles.HeaderRightTextSpace}>
-                <View style={styles.HeaderRightTotalPointsViewStyle}>
-                  <Text style={styles.HeaderRightTotalPointsStyle}>
-                    {this.props.TotalPoints}
+              <View style={styles.headerRightTextSpace}>
+                <View style={styles.headerRightTotalPointsViewStyle}>
+                  <Text style={styles.headerRightTotalPointsStyle}>
+                    {this.props.totalPoints}
                   </Text>
                 </View>
-                <View style={styles.HeaderRightTotalPointsTextViewStyle}>
-                  <Text style={styles.HeaderRightTotalPointsTextStyle}>
+                <View style={styles.headerRightTotalPointsTextViewStyle}>
+                  <Text style={styles.headerRightTotalPointsTextStyle}>
                     points
                   </Text>
                 </View>
               </View>
             </View>
           </HeaderCommon>
-          <View style={styles.ExcerciseSpace}>
-            <Text style={styles.ExcerciseText}>{this.props.Question}</Text>
-            <View style={styles.ExcerciseContentStyle}>
+          <View style={styles.excerciseSpace}>
+            <Text style={styles.excerciseText}>{this.props.question}</Text>
+            <View style={styles.excerciseContentStyle}>
               <HomeContent
-                Image1={this.props.Image1}
-                Image2={this.props.Image2}
-                Image3={this.props.Image3}
-                Image4={this.props.Image4}
-                TickImage={this.props.TickImage}
-                CrossImage={this.props.CrossImage}
-                CorrectOption={this.props.CorrectOption}
-                Pressed={item => {
-                  this.setState({ CurrentLevelAnswerSubmitted: true });
-                  this.props.Pressed(item);
+                image1={this.props.image1}
+                image2={this.props.image2}
+                image3={this.props.image3}
+                image4={this.props.image4}
+                tickImage={this.props.tickImage}
+                crossImage={this.props.crossImage}
+                correctOption={this.props.correctOption}
+                pressed={item => {
+                  this.setState({ currentLevelAnswerSubmitted: true });
+                  this.props.pressed(item);
                 }}
-                HasToReset={this.props.HasToReset}
-                IsTimeExpired={this.state.TimeExpired}
-                TimeExpiredCounterSwitch={() =>
-                  this.setState({ TimeExpired: false })}
-                IsLast={this.props.IsLast}
+                hasToReset={this.props.hasToReset}
+                isTimeExpired={this.state.timeExpired}
+                timeExpiredCounterSwitch={() =>
+                  this.setState({ timeExpired: false })}
+                isLast={this.props.isLast}
               />
             </View>
           </View>
           <HomeFooter
-            FooterStyle={styles.FooterStyle}
-            Left={this.props.LeftImages}
-            Total={this.props.TotalImages}
+            footerStyle={styles.footerStyle}
+            left={this.props.teftImages}
+            total={this.props.totalImages}
           />
           {this.props.children}
         </Container>
         <HomeTimer
-          TimeLeftDenomination={this.props.TimeLeftDenomination}
-          TimeLeft={this.props.TimeLeft}
-          ViewStyle={styles.HomeTimerStyle}
-          FinishedFunc={this.props.FinishedFunc}
-          CurrentLevelAnswerSubmitted={this.state.CurrentLevelAnswerSubmitted}
-          CurrentLevelAnswerSubmittedSwitch={() => {
-            this.setState({ CurrentLevelAnswerSubmitted: false });
+          timeLeftDenomination={this.props.timeLeftDenomination}
+          timeLeft={this.props.timeLeft}
+          viewStyle={styles.homeTimerStyle}
+          finishedFunc={this.props.finishedFunc}
+          currentLevelAnswerSubmitted={this.state.currentLevelAnswerSubmitted}
+          currentLevelAnswerSubmittedSwitch={() => {
+            this.setState({ currentLevelAnswerSubmitted: false });
           }}
-          TimeExpiredFunc={() => {
-            this.setState({ TimeExpired: true });
-            this.props.TimeExpiredImageShuffle();
+          timeExpiredFunc={() => {
+            this.setState({ timeExpired: true });
+            this.props.timeExpiredImageShuffle();
           }}
         />
       </View>

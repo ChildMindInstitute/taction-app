@@ -1,11 +1,11 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainOuterView: {
+  mainOuterView: {
     flex: 1,
     backgroundColor: "#0067a0"
   },
-  MainView: {
+  mainView: {
     flex: 1,
     backgroundColor: "#0067a0",
     marginTop:
@@ -14,33 +14,33 @@ const styles = StyleSheet.create({
         : 0,
     margin: "5%"
   },
-  TopSpace: {
+  topSpace: {
     flex: 3,
     alignItems: "center",
     justifyContent: "center",
     margin: "5%"
   },
-  FormSpace: { flex: 9 },
-  FormStyle: { flex: 1 },
-  SubmitButtonSpace: { flex: 1, marginTop: "5%" },
+  formSpace: { flex: 9 },
+  formStyle: { flex: 1 },
+  submitButtonSpace: { flex: 1, marginTop: "5%" },
   MainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
-  BottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
-  SubLogoStyles: { alignSelf: "center", height: 40, width: 120 },
-  SubmitButtonTextStyle: { color: "white" },
-  AlreadyHaveAnAccountSpace: {
+  bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
+  subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
+  submitButtonTextStyle: { color: "white" },
+  alreadyHaveAnAccountSpace: {
     flex: 1,
     flexDirection: "row",
     alignItems: "flex-end",
     alignSelf: "center",
     marginTop: "5%"
   },
-  AlreadyHaveAnAccountTextColor: { color: "#fff", opacity: 0.8 },
-  LoginRedirectButtonStyle: {
+  alreadyHaveAnAccountTextColor: { color: "#fff", opacity: 0.8 },
+  loginRedirectButtonStyle: {
     paddingTop: 0,
     paddingBottom: 0,
     alignSelf: "flex-end",
     height: 20
   },
-  LoginRedirectButtonTextStyle: { color: "#fff", fontWeight: "bold" }
+  aoginRedirectButtonTextStyle: { color: "#fff", fontWeight: "bold" }
 });
 export default styles;

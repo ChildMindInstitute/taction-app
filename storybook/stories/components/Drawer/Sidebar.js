@@ -42,20 +42,20 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <View style={styles.ContainerStyle}>
+      <View style={styles.containerStyle}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.ContentStyle}>
+        <View style={styles.contentStyle}>
           <View style={styles.drawerCover}>
             <Logo imageDimensions={styles.drawerImage} />
           </View>
-          <View style={styles.ListSpace}>
+          <View style={styles.listSpace}>
             <List
               dataArray={datas}
               renderRow={data => (
                 <ListItem
                   button
                   style={[
-                    styles.ListItemStyle,
+                    styles.listItemStyle,
                     {
                       display:
                         data.name == "Add Child" &&
@@ -75,7 +75,7 @@ class SideBar extends React.Component {
               )}
             />
           </View>
-          <View style={styles.Footer}>
+          <View style={styles.footer}>
             <Logo1 imageDimensions={styles.drawerImage2} />
           </View>
         </View>

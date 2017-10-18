@@ -3,22 +3,22 @@ import PropTypes from "prop-types";
 import { Text, Button, View } from "native-base";
 import styles from "./styles";
 const RegisterWithUs = props => (
-  <View style={styles.MainView}>
-    <Text style={styles.MainViewText}>Don't have an Account?</Text>
+  <View style={styles.mainView}>
+    <Text style={styles.mainViewText}>Don't have an Account?</Text>
     <Button
-      style={styles.MainViewButton}
+      style={styles.mainViewButton}
       transparent
-      onPress={props.OnPressRegisterNow}
+      onPress={props.onPressRegisterNow}
     >
-      <Text style={styles.MainViewButtonText}>Register Now</Text>
+      <Text style={styles.mainViewButtonText}>Register Now</Text>
     </Button>
   </View>
 );
 
 RegisterWithUs.propTypes = {
-  TextStyle: PropTypes.object,
-  TextButtonStyle: PropTypes.object,
-  OnPressRegisterNow: PropTypes.func
+  textStyle: PropTypes.object,
+  textButtonStyle: PropTypes.object,
+  onPressRegisterNow: PropTypes.func
 };
 RegisterWithUs.defaultProps = {
   onPressRegisterNow: () => {}

@@ -15,11 +15,11 @@ class LoginAsScreen extends React.Component {
 
   componentWillMount() {
     if (this.props.child.childDetails == null || this.props.child == null) {
-      data = [{ Name: this.props.parent.name }];
+      data = [{ name: this.props.parent.name }];
     } else {
       data = [
-        { Name: this.props.parent.name },
-        { Name: this.props.child.childDetails.name }
+        { name: this.props.parent.name },
+        { name: this.props.child.childDetails.name }
       ];
     }
   }
@@ -27,8 +27,8 @@ class LoginAsScreen extends React.Component {
   render() {
     return (
       <LoginAs
-        Data={data}
-        ListItemPress={item => {
+        data={data}
+        listItemPress={item => {
           if (data.indexOf(item) === 0) {
             this.props.navigation.dispatch(
               NavigationActions.reset({

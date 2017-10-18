@@ -4,13 +4,13 @@ import { List } from "native-base";
 import ListContent from "./ListContent";
 const ImagesFolderList = props => (
   <List
-    style={props.ListStyle}
-    dataArray={props.ListData}
+    style={props.listStyle}
+    dataArray={props.listData}
     renderRow={item => (
       <ListContent
-        ListItem={item}
-        SwitchToggled={props.SwitchToggled}
-        CheckBoxChange={props.CheckBoxChange}
+        listItem={item}
+        switchToggled={props.switchToggled}
+        checkBoxChange={props.checkBoxChange}
       />
     )}
   />

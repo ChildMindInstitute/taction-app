@@ -1,27 +1,27 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  HeaderStyle: {
+  headerStyle: {
     backgroundColor: "#0067a0"
   },
-  HeaderLeftStyle: { color: "white" },
-  HeaderRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
-  HeaderRightImageSpace: { flex: 1, alignItems: "center" },
-  HeaderRightTextSpace: {
+  headerLeftStyle: { color: "white" },
+  headerRightStyle: { flex: 1, flexDirection: "row", alignItems: "center" },
+  headerRightImageSpace: { flex: 1, alignItems: "center" },
+  headerRightTextSpace: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center"
   },
-  HeaderRightTextAlign: { flex: 1 },
-  HeaderRightTotalPointsStyle: { color: "white", flex: 2 },
-  HeaderRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
-  ContentStyle: { flex: 1, marginLeft: "-4%", paddingTop: "1%" },
-  GreetingsSpace: {
+  headerRightTextAlign: { flex: 1 },
+  headerRightTotalPointsStyle: { color: "white", flex: 2 },
+  headerRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
+  contentStyle: { flex: 1, marginLeft: "-4%", paddingTop: "1%" },
+  greetingsSpace: {
     flex: 1.3,
     alignContent: "center",
     justifyContent: "center",
     flexDirection: "row"
   },
-  GreetingsSpaceInnerView: {
+  greetingsSpaceInnerView: {
     flex: 1,
     flexDirection: "row",
     height: 50,
@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
     marginLeft: "5%",
     marginRight: "5%"
   },
-  ListSpace: { flex: 13 },
-  ContainerStyle: { flex: 1, backgroundColor: "#eee" },
-  Buttons: {
+  listSpace: { flex: 13 },
+  containerStyle: { flex: 1, backgroundColor: "#eee" },
+  buttons: {
     borderRadius: 50,
     backgroundColor: "#fff",
     flex: 1,
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 50
   },
-  ButtonIcons: { color: "#eeae30" },
-  GreetingsSpaceInnerViewInnerView: {
+  buttonIcons: { color: "#eeae30" },
+  greetingsSpaceInnerViewInnerView: {
     flex: 1,
     alignSelf: "center"
   }

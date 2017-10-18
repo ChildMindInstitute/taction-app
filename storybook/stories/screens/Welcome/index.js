@@ -7,45 +7,43 @@ import { View, Text } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
 const Welcome = props => (
-  <View style={styles.MainOuterView}>
-    <View style={styles.MainView}>
+  <View style={styles.mainOuterView}>
+    <View style={styles.mainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle="light-content"
       />
-      <View style={styles.TopSpace}>
-        <Logo imageDimensions={styles.MainLogoStyles} />
+      <View style={styles.topSpace}>
+        <Logo imageDimensions={styles.mainLogoStyles} />
       </View>
-      <View style={styles.WelcomeTextSpace}>
-        <Text style={styles.WelcomeText}>Welcome!</Text>
+      <View style={styles.welcomeTextSpace}>
+        <Text style={styles.welcomeText}>Welcome!</Text>
       </View>
-      <View style={styles.ConfirmTextSpace}>
-        <Text style={styles.ConfirmTextStyle}>
+      <View style={styles.confirmTextSpace}>
+        <Text style={styles.confirmTextStyle}>
           You have successfully completed
         </Text>
-        <Text style={styles.ConfirmTextStyle}>the registration.</Text>
+        <Text style={styles.confirmTextStyle}>the registration.</Text>
       </View>
       <Button
-        OnPress={props.OnPressSubmitButton}
-        SubmitButtonStyle={styles.SubmitButtonStyle}
-        SubmitButtonTextStyle={styles.SubmitButtonTextStyle}
-        ButtonText="Get in &rarr;"
+        onPress={props.onPressSubmitButton}
+        submitButtonStyle={styles.submitButtonStyle}
+        submitButtonTextStyle={styles.submitButtonTextStyle}
+        buttonText="Get in &rarr;"
       />
-      <View style={styles.BottomLogoSpace}>
-        <Logo1 imageDimensions={styles.BottomLogoStyle} />
+      <View style={styles.bottomLogoSpace}>
+        <Logo1 imageDimensions={styles.bottomLogoStyle} />
       </View>
     </View>
   </View>
 );
 
 Welcome.propTypes = {
-  SubmitButtonTextStyle: PropTypes.object,
-  SubmitButtonStyle: PropTypes.object,
-  OnPressSubmitButton: PropTypes.func
+  onPressSubmitButton: PropTypes.func
 };
 Welcome.defaultProps = {
-  OnPressSubmitButton: () => {}
+  onPressSubmitButton: () => {}
 };
 
 export { Welcome as default };

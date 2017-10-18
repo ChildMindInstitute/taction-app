@@ -9,7 +9,7 @@ class HomeTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: this.props.TimeLeft,
+      timer: this.props.timeLeft,
       timeUp: false,
       interval: null
     };
@@ -62,10 +62,10 @@ class HomeTimer extends React.Component {
   }
   render() {
     return (
-      <View style={this.props.ViewStyle}>
-        <View style={styles.OuterCircle}>
-          <View style={styles.InnerCircle}>
-            <Text style={styles.TimeTextStyle}>
+      <View style={this.props.viewStyle}>
+        <View style={styles.outerCircle}>
+          <View style={styles.innerCircle}>
+            <Text style={styles.timeTextStyle}>
               {this.state.timer != "Expired"
                 ? this.returnMinSec(this.state.timer)
                 : "Over"}
@@ -73,7 +73,7 @@ class HomeTimer extends React.Component {
             {this.state.timer != "Expired" ? (
               <View />
             ) : (
-              this.props.FinishedFunc()
+              this.props.finishedFunc()
             )}
             <Text note>
               {this.state.timer > 60000

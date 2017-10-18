@@ -17,19 +17,19 @@ class ModalView extends React.Component {
       <Container>
         <ModalCommon
           isVisible={this.state.modalVisible}
-          Content={
+          content={
             <ModalContent
-              GreetingLine1="Spider"
-              Line2needed={true}
-              GreetingLine2="Level Completed"
-              Stars={require("../../../../js/assets/all_stars.png")}
-              DisplayPoints={120}
-              Description="Time: 02.14 Min"
-              IsButtonNeeded={true}
-              PlayNext={() => {
+              greetingLine1="Spider"
+              line2needed={true}
+              greetingLine2="Level Completed"
+              stars={require("../../../../js/assets/all-stars.png")}
+              displayPoints={120}
+              description="Time: 02.14 Min"
+              isButtonNeeded={true}
+              playNext={() => {
                 alert("PlayNext Pressed");
               }}
-              PlayAgain={() => {
+              playAgain={() => {
                 alert("PlayAgain Pressed");
               }}
             />

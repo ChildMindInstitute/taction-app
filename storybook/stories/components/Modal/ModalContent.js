@@ -7,22 +7,22 @@ class ModalContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      DisplayNextLevel: "flex"
+      displayNextLevel: "flex"
     };
   }
   componentDidUpdate() {
-    if (this.props.PlayNextDisabled && this.state.DisplayNextLevel == "flex")
-      this.setState({ DisplayNextLevel: "none" });
+    if (this.props.playNextDisabled && this.state.displayNextLevel == "flex")
+      this.setState({ displayNextLevel: "none" });
     else if (
-      !this.props.PlayNextDisabled &&
-      this.state.DisplayNextLevel == "none"
+      !this.props.playNextDisabled &&
+      this.state.displayNextLevel == "none"
     )
-      this.setState({ DisplayNextLevel: "flex" });
+      this.setState({ displayNextLevel: "flex" });
   }
   render() {
     return (
-      <View style={styles.ContentMainViewStyle}>
-        {this.props.IsCloseButtonRequired ? (
+      <View style={styles.contentMainViewStyle}>
+        {this.props.isCloseButtonRequired ? (
           <View style={{ flexDirection: "row" }}>
             <Right>
               <Button transparent onPress={this.props.toggleVisiblity}>
@@ -38,7 +38,7 @@ class ModalContent extends React.Component {
         )}
         <View
           style={[
-            styles.ContentMainViewStyle,
+            styles.contentMainViewStyle,
             {
               flex: 1,
               paddingTop: "7%",
@@ -49,14 +49,14 @@ class ModalContent extends React.Component {
           ]}
         >
           <View style={{ flex: 1 }}>
-            <Text style={[styles.ContentMainViewTextStyle, styles.Text1]}>
-              {this.props.GreetingLine1}
+            <Text style={[styles.contentMainViewTextStyle, styles.text1]}>
+              {this.props.greetingLine1}
             </Text>
           </View>
-          {this.props.Line2needed ? (
+          {this.props.line2needed ? (
             <View style={{ flex: 1 }}>
-              <Text style={[styles.ContentMainViewTextStyle, styles.Text2]}>
-                {this.props.GreetingLine2}
+              <Text style={[styles.contentMainViewTextStyle, styles.text2]}>
+                {this.props.greetingLine2}
               </Text>
             </View>
           ) : (
@@ -66,10 +66,10 @@ class ModalContent extends React.Component {
             style={{ flex: 3, alignItems: "center", justifyContent: "center" }}
           >
             <Image
-              source={this.props.Stars}
+              source={this.props.stars}
               style={[
-                styles.ContentMainViewImageStyle,
-                this.props.StarExtraStyle
+                styles.contentMainViewImageStyle,
+                this.props.starExtraStyle
               ]}
               resizeMethod="auto"
               resizeMode="contain"
@@ -82,13 +82,13 @@ class ModalContent extends React.Component {
               justifyContent: "center"
             }}
           >
-            <Text style={styles.ContentMainViewPointsTextStyle}>
-              {this.props.DisplayPoints}
+            <Text style={styles.contentMainViewPointsTextStyle}>
+              {this.props.displayPoints}
             </Text>
           </View>
           <View
             style={{
-              flex: this.props.IsDescriptionLine2Required ? 2 : 1,
+              flex: this.props.isDescriptionLine2Required ? 2 : 1,
               justifyContent: "center",
               alignItems: "center"
             }}
@@ -102,14 +102,14 @@ class ModalContent extends React.Component {
             >
               <Text
                 style={[
-                  styles.ContentMainViewLevelDescriptionStyle,
-                  this.props.ExtraDescriptionStyle
+                  styles.contentMainViewLevelDescriptionStyle,
+                  this.props.extraDescriptionStyle
                 ]}
               >
-                {this.props.Description}
+                {this.props.description}
               </Text>
             </View>
-            {this.props.IsDescriptionLine2Required ? (
+            {this.props.isDescriptionLine2Required ? (
               <View
                 style={{
                   flex: 1,
@@ -117,8 +117,8 @@ class ModalContent extends React.Component {
                   alignItems: "flex-start"
                 }}
               >
-                <Text style={styles.ContentMainViewLevelDescriptionStyle}>
-                  {this.props.DescriptionLine2}
+                <Text style={styles.contentMainViewLevelDescriptionStyle}>
+                  {this.props.descriptionLine2}
                 </Text>
               </View>
             ) : (
@@ -126,25 +126,25 @@ class ModalContent extends React.Component {
             )}
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={styles.ContentMainViewNextPrizeDescriptionStyle}>
-              {this.props.NextPrizeDescription}
+            <Text style={styles.contentMainViewNextPrizeDescriptionStyle}>
+              {this.props.nextPrizeDescription}
             </Text>
           </View>
-          {this.props.IsButtonNeeded ? (
-            <View style={styles.ContentMainViewInnerView}>
+          {this.props.isButtonNeeded ? (
+            <View style={styles.contentMainViewInnerView}>
               <View style={{ flex: 1 }}>
                 <Button
-                  onPress={this.props.PlayNext}
+                  onPress={this.props.playNext}
                   style={[
-                    styles.ContentMainViewInnerViewButton1Style,
-                    { display: this.state.DisplayNextLevel }
+                    styles.contentMainViewInnerViewButton1Style,
+                    { display: this.state.displayNextLevel }
                   ]}
-                  disabled={this.props.PlayNextDisabled}
+                  disabled={this.props.playNextDisabled}
                 >
-                  <Text style={styles.ContentMainViewInnerViewButton1TextStyle}>
-                    {"Play Level " + this.props.NextLevelName}
+                  <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
+                    {"Play Level " + this.props.nextLevelName}
                     <Text
-                      style={styles.ContentMainViewInnerViewButton1TextStyle}
+                      style={styles.contentMainViewInnerViewButton1TextStyle}
                     >
                       &rarr;
                     </Text>
@@ -153,13 +153,13 @@ class ModalContent extends React.Component {
               </View>
               <View style={{ flex: 1 }}>
                 <Button2
-                  OnPress={this.props.PlayAgain}
+                  OnPress={this.props.playAgain}
                   ButtonText="Play Again &rarr;"
                   SubmitButtonStyle={
-                    styles.ContentMainViewInnerViewButton2Style
+                    styles.contentMainViewInnerViewButton2Style
                   }
                   SubmitButtonTextStyle={
-                    styles.ContentMainViewInnerViewButton2TextStyle
+                    styles.contentMainViewInnerViewButton2TextStyle
                   }
                 />
               </View>
@@ -167,11 +167,11 @@ class ModalContent extends React.Component {
           ) : (
             <View />
           )}
-          {this.props.PlayLaterRequired ? (
-            <View style={([styles.ContentMainViewInnerView], { flex: 1 })}>
+          {this.props.playLaterRequired ? (
+            <View style={([styles.contentMainViewInnerView], { flex: 1 })}>
               <Button transparent onPress={this.props.toggleVisiblity}>
-                <Text style={styles.ContentMainViewInnerViewButton1TextStyle}>
-                  {this.props.PlayLaterText} &rarr;
+                <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
+                  {this.props.playLaterText} &rarr;
                 </Text>
               </Button>
             </View>

@@ -7,21 +7,21 @@ class PlayableImage extends React.Component {
   render() {
     return (
       <TouchableOpacity
-        disabled={this.props.Disabled}
-        onPress={this.props.OnPress}
+        disabled={this.props.disabled}
+        onPress={this.props.onPress}
       >
         <Image
-          style={styles.ImageStyle}
+          style={styles.imageStyle}
           resizeMethod="auto"
           resizeMode="contain"
-          source={this.props.Image}
+          source={this.props.image}
         />
-        {this.props.Result ? (
+        {this.props.result ? (
           <AfterTouchResult
-            CorrectOption={this.props.CorrectOption}
-            CurrentOption={this.props.CurrentOption}
-            TickImage={this.props.TickImage}
-            CrossImage={this.props.CrossImage}
+            CorrectOption={this.props.correctOption}
+            CurrentOption={this.props.currentOption}
+            TickImage={this.props.tickImage}
+            CrossImage={this.props.crossImage}
           />
         ) : (
           <View />

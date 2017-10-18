@@ -8,63 +8,63 @@ import { Image } from "react-native";
 import styles from "./styles";
 import { StatusBar } from "react-native";
 const NewIntro = props => (
-  <View style={styles.MainOuterView}>
-    <View style={styles.MainView}>
+  <View style={styles.mainOuterView}>
+    <View style={styles.mainView}>
       <StatusBar
         translucent={true}
         backgroundColor="transparent"
         barStyle="light-content"
       />
-      <Logo2 imageDimensions={styles.BackgroundImage} />
-      <View style={styles.TopSpace}>
+      <Logo2 imageDimensions={styles.backgroundImage} />
+      <View style={styles.topSpace}>
         <View
           style={[
-            styles.TopViewStyle,
+            styles.topViewStyle,
             {
-              backgroundColor: props.TopViewBackgroundColor
+              backgroundColor: props.topViewBackgroundColor
             }
           ]}
         >
-          <Logo imageDimensions={styles.LogoStyle} />
+          <Logo imageDimensions={styles.logoStyle} />
         </View>
         <View
           style={[
-            styles.BottomViewSpace,
+            styles.bottomViewSpace,
             {
-              backgroundColor: props.BottomViewBackGroundColor
+              backgroundColor: props.bottomViewBackGroundColor
             }
           ]}
         >
-          <Text style={styles.TotalScoreTextStyle}>TOTAL SCORE</Text>
+          <Text style={styles.totalScoreTextStyle}>TOTAL SCORE</Text>
           <Text
             style={[
-              styles.TotalScoreStyle,
+              styles.totalScoreStyle,
               {
-                color: props.ScoreColor
+                color: props.scoreColor
               }
             ]}
           >
-            {props.Score}
+            {props.score}
           </Text>
           {props.children}
           <Image
-            style={styles.StarsStyle}
-            source={props.Stars}
+            style={styles.starsStyle}
+            source={props.stars}
             resizeMethod="auto"
             resizeMode="contain"
           />
           <Button
-            OnPress={props.PlayOnPress}
-            ButtonText="Play"
-            Disabled={props.IsPlayDisabled}
-            SubmitButtonStyle={styles.PlayButtonStyle}
-            SubmitButtonTextStyle={styles.PlayButtonTextStyle}
+            onPress={props.playOnPress}
+            buttonText="Play"
+            disabled={props.isPlayDisabled}
+            submitButtonStyle={styles.playButtonStyle}
+            submitButtonTextStyle={styles.playButtonTextStyle}
           />
           <Button
-            OnPress={props.HowToPlayOnPress}
-            ButtonText="How To Play"
-            SubmitButtonStyle={styles.HowToPlayButtonStyle}
-            SubmitButtonTextStyle={styles.HowToPlayButtonTextStyle}
+            onPress={props.howToPlayOnPress}
+            buttonText="How To Play"
+            submitButtonStyle={styles.howToPlayButtonStyle}
+            submitButtonTextStyle={styles.howToPlayButtonTextStyle}
           />
         </View>
       </View>
@@ -73,16 +73,16 @@ const NewIntro = props => (
 );
 
 NewIntro.propTypes = {
-  IsPlayDisabled: PropTypes.bool,
-  BackgroundLogo: PropTypes.number,
-  TopViewBackgroundColor: PropTypes.string,
-  MainLogo: PropTypes.number,
-  BottomViewBackGroundColor: PropTypes.string,
-  ScoreColor: PropTypes.string,
-  Score: PropTypes.number,
-  Stars: PropTypes.number,
-  PlayOnPress: PropTypes.func,
-  HowToPlayOnPress: PropTypes.func
+  isPlayDisabled: PropTypes.bool,
+  backgroundLogo: PropTypes.number,
+  topViewBackgroundColor: PropTypes.string,
+  mainLogo: PropTypes.number,
+  bottomViewBackGroundColor: PropTypes.string,
+  scoreColor: PropTypes.string,
+  score: PropTypes.number,
+  stars: PropTypes.number,
+  playOnPress: PropTypes.func,
+  howToPlayOnPress: PropTypes.func
 };
 NewIntro.defaultProps = {
   PlayOnPress: () => {},

@@ -12,8 +12,8 @@ class SettingsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Random: false,
-      Sound: true,
+      random: false,
+      sound: true,
       promptVisible: false,
       newValue: null,
       promptTitle: "",
@@ -45,15 +45,15 @@ class SettingsScreen extends React.Component {
   }
   componenetDidUpdate() {
     this.setState({
-      Random: this.props.parent.settings.random,
-      Sound: this.props.parent.settings.sound
+      random: this.props.parent.settings.random,
+      sound: this.props.parent.settings.sound
     });
   }
 
   componentDidMount() {
     this.setState({
-      Random: this.props.parent.settings.random,
-      Sound: this.props.parent.settings.sound
+      random: this.props.parent.settings.random,
+      sound: this.props.parent.settings.sound
     });
   }
   render() {
@@ -79,7 +79,7 @@ class SettingsScreen extends React.Component {
           }}
         />
         <Settings
-          PressMaximumImageDuration={() => {
+          pressMaximumImageDuration={() => {
             ActionSheet.show(
               {
                 options: ["5", "10", "25", "50", "100", "Cancel"],
@@ -146,10 +146,10 @@ class SettingsScreen extends React.Component {
               }
             );
           }}
-          MaximumImageDuration={
+          maximumImageDuration={
             this.props.parent.settings.maxImageDuration + " sec"
           }
-          PressNoOfImagesPerSession={() => {
+          pressNoOfImagesPerSession={() => {
             ActionSheet.show(
               {
                 options: ["5", "10", "25", "50", "100", "Cancel"],
@@ -210,16 +210,16 @@ class SettingsScreen extends React.Component {
               }
             );
           }}
-          NoOfImagesPerSession={this.props.parent.settings.imagesPerSession}
-          NamePress={() => {
+          noOfImagesPerSession={this.props.parent.settings.imagesPerSession}
+          namePress={() => {
             this.setState({
               promptTitle: "Name",
               promptPlaceHolder: this.props.parent.name,
               promptVisible: true
             });
           }}
-          Name={this.props.parent.name}
-          PasswordPress={() => {
+          name={this.props.parent.name}
+          passwordPress={() => {
             Alert.alert(
               "Reset paswword",
               "Are you sure you want to reset the password?",
@@ -245,20 +245,20 @@ class SettingsScreen extends React.Component {
               ]
             );
           }}
-          Age={
+          age={
             this.props.child.childDetails
               ? this.props.child.childDetails.age
               : "0"
           }
-          AgePress={() => {
+          agePress={() => {
             this.setState({
               promptTitle: "Age",
               promptPlaceHolder: this.props.child.childDetails.age,
               promptVisible: true
             });
           }}
-          RandomSlider={value => {
-            this.setState({ Random: value });
+          randomSlider={value => {
+            this.setState({ random: value });
             this.props.dispatch({
               type: "UPDATE_SETTINGS",
               payload: {
@@ -268,10 +268,10 @@ class SettingsScreen extends React.Component {
               }
             });
           }}
-          RandomSliderValue={this.state.Random}
-          SoundSliderValue={this.state.Sound}
-          SoundSlider={value => {
-            this.setState({ Sound: value });
+          randomSliderValue={this.state.random}
+          soundSliderValue={this.state.sound}
+          soundSlider={value => {
+            this.setState({ sound: value });
             this.props.dispatch({
               type: "UPDATE_SETTINGS",
               payload: {
@@ -281,22 +281,21 @@ class SettingsScreen extends React.Component {
               }
             });
           }}
-          ChildExists={this.props.child.childDetails ? true : false}
-          NameChild={
+          childExists={this.props.child.childDetails ? true : false}
+          nameChild={
             this.props.child.childDetails
               ? this.props.child.childDetails.name
               : ""
           }
-          NameChildPress={() => {
+          nameChildPress={() => {
             this.setState({
               promptTitle: "Name of Child",
               promptPlaceHolder: this.props.child.childDetails.name,
               promptVisible: true
             });
           }}
-          PressAddPrizes={() => {}}
-          DrawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
-          StatusBarStyle="light-content"
+          pressAddPrizes={() => {}}
+          drawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
         />
       </View>
     );

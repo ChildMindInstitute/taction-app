@@ -13,10 +13,10 @@ class ModalCommon extends React.Component {
         animationType="slide"
         transparent={true}
         visible={this.props.isVisible}
-        style={[styles.MainModal, this.props.ExtraModalStyle]}
+        style={[styles.mainModal, this.props.extraModalStyle]}
       >
         <View style={styles.view1}>
-          <View style={styles.mainContent}>{this.props.Content}</View>
+          <View style={styles.mainContent}>{this.props.content}</View>
         </View>
       </Modal>
     );

@@ -4,13 +4,13 @@ import { List } from "native-base";
 import ListContent from "./ListContent";
 const DashboardList = props => (
   <List
-    dataArray={props.ListData}
-    renderRow={item => <ListContent ListData={item} />}
+    dataArray={props.listData}
+    renderRow={item => <ListContent listData={item} />}
   />
 );
 
 DashboardList.propTypes = {
-  ListData: PropTypes.array
+  listData: PropTypes.array
 };
 
 export { DashboardList as default };

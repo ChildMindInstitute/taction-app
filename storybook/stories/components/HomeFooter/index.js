@@ -9,21 +9,21 @@ const HomeFooter = props => {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={[styles.LeftEndBar, styles.CompletedBarColor]}
+          style={[styles.leftEndBar, styles.completedBarColor]}
         />
       );
     else if (renderProgress.length == props.Total - 1) {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={[styles.RightEndBar, styles.CompletedBarColor]}
+          style={[styles.rightEndBar, styles.completedBarColor]}
         />
       );
     } else {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={[styles.MiddleBar, styles.CompletedBarColor]}
+          style={[styles.middleBar, styles.completedBarColor]}
         />
       );
     }
@@ -33,31 +33,31 @@ const HomeFooter = props => {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={[styles.LeftEndBar, styles.IncompleteBarColor]}
+          style={[styles.leftEndBar, styles.incompleteBarColor]}
         />
       );
     else if (renderProgress.length == props.Total - 1) {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={[styles.RightEndBar, styles.IncompleteBarColor]}
+          style={[styles.rightEndBar, styles.incompleteBarColor]}
         />
       );
     } else {
       renderProgress.push(
         <View
           key={renderProgress.length}
-          style={[styles.MiddleBar, styles.IncompleteBarColor]}
+          style={[styles.middleBar, styles.incompleteBarColor]}
         />
       );
     }
   }
   return (
-    <Footer style={[styles.FooterStyle, props.FooterStyle]}>
-      <View style={styles.FooterInnerView1Style}>{renderProgress}</View>
-      <View style={styles.FooterInnerView2Style}>
-        <Text style={styles.FooterInnerView2TextStyle}>
-          {props.Left + "/" + props.Total}
+    <Footer style={[styles.footerStyle, props.footerStyle]}>
+      <View style={styles.footerInnerView1Style}>{renderProgress}</View>
+      <View style={styles.footerInnerView2Style}>
+        <Text style={styles.footerInnerView2TextStyle}>
+          {props.left + "/" + props.total}
         </Text>
       </View>
     </Footer>
@@ -65,9 +65,9 @@ const HomeFooter = props => {
 };
 
 HomeFooter.propTypes = {
-  FooterStyle: PropTypes.number,
-  Left: PropTypes.number,
-  Total: PropTypes.number
+  footerStyle: PropTypes.number,
+  left: PropTypes.number,
+  total: PropTypes.number
 };
 HomeFooter.defaultProps = {};
 

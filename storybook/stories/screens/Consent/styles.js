@@ -1,8 +1,8 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainOuterViewOuterView: { flex: 1, backgroundColor: "#0067a0" },
-  MainOuterView: {
+  mainOuterViewOuterView: { flex: 1, backgroundColor: "#0067a0" },
+  mainOuterView: {
     flex: 1,
     backgroundColor: "#0067a0",
     marginTop:
@@ -10,20 +10,20 @@ const styles = StyleSheet.create({
         ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
         : 0
   },
-  ScrollViewSpaceSpace: { flex: 9 },
-  MainView: { flex: 1, margin: "5%" },
-  TopSpace: {
+  scrollViewSpaceSpace: { flex: 9 },
+  mainView: { flex: 1, margin: "5%" },
+  topSpace: {
     flex: 2,
     alignContent: "center",
     justifyContent: "center",
     marginTop: "5%"
   },
-  TopTextSpace: { flex: 4 },
-  TopTextStyle: {
+  topTextSpace: { flex: 4 },
+  topTextStyle: {
     color: "#ffffff",
     fontSize: 18
   },
-  Seperator: {
+  seperator: {
     borderBottomWidth: 2,
     borderBottomColor: "#ccc",
     opacity: 0.8,
@@ -31,18 +31,18 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginBottom: "5%"
   },
-  ConsentTextSpace: { flex: 0.5, marginBottom: "5%" },
-  ConsentText: { color: "#fff", fontSize: 22, fontWeight: "500" },
-  TermsSpace: { flex: 5, flexDirection: "column" },
-  TermsItem: { flex: 1, flexDirection: "row", marginBottom: "5%" },
-  ItemTextSpace: { flex: 8 },
-  ItemCheckBoxSpace: { flex: 1, marginRight: "3%" },
-  ItemText: { color: "#fff", fontSize: 18 },
-  ItemCheckBox: {
+  consentTextSpace: { flex: 0.5, marginBottom: "5%" },
+  consentText: { color: "#fff", fontSize: 22, fontWeight: "500" },
+  termsSpace: { flex: 5, flexDirection: "column" },
+  termsItem: { flex: 1, flexDirection: "row", marginBottom: "5%" },
+  itemTextSpace: { flex: 8 },
+  itemCheckBoxSpace: { flex: 1, marginRight: "3%" },
+  itemText: { color: "#fff", fontSize: 18 },
+  itemCheckBox: {
     top: 10,
     left: 0
   },
-  MainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
-  SubmitButtonSpace: { flex: 1 }
+  mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
+  submitButtonSpace: { flex: 1 }
 });
 export default styles;

@@ -11,76 +11,76 @@ class ListContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      IsContentVisible: false
+      isContentVisible: false
     };
   }
   render() {
     return (
       <ListItem
         onPress={() => {
-          this.setState({ IsContentVisible: !this.state.IsContentVisible });
+          this.setState({ isContentVisible: !this.state.isContentVisible });
         }}
-        style={styles.ListItemStyle}
+        style={styles.listItemStyle}
       >
-        <View style={styles.ListItem1stViewStyle}>
-          <View style={styles.ListItem2ndViewStyle}>
-            <Left style={styles.ListItemLeftStyle}>
-              <View style={styles.ListItemLeft1stViewStyle}>
+        <View style={styles.listItem1stViewStyle}>
+          <View style={styles.listItem2ndViewStyle}>
+            <Left style={styles.listItemLeftStyle}>
+              <View style={styles.listItemLeft1stViewStyle}>
                 <Image
                   source={
-                    this.props.ListData.DataFolderContent[
+                    this.props.listData.dataFolderContent[
                       Math.floor(
                         Math.random() *
-                          this.props.ListData.DataFolderContent.length
+                          this.props.listData.dataFolderContent.length
                       )
-                    ].Image
+                    ].image
                   }
-                  style={styles.ListItemLeftImageStyle}
+                  style={styles.listItemLeftImageStyle}
                   resizeMethod="auto"
                   resizeMode="contain"
                 />
               </View>
-              <View style={styles.ListItemLeft2ndViewStyle}>
-                <Text style={styles.ListItemLeft2ndViewTextStyle}>
-                  {this.props.ListData.Name}
+              <View style={styles.listItemLeft2ndViewStyle}>
+                <Text style={styles.listItemLeft2ndViewTextStyle}>
+                  {this.props.listData.name}
                 </Text>
               </View>
             </Left>
-            <Body style={styles.ListItemBodyStyle}>
-              <Text style={styles.ListItemBodyTextStyle}>
-                {this.props.ListData.Points}
+            <Body style={styles.listItemBodyStyle}>
+              <Text style={styles.listItemBodyTextStyle}>
+                {this.props.listData.points}
               </Text>
               <Image
-                source={this.props.ListData.Stars}
-                style={styles.ListItemBodyImageStyle}
+                source={this.props.listData.stars}
+                style={styles.listItemBodyImageStyle}
                 resizeMethod="auto"
                 resizeMode="contain"
               />
             </Body>
-            <Right style={styles.ListItemRightStyle}>
-              <View style={styles.ListItemRightViewStyle}>
-                <View style={styles.ListItemRightViewInnerViewStyle}>
+            <Right style={styles.listItemRightStyle}>
+              <View style={styles.listItemRightViewStyle}>
+                <View style={styles.listItemRightViewInnerViewStyle}>
                   <Text
                     style={[
-                      styles.ListItemGridItemInnerViewText2Style,
+                      styles.listItemGridItemInnerViewText2Style,
                       { fontSize: 22 }
                     ]}
                   >
-                    {this.props.ListData.CorrectTaps}
+                    {this.props.listData.correctTaps}
                   </Text>
                   <Icon
                     name="md-checkmark"
                     style={{ fontSize: 30, color: "green" }}
                   />
                 </View>
-                <View style={styles.ListItemRightViewInnerViewStyle}>
+                <View style={styles.listItemRightViewInnerViewStyle}>
                   <Text
                     style={[
-                      styles.ListItemGridItemInnerViewTextStyle,
+                      styles.listItemGridItemInnerViewTextStyle,
                       { fontSize: 22 }
                     ]}
                   >
-                    {this.props.ListData.WrongTaps}
+                    {this.props.listData.wrongTaps}
                   </Text>
                   <Icon
                     name="md-close"
@@ -90,49 +90,49 @@ class ListContent extends React.Component {
               </View>
             </Right>
           </View>
-          {this.state.IsContentVisible ? (
-            <View style={styles.ListItemGridViewStyle}>
+          {this.state.isContentVisible ? (
+            <View style={styles.listItemGridViewStyle}>
               <Grid
-                style={styles.ListItemGrid}
+                style={styles.listItemGrid}
                 renderItem={data => (
                   <Image
-                    source={data.Image}
+                    source={data.image}
                     style={[
-                      styles.ListItemGridItemStyle,
-                      { opacity: data.IsCompleted ? 0.4 : 1 }
+                      styles.listItemGridItemStyle,
+                      { opacity: data.isCompleted ? 0.4 : 1 }
                     ]}
                     resizeMethod="auto"
                     resizeMode="contain"
                   >
-                    <View style={styles.ListItemGridItemInnerViewStyle}>
+                    <View style={styles.listItemGridItemInnerViewStyle}>
                       <View
-                        style={styles.ListItemGridItemInnerViewInnerViewStyle}
+                        style={styles.listItemGridItemInnerViewInnerViewStyle}
                       >
                         <Icon
                           name="md-checkmark"
                           style={{ fontSize: 20, color: "green" }}
                         />
                         <Text
-                          style={styles.ListItemGridItemInnerViewText2Style}
+                          style={styles.listItemGridItemInnerViewText2Style}
                         >
-                          {data.CorrectTaps}
+                          {data.correctTaps}
                         </Text>
                       </View>
                       <View
-                        style={styles.ListItemGridItemInnerViewInnerViewStyle}
+                        style={styles.listItemGridItemInnerViewInnerViewStyle}
                       >
                         <Icon
                           name="md-close"
                           style={{ fontSize: 20, color: "red" }}
                         />
-                        <Text style={styles.ListItemGridItemInnerViewTextStyle}>
-                          {data.WrongTaps}
+                        <Text style={styles.listItemGridItemInnerViewTextStyle}>
+                          {data.wrongTaps}
                         </Text>
                       </View>
                     </View>
                   </Image>
                 )}
-                data={this.props.ListData.DataFolderContent}
+                data={this.props.listData.dataFolderContent}
                 itemsPerRow={4}
               />
             </View>

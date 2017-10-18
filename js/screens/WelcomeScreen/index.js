@@ -46,12 +46,7 @@ class WelcomeScreen extends React.Component {
   }
 
   render() {
-    return (
-      <Welcome
-        OnPressSubmitButton={() => this.redirect()}
-        StatusBarStyle="light-content"
-      />
-    );
+    return <Welcome onPressSubmitButton={() => this.redirect()} />;
   }
 }
 

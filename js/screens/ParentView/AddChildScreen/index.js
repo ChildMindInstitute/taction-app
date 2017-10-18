@@ -1,6 +1,6 @@
 import React from "react";
 import AddChild from "../../../../storybook/stories/screens/AddChild";
-import Expo from "expo";
+import { StatusBar } from "react-native";
 import { connect } from "react-redux";
 
 var childName, childAge;
@@ -27,21 +27,22 @@ class AddChildScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    StatusBar.setBarStyle("light-content", true);
     return (
       <AddChild
-        OnPressSaveButton={() => {
+        onPressSaveButton={() => {
           this.addChild();
         }}
-        OnPressSkipButton={() => {
+        onPressSkipButton={() => {
           navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
         }}
-        ChildNameChange={event => {
+        childNameChange={event => {
           childName = event.nativeEvent.text;
         }}
-        ChildAgeChange={event => {
+        childAgeChange={event => {
           childAge = event.nativeEvent.text;
         }}
-        DrawerOpen={() => {
+        drawerOpen={() => {
           this.props.navigation.navigate("DrawerOpen");
         }}
       />

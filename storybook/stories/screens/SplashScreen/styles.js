@@ -1,11 +1,11 @@
 import { StyleSheet, Platform } from "react-native";
 import { Constants } from "expo";
 const styles = StyleSheet.create({
-  MainOuterView: {
+  mainOuterView: {
     flex: 1,
     backgroundColor: "#0067a0"
   },
-  MainView: {
+  mainView: {
     flex: 1,
     backgroundColor: "#0067a0",
     marginTop:
@@ -14,11 +14,11 @@ const styles = StyleSheet.create({
         : 0,
     margin: "5%"
   },
-  LogoSpace: { flex: 2 },
-  LodaerSpace: { flex: 1 },
-  LoaderStyle: { alignSelf: "center", flex: 1, margin: "10%" },
-  BottomLogoSpace: { flex: 1, justifyContent: "flex-end" },
-  LogoStyles: { alignSelf: "center" },
-  LogoStyles2: { alignSelf: "center", height: 40, width: 120 }
+  logoSpace: { flex: 2 },
+  lodaerSpace: { flex: 1 },
+  loaderStyle: { alignSelf: "center", flex: 1, margin: "10%" },
+  bottomLogoSpace: { flex: 1, justifyContent: "flex-end" },
+  logoStyles: { alignSelf: "center" },
+  logoStyles2: { alignSelf: "center", height: 40, width: 120 }
 });
 export default styles;

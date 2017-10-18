@@ -1,77 +1,77 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  ListItemStyle: {
+  listItemStyle: {
     flex: 1,
     borderWidth: 1,
     borderColor: "#ccc",
     marginRight: 0,
     padding: "2%"
   },
-  ListItem1stViewStyle: { flex: 1, flexDirection: "column" },
-  ListItem2ndViewStyle: { flex: 1, flexDirection: "row" },
-  ListItemLeftStyle: { flex: 1, flexDirection: "row" },
-  ListItemLeft1stViewStyle: {
+  listItem1stViewStyle: { flex: 1, flexDirection: "column" },
+  listItem2ndViewStyle: { flex: 1, flexDirection: "row" },
+  listItemLeftStyle: { flex: 1, flexDirection: "row" },
+  listItemLeft1stViewStyle: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center"
   },
-  ListItemLeftImageStyle: { width: 35, height: 35 },
-  ListItemLeft2ndViewStyle: {
+  listItemLeftImageStyle: { width: 35, height: 35 },
+  listItemLeft2ndViewStyle: {
     flex: 3,
     alignItems: "center"
   },
-  ListItemLeft2ndViewTextStyle: {
+  listItemLeft2ndViewTextStyle: {
     fontSize: 20,
     color: "#0067a0",
     marginTop: "5%"
   },
-  ListItemBodyStyle: {
+  listItemBodyStyle: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
   },
-  ListItemBodyTextStyle: { fontSize: 20, color: "black" },
-  ListItemBodyImageStyle: { width: 60, height: 20 },
-  ListItemRightStyle: { flexDirection: "row" },
-  ListItemRightViewStyle: { alignItems: "center", flexDirection: "row" },
-  ListItemRightViewInnerViewStyle: {
+  listItemBodyTextStyle: { fontSize: 20, color: "black" },
+  listItemBodyImageStyle: { width: 60, height: 20 },
+  listItemRightStyle: { flexDirection: "row" },
+  listItemRightViewStyle: { alignItems: "center", flexDirection: "row" },
+  listItemRightViewInnerViewStyle: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center"
   },
-  ListItemGridViewStyle: {
+  listItemGridViewStyle: {
     flex: 3,
     marginLeft: 0,
     marginRight: "-5%",
     marginBottom: "-3.75%"
   },
-  ListItemGrid: { flex: 1 },
-  ListItemGridItemStyle: {
+  listItemGrid: { flex: 1 },
+  listItemGridItemStyle: {
     flex: 1,
     borderWidth: 0.4,
     borderColor: "#ccc",
     height: 80,
     width: 40
   },
-  ListItemGridItemInnerViewStyle: {
+  listItemGridItemInnerViewStyle: {
     flex: 1,
     flexDirection: "row",
     backgroundColor: "#eee",
     alignItems: "center",
     marginTop: "63%"
   },
-  ListItemGridItemInnerViewInnerViewStyle: {
+  listItemGridItemInnerViewInnerViewStyle: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "center"
   },
-  TickCrossImageDimenstions: { width: 20, height: 20 },
-  ListItemGridItemInnerViewTextStyle: {
+  tickCrossImageDimenstions: { width: 20, height: 20 },
+  listItemGridItemInnerViewTextStyle: {
     color: "red",
     fontSize: 14,
     margin: "2%"
   },
-  ListItemGridItemInnerViewText2Style: {
+  listItemGridItemInnerViewText2Style: {
     color: "green",
     fontSize: 14,
     margin: "2%"

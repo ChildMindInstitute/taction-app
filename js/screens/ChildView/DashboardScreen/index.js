@@ -17,37 +17,37 @@ class WelcomeScreen extends React.Component {
           {
             Name: "Spider",
             Image: require("../../../assets/spiderman.jpg"),
-            Stars: require("../../../assets/all_stars.png"),
+            Stars: require("../../../assets/all-stars.png"),
             IsPlayed: true
           },
           {
             Name: "Basketball",
             Image: require("../../../assets/ball1.jpg"),
-            Stars: require("../../../assets/all_stars.png"),
+            Stars: require("../../../assets/all-stars.png"),
             IsPlayed: true
           },
           {
             Name: "FootBall",
             Image: require("../../../assets/ball2.jpg"),
-            Stars: require("../../../assets/all_stars.png"),
+            Stars: require("../../../assets/all-stars.png"),
             IsPlayed: false
           },
           {
             Name: "Minion",
             Image: require("../../../assets/minion.jpg"),
-            Stars: require("../../../assets/all_stars.png"),
+            Stars: require("../../../assets/all-stars.png"),
             IsPlayed: false
           },
           {
             Name: "FootBall",
             Image: require("../../../assets/ball2.jpg"),
-            Stars: require("../../../assets/all_stars.png"),
+            Stars: require("../../../assets/all-stars.png"),
             IsPlayed: false
           },
           {
             Name: "Spider",
             Image: require("../../../assets/spiderman.jpg"),
-            Stars: require("../../../assets/all_stars.png"),
+            Stars: require("../../../assets/all-stars.png"),
             IsPlayed: false
           }
         ]}

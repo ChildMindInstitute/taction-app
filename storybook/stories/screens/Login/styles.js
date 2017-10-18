@@ -1,20 +1,20 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  MainView: {
+  mainView: {
     flex: 1,
     backgroundColor: "#0067a0"
   },
-  MainInnerView: {
+  mainInnerView: {
     flex: 1,
     margin: "5%"
   },
-  TopSpace: {
+  topSpace: {
     flex: 6,
     alignItems: "center",
     justifyContent: "center"
   },
-  FormSpace: { flex: 5 },
-  ErrorSpace: {
+  formSpace: { flex: 5 },
+  errorSpace: {
     flex: 2,
     alignItems: "center",
     width: "100%",
@@ -22,21 +22,21 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
     paddingRight: "5%"
   },
-  ErrorText: { color: "white" },
-  FormStyle: { flex: 1 },
-  ForgotPasswordSpace: { flex: 1, marginBottom: "5%", marginTop: "4%" },
-  SubmitButtonSpace: { flex: 1 },
-  RegisterNowSpace: {
+  errorText: { color: "white" },
+  formStyle: { flex: 1 },
+  forgotPasswordSpace: { flex: 1, marginBottom: "5%", marginTop: "4%" },
+  submitButtonSpace: { flex: 1 },
+  registerNowSpace: {
     flex: 4,
     justifyContent: "center",
     alignItems: "center"
   },
-  MainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
-  BottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
-  SubLogoStyles: { alignSelf: "center", height: 40, width: 120 },
-  SubmitButtonStyle: {
+  mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
+  bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
+  subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
+  submitButtonStyle: {
     backgroundColor: "#eeae30"
   },
-  SubmitButtonTextStyle: { color: "white" }
+  submitButtonTextStyle: { color: "white" }
 });
 export default styles;

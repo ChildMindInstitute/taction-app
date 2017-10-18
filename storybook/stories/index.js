@@ -42,25 +42,25 @@ storiesOf("DashboardChild", module).add("DashboardChildList", () => (
       {
         Name: "Spider",
         Image: require("../../js/assets/spiderman.jpg"),
-        Stars: require("../../js/assets/all_stars.png"),
+        Stars: require("../../js/assets/all-stars.png"),
         IsPlayed: false
       },
       {
         Name: "Basketball",
         Image: require("../../js/assets/ball1.jpg"),
-        Stars: require("../../js/assets/all_stars.png"),
+        Stars: require("../../js/assets/all-stars.png"),
         IsPlayed: true
       },
       {
         Name: "FootBall",
         Image: require("../../js/assets/ball2.jpg"),
-        Stars: require("../../js/assets/all_stars.png"),
+        Stars: require("../../js/assets/all-stars.png"),
         IsPlayed: false
       },
       {
         Name: "Minion",
         Image: require("../../js/assets/minion.jpg"),
-        Stars: require("../../js/assets/all_stars.png"),
+        Stars: require("../../js/assets/all-stars.png"),
         IsPlayed: false
       }
     ]}
@@ -74,7 +74,7 @@ storiesOf("ImagesFolder", module).add("ImagesFolderList", () => (
         Points: 100,
         Taps: 13,
         TotalTaps: 20,
-        Stars: require("../../js/assets/all_stars.png"),
+        Stars: require("../../js/assets/all-stars.png"),
         IsContentVisible: true,
         DataFolderContent: [
           {
@@ -300,7 +300,7 @@ storiesOf("Dashboard", module)
           Points: 100,
           Taps: 13,
           TotalTaps: 20,
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsContentVisible: true,
           DataFolderContent: [
             {
@@ -504,7 +504,7 @@ storiesOf("Screens", module)
           Points: 100,
           Taps: 13,
           TotalTaps: 20,
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsContentVisible: true,
           DataFolderContent: [
             {
@@ -679,7 +679,7 @@ storiesOf("Screens", module)
       BottomViewBackGroundColor="rgba(255, 255, 255, 0.9)"
       ScoreColor="rgba(0, 103, 158, 1)"
       Score={1250}
-      Stars={require("../../js/assets/all_stars.png")}
+      Stars={require("../../js/assets/all-stars.png")}
       PlayOnPress={action("Play-pressed")}
       HowToPlayOnPress={action("HowToPlay-pressed")}
     />
@@ -770,7 +770,7 @@ storiesOf("Screens", module)
           Points: 100,
           Taps: 13,
           TotalTaps: 20,
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsContentVisible: true,
           DataFolderContent: [
             {
@@ -895,37 +895,37 @@ storiesOf("Screens", module)
         {
           Name: "Spider",
           Image: require("../../js/assets/spiderman.jpg"),
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: true
         },
         {
           Name: "Basketball",
           Image: require("../../js/assets/ball1.jpg"),
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: true
         },
         {
           Name: "FootBall",
           Image: require("../../js/assets/ball2.jpg"),
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: false
         },
         {
           Name: "Minion",
           Image: require("../../js/assets/minion.jpg"),
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: false
         },
         {
           Name: "FootBall",
           Image: require("../../js/assets/ball2.jpg"),
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: false
         },
         {
           Name: "Spider",
           Image: require("../../js/assets/spiderman.jpg"),
-          Stars: require("../../js/assets/all_stars.png"),
+          Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: false
         }
       ]}

@@ -12,12 +12,18 @@ class ListItemCustom extends React.Component {
       checked: false
     };
   }
+  componentWillUpdate() {
+    if (this.props.CheckBoxReset) {
+      this.setState({ checked: false });
+      this.props.DoneResetting();
+    }
+  }
   render() {
     return (
       <ListItem
         onPress={checked => {
           this.setState({ checked: !this.state.checked });
-          this.props.ItemPress(
+          this.props.itemPress(
             checked,
             this.props.data.indexOf(this.props.item)
           );

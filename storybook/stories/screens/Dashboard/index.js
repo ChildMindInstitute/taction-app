@@ -22,17 +22,17 @@ const Dashboard = props => (
     <Header
       hasTabs
       renderTabBar={() => <ScrollableTab />}
-      style={styles.HeaderStyle}
+      style={styles.headerStyle}
     >
-      <Left style={styles.LeftStyle}>
+      <Left style={styles.leftStyle}>
         <Button transparent onPress={props.leftPress}>
-          <Icon name="menu" style={styles.HeaderLeftStyle} />
+          <Icon name="menu" style={styles.headerLeftStyle} />
         </Button>
       </Left>
-      <Body style={styles.BodyStyle}>
-        <Text style={styles.BodyTitleStyle}>Dashboard</Text>
+      <Body style={styles.bodyStyle}>
+        <Text style={styles.bodyTitleStyle}>Dashboard</Text>
       </Body>
-      <Right style={styles.RightStyle} />
+      <Right style={styles.rightStyle} />
     </Header>
     <Tabs initialPage={0} tabBarUnderlineStyle={{ backgroundColor: "#0067a0" }}>
       <Tab
@@ -41,7 +41,7 @@ const Dashboard = props => (
         tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
-        <DashBoardContent ExcerciseData={props.ExcerciseDataToday}>
+        <DashBoardContent excerciseData={props.excerciseDataToday}>
           <Text>Today's Activities</Text>
         </DashBoardContent>
       </Tab>
@@ -51,7 +51,7 @@ const Dashboard = props => (
         tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
-        <DashBoardContent ExcerciseData={props.ExcerciseDataMonth}>
+        <DashBoardContent excerciseData={props.excerciseDataMonth}>
           <Text>Month's Activities</Text>
         </DashBoardContent>
       </Tab>
@@ -60,8 +60,8 @@ const Dashboard = props => (
 );
 
 Dashboard.propTypes = {
-  ExcerciseDataToday: PropTypes.array,
-  ExcerciseDataMonth: PropTypes.array,
+  excerciseDataToday: PropTypes.array,
+  excerciseDataMonth: PropTypes.array,
   leftPress: PropTypes.func
 };
 Dashboard.defaultProps = {

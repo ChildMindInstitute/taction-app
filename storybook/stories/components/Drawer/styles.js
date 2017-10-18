@@ -5,13 +5,13 @@ import { Constants } from "expo";
 const deviceHeight = Dimensions.get("window").height;
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  ContainerStyle: { flex: 1, backgroundColor: "#0067a0" },
-  ContentStyle: {
+  containerStyle: { flex: 1, backgroundColor: "#0067a0" },
+  contentStyle: {
     flex: 1,
     backgroundColor: "#0067a0",
     marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
   },
-  ListSpace: {
+  listSpace: {
     flex: 12
   },
   drawerCover: {
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: 120
   },
-  Footer: { flex: 2, marginTop: "30%" },
-  ListItemStyle: {
+  footer: { flex: 2, marginTop: "30%" },
+  listItemStyle: {
     backgroundColor: "#0067a0",
     borderBottomWidth: 0,
     padding: "5%",

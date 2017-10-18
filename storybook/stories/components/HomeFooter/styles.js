@@ -1,34 +1,34 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  LeftEndBar: {
+  leftEndBar: {
     flex: 1,
     borderTopLeftRadius: 50,
     borderBottomLeftRadius: 50,
     margin: "1%"
   },
-  RightEndBar: {
+  rightEndBar: {
     flex: 1,
     borderTopRightRadius: 50,
     borderBottomRightRadius: 50,
     margin: "1%"
   },
-  MiddleBar: {
+  middleBar: {
     flex: 1,
     margin: "1%"
   },
-  CompletedBarColor: {
+  completedBarColor: {
     backgroundColor: "#eeae30"
   },
-  IncompleteBarColor: {
+  incompleteBarColor: {
     backgroundColor: "#fff"
   },
-  FooterStyle: {
+  footerStyle: {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
     backgroundColor: "white"
   },
-  FooterInnerView1Style: {
+  footerInnerView1Style: {
     flex: 1,
     borderRadius: 50,
     width: "80%",
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     margin: "5%",
     backgroundColor: "#eee"
   },
-  FooterInnerView2Style: { flex: 2 },
-  FooterInnerView2TextStyle: { color: "#0067a0", fontWeight: "bold" }
+  footerInnerView2Style: { flex: 2 },
+  footerInnerView2TextStyle: { color: "#0067a0", fontWeight: "bold" }
 });
 
 export default styles;

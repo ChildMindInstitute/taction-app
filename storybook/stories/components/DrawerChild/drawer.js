@@ -17,7 +17,7 @@ const DrawerParent = DrawerNavigator(
       })
     },
     About: { screen: AboutScreen },
-    Logout: { screen: NavProps => <LogoutTemp ParentNavProps={NavProps} /> }
+    Logout: { screen: navProps => <LogoutTemp parentNavProps={navProps} /> }
   },
   {
     initialRouteName: "GameNavigator",

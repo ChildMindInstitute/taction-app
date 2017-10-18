@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  MainView: { flex: 1, margin: "5%", alignContent: "center" },
-  GridStyle: { flex: 1 },
-  GridItemButtonStyle: {
+  mainView: { flex: 1, margin: "5%", alignContent: "center" },
+  gridStyle: { flex: 1 },
+  gridItemButtonStyle: {
     height: 160,
     width: 110,
     marginLeft: "1%",
     marginBottom: "3%"
   },
-  CardView: {
+  cardView: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     margin: "15%",
     height: 100
   },
-  CardImage: { width: 50, height: 50 },
-  CardText: { fontSize: 14 },
-  CardStarImage: { width: 50, height: 15 }
+  cardImage: { width: 50, height: 50 },
+  cardText: { fontSize: 14 },
+  cardStarImage: { width: 50, height: 15 }
 });
 export default styles;

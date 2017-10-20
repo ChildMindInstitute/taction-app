@@ -43,7 +43,7 @@ class ListContent extends React.Component {
                     borderWidth: 1,
                     borderColor: "#ccc"
                   }}
-                  uncheckedImage={require("../../../../js/assets/empty.png")}
+                  uncheckedImage={require("../../../../js/assets/Empty.png")}
                   checkedImage={require("../../../../js/assets/chkbx-tick.png")}
                 />
               </View>

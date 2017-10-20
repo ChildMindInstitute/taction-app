@@ -230,8 +230,8 @@ class GameScreen extends React.Component {
         image3={this.state.input[this.state.i3]}
         image4={this.state.input[this.state.i4]}
         hasToReset={this.state.reset}
-        crossImage={require("../../../assets/cross.png")}
-        tickImage={require("../../../assets/tick.png")}
+        crossImage={require("../../../assets/Cross.png")}
+        tickImage={require("../../../assets/Tick.png")}
         correctOption={this.state.correctOption}
         isLast={this.state.isLast}
         timeExpiredImageShuffle={() => {

@@ -2,7 +2,7 @@ import React from "react";
 import DrawerParent from "../../../storybook/stories/components/Drawer";
 import { Constants } from "expo";
 import { View } from "native-base";
-import { StatusBar, Platform } from "react-native";
+import { Platform, StatusBar } from "react-native";
 
 class ParentDrawerScreen extends React.Component {
   static navigationOptions = {
@@ -20,11 +20,7 @@ class ParentDrawerScreen extends React.Component {
           backgroundColor: "#0067a0"
         }}
       >
-        <StatusBar
-          backgroundColor="transparent"
-          translucent={true}
-          barStyle="light-content"
-        />
+        <StatusBar barStyle="light-content" />
         <View
           style={{
             flex: 1,

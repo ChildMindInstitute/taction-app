@@ -5,8 +5,7 @@ import Logo1 from "../../components/Logo.1";
 import FormInput from "../../components/FormInput";
 import Button2 from "../../components/Button";
 import { View, Form, Text, Button } from "native-base";
-import { StatusBar } from "react-native";
-import { KeyboardAvoidingView } from "react-native";
+import { KeyboardAvoidingView, StatusBar } from "react-native";
 import styles from "./styles";
 const SignUp = props => (
   <KeyboardAvoidingView
@@ -15,12 +14,9 @@ const SignUp = props => (
     contentContainerStyle={styles.mainOuterView}
     keyboardVerticalOffset={-170}
   >
+    <StatusBar barStyle="light-content" />
+
     <View style={styles.mainView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />
       </View>

@@ -1,9 +1,17 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
-import { Alert, StatusBar } from "react-native";
-import Prompt from "react-native-prompt";
-import { View, ActionSheet, Toast } from "native-base";
+import { Alert } from "react-native";
+import {
+  View,
+  ActionSheet,
+  Toast,
+  Container,
+  Header,
+  Title,
+  Body
+} from "native-base";
+import Modal from "../../../../storybook/stories/components/Modal/modal";
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
@@ -14,14 +22,13 @@ class SettingsScreen extends React.Component {
     this.state = {
       random: false,
       sound: true,
-      promptVisible: false,
+      modalVisible: false,
       newValue: null,
-      promptTitle: "",
-      promptPlaceHolder: ""
+      modalTitle: ""
     };
   }
   findRoutes(value) {
-    switch (this.state.promptTitle) {
+    switch (this.state.modalTitle) {
       case "Name": {
         this.props.dispatch({ type: "UPDATE_PARENT", payload: value });
         break;
@@ -57,26 +64,29 @@ class SettingsScreen extends React.Component {
     });
   }
   render() {
-    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={{ flex: 1 }}>
-        <Prompt
-          title={this.state.promptTitle}
-          placeholder={this.state.promptPlaceHolder}
-          visible={this.state.promptVisible}
-          onCancel={() =>
-            this.setState({
-              promptVisible: false,
-              newValue: null
-            })}
-          onSubmit={value => {
-            this.setState(
-              {
-                promptVisible: false
-              },
-              this.findRoutes(value)
-            );
+        <Modal
+          isVisible={this.state.modalVisible}
+          extraModalStyle={{
+            paddingTop: "60%",
+            paddingBottom: "60%",
+            paddingLeft: "10%",
+            paddingRight: "10%"
           }}
+          extraModalViewStyle={{
+            backgroundColor: "rgba(255,255,255,0.9)",
+            borderRadius: 10
+          }}
+          content={
+            <Container>
+              <Header>
+                <Body>
+                  <Title>{this.state.modalTitle}</Title>
+                </Body>
+              </Header>
+            </Container>
+          }
         />
         <Settings
           pressMaximumImageDuration={() => {
@@ -213,9 +223,9 @@ class SettingsScreen extends React.Component {
           noOfImagesPerSession={this.props.parent.settings.imagesPerSession}
           namePress={() => {
             this.setState({
-              promptTitle: "Name",
-              promptPlaceHolder: this.props.parent.name,
-              promptVisible: true
+              modalTitle: "Name",
+              modalPlaceHolder: this.props.parent.name,
+              modalVisible: true
             });
           }}
           name={this.props.parent.name}
@@ -252,9 +262,9 @@ class SettingsScreen extends React.Component {
           }
           agePress={() => {
             this.setState({
-              promptTitle: "Age",
-              promptPlaceHolder: this.props.child.childDetails.age,
-              promptVisible: true
+              modalTitle: "Age",
+              modalPlaceHolder: this.props.child.childDetails.age,
+              modalVisible: true
             });
           }}
           randomSlider={value => {
@@ -289,9 +299,9 @@ class SettingsScreen extends React.Component {
           }
           nameChildPress={() => {
             this.setState({
-              promptTitle: "Name of Child",
-              promptPlaceHolder: this.props.child.childDetails.name,
-              promptVisible: true
+              modalTitle: "Name of Child",
+              modalPlaceHolder: this.props.child.childDetails.name,
+              modalVisible: true
             });
           }}
           pressAddPrizes={() => {}}

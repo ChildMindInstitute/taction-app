@@ -2,7 +2,6 @@ import React from "react";
 import StockImagesList from "../../components/StockImagesList";
 import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
-import { StatusBar } from "react-native";
 import styles from "./styles";
 class StockImages extends React.Component {
   static navigationOptions = {
@@ -13,7 +12,6 @@ class StockImages extends React.Component {
     super(props);
   }
   render() {
-    StatusBar.setBarStyle("light-content", true);
     return (
       <Container style={styles.containerStyle}>
         <HeaderCommon

@@ -2,16 +2,12 @@ import React from "react";
 import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import { View, Text } from "native-base";
-import styles from "./styles";
 import { StatusBar } from "react-native";
+import styles from "./styles";
 const AlmostThere = props => (
   <View style={styles.mainOuterView}>
+    <StatusBar barStyle="light-content" />
     <View style={styles.mainView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyle} />
       </View>

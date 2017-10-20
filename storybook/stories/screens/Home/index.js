@@ -7,7 +7,6 @@ import HomeContent from "../../components/HomeContent";
 import { Container, View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -20,11 +19,6 @@ class Home extends React.Component {
     return (
       <View style={styles.containerOuterViewStyle}>
         <Container style={styles.containerStyle}>
-          <StatusBar
-            translucent={true}
-            backgroundColor="transparent"
-            barStyle="light-content"
-          />
           <HeaderCommon
             isRightRequired={true}
             leftIconStyle={styles.headerLeftStyle}

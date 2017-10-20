@@ -4,14 +4,9 @@ import SettingsList from "../../components/SettingsList";
 import HeaderCommon from "../../components/Header";
 import { Container } from "native-base";
 import styles from "./styles";
-import { StatusBar, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 const Settings = props => (
   <Container style={styles.container}>
-    <StatusBar
-      translucent={true}
-      backgroundColor="transparent"
-      barStyle="light-content"
-    />
     <HeaderCommon
       isRightRequired={false}
       leftIconStyle={styles.headerLeftStyle}

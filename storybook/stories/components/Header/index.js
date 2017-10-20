@@ -4,7 +4,7 @@ import { Header, Left, Right, Body, Icon, Button, Text } from "native-base";
 import Logo from "../Logo";
 import styles from "./styles";
 const CustomHeader = props => (
-  <Header style={props.headerStyle}>
+  <Header style={props.headerStyle} iosBarStyle="light-content">
     <Left style={styles.leftStyle}>
       {props.isLeftAButton ? (
         <Button transparent onPress={props.leftPress}>

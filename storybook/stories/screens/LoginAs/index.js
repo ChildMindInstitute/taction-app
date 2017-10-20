@@ -4,16 +4,12 @@ import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import ListOfUsers from "../../components/ListOfUsers";
 import { View, Text } from "native-base";
-import styles from "./styles";
 import { StatusBar } from "react-native";
+import styles from "./styles";
 const LoginAs = props => (
   <View style={styles.mainOuterView}>
+    <StatusBar barStyle="light-content" />
     <View style={styles.mainView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />
       </View>

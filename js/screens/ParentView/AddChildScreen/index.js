@@ -1,6 +1,5 @@
 import React from "react";
 import AddChild from "../../../../storybook/stories/screens/AddChild";
-import { StatusBar } from "react-native";
 import { connect } from "react-redux";
 
 var childName, childAge;
@@ -27,7 +26,6 @@ class AddChildScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    StatusBar.setBarStyle("light-content", true);
     return (
       <AddChild
         onPressSaveButton={() => {

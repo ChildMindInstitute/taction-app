@@ -8,8 +8,7 @@ import Button from "../../components/Button";
 import RegisterWithUs from "../../components/RegisterWithUs";
 import { View, Form, Text, Icon, Left, Body } from "native-base";
 import styles from "./styles";
-import { KeyboardAvoidingView } from "react-native";
-import { StatusBar } from "react-native";
+import { KeyboardAvoidingView, StatusBar } from "react-native";
 const Login = props => (
   <KeyboardAvoidingView
     style={styles.mainView}
@@ -17,12 +16,8 @@ const Login = props => (
     contentContainerStyle={styles.mainView}
     keyboardVerticalOffset={-200}
   >
+    <StatusBar barStyle="light-content" />
     <View style={styles.mainInnerView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />
       </View>

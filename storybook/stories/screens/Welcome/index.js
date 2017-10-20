@@ -4,16 +4,10 @@ import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import Button from "../../components/Button";
 import { View, Text } from "native-base";
-import { StatusBar } from "react-native";
 import styles from "./styles";
 const Welcome = props => (
   <View style={styles.mainOuterView}>
     <View style={styles.mainView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />
       </View>

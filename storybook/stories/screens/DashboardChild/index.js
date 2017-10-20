@@ -5,15 +5,9 @@ import DashboardChildList from "../../components/DashboardChildList";
 import HeaderCommon from "../../components/Header";
 import { Container, View } from "native-base";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 const DashboardChild = props => (
   <View style={styles.ContainerOuterView}>
     <Container style={styles.ContainerStyle}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="#0067a0"
-        barStyle="light-content"
-      />
       <HeaderCommon
         isRightRequired={false}
         IsLeftAButton={false}

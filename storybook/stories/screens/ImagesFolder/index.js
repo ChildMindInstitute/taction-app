@@ -5,9 +5,9 @@ import { Container, View, Button, Icon } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
 let checkedItems = [];
-class ListContent extends React.Component {
+class ImagesFolder extends React.Component {
   static navigationOptions = {
-    title: "ListContent",
+    title: "ImagesFolder",
     header: null
   };
   constructor(props) {
@@ -17,7 +17,8 @@ class ListContent extends React.Component {
       pressed: false,
       pressed1: false,
       pressed2: false,
-      pressed3: false
+      pressed3: false,
+      operationPerformed: false
     };
     this.maintainCheckedItems = this.maintainCheckedItems.bind(this);
   }
@@ -60,7 +61,7 @@ class ListContent extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={this.props.onPressSubmitButton}
+                  onPress={this.props.onPressAddButton}
                   onPressIn={() => this.setState({ pressed: true })}
                   onPressOut={() => this.setState({ pressed: false })}
                 >
@@ -85,7 +86,12 @@ class ListContent extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => this.props.onPressDeleteButton(checkedItems)}
+                  onPress={() => {
+                    this.setState({ operationPerformed: true });
+                    let temp = checkedItems.slice();
+                    checkedItems.length = 0;
+                    this.props.onPressDeleteButton(temp);
+                  }}
                   disabled={this.state.checkedItems.length <= 0}
                   onPressIn={() => this.setState({ pressed1: true })}
                   onPressOut={() => this.setState({ pressed1: false })}
@@ -112,7 +118,12 @@ class ListContent extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => this.props.onPressMoveUp(checkedItems[0])}
+                  onPress={() => {
+                    this.setState({ operationPerformed: true });
+                    let temp = checkedItems.slice();
+                    checkedItems.length = 0;
+                    this.props.onPressMoveUp(temp[0]);
+                  }}
                   disabled={!(this.state.checkedItems.length == 1)}
                   onPressIn={() => this.setState({ pressed2: true })}
                   onPressOut={() => this.setState({ pressed2: false })}
@@ -138,7 +149,12 @@ class ListContent extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => this.props.onPressMoveDown(checkedItems[0])}
+                  onPress={() => {
+                    this.setState({ operationPerformed: true });
+                    let temp = checkedItems.slice();
+                    checkedItems.length = 0;
+                    this.props.onPressMoveDown(temp[0]);
+                  }}
                   disabled={!(this.state.checkedItems.length == 1)}
                   onPressIn={() => this.setState({ pressed3: true })}
                   onPressOut={() => this.setState({ pressed3: false })}
@@ -161,6 +177,10 @@ class ListContent extends React.Component {
               checkBoxChange={(listItem, checked) => {
                 this.maintainCheckedItems(listItem, !checked);
               }}
+              operationPerformedReset={() => {
+                this.setState({ operationPerformed: false });
+              }}
+              operationPerformed={this.state.operationPerformed}
               listData={this.props.excerciseData}
               switchToggled={this.props.switchToggled}
             />
@@ -170,4 +190,4 @@ class ListContent extends React.Component {
     );
   }
 }
-export default ListContent;
+export default ImagesFolder;

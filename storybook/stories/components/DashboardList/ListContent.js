@@ -27,14 +27,7 @@ class ListContent extends React.Component {
             <Left style={styles.listItemLeftStyle}>
               <View style={styles.listItemLeft1stViewStyle}>
                 <Image
-                  source={
-                    this.props.listData.dataFolderContent[
-                      Math.floor(
-                        Math.random() *
-                          this.props.listData.dataFolderContent.length
-                      )
-                    ].image
-                  }
+                  source={this.props.listData.dataFolderContent[0].image}
                   style={styles.listItemLeftImageStyle}
                   resizeMethod="auto"
                   resizeMode="contain"

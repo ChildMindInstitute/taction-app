@@ -1,7 +1,15 @@
 import React from "react";
-import { ListItem, Text, Left, Right, Body, View, Switch } from "native-base";
+import {
+  ListItem,
+  Text,
+  Left,
+  Right,
+  Body,
+  View,
+  Icon,
+  Button
+} from "native-base";
 import { Image } from "react-native";
-import CheckBox from "react-native-checkbox";
 import styles from "./styles";
 import Grid from "react-native-grid-component";
 class ListContent extends React.Component {
@@ -12,16 +20,8 @@ class ListContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      switched: this.props.listItem.status,
       isContentVisible: false
     };
-  }
-  componentWillReceiveProps() {
-    if (this.props.operationPerformed) {
-      this.setState({ checked: false });
-      this.props.operationPerformedReset();
-    }
   }
   render() {
     return (
@@ -35,22 +35,15 @@ class ListContent extends React.Component {
           <View style={styles.listItemInnerViewInnerViewStyle}>
             <Left style={styles.listItemInnerViewInnerViewLeftStyle}>
               <View
-                style={styles.listItemInnerViewInnerViewLeftInnerView1Style}
+                style={styles.listItemInnerViewInnerViewLeftInnerView2Style}
               >
-                <CheckBox
-                  label=""
-                  checked={this.state.checked}
-                  onChange={checked => {
-                    this.setState({ checked: !this.state.checked });
-                    this.props.checkBoxChange(this.props.listItem, checked);
-                  }}
-                  checkboxStyle={{
-                    borderRadius: 0,
-                    borderWidth: 1,
-                    borderColor: "#ccc"
-                  }}
-                  uncheckedImage={require("../../../../js/assets/empty.png")}
-                  checkedImage={require("../../../../js/assets/chkbx-tick.png")}
+                <Image
+                  source={this.props.listItem.dataFolderContent[0]}
+                  style={
+                    styles.listItemInnerViewInnerViewLeftInnerView2ImageStyle
+                  }
+                  resizeMethod="auto"
+                  resizeMode="contain"
                 />
               </View>
             </Left>
@@ -61,19 +54,6 @@ class ListContent extends React.Component {
                 flex: 8
               }}
             >
-              <View
-                style={styles.listItemInnerViewInnerViewLeftInnerView2Style}
-              >
-                <Image
-                  source={this.props.listItem.dataFolderContent[0].image}
-                  style={
-                    styles.listItemInnerViewInnerViewLeftInnerView2ImageStyle
-                  }
-                  resizeMethod="auto"
-                  resizeMode="contain"
-                />
-              </View>
-
               <View
                 style={styles.listItemInnerViewInnerViewLeftInnerView3Style}
               >
@@ -96,17 +76,12 @@ class ListContent extends React.Component {
               </View>
             </Body>
             <Right style={styles.listItemInnerViewInnerViewRightStyle}>
-              <Switch
-                onTintColor="#eeae30"
-                value={this.state.switched}
-                onValueChange={() => {
-                  this.setState({ switched: !this.state.switched });
-                  this.props.switchToggled(
-                    this.props.listItem,
-                    !this.state.switched
-                  );
-                }}
-              />
+              <Button
+                transparent
+                onPress={() => this.props.onDownloadPress(this.props.listItem)}
+              >
+                <Icon name="ios-cloud-download" style={{ color: "#eeae30" }} />
+              </Button>
             </Right>
           </View>
           {this.state.isContentVisible ? (
@@ -115,13 +90,8 @@ class ListContent extends React.Component {
                 style={styles.listItemInnerViewGridViewStyle}
                 renderItem={(data, i) => (
                   <Image
-                    source={data.image}
-                    style={[
-                      styles.listItemInnerViewGridItemImageStyle,
-                      {
-                        opacity: data.isCompleted ? 1 : 0.7
-                      }
-                    ]}
+                    source={data}
+                    style={styles.listItemInnerViewGridItemImageStyle}
                     resizeMethod="auto"
                     resizeMode="contain"
                     key={i}

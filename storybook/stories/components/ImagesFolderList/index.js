@@ -11,6 +11,8 @@ const ImagesFolderList = props => (
         listItem={item}
         switchToggled={props.switchToggled}
         checkBoxChange={props.checkBoxChange}
+        operationPerformed={props.operationPerformed}
+        operationPerformedReset={props.operationPerformedReset}
       />
     )}
   />
@@ -20,7 +22,9 @@ ImagesFolderList.propTypes = {
   listData: PropTypes.array,
   switchToggled: PropTypes.func,
   listStyle: PropTypes.object,
-  checkBoxChange: PropTypes.func
+  checkBoxChange: PropTypes.func,
+  operationPerformed: PropTypes.bool,
+  operationPerformedReset: PropTypes.func
 };
 
 export { ImagesFolderList as default };

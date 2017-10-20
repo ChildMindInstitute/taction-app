@@ -8,9 +8,9 @@ const setDashboardList = function* setDashboardList(action) {
     let currentDate = new Date().toDateString();
     let currentMonth = currentDate.slice(4, 7);
     for (let i in action.payload) {
-      let DataFolderContent = [];
+      let dataFolderContent = [];
       for (let j in action.payload[i].imageList) {
-        DataFolderContent.push({
+        dataFolderContent.push({
           imageID: action.payload[i].imageList[j].imageID,
           image: { uri: action.payload[i].imageList[j].imageDetails.url },
           correctTaps: action.payload[i].imageList[j].imageDetails.correctTaps,
@@ -25,7 +25,7 @@ const setDashboardList = function* setDashboardList(action) {
         wrongTaps: action.payload[i].folderDetails.wrongTaps,
         points: action.payload[i].folderDetails.score,
         stars: require("../assets/all-stars.png"),
-        dataFolderContent: DataFolderContent,
+        dataFolderContent: dataFolderContent,
         status: action.payload[i].folderDetails.status
       });
       if (action.payload[i].folderDetails.timeStamp == currentDate) {
@@ -39,7 +39,7 @@ const setDashboardList = function* setDashboardList(action) {
             action.payload[i].folderDetails.correctTaps,
             action.payload[i].folderDetails.wrongTaps
           ),
-          dataFolderContent: DataFolderContent,
+          dataFolderContent: dataFolderContent,
           status: action.payload[i].folderDetails.status
         });
       }
@@ -56,7 +56,7 @@ const setDashboardList = function* setDashboardList(action) {
             action.payload[i].folderDetails.correctTaps,
             action.payload[i].folderDetails.wrongTaps
           ),
-          dataFolderContent: DataFolderContent,
+          dataFolderContent: dataFolderContent,
           status: action.payload[i].folderDetails.status
         });
       }

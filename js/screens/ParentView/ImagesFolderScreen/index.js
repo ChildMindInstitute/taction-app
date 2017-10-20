@@ -8,6 +8,15 @@ class ImagesFolderScreen extends React.Component {
     title: "ImagesFolderScreen",
     header: null
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageList: this.props.dashboardList,
+      reordered: false
+    };
+  }
+
   toggleStatus(onOff, folderID) {
     this.props.dispatch({
       type: "SET_FOLDER_STATUS",
@@ -19,6 +28,9 @@ class ImagesFolderScreen extends React.Component {
     if (this.props.folderRemoved) {
       this.props.navigation.navigate("Dashboard");
     }
+    if (this.props.folderReordered && this.state.reordered) {
+      this.setState({ imageList: this.props.dashboardList, reordered: false });
+    }
   }
   removeItems(items) {
     this.props.dispatch({
@@ -28,6 +40,7 @@ class ImagesFolderScreen extends React.Component {
   }
 
   render() {
+    console.log(this.props.dashboardList, "logging in render fuction");
     StatusBar.setBarStyle("light-content", true);
     return (
       <ImagesFolder
@@ -72,18 +85,19 @@ class ImagesFolderScreen extends React.Component {
             payload: {
               childID: this.props.childID,
               folderID: checkedItem.folderID,
-              orderList: this.props.orderList
+              orderList: this.props.orderList,
+              dashboardList: this.props.dashboardList
             }
           });
         }}
         onPressMoveUp={checkedItem => {
-          debugger;
           this.props.dispatch({
             type: "UPDATE_ORDER_UP",
             payload: {
               childID: this.props.childID,
               folderID: checkedItem.folderID,
-              orderList: this.props.orderList
+              orderList: this.props.orderList,
+              dashboardList: this.props.dashboardList
             }
           });
         }}
@@ -98,6 +112,7 @@ const mapStateToProps = store => {
     childID: store.user.child.childID,
     dashboardList: store.dashboardList,
     folderRemoved: store.loaded.folderRemoved,
+    folderReordered: store.loaded.folderReordered,
     orderList: store.orderList
   };
 };

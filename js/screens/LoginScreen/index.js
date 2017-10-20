@@ -96,15 +96,23 @@ class LoginScreen extends React.Component {
           justifyContent: "flex-end"
         }}
         onPressForgotpassword={() => {
-          this.props.dispatch({
-            type: "RESET_PASSWORD",
-            payload: this.Input.userName
-          });
-          Toast.show({
-            text: "A password reset mail has been sent!",
-            position: "bottom",
-            buttonText: "Okay"
-          });
+          if (this.Input.userName != "") {
+            this.props.dispatch({
+              type: "RESET_PASSWORD",
+              payload: this.Input.userName
+            });
+            Toast.show({
+              text: "A password reset mail has been sent!",
+              position: "bottom",
+              buttonText: "Okay"
+            });
+          } else {
+            Toast.show({
+              text: "Email cannot be blank!",
+              position: "bottom",
+              buttonText: "Okay"
+            });
+          }
         }}
         onPressSubmitButton={(() => {
           this.setState({ submitted: true, hasSubmitError: false });

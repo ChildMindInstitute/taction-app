@@ -5,7 +5,8 @@ const waitReducer = (
     childListLoaded: false,
     gameOver: false,
     updateLoaded: false,
-    folderRemoved: false
+    folderRemoved: false,
+    folderReordered: false
   },
   action
 ) => {
@@ -38,6 +39,16 @@ const waitReducer = (
       state = { ...state, folderRemoved: true };
       break;
     }
+    case "FOLDER_REORDERING": {
+      state = { ...state, folderReordered: false };
+      break;
+    }
+
+    case "FOLDER_REORDERED": {
+      state = { ...state, folderReordered: true };
+      break;
+    }
+
     case "CLEAR_STORE": {
       state = {
         ...state,
@@ -46,7 +57,8 @@ const waitReducer = (
         childListLoaded: false,
         gameOver: false,
         updateLoaded: false,
-        folderRemoved: false
+        folderRemoved: false,
+        folderReordered: false
       };
       break;
     }

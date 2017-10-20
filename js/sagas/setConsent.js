@@ -5,9 +5,9 @@ const setConsent = function* setConsent() {
   yield put({
     type: "CONSENT",
     payload: {
-      Term1: consent.payload.Term1,
-      Term2: consent.payload.Term2,
-      Term3: consent.payload.Term3
+      term1: consent.payload.term1,
+      term2: consent.payload.term2,
+      term3: consent.payload.term3
     }
   });
 };

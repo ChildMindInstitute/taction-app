@@ -16,6 +16,7 @@ const userSignUp = function* userSignUp(action) {
     yield put({ type: "SET_PARENT" });
     yield put({ type: "USER_LOADED" });
   } catch (err) {
+    console.log(err);
     yield put({ type: "ERROR_SIGNUP" });
     yield put({ type: "USER_LOADED" });
   }

@@ -4,6 +4,12 @@ const orderListReducer = (state = [], action) => {
       state = action.payload;
       break;
     }
+
+    case "REORDER_ORDER_LIST": {
+      state = action.payload;
+      break;
+    }
+
     case "CLEAR_STORE": {
       state = [];
       break;

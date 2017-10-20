@@ -1,7 +1,7 @@
 import React from "react";
 import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
 import { connect } from "react-redux";
-import { Alert, StatusBar } from "react-native";
+import { Alert } from "react-native";
 import { Toast } from "native-base";
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
@@ -40,8 +40,6 @@ class ImagesFolderScreen extends React.Component {
   }
 
   render() {
-    console.log(this.props.dashboardList, "logging in render fuction");
-    StatusBar.setBarStyle("light-content", true);
     return (
       <ImagesFolder
         drawerOpen={() => {

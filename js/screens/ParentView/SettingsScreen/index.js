@@ -1,9 +1,23 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
-import { Alert, StatusBar } from "react-native";
-import Prompt from "react-native-prompt";
-import { View, ActionSheet, Toast } from "native-base";
+import { Alert } from "react-native";
+import {
+  View,
+  ActionSheet,
+  Toast,
+  Container,
+  Header,
+  Title,
+  Body,
+  Input,
+  Item,
+  Label,
+  Content,
+  Button,
+  Text
+} from "native-base";
+import Modal from "../../../../storybook/stories/components/Modal/modal";
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
@@ -14,32 +28,45 @@ class SettingsScreen extends React.Component {
     this.state = {
       random: false,
       sound: true,
-      promptVisible: false,
+      modalVisible: false,
       newValue: null,
-      promptTitle: "",
-      promptPlaceHolder: ""
+      modalTitle: "",
+      modalPlaceHolder: ""
+    };
+    this.input = {
+      entry1: "",
+      entry2: ""
     };
   }
-  findRoutes(value) {
-    switch (this.state.promptTitle) {
+  findRoutes() {
+    switch (this.state.modalTitle) {
       case "Name": {
-        this.props.dispatch({ type: "UPDATE_PARENT", payload: value });
-        break;
-      }
-      case "Age":
         this.props.dispatch({
-          type: "UPDATE_CHILD",
-          payload: { id: this.props.child.childID, update: { age: value } }
+          type: "UPDATE_PARENT",
+          payload: this.input.entry1
         });
         break;
-      case "Name of Child":
+      }
+      case "Age of child":
         this.props.dispatch({
           type: "UPDATE_CHILD",
           payload: {
             id: this.props.child.childID,
-            update: { name: value }
+            update: { age: this.input.entry1 }
           }
         });
+        break;
+      case "Name of child":
+        this.props.dispatch({
+          type: "UPDATE_CHILD",
+          payload: {
+            id: this.props.child.childID,
+            update: { name: this.input.entry1 }
+          }
+        });
+        break;
+      case "App prizes":
+        // Add Prizes callback
         break;
     }
   }
@@ -57,26 +84,92 @@ class SettingsScreen extends React.Component {
     });
   }
   render() {
-    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={{ flex: 1 }}>
-        <Prompt
-          title={this.state.promptTitle}
-          placeholder={this.state.promptPlaceHolder}
-          visible={this.state.promptVisible}
-          onCancel={() =>
-            this.setState({
-              promptVisible: false,
-              newValue: null
-            })}
-          onSubmit={value => {
-            this.setState(
-              {
-                promptVisible: false
-              },
-              this.findRoutes(value)
-            );
+        <Modal
+          isVisible={this.state.modalVisible}
+          extraModalStyle={{
+            paddingTop: "60%",
+            paddingBottom:
+              this.state.modalTitle == "Add prizes" ? "49%" : "75%",
+            paddingLeft: "10%",
+            paddingRight: "10%"
           }}
+          extraModalViewStyle={{
+            backgroundColor: "rgba(255,255,255,0.9)",
+            borderRadius: 10
+          }}
+          content={
+            <Container>
+              <Header>
+                <Body>
+                  <Title style={{ color: "#007aff" }}>
+                    {this.state.modalTitle}
+                  </Title>
+                </Body>
+              </Header>
+              <Content>
+                <Item stackedLabel>
+                  {this.state.modalTitle == "Add prizes" ? (
+                    <Label>Points to be achieved</Label>
+                  ) : (
+                    false
+                  )}
+                  <Input
+                    style={{ backgroundColor: "#fff" }}
+                    placeholder={this.state.modalPlaceHolder}
+                    keyboardType={
+                      this.state.modalTitle == "Age of child"
+                        ? "numeric"
+                        : "default"
+                    }
+                    onChange={event => {
+                      this.input.entry1 = event.nativeEvent;
+                    }}
+                  />
+                </Item>
+                {this.state.modalTitle == "Add prizes" ? (
+                  <Item stackedLabel>
+                    <Label>Prize</Label>
+                    <Input
+                      style={{ backgroundColor: "#fff" }}
+                      onChange={event => {
+                        this.input.entry2 = event.nativeEvent;
+                      }}
+                    />
+                  </Item>
+                ) : (
+                  false
+                )}
+              </Content>
+              <View style={{ flexDirection: "row" }}>
+                <Button
+                  block
+                  bordered
+                  light
+                  style={{ width: "50%" }}
+                  onPress={() => {
+                    this.findRoutes();
+                    this.setState({ modalVisible: false });
+                  }}
+                >
+                  <Text style={{ color: "#007aff" }}>Ok</Text>
+                </Button>
+
+                <Button
+                  block
+                  bordered
+                  light
+                  style={{ width: "50%" }}
+                  onPress={() => {
+                    this.setState({ modalVisible: false });
+                  }}
+                >
+                  <Text style={{ color: "#007aff" }}>Cancel</Text>
+                </Button>
+              </View>
+            </Container>
+          }
         />
         <Settings
           pressMaximumImageDuration={() => {
@@ -213,9 +306,9 @@ class SettingsScreen extends React.Component {
           noOfImagesPerSession={this.props.parent.settings.imagesPerSession}
           namePress={() => {
             this.setState({
-              promptTitle: "Name",
-              promptPlaceHolder: this.props.parent.name,
-              promptVisible: true
+              modalTitle: "Name of parent",
+              modalPlaceHolder: this.props.parent.name,
+              modalVisible: true
             });
           }}
           name={this.props.parent.name}
@@ -252,9 +345,9 @@ class SettingsScreen extends React.Component {
           }
           agePress={() => {
             this.setState({
-              promptTitle: "Age",
-              promptPlaceHolder: this.props.child.childDetails.age,
-              promptVisible: true
+              modalTitle: "Age of child",
+              modalPlaceHolder: this.props.child.childDetails.age,
+              modalVisible: true
             });
           }}
           randomSlider={value => {
@@ -289,12 +382,18 @@ class SettingsScreen extends React.Component {
           }
           nameChildPress={() => {
             this.setState({
-              promptTitle: "Name of Child",
-              promptPlaceHolder: this.props.child.childDetails.name,
-              promptVisible: true
+              modalTitle: "Name of child",
+              modalPlaceHolder: this.props.child.childDetails.name,
+              modalVisible: true
             });
           }}
-          pressAddPrizes={() => {}}
+          pressAddPrizes={() => {
+            this.setState({
+              modalTitle: "Add prizes",
+              modalPlaceHolder: "",
+              modalVisible: true
+            });
+          }}
           drawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
         />
       </View>

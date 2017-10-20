@@ -3,7 +3,6 @@ import { View, Spinner, Toast } from "native-base";
 import Dashboard from "../../../../storybook/stories/screens/Dashboard";
 import { connect } from "react-redux";
 let count = 0;
-import { StatusBar } from "react-native";
 class DashboardScreen extends React.Component {
   static navigationOptions = {
     title: "DashboardScreen",
@@ -41,7 +40,6 @@ class DashboardScreen extends React.Component {
   }
 
   render() {
-    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={{ flex: 1 }}>
         <Dashboard

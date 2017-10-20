@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Logo1 from "../../components/Logo.1";
 import FormInput from "../../components/FormInput";
-import ForgotPassword from "../../components/ForgotPassword";
-import Button from "../../components/Button";
-import RegisterWithUs from "../../components/RegisterWithUs";
-import { View, Form, Text, Icon, Left, Body } from "native-base";
+import Button2 from "../../components/Button";
+import { View, Form, Text, Icon, Left, Body, Button } from "native-base";
 import styles from "./styles";
 import { KeyboardAvoidingView, StatusBar } from "react-native";
 const Login = props => (
@@ -50,41 +48,33 @@ const Login = props => (
         <Form style={styles.formStyle}>
           <FormInput
             isPassword={false}
-            label="Username"
-            onChange={props.usernameChange}
+            label="Username / Email address"
+            onChange={props.emailChange}
             viewStyle={props.inputViewStyle}
             error={props.emailHasError}
             labelColor={props.labelColor}
-          />
-          <FormInput
-            isPassword={true}
-            label="Password"
-            onChange={props.passwordChange}
-            viewStyle={props.inputViewStyle}
-            error={props.passwordHasError}
-            labelColor={props.labelColor}
+            value={props.prevValue}
           />
         </Form>
       </View>
-      <View style={styles.forgotPasswordSpace}>
-        <ForgotPassword
-          forgotPasswordTextStyle={props.forgotPasswordTextStyle}
-          forgotPasswordButtonStyle={props.forgotPasswordButtonStyle}
-          onPressForgotPassword={props.onPressForgotPassword}
-        />
-      </View>
       <View style={styles.submitButtonSpace}>
-        <Button
+        <Button2
           onPress={props.onPressSubmitButton}
           submitButtonStyle={styles.submitButtonStyle}
           submitButtonTextStyle={styles.submitButtonTextStyle}
           buttonText="Submit &rarr;"
           submitted={props.submitted}
+          disabled={props.submitDisabled}
         />
       </View>
 
       <View style={styles.registerNowSpace}>
-        <RegisterWithUs onPressRegisterNow={props.onPressRegisterNow} />
+        <Text style={{ color: "#fff", opacity: 0.8, marginLeft: "10%" }}>
+          Back to the
+          <Button transparent style={styles.loginRedirectButtonStyle}>
+            <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
+          </Button>
+        </Text>
       </View>
       <View style={styles.bottomLogoSpace}>
         <Logo1 imageDimensions={styles.subLogoStyles} />
@@ -94,6 +84,7 @@ const Login = props => (
 );
 
 Login.propTypes = {
+  prevValue: PropTypes.string,
   submitted: PropTypes.bool,
   error: PropTypes.object,
   hasSubmitError: PropTypes.bool,

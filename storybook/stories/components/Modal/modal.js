@@ -15,7 +15,7 @@ class ModalCommon extends React.Component {
         visible={this.props.isVisible}
         style={[styles.mainModal, this.props.extraModalStyle]}
       >
-        <View style={styles.view1}>
+        <View style={[styles.view1, this.props.extraModalViewStyle]}>
           <View style={styles.mainContent}>{this.props.content}</View>
         </View>
       </Modal>

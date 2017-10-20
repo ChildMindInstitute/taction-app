@@ -17,6 +17,7 @@ const FormInput = props => (
       </Text>
       <View style={styles.inputStyle}>
         <Input
+          value={props.value}
           style={{
             borderColor: props.error ? "red" : "white",
             borderWidth: 1.5
@@ -42,6 +43,7 @@ const FormInput = props => (
 );
 
 FormInput.propTypes = {
+  value: PropTypes.string,
   error: PropTypes.bool,
   labelColor: PropTypes.string,
   errorText: PropTypes.string,

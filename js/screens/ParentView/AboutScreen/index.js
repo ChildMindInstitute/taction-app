@@ -1,12 +1,11 @@
 import React from "react";
-import { View, StatusBar } from "react-native";
+import { View } from "react-native";
 import HeaderCommon from "../../../../storybook/stories/components/Header";
 import styles from "./styles";
 import Logo5 from "../../../../storybook/stories/components/Logo.5";
 import { Text, Footer } from "native-base";
 class About extends React.Component {
   render() {
-    StatusBar.setBarStyle("light-content", true);
     return (
       <View style={styles.container}>
         <HeaderCommon

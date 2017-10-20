@@ -1,6 +1,5 @@
 import React from "react";
 import StockImages from "../../../../storybook/stories/screens/StockImages";
-import { StatusBar } from "react-native";
 const data = [
   {
     name: "Spider",
@@ -38,7 +37,6 @@ class StockImagesScreen extends React.Component {
     super(props);
   }
   render() {
-    StatusBar.setBarStyle("light-content", true);
     return (
       <StockImages
         back={() => this.props.navigation.navigate("AddFolder")}

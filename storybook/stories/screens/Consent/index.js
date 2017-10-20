@@ -4,17 +4,12 @@ import Logo from "../../components/Logo";
 import Button from "../../components/Button";
 import { View, Text } from "native-base";
 import CheckBox from "../../components/CheckboxCustom";
-import { ScrollView } from "react-native";
+import { ScrollView, StatusBar } from "react-native";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 const Consent = props => (
   <View style={styles.mainOuterViewOuterView}>
+    <StatusBar barStyle="light-content" />
     <View style={styles.mainOuterView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />
       </View>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, View } from "native-base";
-import { StatusBar } from "react-native";
 import SwipeableParallaxCarousel from "../../../../storybook/stories/components/Carousel";
 import { Constants } from "expo";
 const datacarousel = [
@@ -36,7 +35,6 @@ class HowToPlayScreen extends React.Component {
           }}
         >
           <Container style={{ flex: 1 }}>
-            <StatusBar barStyle="light-content" />
             <SwipeableParallaxCarousel
               data={datacarousel}
               height="100%"

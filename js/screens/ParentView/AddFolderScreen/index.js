@@ -4,7 +4,6 @@ import { ActionSheet, List, Toast } from "native-base";
 import ListItemCustom from "./ListItem";
 import { ImagePicker } from "expo";
 import { connect } from "react-redux";
-import { StatusBar } from "react-native";
 let dataNext = [];
 let selectedIndexes = [];
 const BUTTONS = ["Camera", "Gallery", "Stock Images", "Cancel"];
@@ -87,7 +86,6 @@ class AddFolderScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    StatusBar.setBarStyle("light-content", true);
     return (
       <AddFolder
         onPressSaveButton={() => {

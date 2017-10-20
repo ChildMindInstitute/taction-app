@@ -3,7 +3,6 @@ import { Text, List, ListItem, View } from "native-base";
 import Logo from "../Logo";
 import Logo1 from "../Logo.1";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 import { connect } from "react-redux";
 const datas = [
   {
@@ -43,7 +42,6 @@ class SideBar extends React.Component {
   render() {
     return (
       <View style={styles.containerStyle}>
-        <StatusBar barStyle="light-content" />
         <View style={styles.contentStyle}>
           <View style={styles.drawerCover}>
             <Logo imageDimensions={styles.drawerImage} />

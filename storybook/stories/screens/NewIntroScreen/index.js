@@ -6,15 +6,9 @@ import Button from "../../components/Button";
 import { View, Text } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
-import { StatusBar } from "react-native";
 const NewIntro = props => (
   <View style={styles.mainOuterView}>
     <View style={styles.mainView}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
       <Logo2 imageDimensions={styles.backgroundImage} />
       <View style={styles.topSpace}>
         <View

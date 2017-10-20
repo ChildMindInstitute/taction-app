@@ -4,7 +4,7 @@ import Db from "../../js/services";
 const updateOrderUp = function* updateOrderUp(action) {
   let orderList = action.payload.orderList;
   let folderID = action.payload.folderID;
-  for (let i in orderList) {
+  for (let i = 0; i < orderList.length; i++) {
     if (orderList[i].exerciseID == folderID) {
       if (orderList[i].order > 0) {
         yield call(
@@ -15,11 +15,11 @@ const updateOrderUp = function* updateOrderUp(action) {
           orderList[i - 1].exerciseID,
           ++orderList[i - 1].order
         );
+        yield put({ type: "SET_FOLDER_LIST", payload: action.payload.childID });
         break;
       }
     }
   }
-  yield put({ type: "SET_FOLDER_LIST", payload: action.payload.childID });
 };
 
 const watchUpdateOrderUp = function* watchUpdateOrderUp() {

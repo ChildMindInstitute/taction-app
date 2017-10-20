@@ -127,9 +127,10 @@ class AddFolderScreen extends React.Component {
             buttonIndex => {
               if (buttonIndex == 0) {
                 this.updateCameraImage.bind(this);
-              }
-              if (buttonIndex == 1) {
+              } else if (buttonIndex == 1) {
                 this.updateImage();
+              } else if (buttonIndex == 2) {
+                this.props.navigation.navigate("StockImages");
               }
             }
           );

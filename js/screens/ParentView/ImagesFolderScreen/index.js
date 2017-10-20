@@ -8,14 +8,6 @@ class ImagesFolderScreen extends React.Component {
     title: "ImagesFolderScreen",
     header: null
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      IsAvailableToChild: false,
-      CheckedItems: []
-    };
-  }
-
   toggleStatus(onOff, folderID) {
     this.props.dispatch({
       type: "SET_FOLDER_STATUS",
@@ -43,7 +35,7 @@ class ImagesFolderScreen extends React.Component {
           this.props.navigation.navigate("DrawerOpen");
         }}
         totalPoints={100}
-        onPressSubmitButton={() => {
+        onPressAddButton={() => {
           if (this.props.child && this.props.childID) {
             this.props.navigation.navigate("AddFolder");
           } else {
@@ -75,7 +67,6 @@ class ImagesFolderScreen extends React.Component {
           );
         }}
         onPressMoveDown={checkedItem => {
-          console.log(checkedItem);
           this.props.dispatch({
             type: "UPDATE_ORDER_DOWN",
             payload: {
@@ -86,6 +77,7 @@ class ImagesFolderScreen extends React.Component {
           });
         }}
         onPressMoveUp={checkedItem => {
+          debugger;
           this.props.dispatch({
             type: "UPDATE_ORDER_UP",
             payload: {

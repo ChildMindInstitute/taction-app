@@ -8,8 +8,10 @@ import ImagesFolderScreen from "../../../../js/screens/ParentView/ImagesFolderSc
 import AddChildScreen from "../../../../js/screens/ParentView/AddChildScreen";
 import AddFolderScreen from "../../../../js/screens/ParentView/AddFolderScreen";
 import LogoutTemp from "../../../../js/screens/ParentView/LogoutTemp";
+import StockImages from "../../../../js/screens/ParentView/StockImagesScreen";
 const DrawerParent = DrawerNavigator(
   {
+    StockImages: { screen: StockImages },
     Dashboard: {
       screen: ({ screenProps, navigation }) => (
         <DashboardScreen

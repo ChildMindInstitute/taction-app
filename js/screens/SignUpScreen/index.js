@@ -12,11 +12,11 @@ class LoginScreen extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.Input = {
-      ConfirmPassword: "",
-      Password: "",
-      Email: "",
-      Username: ""
+    this.input = {
+      confirmPassword: "",
+      password: "",
+      email: "",
+      username: ""
     };
     this.state = {
       confirmPasswordError: false,
@@ -27,10 +27,10 @@ class LoginScreen extends React.Component {
       hasToNavigate: false
     };
     this.error = {
-      confirmPassword: "Must Match Password",
+      confirmPassword: "Must match password",
       password: "Required",
-      email: "Invalid Email ID",
-      username: "Username Already Taken"
+      email: "Invalid email id",
+      username: "username already taken"
     };
   }
   componentDidUpdate() {
@@ -51,16 +51,16 @@ class LoginScreen extends React.Component {
   }
   signUp() {
     if (
-      this.Input.password == this.Input.confirmPassword &&
+      this.input.password == this.input.confirmPassword &&
       !this.state.emailError
     ) {
       this.props.dispatch({
         type: "USER_SIGNUP",
         payload: {
           consent: this.props.consent,
-          username: this.Input.Username,
-          email: this.Input.Email,
-          password: this.Input.Password
+          username: this.input.username,
+          email: this.input.email,
+          password: this.input.password
         }
       });
     }
@@ -71,8 +71,8 @@ class LoginScreen extends React.Component {
       <SignUp
         backgroundColor="#0067a0"
         usernameChange={event => {
-          this.Input.uername = event.nativeEvent.text;
-          if (this.Input.username == "") {
+          this.input.username = event.nativeEvent.text;
+          if (this.input.username == "") {
             this.setState({ usernameError: true });
           } else {
             this.setState({ usernameError: false });
@@ -82,12 +82,12 @@ class LoginScreen extends React.Component {
           flex: 1
         }}
         passwordChange={event => {
-          this.Input.password = event.nativeEvent.text;
-          if (this.Input.password == "" || this.Input.password.length < 6) {
-            this.setState({ PasswordError: true });
+          this.input.password = event.nativeEvent.text;
+          if (this.input.password == "" || this.input.password.length < 6) {
+            this.setState({ passwordError: true });
           } else {
-            this.setState({ PasswordError: false });
-            if (this.Input.password == this.Input.confirmPassword) {
+            this.setState({ passwordError: false });
+            if (this.input.password == this.input.confirmPassword) {
               this.setState({ confirmPasswordError: false });
             } else {
               this.setState({ confirmPasswordError: true });
@@ -111,28 +111,28 @@ class LoginScreen extends React.Component {
           this.state.emailError ||
           this.state.passwordError ||
           this.state.usernameError ||
-          (this.Input.confirmPassword == "" ||
-            this.Input.email == "" ||
-            this.Input.password == "" ||
-            this.Input.username == "")
+          (this.input.confirmPassword == "" ||
+            this.input.email == "" ||
+            this.input.password == "" ||
+            this.input.username == "")
         }
         confirmPasswordChange={event => {
-          this.Input.ConfirmPassword = event.nativeEvent.text;
+          this.input.confirmPassword = event.nativeEvent.text;
           if (
-            this.Input.confirmPassword == this.Input.password &&
-            this.Input.password != ""
+            this.input.confirmPassword == this.input.password &&
+            this.input.password != ""
           ) {
             this.setState({ confirmPasswordError: false });
-          } else if (this.Input.password == "") {
+          } else if (this.input.password == "") {
             this.setState({ confirmPasswordError: true });
-            this.setState({ PasswordError: true });
+            this.setState({ passwordError: true });
           } else {
             this.setState({ confirmPasswordError: true });
           }
         }}
         emailChange={event => {
-          this.Input.email = event.nativeEvent.text;
-          if (RegExEmail.test(this.Input.email)) {
+          this.input.email = event.nativeEvent.text;
+          if (RegExEmail.test(this.input.email)) {
             this.setState({ emailError: false });
           } else {
             this.setState({ emailError: true });

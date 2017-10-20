@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   formSpace: { flex: 9 },
   formStyle: { flex: 1 },
   submitButtonSpace: { flex: 1, marginTop: "5%" },
-  MainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
+  mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
   subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
   submitButtonTextStyle: { color: "white" },
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end",
     alignSelf: "center",
-    marginTop: "5%"
+    marginTop: "5%",
+    marginBottom: "5%"
   },
   alreadyHaveAnAccountTextColor: { color: "#fff", opacity: 0.8 },
   loginRedirectButtonStyle: {
@@ -41,6 +42,6 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     height: 20
   },
-  aoginRedirectButtonTextStyle: { color: "#fff", fontWeight: "bold" }
+  loginRedirectButtonTextStyle: { color: "#fff", fontWeight: "bold" }
 });
 export default styles;

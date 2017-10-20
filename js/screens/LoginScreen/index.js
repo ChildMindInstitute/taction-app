@@ -11,7 +11,7 @@ class LoginScreen extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.Input = {
+    this.input = {
       userName: "",
       password: ""
     };
@@ -30,15 +30,15 @@ class LoginScreen extends React.Component {
   }
 
   loginUser() {
-    if (this.Input.userName != "" && this.Input.password != "") {
+    if (this.input.userName != "" && this.input.password != "") {
       this.props.dispatch({
         type: "USER_SIGN_IN",
         payload: {
-          username: this.Input.userName,
-          password: this.Input.password
+          username: this.input.userName,
+          password: this.input.password
         }
       });
-    } else if (this.Input.userName == "" && this.Input.password == "") {
+    } else if (this.input.userName == "" && this.input.password == "") {
       this.setState({ submitted: false });
     }
   }
@@ -76,16 +76,16 @@ class LoginScreen extends React.Component {
     return (
       <Login
         usernameChange={event => {
-          this.Input.userName = event.nativeEvent.text;
-          if (this.Input.userName == "") {
+          this.input.userName = event.nativeEvent.text;
+          if (this.input.userName == "") {
             this.setState({ emailHasError: true });
           } else this.setState({ emailHasError: false });
         }}
         labelColor="white"
         inputViewStyle={{ flex: 1 }}
         passwordChange={event => {
-          this.Input.password = event.nativeEvent.text;
-          if (this.Input.password == "") {
+          this.input.password = event.nativeEvent.text;
+          if (this.input.password == "") {
             this.setState({ passwordHasError: true });
           } else this.setState({ passwordHasError: false });
         }}
@@ -95,15 +95,9 @@ class LoginScreen extends React.Component {
           alignSelf: "flex-end",
           justifyContent: "flex-end"
         }}
-        onPressForgotpassword={() => {
-          this.props.dispatch({
-            type: "RESET_PASSWORD",
-            payload: this.Input.userName
-          });
-          Toast.show({
-            text: "A password reset mail has been sent!",
-            position: "bottom",
-            buttonText: "Okay"
+        onPressForgotPassword={() => {
+          this.props.navigation.navigate("ForgotPassword", {
+            email: this.input.userName
           });
         }}
         onPressSubmitButton={(() => {

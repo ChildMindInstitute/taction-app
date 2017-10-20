@@ -35,7 +35,7 @@ const Settings = props => (
         pressAddPrizes={props.pressAddPrizes}
         childExists={props.childExists}
         nameChild={props.nameChild}
-        mameChildPress={props.nameChildPress}
+        nameChildPress={props.nameChildPress}
       />
     </ScrollView>
   </Container>

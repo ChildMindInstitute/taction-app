@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
     margin: "5%"
   },
   topSpace: {
-    flex: 7,
+    flex: 4,
     alignItems: "center",
     justifyContent: "center"
   },
-  formSpace: { flex: 6 },
+  formSpace: { flex: 3 },
   errorSpace: {
     flex: 2,
     alignItems: "center",
@@ -24,19 +24,28 @@ const styles = StyleSheet.create({
   },
   errorText: { color: "white" },
   formStyle: { flex: 1 },
-  forgotPasswordSpace: { flex: 1, marginBottom: "5%", marginTop: "4%" },
   submitButtonSpace: { flex: 1 },
   registerNowSpace: {
     flex: 4,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center"
   },
   mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
   subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
-  submitButtonStyle: {
-    backgroundColor: "#eeae30"
+
+  submitButtonTextStyle: { color: "white" },
+  loginRedirectButtonStyle: {
+    paddingLeft: 0,
+    padding: 0,
+    alignSelf: "flex-end",
+    height: 10,
+    width: 80
   },
-  submitButtonTextStyle: { color: "white" }
+  loginRedirectButtonTextStyle: {
+    color: "#fff",
+    fontWeight: "bold",
+    paddingLeft: 6
+  }
 });
 export default styles;

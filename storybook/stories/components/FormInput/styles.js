@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   labelStyle: {
     fontSize: 16,
     alignSelf: "flex-start",
-    paddingBottom: 5
+    paddingBottom: 10
   },
   inputStyle: {
     width: "102%",

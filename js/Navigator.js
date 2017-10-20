@@ -9,10 +9,12 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import ParentDrawerScreen from "./screens/ParentDrawerScreen";
 import LoginAsScreen from "./screens/LoginAsScreen";
 import DrawerChild from "./screens/ChildDrawerScreen";
+import ForgotPasswordScreen from "./screens/ForgotPasswordScreen";
 const NavigationDetails = StackNavigator(
   {
     AlmostThere: { screen: AlmostThereScreen },
     Consent: { screen: ConsentScreen },
+    ForgotPassword: { screen: ForgotPasswordScreen },
     ParentDrawer: {
       screen: ({ navigation, screenProps }) => (
         <ParentDrawerScreen

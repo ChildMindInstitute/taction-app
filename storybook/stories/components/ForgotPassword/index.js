@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Text } from "native-base";
 
-const LoginForm = props => (
+const ForgotPassword = props => (
   <Button
     transparent
     onPress={props.onPressForgotPassword}
@@ -12,13 +12,13 @@ const LoginForm = props => (
   </Button>
 );
 
-LoginForm.propTypes = {
+ForgotPassword.propTypes = {
   forgotPasswordTextStyle: PropTypes.object,
   forgotPasswordButtonStyle: PropTypes.object,
   onPressForgotPassword: PropTypes.func
 };
-LoginForm.defaultProps = {
+ForgotPassword.defaultProps = {
   onPressForgotPassword: () => {}
 };
 
-export { LoginForm as default };
+export { ForgotPassword as default };

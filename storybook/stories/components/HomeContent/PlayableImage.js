@@ -18,10 +18,10 @@ class PlayableImage extends React.Component {
         />
         {this.props.result ? (
           <AfterTouchResult
-            CorrectOption={this.props.correctOption}
-            CurrentOption={this.props.currentOption}
-            TickImage={this.props.tickImage}
-            CrossImage={this.props.crossImage}
+            correctOption={this.props.correctOption}
+            currentOption={this.props.currentOption}
+            tickImage={this.props.tickImage}
+            crossImage={this.props.crossImage}
           />
         ) : (
           <View />

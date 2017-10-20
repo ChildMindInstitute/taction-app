@@ -13,7 +13,7 @@ class HomeTimer extends React.Component {
       timeUp: false,
       interval: null
     };
-    this.future = new Date().getTime() + this.props.TimeLeft;
+    this.future = new Date().getTime() + this.props.timeLeft;
   }
   returnMinSec(distance) {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -26,9 +26,9 @@ class HomeTimer extends React.Component {
     );
   }
   OnTimeCompleteOrAnswerSubmitHandle(requiredFunc) {
-    if (!this.props.IsLast) {
+    if (!this.props.isLast) {
       {
-        this.future = new Date().getTime() + this.props.TimeLeft;
+        this.future = new Date().getTime() + this.props.timeLeft;
         requiredFunc();
       }
     } else {
@@ -39,20 +39,20 @@ class HomeTimer extends React.Component {
   componentWillMount() {
     let x = setInterval(() => {
       let now = new Date().getTime();
-      if (this.future - now >= 0 && !this.props.CurrentLevelAnswerSubmitted) {
+      if (this.future - now >= 0 && !this.props.currentLevelAnswerSubmitted) {
         this.setState({ timer: this.future - now });
       } else if (
         this.future - now >= 0 &&
-        this.props.CurrentLevelAnswerSubmitted
+        this.props.currentLevelAnswerSubmitted
       ) {
         this.OnTimeCompleteOrAnswerSubmitHandle(
-          this.props.CurrentLevelAnswerSubmittedSwitch
+          this.props.currentLevelAnswerSubmittedSwitch
         );
       } else if (
         this.future - now < 0 &&
-        !this.props.CurrentLevelAnswerSubmitted
+        !this.props.currentLevelAnswerSubmitted
       ) {
-        this.OnTimeCompleteOrAnswerSubmitHandle(this.props.TimeExpiredFunc);
+        this.OnTimeCompleteOrAnswerSubmitHandle(this.props.timeExpiredFunc);
       }
     }, 1000);
     this.setState({ interval: x });

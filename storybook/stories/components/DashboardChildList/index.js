@@ -47,8 +47,8 @@ const DashboardChildList = props => (
 );
 
 DashboardChildList.propTypes = {
-  ExcercisesAvailable: PropTypes.array,
-  ItemPress: PropTypes.func
+  excercisesAvailable: PropTypes.array,
+  itemPress: PropTypes.func
 };
 
 export { DashboardChildList as default };

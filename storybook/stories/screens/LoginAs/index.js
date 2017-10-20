@@ -35,15 +35,15 @@ const LoginAs = props => (
 );
 
 LoginAs.propTypes = {
-  BackgroundColor: PropTypes.string,
-  ListStyle: PropTypes.object,
-  Data: PropTypes.array,
-  ListItemPress: PropTypes.func,
-  CheckBoxPress: PropTypes.func
+  backgroundColor: PropTypes.string,
+  listStyle: PropTypes.object,
+  data: PropTypes.array,
+  listItemPress: PropTypes.func,
+  checkBoxPress: PropTypes.func
 };
 LoginAs.defaultProps = {
-  ListItemPress: () => {},
-  CheckBoxPress: () => {}
+  listItemPress: () => {},
+  checkBoxPress: () => {}
 };
 
 export { LoginAs as default };

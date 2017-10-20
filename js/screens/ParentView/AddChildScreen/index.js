@@ -20,7 +20,7 @@ class AddChildScreen extends React.Component {
         payload: { name: childName, age: childAge }
       });
       this.props.navigation.navigate(
-        this.props.IsNewRegistration ? "AddFolder" : "Dashboard"
+        this.props.isNewRegistration ? "AddFolder" : "Dashboard"
       );
     }
   }
@@ -34,7 +34,7 @@ class AddChildScreen extends React.Component {
           this.addChild();
         }}
         onPressSkipButton={() => {
-          navigate(this.props.IsNewRegistration ? "AddFolder" : "Dashboard");
+          navigate(this.props.isNewRegistration ? "AddFolder" : "Dashboard");
         }}
         childNameChange={event => {
           childName = event.nativeEvent.text;

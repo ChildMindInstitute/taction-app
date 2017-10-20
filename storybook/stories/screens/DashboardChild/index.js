@@ -37,18 +37,14 @@ const DashboardChild = props => (
 );
 
 DashboardChild.propTypes = {
-  DrawerOpen: PropTypes.func,
-  ExcercisesAvailable: PropTypes.array,
-  ItemPress: PropTypes.func,
+  drawerOpen: PropTypes.func,
+  excercisesAvailable: PropTypes.array,
+  itemPress: PropTypes.func,
   children: PropTypes.node.isRequired
 };
 DashboardChild.defaultProps = {
-  onPress: () => {},
-  OnPressForgotPassword: () => {},
-  OnPressRegisterNow: () => {},
-  UsernameChange: () => {},
-  SubmitButtonOnPress: () => {},
-  PasswordChange: () => {}
+  drawerOpen: () => {},
+  itemPress: () => {}
 };
 
 export { DashboardChild as default };

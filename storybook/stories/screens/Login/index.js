@@ -120,12 +120,12 @@ Login.propTypes = {
   onPressRegisterNow: PropTypes.func
 };
 Login.defaultProps = {
-  onPress: () => {},
-  OnPressForgotPassword: () => {},
-  OnPressRegisterNow: () => {},
-  UsernameChange: () => {},
+  onPressSubmitButton: () => {},
+  onPressForgotPassword: () => {},
+  onPressRegisterNow: () => {},
+  usernameChange: () => {},
   SubmitButtonOnPress: () => {},
-  PasswordChange: () => {}
+  passwordChange: () => {}
 };
 
 export { Login as default };

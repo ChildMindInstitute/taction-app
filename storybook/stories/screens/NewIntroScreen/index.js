@@ -85,8 +85,8 @@ NewIntro.propTypes = {
   howToPlayOnPress: PropTypes.func
 };
 NewIntro.defaultProps = {
-  PlayOnPress: () => {},
-  HowToPlayOnPress: () => {}
+  playOnPress: () => {},
+  howToPlayOnPress: () => {}
 };
 
 export { NewIntro as default };

@@ -12,51 +12,51 @@ class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.Input = {
-      UserName: "",
-      Password: ""
+      userName: "",
+      password: ""
     };
 
     this.state = {
-      EmailHasError: false,
-      PasswordHasError: false,
-      HasSubmitError: false,
-      Submitted: false
+      emailHasError: false,
+      passwordHasError: false,
+      hasSubmitError: false,
+      submitted: false
     };
     this.Error = {
-      Username: "Required",
-      Password: "Required",
-      SubmitError: "Please enter a valid userName and password"
+      username: "Required",
+      password: "Required",
+      submitError: "Please enter a valid userName and password"
     };
   }
 
   loginUser() {
-    if (this.Input.UserName != "" && this.Input.Password != "") {
+    if (this.Input.userName != "" && this.Input.password != "") {
       this.props.dispatch({
         type: "USER_SIGN_IN",
         payload: {
-          username: this.Input.UserName,
-          password: this.Input.Password
+          username: this.Input.userName,
+          password: this.Input.password
         }
       });
-    } else if (this.Input.UserName == "" && this.Input.Password == "") {
-      this.setState({ Submitted: false });
+    } else if (this.Input.userName == "" && this.Input.password == "") {
+      this.setState({ submitted: false });
     }
   }
 
   componentDidUpdate() {
-    if (this.state.Submitted) {
+    if (this.state.submitted) {
       if (this.props.loaded && !this.props.error) {
         this.redirect();
-        this.setState({ Submitted: false, HasSubmitError: false });
+        this.setState({ submitted: false, hasSubmitError: false });
       } else if (
         this.props.loaded &&
         this.props.error &&
-        !this.state.HasSubmitError
+        !this.state.hasSubmitError
       ) {
         {
           this.setState({
-            HasSubmitError: true,
-            Submitted: false
+            hasSubmitError: true,
+            submitted: false
           });
         }
       }
@@ -76,29 +76,29 @@ class LoginScreen extends React.Component {
     return (
       <Login
         usernameChange={event => {
-          this.Input.UserName = event.nativeEvent.text;
-          if (this.Input.UserName == "") {
-            this.setState({ EmailHasError: true });
-          } else this.setState({ EmailHasError: false });
+          this.Input.userName = event.nativeEvent.text;
+          if (this.Input.userName == "") {
+            this.setState({ emailHasError: true });
+          } else this.setState({ emailHasError: false });
         }}
         labelColor="white"
         inputViewStyle={{ flex: 1 }}
         passwordChange={event => {
-          this.Input.Password = event.nativeEvent.text;
-          if (this.Input.Password == "") {
-            this.setState({ PasswordHasError: true });
-          } else this.setState({ PasswordHasError: false });
+          this.Input.password = event.nativeEvent.text;
+          if (this.Input.password == "") {
+            this.setState({ passwordHasError: true });
+          } else this.setState({ passwordHasError: false });
         }}
-        forgotPasswordTextStyle={{ color: "white" }}
-        forgotPasswordButtonStyle={{
+        forgotpasswordTextStyle={{ color: "white" }}
+        forgotpasswordButtonStyle={{
           flex: 1,
           alignSelf: "flex-end",
           justifyContent: "flex-end"
         }}
-        onPressForgotPassword={() => {
+        onPressForgotpassword={() => {
           this.props.dispatch({
             type: "RESET_PASSWORD",
-            payload: this.Input.UserName
+            payload: this.Input.userName
           });
           Toast.show({
             text: "A password reset mail has been sent!",
@@ -107,7 +107,7 @@ class LoginScreen extends React.Component {
           });
         }}
         onPressSubmitButton={(() => {
-          this.setState({ Submitted: true, HasSubmitError: false });
+          this.setState({ submitted: true, hasSubmitError: false });
           this.loginUser();
         }).bind(this)}
         error={this.Error}
@@ -122,10 +122,10 @@ class LoginScreen extends React.Component {
           alignSelf: "center",
           color: "#ccc"
         }}
-        submitted={this.state.Submitted}
-        hasSubmitError={this.state.HasSubmitError}
-        emailHasError={this.state.EmailHasError}
-        passwordHasError={this.state.PasswordHasError}
+        submitted={this.state.submitted}
+        hasSubmitError={this.state.hasSubmitError}
+        emailHasError={this.state.emailHasError}
+        passwordHasError={this.state.passwordHasError}
       />
     );
   }

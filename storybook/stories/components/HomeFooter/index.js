@@ -4,7 +4,7 @@ import { Footer, View, Text } from "native-base";
 import styles from "./styles";
 const HomeFooter = props => {
   let renderProgress = [];
-  for (let i = 0; i < props.Left; i++) {
+  for (let i = 0; i < props.left; i++) {
     if (renderProgress.length == 0)
       renderProgress.push(
         <View
@@ -12,7 +12,7 @@ const HomeFooter = props => {
           style={[styles.leftEndBar, styles.completedBarColor]}
         />
       );
-    else if (renderProgress.length == props.Total - 1) {
+    else if (renderProgress.length == props.total - 1) {
       renderProgress.push(
         <View
           key={renderProgress.length}
@@ -28,7 +28,7 @@ const HomeFooter = props => {
       );
     }
   }
-  for (let i = 0; i < props.Total - props.Left; i++) {
+  for (let i = 0; i < props.total - props.left; i++) {
     if (renderProgress.length == 0)
       renderProgress.push(
         <View
@@ -36,7 +36,7 @@ const HomeFooter = props => {
           style={[styles.leftEndBar, styles.incompleteBarColor]}
         />
       );
-    else if (renderProgress.length == props.Total - 1) {
+    else if (renderProgress.length == props.total - 1) {
       renderProgress.push(
         <View
           key={renderProgress.length}

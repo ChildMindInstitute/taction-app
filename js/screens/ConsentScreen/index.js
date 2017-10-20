@@ -10,9 +10,9 @@ class ConsentScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Term1: false,
-      Term2: false,
-      Term3: false
+      term1: false,
+      term2: false,
+      term3: false
     };
   }
 
@@ -20,9 +20,9 @@ class ConsentScreen extends React.Component {
     this.props.dispatch({
       type: "SET_CONSENT",
       payload: {
-        Term1: this.state.Term1,
-        Term2: this.state.Term2,
-        Term3: this.state.Term3
+        term1: this.state.term1,
+        term2: this.state.term2,
+        term3: this.state.term3
       }
     });
     this.props.navigation.navigate("SignUp");
@@ -36,18 +36,18 @@ class ConsentScreen extends React.Component {
         term2="I will allow the Child Mind Institute to store data from the use of this app on a secure cloud server, and to access this information for clinical and research purposes."
         term3="I permit the Child Mind Institute to contact me regarding information gathered from this app for clinical or research purposes."
         submitButtonTextStyle={{ color: "white" }}
-        disabled={!(this.state.Term1 && this.state.Term2)}
-        checked1={this.state.Term1}
-        checked2={this.state.Term2}
-        checked3={this.state.Term3}
+        disabled={!(this.state.term1 && this.state.term2)}
+        checked1={this.state.term1}
+        checked2={this.state.term2}
+        checked3={this.state.term3}
         checkboxChange1={() => {
-          this.setState({ Term1: !this.state.Term1 });
+          this.setState({ term1: !this.state.term1 });
         }}
         checkboxChange2={() => {
-          this.setState({ Term2: !this.state.Term2 });
+          this.setState({ term2: !this.state.term2 });
         }}
         checkboxChange3={() => {
-          this.setState({ Term3: !this.state.Term3 });
+          this.setState({ term3: !this.state.term3 });
         }}
         onPressSubmitButton={() => this.setConsent()}
       />

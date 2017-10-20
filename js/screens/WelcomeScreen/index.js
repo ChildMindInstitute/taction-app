@@ -23,7 +23,7 @@ class WelcomeScreen extends React.Component {
           index: 0,
           actions: [
             NavigationActions.navigate({
-              params: { NewRegistration: true },
+              params: { newRegistration: true },
               routeName: "ParentDrawer"
             })
           ]
@@ -36,7 +36,7 @@ class WelcomeScreen extends React.Component {
           index: 0,
           actions: [
             NavigationActions.navigate({
-              params: { NewRegistration: true },
+              params: { newRegistration: true },
               routeName: "AlmostThere"
             })
           ]

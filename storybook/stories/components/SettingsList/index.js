@@ -123,24 +123,24 @@ const SettingsList = props => (
 );
 
 SettingsList.propTypes = {
-  ChildExists: PropTypes.bool,
-  NameChild: PropTypes.string,
-  NameChildPress: PropTypes.func,
-  MaximumImageDuration: PropTypes.string,
-  TimerOfNext: PropTypes.string,
-  NoOfImagesPerSession: PropTypes.number,
-  PressMaximumImageDuration: PropTypes.func,
-  RandomSlider: PropTypes.func,
-  SoundSliderValue: PropTypes.bool,
-  SoundSlider: PropTypes.func,
-  RandomSliderValue: PropTypes.bool,
-  PressNoOfImagesPerSession: PropTypes.func,
-  PressAddPrizes: PropTypes.func,
-  NamePress: PropTypes.func,
-  PasswordPress: PropTypes.func,
-  AgePress: PropTypes.func,
-  Name: PropTypes.string,
-  Age: PropTypes.string
+  childExists: PropTypes.bool,
+  nameChild: PropTypes.string,
+  nameChildPress: PropTypes.func,
+  maximumImageDuration: PropTypes.string,
+  timerOfNext: PropTypes.string,
+  noOfImagesPerSession: PropTypes.number,
+  pressMaximumImageDuration: PropTypes.func,
+  randomSlider: PropTypes.func,
+  soundSliderValue: PropTypes.bool,
+  soundSlider: PropTypes.func,
+  randomSliderValue: PropTypes.bool,
+  pressNoOfImagesPerSession: PropTypes.func,
+  pressAddPrizes: PropTypes.func,
+  namePress: PropTypes.func,
+  passwordPress: PropTypes.func,
+  agePress: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.string
 };
 
 export { SettingsList as default };

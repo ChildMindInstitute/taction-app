@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Drawer = props => <DrawerParent screenProps={props.navProps} />;
 Drawer.propTypes = {
-  NavProps: PropTypes.object
+  navProps: PropTypes.object
 };
 
 export { Drawer as default };

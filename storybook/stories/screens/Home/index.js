@@ -82,7 +82,7 @@ class Home extends React.Component {
           </View>
           <HomeFooter
             footerStyle={styles.footerStyle}
-            left={this.props.teftImages}
+            left={this.props.leftImages}
             total={this.props.totalImages}
           />
           {this.props.children}

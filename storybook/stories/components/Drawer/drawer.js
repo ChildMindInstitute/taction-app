@@ -13,7 +13,7 @@ const DrawerParent = DrawerNavigator(
     Dashboard: {
       screen: ({ screenProps, navigation }) => (
         <DashboardScreen
-          isNewRegistration={screenProps.state.params.NewRegistration}
+          isNewRegistration={screenProps.state.params.newRegistration}
           navigation={navigation}
         />
       )
@@ -21,7 +21,7 @@ const DrawerParent = DrawerNavigator(
     AddChild: {
       screen: ({ screenProps, navigation }) => (
         <AddChildScreen
-          isNewRegistration={screenProps.state.params.NewRegistration}
+          isNewRegistration={screenProps.state.params.newRegistration}
           navigation={navigation}
         />
       )

@@ -17,7 +17,7 @@ class DashboardScreen extends React.Component {
     };
   }
   componentWillMount() {
-    if (this.props.IsNewRegistration && count <= 0) {
+    if (this.props.isNewRegistration && count <= 0) {
       this.props.navigation.navigate("AddChild");
       count++;
     }

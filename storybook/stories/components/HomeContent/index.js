@@ -60,8 +60,8 @@ class HomeContent extends React.Component {
           <Row style={styles.gridRowColItem}>
             <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.isFirstDisabled}
-                OnPress={() => {
+                disabled={this.state.isFirstDisabled}
+                onPress={() => {
                   this.setState({
                     isFirstTouched: true,
                     isFirstDisabled: true,
@@ -72,18 +72,18 @@ class HomeContent extends React.Component {
                   });
                   this.props.pressed(1);
                 }}
-                Image={this.props.image1}
-                Result={this.state.isFirstTouched}
-                CorrectOption={this.props.correctOption}
-                CurrentOption={1}
-                TickImage={this.props.tickImage}
-                CrossImage={this.props.crossImage}
+                image={this.props.image1}
+                result={this.state.isFirstTouched}
+                correctOption={this.props.correctOption}
+                currentOption={1}
+                tickImage={this.props.tickImage}
+                crossImage={this.props.crossImage}
               />
             </Col>
             <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.gsSecondDisabled}
-                OnPress={() => {
+                disabled={this.state.isSecondDisabled}
+                onPress={() => {
                   this.setState({
                     isSecondTouched: true,
                     isFirstDisabled: true,
@@ -94,20 +94,20 @@ class HomeContent extends React.Component {
                   });
                   this.props.pressed(2);
                 }}
-                Image={this.props.image2}
-                Result={this.state.isSecondTouched}
-                CorrectOption={this.props.correctOption}
-                CurrentOption={2}
-                TickImage={this.props.tickImage}
-                CrossImage={this.props.crossImage}
+                image={this.props.image2}
+                result={this.state.isSecondTouched}
+                correctOption={this.props.correctOption}
+                currentOption={2}
+                tickImage={this.props.tickImage}
+                crossImage={this.props.crossImage}
               />
             </Col>
           </Row>
           <Row style={styles.gridRowColItem}>
             <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.isThirdDisabled}
-                OnPress={() => {
+                disabled={this.state.isThirdDisabled}
+                onPress={() => {
                   this.setState({
                     isThirdTouched: true,
                     isFirstDisabled: true,
@@ -118,18 +118,18 @@ class HomeContent extends React.Component {
                   });
                   this.props.pressed(3);
                 }}
-                Image={this.props.image3}
-                Result={this.state.isThirdTouched}
-                CorrectOption={this.props.correctOption}
-                CurrentOption={3}
-                TickImage={this.props.tickImage}
-                CrossImage={this.props.crossImage}
+                image={this.props.image3}
+                result={this.state.isThirdTouched}
+                correctOption={this.props.correctOption}
+                currentOption={3}
+                tickImage={this.props.tickImage}
+                crossImage={this.props.crossImage}
               />
             </Col>
             <Col style={styles.gridRowColItem}>
               <PlayableImage
-                Disabled={this.state.isFourthDisabled}
-                OnPress={() => {
+                disabled={this.state.isFourthDisabled}
+                onPress={() => {
                   this.setState({
                     isFourthTouched: true,
                     isFirstDisabled: true,
@@ -140,12 +140,12 @@ class HomeContent extends React.Component {
                   });
                   this.props.pressed(4);
                 }}
-                Image={this.props.image4}
-                Result={this.state.isFourthTouched}
-                CorrectOption={this.props.correctOption}
-                CurrentOption={4}
-                TickImage={this.props.tickImage}
-                CrossImage={this.props.crossImage}
+                image={this.props.image4}
+                result={this.state.isFourthTouched}
+                correctOption={this.props.correctOption}
+                currentOption={4}
+                tickImage={this.props.tickImage}
+                crossImage={this.props.crossImage}
               />
             </Col>
           </Row>

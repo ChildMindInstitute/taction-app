@@ -47,33 +47,37 @@ const Settings = props => (
 );
 
 Settings.propTypes = {
-  ChildExists: PropTypes.bool,
-  NameChild: PropTypes.string,
-  NameChildPress: PropTypes.func,
-  PressMaximumImageDuration: PropTypes.func,
-  RandomSlider: PropTypes.func,
-  RandomSliderValue: PropTypes.bool,
-  SoundSliderValue: PropTypes.bool,
-  SoundSlider: PropTypes.func,
-  PressAddPrizes: PropTypes.func,
-  PressNoOfImagesPerSession: PropTypes.func,
-  MaximumImageDuration: PropTypes.string,
-  TimerOfNext: PropTypes.string,
-  NoOfImagesPerSession: PropTypes.number,
-  NamePress: PropTypes.func,
-  Name: PropTypes.string,
-  Age: PropTypes.string,
-  PasswordPress: PropTypes.func,
-  AgePress: PropTypes.func,
-  Back: PropTypes.func
+  childExists: PropTypes.bool,
+  nameChild: PropTypes.string,
+  nameChildPress: PropTypes.func,
+  pressMaximumImageDuration: PropTypes.func,
+  randomSlider: PropTypes.func,
+  randomSliderValue: PropTypes.bool,
+  soundSliderValue: PropTypes.bool,
+  soundSlider: PropTypes.func,
+  pressAddPrizes: PropTypes.func,
+  pressNoOfImagesPerSession: PropTypes.func,
+  maximumImageDuration: PropTypes.string,
+  timerOfNext: PropTypes.string,
+  noOfImagesPerSession: PropTypes.number,
+  namePress: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.string,
+  passwordPress: PropTypes.func,
+  agePress: PropTypes.func,
+  back: PropTypes.func
 };
 SettingsList.defaultProps = {
-  PressMinimumDurationOfTouch: () => {},
-  RandomSlider: () => {},
-  PressNoOfImagesPerSession: () => {},
-  NamePress: () => {},
-  PasswordPress: () => {},
-  AgePress: () => {}
+  pressMaximumImageDuration: () => {},
+  randomSlider: () => {},
+  soundSlider: () => {},
+  nameChildPress: () => {},
+  pressAddPrizes: () => {},
+  pressNoOfImagesPerSession: () => {},
+  namePress: () => {},
+  passwordPress: () => {},
+  agePress: () => {},
+  back: () => {}
 };
 
 export { Settings as default };

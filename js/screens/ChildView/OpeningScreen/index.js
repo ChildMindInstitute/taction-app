@@ -19,7 +19,7 @@ class OpeningScreen extends React.Component {
           ? this.props.navigation.state.params.showModal
           : true
         : false,
-      IsPlayDisabled: true
+      isPlayDisabled: true
     };
   }
   setModalVisible(visible) {
@@ -35,8 +35,8 @@ class OpeningScreen extends React.Component {
     });
   }
   componentDidUpdate() {
-    if (this.props.folder.folderID && this.state.IsPlayDisabled) {
-      this.setState({ IsPlayDisabled: false });
+    if (this.props.folder.folderID && this.state.isPlayDisabled) {
+      this.setState({ isPlayDisabled: false });
     }
   }
   render() {
@@ -54,7 +54,7 @@ class OpeningScreen extends React.Component {
           playOnPress={() => {
             this.props.navigation.navigate("GameScreen");
           }}
-          isPlayDisabled={this.state.IsPlayDisabled}
+          isPlayDisabled={this.state.isPlayDisabled}
           howToPlayOnPress={() => {
             this.props.navigation.navigate("HowToPlayScreen");
           }}

@@ -94,50 +94,31 @@ const SignUp = props => (
 );
 
 SignUp.propTypes = {
-  ConfirmPasswordError: PropTypes.bool,
-  PasswordError: PropTypes.bool,
-  EmailError: PropTypes.bool,
-  LoginRedirectPress: PropTypes.func,
-  UsernameError: PropTypes.bool,
-  BackgroundColor: PropTypes.string,
-  UsernameChange: PropTypes.func,
-  PasswordChange: PropTypes.func,
-  ConfirmPasswordChange: PropTypes.func,
-  OnPressSubmitButton: PropTypes.func,
-  EmailChange: PropTypes.func,
-  Error: PropTypes.object,
-  SubmitButtonStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.array
-  ]),
-  SubmitButtonTextStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.array
-  ]),
-  InputStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.array
-  ]),
-  InputItemStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-    PropTypes.array
-  ]),
-  InputViewStyle: PropTypes.oneOfType([
+  confirmPasswordError: PropTypes.bool,
+  passwordError: PropTypes.bool,
+  emailError: PropTypes.bool,
+  usernameError: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  loginRedirectPress: PropTypes.func,
+  usernameChange: PropTypes.func,
+  passwordChange: PropTypes.func,
+  confirmPasswordChange: PropTypes.func,
+  onPressSubmitButton: PropTypes.func,
+  emailChange: PropTypes.func,
+  error: PropTypes.object,
+  inputViewStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.number,
     PropTypes.array
   ])
 };
 SignUp.defaultProps = {
-  EmailChange: () => {},
-  OnPressSubmitButton: () => {},
-  PasswordChange: () => {},
-  UsernameChange: () => {},
-  ConfirmPasswordChange: () => {}
+  loginRedirectPress: () => {},
+  usernameChange: () => {},
+  passwordChange: () => {},
+  confirmPasswordChange: () => {},
+  onPressSubmitButton: () => {},
+  emailChange: () => {}
 };
 
 export { SignUp as default };

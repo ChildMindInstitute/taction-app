@@ -17,10 +17,10 @@ const ImagesFolderList = props => (
 );
 
 ImagesFolderList.propTypes = {
-  ListData: PropTypes.array,
-  SwitchToggled: PropTypes.func,
-  ListStyle: PropTypes.object,
-  CheckBoxChange: PropTypes.func
+  listData: PropTypes.array,
+  switchToggled: PropTypes.func,
+  listStyle: PropTypes.object,
+  checkBoxChange: PropTypes.func
 };
 
 export { ImagesFolderList as default };

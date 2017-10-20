@@ -15,11 +15,11 @@ const updateOrderDown = function* updateOrderDown(action) {
           orderList[i + 1].exerciseID,
           --orderList[i + 1].order
         );
+        yield put({ type: "SET_FOLDER_LIST", payload: action.payload.childID });
         break;
       }
     }
   }
-  yield put({ type: "SET_FOLDER_LIST", payload: action.payload.childID });
 };
 
 const watchUpdateOrderDown = function* watchUpdateOrderDown() {

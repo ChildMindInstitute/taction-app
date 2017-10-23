@@ -153,12 +153,12 @@ class ModalContent extends React.Component {
               </View>
               <View style={{ flex: 1 }}>
                 <Button2
-                  OnPress={this.props.playAgain}
-                  ButtonText="Play Again &rarr;"
-                  SubmitButtonStyle={
+                  onPress={this.props.playAgain}
+                  buttonText="Play Again &rarr;"
+                  submitButtonStyle={
                     styles.contentMainViewInnerViewButton2Style
                   }
-                  SubmitButtonTextStyle={
+                  submitButtonTextStyle={
                     styles.contentMainViewInnerViewButton2TextStyle
                   }
                 />

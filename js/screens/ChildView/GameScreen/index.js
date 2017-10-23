@@ -192,7 +192,7 @@ class GameScreen extends React.Component {
     }, 2000);
   }
 
-  PlayAgain() {
+  playAgain() {
     this.props.dispatch({
       type: "SET_PLAY_AGAIN",
       payload: {
@@ -325,7 +325,7 @@ class GameScreen extends React.Component {
                 this.playNext();
               }}
               playAgain={() => {
-                this.PlayAgain();
+                this.playAgain();
               }}
               toggleVisiblity={() => {
                 this.setModalVisible(false);

@@ -365,8 +365,8 @@ export default {
 
   updateExercise(exeID, update) {
     return new Promise((resolve, reject) => {
-      let timeStamp = new Date().toDateString();
-      update = { ...update, timeStamp: timeStamp };
+      // let timeStamp = new Date().toDateString();
+      // update = { ...update, timeStamp: timeStamp };
       const exeRef = firebase.database().ref("exercise/" + exeID);
       try {
         exeRef.update(update).then(() => {

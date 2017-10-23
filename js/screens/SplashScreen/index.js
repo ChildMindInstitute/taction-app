@@ -24,16 +24,34 @@ class Splash extends React.Component {
       FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
     });
     let unsubscribe = Db.getAuth().onAuthStateChanged(user => {
-      if (user && !this.props.newUser) {
-        this.props.dispatch({ type: "SET_PARENT" });
-        this.props.dispatch({ type: "SET_CHILD" });
-        unsubscribe();
-      } else {
-        unsubscribe();
+      try {
+        if (user && !this.props.newUser) {
+          this.props.dispatch({ type: "SET_PARENT" });
+          this.props.dispatch({ type: "SET_CHILD" });
+          unsubscribe();
+        } else {
+          unsubscribe();
+          this.props.navigation.dispatch(
+            NavigationActions.reset({
+              index: 0,
+              actions: [NavigationActions.navigate({ routeName: "Login" })]
+            })
+          );
+        }
+      } catch (err) {
+        Toast.show({
+          text: "Error signing in!",
+          position: "bottom",
+          buttonText: "Okay"
+        });
         this.props.navigation.dispatch(
           NavigationActions.reset({
             index: 0,
-            actions: [NavigationActions.navigate({ routeName: "Login" })]
+            actions: [
+              NavigationActions.navigate({
+                routeName: "Login"
+              })
+            ]
           })
         );
       }

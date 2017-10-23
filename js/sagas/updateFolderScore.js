@@ -35,13 +35,15 @@ const updateFolderScore = function* updateFolderScore(action) {
     correctTaps: folder.folderDetails.correctTaps,
     wrongTaps: folder.folderDetails.wrongTaps,
     score: folder.folderDetails.score,
-    isPlayed: folder.folderDetails.isPlayed
+    isPlayed: folder.folderDetails.isPlayed,
+    timeStamp: new Date().toDateString()
   });
   yield call(Db.updateChild, child.childID, {
     correctTaps: child.childDetails.correctTaps,
     wrongTaps: child.childDetails.wrongTaps,
     totalScore: child.childDetails.totalScore,
-    highScore: child.childDetails.highScore
+    highScore: child.childDetails.highScore,
+    lastActivity: new Date().toDateString()
   });
 
   yield put({ type: "FOLDER", payload: folder });

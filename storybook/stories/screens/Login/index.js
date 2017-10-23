@@ -6,91 +6,97 @@ import FormInput from "../../components/FormInput";
 import ForgotPassword from "../../components/ForgotPassword";
 import Button from "../../components/Button";
 import RegisterWithUs from "../../components/RegisterWithUs";
-import { View, Form, Text, Icon, Left, Body } from "native-base";
+import {
+  View,
+  Form,
+  Text,
+  Icon,
+  Left,
+  Body,
+  Container,
+  Content
+} from "native-base";
 import styles from "./styles";
-import { KeyboardAvoidingView, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 const Login = props => (
-  <KeyboardAvoidingView
-    style={styles.mainView}
-    behavior="position"
-    contentContainerStyle={styles.mainView}
-    keyboardVerticalOffset={-200}
-  >
-    <StatusBar barStyle="light-content" />
-    <View style={styles.mainInnerView}>
-      <View style={styles.topSpace}>
-        <Logo imageDimensions={styles.mainLogoStyles} />
-      </View>
-      <View
-        style={[
-          styles.errorSpace,
-          {
-            backgroundColor: props.hasSubmitError ? "#EF3350" : "transparent"
-          }
-        ]}
-      >
-        {props.hasSubmitError ? (
-          <Left style={{ flex: 1 }}>
-            <Icon
-              name="information-circle"
-              active={true}
-              style={{ color: "white" }}
+  <Container style={styles.mainView}>
+    <Content>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.mainInnerView}>
+        <View style={styles.topSpace}>
+          <Logo imageDimensions={styles.mainLogoStyles} />
+        </View>
+        <View
+          style={[
+            styles.errorSpace,
+            {
+              backgroundColor: props.hasSubmitError ? "#EF3350" : "transparent"
+            }
+          ]}
+        >
+          {props.hasSubmitError ? (
+            <Left style={{ flex: 1 }}>
+              <Icon
+                name="information-circle"
+                active={true}
+                style={{ color: "white" }}
+              />
+            </Left>
+          ) : (
+            <View />
+          )}
+          <Body style={{ flex: 9 }}>
+            <Text style={styles.errorText}>
+              {props.hasSubmitError ? props.error.submitError : " "}
+            </Text>
+          </Body>
+        </View>
+        <View style={styles.formSpace}>
+          <Form style={styles.formStyle}>
+            <FormInput
+              isPassword={false}
+              label="Username"
+              onChange={props.usernameChange}
+              viewStyle={props.inputViewStyle}
+              error={props.emailHasError}
+              labelColor={props.labelColor}
             />
-          </Left>
-        ) : (
-          <View />
-        )}
-        <Body style={{ flex: 9 }}>
-          <Text style={styles.errorText}>
-            {props.hasSubmitError ? props.error.submitError : " "}
-          </Text>
-        </Body>
-      </View>
-      <View style={styles.formSpace}>
-        <Form style={styles.formStyle}>
-          <FormInput
-            isPassword={false}
-            label="Username"
-            onChange={props.usernameChange}
-            viewStyle={props.inputViewStyle}
-            error={props.emailHasError}
-            labelColor={props.labelColor}
+            <FormInput
+              isPassword={true}
+              label="Password"
+              onChange={props.passwordChange}
+              viewStyle={props.inputViewStyle}
+              error={props.passwordHasError}
+              labelColor={props.labelColor}
+            />
+          </Form>
+        </View>
+        <View style={styles.forgotPasswordSpace}>
+          <ForgotPassword
+            forgotPasswordTextStyle={props.forgotPasswordTextStyle}
+            forgotPasswordButtonStyle={props.forgotPasswordButtonStyle}
+            onPressForgotPassword={props.onPressForgotPassword}
           />
-          <FormInput
-            isPassword={true}
-            label="Password"
-            onChange={props.passwordChange}
-            viewStyle={props.inputViewStyle}
-            error={props.passwordHasError}
-            labelColor={props.labelColor}
+        </View>
+        <View style={styles.submitButtonSpace}>
+          <Button
+            onPress={props.onPressSubmitButton}
+            submitButtonStyle={styles.submitButtonStyle}
+            submitButtonTextStyle={styles.submitButtonTextStyle}
+            buttonText="Submit &rarr;"
+            submitted={props.submitted}
           />
-        </Form>
-      </View>
-      <View style={styles.forgotPasswordSpace}>
-        <ForgotPassword
-          forgotPasswordTextStyle={props.forgotPasswordTextStyle}
-          forgotPasswordButtonStyle={props.forgotPasswordButtonStyle}
-          onPressForgotPassword={props.onPressForgotPassword}
-        />
-      </View>
-      <View style={styles.submitButtonSpace}>
-        <Button
-          onPress={props.onPressSubmitButton}
-          submitButtonStyle={styles.submitButtonStyle}
-          submitButtonTextStyle={styles.submitButtonTextStyle}
-          buttonText="Submit &rarr;"
-          submitted={props.submitted}
-        />
-      </View>
+        </View>
 
-      <View style={styles.registerNowSpace}>
-        <RegisterWithUs onPressRegisterNow={props.onPressRegisterNow} />
+        <View style={styles.registerNowSpace}>
+          <RegisterWithUs onPressRegisterNow={props.onPressRegisterNow} />
+        </View>
+        <View style={styles.bottomLogoSpace}>
+          <Logo1 imageDimensions={styles.subLogoStyles} />
+        </View>
       </View>
-      <View style={styles.bottomLogoSpace}>
-        <Logo1 imageDimensions={styles.subLogoStyles} />
-      </View>
-    </View>
-  </KeyboardAvoidingView>
+    </Content>
+  </Container>
 );
 
 Login.propTypes = {

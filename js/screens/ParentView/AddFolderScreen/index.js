@@ -79,8 +79,10 @@ class AddFolderScreen extends React.Component {
   }
   updateCameraImage() {
     ImagePicker.launchCameraAsync({ base64: true, quality: 0 }).then(image => {
-      dataNext.push(image);
-      this.setState({ data: dataNext });
+      if (!image.cancelled) {
+        dataNext.push(image);
+        this.setState({ data: dataNext });
+      }
     });
   }
 
@@ -124,7 +126,7 @@ class AddFolderScreen extends React.Component {
             },
             buttonIndex => {
               if (buttonIndex == 0) {
-                this.updateCameraImage.bind(this);
+                this.updateCameraImage();
               } else if (buttonIndex == 1) {
                 this.updateImage();
               } else if (buttonIndex == 2) {
@@ -157,7 +159,7 @@ class AddFolderScreen extends React.Component {
             renderRow={item => (
               <ListItemCustom
                 item={item}
-                ItemPress={((checked, index) => {
+                itemPress={((checked, index) => {
                   if (checked && selectedIndexes.indexOf(index) == -1) {
                     selectedIndexes.push(index);
                   } else {

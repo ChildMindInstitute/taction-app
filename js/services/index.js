@@ -379,6 +379,7 @@ export default {
   },
 
   updateParent(name) {
+    console.log(name);
     return new Promise((resolve, reject) => {
       try {
         firebase

@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import SettingsList from "../../components/SettingsList";
 import HeaderCommon from "../../components/Header";
-import { Container } from "native-base";
+import { Container, Content, View } from "native-base";
 import styles from "./styles";
-import { ScrollView } from "react-native";
 const Settings = props => (
   <Container style={styles.container}>
     <HeaderCommon
@@ -16,28 +15,30 @@ const Settings = props => (
       title="Settings"
       titleStyle={styles.headerLeftStyle}
     />
-    <ScrollView style={styles.contentStyle}>
-      <SettingsList
-        pressMaximumImageDuration={props.pressMaximumImageDuration}
-        maximumImageDuration={props.maximumImageDuration}
-        timerOfNext={props.timerOfNext}
-        pressNoOfImagesPerSession={props.pressNoOfImagesPerSession}
-        noOfImagesPerSession={props.noOfImagesPerSession}
-        namePress={props.namePress}
-        name={props.name}
-        age={props.age}
-        passwordPress={props.passwordPress}
-        agePress={props.agePress}
-        randomSlider={props.randomSlider}
-        randomSliderValue={props.randomSliderValue}
-        soundSliderValue={props.soundSliderValue}
-        soundSlider={props.soundSlider}
-        pressAddPrizes={props.pressAddPrizes}
-        childExists={props.childExists}
-        nameChild={props.nameChild}
-        nameChildPress={props.nameChildPress}
-      />
-    </ScrollView>
+    <Content>
+      <View style={styles.contentStyle}>
+        <SettingsList
+          pressMaximumImageDuration={props.pressMaximumImageDuration}
+          maximumImageDuration={props.maximumImageDuration}
+          timerOfNext={props.timerOfNext}
+          pressNoOfImagesPerSession={props.pressNoOfImagesPerSession}
+          noOfImagesPerSession={props.noOfImagesPerSession}
+          namePress={props.namePress}
+          name={props.name}
+          age={props.age}
+          passwordPress={props.passwordPress}
+          agePress={props.agePress}
+          randomSlider={props.randomSlider}
+          randomSliderValue={props.randomSliderValue}
+          soundSliderValue={props.soundSliderValue}
+          soundSlider={props.soundSlider}
+          pressAddPrizes={props.pressAddPrizes}
+          childExists={props.childExists}
+          nameChild={props.nameChild}
+          nameChildPress={props.nameChildPress}
+        />
+      </View>
+    </Content>
   </Container>
 );
 

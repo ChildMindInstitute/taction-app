@@ -1,18 +1,20 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+let { width, height } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   mainView: {
-    flex: 1,
     backgroundColor: "#0067a0"
   },
   mainInnerView: {
-    flex: 1,
-    margin: "5%"
+    width: width - 30,
+    height: height - 30,
+    margin: 15
   },
   topSpace: {
     flex: 7,
     alignItems: "center",
     justifyContent: "center"
   },
+  mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   formSpace: { flex: 6 },
   errorSpace: {
     flex: 2,
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
   subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
   submitButtonStyle: {

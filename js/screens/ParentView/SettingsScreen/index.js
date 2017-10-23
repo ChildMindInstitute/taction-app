@@ -13,7 +13,6 @@ import {
   Input,
   Item,
   Label,
-  Content,
   Button,
   Text
 } from "native-base";
@@ -40,7 +39,7 @@ class SettingsScreen extends React.Component {
   }
   findRoutes() {
     switch (this.state.modalTitle) {
-      case "Name": {
+      case "Name of parent": {
         this.props.dispatch({
           type: "UPDATE_PARENT",
           payload: this.input.entry1
@@ -89,9 +88,8 @@ class SettingsScreen extends React.Component {
         <Modal
           isVisible={this.state.modalVisible}
           extraModalStyle={{
-            paddingTop: "60%",
-            paddingBottom:
-              this.state.modalTitle == "Add prizes" ? "49%" : "75%",
+            paddingTop: this.state.modalTitle == "Add prizes" ? "40%" : "60%",
+            paddingBottom: "75%",
             paddingLeft: "10%",
             paddingRight: "10%"
           }}
@@ -108,8 +106,8 @@ class SettingsScreen extends React.Component {
                   </Title>
                 </Body>
               </Header>
-              <Content>
-                <Item stackedLabel>
+              <View style={{ flex: 1 }}>
+                <Item stackedLabel style={{ flex: 1 }}>
                   {this.state.modalTitle == "Add prizes" ? (
                     <Label>Points to be achieved</Label>
                   ) : (
@@ -124,24 +122,24 @@ class SettingsScreen extends React.Component {
                         : "default"
                     }
                     onChange={event => {
-                      this.input.entry1 = event.nativeEvent;
+                      this.input.entry1 = event.nativeEvent.text;
                     }}
                   />
                 </Item>
                 {this.state.modalTitle == "Add prizes" ? (
-                  <Item stackedLabel>
+                  <Item stackedLabel style={{ flex: 1 }}>
                     <Label>Prize</Label>
                     <Input
                       style={{ backgroundColor: "#fff" }}
                       onChange={event => {
-                        this.input.entry2 = event.nativeEvent;
+                        this.input.entry2 = event.nativeEvent.text;
                       }}
                     />
                   </Item>
                 ) : (
                   false
                 )}
-              </Content>
+              </View>
               <View style={{ flexDirection: "row" }}>
                 <Button
                   block

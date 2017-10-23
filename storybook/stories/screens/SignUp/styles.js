@@ -1,18 +1,17 @@
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform, Dimensions } from "react-native";
 import { Constants } from "expo";
+let { width, height } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   mainOuterView: {
-    flex: 1,
     backgroundColor: "#0067a0"
   },
   mainView: {
-    flex: 1,
     backgroundColor: "#0067a0",
-    marginTop:
-      Platform.OS !== "ios"
-        ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
-        : 0,
-    margin: "5%"
+    width: width - 30,
+    height:
+      height - 30 - (Platform.OS == "ios" ? 0 : Constants.statusBarHeight),
+    margin: 15,
+    marginTop: 15 + (Platform.OS == "ios" ? 0 : Constants.statusBarHeight)
   },
   topSpace: {
     flex: 3,

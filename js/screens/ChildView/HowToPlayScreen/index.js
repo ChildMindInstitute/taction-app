@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, View } from "native-base";
 import SwipeableParallaxCarousel from "../../../../storybook/stories/components/Carousel";
-import { Constants } from "expo";
+// import { Constants } from "expo";
 const datacarousel = [
   {
     id: 339964,
@@ -29,7 +29,7 @@ class HowToPlayScreen extends React.Component {
       <View style={{ backgroundColor: "#0067a0", flex: 1 }}>
         <View
           style={{
-            marginTop: Constants.statusBarHeight,
+            marginTop: 1, //Constants.statusBarHeight,
             backgroundColor: "#000",
             flex: 1
           }}

@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from "react-native";
-import { Constants } from "expo";
+// import { Constants } from "expo";
 const styles = StyleSheet.create({
   mainOuterView: { flex: 1, backgroundColor: "#0067a0" },
   mainView: {
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0067a0",
     marginTop:
       Platform.OS !== "ios"
-        ? Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+        ? Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
         : 0
   },
   mainLogoStyles: { height: 100, width: 100 },

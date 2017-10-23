@@ -1,7 +1,7 @@
 const React = require("react-native");
 
 const { Platform, Dimensions } = React;
-import { Constants } from "expo";
+// import { Constants } from "expo";
 const deviceHeight = Dimensions.get("window").height;
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   contentStyle: {
     flex: 1,
     backgroundColor: "#0067a0",
-    marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+    marginTop: Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
   },
   listSpace: {
     flex: 12

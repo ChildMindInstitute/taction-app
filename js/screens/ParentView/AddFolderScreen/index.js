@@ -2,7 +2,7 @@ import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
 import { ActionSheet, List, Toast } from "native-base";
 import ListItemCustom from "./ListItem";
-import { ImagePicker } from "expo";
+// import { ImagePicker } from "expo";
 import { connect } from "react-redux";
 let dataNext = [];
 let selectedIndexes = [];
@@ -67,15 +67,15 @@ class AddFolderScreen extends React.Component {
   }
 
   updateImage() {
-    ImagePicker.launchImageLibraryAsync({
-      base64: true,
-      quality: 0
-    }).then(image => {
-      if (!image.cancelled) {
-        dataNext.push(image);
-        this.setState({ data: dataNext });
-      }
-    });
+    // ImagePicker.launchImageLibraryAsync({
+    //   base64: true,
+    //   quality: 0
+    // }).then(image => {
+    //   if (!image.cancelled) {
+    //     dataNext.push(image);
+    //     this.setState({ data: dataNext });
+    //   }
+    // });
   }
   updateCameraImage() {
     ImagePicker.launchCameraAsync({ base64: true, quality: 0 }).then(image => {

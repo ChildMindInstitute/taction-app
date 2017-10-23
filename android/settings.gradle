@@ -1,1 +1,3 @@
+rootProject.name = 'childmind'
+
 include ':app'

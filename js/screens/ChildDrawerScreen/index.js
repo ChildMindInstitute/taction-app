@@ -1,6 +1,6 @@
 import React from "react";
 import DrawerChild from "../../../storybook/stories/components/DrawerChild";
-import { Constants } from "expo";
+// import { Constants } from "expo";
 import { View } from "native-base";
 import { Platform, StatusBar } from "react-native";
 
@@ -25,7 +25,7 @@ class ChildDrawerScreen extends React.Component {
           style={{
             flex: 1,
             backgroundColor: "#ccc",
-            marginTop: Platform.OS == "ios" ? 0 : Constants.statusBarHeight
+            marginTop: Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
           }}
         >
           <DrawerChild navProps={this.props.screenProps.parentNavigation} />

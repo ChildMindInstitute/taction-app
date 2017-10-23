@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { Constants } from "expo";
+// import { Constants } from "expo";
 let { width, height } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   mainOuterView: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     width: width - 30,
     height: height - 30,
     margin: 15,
-    marginTop: 15 + (Platform.OS == "ios" ? 0 : Constants.statusBarHeight)
+    marginTop: 15 + (Platform.OS == "ios" ? 0 : 1) /*Constants.statusBarHeight*/
   },
   topSpace: {
     flex: 6,

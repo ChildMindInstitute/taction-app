@@ -30,7 +30,7 @@ class WelcomeScreen extends React.Component {
         })
       );
     } else {
-      alert("PLease Verify Your Email");
+      alert("Please verify your email");
       this.props.navigation.dispatch(
         NavigationActions.reset({
           index: 0,

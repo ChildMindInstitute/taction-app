@@ -24,7 +24,7 @@ const Welcome = props => (
         onPress={props.onPressSubmitButton}
         submitButtonStyle={styles.submitButtonStyle}
         submitButtonTextStyle={styles.submitButtonTextStyle}
-        buttonText="Get in &rarr;"
+        buttonText="BEGIN &rarr;"
       />
       <View style={styles.bottomLogoSpace}>
         <Logo1 imageDimensions={styles.bottomLogoStyle} />

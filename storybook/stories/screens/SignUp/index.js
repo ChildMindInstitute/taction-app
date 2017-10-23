@@ -47,7 +47,7 @@ const SignUp = props => (
             <FormInput
               isPassword={true}
               labelColor="white"
-              label="ConfirmPassword"
+              label="Confirm password"
               onChange={props.confirmPasswordChange}
               viewStyle={props.inputViewStyle}
               error={props.confirmPasswordError}

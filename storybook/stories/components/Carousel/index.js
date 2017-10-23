@@ -149,8 +149,7 @@ class SwipeableParallaxCarousel extends Component {
               position: "absolute",
               height,
               width: this.state.screenWidth,
-              backgroundColor: "#000",
-              opacity: 0.5
+              backgroundColor: "rgba(0,0,0,0.2)"
             }}
           />
           <View
@@ -161,8 +160,11 @@ class SwipeableParallaxCarousel extends Component {
               height: 50,
               borderColor: "#0067a0",
               borderWidth: 1,
-              top: 130,
-              left: 150
+              top: "22%",
+              left: "40%",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "center"
             }}
           >
             <View
@@ -177,8 +179,7 @@ class SwipeableParallaxCarousel extends Component {
                 borderRightWidth: 1,
                 transform: [{ rotate: "45deg" }],
                 top: 39,
-                left: 110,
-                justifyContent: "center"
+                left: 110
               }}
             />
             <Text style={{ alignSelf: "center" }}>{item.tooTipText}</Text>

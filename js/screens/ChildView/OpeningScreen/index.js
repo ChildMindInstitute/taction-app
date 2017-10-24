@@ -19,7 +19,8 @@ class OpeningScreen extends React.Component {
           ? this.props.navigation.state.params.showModal
           : true
         : false,
-      isPlayDisabled: true
+      isPlayDisabled: true,
+      todayScore: 0
     };
   }
   setModalVisible(visible) {
@@ -37,6 +38,20 @@ class OpeningScreen extends React.Component {
   componentDidUpdate() {
     if (this.props.folder.folderID && this.state.isPlayDisabled) {
       this.setState({ isPlayDisabled: false });
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.child.lastActivity == new Date().toDateString()) {
+      this.setState({
+        todayScore: this.props.child.todayScore
+      });
+    } else {
+      this.setState({ todayScore: 0 });
+      this.props.dispatch({
+        type: "RESET_TODAY_SCORE",
+        payload: this.props.childID
+      });
     }
   }
   render() {
@@ -72,7 +87,9 @@ class OpeningScreen extends React.Component {
               )}
               isCloseButtonRequired={true}
               displayPoints={this.props.child.totalScore}
-              description="You have earned 1000 points today!"
+              description={
+                "You have earned " + this.state.todayScore + " points today!"
+              }
               descriptionLine2="50 more to achieve a prize!"
               nextPrizeDescription="Day outing in water park"
               isButtonNeeded={false}

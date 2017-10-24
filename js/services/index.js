@@ -1,5 +1,4 @@
 import * as firebase from "firebase";
-import { decode } from "base64-arraybuffer";
 import RNFetchBlob from "react-native-fetch-blob";
 
 const config = {
@@ -88,6 +87,7 @@ export default {
             highScore: 0,
             correctTaps: 0,
             wrongTaps: 0,
+            todayScore: 0,
             level: 0,
             parentID: auth.currentUser.uid,
             totalScore: 0
@@ -113,7 +113,7 @@ export default {
       .database()
       .ref("parent/" + firebase.auth().currentUser.uid)
       .once("value");
-    return snapshot.val();
+    return { parent: snapshot.val(), user: firebase.auth().currentUser };
   },
 
   async getChildFromParent() {

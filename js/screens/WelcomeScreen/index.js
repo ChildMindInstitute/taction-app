@@ -15,34 +15,18 @@ class WelcomeScreen extends React.Component {
     this.props.dispatch({ type: "SET_PARENT" });
   }
 
-  async redirect() {
-    await this.props.dispatch({ type: "SET_PARENT" });
-    if (this.props.parent.emailVerified) {
-      this.props.navigation.dispatch(
-        NavigationActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({
-              params: { newRegistration: true },
-              routeName: "ParentDrawer"
-            })
-          ]
-        })
-      );
-    } else {
-      alert("Please verify your email");
-      this.props.navigation.dispatch(
-        NavigationActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({
-              params: { newRegistration: true },
-              routeName: "AlmostThere"
-            })
-          ]
-        })
-      );
-    }
+  redirect() {
+    this.props.navigation.dispatch(
+      NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({
+            params: { newRegistration: true },
+            routeName: "ParentDrawer"
+          })
+        ]
+      })
+    );
   }
 
   render() {

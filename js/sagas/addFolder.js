@@ -18,9 +18,11 @@ const addFolder = function* addFolder(action) {
         bytes: images[i].path
       }
     });
+    if (i == images.length - 1) {
+      yield put({ type: "SET_FOLDER_LIST", payload: action.payload.childID });
+      yield put({ type: "FOLDER_ADDED" });
+    }
   }
-  yield put({ type: "SET_FOLDER_LIST", payload: action.payload.childID });
-  yield put({ type: "FOLDER_ADDED" });
 };
 
 const watchAddFolder = function* watchAddFolder() {

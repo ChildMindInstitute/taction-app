@@ -27,7 +27,7 @@ class PrizesScreen extends React.Component {
       prizeDesc: ""
     };
   }
-  submitAction() {
+  submitAction(item) {
     if (this.state.placeholderDesc == "" && this.state.placeholderPoints == "")
       console.log(this.input, "Add");
     else console.log(this.input, "Edit");
@@ -86,7 +86,10 @@ class PrizesScreen extends React.Component {
                   light
                   style={{ width: "50%" }}
                   onPress={() => {
-                    this.submitAction();
+                    this.submitAction({
+                      poinst: this.state.placeholderPoints,
+                      description: this.state.placeholderDesc
+                    });
                     this.setState({ modalVisible: false });
                   }}
                 >

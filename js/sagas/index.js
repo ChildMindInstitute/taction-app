@@ -27,6 +27,8 @@ import watchOrderList from "./setOrderList";
 import watchUpdateOrderUp from "./updateOrderUp";
 import watchUpdateOrderDown from "./updateOrderDown";
 import watchResetPassword from "./resetPassword";
+import watchResetTodayScore from "./resetTodayScore";
+import watchVerifyEmail from "./verifyEmail";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -57,7 +59,9 @@ const rootSaga = function* rootSaga() {
     watchOrderList(),
     watchUpdateOrderUp(),
     watchUpdateOrderDown(),
-    watchResetPassword()
+    watchResetPassword(),
+    watchResetTodayScore(),
+    watchVerifyEmail()
   ]);
 };
 

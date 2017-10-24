@@ -17,12 +17,6 @@ class Splash extends React.Component {
     Db.initDb();
   }
   componentWillMount() {
-    // await Expo.Font.loadAsync({
-    // Roboto: require("native-base/Fonts/Roboto.ttf"),
-    // Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-    // Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-    // FontAwesome: require("@expo/vector-icons/fonts/FontAwesome.ttf")
-    // });
     let unsubscribe = Db.getAuth().onAuthStateChanged(user => {
       try {
         if (user && !this.props.newUser) {

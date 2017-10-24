@@ -1,5 +1,6 @@
 import * as firebase from "firebase";
 import { decode } from "base64-arraybuffer";
+import RNFetchBlob from "react-native-fetch-blob";
 
 const config = {
   apiKey: "AIzaSyCRjJ3k7AmjPowyhdWswv56xfvdyEo_Thc",
@@ -9,6 +10,9 @@ const config = {
   storageBucket: "childmind-7f9a6.appspot.com",
   messagingSenderId: "993751585054"
 };
+
+window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+window.Blob = RNFetchBlob.polyfill.Blob;
 
 export default {
   initDb() {
@@ -260,9 +264,8 @@ export default {
     });
   },
 
-  addImage(exeID, byte) {
+  addImage(exeID, path) {
     return new Promise((resolve, reject) => {
-      const bytes = decode(byte);
       const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
       const imageRef = firebase.database().ref("image");
       const store = firebase.storage().ref();
@@ -271,25 +274,32 @@ export default {
         const metadata = {
           contentType: "image/jpeg"
         };
-        const storageRef = store.child(exeID + "/" + newImg.key + ".jpg");
-        storageRef.put(bytes, metadata).then(() => {
-          storageRef.getDownloadURL().then(URL => {
-            newImg
-              .set({
-                correctTaps: 0,
-                wrongTaps: 0,
-                score: 0,
-                status: false,
-                touchDuration: 0,
-                url: URL,
-                waitTime: 0
-              })
-              .then(() => {
-                var image = exeRef.push();
-                image.set({ imageID: newImg.key }).then(() => {
-                  resolve(newImg.key);
+        const RNBlob = RNFetchBlob.polyfill.Blob;
+        RNBlob.build(RNFetchBlob.wrap(path), {
+          type: "image/jpg;"
+        }).then(blob => {
+          console.log(blob);
+          const storageRef = store.child(exeID + "/" + newImg.key + ".jpg");
+          storageRef.put(blob, metadata).then(() => {
+            storageRef.getDownloadURL().then(URL => {
+              console.log(URL);
+              newImg
+                .set({
+                  correctTaps: 0,
+                  wrongTaps: 0,
+                  score: 0,
+                  status: false,
+                  touchDuration: 0,
+                  url: URL,
+                  waitTime: 0
+                })
+                .then(() => {
+                  var image = exeRef.push();
+                  image.set({ imageID: newImg.key }).then(() => {
+                    resolve(newImg.key);
+                  });
                 });
-              });
+            });
           });
         });
       } catch (err) {

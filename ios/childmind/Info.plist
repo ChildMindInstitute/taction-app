@@ -68,5 +68,9 @@
 		<string>Feather.ttf</string>
 		<string>MaterialCommunityIcons.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Upload photos to folders</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Upload photos to folders</string>
 </dict>
 </plist>

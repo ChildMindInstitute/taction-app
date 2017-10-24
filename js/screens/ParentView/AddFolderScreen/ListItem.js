@@ -32,7 +32,7 @@ class ListItemCustom extends React.Component {
       >
         <View>
           <Image
-            source={{ uri: this.props.item.uri }}
+            source={{ uri: this.props.item.path }}
             style={{ width: 100, height: 100 }}
             resizeMethod="auto"
             resizeMode="contain"

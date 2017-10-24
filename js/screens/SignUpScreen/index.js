@@ -36,7 +36,9 @@ class LoginScreen extends React.Component {
   componentDidUpdate() {
     if (this.props.loaded && this.state.submitted) {
       this.setState({ submitted: false, hasToNavigate: true });
-      this.props.navigation.navigate("AlmostThere");
+      this.props.navigation.navigate("AlmostThere", {
+        email: this.input.email
+      });
     }
 
     if (this.props.error && this.state.submitted) {

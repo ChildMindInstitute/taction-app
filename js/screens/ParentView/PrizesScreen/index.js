@@ -114,7 +114,7 @@ class PrizesScreen extends React.Component {
             { points: 50, description: "Hiking" },
             { points: 100, description: "Trip to Wonder-La" }
           ]}
-          back={this.props.navigation.goBack}
+          back={() => this.props.navigation.goBack()}
           editPress={item => {
             this.setState({
               placeholderDesc: item.description,

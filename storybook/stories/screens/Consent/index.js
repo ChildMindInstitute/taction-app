@@ -73,7 +73,11 @@ const Consent = props => (
       <Button
         onPress={props.onPressSubmitButton}
         submitButtonStyle={props.submitButtonStyle}
-        buttonText="Next &rarr;"
+        buttonText="Next"
+        iconName="ios-arrow-round-forward"
+        iconRight={true}
+        iconLeft={false}
+        iconColor="white"
         disabled={props.disabled}
         submitButtonTextStyle={props.submitButtonTextStyle}
       />

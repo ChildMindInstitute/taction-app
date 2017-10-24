@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, Right, Left, Body, Icon } from "native-base";
+import { Text, View, Button, Right, Icon } from "native-base";
 import { Image } from "react-native";
 import Button2 from "../Button";
 import styles from "./styles";
@@ -143,18 +143,18 @@ class ModalContent extends React.Component {
                 >
                   <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
                     {"Play Level " + this.props.nextLevelName}
-                    <Text
-                      style={styles.contentMainViewInnerViewButton1TextStyle}
-                    >
-                      &rarr;
-                    </Text>
+                    <Icon name="" />
                   </Text>
                 </Button>
               </View>
               <View style={{ flex: 1 }}>
                 <Button2
                   onPress={this.props.playAgain}
-                  buttonText="Play Again &rarr;"
+                  buttonText="Play Again"
+                  iconName="ios-arrow-round-forward"
+                  iconRight={true}
+                  iconLeft={false}
+                  iconColor="white"
                   submitButtonStyle={
                     styles.contentMainViewInnerViewButton2Style
                   }
@@ -169,10 +169,15 @@ class ModalContent extends React.Component {
           )}
           {this.props.playLaterRequired ? (
             <View style={([styles.contentMainViewInnerView], { flex: 1 })}>
-              <Button transparent onPress={this.props.toggleVisiblity}>
+              <Button
+                transparent
+                iconRight
+                onPress={this.props.toggleVisiblity}
+              >
                 <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
-                  {this.props.playLaterText} &rarr;
+                  {this.props.playLaterText}
                 </Text>
+                <Icon name="ios-arrow-round-forward" />
               </Button>
             </View>
           ) : (

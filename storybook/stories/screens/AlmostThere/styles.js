@@ -8,10 +8,7 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     backgroundColor: "#0067a0",
-    marginTop:
-      Platform.OS !== "ios"
-        ? Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
-        : 0
+    margin: 15
   },
   topSpace: { flex: 3, alignItems: "center", justifyContent: "center" },
   bottomLogoStyle: { height: 40, width: 120 },
@@ -31,11 +28,9 @@ const styles = StyleSheet.create({
   },
   confirmTextStyle: { color: "#fff", fontSize: 20, fontWeight: "500" },
   bottomLogoSpace: {
-    flex: 4,
-    marginLeft: "5%",
+    flex: 2,
     alignItems: "center",
-    justifyContent: "flex-end",
-    marginBottom: "5%"
+    justifyContent: "flex-end"
   }
 });
 export default styles;

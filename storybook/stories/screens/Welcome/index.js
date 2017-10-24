@@ -24,7 +24,11 @@ const Welcome = props => (
         onPress={props.onPressSubmitButton}
         submitButtonStyle={styles.submitButtonStyle}
         submitButtonTextStyle={styles.submitButtonTextStyle}
-        buttonText="BEGIN &rarr;"
+        buttonText="BEGIN"
+        iconName="ios-arrow-round-forward"
+        iconRight={true}
+        iconLeft={false}
+        iconColor="white"
       />
       <View style={styles.bottomLogoSpace}>
         <Logo1 imageDimensions={styles.bottomLogoStyle} />

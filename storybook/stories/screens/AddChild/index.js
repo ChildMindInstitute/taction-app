@@ -37,7 +37,11 @@ const AddChild = props => (
           <Button
             onPress={props.onPressSaveButton}
             submitButtonStyle={styles.submitButtonStyle}
-            buttonText="Save &rarr;"
+            buttonText="Save"
+            iconName="ios-arrow-round-forward"
+            iconRight={true}
+            iconLeft={false}
+            iconColor="white"
           />
         </View>
         <View style={{ flex: 1 }}>

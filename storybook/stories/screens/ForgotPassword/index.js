@@ -62,7 +62,11 @@ const Login = props => (
           onPress={props.onPressSubmitButton}
           submitButtonStyle={styles.submitButtonStyle}
           submitButtonTextStyle={styles.submitButtonTextStyle}
-          buttonText="Submit &rarr;"
+          buttonText="Submit"
+          iconName="ios-arrow-round-forward"
+          iconRight={true}
+          iconLeft={false}
+          iconColor="white"
           submitted={props.submitted}
           disabled={props.submitDisabled}
         />

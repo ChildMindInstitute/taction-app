@@ -4,6 +4,7 @@ import { Button, Text, Icon, View, Spinner } from "native-base";
 const CustomButton = props => (
   <Button
     iconLeft
+    iconRight
     full
     style={[
       {
@@ -16,22 +17,29 @@ const CustomButton = props => (
     disabled={props.disabled}
     onPress={props.onPress}
   >
-    {props.isIconRequired ? (
-      <Icon
-        name={props.iconName}
-        style={{ color: props.iconColor, marginRight: "-4%" }}
-      />
+    {props.iconLeft ? (
+      <Icon name={props.iconName} style={{ color: props.iconColor }} />
     ) : (
-      <View />
+      false
     )}
     {props.submitted ? (
       <Spinner color="white" />
     ) : props.isTextRequired ? (
-      <Text style={props.submitButtonTextStyle}>
+      <Text
+        style={[
+          props.submitButtonTextStyle,
+          { paddingLeft: 0, paddingRight: 0 }
+        ]}
+      >
         {props.buttonText} {props.extraText}
       </Text>
     ) : (
-      <View />
+      false
+    )}
+    {props.iconRight ? (
+      <Icon name={props.iconName} style={{ color: props.iconColor }} />
+    ) : (
+      false
     )}
   </Button>
 );
@@ -60,7 +68,9 @@ CustomButton.propTypes = {
 CustomButton.defaultProps = {
   onPress: () => {},
   isTextRequired: true,
-  extraText: ""
+  extraText: "",
+  iconLeft: true,
+  iconRight: false
 };
 
 export { CustomButton as default };

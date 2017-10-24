@@ -40,7 +40,7 @@ const AddFolder = props => (
           <FormInput
             isPassword={false}
             label="Add new folder with images"
-            onChange={event => props.FolderNameChange(event)}
+            onChange={event => props.folderNameChange(event)}
             viewStyle={styles.inputViewStyle}
             placeholder="Folder name (such as 'Spider')"
             onFocus={props.onFocus}

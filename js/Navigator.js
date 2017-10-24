@@ -10,10 +10,12 @@ import ParentDrawerScreen from "./screens/ParentDrawerScreen";
 import LoginAsScreen from "./screens/LoginAsScreen";
 import DrawerChild from "./screens/ChildDrawerScreen";
 import ForgotPasswordScreen from "./screens/ForgotPasswordScreen";
+import Prize from "./screens/ParentView/PrizesScreen";
 const NavigationDetails = StackNavigator(
   {
     AlmostThere: { screen: AlmostThereScreen },
     Consent: { screen: ConsentScreen },
+    Prize: { screen: Prize },
     ForgotPassword: { screen: ForgotPasswordScreen },
     ParentDrawer: {
       screen: ({ navigation, screenProps }) => (
@@ -35,6 +37,6 @@ const NavigationDetails = StackNavigator(
     SplashScreen: { screen: Splash },
     Welcome: { screen: WelcomeScreen }
   },
-  { initialRouteName: "SplashScreen", headerMode: "none" }
+  { initialRouteName: "Prize", headerMode: "none" }
 );
 export default NavigationDetails;

@@ -9,9 +9,11 @@ import AddChildScreen from "../../../../js/screens/ParentView/AddChildScreen";
 import AddFolderScreen from "../../../../js/screens/ParentView/AddFolderScreen";
 import LogoutTemp from "../../../../js/screens/ParentView/LogoutTemp";
 import StockImages from "../../../../js/screens/ParentView/StockImagesScreen";
+import PrizesScreen from "../../../../js/screens/ParentView/PrizesScreen";
 const DrawerParent = DrawerNavigator(
   {
     StockImages: { screen: StockImages },
+    PrizesScreen: { screen: PrizesScreen },
     Dashboard: {
       screen: ({ screenProps, navigation }) => (
         <DashboardScreen

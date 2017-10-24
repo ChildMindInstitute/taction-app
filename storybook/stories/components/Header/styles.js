@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   leftLogoStyle: { width: 50, height: 50 },
   bodyStyle: { flex: 8, alignContent: "center" },
   bodyTitleStyle: { alignSelf: "center" },
-  rightStyle: { flex: 3, flexDirection: "column", alignItems: "center" }
+  rightStyle: { flex: 3, flexDirection: "column", alignItems: "flex-end" }
 });
 
 export default styles;

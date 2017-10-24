@@ -71,7 +71,11 @@ const Login = props => (
       <View style={styles.registerNowSpace}>
         <Text style={{ color: "#fff", opacity: 0.8, marginLeft: "10%" }}>
           Back to the
-          <Button transparent style={styles.loginRedirectButtonStyle}>
+          <Button
+            transparent
+            style={styles.loginRedirectButtonStyle}
+            onPress={props.onReturnLoginPress}
+          >
             <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
           </Button>
         </Text>
@@ -103,7 +107,8 @@ Login.propTypes = {
   submitButtonTextStyle: PropTypes.object,
   registerWithUsTextStyle: PropTypes.object,
   registerWithUsTextButtonStyle: PropTypes.object,
-  onPressRegisterNow: PropTypes.func
+  onPressRegisterNow: PropTypes.func,
+  onReturnLoginPress: PropTypes.funcm
 };
 Login.defaultProps = {
   onPressSubmitButton: () => {},
@@ -111,7 +116,8 @@ Login.defaultProps = {
   onPressRegisterNow: () => {},
   usernameChange: () => {},
   SubmitButtonOnPress: () => {},
-  passwordChange: () => {}
+  passwordChange: () => {},
+  onReturnLoginPress: () => {}
 };
 
 export { Login as default };

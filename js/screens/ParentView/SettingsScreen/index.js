@@ -32,10 +32,7 @@ class SettingsScreen extends React.Component {
       modalTitle: "",
       modalPlaceHolder: ""
     };
-    this.input = {
-      entry1: "",
-      entry2: ""
-    };
+    this.modalInput = "";
   }
   findRoutes() {
     switch (this.state.modalTitle) {
@@ -88,7 +85,7 @@ class SettingsScreen extends React.Component {
         <Modal
           isVisible={this.state.modalVisible}
           extraModalStyle={{
-            paddingTop: this.state.modalTitle == "Add prizes" ? "40%" : "60%",
+            paddingTop: "60%",
             paddingBottom: "75%",
             paddingLeft: "10%",
             paddingRight: "10%"
@@ -108,11 +105,7 @@ class SettingsScreen extends React.Component {
               </Header>
               <View style={{ flex: 1 }}>
                 <Item stackedLabel style={{ flex: 1 }}>
-                  {this.state.modalTitle == "Add prizes" ? (
-                    <Label>Points to be achieved</Label>
-                  ) : (
-                    false
-                  )}
+                  <Label>Points to be achieved</Label>
                   <Input
                     style={{ backgroundColor: "#fff" }}
                     placeholder={this.state.modalPlaceHolder}
@@ -122,23 +115,10 @@ class SettingsScreen extends React.Component {
                         : "default"
                     }
                     onChange={event => {
-                      this.input.entry1 = event.nativeEvent.text;
+                      this.modalInput = event.nativeEvent.text;
                     }}
                   />
                 </Item>
-                {this.state.modalTitle == "Add prizes" ? (
-                  <Item stackedLabel style={{ flex: 1 }}>
-                    <Label>Prize</Label>
-                    <Input
-                      style={{ backgroundColor: "#fff" }}
-                      onChange={event => {
-                        this.input.entry2 = event.nativeEvent.text;
-                      }}
-                    />
-                  </Item>
-                ) : (
-                  false
-                )}
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Button
@@ -153,7 +133,6 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={{ color: "#007aff" }}>Ok</Text>
                 </Button>
-
                 <Button
                   block
                   bordered
@@ -386,11 +365,7 @@ class SettingsScreen extends React.Component {
             });
           }}
           pressAddPrizes={() => {
-            this.setState({
-              modalTitle: "Add prizes",
-              modalPlaceHolder: "",
-              modalVisible: true
-            });
+            this.props.navigation.navigate("PrizesScreen");
           }}
           drawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
         />

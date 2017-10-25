@@ -1,11 +1,12 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { ActionSheet, List, Toast } from "native-base";
-import ListItemCustom from "./ListItem";
+import { ActionSheet, Toast } from "native-base";
+import styles from "./styles";
 import ImagePicker from "react-native-image-crop-picker";
 import { connect } from "react-redux";
+import Grid from "react-native-grid-component";
+import GridItem from "./gridItem";
 let dataNext = [];
-let selectedIndexes = [];
 const BUTTONS = ["Camera", "Gallery", "Stock Images", "Cancel"];
 const CANCEL_INDEX = 3;
 
@@ -20,24 +21,26 @@ class AddFolderScreen extends React.Component {
     this.state = {
       folderAdded: false,
       data: dataNext,
-      selectedIndexes: selectedIndexes,
       saveFolderButtonText: "",
       saveDisabled: true,
       focussed: false,
-      somethingDeleted: false,
       folderNameError: false,
-      submitted: false
+      submitted: false,
+      itemSelected: false
     };
-    dataNext = [];
   }
 
   async AddFolder() {
+    let tempData = [];
+    for (let i = 0; i < dataNext.length; i++) {
+      tempData.push(dataNext[i].image);
+    }
     await this.props.dispatch({
       type: "ADD_FOLDER",
       payload: {
         childID: this.props.child.childID,
         name: this.state.saveFolderButtonText,
-        data: dataNext
+        data: tempData
       }
     });
     this.setState({ folderAdded: true });
@@ -46,7 +49,9 @@ class AddFolderScreen extends React.Component {
   componentDidMount() {
     this.setState({ folderAdded: false });
   }
-
+  componentWillMount() {
+    dataNext.length = 0;
+  }
   componentDidUpdate() {
     if (
       this.state.saveDisabled &&
@@ -74,7 +79,9 @@ class AddFolderScreen extends React.Component {
       includeBase64: true
     }).then(images => {
       try {
-        dataNext = images.slice();
+        for (let i = 0; i < images.length; i++) {
+          dataNext.push({ image: images[i], checked: false });
+        }
         this.setState({ data: dataNext });
       } catch (err) {}
     });
@@ -106,17 +113,17 @@ class AddFolderScreen extends React.Component {
           }
         }}
         delPress={() => {
-          for (let i in selectedIndexes) {
-            dataNext.splice(selectedIndexes[i], 1);
-            selectedIndexes.splice(i, 1);
+          for (let i in dataNext) {
+            if (dataNext[i].checked == true) {
+              dataNext.splice(i, 1);
+            }
           }
-          if (this.state.data.length == 0) {
+          if (dataNext.length == 0) {
             this.setState({ saveDisabled: true });
           }
-          this.setState({ data: dataNext, somethingDeleted: true });
+          this.setState({ data: dataNext, itemSelected: false });
         }}
-        checkBoxReset={this.state.somethingDeleted}
-        isRightRequired={this.state.selectedIndexes.length > 0}
+        isRightRequired={this.state.itemSelected}
         onPressSkipButton={() => {
           navigate("Dashboard");
         }}
@@ -162,23 +169,47 @@ class AddFolderScreen extends React.Component {
         }}
       >
         {this.state.data.length > 0 ? (
-          <List
-            horizontal={true}
-            dataArray={this.state.data}
-            renderRow={item => (
-              <ListItemCustom
-                item={item}
-                itemPress={((checked, index) => {
-                  if (checked && selectedIndexes.indexOf(index) == -1) {
-                    selectedIndexes.push(index);
-                  } else {
-                    selectedIndexes.splice(selectedIndexes.indexOf(index), 1);
+          <Grid
+            style={[
+              styles.grid,
+              {
+                height:
+                  this.state.data.length < 4 && this.state.data.length > 0
+                    ? 110
+                    : 190
+              }
+            ]}
+            renderItem={(data, index) => (
+              <GridItem
+                key={index}
+                data={data}
+                index={this.state.data.indexOf(data)}
+                onPress={(() => {
+                  for (let i = 0; i < dataNext.length; i++) {
+                    if (dataNext[i].image == data.image) {
+                      dataNext[i] = {
+                        ...dataNext[i],
+                        checked: !dataNext[i].checked
+                      };
+                    }
                   }
-                  this.setState({ selectedIndexes: selectedIndexes });
+                  let count = 0;
+                  for (let i = 0; i < dataNext.length; i++) {
+                    if (dataNext[i].checked) {
+                      count++;
+                    }
+                  }
+                  if (count > 0) {
+                    this.setState({ itemSelected: true });
+                  } else {
+                    this.setState({ itemSelected: false });
+                  }
+                  this.setState({ data: dataNext });
                 }).bind(this)}
-                data={dataNext}
               />
             )}
+            data={this.state.data}
+            itemsPerRow={4}
           />
         ) : (
           false

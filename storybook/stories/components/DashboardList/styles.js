@@ -41,17 +41,14 @@ const styles = StyleSheet.create({
   },
   listItemGridViewStyle: {
     flex: 3,
-    marginLeft: 0,
-    marginRight: "-5%",
-    marginBottom: "-3.75%"
+    paddingLeft: 15
   },
-  listItemGrid: { flex: 1 },
   listItemGridItemStyle: {
     flex: 1,
     borderWidth: 0.4,
     borderColor: "#ccc",
-    height: 80,
-    width: 40
+    height: "100%",
+    width: "100%"
   },
   listItemGridItemInnerViewStyle: {
     flex: 1,
@@ -65,16 +62,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center"
   },
-  tickCrossImageDimenstions: { width: 20, height: 20 },
   listItemGridItemInnerViewTextStyle: {
+    top: 0,
     color: "red",
-    fontSize: 14,
-    margin: "2%"
+    fontSize: 16,
+    paddingBottom: 2
   },
   listItemGridItemInnerViewText2Style: {
+    top: 0,
     color: "green",
-    fontSize: 14,
-    margin: "2%"
+    fontSize: 16
   }
 });
 export default styles;

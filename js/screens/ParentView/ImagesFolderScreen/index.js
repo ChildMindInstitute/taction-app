@@ -53,7 +53,8 @@ class ImagesFolderScreen extends React.Component {
             Toast.show({
               text: "No child Added yet!",
               position: "bottom",
-              buttonText: "Okay"
+              buttonText: "Okay",
+              duration: 1500
             });
           }
         }}
@@ -69,7 +70,6 @@ class ImagesFolderScreen extends React.Component {
               {
                 text: "OK",
                 onPress: () => {
-                  debugger;
                   this.removeItems(checkedItems);
                 }
               },

@@ -264,46 +264,50 @@ export default {
     });
   },
 
-  addImage(exeID, path) {
-    return new Promise((resolve, reject) => {
-      const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
-      const imageRef = firebase.database().ref("image");
-      const store = firebase.storage().ref();
-      try {
-        var newImg = imageRef.push();
-        const metadata = {
-          contentType: "image/jpeg"
-        };
-        const RNBlob = RNFetchBlob.polyfill.Blob;
-        RNBlob.build(RNFetchBlob.wrap(path), {
-          type: "image/jpg;"
-        }).then(blob => {
-          console.log(blob);
-          const storageRef = store.child(exeID + "/" + newImg.key + ".jpg");
-          storageRef.put(blob, metadata).then(() => {
-            storageRef.getDownloadURL().then(URL => {
-              console.log(URL);
-              newImg
-                .set({
-                  correctTaps: 0,
-                  wrongTaps: 0,
-                  score: 0,
-                  status: false,
-                  touchDuration: 0,
-                  url: URL,
-                  waitTime: 0
-                })
-                .then(() => {
-                  var image = exeRef.push();
-                  image.set({ imageID: newImg.key }).then(() => {
-                    resolve(newImg.key);
-                  });
-                });
-            });
+  addImage(exeID, images) {
+    return new Promise(async (resolve, reject) => {
+      for (let i in images) {
+        const exeRef = firebase
+          .database()
+          .ref("exercise/" + exeID + "/images/");
+        const imageRef = firebase.database().ref("image");
+        const store = firebase.storage().ref();
+
+        try {
+          var newImg = imageRef.push();
+          console.log(newImg.key, "logging newImg");
+          const metadata = {
+            contentType: "image/jpeg"
+          };
+          const RNBlob = RNFetchBlob.polyfill.Blob;
+          let blob = await RNBlob.build(RNFetchBlob.wrap(images[i].path), {
+            type: "image/jpg;"
           });
-        });
-      } catch (err) {
-        reject(err);
+          console.log(blob);
+          const storageRef = await store.child(
+            exeID + "/" + newImg.key + ".jpg"
+          );
+          await storageRef.put(blob, metadata);
+          let URL = await storageRef.getDownloadURL();
+          console.log(URL);
+          await newImg.set({
+            correctTaps: 0,
+            wrongTaps: 0,
+            score: 0,
+            status: false,
+            touchDuration: 0,
+            url: URL,
+            waitTime: 0
+          });
+          var image = await exeRef.push();
+          await image.set({ imageID: newImg.key });
+          if (i == images.length - 1) {
+            console.log("resolving now");
+            resolve("success");
+          }
+        } catch (err) {
+          reject(err);
+        }
       }
     });
   },
@@ -468,10 +472,6 @@ export default {
         .database()
         .ref("child/" + childID + "/exercises");
       const exeRef = firebase.database().ref("exercise/" + exeID);
-      const storageRef = firebase
-        .storage()
-        .ref()
-        .child("/" + exeID + "/");
       const imgListRef = firebase
         .database()
         .ref("exercise/" + exeID + "/images");

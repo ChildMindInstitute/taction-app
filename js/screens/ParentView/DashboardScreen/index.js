@@ -29,12 +29,13 @@ class DashboardScreen extends React.Component {
         type: "SET_FOLDER_LIST",
         payload: this.props.child.childID
       });
-    } else {
+    } else if (!this.props.isNewRegistration) {
       this.setState({ childExists: false });
       Toast.show({
         text: "No child Added!",
         position: "bottom",
-        buttonText: "Okay"
+        buttonText: "Okay",
+        duration: 1500
       });
     }
   }

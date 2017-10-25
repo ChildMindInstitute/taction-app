@@ -27,6 +27,9 @@ class PrizesScreen extends React.Component {
       prizeDesc: ""
     };
   }
+
+  comonentWillMount() {}
+
   submitAction(item) {
     if (this.state.placeholderDesc == "" && this.state.placeholderPoints == "")
       console.log(this.input, "Add");

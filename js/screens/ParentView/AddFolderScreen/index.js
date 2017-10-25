@@ -25,7 +25,8 @@ class AddFolderScreen extends React.Component {
       saveDisabled: true,
       focussed: false,
       somethingDeleted: false,
-      folderNameError: false
+      folderNameError: false,
+      submitted: false
     };
     dataNext = [];
   }
@@ -61,6 +62,7 @@ class AddFolderScreen extends React.Component {
     }
 
     if (this.props.folderAdded && this.state.folderAdded) {
+      this.setState({ submitted: false });
       this.props.navigation.navigate("Dashboard");
     }
   }
@@ -91,9 +93,11 @@ class AddFolderScreen extends React.Component {
     return (
       <AddFolder
         onPressSaveButton={() => {
+          this.setState({ submitted: true });
           if (this.props.child && this.props.child.childID) {
             this.AddFolder();
           } else {
+            this.setState({ submitted: false });
             Toast.show({
               text: "Please add a child before adding a folder",
               position: "bottom",
@@ -117,6 +121,7 @@ class AddFolderScreen extends React.Component {
           navigate("Dashboard");
         }}
         drawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
+        submitted={this.state.submitted}
         onPressAddImage={() => {
           ActionSheet.show(
             {

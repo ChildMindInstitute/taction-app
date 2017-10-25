@@ -108,7 +108,8 @@ class AddFolderScreen extends React.Component {
             Toast.show({
               text: "Please add a child before adding a folder",
               position: "bottom",
-              buttonText: "Okay"
+              buttonText: "Okay",
+              duration: 1500
             });
           }
         }}

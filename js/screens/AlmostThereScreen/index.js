@@ -26,7 +26,8 @@ class AlmostThereScreen extends React.Component {
         Toast.show({
           text: "please verify your email!",
           position: "bottom",
-          buttonText: "Okay"
+          buttonText: "Okay",
+          duration: 1500
         });
       }
     }
@@ -46,7 +47,8 @@ class AlmostThereScreen extends React.Component {
             text:
               "An email verification link has been sent to your registered email",
             position: "bottom",
-            buttonText: "Okay"
+            buttonText: "Okay",
+            duration: 1500
           });
         }}
         onBackPress={() => {

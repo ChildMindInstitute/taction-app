@@ -59,6 +59,15 @@ const waitReducer = (
       break;
     }
 
+    case "PRIZE_LOADING": {
+      state = { ...state, prizeLoaded: false };
+      break;
+    }
+    case "PRIZE_LOADED": {
+      state = { ...state, prizeLoaded: true };
+      break;
+    }
+
     case "CLEAR_STORE": {
       state = {
         ...state,
@@ -69,7 +78,8 @@ const waitReducer = (
         updateLoaded: false,
         folderRemoved: false,
         folderReordered: false,
-        folderAdded: false
+        folderAdded: false,
+        prizeLoaded: false
       };
       break;
     }

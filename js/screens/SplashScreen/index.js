@@ -36,7 +36,8 @@ class Splash extends React.Component {
         Toast.show({
           text: "Error signing in!",
           position: "bottom",
-          buttonText: "Okay"
+          buttonText: "Okay",
+          duration: 1500
         });
         this.props.navigation.dispatch(
           NavigationActions.reset({
@@ -60,7 +61,8 @@ class Splash extends React.Component {
           : Toast.show({
               text: "No Internet Connection!",
               position: "bottom",
-              buttonText: "Okay"
+              buttonText: "Okay",
+              duration: 1500
             });
       }
     }

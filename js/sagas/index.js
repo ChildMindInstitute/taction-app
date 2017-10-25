@@ -8,7 +8,6 @@ import addChild from "./addChild";
 import watchLogoutUser from "./logoutUser";
 import watchAddFolder from "./addFolder";
 import watchSetFolder from "./setFolder";
-import watchAddImage from "./addImage";
 import watchSetImage from "./setImage";
 import watchSetFolderList from "./setFolderList";
 import watchSetDashboardList from "./setDashboardList";
@@ -41,7 +40,6 @@ const rootSaga = function* rootSaga() {
     addChild(),
     watchAddFolder(),
     watchSetFolder(),
-    watchAddImage(),
     watchSetImage(),
     watchSetFolderList(),
     watchSetDashboardList(),

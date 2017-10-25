@@ -1,33 +1,6 @@
 import React from "react";
 import StockImages from "../../../../storybook/stories/screens/StockImages";
-const data = [
-  {
-    name: "Spider",
-    dataFolderContent: [
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg"),
-      require("../../../assets/spiderman.jpg")
-    ]
-  },
-  {
-    name: "Ball",
-    dataFolderContent: [
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg"),
-      require("../../../assets/ball-1.jpg")
-    ]
-  }
-];
+import { connect } from "react-redux";
 class StockImagesScreen extends React.Component {
   static navigationOptions = {
     title: "StockImagesScreen",
@@ -36,11 +9,16 @@ class StockImagesScreen extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentWillMount() {
+    this.props.dispatch({ type: "SET_STOCK_IMAGE_LIST" });
+  }
+
   render() {
     return (
       <StockImages
         back={() => this.props.navigation.navigate("AddFolder")}
-        excerciseData={data}
+        excerciseData={this.props.stockImages}
         onDownloadPress={item => {
           console.log(item);
         }}
@@ -49,4 +27,16 @@ class StockImagesScreen extends React.Component {
   }
 }
 
-export default StockImagesScreen;
+const mapStateToProps = store => {
+  return {
+    parent: store.user.parent,
+    child: store.user.child,
+    stockImages: store.stockImageList
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StockImagesScreen);

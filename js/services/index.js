@@ -553,5 +553,39 @@ export default {
         reject(err);
       }
     });
+  },
+  fetchStockImageList() {
+    return new Promise((resolve, reject) => {
+      try {
+        const stockRef = firebase.database().ref("stockImages");
+        let response = [];
+        stockRef.once("value").then(snapshot => {
+          let numFolder = snapshot.numChildren();
+          snapshot.forEach(folder => {
+            console.log(folder.key);
+            let dataFolderContent = [];
+            const folderRef = firebase
+              .database()
+              .ref("stockImages/" + folder.key + "/");
+            folderRef.once("value").then(snapshot => {
+              snapshot.forEach(img => {
+                dataFolderContent.push({
+                  uri: img.val().url
+                });
+              });
+            });
+            response.push({
+              name: folder.key,
+              dataFolderContent: dataFolderContent
+            });
+            if (response.length == numFolder) {
+              resolve(response);
+            }
+          });
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 };

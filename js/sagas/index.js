@@ -30,6 +30,7 @@ import watchResetTodayScore from "./resetTodayScore";
 import watchVerifyEmail from "./verifyEmail";
 import watchAddPrize from "./addPrize";
 import watchSetPrizeList from "./setPrizeList";
+import watchSetStockImageList from "./setStockImageList";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -63,7 +64,8 @@ const rootSaga = function* rootSaga() {
     watchResetTodayScore(),
     watchVerifyEmail(),
     watchAddPrize(),
-    watchSetPrizeList()
+    watchSetPrizeList(),
+    watchSetStockImageList()
   ]);
 };
 

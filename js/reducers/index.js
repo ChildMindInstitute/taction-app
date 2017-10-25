@@ -13,6 +13,7 @@ import nextFolderReducer from "./nextFolderReducer";
 import randomImageListReducer from "./randomImageListReducer";
 import orderListReducer from "./orderListReducer";
 import prizeListReducer from "./prizeListReducer";
+import stockImageListReducer from "./stockImageListReducer";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -28,7 +29,8 @@ const reducer = combineReducers({
   nextFolder: nextFolderReducer,
   randomImage: randomImageListReducer,
   orderList: orderListReducer,
-  prizeList: prizeListReducer
+  prizeList: prizeListReducer,
+  stockImageList: stockImageListReducer
 });
 
 export default reducer;

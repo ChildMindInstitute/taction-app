@@ -14,7 +14,7 @@ class LoginAsScreen extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.child.childDetails == null || this.props.child == null) {
+    if (this.props.child.childID == null || this.props.child == null) {
       data = [{ name: this.props.parent.name }];
     } else {
       data = [

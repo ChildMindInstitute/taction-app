@@ -109,6 +109,7 @@ export default {
   },
 
   async getUser() {
+    await firebase.auth().currentUser.reload();
     const snapshot = await firebase
       .database()
       .ref("parent/" + firebase.auth().currentUser.uid)
@@ -510,5 +511,47 @@ export default {
 
   resetPassword(email) {
     firebase.auth().sendPasswordResetEmail(email);
+  },
+
+  async addPrize(childID, points, description) {
+    const childRef = firebase.database().ref("child/" + childID + "/prizes/");
+    let prize = childRef.push();
+    try {
+      await prize.set({ description: description, points: parseInt(points) });
+      return prize.key;
+    } catch (err) {
+      return err;
+    }
+  },
+
+  fetchPrizeList(childID) {
+    return new Promise((resolve, reject) => {
+      const childRef = firebase
+        .database()
+        .ref("child/" + childID + "/prizes/")
+        .orderByChild("points");
+      let response = [];
+      try {
+        childRef.once("value").then(snapshot => {
+          var numExe = snapshot.numChildren();
+          if (numExe == 0) {
+            resolve(response);
+          } else {
+            snapshot.forEach(prize => {
+              response.push({
+                prizeID: prize.key,
+                points: prize.val().points,
+                description: prize.val().description
+              });
+              if (response.length == numExe) {
+                resolve(response);
+              }
+            });
+          }
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
   }
 };

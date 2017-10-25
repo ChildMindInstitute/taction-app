@@ -352,11 +352,9 @@ class SettingsScreen extends React.Component {
               }
             });
           }}
-          childExists={this.props.child.childDetails ? true : false}
+          childExists={this.props.child.childID ? true : false}
           nameChild={
-            this.props.child.childDetails
-              ? this.props.child.childDetails.name
-              : ""
+            this.props.child.childID ? this.props.child.childDetails.name : ""
           }
           nameChildPress={() => {
             this.setState({

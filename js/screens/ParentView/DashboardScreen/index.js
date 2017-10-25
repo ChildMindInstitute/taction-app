@@ -12,7 +12,7 @@ class DashboardScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      childExists: true
+      childExists: false
     };
   }
   componentWillMount() {

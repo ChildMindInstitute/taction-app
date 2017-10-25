@@ -16,6 +16,7 @@ class AddFolderScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.count = 0;
     this.state = {
       folderAdded: false,
       data: dataNext,
@@ -23,7 +24,8 @@ class AddFolderScreen extends React.Component {
       saveFolderButtonText: "",
       saveDisabled: true,
       focussed: false,
-      somethingDeleted: false
+      somethingDeleted: false,
+      folderNameError: false
     };
     dataNext = [];
   }
@@ -133,9 +135,7 @@ class AddFolderScreen extends React.Component {
             }
           );
         }}
-        errorDisplay={
-          this.state.saveFolderButtonText == "" && this.state.focussed
-        }
+        errorDisplay={this.state.folderNameError}
         onFocus={() => {
           this.setState({ focussed: true });
         }}
@@ -147,7 +147,13 @@ class AddFolderScreen extends React.Component {
             : "")
         }
         folderNameChange={event => {
+          if (this.count == 1 && event.nativeEvent.text == "") {
+            this.setState({ folderNameError: true });
+          } else {
+            this.setState({ folderNameError: false });
+          }
           this.setState({ saveFolderButtonText: event.nativeEvent.text });
+          this.count = 1;
         }}
       >
         {this.state.data.length > 0 ? (

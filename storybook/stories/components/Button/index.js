@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Text, Icon, View, Spinner } from "native-base";
+import { Button, Text, Icon, Spinner } from "native-base";
 const CustomButton = props => (
   <Button
     iconLeft
@@ -10,7 +10,10 @@ const CustomButton = props => (
       {
         backgroundColor: props.disabled
           ? "rgba(238, 174, 48, 0.7)"
-          : "rgba(238, 174, 48, 1)"
+          : "rgba(238, 174, 48, 1)",
+        alignItems: "center",
+        justifyContent: "center",
+        alignContent: "center"
       },
       props.submitButtonStyle
     ]}
@@ -28,7 +31,7 @@ const CustomButton = props => (
       <Text
         style={[
           props.submitButtonTextStyle,
-          { paddingLeft: 0, paddingRight: 0 }
+          props.iconLeft ? { paddingLeft: 0 } : { paddingRight: 0 }
         ]}
       >
         {props.buttonText} {props.extraText}
@@ -36,7 +39,7 @@ const CustomButton = props => (
     ) : (
       false
     )}
-    {props.iconRight ? (
+    {props.iconRight && !props.submitted ? (
       <Icon name={props.iconName} style={{ color: props.iconColor }} />
     ) : (
       false

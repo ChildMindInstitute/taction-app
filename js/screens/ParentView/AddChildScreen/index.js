@@ -1,6 +1,7 @@
 import React from "react";
 import AddChild from "../../../../storybook/stories/screens/AddChild";
 import { connect } from "react-redux";
+import { Toast } from "native-base";
 
 var childName, childAge;
 class AddChildScreen extends React.Component {
@@ -21,6 +22,13 @@ class AddChildScreen extends React.Component {
       this.props.navigation.navigate(
         this.props.isNewRegistration ? "AddFolder" : "Dashboard"
       );
+    } else {
+      Toast.show({
+        text: "Error! fields cannot be left blank",
+        buttonText: "Okay",
+        position: "bottom",
+        duration: 2000
+      });
     }
   }
 

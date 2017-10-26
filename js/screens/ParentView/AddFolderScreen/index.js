@@ -32,30 +32,49 @@ class AddFolderScreen extends React.Component {
     dataNext.length = 0;
   }
 
+  validateInput() {
+    for (let i in this.props.dashboardList) {
+      if (this.state.saveFolderButtonText == this.props.dashboardList[i].name) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   async AddFolder() {
     let tempData = [];
     for (let i = 0; i < dataNext.length; i++) {
       tempData.push(dataNext[i].image);
     }
-    if (this.state.stockImagesSelected) {
-      console.log(tempData, "logging stock data");
-      await this.props.dispatch({
-        type: "ADD_STOCK_FOLDER",
-        payload: {
-          childID: this.props.child.childID,
-          name: this.state.saveFolderButtonText,
-          data: tempData
-        }
-      });
+    if (this.validateInput()) {
+      if (this.state.stockImagesSelected) {
+        console.log(tempData, "logging stock data");
+        await this.props.dispatch({
+          type: "ADD_STOCK_FOLDER",
+          payload: {
+            childID: this.props.child.childID,
+            name: this.state.saveFolderButtonText,
+            data: tempData
+          }
+        });
+      } else {
+        await this.props.dispatch({
+          type: "ADD_FOLDER",
+          payload: {
+            childID: this.props.child.childID,
+            name: this.state.saveFolderButtonText,
+            data: tempData
+          }
+        });
+      }
     } else {
-      await this.props.dispatch({
-        type: "ADD_FOLDER",
-        payload: {
-          childID: this.props.child.childID,
-          name: this.state.saveFolderButtonText,
-          data: tempData
-        }
+      Toast.show({
+        text: "Folder name already exists!",
+        buttonText: "Okay",
+        position: "bottom",
+        duration: 2000
       });
+      this.setState({ submitted: false });
     }
     this.setState({ folderAdded: true });
   }
@@ -260,6 +279,7 @@ class AddFolderScreen extends React.Component {
 
 const mapStateToProps = store => {
   return {
+    dashboardList: store.dashboardList,
     child: store.user.child,
     folder: store.folder,
     folderAdded: store.loaded.folderAdded

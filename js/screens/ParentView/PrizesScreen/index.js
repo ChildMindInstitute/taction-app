@@ -38,6 +38,15 @@ class PrizesScreen extends React.Component {
     });
   }
 
+  validateInput() {
+    for (let i in this.props.prizeList) {
+      if (parseInt(this.input.pointsReq) == this.props.prizeList[i].points) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   submitAction() {
     if (this.input.pointsReq != "" && this.input.prizeDesc != "") {
       if (
@@ -45,28 +54,46 @@ class PrizesScreen extends React.Component {
         this.state.placeholderPoints == ""
       ) {
         console.log(this.input, "Add");
-        this.props.dispatch({
-          type: "ADD_PRIZE",
-          payload: {
-            childID: this.props.child.childID,
-            points: this.input.pointsReq,
-            description: this.input.prizeDesc
-          }
-        });
+        if (this.validateInput()) {
+          this.props.dispatch({
+            type: "ADD_PRIZE",
+            payload: {
+              childID: this.props.child.childID,
+              points: this.input.pointsReq,
+              description: this.input.prizeDesc
+            }
+          });
+        } else {
+          Toast.show({
+            text: "Prize for these points already exists",
+            position: "bottom",
+            buttonText: "Okay",
+            duration: 2000
+          });
+        }
       } else {
         console.log(this.input, "Edit");
         console.log(this.state.prizeId);
-        this.props.dispatch({
-          type: "UPDATE_PRIZE",
-          payload: {
-            childID: this.props.child.childID,
-            prizeID: this.state.prizeId,
-            update: {
-              points: parseInt(this.input.pointsReq),
-              description: this.input.prizeDesc
+        if (this.validateInput()) {
+          this.props.dispatch({
+            type: "UPDATE_PRIZE",
+            payload: {
+              childID: this.props.child.childID,
+              prizeID: this.state.prizeId,
+              update: {
+                points: parseInt(this.input.pointsReq),
+                description: this.input.prizeDesc
+              }
             }
-          }
-        });
+          });
+        } else {
+          Toast.show({
+            text: "Prize for these points already exists",
+            position: "bottom",
+            buttonText: "Okay",
+            duration: 2000
+          });
+        }
       }
     } else {
       Toast.show({

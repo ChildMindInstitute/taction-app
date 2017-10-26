@@ -3,6 +3,7 @@ import ImagesFolder from "../../../../storybook/stories/screens/ImagesFolder";
 import { connect } from "react-redux";
 import { Alert } from "react-native";
 import { Toast } from "native-base";
+
 class ImagesFolderScreen extends React.Component {
   static navigationOptions = {
     title: "ImagesFolderScreen",
@@ -65,6 +66,7 @@ class ImagesFolderScreen extends React.Component {
           this.toggleStatus(onOff, item.folderID);
         }}
         onPressDeleteButton={checkedItems => {
+          console.log(checkedItems, "logging checkedItems");
           Alert.alert(
             "Delete Folders",
             "Are you sure you want to delete these folders?",

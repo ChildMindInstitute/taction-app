@@ -470,14 +470,15 @@ export default {
 
   removeFolder(exeID, childID) {
     return new Promise((resolve, reject) => {
-      const childRef = firebase
-        .database()
-        .ref("child/" + childID + "/exercises");
-      const exeRef = firebase.database().ref("exercise/" + exeID);
-      const imgListRef = firebase
-        .database()
-        .ref("exercise/" + exeID + "/images");
       try {
+        const childRef = firebase
+          .database()
+          .ref("child/" + childID + "/exercises");
+        const exeRef = firebase.database().ref("exercise/" + exeID);
+        const imgListRef = firebase
+          .database()
+          .ref("exercise/" + exeID + "/images");
+
         imgListRef.once("value").then(snapshot => {
           let count = 1;
           let numImg = snapshot.numChildren();
@@ -495,7 +496,7 @@ export default {
                         .database()
                         .ref("child/" + childID + "/exercises/" + exe.key)
                         .remove()
-                        .then(() => resolve());
+                        .then(() => resolve(""));
                     }
                   });
                 });

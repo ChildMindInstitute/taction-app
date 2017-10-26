@@ -89,6 +89,7 @@ export default {
             wrongTaps: 0,
             todayScore: 0,
             level: 0,
+            lastActivity: new Date().toDateString(),
             parentID: auth.currentUser.uid,
             totalScore: 0
           })

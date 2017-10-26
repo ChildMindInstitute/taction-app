@@ -34,7 +34,10 @@ class AddFolderScreen extends React.Component {
 
   validateInput() {
     for (let i in this.props.dashboardList) {
-      if (this.state.saveFolderButtonText == this.props.dashboardList[i].name) {
+      if (
+        this.state.saveFolderButtonText.toLowerCase() ==
+        this.props.dashboardList[i].name.toLowerCase()
+      ) {
         return false;
       }
     }

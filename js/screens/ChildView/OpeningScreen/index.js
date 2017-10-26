@@ -20,7 +20,9 @@ class OpeningScreen extends React.Component {
           : true
         : false,
       isPlayDisabled: true,
-      todayScore: 0
+      todayScore: 0,
+      prize: "",
+      prizePoints: 0
     };
   }
   setModalVisible(visible) {
@@ -28,6 +30,11 @@ class OpeningScreen extends React.Component {
   }
 
   componentWillMount() {
+    this.props.dispatch({
+      type: "SET_PRIZE_LIST",
+      payload: this.props.childID
+    });
+
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({
@@ -38,6 +45,22 @@ class OpeningScreen extends React.Component {
   componentDidUpdate() {
     if (this.props.folder.folderID && this.state.isPlayDisabled) {
       this.setState({ isPlayDisabled: false });
+    }
+    if (this.props.prizeList.length != 0 && this.state.prize == "") {
+      this.setPrize();
+    }
+  }
+
+  setPrize() {
+    for (let i in this.props.prizeList) {
+      if (this.props.prizeList[i].points > this.props.child.totalScore) {
+        this.setState({
+          prizePoints:
+            this.props.prizeList[i].points - this.props.child.totalScore,
+          prize: this.props.prizeList[i].description
+        });
+        return;
+      }
     }
   }
 
@@ -90,8 +113,10 @@ class OpeningScreen extends React.Component {
               description={
                 "You have earned " + this.state.todayScore + " points today!"
               }
-              descriptionLine2="50 more to achieve a prize!"
-              nextPrizeDescription="Day outing in water park"
+              descriptionLine2={
+                this.state.prizePoints + " more to achieve a prize!"
+              }
+              nextPrizeDescription={this.state.prize}
               isButtonNeeded={false}
               toggleVisiblity={() => {
                 this.setModalVisible(false);
@@ -108,7 +133,8 @@ const mapStateToProps = store => {
   return {
     child: store.user.child.childDetails,
     childID: store.user.child.childID,
-    folder: store.folder
+    folder: store.folder,
+    prizeList: store.prizeList
   };
 };
 

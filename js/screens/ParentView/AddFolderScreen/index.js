@@ -94,12 +94,15 @@ class AddFolderScreen extends React.Component {
       maxFiles: 20,
       includeBase64: true
     }).then(images => {
-      try {
-        for (let i = 0; i < images.length; i++) {
-          dataNext.push({ image: images[i], checked: false });
-        }
-        this.setState({ data: dataNext });
-      } catch (err) {}
+      if (images.length != 0) {
+        this.setState({ stockImagesSelected: false });
+        try {
+          for (let i = 0; i < images.length; i++) {
+            dataNext.push({ image: images[i], checked: false });
+          }
+          this.setState({ data: dataNext });
+        } catch (err) {}
+      }
     });
   }
   updateCameraImage() {

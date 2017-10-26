@@ -10,7 +10,7 @@ class StockImagesScreen extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch({ type: "SET_STOCK_IMAGE_LIST" });
   }
 
@@ -20,7 +20,10 @@ class StockImagesScreen extends React.Component {
         back={() => this.props.navigation.navigate("AddFolder")}
         excerciseData={this.props.stockImages}
         onDownloadPress={item => {
-          console.log(item);
+          // console.log(item);
+          this.props.navigation.navigate("AddFolder", {
+            stockImages: item.dataFolderContent
+          });
         }}
       />
     );

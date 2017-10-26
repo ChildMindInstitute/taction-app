@@ -28,6 +28,7 @@ class AddFolderScreen extends React.Component {
       submitted: false,
       itemSelected: false
     };
+    console.log(this.props.navigation.state.params);
   }
 
   async AddFolder() {

@@ -26,9 +26,10 @@ class AddFolderScreen extends React.Component {
       focussed: false,
       folderNameError: false,
       submitted: false,
-      itemSelected: false
+      itemSelected: false,
+      stockImagesSelected: false
     };
-    console.log(this.props.navigation.state.params);
+    dataNext.length = 0;
   }
 
   async AddFolder() {
@@ -46,9 +47,23 @@ class AddFolderScreen extends React.Component {
     });
     this.setState({ folderAdded: true });
   }
-
   componentDidMount() {
     this.setState({ folderAdded: false });
+    if (!this.props.navigation.state.params.noAddedImages) {
+      this.setState({ stockImagesSelected: true });
+      for (
+        let i = 0;
+        i < this.props.navigation.state.params.stockImages.length;
+        i++
+      ) {
+        dataNext.push({
+          image: {
+            path: this.props.navigation.state.params.stockImages[i].uri
+          },
+          checked: false
+        });
+      }
+    }
   }
   componentWillMount() {
     dataNext.length = 0;
@@ -79,12 +94,15 @@ class AddFolderScreen extends React.Component {
       maxFiles: 20,
       includeBase64: true
     }).then(images => {
-      try {
-        for (let i = 0; i < images.length; i++) {
-          dataNext.push({ image: images[i], checked: false });
-        }
-        this.setState({ data: dataNext });
-      } catch (err) {}
+      if (images.length != 0) {
+        this.setState({ stockImagesSelected: false });
+        try {
+          for (let i = 0; i < images.length; i++) {
+            dataNext.push({ image: images[i], checked: false });
+          }
+          this.setState({ data: dataNext });
+        } catch (err) {}
+      }
     });
   }
   updateCameraImage() {
@@ -114,6 +132,11 @@ class AddFolderScreen extends React.Component {
             });
           }
         }}
+        formDisabled={this.state.submitted}
+        addImageDisabled={
+          this.state.stockImagesSelected || this.state.submitted
+        }
+        skipDisabled={this.state.submitted}
         delPress={() => {
           for (let i in dataNext) {
             if (dataNext[i].checked == true) {
@@ -187,26 +210,28 @@ class AddFolderScreen extends React.Component {
                 data={data}
                 index={this.state.data.indexOf(data)}
                 onPress={(() => {
-                  for (let i = 0; i < dataNext.length; i++) {
-                    if (dataNext[i].image == data.image) {
-                      dataNext[i] = {
-                        ...dataNext[i],
-                        checked: !dataNext[i].checked
-                      };
+                  if (!this.state.stockImagesSelected) {
+                    for (let i = 0; i < dataNext.length; i++) {
+                      if (dataNext[i].image == data.image) {
+                        dataNext[i] = {
+                          ...dataNext[i],
+                          checked: !dataNext[i].checked
+                        };
+                      }
                     }
-                  }
-                  let count = 0;
-                  for (let i = 0; i < dataNext.length; i++) {
-                    if (dataNext[i].checked) {
-                      count++;
+                    let count = 0;
+                    for (let i = 0; i < dataNext.length; i++) {
+                      if (dataNext[i].checked) {
+                        count++;
+                      }
                     }
+                    if (count > 0) {
+                      this.setState({ itemSelected: true });
+                    } else {
+                      this.setState({ itemSelected: false });
+                    }
+                    this.setState({ data: dataNext });
                   }
-                  if (count > 0) {
-                    this.setState({ itemSelected: true });
-                  } else {
-                    this.setState({ itemSelected: false });
-                  }
-                  this.setState({ data: dataNext });
                 }).bind(this)}
               />
             )}

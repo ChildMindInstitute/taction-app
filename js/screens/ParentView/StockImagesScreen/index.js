@@ -22,7 +22,8 @@ class StockImagesScreen extends React.Component {
         onDownloadPress={item => {
           // console.log(item);
           this.props.navigation.navigate("AddFolder", {
-            stockImages: item.dataFolderContent
+            stockImages: item.dataFolderContent,
+            noAddedImages: false
           });
         }}
       />

@@ -17,21 +17,19 @@ const styles = StyleSheet.create({
   headerRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
   contentStyle: {
     flex: 1,
-    paddingLeft: "5%",
-    paddingRight: "5%",
-    paddingTop: "40%",
-    paddingBottom: "40%"
+    paddingLeft: 9,
+    paddingRight: 9
   },
   mainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
   containerStyle: { flex: 1, backgroundColor: "#eee" },
   submitButton2Style: {
     backgroundColor: "#fff",
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: "#ccc"
   },
   submitButton2TextStyle: { color: "#000" },
   inputViewStyle: {
-    flex: 0.25
+    flex: 1
   },
   submitButton3Style: {
     backgroundColor: "#ffffff"

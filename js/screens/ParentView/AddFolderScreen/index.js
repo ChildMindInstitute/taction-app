@@ -1,15 +1,12 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { ActionSheet, Toast } from "native-base";
+import { Toast, Button, Icon, View } from "native-base";
 import styles from "./styles";
 import ImagePicker from "react-native-image-crop-picker";
 import { connect } from "react-redux";
 import Grid from "react-native-grid-component";
 import GridItem from "./gridItem";
 let dataNext = [];
-const BUTTONS = ["Camera", "Gallery", "Stock Images", "Cancel"];
-const CANCEL_INDEX = 3;
-
 class AddFolderScreen extends React.Component {
   static navigationOptions = {
     title: "AddFolderScreen",
@@ -27,7 +24,9 @@ class AddFolderScreen extends React.Component {
       folderNameError: false,
       submitted: false,
       itemSelected: false,
-      stockImagesSelected: false
+      stockImagesSelected: false,
+      activeSegment: 0,
+      galleryDisabled: false
     };
     dataNext.length = 0;
   }
@@ -82,6 +81,7 @@ class AddFolderScreen extends React.Component {
     this.setState({ folderAdded: false });
     if (!this.props.navigation.state.params.noAddedImages) {
       this.setState({ stockImagesSelected: true });
+      this.setState({ activeSegment: 2 });
       for (
         let i = 0;
         i < this.props.navigation.state.params.stockImages.length;
@@ -103,12 +103,12 @@ class AddFolderScreen extends React.Component {
     if (
       this.state.saveDisabled &&
       this.state.saveFolderButtonText != "" &&
-      dataNext.length > 0
+      dataNext.length > 1
     ) {
       this.setState({ saveDisabled: false });
     } else if (
       !this.state.saveDisabled &&
-      this.state.saveFolderButtonText == ""
+      (this.state.saveFolderButtonText == "" || dataNext.length <= 1)
     ) {
       this.setState({ saveDisabled: true });
     }
@@ -124,17 +124,21 @@ class AddFolderScreen extends React.Component {
       multiple: true,
       maxFiles: 20,
       includeBase64: true
-    }).then(images => {
-      if (images.length != 0) {
+    })
+      .then(images => {
         this.setState({ stockImagesSelected: false });
-        try {
-          for (let i = 0; i < images.length; i++) {
+        dataNext.pop();
+        for (let i = 0; i < images.length; i++) {
+          dataNext.push({ image: images[i], checked: false });
+          if (i == images.length - 1) {
             dataNext.push({ image: images[i], checked: false });
           }
-          this.setState({ data: dataNext });
-        } catch (err) {}
-      }
-    });
+        }
+        this.setState({ data: dataNext, galleryDisabled: true });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   updateCameraImage() {
     // ImagePicker.launchCameraAsync({ base64: true, quality: 0 }).then(image => {
@@ -163,6 +167,15 @@ class AddFolderScreen extends React.Component {
             });
           }
         }}
+        galleryDisabled={this.state.galleryDisabled}
+        activeSegment={this.state.activeSegment}
+        setActiveSegement={activeIndex => {
+          dataNext.length = 0;
+          this.setState({ activeSegment: activeIndex, data: dataNext });
+          if (activeIndex == 1) {
+            this.updateImage();
+          } else this.props.navigation.navigate("StockImages");
+        }}
         formDisabled={this.state.submitted}
         addImageDisabled={
           this.state.stockImagesSelected || this.state.submitted
@@ -185,24 +198,6 @@ class AddFolderScreen extends React.Component {
         }}
         drawerOpen={() => this.props.navigation.navigate("DrawerOpen")}
         submitted={this.state.submitted}
-        onPressAddImage={() => {
-          ActionSheet.show(
-            {
-              options: BUTTONS,
-              cancelButtonIndex: CANCEL_INDEX,
-              title: "Select Image"
-            },
-            buttonIndex => {
-              if (buttonIndex == 0) {
-                this.updateCameraImage();
-              } else if (buttonIndex == 1) {
-                this.updateImage();
-              } else if (buttonIndex == 2) {
-                this.props.navigation.navigate("StockImages");
-              }
-            }
-          );
-        }}
         errorDisplay={this.state.folderNameError}
         onFocus={() => {
           this.setState({ focussed: true });
@@ -235,37 +230,66 @@ class AddFolderScreen extends React.Component {
                     : 190
               }
             ]}
-            renderItem={(data, index) => (
-              <GridItem
-                key={index}
-                data={data}
-                index={this.state.data.indexOf(data)}
-                onPress={(() => {
-                  if (!this.state.stockImagesSelected) {
-                    for (let i = 0; i < dataNext.length; i++) {
-                      if (dataNext[i].image == data.image) {
-                        dataNext[i] = {
-                          ...dataNext[i],
-                          checked: !dataNext[i].checked
-                        };
+            renderItem={data => {
+              if (this.state.data.indexOf(data) < this.state.data.length - 1)
+                return (
+                  <GridItem
+                    index={this.state.data.indexOf(data)}
+                    key={this.state.data.indexOf(data)}
+                    data={data}
+                    onPress={(() => {
+                      if (!this.state.stockImagesSelected) {
+                        for (let i = 0; i < dataNext.length; i++) {
+                          if (dataNext[i].image == data.image) {
+                            dataNext[i] = {
+                              ...dataNext[i],
+                              checked: !dataNext[i].checked
+                            };
+                          }
+                        }
+                        let count = 0;
+                        for (let i = 0; i < dataNext.length; i++) {
+                          if (dataNext[i].checked) {
+                            count++;
+                          }
+                        }
+                        if (count > 0) {
+                          this.setState({ itemSelected: true });
+                        } else {
+                          this.setState({ itemSelected: false });
+                        }
+                        this.setState({ data: dataNext });
                       }
-                    }
-                    let count = 0;
-                    for (let i = 0; i < dataNext.length; i++) {
-                      if (dataNext[i].checked) {
-                        count++;
-                      }
-                    }
-                    if (count > 0) {
-                      this.setState({ itemSelected: true });
-                    } else {
-                      this.setState({ itemSelected: false });
-                    }
-                    this.setState({ data: dataNext });
-                  }
-                }).bind(this)}
-              />
-            )}
+                    }).bind(this)}
+                  />
+                );
+              else
+                return (
+                  <Button
+                    style={{
+                      height: 90,
+                      width: this.state.data.indexOf(data) % 4 == 0 ? 110 : 80,
+                      justifyContent: "center",
+                      backgroundColor: "#fff",
+                      marginTop: 10,
+                      marginBottom: 10
+                    }}
+                    key={this.state.data.indexOf(data)}
+                    onPress={this.updateImage.bind(this)}
+                  >
+                    <Icon
+                      name="md-add"
+                      style={{
+                        fontSize: 36,
+                        color: "#333",
+                        paddingLeft: 0,
+                        paddingRight: 0
+                      }}
+                      key={this.state.data.indexOf(data) + " "}
+                    />
+                  </Button>
+                );
+            }}
             data={this.state.data}
             itemsPerRow={4}
           />

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Text, Button, Icon } from "native-base";
+import { Container, View, Text, Button, Icon, Segment } from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
 const AddFolder = props => (
@@ -24,17 +24,23 @@ const AddFolder = props => (
       style={[
         styles.contentStyle,
         {
-          paddingBottom: props.children ? "15%" : "40%",
-          paddingTop: props.errorDisplay ? "35%" : "40%"
+          paddingTop: props.children ? "5%" : "40%",
+          paddingBottom: props.children ? "5%" : "40%"
         }
       ]}
     >
       <View style={styles.mainSpace}>
         <View
           style={{
-            flex: 2,
+            flex:
+              props.errorDisplay && !props.children
+                ? 1.2
+                : !props.errorDisplay && props.children
+                  ? 0.5
+                  : !props.errorDisplay && !props.children ? 1.2 : 0.5,
+            height: 50,
             alignContent: "center",
-            justifyContent: "center"
+            justifyContent: "flex-start"
           }}
         >
           <FormInput
@@ -54,29 +60,79 @@ const AddFolder = props => (
         ) : (
           false
         )}
+        <View style={{ flex: 0.2, justifyContent: "center" }}>
+          <Text>Select images from :</Text>
+        </View>
+
         <View style={{ flex: 3 }}>
           <View
             style={{
-              flex: 1,
+              flex: 0.6,
               alignContent: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              flexDirection: "row"
             }}
           >
-            <Button2
-              onPress={props.onPressAddImage}
-              submitButtonStyle={styles.submitButton3Style}
-              isIconRequired={true}
-              iconName="image"
-              iconColor="#0067a0"
-              disabled={props.addImageDisabled}
-              buttonText="Add Images"
-              submitButtonTextStyle={styles.submitButton3TextStyle}
-            />
+            <Segment>
+              <Button
+                first
+                active={props.activeSegment == 1 ? true : false}
+                onPress={() => {
+                  props.setActiveSegement(1);
+                }}
+                style={{
+                  width: "50%",
+                  height: "90%",
+                  justifyContent: "center",
+                  backgroundColor:
+                    props.activeSegment == 1 ? "#0067a0" : "#fff",
+                  borderRadius: 0,
+                  borderColor: "#0067a0"
+                }}
+                disabled={props.galleryDisabled}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    color: props.activeSegment == 1 ? "#fff" : "#0067a0"
+                  }}
+                >
+                  Gallery
+                </Text>
+              </Button>
+              <Button
+                last
+                active={props.activeSegment == 2 ? true : false}
+                onPress={() => {
+                  props.setActiveSegement(2);
+                }}
+                style={{
+                  width: "50%",
+                  height: "90%",
+                  marginTop: 10,
+                  marginBottom: 10,
+                  justifyContent: "center",
+                  backgroundColor:
+                    props.activeSegment == 2 ? "#0067a0" : "#fff",
+                  borderRadius: 0,
+                  borderColor: "#0067a0"
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    color: props.activeSegment == 2 ? "#fff" : "#0067a0"
+                  }}
+                >
+                  Stock
+                </Text>
+              </Button>
+            </Segment>
           </View>
           {props.children ? (
             <View
               style={{
-                flex: 2,
+                flex: 2.3,
                 alignContent: "center",
                 justifyContent: "center"
               }}
@@ -109,7 +165,7 @@ const AddFolder = props => (
             style={{
               flex: 1,
               alignContent: "center",
-              justifyContent: "center"
+              justifyContent: "flex-start"
             }}
           >
             <Button2

@@ -176,7 +176,7 @@ class AddFolderScreen extends React.Component {
         onFocus={() => {
           this.setState({ focussed: true });
         }}
-        saveDisabled={this.state.saveDisabled}
+        saveDisabled={this.state.saveDisabled || this.state.submitted}
         saveFolderButtonText={
           "Save" +
           (this.state.saveFolderButtonText

@@ -22,6 +22,7 @@ const FormInput = props => (
             borderColor: props.error ? "red" : "white",
             borderWidth: 1.5
           }}
+          disabled={props.disabled}
           onChange={props.onChange}
           secureTextEntry={props.isPassword}
           keyboardType={props.onlyNumberEntry ? "numeric" : "default"}
@@ -43,6 +44,7 @@ const FormInput = props => (
 );
 
 FormInput.propTypes = {
+  disabled: PropTypes.bool,
   value: PropTypes.string,
   error: PropTypes.bool,
   labelColor: PropTypes.string,
@@ -58,6 +60,7 @@ FormInput.propTypes = {
   isPassword: PropTypes.bool
 };
 FormInput.defaultProps = {
+  disabled: false,
   onPress: () => {},
   onChange: () => {}
 };

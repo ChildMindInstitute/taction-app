@@ -48,7 +48,9 @@ class ImagesFolderScreen extends React.Component {
         totalPoints={100}
         onPressAddButton={() => {
           if (this.props.child && this.props.childID) {
-            this.props.navigation.navigate("AddFolder");
+            this.props.navigation.navigate("AddFolder", {
+              noAddedImages: true
+            });
           } else {
             Toast.show({
               text: "No child Added yet!",

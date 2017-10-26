@@ -44,6 +44,7 @@ const AddFolder = props => (
             viewStyle={styles.inputViewStyle}
             placeholder="Folder name (such as 'Spider')"
             onFocus={props.onFocus}
+            disabled={props.formDisabled}
           />
         </View>
         {props.errorDisplay ? (
@@ -67,6 +68,7 @@ const AddFolder = props => (
               isIconRequired={true}
               iconName="image"
               iconColor="#0067a0"
+              disabled={props.addImageDisabled}
               buttonText="Add Images"
               submitButtonTextStyle={styles.submitButton3TextStyle}
             />
@@ -114,6 +116,7 @@ const AddFolder = props => (
               onPress={props.onPressSkipButton}
               submitButtonStyle={styles.submitButton2Style}
               buttonText="Skip"
+              disabled={props.skipDisabled}
               submitButtonTextStyle={styles.submitButton2TextStyle}
             />
           </View>

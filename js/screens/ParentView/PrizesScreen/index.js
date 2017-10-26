@@ -22,7 +22,8 @@ class PrizesScreen extends React.Component {
     this.state = {
       modalVisible: false,
       placeholderPoints: "",
-      placeholderDesc: ""
+      placeholderDesc: "",
+      prizeId: ""
     };
     this.input = {
       pointsReq: "",
@@ -37,7 +38,7 @@ class PrizesScreen extends React.Component {
     });
   }
 
-  submitAction(item) {
+  submitAction() {
     if (this.input.pointsReq != "" && this.input.prizeDesc != "") {
       if (
         this.state.placeholderDesc == "" &&
@@ -54,12 +55,34 @@ class PrizesScreen extends React.Component {
         });
       } else {
         console.log(this.input, "Edit");
-        console.log(item);
+        console.log(this.state.prizeId);
+        this.props.dispatch({
+          type: "UPDATE_PRIZE",
+          payload: {
+            childID: this.props.child.childID,
+            prizeID: this.state.prizeId,
+            update: {
+              points: parseInt(this.input.pointsReq),
+              description: this.input.prizeDesc
+            }
+          }
+        });
       }
+    } else {
+      Toast.show({
+        text: "Error! Fields cannot be left blank",
+        position: "bottom",
+        buttonText: "Okay",
+        duration: 2000
+      });
     }
   }
   deleteAction(item) {
     console.log("delete Action", item);
+    this.props.dispatch({
+      type: "REMOVE_PRIZE",
+      payload: { childID: this.props.child.childID, prizeID: item.prizeID }
+    });
   }
   render() {
     return (
@@ -112,10 +135,7 @@ class PrizesScreen extends React.Component {
                   light
                   style={{ width: "50%" }}
                   onPress={() => {
-                    this.submitAction({
-                      points: this.state.placeholderPoints,
-                      description: this.state.placeholderDesc
-                    });
+                    this.submitAction();
                     this.setState({ modalVisible: false });
                   }}
                 >
@@ -142,7 +162,8 @@ class PrizesScreen extends React.Component {
           editPress={item => {
             this.setState({
               placeholderDesc: item.description,
-              placeholderPoints: item.points
+              placeholderPoints: item.points,
+              prizeId: item.prizeID
             });
             this.setState({ modalVisible: true });
           }}

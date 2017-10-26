@@ -37,14 +37,26 @@ class AddFolderScreen extends React.Component {
     for (let i = 0; i < dataNext.length; i++) {
       tempData.push(dataNext[i].image);
     }
-    await this.props.dispatch({
-      type: "ADD_FOLDER",
-      payload: {
-        childID: this.props.child.childID,
-        name: this.state.saveFolderButtonText,
-        data: tempData
-      }
-    });
+    if (this.state.stockImagesSelected) {
+      console.log(tempData, "logging stock data");
+      await this.props.dispatch({
+        type: "ADD_STOCK_FOLDER",
+        payload: {
+          childID: this.props.child.childID,
+          name: this.state.saveFolderButtonText,
+          data: tempData
+        }
+      });
+    } else {
+      await this.props.dispatch({
+        type: "ADD_FOLDER",
+        payload: {
+          childID: this.props.child.childID,
+          name: this.state.saveFolderButtonText,
+          data: tempData
+        }
+      });
+    }
     this.setState({ folderAdded: true });
   }
   componentDidMount() {

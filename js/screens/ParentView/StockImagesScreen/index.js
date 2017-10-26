@@ -10,7 +10,7 @@ class StockImagesScreen extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch({ type: "SET_STOCK_IMAGE_LIST" });
   }
 

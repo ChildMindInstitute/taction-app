@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import Prizes from "../../../../storybook/stories/screens/Prizes";
 import Modal from "../../../../storybook/stories/components/Modal/modal";
+import { Toast } from "native-base";
 import {
   View,
   Container,
@@ -28,12 +30,33 @@ class PrizesScreen extends React.Component {
     };
   }
 
-  comonentWillMount() {}
+  componentDidMount() {
+    this.props.dispatch({
+      type: "SET_PRIZE_LIST",
+      payload: this.props.child.childID
+    });
+  }
 
   submitAction(item) {
-    if (this.state.placeholderDesc == "" && this.state.placeholderPoints == "")
-      console.log(this.input, "Add");
-    else console.log(this.input, "Edit");
+    if (this.input.pointsReq != "" && this.input.prizeDesc != "") {
+      if (
+        this.state.placeholderDesc == "" &&
+        this.state.placeholderPoints == ""
+      ) {
+        console.log(this.input, "Add");
+        this.props.dispatch({
+          type: "ADD_PRIZE",
+          payload: {
+            childID: this.props.child.childID,
+            points: this.input.pointsReq,
+            description: this.input.prizeDesc
+          }
+        });
+      } else {
+        console.log(this.input, "Edit");
+        console.log(item);
+      }
+    }
   }
   deleteAction(item) {
     console.log("delete Action", item);
@@ -90,7 +113,7 @@ class PrizesScreen extends React.Component {
                   style={{ width: "50%" }}
                   onPress={() => {
                     this.submitAction({
-                      poinst: this.state.placeholderPoints,
+                      points: this.state.placeholderPoints,
                       description: this.state.placeholderDesc
                     });
                     this.setState({ modalVisible: false });
@@ -114,12 +137,7 @@ class PrizesScreen extends React.Component {
           }
         />
         <Prizes
-          data={[
-            { points: 10, description: "Trip to Park" },
-            { points: 20, description: "Dominos Treat" },
-            { points: 50, description: "Hiking" },
-            { points: 100, description: "Trip to Wonder-La" }
-          ]}
+          data={this.props.prizeList}
           back={() => this.props.navigation.goBack()}
           editPress={item => {
             this.setState({
@@ -144,12 +162,33 @@ class PrizesScreen extends React.Component {
             );
           }}
           onAddPress={() => {
-            this.setState({ placeholderDesc: "", placeholderPoints: "" });
-            this.setState({ modalVisible: true });
+            if (this.props.child.childID) {
+              this.setState({ placeholderDesc: "", placeholderPoints: "" });
+              this.setState({ modalVisible: true });
+            } else {
+              Toast.show({
+                text: "Please add a child first!",
+                buttonText: "Okay",
+                position: "bottom",
+                duration: 1500
+              });
+            }
           }}
         />
       </Container>
     );
   }
 }
-export default PrizesScreen;
+
+const mapStateToProps = store => {
+  return {
+    child: store.user.child,
+    prizeList: store.prizeList
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return { dispatch };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PrizesScreen);

@@ -32,7 +32,8 @@ class AddChildScreen extends React.Component {
           this.addChild();
         }}
         onPressSkipButton={() => {
-          navigate(this.props.isNewRegistration ? "AddFolder" : "Dashboard");
+          this.props.dispatch({ type: "SET_CHILD" });
+          navigate("Dashboard");
         }}
         childNameChange={event => {
           childName = event.nativeEvent.text;

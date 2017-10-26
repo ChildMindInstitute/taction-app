@@ -33,6 +33,7 @@ import watchSetPrizeList from "./setPrizeList";
 import watchSetStockImageList from "./setStockImageList";
 import watchRemovePrize from "./removePrize";
 import watchUpdatePrize from "./updatePrize";
+import watchAddStockFolder from "./addStockFolder";
 
 const rootSaga = function* rootSaga() {
   yield all([
@@ -69,7 +70,8 @@ const rootSaga = function* rootSaga() {
     watchSetPrizeList(),
     watchSetStockImageList(),
     watchRemovePrize(),
-    watchUpdatePrize()
+    watchUpdatePrize(),
+    watchAddStockFolder()
   ]);
 };
 

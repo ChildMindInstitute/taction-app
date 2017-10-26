@@ -619,5 +619,39 @@ export default {
         reject(error);
       }
     });
+  },
+
+  addStockImages(exeID, images) {
+    return new Promise(async (resolve, reject) => {
+      for (let i in images) {
+        const exeRef = firebase
+          .database()
+          .ref("exercise/" + exeID + "/images/");
+        const imageRef = firebase.database().ref("image");
+        try {
+          var newImg = imageRef.push();
+          console.log(newImg.key, "logging newImg");
+          let URL = images[i].path;
+          console.log(URL);
+          await newImg.set({
+            correctTaps: 0,
+            wrongTaps: 0,
+            score: 0,
+            status: false,
+            touchDuration: 0,
+            url: URL,
+            waitTime: 0
+          });
+          var image = await exeRef.push();
+          await image.set({ imageID: newImg.key });
+          if (i == images.length - 1) {
+            console.log("resolving now");
+            resolve("success");
+          }
+        } catch (err) {
+          reject(err);
+        }
+      }
+    });
   }
 };

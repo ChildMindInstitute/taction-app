@@ -587,5 +587,37 @@ export default {
         reject(error);
       }
     });
+  },
+
+  removePrize(childID, prizeID) {
+    console.log(childID, "logging childID");
+    console.log(prizeID, "logging prizeID");
+    return new Promise((resolve, reject) => {
+      try {
+        const prizeRef = firebase
+          .database()
+          .ref("child/" + childID + "/prizes/" + prizeID);
+        prizeRef.remove().then(() => {
+          resolve("success");
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  },
+
+  updatePrize(childID, prizeID, update) {
+    return new Promise((resolve, reject) => {
+      try {
+        const prizeRef = firebase
+          .database()
+          .ref("child/" + childID + "/prizes/" + prizeID);
+        prizeRef.update(update).then(() => {
+          resolve("success");
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 };

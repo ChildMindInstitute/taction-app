@@ -45,7 +45,7 @@ class LoginScreen extends React.Component {
 
   componentDidUpdate() {
     if (this.state.submitted) {
-      if (this.props.loaded && !this.props.error) {
+      if (this.props.loaded && !this.props.error && this.props.parentLoaded) {
         if (this.props.user.parent.emailVerified) {
           this.redirect();
         } else {
@@ -137,6 +137,7 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = store => {
   return {
+    parentLoaded: store.loaded.parentLoaded,
     loaded: store.loaded.userLoaded,
     user: store.user,
     error: store.error.signinError

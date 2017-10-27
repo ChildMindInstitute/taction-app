@@ -60,9 +60,7 @@ const styles = StyleSheet.create({
   },
   listItemInnerViewGridOuterViewStyle: {
     flex: 3,
-    marginLeft: 0,
-    marginRight: "-5%",
-    marginBottom: "-3.75%"
+    marginLeft: 15
   },
   listItemInnerViewGridViewStyle: { flex: 1 },
   listItemInnerViewGridItemImageStyle: {

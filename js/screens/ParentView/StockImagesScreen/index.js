@@ -8,19 +8,25 @@ class StockImagesScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.state = {
+      stockImages: []
+    };
   }
 
   componentWillMount() {
     this.props.dispatch({ type: "SET_STOCK_IMAGE_LIST" });
   }
-
+  componentWillReceiveProps() {
+    if (this.props.stockImages) {
+      this.setState({ stockImages: this.props.stockImages });
+    }
+  }
   render() {
     return (
       <StockImages
         back={() => this.props.navigation.navigate("AddFolder")}
-        excerciseData={this.props.stockImages}
+        excerciseData={this.state.stockImages}
         onDownloadPress={item => {
-          // console.log(item);
           this.props.navigation.navigate("AddFolder", {
             stockImages: item.dataFolderContent,
             noAddedImages: false

@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
   headerRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
   contentStyle: {
     flex: 1,
-    paddingLeft: 9,
-    paddingRight: 9
+    paddingLeft: 16,
+    paddingRight: 16
   },
   mainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
   containerStyle: { flex: 1, backgroundColor: "#eee" },

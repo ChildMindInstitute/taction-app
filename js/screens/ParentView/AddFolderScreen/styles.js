@@ -1,11 +1,9 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   grid: {
-    flex: 1.5,
-    marginTop: 15,
-    marginBottom: 15,
-    marginLeft: -20,
-    marginRight: -20
+    flex: 1,
+    marginLeft: -16,
+    marginRight: -26
   },
   gridItemStyle: {
     flex: 1,

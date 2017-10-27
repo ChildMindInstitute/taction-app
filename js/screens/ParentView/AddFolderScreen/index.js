@@ -1,12 +1,13 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { Toast, Button, Icon } from "native-base";
+import { Toast, View } from "native-base";
 import styles from "./styles";
 import { Alert } from "react-native";
 import ImagePicker from "react-native-image-crop-picker";
 import { connect } from "react-redux";
 import Grid from "react-native-grid-component";
 import GridItem from "./gridItem";
+import AddButton from "./AddButton";
 let dataNext = [];
 class AddFolderScreen extends React.Component {
   static navigationOptions = {
@@ -247,19 +248,54 @@ class AddFolderScreen extends React.Component {
         }}
       >
         {this.state.data.length > 0 ? (
-          <Grid
-            style={[
-              styles.grid,
-              {
-                height:
-                  this.state.data.length < 4 && this.state.data.length > 0
-                    ? 110
-                    : 190
-              }
-            ]}
-            renderItem={data => {
-              if (this.state.activeSegment == 1) {
-                if (this.state.data.indexOf(data) < this.state.data.length - 1)
+          <View style={styles.grid}>
+            <Grid
+              style={styles.grid}
+              renderItem={data => {
+                if (this.state.activeSegment == 1) {
+                  if (
+                    this.state.data.indexOf(data) <
+                    this.state.data.length - 1
+                  )
+                    return (
+                      <GridItem
+                        index={this.state.data.indexOf(data)}
+                        key={this.state.data.indexOf(data)}
+                        data={data}
+                        onPress={(() => {
+                          if (!this.state.stockImagesSelected) {
+                            for (let i = 0; i < dataNext.length; i++) {
+                              if (dataNext[i].image == data.image) {
+                                dataNext[i] = {
+                                  ...dataNext[i],
+                                  checked: !dataNext[i].checked
+                                };
+                              }
+                            }
+                            let count = 0;
+                            for (let i = 0; i < dataNext.length; i++) {
+                              if (dataNext[i].checked) {
+                                count++;
+                              }
+                            }
+                            if (count > 0) {
+                              this.setState({ itemSelected: true });
+                            } else {
+                              this.setState({ itemSelected: false });
+                            }
+                            this.setState({ data: dataNext });
+                          }
+                        }).bind(this)}
+                      />
+                    );
+                  else
+                    return (
+                      <AddButton
+                        key={this.state.data.indexOf(data)}
+                        onPress={this.updateImage.bind(this)}
+                      />
+                    );
+                } else {
                   return (
                     <GridItem
                       index={this.state.data.indexOf(data)}
@@ -291,70 +327,12 @@ class AddFolderScreen extends React.Component {
                       }).bind(this)}
                     />
                   );
-                else
-                  return (
-                    <Button
-                      style={{
-                        height: 90,
-                        width:
-                          this.state.data.indexOf(data) % 4 == 0 ? 110 : 80,
-                        justifyContent: "center",
-                        backgroundColor: "#fff",
-                        marginTop: 10,
-                        marginBottom: 10
-                      }}
-                      key={this.state.data.indexOf(data)}
-                      onPress={this.updateImage.bind(this)}
-                    >
-                      <Icon
-                        name="md-add"
-                        style={{
-                          fontSize: 36,
-                          color: "#333",
-                          paddingLeft: 0,
-                          paddingRight: 0
-                        }}
-                        key={this.state.data.indexOf(data) + " "}
-                      />
-                    </Button>
-                  );
-              } else {
-                return (
-                  <GridItem
-                    index={this.state.data.indexOf(data)}
-                    key={this.state.data.indexOf(data)}
-                    data={data}
-                    onPress={(() => {
-                      if (!this.state.stockImagesSelected) {
-                        for (let i = 0; i < dataNext.length; i++) {
-                          if (dataNext[i].image == data.image) {
-                            dataNext[i] = {
-                              ...dataNext[i],
-                              checked: !dataNext[i].checked
-                            };
-                          }
-                        }
-                        let count = 0;
-                        for (let i = 0; i < dataNext.length; i++) {
-                          if (dataNext[i].checked) {
-                            count++;
-                          }
-                        }
-                        if (count > 0) {
-                          this.setState({ itemSelected: true });
-                        } else {
-                          this.setState({ itemSelected: false });
-                        }
-                        this.setState({ data: dataNext });
-                      }
-                    }).bind(this)}
-                  />
-                );
-              }
-            }}
-            data={this.state.data}
-            itemsPerRow={4}
-          />
+                }
+              }}
+              data={this.state.data}
+              itemsPerRow={4}
+            />
+          </View>
         ) : (
           false
         )}

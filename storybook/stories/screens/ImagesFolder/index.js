@@ -3,7 +3,6 @@ import ImagesFolderList from "../../components/ImagesFolderList";
 import HeaderCommon from "../../components/Header";
 import { Container, View, Button, Icon } from "native-base";
 import styles from "./styles";
-let checkedItems = [];
 class ImagesFolder extends React.Component {
   static navigationOptions = {
     title: "ImagesFolder",
@@ -12,28 +11,13 @@ class ImagesFolder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkedItems: [],
       pressed: false,
       pressed1: false,
       pressed2: false,
-      pressed3: false,
-      operationPerformed: false
+      pressed3: false
     };
-    this.maintainCheckedItems = this.maintainCheckedItems.bind(this);
   }
-  maintainCheckedItems(listItem, checked) {
-    if (this.state.checkedItems.indexOf(listItem) == -1 && checked) {
-      checkedItems.push(listItem);
-      this.setState({
-        checkedItems: checkedItems
-      });
-    } else {
-      checkedItems.splice(checkedItems.indexOf(listItem), 1);
-      this.setState({
-        checkedItems: checkedItems
-      });
-    }
-  }
+
   render() {
     return (
       <Container style={styles.containerStyle}>
@@ -84,13 +68,8 @@ class ImagesFolder extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => {
-                    this.setState({ operationPerformed: true });
-                    let temp = checkedItems.slice();
-                    checkedItems.length = 0;
-                    this.props.onPressDeleteButton(temp);
-                  }}
-                  disabled={this.state.checkedItems.length <= 0}
+                  onPress={this.props.onPressDeleteButton}
+                  disabled={this.props.deleteDisabled}
                   onPressIn={() => this.setState({ pressed1: true })}
                   onPressOut={() => this.setState({ pressed1: false })}
                 >
@@ -116,13 +95,8 @@ class ImagesFolder extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => {
-                    this.setState({ operationPerformed: true });
-                    let temp = checkedItems.slice();
-                    checkedItems.length = 0;
-                    this.props.onPressMoveUp(temp[0]);
-                  }}
-                  disabled={!(this.state.checkedItems.length == 1)}
+                  onPress={this.props.onPressMoveUp}
+                  disabled={this.props.moveUpDisabled}
                   onPressIn={() => this.setState({ pressed2: true })}
                   onPressOut={() => this.setState({ pressed2: false })}
                 >
@@ -147,13 +121,8 @@ class ImagesFolder extends React.Component {
                         : "#ffffff"
                     }
                   ]}
-                  onPress={() => {
-                    this.setState({ operationPerformed: true });
-                    let temp = checkedItems.slice();
-                    checkedItems.length = 0;
-                    this.props.onPressMoveDown(temp[0]);
-                  }}
-                  disabled={!(this.state.checkedItems.length == 1)}
+                  onPress={this.props.onPressMoveDown}
+                  disabled={this.props.moveDownDisabled}
                   onPressIn={() => this.setState({ pressed3: true })}
                   onPressOut={() => this.setState({ pressed3: false })}
                 >
@@ -172,13 +141,7 @@ class ImagesFolder extends React.Component {
           </View>
           <View style={styles.listSpace}>
             <ImagesFolderList
-              checkBoxChange={(listItem, checked) => {
-                this.maintainCheckedItems(listItem, !checked);
-              }}
-              operationPerformedReset={() => {
-                this.setState({ operationPerformed: false });
-              }}
-              operationPerformed={this.state.operationPerformed}
+              checkBoxChange={this.props.checkBoxChange}
               listData={this.props.excerciseData}
               switchToggled={this.props.switchToggled}
             />

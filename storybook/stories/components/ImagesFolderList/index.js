@@ -11,9 +11,9 @@ const ImagesFolderList = props => {
       renderRow={item => (
         <ListContent
           listItem={item}
-          switchToggled={props.switchToggled}
-          checkBoxChange={props.checkBoxChange}
-          key={props.listData.indexOf(item)}
+          switchToggled={() => props.switchToggled(item)}
+          checkBoxChange={() => props.checkBoxChange(item)}
+          key={item}
         />
       )}
     />

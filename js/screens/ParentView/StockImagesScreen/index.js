@@ -1,6 +1,8 @@
 import React from "react";
 import StockImages from "../../../../storybook/stories/screens/StockImages";
 import { connect } from "react-redux";
+import { Spinner, View } from "native-base";
+
 class StockImagesScreen extends React.Component {
   static navigationOptions = {
     title: "StockImagesScreen",
@@ -9,30 +11,51 @@ class StockImagesScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stockImages: []
+      stockImages: this.props.stockImages,
+      imagesLoaded: true
     };
   }
 
   componentWillMount() {
     this.props.dispatch({ type: "SET_STOCK_IMAGE_LIST" });
   }
-  componentWillReceiveProps() {
-    if (this.props.stockImages) {
-      this.setState({ stockImages: this.props.stockImages });
+  componentDidUpdate() {
+    if (this.props.imagesLoaded && this.state.imagesLoaded) {
+      console.log(this.props.stockImages, "component Did riecieve props");
+      this.setState({
+        stockImages: this.props.stockImages,
+        imagesLoaded: false
+      });
     }
   }
+
+  componentDidMount() {
+    console.log("component didmount");
+    this.setState({ stockImages: this.props.stockImages });
+  }
+
   render() {
     return (
-      <StockImages
-        back={() => this.props.navigation.navigate("AddFolder")}
-        excerciseData={this.state.stockImages}
-        onDownloadPress={item => {
-          this.props.navigation.navigate("AddFolder", {
-            stockImages: item.dataFolderContent,
-            noAddedImages: false
-          });
-        }}
-      />
+      <View style={{ flex: 1 }}>
+        <StockImages
+          back={() => this.props.navigation.navigate("AddFolder")}
+          excerciseData={this.props.stockImages}
+          onDownloadPress={item => {
+            this.props.navigation.navigate("AddFolder", {
+              stockImages: item.dataFolderContent,
+              noAddedImages: false
+            });
+          }}
+        />
+        {this.props.imagesLoaded ? (
+          <View />
+        ) : (
+          <Spinner
+            color="#0067a0"
+            style={{ position: "absolute", left: "45%", top: "50%" }}
+          />
+        )}
+      </View>
     );
   }
 }
@@ -41,7 +64,8 @@ const mapStateToProps = store => {
   return {
     parent: store.user.parent,
     child: store.user.child,
-    stockImages: store.stockImageList
+    stockImages: store.stockImageList,
+    imagesLoaded: store.loaded.stockImagesLoaded
   };
 };
 

@@ -20,7 +20,12 @@ class AddChildScreen extends React.Component {
         payload: { name: childName, age: childAge }
       });
       this.props.navigation.navigate(
-        this.props.isNewRegistration ? "AddFolder" : "Dashboard"
+        this.props.isNewRegistration ? "AddFolder" : "Dashboard",
+        this.props.isNewRegistration
+          ? {
+              noAddedImages: true
+            }
+          : {}
       );
     } else {
       Toast.show({

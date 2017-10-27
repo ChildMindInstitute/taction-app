@@ -2,7 +2,7 @@ import { call, takeLatest } from "redux-saga/effects";
 import Db from "../../js/services";
 
 const resetTodayScore = function* resetTodayScore(action) {
-  yield call(Db.updateChild, action.payload.childID, {
+  yield call(Db.updateChild, action.payload, {
     todayScore: 0,
     lastActivity: new Date().toDateString()
   });

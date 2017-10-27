@@ -59,18 +59,18 @@ const styles = StyleSheet.create({
     flex: 3
   },
   listItemInnerViewGridOuterViewStyle: {
-    flex: 3,
-    marginLeft: 0,
-    marginRight: "-5%",
-    marginBottom: "-3.75%"
+    flex: 1,
+    marginLeft: 16
   },
-  listItemInnerViewGridViewStyle: { flex: 1 },
+  listItemInnerViewGridViewStyle: {
+    flex: 1
+  },
   listItemInnerViewGridItemImageStyle: {
     flex: 1,
     borderWidth: 0.4,
     borderColor: "#ccc",
-    height: 80,
-    width: 40
+    height: "100%",
+    width: "100%"
   }
 });
 

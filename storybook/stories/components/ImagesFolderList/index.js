@@ -13,8 +13,7 @@ const ImagesFolderList = props => {
           listItem={item}
           switchToggled={props.switchToggled}
           checkBoxChange={props.checkBoxChange}
-          operationPerformed={props.operationPerformed}
-          operationPerformedReset={props.operationPerformedReset}
+          key={props.listData.indexOf(item)}
         />
       )}
     />

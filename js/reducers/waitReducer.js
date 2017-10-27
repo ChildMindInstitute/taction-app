@@ -1,5 +1,6 @@
 const waitReducer = (
   state = {
+    parentLoaded: false,
     userLoaded: false,
     dashboardLoaded: false,
     childListLoaded: false,
@@ -18,6 +19,14 @@ const waitReducer = (
     }
     case "USER_LOADED": {
       state = { ...state, userLoaded: true };
+      break;
+    }
+    case "PARENT_LOADING": {
+      state = { ...state, parentLoaded: false };
+      break;
+    }
+    case "PARENT_LOADED": {
+      state = { ...state, parentLoaded: true };
       break;
     }
     case "DASHBOARD_LOADING": {
@@ -71,6 +80,7 @@ const waitReducer = (
     case "CLEAR_STORE": {
       state = {
         ...state,
+        parentLoaded: false,
         userLoaded: false,
         dashboardLoaded: false,
         childListLoaded: false,

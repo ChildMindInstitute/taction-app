@@ -17,7 +17,6 @@ class GridItem extends React.Component {
         style={{
           flex: 1,
           height: 90,
-          width: 45,
           paddingTop: 0,
           paddingBottom: 0,
           marginTop: 10,

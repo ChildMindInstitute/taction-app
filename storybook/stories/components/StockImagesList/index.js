@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { List } from "native-base";
 import ListContent from "./ListContent";
+import { cloneDeep } from "lodash";
 const StockImagesList = props => (
   <List
     style={props.listStyle}

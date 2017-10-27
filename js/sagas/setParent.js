@@ -3,6 +3,7 @@ import Db from "../../js/services";
 
 const setParent = function* setParent() {
   try {
+    yield put({ type: "PARENT_LOADING" });
     yield call(Db.reloadUser);
     const res = yield call(Db.getUser);
     yield put({
@@ -15,6 +16,7 @@ const setParent = function* setParent() {
         settings: res.parent.settings
       }
     });
+    yield put({ type: "PARENT_LOADED" });
   } catch (err) {
     console.log(err);
   }

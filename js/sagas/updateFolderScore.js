@@ -16,6 +16,7 @@ const updateFolderScore = function* updateFolderScore(action) {
     folder.folderDetails.correctTaps += list[i].imageDetails.correctTaps;
     folder.folderDetails.wrongTaps += list[i].imageDetails.wrongTaps;
     folder.folderDetails.score += list[i].imageDetails.score;
+    child.childDetails.todayScore += list[i].imageDetails.score;
     yield call(Db.updateImage, list[i].imageID, {
       correctTaps: list[i].imageDetails.correctTaps,
       wrongTaps: list[i].imageDetails.wrongTaps,
@@ -41,6 +42,7 @@ const updateFolderScore = function* updateFolderScore(action) {
   yield call(Db.updateChild, child.childID, {
     correctTaps: child.childDetails.correctTaps,
     wrongTaps: child.childDetails.wrongTaps,
+    todayScore: child.childDetails.todayScore,
     totalScore: child.childDetails.totalScore,
     highScore: child.childDetails.highScore,
     lastActivity: new Date().toDateString()

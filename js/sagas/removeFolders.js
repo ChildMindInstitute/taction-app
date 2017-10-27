@@ -6,7 +6,7 @@ const removeFolders = function* removeFolders(action) {
   console.log(list);
   let childID = action.payload.childID;
   for (let i in list) {
-    yield call(Db.removeFolder, list[i].FolderID, childID);
+    yield call(Db.removeFolder, list[i].folderID, childID);
   }
   yield put({ type: "SET_FOLDER_LIST", payload: childID });
   yield put({ type: "FOLDER_REMOVED" });

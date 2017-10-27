@@ -15,6 +15,14 @@ const updateOrderDown = function* updateOrderDown(action) {
         dashboardList[orderList[i + 1].order] = temp;
         ++orderList[i].order;
         --orderList[i + 1].order;
+        yield call(
+          Db.updateOrder,
+          action.payload.childID,
+          orderList[i].exerciseID,
+          orderList[i].order,
+          orderList[i + 1].exerciseID,
+          orderList[i + 1].order
+        );
         yield put({ type: "REORDER_DASHBOARD_LIST", payload: dashboardList });
         yield put({ type: "REORDER_ORDER_LIST", payload: orderList });
         yield put({ type: "FOLDER_REORDERED" });

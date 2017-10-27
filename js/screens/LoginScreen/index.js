@@ -45,8 +45,18 @@ class LoginScreen extends React.Component {
 
   componentDidUpdate() {
     if (this.state.submitted) {
-      if (this.props.loaded && !this.props.error) {
-        this.redirect();
+      if (this.props.loaded && !this.props.error && this.props.parentLoaded) {
+        if (this.props.user.parent.emailVerified) {
+          this.redirect();
+        } else {
+          Toast.show({
+            text: "Please verify your email to proceed",
+            position: "bottom",
+            buttonText: "Okay",
+            duration: 2000
+          });
+          this.props.dispatch({ type: "USER_SIGN_OUT" });
+        }
         this.setState({ submitted: false, hasSubmitError: false });
       } else if (
         this.props.loaded &&
@@ -127,6 +137,7 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = store => {
   return {
+    parentLoaded: store.loaded.parentLoaded,
     loaded: store.loaded.userLoaded,
     user: store.user,
     error: store.error.signinError

@@ -13,15 +13,8 @@ class ListContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
       isContentVisible: false
     };
-  }
-  componentWillReceiveProps() {
-    if (this.props.operationPerformed) {
-      this.setState({ checked: false });
-      this.props.operationPerformedReset();
-    }
   }
   render() {
     return (
@@ -40,11 +33,8 @@ class ListContent extends React.Component {
                 >
                   <CheckBox
                     label=""
-                    checked={this.state.checked}
-                    onChange={checked => {
-                      this.setState({ checked: !this.state.checked });
-                      this.props.checkBoxChange(this.props.listItem, checked);
-                    }}
+                    checked={this.props.listItem.checked}
+                    onChange={this.props.checkBoxChange}
                     checkboxStyle={{
                       borderRadius: 0,
                       borderWidth: 1,
@@ -66,7 +56,9 @@ class ListContent extends React.Component {
                   style={styles.listItemInnerViewInnerViewLeftInnerView2Style}
                 >
                   <Image
-                    source={this.props.listItem.dataFolderContent[0].image}
+                    source={
+                      this.props.listItem.imageList.dataFolderContent[0].image
+                    }
                     style={
                       styles.listItemInnerViewInnerViewLeftInnerView2ImageStyle
                     }
@@ -83,7 +75,7 @@ class ListContent extends React.Component {
                       styles.listItemInnerViewInnerViewLeftInnerView3TextStyle
                     }
                   >
-                    {this.props.listItem.name}
+                    {this.props.listItem.imageList.name}
                   </Text>
                 </View>
                 <View
@@ -94,20 +86,17 @@ class ListContent extends React.Component {
                       styles.listItemInnerViewInnerViewBodyInnerViewBadgeStyle
                     }
                   >
-                    {"(" + this.props.listItem.dataFolderContent.length + ")"}
+                    {"(" +
+                      this.props.listItem.imageList.dataFolderContent.length +
+                      ")"}
                   </Text>
                 </View>
               </Body>
               <Right style={styles.listItemInnerViewInnerViewRightStyle}>
                 <Switch
                   onTintColor="#eeae30"
-                  value={this.props.listItem.status}
-                  onValueChange={() => {
-                    this.props.switchToggled(
-                      this.props.listItem,
-                      !this.props.listItem.status
-                    );
-                  }}
+                  value={this.props.listItem.switched}
+                  onValueChange={this.props.switchToggled}
                 />
               </Right>
             </View>
@@ -118,7 +107,7 @@ class ListContent extends React.Component {
             <Grid
               style={styles.listItemInnerViewGridViewStyle}
               renderItem={(data, i) => <GridItem data={data} key={i} />}
-              data={this.props.listItem.dataFolderContent}
+              data={this.props.listItem.imageList.dataFolderContent}
               itemsPerRow={4}
             />
           </View>

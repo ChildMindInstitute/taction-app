@@ -9,18 +9,23 @@ class StockImagesScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stockImages: []
+      stockImages: this.props.stockImages
     };
   }
 
   componentWillMount() {
     this.props.dispatch({ type: "SET_STOCK_IMAGE_LIST" });
   }
-  componentWillReceiveProps() {
-    if (this.props.stockImages) {
-      this.setState({ stockImages: this.props.stockImages });
-    }
+  componentWillUpdate() {
+    console.log(this.props.stockImages, "component Did riecieve props");
+    this.setState({ stockImages: this.props.stockImages });
   }
+
+  componentDidMount() {
+    console.log("component didmount");
+    this.setState({ stockImages: this.props.stockImages });
+  }
+
   render() {
     return (
       <StockImages

@@ -220,6 +220,7 @@ export default {
           if (numExe == 0) {
             resolve(response);
           }
+          response.length = 0;
           snapshot.forEach(exe => {
             response.push({
               order: exe.val().order,
@@ -237,33 +238,37 @@ export default {
   },
 
   updateOrder(childID, folder1ID, order1, folder2ID, order2) {
-    return new Promise((resolve, reject) => {
-      const childRef = firebase
-        .database()
-        .ref("child/" + childID + "/exercises/")
-        .orderByChild("order");
-      try {
-        childRef.on("value", snapshot => {
-          var numExe = snapshot.numChildren();
-          if (numExe == 0) {
-            resolve();
-          }
-          snapshot.forEach(exe => {
-            let exeRef = firebase
-              .database()
-              .ref("child/" + childID + "/exercises/" + exe.key);
-            if (exe.val().exerciseId == folder2ID) {
-              exeRef.update({ order: order2 });
-            } else if (exe.val().exerciseId == folder1ID) {
-              exeRef.update({ order: order1 });
+    try {
+      return new Promise((resolve, reject) => {
+        const childRef = firebase
+          .database()
+          .ref("child/" + childID + "/exercises/")
+          .orderByChild("order");
+        try {
+          childRef.on("value", snapshot => {
+            var numExe = snapshot.numChildren();
+            if (numExe == 0) {
               resolve();
             }
+            snapshot.forEach(exe => {
+              let exeRef = firebase
+                .database()
+                .ref("child/" + childID + "/exercises/" + exe.key);
+              if (exe.val().exerciseId == folder2ID) {
+                exeRef.update({ order: order2 });
+              } else if (exe.val().exerciseId == folder1ID) {
+                exeRef.update({ order: order1 });
+                resolve();
+              }
+            });
           });
-        });
-      } catch (err) {
-        reject(err);
-      }
-    });
+        } catch (err) {
+          reject(err);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
   },
 
   addImage(exeID, images) {

@@ -1,6 +1,7 @@
 const dasboardListReducer = (state = [], action) => {
   switch (action.type) {
     case "DASHBOARD_LIST": {
+      state.length = 0;
       state = action.payload.slice();
       break;
     }
@@ -10,6 +11,7 @@ const dasboardListReducer = (state = [], action) => {
     }
 
     case "REORDER_DASHBOARD_LIST": {
+      state.length = 0;
       state = action.payload.slice();
       break;
     }

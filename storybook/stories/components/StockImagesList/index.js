@@ -2,16 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { List } from "native-base";
 import ListContent from "./ListContent";
-import { cloneDeep } from "lodash";
-const StockImagesList = props => (
-  <List
-    style={props.listStyle}
-    dataArray={props.listData}
-    renderRow={item => (
-      <ListContent listItem={item} onDownloadPress={props.onDownloadPress} />
-    )}
-  />
-);
+const StockImagesList = props => {
+  return (
+    <List
+      style={props.listStyle}
+      dataArray={props.listData}
+      renderRow={item => (
+        <ListContent listItem={item} onDownloadPress={props.onDownloadPress} />
+      )}
+    />
+  );
+};
 
 StockImagesList.propTypes = {
   listData: PropTypes.array,

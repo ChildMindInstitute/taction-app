@@ -8,7 +8,8 @@ const waitReducer = (
     updateLoaded: false,
     folderRemoved: false,
     folderReordered: false,
-    folderAdded: false
+    folderAdded: false,
+    stockImagesLoaded: false
   },
   action
 ) => {
@@ -76,6 +77,14 @@ const waitReducer = (
       state = { ...state, prizeLoaded: true };
       break;
     }
+    case "STOCK_IMAGE_LOADING": {
+      state = { ...state, stockImagesLoaded: false };
+      break;
+    }
+    case "STOCK_IMAGE_LOADED": {
+      state = { ...state, stockImagesLoaded: true };
+      break;
+    }
 
     case "CLEAR_STORE": {
       state = {
@@ -89,7 +98,8 @@ const waitReducer = (
         folderRemoved: false,
         folderReordered: false,
         folderAdded: false,
-        prizeLoaded: false
+        prizeLoaded: false,
+        stockImagesLoaded: false
       };
       break;
     }

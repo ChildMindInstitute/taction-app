@@ -1,3 +1,4 @@
+import { cloneDeep } from "lodash";
 const stockImageListReducer = (state = [], action) => {
   switch (action.type) {
     case "STOCK_IMAGE_LIST": {

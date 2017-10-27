@@ -586,6 +586,7 @@ export default {
               dataFolderContent: dataFolderContent
             });
             if (response.length == numFolder) {
+              console.log(response, "logging response");
               resolve(response);
             }
           });

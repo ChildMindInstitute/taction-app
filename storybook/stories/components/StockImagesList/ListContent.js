@@ -23,6 +23,18 @@ class ListContent extends React.Component {
       isContentVisible: false
     };
   }
+
+  componentDidMount() {
+    console.log(
+      this.props.listItem.dataFolderContent,
+      "logging datafoldercontent"
+    );
+  }
+
+  componentWillReceiveProps(pros) {
+    console.log(pros, "loging in component will recive props");
+  }
+
   render() {
     return (
       <View>

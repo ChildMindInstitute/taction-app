@@ -41,6 +41,17 @@ class OpeningScreen extends React.Component {
       type: "SET_CHILD_FOLDER",
       payload: this.props.childID
     });
+    if (this.props.child.lastActivity == new Date().toDateString()) {
+      this.setState({
+        todayScore: this.props.child.todayScore
+      });
+    } else {
+      this.setState({ todayScore: 0 });
+      this.props.dispatch({
+        type: "RESET_TODAY_SCORE",
+        payload: this.props.childID
+      });
+    }
   }
   componentDidUpdate() {
     if (this.props.folder.folderID && this.state.isPlayDisabled) {
@@ -64,19 +75,6 @@ class OpeningScreen extends React.Component {
     }
   }
 
-  componentDidMount() {
-    if (this.props.child.lastActivity == new Date().toDateString()) {
-      this.setState({
-        todayScore: this.props.child.todayScore
-      });
-    } else {
-      this.setState({ todayScore: 0 });
-      this.props.dispatch({
-        type: "RESET_TODAY_SCORE",
-        payload: this.props.childID
-      });
-    }
-  }
   render() {
     return (
       <View style={{ flex: 1 }}>

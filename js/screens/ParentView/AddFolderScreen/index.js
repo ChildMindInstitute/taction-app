@@ -1,7 +1,8 @@
 import React from "react";
 import AddFolder from "../../../../storybook/stories/screens/AddFolder";
-import { Toast, Button, Icon, View } from "native-base";
+import { Toast, Button, Icon } from "native-base";
 import styles from "./styles";
+import { Alert } from "react-native";
 import ImagePicker from "react-native-image-crop-picker";
 import { connect } from "react-redux";
 import Grid from "react-native-grid-component";
@@ -130,7 +131,7 @@ class AddFolderScreen extends React.Component {
         dataNext.pop();
         for (let i = 0; i < images.length; i++) {
           dataNext.push({ image: images[i], checked: false });
-          if (i == images.length - 1) {
+          if (i == images.length - 1 && this.state.activeSegment == 1) {
             dataNext.push({ image: images[i], checked: false });
           }
         }
@@ -170,11 +171,34 @@ class AddFolderScreen extends React.Component {
         galleryDisabled={this.state.galleryDisabled}
         activeSegment={this.state.activeSegment}
         setActiveSegement={activeIndex => {
-          dataNext.length = 0;
-          this.setState({ activeSegment: activeIndex, data: dataNext });
-          if (activeIndex == 1) {
-            this.updateImage();
-          } else this.props.navigation.navigate("StockImages");
+          if (this.state.activeSegment == 1 || this.state.activeSegment == 2) {
+            Alert.alert(
+              "",
+              "For each folder, pleaseselect images from either 'Gallery' OR 'Child Mind server'",
+              [
+                {
+                  text: "OK",
+                  onPress: () => {
+                    dataNext.length = 0;
+                    this.setState({
+                      activeSegment: activeIndex,
+                      data: dataNext
+                    });
+                    if (activeIndex == 1) {
+                      this.updateImage();
+                    } else this.props.navigation.navigate("StockImages");
+                  }
+                },
+                { text: "Cancel", onPress: () => {} }
+              ]
+            );
+          } else {
+            dataNext.length = 0;
+            this.setState({ activeSegment: activeIndex, data: dataNext });
+            if (activeIndex == 1) {
+              this.updateImage();
+            } else this.props.navigation.navigate("StockImages");
+          }
         }}
         formDisabled={this.state.submitted}
         addImageDisabled={
@@ -231,7 +255,67 @@ class AddFolderScreen extends React.Component {
               }
             ]}
             renderItem={data => {
-              if (this.state.data.indexOf(data) < this.state.data.length - 1)
+              if (this.state.activeSegment == 1) {
+                if (this.state.data.indexOf(data) < this.state.data.length - 1)
+                  return (
+                    <GridItem
+                      index={this.state.data.indexOf(data)}
+                      key={this.state.data.indexOf(data)}
+                      data={data}
+                      onPress={(() => {
+                        if (!this.state.stockImagesSelected) {
+                          for (let i = 0; i < dataNext.length; i++) {
+                            if (dataNext[i].image == data.image) {
+                              dataNext[i] = {
+                                ...dataNext[i],
+                                checked: !dataNext[i].checked
+                              };
+                            }
+                          }
+                          let count = 0;
+                          for (let i = 0; i < dataNext.length; i++) {
+                            if (dataNext[i].checked) {
+                              count++;
+                            }
+                          }
+                          if (count > 0) {
+                            this.setState({ itemSelected: true });
+                          } else {
+                            this.setState({ itemSelected: false });
+                          }
+                          this.setState({ data: dataNext });
+                        }
+                      }).bind(this)}
+                    />
+                  );
+                else
+                  return (
+                    <Button
+                      style={{
+                        height: 90,
+                        width:
+                          this.state.data.indexOf(data) % 4 == 0 ? 110 : 80,
+                        justifyContent: "center",
+                        backgroundColor: "#fff",
+                        marginTop: 10,
+                        marginBottom: 10
+                      }}
+                      key={this.state.data.indexOf(data)}
+                      onPress={this.updateImage.bind(this)}
+                    >
+                      <Icon
+                        name="md-add"
+                        style={{
+                          fontSize: 36,
+                          color: "#333",
+                          paddingLeft: 0,
+                          paddingRight: 0
+                        }}
+                        key={this.state.data.indexOf(data) + " "}
+                      />
+                    </Button>
+                  );
+              } else {
                 return (
                   <GridItem
                     index={this.state.data.indexOf(data)}
@@ -263,32 +347,7 @@ class AddFolderScreen extends React.Component {
                     }).bind(this)}
                   />
                 );
-              else
-                return (
-                  <Button
-                    style={{
-                      height: 90,
-                      width: this.state.data.indexOf(data) % 4 == 0 ? 110 : 80,
-                      justifyContent: "center",
-                      backgroundColor: "#fff",
-                      marginTop: 10,
-                      marginBottom: 10
-                    }}
-                    key={this.state.data.indexOf(data)}
-                    onPress={this.updateImage.bind(this)}
-                  >
-                    <Icon
-                      name="md-add"
-                      style={{
-                        fontSize: 36,
-                        color: "#333",
-                        paddingLeft: 0,
-                        paddingRight: 0
-                      }}
-                      key={this.state.data.indexOf(data) + " "}
-                    />
-                  </Button>
-                );
+              }
             }}
             data={this.state.data}
             itemsPerRow={4}

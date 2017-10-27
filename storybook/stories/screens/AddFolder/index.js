@@ -124,7 +124,7 @@ const AddFolder = props => (
                     color: props.activeSegment == 2 ? "#fff" : "#0067a0"
                   }}
                 >
-                  Stock
+                  CM server
                 </Text>
               </Button>
             </Segment>

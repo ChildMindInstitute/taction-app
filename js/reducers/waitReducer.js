@@ -9,7 +9,8 @@ const waitReducer = (
     folderRemoved: false,
     folderReordered: false,
     folderAdded: false,
-    stockImagesLoaded: false
+    stockImagesLoaded: false,
+    verifyLoaded: false
   },
   action
 ) => {
@@ -86,6 +87,15 @@ const waitReducer = (
       break;
     }
 
+    case "EMAIL_VERIFY_LOADING": {
+      state = { ...state, verifyLoaded: false };
+      break;
+    }
+    case "EMAIL_VERIFY_LOADED": {
+      state = { ...state, verifyLoaded: true };
+      break;
+    }
+
     case "CLEAR_STORE": {
       state = {
         ...state,
@@ -99,7 +109,8 @@ const waitReducer = (
         folderReordered: false,
         folderAdded: false,
         prizeLoaded: false,
-        stockImagesLoaded: false
+        stockImagesLoaded: false,
+        verifyLoaded: false
       };
       break;
     }

@@ -86,7 +86,7 @@ class SettingsScreen extends React.Component {
           isVisible={this.state.modalVisible}
           extraModalStyle={{
             paddingTop: "60%",
-            paddingBottom: "75%",
+            paddingBottom: "70%",
             paddingLeft: "10%",
             paddingRight: "10%"
           }}
@@ -95,8 +95,8 @@ class SettingsScreen extends React.Component {
             borderRadius: 10
           }}
           content={
-            <Container>
-              <Header>
+            <View style={{ flex: 1 }}>
+              <Header style={{ backgroundColor: "#fff" }}>
                 <Body>
                   <Title style={{ color: "#007aff" }}>
                     {this.state.modalTitle}
@@ -145,7 +145,7 @@ class SettingsScreen extends React.Component {
                   <Text style={{ color: "#007aff" }}>Cancel</Text>
                 </Button>
               </View>
-            </Container>
+            </View>
           }
         />
         <Settings

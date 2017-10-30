@@ -113,7 +113,7 @@ class PrizesScreen extends React.Component {
   }
   render() {
     return (
-      <Container>
+      <View style={{ flex: 1 }}>
         <Modal
           isVisible={this.state.modalVisible}
           extraModalStyle={{
@@ -127,8 +127,8 @@ class PrizesScreen extends React.Component {
             borderRadius: 10
           }}
           content={
-            <Container>
-              <Header>
+            <View style={{ flex: 1 }}>
+              <Header style={{ backgroundColor: "#fff" }}>
                 <Body>
                   <Title style={{ color: "#007aff" }}>Add Prizes</Title>
                 </Body>
@@ -180,7 +180,7 @@ class PrizesScreen extends React.Component {
                   <Text style={{ color: "#007aff" }}>Cancel</Text>
                 </Button>
               </View>
-            </Container>
+            </View>
           }
         />
         <Prizes
@@ -223,7 +223,7 @@ class PrizesScreen extends React.Component {
             }
           }}
         />
-      </Container>
+      </View>
     );
   }
 }

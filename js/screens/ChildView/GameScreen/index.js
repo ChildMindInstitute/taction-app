@@ -253,7 +253,7 @@ class GameScreen extends React.Component {
               this.setState({ correctOption: x });
               this.updateWrongScore();
             }, 500);
-          } else {
+          } else if (!this.state.gameFinished) {
             this.setState({ isLast: true });
             this.updateFolderScore();
             this.setState({ gameFinished: true });

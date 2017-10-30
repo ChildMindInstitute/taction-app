@@ -74,12 +74,22 @@ class Splash extends React.Component {
 
   componentDidUpdate() {
     if (this.props.loaded) {
-      this.props.navigation.dispatch(
-        NavigationActions.reset({
-          index: 0,
-          actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
-        })
-      );
+      if (this.props.parent.emailVerified) {
+        this.props.navigation.dispatch(
+          NavigationActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: "LoginAs" })]
+          })
+        );
+      } else {
+        Toast.show({
+          text: "Please verify your email to proceed",
+          position: "bottom",
+          buttonText: "Okay",
+          duration: 2000
+        });
+        this.props.dispatch({ type: "USER_SIGN_OUT" });
+      }
     }
   }
 

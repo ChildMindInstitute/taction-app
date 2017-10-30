@@ -55,7 +55,7 @@ const Login = props => (
           <Form style={styles.formStyle}>
             <FormInput
               isPassword={false}
-              label="Username"
+              label="Email"
               onChange={props.usernameChange}
               viewStyle={props.inputViewStyle}
               error={props.emailHasError}

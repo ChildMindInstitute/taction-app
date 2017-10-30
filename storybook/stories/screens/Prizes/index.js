@@ -23,7 +23,7 @@ class ImagesFolder extends React.Component {
           leftPress={this.props.back}
           leftIconName="ios-arrow-back"
           headerStyle={styles.headerStyle}
-          title="Images Folder"
+          title="Prizes"
           titleStyle={styles.headerLeftStyle}
         >
           <Button onPress={this.props.onAddPress} transparent>

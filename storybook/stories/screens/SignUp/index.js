@@ -9,7 +9,7 @@ import { StatusBar } from "react-native";
 import styles from "./styles";
 const SignUp = props => (
   <Container style={styles.mainOuterView}>
-    <StatusBar barStyle="light-content" />
+    <StatusBar barStyle="light-content" translucent={true} />
     <Content>
       <View style={styles.mainView}>
         <View style={styles.topSpace}>

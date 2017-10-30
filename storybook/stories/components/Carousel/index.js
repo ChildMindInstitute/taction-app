@@ -8,7 +8,7 @@ import {
   Dimensions,
   PanResponder
 } from "react-native";
-import { Left, Right, Body, Button } from "native-base";
+import { Left, Right, Body, Button, Icon } from "native-base";
 import styles from "./styles";
 
 const SWIPE_THRESHOLD = 0.25;
@@ -156,11 +156,11 @@ class SwipeableParallaxCarousel extends Component {
             style={{
               position: "absolute",
               backgroundColor: "#fff",
-              width: 200,
-              height: 50,
+              width: 220,
+              height: 80,
               borderColor: "#0067a0",
-              borderWidth: 1,
-              top: "22%",
+              borderWidth: 2,
+              top: "26%",
               left: "40%",
               justifyContent: "center",
               alignContent: "center",
@@ -174,15 +174,19 @@ class SwipeableParallaxCarousel extends Component {
                 width: 20,
                 height: 20,
                 borderBottomColor: "#0067a0",
-                borderBottomWidth: 1,
+                borderBottomWidth: 2,
                 borderRightColor: "#0067a0",
-                borderRightWidth: 1,
+                borderRightWidth: 2,
                 transform: [{ rotate: "45deg" }],
-                top: 39,
+                top: 68,
                 left: 110
               }}
             />
-            <Text style={{ alignSelf: "center" }}>{item.tooTipText}</Text>
+            <Text
+              style={{ alignSelf: "center", marginLeft: 10, marginRight: 10 }}
+            >
+              {item.tooTipText}
+            </Text>
           </View>
         </Animated.View>
       );
@@ -193,28 +197,11 @@ class SwipeableParallaxCarousel extends Component {
     if (navigation) {
       return (
         <View style={styles.navigationContainer}>
-          <Left style={{ flex: 2 }}>
-            <Button transparent onPress={() => this.props.skipPress()}>
-              <Text style={{ fontSize: 20, color: "#aaa" }}>Skip</Text>
-            </Button>
-          </Left>
           <Body
             style={{ flexDirection: "row", flex: 8, justifyContent: "center" }}
           >
             {this._renderNavigationItems()}
           </Body>
-          <Right style={{ flex: 2 }}>
-            <Button
-              transparent
-              onPress={() => {
-                if (this.state.currentItem == 0)
-                  this.setState({ currentItem: this.state.currentItem + 1 });
-                else this.setState({ currentItem: this.state.currentItem - 1 });
-              }}
-            >
-              <Text style={{ fontSize: 20, color: "#0067a0" }}>Next</Text>
-            </Button>
-          </Right>
         </View>
       );
     }

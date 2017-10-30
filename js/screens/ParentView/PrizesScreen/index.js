@@ -185,7 +185,7 @@ class PrizesScreen extends React.Component {
         />
         <Prizes
           data={this.props.prizeList}
-          back={() => this.props.navigation.goBack({ noAddedImages: true })}
+          back={() => this.props.navigation.goBack()}
           editPress={item => {
             this.setState({
               placeholderDesc: item.description,

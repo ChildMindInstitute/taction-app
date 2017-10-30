@@ -8,7 +8,7 @@ import { ScrollView, StatusBar } from "react-native";
 import styles from "./styles";
 const Consent = props => (
   <View style={styles.mainOuterViewOuterView}>
-    <StatusBar barStyle="light-content" />
+    <StatusBar barStyle="light-content" translucent={true} />
     <View style={styles.mainOuterView}>
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />

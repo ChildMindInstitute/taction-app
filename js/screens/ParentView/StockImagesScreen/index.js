@@ -21,19 +21,12 @@ class StockImagesScreen extends React.Component {
   }
   componentDidUpdate() {
     if (this.props.imagesLoaded && this.state.imagesLoaded) {
-      console.log(this.props.stockImages, "component Did riecieve props");
       this.setState({
         stockImages: this.props.stockImages,
         imagesLoaded: false
       });
     }
   }
-
-  componentDidMount() {
-    console.log("component didmount");
-    this.setState({ stockImages: this.props.stockImages });
-  }
-
   render() {
     return (
       <View style={{ flex: 1 }}>

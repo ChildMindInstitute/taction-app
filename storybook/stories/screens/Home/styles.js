@@ -52,8 +52,7 @@ const styles = StyleSheet.create({
   footerStyle: { height: "17%" },
   containerOuterViewStyle: { flex: 1, backgroundColor: "#0067a0" },
   containerStyle: {
-    backgroundColor: "#eee",
-    marginTop: Platform.OS == "ios" ? 0 : 1 // Constants.statusBarHeight
+    backgroundColor: "#eee"
   }
 });
 export default styles;

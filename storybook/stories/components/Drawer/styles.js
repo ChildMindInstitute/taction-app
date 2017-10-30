@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
   containerStyle: { flex: 1, backgroundColor: "#0067a0" },
   contentStyle: {
     flex: 1,
-    backgroundColor: "#0067a0",
-    marginTop: Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
+    backgroundColor: "#0067a0"
   },
   listSpace: {
     flex: 12

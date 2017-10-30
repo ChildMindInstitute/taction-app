@@ -97,6 +97,10 @@ class OpeningScreen extends React.Component {
         />
         <ModalCommon
           isVisible={this.state.modalVisible}
+          extraModalStyle={{
+            paddingTop: "25%",
+            paddingBottom: "25%"
+          }}
           content={
             <ModalContent
               greetingLine1="Welcome back"

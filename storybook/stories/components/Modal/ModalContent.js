@@ -143,7 +143,7 @@ class ModalContent extends React.Component {
                 >
                   <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
                     {"Play Level " + this.props.nextLevelName}
-                    <Icon name="" />
+                    <Icon name="ios-arrow-round-forward" />
                   </Text>
                 </Button>
               </View>
@@ -168,11 +168,12 @@ class ModalContent extends React.Component {
             <View />
           )}
           {this.props.playLaterRequired ? (
-            <View style={([styles.contentMainViewInnerView], { flex: 1 })}>
+            <View style={[styles.contentMainViewInnerView, { flex: 1 }]}>
               <Button
                 transparent
                 iconRight
                 onPress={this.props.toggleVisiblity}
+                style={{ marginLeft: 25 }}
               >
                 <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
                   {this.props.playLaterText}

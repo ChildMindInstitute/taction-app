@@ -24,8 +24,7 @@ class ChildDrawerScreen extends React.Component {
         <View
           style={{
             flex: 1,
-            backgroundColor: "#ccc",
-            marginTop: Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
+            backgroundColor: "#ccc"
           }}
         >
           <DrawerChild navProps={this.props.screenProps.parentNavigation} />

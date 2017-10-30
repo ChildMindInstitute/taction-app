@@ -297,7 +297,7 @@ class GameScreen extends React.Component {
           isVisible={this.state.modalVisible}
           extraModalStyle={{
             paddingTop: "20%",
-            paddingBottom: "20%"
+            paddingBottom: "30%"
           }}
           content={
             <ModalContent

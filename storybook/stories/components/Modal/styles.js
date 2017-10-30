@@ -1,14 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+let { height, width } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   mainModal: {
     backgroundColor: "rgba(0,0,0,0.5)",
-    width: "100%",
-    height: "100%",
-    margin: 0,
-    paddingTop: "25%",
-    paddingBottom: "35%",
-    paddingLeft: "2%",
-    paddingRight: "2%"
+    height: height,
+    width: width,
+    alignItems: "center"
   },
   view1: {
     backgroundColor: "#0067a0",
@@ -28,8 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    padding: 0,
-    margin: 0
+    width: width - 30
   },
   contentMainViewTextStyle: {
     color: "#f2cd32",

@@ -2,7 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button2 from "../../components/Button";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Text, Button, Icon, Segment } from "native-base";
+import {
+  Container,
+  View,
+  Text,
+  Button,
+  Icon,
+  Segment,
+  Content
+} from "native-base";
 import FormInput from "../../components/FormInput";
 import styles from "./styles";
 const AddFolder = props => (
@@ -20,16 +28,16 @@ const AddFolder = props => (
         <Icon name="trash" style={{ color: "white" }} />
       </Button>
     </HeaderCommon>
-    <View
-      style={[
-        styles.contentStyle,
-        {
-          paddingTop: props.children ? "5%" : "40%",
-          paddingBottom: props.children ? "5%" : "40%"
-        }
-      ]}
-    >
-      <View style={styles.mainSpace}>
+    <Content>
+      <View
+        style={[
+          styles.mainSpace,
+          {
+            height: props.children ? 600 : 300,
+            marginTop: props.children ? 0 : "40%"
+          }
+        ]}
+      >
         <View
           style={{
             flex:
@@ -60,8 +68,10 @@ const AddFolder = props => (
         ) : (
           false
         )}
-        <View style={{ flex: 0.2, justifyContent: "center" }}>
-          <Text>Select images from :</Text>
+        <View
+          style={{ flex: props.children ? 0.2 : 0.4, justifyContent: "center" }}
+        >
+          <Text>Select images from </Text>
         </View>
 
         <View style={{ flex: 3 }}>
@@ -82,7 +92,7 @@ const AddFolder = props => (
                 }}
                 style={{
                   width: "50%",
-                  height: "90%",
+                  height: "98%",
                   justifyContent: "center",
                   backgroundColor:
                     props.activeSegment == 1 ? "#0067a0" : "#fff",
@@ -108,7 +118,7 @@ const AddFolder = props => (
                 }}
                 style={{
                   width: "50%",
-                  height: "90%",
+                  height: "98%",
                   marginTop: 10,
                   marginBottom: 10,
                   justifyContent: "center",
@@ -178,7 +188,7 @@ const AddFolder = props => (
           </View>
         </View>
       </View>
-    </View>
+    </Content>
   </Container>
 );
 

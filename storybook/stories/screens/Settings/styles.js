@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
   contentStyle: { flex: 1, marginLeft: "-4%" },
   containerStyle: {
     flex: 1,
-    backgroundColor: "#eee",
-    marginTop: Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
+    backgroundColor: "#eee"
   }
 });
 export default styles;

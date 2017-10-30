@@ -1,7 +1,7 @@
 import React from "react";
 import ImagesFolderList from "../../components/ImagesFolderList";
 import HeaderCommon from "../../components/Header";
-import { Container, View, Button, Icon } from "native-base";
+import { Container, View, Button, Icon, Text } from "native-base";
 import styles from "./styles";
 class ImagesFolder extends React.Component {
   static navigationOptions = {
@@ -140,11 +140,24 @@ class ImagesFolder extends React.Component {
             </View>
           </View>
           <View style={styles.listSpace}>
-            <ImagesFolderList
-              checkBoxChange={this.props.checkBoxChange}
-              listData={this.props.excerciseData}
-              switchToggled={this.props.switchToggled}
-            />
+            {this.props.excerciseData.length > 0 ? (
+              <ImagesFolderList
+                checkBoxChange={this.props.checkBoxChange}
+                listData={this.props.excerciseData}
+                switchToggled={this.props.switchToggled}
+              />
+            ) : (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#eee"
+                }}
+              >
+                <Text>Feeling pretty lonely in here!</Text>
+              </View>
+            )}
           </View>
         </View>
       </Container>

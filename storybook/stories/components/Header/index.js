@@ -6,8 +6,9 @@ import styles from "./styles";
 const CustomHeader = props => (
   <Header
     style={props.headerStyle}
+    androidStatusBarColor="rgba(0, 70, 107, 1)"
     iosBarStyle="light-content"
-    androidStatusBarColor="#00466b"
+    noShadow
   >
     <Left style={styles.leftStyle}>
       {props.isLeftAButton ? (

@@ -1,4 +1,5 @@
 {
   "name": "childmind",
-  "displayName": "childmind"
+  "displayName": "childmind",
+  "androidStatusBarColor": "rgba(0, 70, 107, 1)"
 }

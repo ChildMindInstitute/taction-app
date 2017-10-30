@@ -12,7 +12,8 @@ class AlmostThereScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked: false,
+      getInPressed: false
     };
   }
 
@@ -37,9 +38,11 @@ class AlmostThereScreen extends React.Component {
     return (
       <AlmostThere
         onGetInPress={() => {
+          this.setState({ getInPressed: true });
           this.props.dispatch({ type: "VERIFY_EMAIL" });
           this.setState({ checked: true });
         }}
+        getInPressed={this.state.getInPressed}
         onResendLinkPress={() => {
           console.log("Resend Link");
           Db.verifyEmail();

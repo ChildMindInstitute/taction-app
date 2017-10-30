@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../../components/Logo";
 import Proptypes from "prop-types";
 import Logo1 from "../../components/Logo.1";
-import { View, Text, Button, Icon } from "native-base";
+import { View, Text, Button, Icon, Spinner } from "native-base";
 import { StatusBar } from "react-native";
 import styles from "./styles";
 const AlmostThere = props => (
@@ -36,8 +36,14 @@ const AlmostThere = props => (
           }}
           onPress={props.onGetInPress}
         >
-          <Text style={{ color: "#fff" }}>Get in</Text>
-          <Icon name="ios-arrow-round-forward" />
+          {props.getInPressed ? (
+            <Spinner color="#fff" />
+          ) : (
+            <View>
+              <Text style={{ color: "#fff" }}>Get in</Text>
+              <Icon name="ios-arrow-round-forward" />
+            </View>
+          )}
         </Button>
         <Button
           iconRight

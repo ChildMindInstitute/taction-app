@@ -4,11 +4,7 @@ const styles = StyleSheet.create({
   mainOuterViewOuterView: { flex: 1, backgroundColor: "#0067a0" },
   mainOuterView: {
     flex: 1,
-    backgroundColor: "#0067a0",
-    marginTop:
-      Platform.OS !== "ios"
-        ? Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
-        : 0
+    backgroundColor: "#0067a0"
   },
   scrollViewSpaceSpace: { flex: 9 },
   mainView: { flex: 1, margin: "5%" },

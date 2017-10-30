@@ -5,7 +5,6 @@ import Modal from "../../../../storybook/stories/components/Modal/modal";
 import { Toast } from "native-base";
 import {
   View,
-  Container,
   Header,
   Title,
   Body,
@@ -15,7 +14,8 @@ import {
   Button,
   Text
 } from "native-base";
-import { Alert } from "react-native";
+import { Alert, Dimensions } from "react-native";
+let { width } = Dimensions.get("screen");
 class PrizesScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -116,15 +116,11 @@ class PrizesScreen extends React.Component {
       <View style={{ flex: 1 }}>
         <Modal
           isVisible={this.state.modalVisible}
-          extraModalStyle={{
-            paddingTop: "40%",
-            paddingBottom: "75%",
-            paddingLeft: "10%",
-            paddingRight: "10%"
-          }}
           extraModalViewStyle={{
             backgroundColor: "rgba(255,255,255,0.9)",
-            borderRadius: 10
+            flex: 0.35,
+            width: width - 50,
+            top: "16%"
           }}
           content={
             <View style={{ flex: 1 }}>
@@ -141,6 +137,7 @@ class PrizesScreen extends React.Component {
                     onChange={event => {
                       this.input.pointsReq = event.nativeEvent.text;
                     }}
+                    keyboardType="numeric"
                     placeholder={this.state.placeholderPoints.toString()}
                   />
                 </Item>

@@ -9,8 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0067a0",
     width: width - 30,
     height: height - 30,
-    margin: 15,
-    marginTop: 15 + (Platform.OS == "ios" ? 0 : 1) /*Constants.statusBarHeight*/
+    margin: 15
   },
   topSpace: {
     flex: 6,

@@ -27,12 +27,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee"
   },
   submitButtonStyle: {
-    backgroundColor: "#eeae30"
+    backgroundColor: "#eeae30",
+    marginTop: 10
   },
   submitButton2Style: {
     backgroundColor: "#fff",
     borderWidth: 1,
-    borderColor: "#ccc"
+    borderColor: "#ccc",
+    marginTop: 15
   },
   submitButton2TextStyle: { color: "#000" },
   inputViewStyle: {

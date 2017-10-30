@@ -10,7 +10,8 @@ import {
   Body,
   Button,
   Text,
-  Right
+  Right,
+  View
 } from "native-base";
 import DashBoardContent from "../DashboardContent";
 import styles from "./styles";
@@ -21,6 +22,7 @@ const Dashboard = props => (
       renderTabBar={() => <ScrollableTab />}
       style={styles.headerStyle}
       iosBarStyle="light-content"
+      androidStatusBarColor="rgba(0, 70, 107, 1)"
     >
       <Left style={styles.leftStyle}>
         <Button transparent onPress={props.leftPress}>
@@ -39,9 +41,22 @@ const Dashboard = props => (
         tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
-        <DashBoardContent excerciseData={props.excerciseDataToday}>
-          <Text>Today's Activities</Text>
-        </DashBoardContent>
+        {props.excerciseDataToday.length > 0 ? (
+          <DashBoardContent excerciseData={props.excerciseDataToday}>
+            <Text>Today's Activities</Text>
+          </DashBoardContent>
+        ) : (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#eee"
+            }}
+          >
+            <Text>OOPs! Seems like somebody has been lazy today!</Text>
+          </View>
+        )}
       </Tab>
       <Tab
         heading="Month's Activities"
@@ -49,9 +64,22 @@ const Dashboard = props => (
         tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
-        <DashBoardContent excerciseData={props.excerciseDataMonth}>
-          <Text>Month's Activities</Text>
-        </DashBoardContent>
+        {props.excerciseDataMonth.length > 0 ? (
+          <DashBoardContent excerciseData={props.excerciseDataMonth}>
+            <Text>Month's Activities</Text>
+          </DashBoardContent>
+        ) : (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#eee"
+            }}
+          >
+            <Text>Whoops! No play in this month!</Text>
+          </View>
+        )}
       </Tab>
     </Tabs>
   </Container>

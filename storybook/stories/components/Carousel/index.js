@@ -166,28 +166,29 @@ class SwipeableParallaxCarousel extends Component {
               alignContent: "center",
               alignItems: "center"
             }}
+            removeClippedSubviews={false}
           >
-            <View
-              style={{
-                position: "absolute",
-                backgroundColor: "#fff",
-                width: 20,
-                height: 20,
-                borderBottomColor: "#0067a0",
-                borderBottomWidth: 2,
-                borderRightColor: "#0067a0",
-                borderRightWidth: 2,
-                transform: [{ rotate: "45deg" }],
-                top: 68,
-                left: 110
-              }}
-            />
             <Text
               style={{ alignSelf: "center", marginLeft: 10, marginRight: 10 }}
             >
               {item.tooTipText}
             </Text>
           </View>
+          <View
+            style={{
+              position: "absolute",
+              backgroundColor: "#fff",
+              width: 20,
+              height: 20,
+              borderBottomColor: "#0067a0",
+              borderBottomWidth: 2,
+              borderRightColor: "#0067a0",
+              borderRightWidth: 2,
+              transform: [{ rotate: "45deg" }],
+              top: "36.2%",
+              left: "70%"
+            }}
+          />
         </Animated.View>
       );
     });

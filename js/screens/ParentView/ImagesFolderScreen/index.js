@@ -43,14 +43,6 @@ class ImagesFolderScreen extends React.Component {
       }
     }
   }
-  componentDidUpdate() {
-    if (count == 1 && this.state.orderingDisabled) {
-      this.setState({ orderingDisabled: false });
-    }
-    if (count >= 1 && this.state.deleteDisabled) {
-      this.setState({ deleteDisabled: false });
-    }
-  }
   toggleStatus(onOff, folderID) {
     this.props.dispatch({
       type: "SET_FOLDER_STATUS",
@@ -168,6 +160,16 @@ class ImagesFolderScreen extends React.Component {
           };
           this.setState({ imageList: dashboardList });
           this.updateCheckedItems();
+          if (count == 1) {
+            this.setState({ orderingDisabled: false });
+          } else {
+            this.setState({ orderingDisabled: true });
+          }
+          if (count >= 1) {
+            this.setState({ deleteDisabled: false });
+          } else {
+            this.setState({ deleteDisabled: true });
+          }
         }}
         onPressMoveUp={() => {
           let item = this.getCheckedItem();

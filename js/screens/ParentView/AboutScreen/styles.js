@@ -9,13 +9,14 @@ const styles = StyleSheet.create({
   },
   headerLeftStyle: { color: "white" },
   container: {
-    marginTop: Platform.OS == "ios" ? 0 : 1, //Constants.statusBarHeight,
     flex: 1,
     backgroundColor: "#eee"
   },
   bottomLogoStyle: {
     height: 40,
-    width: 120
+    width: 120,
+    alignSelf: "center",
+    marginBottom: 15
   }
 });
 export default styles;

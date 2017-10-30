@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+let { height, width } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   headerStyle: {
     backgroundColor: "#0067a0"
@@ -11,20 +12,28 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center"
   },
-  saveButtonStyle: {},
   headerRightTextAlign: { flex: 1 },
   headerRightTotalPointsStyle: { color: "white", flex: 2 },
   headerRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
   contentStyle: {
-    flex: 1,
-    paddingLeft: 16,
-    paddingRight: 16
+    flex: 1
   },
-  mainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
-  containerStyle: { flex: 1, backgroundColor: "#eee" },
+  mainSpace: {
+    flex: 1,
+    alignContent: "center",
+    justifyContent: "center",
+    margin: 16,
+    height: 300
+  },
+  containerStyle: {
+    flex: 1,
+    backgroundColor: "#eee",
+    height: height,
+    width: width
+  },
   submitButton2Style: {
     backgroundColor: "#fff",
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "#ccc"
   },
   submitButton2TextStyle: { color: "#000" },

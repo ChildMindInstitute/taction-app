@@ -8,11 +8,7 @@ const styles = StyleSheet.create({
   },
   mainOuterView: { flex: 1, backgroundColor: "#0067a0" },
   mainView: {
-    flex: 1,
-    marginTop:
-      Platform.OS !== "ios"
-        ? Platform.OS == "ios" ? 0 : 1 //Constants.statusBarHeight
-        : 0
+    flex: 1
   },
   topSpace: { flex: 1 },
   topViewStyle: {

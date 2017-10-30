@@ -38,16 +38,7 @@ class About extends React.Component {
             </Text>
           </View>
         </Content>
-        <Footer
-          style={{
-            backgroundColor: "transparent",
-            alignItems: "center",
-            justifyContent: "center",
-            borderTopWidth: 0
-          }}
-        >
-          <Logo5 imageDimensions={styles.bottomLogoStyle} />
-        </Footer>
+        <Logo5 imageDimensions={styles.bottomLogoStyle} />
       </Container>
     );
   }

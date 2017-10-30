@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, View, Button, Icon } from "native-base";
 import SwipeableParallaxCarousel from "../../../../storybook/stories/components/Carousel";
-// import { Constants } from "expo";
+import { Platform } from "react-native";
 const datacarousel = [
   {
     id: 339964,
@@ -29,7 +29,7 @@ class HowToPlayScreen extends React.Component {
       <View style={{ backgroundColor: "#0067a0", flex: 1 }}>
         <View
           style={{
-            marginTop: -16,
+            marginTop: -17,
             backgroundColor: "#000",
             flex: 1
           }}
@@ -50,8 +50,8 @@ class HowToPlayScreen extends React.Component {
               borderWidth: 1,
               borderColor: "#ccc",
               position: "absolute",
-              top: "6%",
-              left: 0
+              top: Platform.os == "ios" ? "6%" : "4%",
+              left: 5
             }}
             onPress={() => this.props.navigation.goBack()}
           >

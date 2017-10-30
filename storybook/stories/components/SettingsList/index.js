@@ -11,7 +11,7 @@ import {
   View,
   Switch
 } from "native-base";
-const margin = { marginLeft: "5%" };
+const margin = { marginLeft: 16 };
 const SettingsList = props => (
   <List style={props.listStyle}>
     <Separator bordered>

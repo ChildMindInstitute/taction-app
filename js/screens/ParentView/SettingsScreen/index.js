@@ -1,22 +1,20 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
-import { Alert } from "react-native";
+import { Alert, Dimensions } from "react-native";
 import {
   View,
   ActionSheet,
   Toast,
-  Container,
   Header,
   Title,
   Body,
   Input,
-  Item,
-  Label,
   Button,
   Text
 } from "native-base";
 import Modal from "../../../../storybook/stories/components/Modal/modal";
+let { width } = Dimensions.get("screen");
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: "SettingsScreen",
@@ -84,19 +82,19 @@ class SettingsScreen extends React.Component {
       <View style={{ flex: 1 }}>
         <Modal
           isVisible={this.state.modalVisible}
-          extraModalStyle={{
-            paddingTop: "60%",
-            paddingBottom: "70%",
-            paddingLeft: "10%",
-            paddingRight: "10%"
-          }}
           extraModalViewStyle={{
             backgroundColor: "rgba(255,255,255,0.9)",
-            borderRadius: 10
+            flex: 0.2,
+            width: width - 50,
+            top: "30%"
           }}
           content={
             <View style={{ flex: 1 }}>
-              <Header style={{ backgroundColor: "#fff" }}>
+              <Header
+                style={{ backgroundColor: "#fff" }}
+                iosBarStyle="light-content"
+                androidStatusBarColor="rgba(0, 70, 107, 1)"
+              >
                 <Body>
                   <Title style={{ color: "#007aff" }}>
                     {this.state.modalTitle}
@@ -104,21 +102,18 @@ class SettingsScreen extends React.Component {
                 </Body>
               </Header>
               <View style={{ flex: 1 }}>
-                <Item stackedLabel style={{ flex: 1 }}>
-                  <Label>Points to be achieved</Label>
-                  <Input
-                    style={{ backgroundColor: "#fff" }}
-                    placeholder={this.state.modalPlaceHolder}
-                    keyboardType={
-                      this.state.modalTitle == "Age of child"
-                        ? "numeric"
-                        : "default"
-                    }
-                    onChange={event => {
-                      this.modalInput = event.nativeEvent.text;
-                    }}
-                  />
-                </Item>
+                <Input
+                  style={{ backgroundColor: "#fff" }}
+                  placeholder={this.state.modalPlaceHolder}
+                  keyboardType={
+                    this.state.modalTitle == "Age of child"
+                      ? "numeric"
+                      : "default"
+                  }
+                  onChange={event => {
+                    this.modalInput = event.nativeEvent.text;
+                  }}
+                />
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Button
@@ -153,7 +148,8 @@ class SettingsScreen extends React.Component {
             ActionSheet.show(
               {
                 options: ["5", "10", "25", "50", "100", "Cancel"],
-                cancelButtonIndex: 5
+                cancelButtonIndex: 5,
+                title: "Maximum image duration"
               },
               buttonIndex => {
                 switch (buttonIndex) {
@@ -223,7 +219,8 @@ class SettingsScreen extends React.Component {
             ActionSheet.show(
               {
                 options: ["5", "10", "25", "50", "100", "Cancel"],
-                cancelButtonIndex: 5
+                cancelButtonIndex: 5,
+                title: "Images per session"
               },
               buttonIndex => {
                 switch (buttonIndex) {

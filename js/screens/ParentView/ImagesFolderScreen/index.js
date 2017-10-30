@@ -43,7 +43,7 @@ class ImagesFolderScreen extends React.Component {
       }
     }
   }
-  componentWillUpdate() {
+  componentDidUpdate() {
     if (count == 1 && this.state.orderingDisabled) {
       this.setState({ orderingDisabled: false });
     }

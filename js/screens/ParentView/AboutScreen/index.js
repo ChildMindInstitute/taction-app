@@ -22,7 +22,7 @@ class About extends React.Component {
         <Content>
           <View style={{ flex: 9, margin: "4%" }}>
             <Text>
-              This appprovides a convenient and fun way to engage you or your
+              This app provides a convenient and fun way to engage you or your
               child in exposure therapy. In this simple game, the player taps on
               the correct image from among a set of distractor images to get
               points. You can add your own images or choose existing folders of

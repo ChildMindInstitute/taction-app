@@ -27,7 +27,7 @@ class ImagesFolder extends React.Component {
           leftPress={this.props.drawerOpen}
           leftIconName="menu"
           headerStyle={styles.headerStyle}
-          title="Images Folder"
+          title="Images"
           titleStyle={styles.headerLeftStyle}
         />
         <View style={styles.contentStyle}>

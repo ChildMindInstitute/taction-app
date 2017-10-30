@@ -7,7 +7,7 @@ import { StatusBar } from "react-native";
 import styles from "./styles";
 const AlmostThere = props => (
   <View style={styles.mainOuterView}>
-    <StatusBar barStyle="light-content" />
+    <StatusBar barStyle="light-content" translucent={true} />
     <View style={styles.mainView}>
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyle} />

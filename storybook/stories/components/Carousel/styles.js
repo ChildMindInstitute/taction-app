@@ -49,8 +49,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     padding: 5,
-    backgroundColor: "#ffffff",
-    height: 70,
+    height: 30,
     paddingBottom: 15,
     paddingTop: 15,
     flexDirection: "row",
@@ -58,7 +57,7 @@ const styles = {
     elevation: 1
   },
   navigationItem: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#fff",
     height: 6,
     width: 6,
     marginLeft: 5,

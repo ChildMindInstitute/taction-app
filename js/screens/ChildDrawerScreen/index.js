@@ -20,7 +20,7 @@ class ChildDrawerScreen extends React.Component {
           backgroundColor: "#0067a0"
         }}
       >
-        <StatusBar barStyle="light-content" translucent={true} />
+        <StatusBar barStyle="light-content" backgroundColor="#00466b" />
         <View
           style={{
             flex: 1,

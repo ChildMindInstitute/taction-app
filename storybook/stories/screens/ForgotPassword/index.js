@@ -14,7 +14,7 @@ const Login = props => (
     contentContainerStyle={styles.mainView}
     keyboardVerticalOffset={-200}
   >
-    <StatusBar barStyle="light-content" translucent={true} />
+    <StatusBar barStyle="light-content" backgroundColor="#00466b" />
     <View style={styles.mainInnerView}>
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />

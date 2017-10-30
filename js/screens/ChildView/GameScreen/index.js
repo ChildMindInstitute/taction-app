@@ -29,6 +29,7 @@ class GameScreen extends React.Component {
       reset: false,
       modalVisible: false,
       gameFinished: false,
+      gameOver: false,
       currentImage: {},
       currentFolder: {},
       input: [
@@ -236,27 +237,29 @@ class GameScreen extends React.Component {
         isLast={this.state.isLast}
         timeExpiredImageShuffle={() => {
           this.options = [0, 1, 2, 3];
-          if (this.state.currentLevel + 1 <= totalLevels) {
-            setTimeout(() => {
-              this.setState({
-                i1: this.randomAssign(),
-                i2: this.randomAssign(),
-                i3: this.randomAssign(),
-                i4: this.randomAssign(),
-                currentLevel: this.state.currentLevel + 1
-              });
-              let x = this.correctOptionDecision(
-                this.state.i1,
-                this.state.i2,
-                this.state.i3
-              );
-              this.setState({ correctOption: x });
-              this.updateWrongScore();
-            }, 500);
-          } else if (!this.state.gameFinished) {
-            this.setState({ isLast: true });
-            this.updateFolderScore();
-            this.setState({ gameFinished: true });
+          if (!this.state.gameOver) {
+            if (this.state.currentLevel + 1 <= totalLevels) {
+              setTimeout(() => {
+                this.setState({
+                  i1: this.randomAssign(),
+                  i2: this.randomAssign(),
+                  i3: this.randomAssign(),
+                  i4: this.randomAssign(),
+                  currentLevel: this.state.currentLevel + 1
+                });
+                let x = this.correctOptionDecision(
+                  this.state.i1,
+                  this.state.i2,
+                  this.state.i3
+                );
+                this.setState({ correctOption: x });
+                this.updateWrongScore();
+              }, 500);
+            } else {
+              this.setState({ isLast: true });
+              this.updateFolderScore();
+              this.setState({ gameFinished: true, gameOver: true });
+            }
           }
         }}
         pressed={(item => {
@@ -283,10 +286,10 @@ class GameScreen extends React.Component {
               }
               this.setState({ correctOption: x, reset: false });
             }, 500);
-          else {
+          else if (!this.state.gameOver) {
             this.setState({ isLast: true });
             this.updateFolderScore();
-            this.setState({ gameFinished: true });
+            this.setState({ gameFinished: true, gameOver: true });
           }
         }).bind(this)}
         leftImages={this.state.currentLevel}
@@ -310,7 +313,7 @@ class GameScreen extends React.Component {
               )}
               playLaterRequired={true}
               displayPoints={this.props.child.childDetails.totalScore}
-              description="Record Time for this level: 134 seconds!"
+              description="Well played"
               extraDescriptionStyle={{ fontSize: 14 }}
               starExtraStyle={{ width: 200, height: 60 }}
               playLaterText="Play Later"

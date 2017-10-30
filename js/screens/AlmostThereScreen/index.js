@@ -60,7 +60,11 @@ class AlmostThereScreen extends React.Component {
   }
 }
 const mapStateToProps = store => {
-  return { parent: store.user.parent, loaded: store.loaded.userLoaded };
+  return {
+    parent: store.user.parent,
+    loaded: store.loaded.userLoaded,
+    verifyLoaded: store.loaded.verifyLoaded
+  };
 };
 
 const mapDispatchToProps = dispatch => {

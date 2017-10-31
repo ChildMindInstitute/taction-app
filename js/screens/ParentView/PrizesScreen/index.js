@@ -182,7 +182,7 @@ class PrizesScreen extends React.Component {
         />
         <Prizes
           data={this.props.prizeList}
-          back={() => this.props.navigation.goBack()}
+          back={() => this.props.navigation.navigate("Settings")}
           editPress={item => {
             this.setState({
               placeholderDesc: item.description,

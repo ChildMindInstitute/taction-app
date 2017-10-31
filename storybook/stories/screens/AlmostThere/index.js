@@ -56,7 +56,7 @@ const AlmostThere = props => (
           {props.getInPressed ? (
             false
           ) : (
-            <Icon name="ios-arrow-round-forward" style={{ color: "white" }} />
+            <Icon name="md-arrow-round-forward" style={{ color: "white" }} />
           )}
         </Button>
         <Button

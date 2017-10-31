@@ -90,7 +90,7 @@ const Login = props => (
             buttonText="Submit"
             disabled={props.submitted}
             submitted={props.submitted}
-            iconName="ios-arrow-round-forward"
+            iconName="md-arrow-round-forward"
             iconRight={true}
             iconLeft={false}
             iconColor="white"

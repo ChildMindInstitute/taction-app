@@ -61,7 +61,7 @@ const SignUp = props => (
             onPress={props.onPressSubmitButton}
             submitButtonTextStyle={styles.submitButtonTextStyle}
             buttonText="Submit"
-            iconName="ios-arrow-round-forward"
+            iconName="md-arrow-round-forward"
             iconRight={true}
             iconLeft={false}
             iconColor="white"

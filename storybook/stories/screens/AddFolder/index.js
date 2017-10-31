@@ -165,7 +165,7 @@ const AddFolder = props => (
               buttonText={props.saveFolderButtonText}
               disabled={props.saveDisabled}
               submitted={props.submitted}
-              iconName="ios-arrow-round-forward"
+              iconName="md-arrow-round-forward"
               iconRight={true}
               iconLeft={false}
               iconColor="white"

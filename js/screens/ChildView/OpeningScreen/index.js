@@ -83,6 +83,9 @@ class OpeningScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <NewIntro
+          menuPress={() => {
+            this.props.navigation.navigate("DrawerOpen");
+          }}
           topViewBackgroundColor="#0067a0"
           bottomViewBackGroundColor="#ffffff"
           scoreColor="#0067a0"

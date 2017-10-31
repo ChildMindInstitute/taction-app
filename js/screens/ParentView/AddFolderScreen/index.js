@@ -128,6 +128,7 @@ class AddFolderScreen extends React.Component {
     ImagePicker.openPicker({
       multiple: true,
       maxFiles: 20,
+      compressImageQuality: 0,
       includeBase64: true
     })
       .then(images => {

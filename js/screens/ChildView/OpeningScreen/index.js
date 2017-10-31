@@ -54,7 +54,11 @@ class OpeningScreen extends React.Component {
     }
   }
   componentDidUpdate() {
-    if (this.props.folder.folderID && this.state.isPlayDisabled) {
+    if (
+      this.props.folder.folderID != null &&
+      this.state.isPlayDisabled &&
+      !this.props.folder.folderDetails.isPlayed
+    ) {
       this.setState({ isPlayDisabled: false });
     }
     if (this.props.prizeList.length != 0 && this.state.prize == "") {

@@ -2,8 +2,8 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import Db from "../../js/services";
 
 const setChildFolder = function* setChildFolder(action) {
-  let folderList = yield call(Db.fetchExeriseList, action.payload);
   try {
+    let folderList = yield call(Db.fetchExeriseList, action.payload);
     for (let i in folderList) {
       if (
         folderList[i].folderDetails.status &&

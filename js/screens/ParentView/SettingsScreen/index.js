@@ -28,13 +28,30 @@ class SettingsScreen extends React.Component {
       modalVisible: false,
       newValue: null,
       modalTitle: "",
-      modalPlaceHolder: ""
+      modalPlaceHolder: "",
+      name: "",
+      childName: "",
+      childAge: "",
+      imagesPerSession: 0,
+      maxImageDuration: 0
     };
     this.modalInput = "";
   }
+
+  componentWillMount() {
+    this.setState({
+      name: this.props.parent.name,
+      childName: this.props.child.childDetails.name,
+      childAge: this.props.child.childDetails.age,
+      imagesPerSession: this.props.parent.settings.imagesPerSession,
+      maxImageDuration: this.props.parent.settings.maxImageDuration
+    });
+  }
+
   findRoutes() {
     switch (this.state.modalTitle) {
       case "Name of parent": {
+        this.setState({ name: this.modalInput });
         this.props.dispatch({
           type: "UPDATE_PARENT",
           payload: this.modalInput
@@ -42,6 +59,7 @@ class SettingsScreen extends React.Component {
         break;
       }
       case "Age of child":
+        this.setState({ childAge: this.modalInput });
         this.props.dispatch({
           type: "UPDATE_CHILD",
           payload: {
@@ -51,6 +69,7 @@ class SettingsScreen extends React.Component {
         });
         break;
       case "Name of child":
+        this.setState({ childName: this.modalInput });
         this.props.dispatch({
           type: "UPDATE_CHILD",
           payload: {
@@ -163,6 +182,7 @@ class SettingsScreen extends React.Component {
               buttonIndex => {
                 switch (buttonIndex) {
                   case 0: {
+                    this.setState({ maxImageDuration: 5 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -174,6 +194,7 @@ class SettingsScreen extends React.Component {
                     break;
                   }
                   case 1: {
+                    this.setState({ maxImageDuration: 10 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -185,6 +206,7 @@ class SettingsScreen extends React.Component {
                     break;
                   }
                   case 2: {
+                    this.setState({ maxImageDuration: 25 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -196,6 +218,7 @@ class SettingsScreen extends React.Component {
                     break;
                   }
                   case 3: {
+                    this.setState({ maxImageDuration: 50 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -207,6 +230,7 @@ class SettingsScreen extends React.Component {
                     break;
                   }
                   case 4: {
+                    this.setState({ maxImageDuration: 100 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -221,9 +245,7 @@ class SettingsScreen extends React.Component {
               }
             );
           }}
-          maximumImageDuration={
-            this.props.parent.settings.maxImageDuration + " sec"
-          }
+          maximumImageDuration={this.state.maxImageDuration + " sec"}
           pressNoOfImagesPerSession={() => {
             ActionSheet.show(
               {
@@ -234,6 +256,7 @@ class SettingsScreen extends React.Component {
               buttonIndex => {
                 switch (buttonIndex) {
                   case 0:
+                    this.setState({ imagesPerSession: 5 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -244,6 +267,7 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   case 1:
+                    this.setState({ imagesPerSession: 10 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -254,6 +278,7 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   case 2:
+                    this.setState({ imagesPerSession: 25 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -264,6 +289,7 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   case 3:
+                    this.setState({ imagesPerSession: 50 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -274,6 +300,7 @@ class SettingsScreen extends React.Component {
                     });
                     break;
                   case 4:
+                    this.setState({ imagesPerSession: 100 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
                       payload: {
@@ -286,7 +313,7 @@ class SettingsScreen extends React.Component {
               }
             );
           }}
-          noOfImagesPerSession={this.props.parent.settings.imagesPerSession}
+          noOfImagesPerSession={this.state.imagesPerSession}
           namePress={() => {
             this.setState({
               modalTitle: "Name of parent",
@@ -294,7 +321,7 @@ class SettingsScreen extends React.Component {
               modalVisible: true
             });
           }}
-          name={this.props.parent.name}
+          name={this.state.name}
           passwordPress={() => {
             Alert.alert(
               "Reset paswword",
@@ -322,15 +349,11 @@ class SettingsScreen extends React.Component {
               ]
             );
           }}
-          age={
-            this.props.child.childDetails
-              ? this.props.child.childDetails.age
-              : "0"
-          }
+          age={this.props.child.childDetails ? this.state.childAge : "0"}
           agePress={() => {
             this.setState({
               modalTitle: "Age of child",
-              modalPlaceHolder: this.props.child.childDetails.age,
+              modalPlaceHolder: this.state.childAge,
               modalVisible: true
             });
           }}
@@ -359,13 +382,11 @@ class SettingsScreen extends React.Component {
             });
           }}
           childExists={this.props.child.childID ? true : false}
-          nameChild={
-            this.props.child.childID ? this.props.child.childDetails.name : ""
-          }
+          nameChild={this.props.child.childID ? this.state.childName : ""}
           nameChildPress={() => {
             this.setState({
               modalTitle: "Name of child",
-              modalPlaceHolder: this.props.child.childDetails.name,
+              modalPlaceHolder: this.state.childName,
               modalVisible: true
             });
           }}

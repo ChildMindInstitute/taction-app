@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../components/Logo";
 import Logo2 from "../../components/Logo.2";
-import Button from "../../components/Button";
-import { View, Text } from "native-base";
+import Button2 from "../../components/Button";
+import { View, Text, Button, Icon } from "native-base";
 import { Image } from "react-native";
 import styles from "./styles";
 const NewIntro = props => (
@@ -19,6 +19,9 @@ const NewIntro = props => (
             }
           ]}
         >
+          <Button transparent onPress={props.menuPress}>
+            <Icon name="menu" style={{ color: "white" }} />
+          </Button>
           <Logo imageDimensions={styles.logoStyle} />
         </View>
         <View
@@ -47,14 +50,14 @@ const NewIntro = props => (
             resizeMethod="auto"
             resizeMode="contain"
           />
-          <Button
+          <Button2
             onPress={props.playOnPress}
             buttonText="Play"
             disabled={props.isPlayDisabled}
             submitButtonStyle={styles.playButtonStyle}
             submitButtonTextStyle={styles.playButtonTextStyle}
           />
-          <Button
+          <Button2
             onPress={props.howToPlayOnPress}
             buttonText="How To Play"
             submitButtonStyle={styles.howToPlayButtonStyle}

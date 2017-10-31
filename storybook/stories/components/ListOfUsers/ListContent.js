@@ -8,9 +8,6 @@ class ListContent extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.state = {
-      checked: false
-    };
   }
   render() {
     return (
@@ -31,13 +28,6 @@ class ListContent extends React.Component {
             {this.props.item.name}
           </Text>
         </Body>
-        <Right>
-          <CheckBox
-            checked={this.state.checked}
-            onPress={() => this.setState({ checked: !this.state.checked })}
-            color="#0067a0"
-          />
-        </Right>
       </ListItem>
     );
   }

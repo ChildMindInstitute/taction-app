@@ -37,7 +37,7 @@ class SettingsScreen extends React.Component {
       case "Name of parent": {
         this.props.dispatch({
           type: "UPDATE_PARENT",
-          payload: this.input.entry1
+          payload: this.modalInput
         });
         break;
       }
@@ -46,7 +46,7 @@ class SettingsScreen extends React.Component {
           type: "UPDATE_CHILD",
           payload: {
             id: this.props.child.childID,
-            update: { age: this.input.entry1 }
+            update: { age: this.modalInput }
           }
         });
         break;
@@ -55,7 +55,7 @@ class SettingsScreen extends React.Component {
           type: "UPDATE_CHILD",
           payload: {
             id: this.props.child.childID,
-            update: { name: this.input.entry1 }
+            update: { name: this.modalInput }
           }
         });
         break;
@@ -122,8 +122,17 @@ class SettingsScreen extends React.Component {
                   light
                   style={{ width: "50%" }}
                   onPress={() => {
-                    this.findRoutes();
-                    this.setState({ modalVisible: false });
+                    if (this.modalInput != "") {
+                      this.findRoutes();
+                      this.setState({ modalVisible: false });
+                    } else {
+                      Toast.show({
+                        text: "Fields cannot be left blank!",
+                        buttonText: "Okay",
+                        duration: 2000,
+                        position: "bottom"
+                      });
+                    }
                   }}
                 >
                   <Text style={{ color: "#007aff" }}>Ok</Text>

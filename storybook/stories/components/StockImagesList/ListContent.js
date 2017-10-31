@@ -20,19 +20,24 @@ class ListContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isContentVisible: false
+      isContentVisible: false,
+      dataLength: 0
     };
   }
 
   componentDidMount() {
-    console.log(
-      this.props.listItem.dataFolderContent,
-      "logging datafoldercontent"
-    );
+    this.setState({ dataLength: this.props.listItem.dataFolderContent.length });
   }
 
-  componentWillReceiveProps(pros) {
-    console.log(pros, "loging in component will recive props");
+  componentDidUpdate() {
+    if (
+      this.props.listItem.dataFolderContent.length > 0 &&
+      this.state.dataLength == 0
+    ) {
+      this.setState({
+        dataLength: this.props.listItem.dataFolderContent.length
+      });
+    }
   }
 
   render() {
@@ -86,7 +91,7 @@ class ListContent extends React.Component {
                       styles.listItemInnerViewInnerViewBodyInnerViewBadgeStyle
                     }
                   >
-                    {"(" + this.props.listItem.dataFolderContent.length + ")"}
+                    {"(" + this.state.dataLength + ")"}
                   </Text>
                 </View>
               </Body>

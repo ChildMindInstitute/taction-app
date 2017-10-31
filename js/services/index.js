@@ -579,16 +579,22 @@ export default {
                 dataFolderContent.push({
                   uri: img.val().url
                 });
+                if (dataFolderContent.length === snapshot.numChildren()) {
+                  response.push({
+                    name: folder.key,
+                    dataFolderContent: dataFolderContent
+                  });
+                }
+                if (response.length == numFolder) {
+                  console.log(
+                    response[0].dataFolderContent.length,
+                    response[1].dataFolderContent.length,
+                    "logging response"
+                  );
+                  resolve(response);
+                }
               });
             });
-            response.push({
-              name: folder.key,
-              dataFolderContent: dataFolderContent
-            });
-            if (response.length == numFolder) {
-              console.log(response, "logging response");
-              resolve(response);
-            }
           });
         });
       } catch (error) {

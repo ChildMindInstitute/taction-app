@@ -28,22 +28,18 @@ class ListContent extends React.Component {
           <View style={styles.listItemInnerViewStyle}>
             <View style={styles.listItemInnerViewInnerViewStyle}>
               <Left style={styles.listItemInnerViewInnerViewLeftStyle}>
-                <View
-                  style={styles.listItemInnerViewInnerViewLeftInnerView1Style}
-                >
-                  <CheckBox
-                    label=""
-                    checked={this.props.listItem.checked}
-                    onChange={this.props.checkBoxChange}
-                    checkboxStyle={{
-                      borderRadius: 0,
-                      borderWidth: 1,
-                      borderColor: "#ccc"
-                    }}
-                    uncheckedImage={require("../../../../js/assets/empty.png")}
-                    checkedImage={require("../../../../js/assets/chkbx-tick.png")}
-                  />
-                </View>
+                <CheckBox
+                  label=""
+                  checked={this.props.listItem.checked}
+                  onChange={this.props.checkBoxChange}
+                  checkboxStyle={{
+                    borderRadius: 0,
+                    borderWidth: 1,
+                    borderColor: "#ccc"
+                  }}
+                  uncheckedImage={require("../../../../js/assets/empty.png")}
+                  checkedImage={require("../../../../js/assets/chkbx-tick.png")}
+                />
               </Left>
               <Body
                 style={{
@@ -63,7 +59,7 @@ class ListContent extends React.Component {
                       styles.listItemInnerViewInnerViewLeftInnerView2ImageStyle
                     }
                     resizeMethod="auto"
-                    resizeMode="cover"
+                    resizeMode="stretch"
                   />
                 </View>
 

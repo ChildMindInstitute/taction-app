@@ -130,7 +130,7 @@ const AddFolder = props => (
               >
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 15,
                     color: props.activeSegment == 2 ? "#fff" : "#0067a0"
                   }}
                 >

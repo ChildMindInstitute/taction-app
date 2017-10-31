@@ -51,7 +51,9 @@ class ForgotPasswordScreen extends React.Component {
         submitted={this.state.submitted}
         hasSubmitError={this.state.hasSubmitError}
         emailHasError={this.state.emailHasError}
-        onReturnLoginPress={() => this.props.navigation.goBack()}
+        onReturnLoginPress={() => {
+          this.props.navigation.goBack();
+        }}
       />
     );
   }

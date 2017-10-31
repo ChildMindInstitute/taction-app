@@ -14,7 +14,7 @@ const Login = props => (
     contentContainerStyle={styles.mainView}
     keyboardVerticalOffset={-200}
   >
-    <StatusBar barStyle="light-content" backgroundColor="#00466b" />
+    <StatusBar barStyle="light-content" backgroundColor="#00466b" translucent />
     <View style={styles.mainInnerView}>
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyles} />
@@ -48,7 +48,7 @@ const Login = props => (
         <Form style={styles.formStyle}>
           <FormInput
             isPassword={false}
-            label="Username / Email address"
+            label="Email address"
             onChange={props.emailChange}
             viewStyle={props.inputViewStyle}
             error={props.emailHasError}
@@ -73,16 +73,16 @@ const Login = props => (
       </View>
 
       <View style={styles.registerNowSpace}>
-        <Text style={{ color: "#fff", opacity: 0.8, marginLeft: "10%" }}>
+        <Text style={{ color: "#fff", opacity: 0.8, alignSelf: "flex-end" }}>
           Back to the
-          <Button
-            transparent
-            style={styles.loginRedirectButtonStyle}
-            onPress={props.onReturnLoginPress}
-          >
-            <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
-          </Button>
         </Text>
+        <Button
+          transparent
+          style={styles.loginRedirectButtonStyle}
+          onPress={props.onReturnLoginPress}
+        >
+          <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
+        </Button>
       </View>
       <View style={styles.bottomLogoSpace}>
         <Logo1 imageDimensions={styles.subLogoStyles} />

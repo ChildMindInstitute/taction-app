@@ -28,7 +28,10 @@ const styles = StyleSheet.create({
   registerNowSpace: {
     flex: 4,
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
+    alignSelf: "center",
+    marginLeft: "10%",
+    flexDirection: "row"
   },
   mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
   bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
@@ -39,13 +42,14 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     padding: 0,
     alignSelf: "flex-end",
-    height: 10,
+    height: 16,
     width: 80
   },
   loginRedirectButtonTextStyle: {
     color: "#fff",
     fontWeight: "bold",
-    paddingLeft: 6
+    paddingLeft: 6,
+    marginBottom: 5.2
   }
 });
 export default styles;

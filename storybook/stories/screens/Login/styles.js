@@ -2,13 +2,11 @@ import { StyleSheet, Dimensions } from "react-native";
 let { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: "#0067a0",
-    height: height - 30,
-    width: width
+    backgroundColor: "#0067a0"
   },
   mainInnerView: {
     width: width - 30,
-    height: height - 60,
+    height: height - 30,
     margin: 15
   },
   topSpace: {

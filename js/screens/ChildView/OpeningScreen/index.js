@@ -105,9 +105,14 @@ class OpeningScreen extends React.Component {
             paddingTop: "25%",
             paddingBottom: "25%"
           }}
+          extraModalViewStyle={{ backgroundColor: "#0067a0" }}
           content={
             <ModalContent
-              greetingLine1="Welcome back"
+              greetingLine1={
+                this.props.child.totalScore > 0
+                  ? "Welcome back"
+                  : "Welcome to Taction"
+              }
               line2needed={false}
               isDescriptionLine2Required={true}
               stars={calculate(
@@ -117,10 +122,17 @@ class OpeningScreen extends React.Component {
               isCloseButtonRequired={true}
               displayPoints={this.props.child.totalScore}
               description={
-                "You have earned " + this.state.todayScore + " points today!"
+                this.props.child.totalScore > 0
+                  ? "You have earned " +
+                    this.state.todayScore +
+                    " points today!"
+                  : "Time to earn some points!"
               }
+              isDescriptionLine2Required={this.props.child.totalScore > 0}
               descriptionLine2={
-                this.state.prizePoints + " more to achieve a prize!"
+                this.state.prize
+                  ? this.state.prizePoints + " more to achieve a prize!"
+                  : ""
               }
               nextPrizeDescription={this.state.prize}
               isButtonNeeded={false}

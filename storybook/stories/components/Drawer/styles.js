@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
     height: 40,
     width: 120
   },
-  footer: { flex: 2, marginTop: "30%" },
+  footer: { flex: 2 },
   listItemStyle: {
     backgroundColor: "#0067a0",
     borderBottomWidth: 0,
     padding: "5%",
-    height: 70
+    height: 60
   }
 });
 

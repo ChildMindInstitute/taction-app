@@ -14,7 +14,9 @@ const styles = StyleSheet.create({
   },
   mainViewButtonText: {
     color: "#ffffff",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    paddingLeft: 0,
+    paddingRight: 0
   }
 });
 export default styles;

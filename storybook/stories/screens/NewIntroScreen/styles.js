@@ -38,13 +38,12 @@ const styles = StyleSheet.create({
   },
   playButtonStyle: {
     margin: "5%",
-    borderRadius: 50,
-    height: 55
+    borderRadius: 50
   },
   logoStyle: { width: 100, height: 100 },
   playButtonTextStyle: {
     color: "#fff",
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "bold"
   },
   howToPlayButtonStyle: {

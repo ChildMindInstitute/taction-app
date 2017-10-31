@@ -33,9 +33,7 @@ class CheckBox extends Component {
             left: 6,
             top: -8
           }}
-          name={
-            Platform.OS === "ios" ? "ios-checkmark-outline" : "md-checkmark"
-          }
+          name="ios-checkmark-outline"
         />
       </TouchableOpacity>
     );

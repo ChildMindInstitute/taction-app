@@ -8,7 +8,7 @@ import { StatusBar } from "react-native";
 import styles from "./styles";
 const SplashScreen = props => (
   <View style={styles.mainOuterView}>
-    <StatusBar barStyle="light-content" backgroundColor="#00466b" />
+    <StatusBar barStyle="light-content" backgroundColor="#00466b" translucent />
     <View style={styles.mainView}>
       <View style={styles.logoSpace} />
       <Logo imageDimensions={styles.logoStyles} />

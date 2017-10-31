@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import {
   View,
   ImageBackground,
-  Image,
   Text,
   Animated,
   Dimensions,
+  Platform,
   PanResponder
 } from "react-native";
-import { Left, Right, Body, Button, Icon } from "native-base";
+import { Body } from "native-base";
 import styles from "./styles";
 
 const SWIPE_THRESHOLD = 0.25;
@@ -131,7 +131,11 @@ class SwipeableParallaxCarousel extends Component {
           {...this.panResponder.panHandlers}
           style={[
             styles.itemContainer,
-            { height, width: this.state.screenWidth },
+
+            {
+              height,
+              width: this.state.screenWidth
+            },
             this._getItemStyle(index)
           ]}
         >
@@ -140,7 +144,7 @@ class SwipeableParallaxCarousel extends Component {
               source={item.imagePath}
               style={styles.itemImage}
               resizeMethod="auto"
-              resizeMode="cover"
+              resizeMode="stretch"
             />
           </View>
           <View
@@ -156,8 +160,8 @@ class SwipeableParallaxCarousel extends Component {
             style={{
               position: "absolute",
               backgroundColor: "#fff",
-              width: 220,
-              height: 80,
+              width: "55%",
+              height: "11.7%",
               borderColor: "#0067a0",
               borderWidth: 2,
               top: "26%",
@@ -171,21 +175,21 @@ class SwipeableParallaxCarousel extends Component {
             <Text
               style={{ alignSelf: "center", marginLeft: 10, marginRight: 10 }}
             >
-              {item.tooTipText}
+              {item.toolTipText}
             </Text>
           </View>
           <View
             style={{
               position: "absolute",
               backgroundColor: "#fff",
-              width: 20,
-              height: 20,
+              width: "6.2%",
+              height: "3.5%",
               borderBottomColor: "#0067a0",
               borderBottomWidth: 2,
               borderRightColor: "#0067a0",
               borderRightWidth: 2,
               transform: [{ rotate: "45deg" }],
-              top: "36.2%",
+              top: "35.9%",
               left: "70%"
             }}
           />
@@ -238,7 +242,10 @@ class SwipeableParallaxCarousel extends Component {
     return (
       <View onLayout={this._onLayout.bind(this)}>
         <View
-          style={{ height: this.props.height, width: this.state.screenWidth }}
+          style={{
+            height: this.props.height,
+            width: this.state.screenWidth
+          }}
         >
           {this._renderItems()}
           {this._renderNavigation()}

@@ -77,7 +77,7 @@ class ModalContent extends React.Component {
           </View>
           <View
             style={{
-              flex: 1,
+              flex: 2,
               alignItems: "center",
               justifyContent: "center"
             }}

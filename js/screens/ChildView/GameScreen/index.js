@@ -69,7 +69,7 @@ class GameScreen extends React.Component {
 
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;
-    time = this.props.settings.maxImageDuration * 1000;
+    time = (this.props.settings.maxImageDuration + 1.5) * 1000;
   }
 
   componentDidMount() {

@@ -1,19 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FlatList } from "react-native";
+import { List, Button, Icon } from "native-base";
 import ListContent from "./ListContent";
+import { ListView } from "react-native";
 const AddPrizes = props => {
+  const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   return (
-    <FlatList
+    <List
       style={{ flex: 1 }}
-      data={props.data}
-      renderItem={({ item }) => (
-        <ListContent
-          item={item}
-          editPress={() => props.editPress(item)}
-          deletePress={() => props.deletePress(item)}
-        />
+      closeOnRowBeginSwipe
+      dataSource={ds.cloneWithRows(props.data)}
+      renderRow={data => <ListContent item={data} />}
+      renderLeftHiddenRow={data => (
+        <Button full success onPress={() => props.editPress(data)}>
+          <Icon active name="nutrition" />
+        </Button>
       )}
+      renderRightHiddenRow={data => (
+        <Button full danger onPress={() => props.deletePress(data)}>
+          <Icon active name="trash" />
+        </Button>
+      )}
+      leftOpenValue={75}
+      rightOpenValue={-75}
     />
   );
 };

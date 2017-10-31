@@ -8,6 +8,7 @@ const updateFolderScore = function* updateFolderScore(action) {
   child.childDetails.totalScore -= folder.folderDetails.score;
   child.childDetails.correctTaps -= folder.folderDetails.correctTaps;
   child.childDetails.wrongTaps -= folder.folderDetails.wrongTaps;
+  child.childDetails.todayScore -= folder.folderDetails.score;
   folder.folderDetails.correctTaps = 0;
   folder.folderDetails.wrongTaps = 0;
   folder.folderDetails.score = 0;
@@ -16,7 +17,7 @@ const updateFolderScore = function* updateFolderScore(action) {
     folder.folderDetails.correctTaps += list[i].imageDetails.correctTaps;
     folder.folderDetails.wrongTaps += list[i].imageDetails.wrongTaps;
     folder.folderDetails.score += list[i].imageDetails.score;
-    child.childDetails.todayScore += list[i].imageDetails.score;
+
     yield call(Db.updateImage, list[i].imageID, {
       correctTaps: list[i].imageDetails.correctTaps,
       wrongTaps: list[i].imageDetails.wrongTaps,
@@ -24,7 +25,7 @@ const updateFolderScore = function* updateFolderScore(action) {
       status: true
     });
   }
-
+  child.childDetails.todayScore += folder.folderDetails.score;
   child.childDetails.totalScore += folder.folderDetails.score;
   child.childDetails.correctTaps += folder.folderDetails.correctTaps;
   child.childDetails.wrongTaps += folder.folderDetails.wrongTaps;

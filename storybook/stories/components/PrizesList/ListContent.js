@@ -1,8 +1,6 @@
 import React from "react";
-import { Icon, Button } from "native-base";
+import { ListItem } from "native-base";
 import { View, Image, Text } from "react-native";
-import Swipeable from "react-native-swipeable";
-
 class ListContent extends React.Component {
   static navigationOptions = {
     title: "ListContent",
@@ -15,25 +13,24 @@ class ListContent extends React.Component {
     };
   }
   render() {
-    const rightButtons = [
-      <Button
-        style={{ height: "100%", width: 75, justifyContent: "center" }}
-        success
-        onPress={this.props.editPress}
-      >
-        <Icon name="ios-brush" />
-      </Button>,
-      <Button
-        style={{ height: "100%", width: 75, justifyContent: "center" }}
-        danger
-        onPress={this.props.deletePress}
-      >
-        <Icon name="trash" />
-      </Button>
-    ];
+    // const rightButtons = [
+    //   <Button
+    //     style={{ height: "100%", width: 75, justifyContent: "center" }}
+    //     success
+    //     onPress={this.props.editPress}
+    //   >
+    //     <Icon name="ios-brush" />
+    //   </Button>,
+    //   <Button
+    //     style={{ height: "100%", width: 75, justifyContent: "center" }}
+    //     danger
+    //     onPress={this.props.deletePress}
+    //   >
+    //     <Icon name="trash" />
+    //   </Button>
+    // ];
     return (
-      <Swipeable
-        rightButtons={rightButtons}
+      <ListItem
         style={{
           backgroundColor: "white",
           borderBottomWidth: 1,
@@ -71,7 +68,7 @@ class ListContent extends React.Component {
             <Text>{this.props.item.description}</Text>
           </View>
         </View>
-      </Swipeable>
+      </ListItem>
     );
   }
 }

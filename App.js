@@ -3,8 +3,12 @@ import { Provider } from "react-redux";
 import { Root } from "native-base";
 import NavigationDetails from "./js/Navigator";
 import store from "./js/store";
+import Orientation from "react-native-orientation";
 console.ignoredYellowBox = ["Setting a timer", "Warning: Can only update"];
 class App extends React.Component {
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
   render() {
     return (
       <Root>

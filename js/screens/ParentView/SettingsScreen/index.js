@@ -129,6 +129,7 @@ class SettingsScreen extends React.Component {
                       ? "numeric"
                       : "default"
                   }
+                  maxLength={this.state.modalTitle == "Age of child" ? 2 : 15}
                   onChange={event => {
                     this.modalInput = event.nativeEvent.text;
                   }}

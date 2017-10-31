@@ -40,7 +40,6 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "base64-arraybuffer": "^0.1.5",
     "firebase": "^3.9.0",
     "native-base": "^2.3.2",
     "react": "^16.0.0-beta.5",
@@ -49,8 +48,7 @@
     "react-native-fetch-blob": "^0.10.8",
     "react-native-grid-component": "^1.0.7",
     "react-native-image-crop-picker": "^0.18.0",
-    "react-native-modal": "^4.0.0",
-    "react-native-swipeable": "^0.6.0",
+    "react-native-orientation": "^3.1.0",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",

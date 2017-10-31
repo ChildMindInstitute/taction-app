@@ -31,6 +31,7 @@ const AddChild = props => (
               label="Age of child"
               onChange={event => props.childAgeChange(event)}
               onlyNumberEntry={true}
+              isAge
               viewStyle={styles.inputViewStyle}
             />
           </View>

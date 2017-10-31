@@ -26,6 +26,7 @@ const FormInput = props => (
           onChange={props.onChange}
           secureTextEntry={props.isPassword}
           keyboardType={props.onlyNumberEntry ? "numeric" : "email-address"}
+          maxLength={props.isAge ? 2 : 15}
           placeholder={props.placeholder}
           onFocus={props.onFocus}
         />
@@ -44,6 +45,7 @@ const FormInput = props => (
 );
 
 FormInput.propTypes = {
+  isAge: PropTypes.bool,
   disabled: PropTypes.bool,
   value: PropTypes.string,
   error: PropTypes.bool,
@@ -60,6 +62,7 @@ FormInput.propTypes = {
   isPassword: PropTypes.bool
 };
 FormInput.defaultProps = {
+  isAge: false,
   disabled: false,
   onPress: () => {},
   onChange: () => {}

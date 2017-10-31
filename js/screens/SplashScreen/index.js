@@ -89,6 +89,12 @@ class Splash extends React.Component {
           duration: 2000
         });
         this.props.dispatch({ type: "USER_SIGN_OUT" });
+        this.props.navigation.dispatch(
+          NavigationActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: "Login" })]
+          })
+        );
       }
     }
   }

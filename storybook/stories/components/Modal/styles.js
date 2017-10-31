@@ -7,10 +7,6 @@ const styles = StyleSheet.create({
     width: width,
     alignItems: "center"
   },
-  view1: {
-    backgroundColor: "#0067a0",
-    flex: 1
-  },
   view2: {
     flexDirection: "row",
     flex: 1
@@ -43,7 +39,7 @@ const styles = StyleSheet.create({
   },
   contentMainViewLevelDescriptionStyle: {
     color: "white",
-    fontSize: 20,
+    fontSize: 18,
     alignSelf: "center"
   },
   contentMainViewNextPrizeDescriptionStyle: { color: "#f2cd32", fontSize: 26 },

@@ -118,13 +118,18 @@ class PrizesScreen extends React.Component {
           isVisible={this.state.modalVisible}
           extraModalViewStyle={{
             backgroundColor: "rgba(255,255,255,0.9)",
-            flex: 0.35,
             width: width - 50,
-            top: "16%"
+            top: "20%",
+            height: 230
           }}
           content={
             <View style={{ flex: 1 }}>
-              <Header style={{ backgroundColor: "#fff" }}>
+              <Header
+                style={{ backgroundColor: "#fff" }}
+                androidStatusBarColor="rgba(0, 70, 107, 1)"
+                translucent
+                iosBarStyle="light-content"
+              >
                 <Body>
                   <Title style={{ color: "#007aff" }}>Add Prizes</Title>
                 </Body>

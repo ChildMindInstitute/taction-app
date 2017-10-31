@@ -120,7 +120,14 @@ class ImagesFolderScreen extends React.Component {
                   for (let i = 0; i < dashboardList.length; i++) {
                     if (dashboardList[i].checked) {
                       itemsToBeDeleted.push(dashboardList[i].imageList);
+                    }
+                  }
+                  for (let i = 0; i < dashboardList.length; ) {
+                    if (dashboardList[i].checked) {
                       dashboardList.splice(i, 1);
+                      i = 0;
+                    } else {
+                      i++;
                     }
                   }
                   this.setState({ imageList: dashboardList });

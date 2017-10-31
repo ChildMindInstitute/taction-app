@@ -52,10 +52,13 @@ const Dashboard = props => (
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "#eee"
+                backgroundColor: "#eee",
+                padding: 16
               }}
             >
-              <Text>OOPs! Seems like somebody has been lazy today!</Text>
+              <Text style={{ alignSelf: "center", fontSize: 14 }}>
+                Seems like somebody has been lazy today!
+              </Text>
             </View>
           )
         ) : (
@@ -78,10 +81,13 @@ const Dashboard = props => (
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "#eee"
+              backgroundColor: "#eee",
+              padding: 16
             }}
           >
-            <Text>Whoops! No play in this month!</Text>
+            <Text style={{ alignSelf: "center", fontSize: 14 }}>
+              No play this month!
+            </Text>
           </View>
         )}
       </Tab>

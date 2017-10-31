@@ -5,12 +5,13 @@ import { Platform } from "react-native";
 const datacarousel = [
   {
     id: 339964,
-    tooTipText: "Touch the correct picture as fast as you can to earn a point!",
+    toolTipText:
+      "Touch the correct picture as fast as you can to earn a point!",
     imagePath: require("../../../assets/how-to-play-screen-1.png")
   },
   {
     id: 315635,
-    tooTipText: "Collect points as you play!",
+    toolTipText: "Collect points as you play!",
     imagePath: require("../../../assets/how-to-play-screen-2.png")
   }
 ];
@@ -50,7 +51,7 @@ class HowToPlayScreen extends React.Component {
               borderWidth: 1,
               borderColor: "#ccc",
               position: "absolute",
-              top: Platform.os == "ios" ? "6%" : "4%",
+              top: Platform.OS == "ios" ? "6.5%" : "4%",
               left: 5
             }}
             onPress={() => this.props.navigation.goBack()}

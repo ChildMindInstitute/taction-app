@@ -7,7 +7,7 @@ import { StatusBar } from "react-native";
 import styles from "./styles";
 const AlmostThere = props => (
   <View style={styles.mainOuterView}>
-    <StatusBar barStyle="light-content" backgroundColor="#00466b" />
+    <StatusBar barStyle="light-content" backgroundColor="#00466b" translucent />
     <View style={styles.mainView}>
       <View style={styles.topSpace}>
         <Logo imageDimensions={styles.mainLogoStyle} />
@@ -18,20 +18,32 @@ const AlmostThere = props => (
       <View style={styles.confirmTextSpace}>
         <Text style={styles.confirmTextStyle}>We have sent you an email.</Text>
         <Text style={styles.confirmTextStyle}>{"Please check your email"}</Text>
-        <Text style={[styles.confirmTextStyle, { color: "#eeae30" }]}>
+        <Text
+          style={[
+            styles.confirmTextStyle,
+            { color: "#eeae30", fontSize: 18, alignSelf: "center" }
+          ]}
+        >
           {" (" + props.email + ")"}
         </Text>
         <Text style={styles.confirmTextStyle}>
           to confirm your registration.
         </Text>
       </View>
-      <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "center",
+          margin: 16
+        }}
+      >
         <Button
           iconRight
           style={{
             backgroundColor: "#eeae30",
             margin: 10,
-            width: 150,
+            width: 130,
             justifyContent: "center"
           }}
           onPress={props.onGetInPress}
@@ -52,7 +64,7 @@ const AlmostThere = props => (
           style={{
             backgroundColor: "#fff",
             margin: 10,
-            width: 150,
+            width: 130,
             justifyContent: "center"
           }}
           onPress={props.onResendLinkPress}

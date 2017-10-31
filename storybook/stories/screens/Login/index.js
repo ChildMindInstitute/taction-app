@@ -21,7 +21,11 @@ import { StatusBar } from "react-native";
 const Login = props => (
   <Container style={styles.mainView}>
     <Content>
-      <StatusBar barStyle="light-content" backgroundColor="#00466b" />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#00466b"
+        translucent
+      />
       <View style={styles.mainInnerView}>
         <View style={styles.topSpace}>
           <Logo imageDimensions={styles.mainLogoStyles} />

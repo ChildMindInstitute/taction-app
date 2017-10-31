@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   homeTimerStyle: {
     position: "absolute",
     left: "42%",
-    top: "13%"
+    top: "11%"
   },
   excerciseSpace: { flex: 2, marginTop: "-25%" },
   excerciseText: {

@@ -1,7 +1,7 @@
 import React from "react";
 import Settings from "../../../../storybook/stories/screens/Settings";
 import { connect } from "react-redux";
-import { Alert, Dimensions } from "react-native";
+import { Alert, Dimensions, Platform } from "react-native";
 import {
   View,
   ActionSheet,
@@ -84,9 +84,9 @@ class SettingsScreen extends React.Component {
           isVisible={this.state.modalVisible}
           extraModalViewStyle={{
             backgroundColor: "rgba(255,255,255,0.9)",
-            flex: 0.2,
             width: width - 50,
-            top: "30%"
+            top: "25%",
+            height: 150
           }}
           content={
             <View style={{ flex: 1 }}>

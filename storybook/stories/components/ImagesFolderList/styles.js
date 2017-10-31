@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     margin: "2%"
   },
   listItemInnerViewInnerViewLeftStyle: {
-    flex: 1,
+    flex: 1.3,
     alignContent: "center",
     justifyContent: "center"
   },
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   listItemInnerViewGridOuterViewStyle: {
     flex: 1,
-    marginLeft: 16
+    marginLeft: 12
   },
   listItemInnerViewGridViewStyle: {
     flex: 1

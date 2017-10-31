@@ -302,15 +302,20 @@ class GameScreen extends React.Component {
             paddingTop: "20%",
             paddingBottom: "30%"
           }}
+          extraModalViewStyle={{ backgroundColor: "#0067a0" }}
           content={
             <ModalContent
               greetingLine1={this.props.folder.folderDetails.exerciseName}
               line2needed={true}
               greetingLine2="Level Completed"
-              stars={calculate(
-                this.props.child.correctTaps,
-                this.props.child.wrongTaps
-              )}
+              stars={
+                this.props.gameOver
+                  ? calculate(
+                      this.props.child.correctTaps,
+                      this.props.child.wrongTaps
+                    )
+                  : require("../../../assets/zero-star.png")
+              }
               playLaterRequired={true}
               displayPoints={this.props.child.childDetails.totalScore}
               description="Well played"

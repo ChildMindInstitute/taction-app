@@ -40,7 +40,13 @@ const CustomButton = props => (
       false
     )}
     {props.iconRight && !props.submitted ? (
-      <Icon name={props.iconName} style={{ color: props.iconColor }} />
+      <Icon
+        name={props.iconName}
+        style={{
+          color: props.iconColor,
+          fontSize: props.iconSize ? props.iconSize : 20
+        }}
+      />
     ) : (
       false
     )}

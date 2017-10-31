@@ -139,11 +139,15 @@ class ModalContent extends React.Component {
                     styles.contentMainViewInnerViewButton1Style,
                     { display: this.state.displayNextLevel }
                   ]}
+                  iconRight
                   disabled={this.props.playNextDisabled}
                 >
                   <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
                     {"Play Level " + this.props.nextLevelName}
-                    <Icon name="ios-arrow-round-forward" />
+                    <Icon
+                      name="md-arrow-round-forward"
+                      style={{ color: "#fff" }}
+                    />
                   </Text>
                 </Button>
               </View>
@@ -151,10 +155,10 @@ class ModalContent extends React.Component {
                 <Button2
                   onPress={this.props.playAgain}
                   buttonText="Play Again"
-                  iconName="ios-arrow-round-forward"
+                  iconName="md-arrow-round-forward"
                   iconRight={true}
                   iconLeft={false}
-                  iconColor="white"
+                  iconColor="#eeae30"
                   submitButtonStyle={
                     styles.contentMainViewInnerViewButton2Style
                   }
@@ -175,10 +179,15 @@ class ModalContent extends React.Component {
                 onPress={this.props.toggleVisiblity}
                 style={{ marginLeft: 25 }}
               >
-                <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
+                <Text
+                  style={[
+                    styles.contentMainViewInnerViewButton1TextStyle,
+                    { paddingLeft: 0, paddingRight: 0 }
+                  ]}
+                >
                   {this.props.playLaterText}
                 </Text>
-                <Icon name="ios-arrow-round-forward" />
+                <Icon name="md-arrow-round-forward" style={{ color: "#fff" }} />
               </Button>
             </View>
           ) : (

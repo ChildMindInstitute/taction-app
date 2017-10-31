@@ -12,10 +12,11 @@ import {
   Switch
 } from "native-base";
 const margin = { marginLeft: 16 };
+const dividerFontSize = { fontSize: 15 };
 const SettingsList = props => (
   <List style={props.listStyle}>
     <Separator bordered>
-      <Text style={margin}>PROFILE</Text>
+      <Text style={[margin, dividerFontSize]}>PROFILE</Text>
     </Separator>
     <ListItem icon button onPress={props.namePress}>
       <Body>
@@ -60,7 +61,7 @@ const SettingsList = props => (
     </ListItem>
 
     <Separator bordered>
-      <Text style={margin}>GAME</Text>
+      <Text style={[margin, dividerFontSize]}>GAME</Text>
     </Separator>
     <ListItem icon button onPress={props.pressNoOfImagesPerSession}>
       <Body>
@@ -95,7 +96,7 @@ const SettingsList = props => (
       </Right>
     </ListItem>
     <Separator bordered>
-      <Text style={margin}>GENERAL</Text>
+      <Text style={[margin, dividerFontSize]}>GENERAL</Text>
     </Separator>
     <ListItem icon>
       <Body>

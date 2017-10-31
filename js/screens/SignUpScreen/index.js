@@ -117,7 +117,8 @@ class LoginScreen extends React.Component {
           (this.input.confirmPassword == "" ||
             this.input.email == "" ||
             this.input.password == "" ||
-            this.input.username == "")
+            this.input.username == "") ||
+          this.state.submitted
         }
         confirmPasswordChange={event => {
           this.input.confirmPassword = event.nativeEvent.text;

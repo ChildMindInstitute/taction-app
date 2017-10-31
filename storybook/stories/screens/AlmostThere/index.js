@@ -39,10 +39,12 @@ const AlmostThere = props => (
           {props.getInPressed ? (
             <Spinner color="#fff" />
           ) : (
-            <View>
-              <Text style={{ color: "#fff" }}>Get in</Text>
-              <Icon name="ios-arrow-round-forward" />
-            </View>
+            <Text style={{ color: "#fff" }}>Get in</Text>
+          )}
+          {props.getInPressed ? (
+            false
+          ) : (
+            <Icon name="ios-arrow-round-forward" style={{ color: "white" }} />
           )}
         </Button>
         <Button

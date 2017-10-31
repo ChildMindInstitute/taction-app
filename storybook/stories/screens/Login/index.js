@@ -84,6 +84,7 @@ const Login = props => (
             submitButtonStyle={styles.submitButtonStyle}
             submitButtonTextStyle={styles.submitButtonTextStyle}
             buttonText="Submit"
+            disabled={props.submitted}
             submitted={props.submitted}
             iconName="ios-arrow-round-forward"
             iconRight={true}
@@ -91,7 +92,6 @@ const Login = props => (
             iconColor="white"
           />
         </View>
-
         <View style={styles.registerNowSpace}>
           <RegisterWithUs onPressRegisterNow={props.onPressRegisterNow} />
         </View>

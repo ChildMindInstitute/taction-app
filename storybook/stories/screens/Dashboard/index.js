@@ -41,21 +41,25 @@ const Dashboard = props => (
         tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
-        {props.excerciseDataToday.length > 0 ? (
-          <DashBoardContent excerciseData={props.excerciseDataToday}>
-            <Text>Today's Activities</Text>
-          </DashBoardContent>
+        {props.loaded ? (
+          props.excerciseDataToday.length > 0 ? (
+            <DashBoardContent excerciseData={props.excerciseDataToday}>
+              <Text>Today's Activities</Text>
+            </DashBoardContent>
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#eee"
+              }}
+            >
+              <Text>OOPs! Seems like somebody has been lazy today!</Text>
+            </View>
+          )
         ) : (
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "#eee"
-            }}
-          >
-            <Text>OOPs! Seems like somebody has been lazy today!</Text>
-          </View>
+          false
         )}
       </Tab>
       <Tab

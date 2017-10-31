@@ -1,12 +1,14 @@
 import { StyleSheet, Dimensions } from "react-native";
-let { width, height } = Dimensions.get("screen");
+let { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: "#0067a0"
+    backgroundColor: "#0067a0",
+    height: height - 30,
+    width: width
   },
   mainInnerView: {
     width: width - 30,
-    height: height - 30,
+    height: height - 60,
     margin: 15
   },
   topSpace: {
@@ -29,15 +31,13 @@ const styles = StyleSheet.create({
   forgotPasswordSpace: { flex: 1, marginBottom: "5%", marginTop: "4%" },
   submitButtonSpace: { flex: 1 },
   registerNowSpace: {
-    flex: 4,
+    flex: 2,
+    marginTop: 30,
     justifyContent: "center",
     alignItems: "center"
   },
   bottomLogoSpace: { flex: 3, justifyContent: "flex-end" },
   subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
-  submitButtonStyle: {
-    backgroundColor: "#eeae30"
-  },
   submitButtonTextStyle: { color: "white" }
 });
 export default styles;

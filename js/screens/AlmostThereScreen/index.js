@@ -20,16 +20,18 @@ class AlmostThereScreen extends React.Component {
   componentDidUpdate() {
     console.log("Get in");
     if (this.state.checked && this.props.loaded) {
-      if (this.props.parent.emailVerified) {
+      if (this.props.parent.emailVerified && this.state.getInPressed) {
+        this.setState({ getInPressed: false });
         this.props.navigation.navigate("Welcome");
         this.setState({ checked: false });
-      } else {
+      } else if (!this.props.parent.emailVerified && this.state.getInPressed) {
         Toast.show({
           text: "please verify your email!",
           position: "bottom",
           buttonText: "Okay",
           duration: 1500
         });
+        this.setState({ getInPressed: false });
       }
     }
   }
@@ -44,7 +46,6 @@ class AlmostThereScreen extends React.Component {
         }}
         getInPressed={this.state.getInPressed}
         onResendLinkPress={() => {
-          console.log("Resend Link");
           Db.verifyEmail();
           Toast.show({
             text:

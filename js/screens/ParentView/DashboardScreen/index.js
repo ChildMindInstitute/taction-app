@@ -49,6 +49,7 @@ class DashboardScreen extends React.Component {
           }}
           excerciseDataMonth={this.props.monthList}
           excerciseDataToday={this.props.todayList}
+          loaded={this.props.loaded}
         />
         {this.props.loaded || !this.state.childExists ? (
           <View />

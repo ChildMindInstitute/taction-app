@@ -34,7 +34,7 @@ const AddFolder = props => (
           styles.mainSpace,
           {
             height: props.children ? 600 : 300,
-            marginTop: props.children ? 0 : "40%"
+            marginTop: props.children ? 16 : "40%"
           }
         ]}
       >

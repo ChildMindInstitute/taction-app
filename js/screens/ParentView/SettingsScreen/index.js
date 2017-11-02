@@ -56,6 +56,7 @@ class SettingsScreen extends React.Component {
           type: "UPDATE_PARENT",
           payload: this.modalInput
         });
+        this.modalInput = "";
         break;
       }
       case "Age of child":
@@ -67,6 +68,7 @@ class SettingsScreen extends React.Component {
             update: { age: this.modalInput }
           }
         });
+        this.modalInput = "";
         break;
       case "Name of child":
         this.setState({ childName: this.modalInput });
@@ -77,6 +79,7 @@ class SettingsScreen extends React.Component {
             update: { name: this.modalInput }
           }
         });
+        this.modalInput = "";
         break;
       case "App prizes":
         // Add Prizes callback
@@ -181,7 +184,7 @@ class SettingsScreen extends React.Component {
                 title: "Maximum image duration"
               },
               buttonIndex => {
-                switch (buttonIndex) {
+                switch (parseInt(buttonIndex)) {
                   case 0: {
                     this.setState({ maxImageDuration: 5 });
                     this.props.dispatch({
@@ -255,8 +258,8 @@ class SettingsScreen extends React.Component {
                 title: "Images per session"
               },
               buttonIndex => {
-                switch (buttonIndex) {
-                  case 0:
+                switch (parseInt(buttonIndex)) {
+                  case 0: {
                     this.setState({ imagesPerSession: 5 });
                     this.props.dispatch({
                       type: "UPDATE_SETTINGS",
@@ -267,6 +270,7 @@ class SettingsScreen extends React.Component {
                       }
                     });
                     break;
+                  }
                   case 1:
                     this.setState({ imagesPerSession: 10 });
                     this.props.dispatch({

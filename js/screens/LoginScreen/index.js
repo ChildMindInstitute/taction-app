@@ -22,10 +22,8 @@ class LoginScreen extends React.Component {
       hasSubmitError: false,
       submitted: false
     };
-    this.Error = {
-      username: "Required",
-      password: "Required",
-      submitError: "Please enter a valid userName and password"
+    this.error = {
+      submitError: "Please enter a valid username and password!"
     };
   }
 
@@ -38,8 +36,8 @@ class LoginScreen extends React.Component {
           password: this.input.password
         }
       });
-    } else if (this.input.userName == "" && this.input.password == "") {
-      this.setState({ submitted: false });
+    } else {
+      this.setState({ submitted: false, hasSubmitError: true });
     }
   }
 
@@ -114,7 +112,7 @@ class LoginScreen extends React.Component {
           this.setState({ submitted: true, hasSubmitError: false });
           this.loginUser();
         }).bind(this)}
-        error={this.Error}
+        error={this.error}
         onPressRegisterNow={() => {
           this.props.navigation.navigate("Consent");
         }}

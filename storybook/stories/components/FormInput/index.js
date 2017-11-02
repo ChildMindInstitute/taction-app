@@ -19,19 +19,19 @@ const FormInput = props => (
         <Input
           value={props.value}
           style={{
-            borderColor: props.error ? "red" : "white",
+            borderColor: props.error && props.isSignUpPorCP ? "red" : "white",
             borderWidth: 1.5
           }}
           autoCapitalize="none"
           disabled={props.disabled}
           onChange={props.onChange}
           secureTextEntry={props.isPassword}
-          keyboardType={props.onlyNumberEntry ? "numeric" : "email-address"}
+          keyboardType={props.onlyNumberEntry ? "numeric" : "default"}
           maxLength={props.isAge ? 2 : 50}
           placeholder={props.placeholder}
           onFocus={props.onFocus}
         />
-        {props.error ? (
+        {props.error && props.isSignUpPorCP ? (
           <Icon
             name="information-circle"
             style={styles.errorContentStyle}

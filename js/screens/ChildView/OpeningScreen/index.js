@@ -35,7 +35,6 @@ class OpeningScreen extends React.Component {
       type: "SET_PRIZE_LIST",
       payload: this.props.childID
     });
-    this.setState({ submitted: false });
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({
@@ -98,6 +97,9 @@ class OpeningScreen extends React.Component {
           playOnPress={() => {
             this.setState({ submitted: true });
             this.props.navigation.navigate("GameScreen");
+            setTimeout(() => {
+              this.setState({ submitted: false });
+            }, 2000);
           }}
           isPlayDisabled={this.state.isPlayDisabled || this.state.submitted}
           howToPlayOnPress={() => {

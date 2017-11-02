@@ -26,7 +26,7 @@ const FormInput = props => (
           disabled={props.disabled}
           onChange={props.onChange}
           secureTextEntry={props.isPassword}
-          keyboardType={props.onlyNumberEntry ? "numeric" : "email-address"}
+          keyboardType={props.onlyNumberEntry ? "numeric" : "default"}
           maxLength={props.isAge ? 2 : 50}
           placeholder={props.placeholder}
           onFocus={props.onFocus}

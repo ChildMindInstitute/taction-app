@@ -29,6 +29,10 @@ const datas = [
     route: "About"
   },
   {
+    name: "Switch user",
+    route: "SwitchUser"
+  },
+  {
     name: "Logout",
     route: "Logout"
   }

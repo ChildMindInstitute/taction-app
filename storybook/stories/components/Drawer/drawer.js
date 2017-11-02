@@ -10,6 +10,7 @@ import AddFolderScreen from "../../../../js/screens/ParentView/AddFolderScreen";
 import LogoutTemp from "../../../../js/screens/ParentView/LogoutTemp";
 import StockImages from "../../../../js/screens/ParentView/StockImagesScreen";
 import PrizesScreen from "../../../../js/screens/ParentView/PrizesScreen";
+import SwitchUserTemp from "../../../../js/screens/ParentView/SwitchUserTemp";
 const DrawerParent = DrawerNavigator(
   {
     StockImages: { screen: StockImages },
@@ -34,6 +35,9 @@ const DrawerParent = DrawerNavigator(
     Images: { screen: ImagesFolderScreen },
     About: { screen: AboutScreen },
     AddFolder: { screen: AddFolderScreen },
+    SwitchUser: {
+      screen: navProps => <SwitchUserTemp parentNavProps={navProps} />
+    },
     Logout: { screen: navProps => <LogoutTemp parentNavProps={navProps} /> }
   },
   {

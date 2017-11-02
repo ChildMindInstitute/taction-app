@@ -37,10 +37,10 @@ class ForgotPasswordScreen extends React.Component {
             payload: this.input.email
           });
           Toast.show({
-            text: "A password reset mail has been sent!",
+            text: "",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 1500
+            buttonText: "A password reset mail has been sent!",
+            duration: 5000
           });
           this.props.navigation.goBack();
         }}

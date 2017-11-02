@@ -34,10 +34,10 @@ class Splash extends React.Component {
         }
       } catch (err) {
         Toast.show({
-          text: "Error signing in!",
+          text: "Error",
           position: "bottom",
-          buttonText: "Okay",
-          duration: 1500
+          buttonText: "Cannot sign in!",
+          duration: 5000
         });
         this.props.navigation.dispatch(
           NavigationActions.reset({
@@ -59,10 +59,10 @@ class Splash extends React.Component {
         isConnected
           ? {}
           : Toast.show({
-              text: "No Internet Connection!",
+              text: "Error:",
               position: "bottom",
-              buttonText: "Okay",
-              duration: 1500
+              buttonText: "No Internet Connection!",
+              duration: 5000
             });
       }
     }
@@ -83,10 +83,10 @@ class Splash extends React.Component {
         );
       } else {
         Toast.show({
-          text: "Please verify your email to proceed",
+          text: "Error:",
           position: "bottom",
-          buttonText: "Okay",
-          duration: 2000
+          buttonText: "Please verify your email to proceed",
+          duration: 5000
         });
         this.props.dispatch({ type: "USER_SIGN_OUT" });
         this.props.navigation.dispatch(

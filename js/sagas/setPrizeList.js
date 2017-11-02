@@ -1,6 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import Db from "../../js/services";
-import { Toast } from "native-base";
 
 const setPrizeList = function* setPrizeList(action) {
   try {

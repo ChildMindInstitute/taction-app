@@ -73,10 +73,10 @@ class AddFolderScreen extends React.Component {
       }
     } else {
       Toast.show({
-        text: "Folder name already exists!",
-        buttonText: "Okay",
+        text: "Error:",
+        buttonText: "Folder name already exists!",
         position: "bottom",
-        duration: 2000
+        duration: 5000
       });
       this.setState({ submitted: false });
     }
@@ -166,10 +166,10 @@ class AddFolderScreen extends React.Component {
           } else {
             this.setState({ submitted: false });
             Toast.show({
-              text: "Please add a child before adding a folder",
+              text: "",
               position: "bottom",
-              buttonText: "Okay",
-              duration: 1500
+              buttonText: "Please add a child before adding a folder",
+              duration: 5000
             });
           }
         }}

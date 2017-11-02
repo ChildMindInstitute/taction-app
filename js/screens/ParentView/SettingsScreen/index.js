@@ -151,9 +151,9 @@ class SettingsScreen extends React.Component {
                       this.setState({ modalVisible: false });
                     } else {
                       Toast.show({
-                        text: "Fields cannot be left blank!",
-                        buttonText: "Okay",
-                        duration: 2000,
+                        text: "Error:",
+                        buttonText: "Fields cannot be left blank!",
+                        duration: 5000,
                         position: "bottom"
                       });
                     }
@@ -341,10 +341,11 @@ class SettingsScreen extends React.Component {
                       payload: this.props.parent.email
                     });
                     Toast.show({
-                      text: "A password reset mail has been sent!",
+                      text: "",
                       position: "bottom",
-                      buttonText: "Okay",
-                      duration: 1500
+                      buttonText:
+                        "A password reset mail has been sent to your email address",
+                      duration: 5000
                     });
                   }
                 },

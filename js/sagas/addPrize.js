@@ -13,10 +13,10 @@ const addPrize = function* addPrize(action) {
     yield put({ type: "SET_PRIZE_LIST", payload: action.payload.childID });
   } catch (err) {
     Toast.show({
-      text: "Error adding prize",
+      text: "Error:",
       position: "bottom",
-      buttonText: "Okay",
-      duration: 1500
+      buttonText: "Cannot add prize",
+      duration: 5000
     });
   }
 };

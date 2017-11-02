@@ -65,10 +65,10 @@ class PrizesScreen extends React.Component {
           });
         } else {
           Toast.show({
-            text: "Prize for these points already exists",
+            text: "Error",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 2000
+            buttonText: "Prize for these points already exists",
+            duration: 5000
           });
         }
       } else {
@@ -88,19 +88,19 @@ class PrizesScreen extends React.Component {
           });
         } else {
           Toast.show({
-            text: "Prize for these points already exists",
+            text: "Error",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 2000
+            buttonText: "Prize for these points already exists",
+            duration: 5000
           });
         }
       }
     } else {
       Toast.show({
-        text: "Error! Fields cannot be left blank",
+        text: "Error",
         position: "bottom",
-        buttonText: "Okay",
-        duration: 2000
+        buttonText: " Fields cannot be left blank",
+        duration: 5000
       });
     }
   }
@@ -217,10 +217,10 @@ class PrizesScreen extends React.Component {
               this.setState({ modalVisible: true });
             } else {
               Toast.show({
-                text: "Please add a child first!",
-                buttonText: "Okay",
+                text: "Error:",
+                buttonText: "Please add a child first!",
                 position: "bottom",
-                duration: 1500
+                duration: 5000
               });
             }
           }}

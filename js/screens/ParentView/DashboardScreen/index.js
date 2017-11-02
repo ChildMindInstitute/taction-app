@@ -32,10 +32,10 @@ class DashboardScreen extends React.Component {
     } else if (!this.props.isNewRegistration) {
       this.setState({ childExists: false });
       Toast.show({
-        text: "No child Added!",
+        text: "Error:",
         position: "bottom",
-        buttonText: "Okay",
-        duration: 1500
+        buttonText: "No child added!",
+        duration: 5000
       });
     }
   }

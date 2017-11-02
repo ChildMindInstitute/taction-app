@@ -49,10 +49,10 @@ class LoginScreen extends React.Component {
 
     if (this.props.error && this.state.submitted) {
       Toast.show({
-        text: "The email address is already in use by another account.!",
+        text: "",
         position: "bottom",
-        buttonText: "Ok",
-        duration: 1500
+        buttonText: "The email address is already in use by another account!",
+        duration: 5000
       });
       this.props.dispatch({ type: "NO_ERROR_SIGNUP" });
       this.setState({ submitted: false });

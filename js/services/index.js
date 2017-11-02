@@ -483,7 +483,7 @@ export default {
         const imgListRef = firebase
           .database()
           .ref("exercise/" + exeID + "/images");
-
+        let currentOrder;
         imgListRef.once("value").then(snapshot => {
           let count = 1;
           let numImg = snapshot.numChildren();
@@ -497,11 +497,31 @@ export default {
                   snapshot.forEach(exe => {
                     console.log(exe.key, "logging child exe key");
                     if (exeID == exe.val().exerciseId) {
+                      currentOrder = exe.val().order;
                       firebase
                         .database()
                         .ref("child/" + childID + "/exercises/" + exe.key)
                         .remove()
-                        .then(() => resolve(""));
+                        .then(() => {
+                          let cnt = 0;
+                          childRef.once("value").then(snapshot => {
+                            snapshot.forEach(exe => {
+                              let newOrder = exe.val().order;
+                              if (newOrder > currentOrder) {
+                                firebase
+                                  .database()
+                                  .ref(
+                                    "child/" + childID + "/exercises/" + exe.key
+                                  )
+                                  .update({ order: --newOrder });
+                              }
+                              ++cnt;
+                              if (cnt == snapshot.numChildren()) {
+                                resolve("");
+                              }
+                            });
+                          });
+                        });
                     }
                   });
                 });

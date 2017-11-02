@@ -87,10 +87,10 @@ class ImagesFolderScreen extends React.Component {
             });
           } else {
             Toast.show({
-              text: "No child Added yet!",
+              text: "Error:",
               position: "bottom",
-              buttonText: "Okay",
-              duration: 1500
+              buttonText: "No child added yet!",
+              duration: 5000
             });
           }
         }}

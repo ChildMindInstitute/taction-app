@@ -26,10 +26,10 @@ class AlmostThereScreen extends React.Component {
         this.setState({ checked: false });
       } else if (!this.props.parent.emailVerified && this.state.getInPressed) {
         Toast.show({
-          text: "please verify your email!",
+          text: "Error:",
           position: "bottom",
-          buttonText: "Okay",
-          duration: 1500
+          buttonText: "Please verify your email!",
+          duration: 5000
         });
         this.setState({ getInPressed: false });
       }
@@ -48,11 +48,11 @@ class AlmostThereScreen extends React.Component {
         onResendLinkPress={() => {
           Db.verifyEmail();
           Toast.show({
-            text:
-              "An email verification link has been sent to your registered email",
+            text: "",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 1500
+            buttonText:
+              "An email verification link has been sent to your registered email",
+            duration: 5000
           });
         }}
         onBackPress={() => {

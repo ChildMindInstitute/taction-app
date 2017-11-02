@@ -48,10 +48,10 @@ class LoginScreen extends React.Component {
           this.redirect();
         } else {
           Toast.show({
-            text: "Please verify your email to proceed",
+            text: "Error: ",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 2000
+            buttonText: "Please verify your email to proceed",
+            duration: 5000
           });
           this.props.dispatch({ type: "USER_SIGN_OUT" });
         }

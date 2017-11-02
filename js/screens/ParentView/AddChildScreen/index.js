@@ -29,10 +29,10 @@ class AddChildScreen extends React.Component {
       );
     } else {
       Toast.show({
-        text: "Error! fields cannot be left blank",
-        buttonText: "Okay",
+        text: "Error:",
+        buttonText: " fields cannot be left blank",
         position: "bottom",
-        duration: 2000
+        duration: 5000
       });
     }
   }

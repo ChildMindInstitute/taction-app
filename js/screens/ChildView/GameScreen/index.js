@@ -5,7 +5,8 @@ import ModalContent from "../../../../storybook/stories/components/Modal/ModalCo
 import { connect } from "react-redux";
 import { NavigationActions } from "react-navigation";
 import calculate from "../../../componentsCommon/calcutateStars";
-
+import Sound from "react-native-sound";
+let gameMusic, correctAnswer, wrongAnswer;
 let totalLevels = 10;
 const correctArrayItem = 0;
 let time;
@@ -17,6 +18,36 @@ class GameScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    gameMusic = new Sound("game_music.mp3", Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        console.log("failed to load the sound", error);
+        return;
+      }
+      gameMusic.setVolume(0.25);
+      gameMusic.setNumberOfLoops(-1);
+      gameMusic.play();
+    });
+
+    correctAnswer = new Sound(
+      "correct_answer.mp3",
+      Sound.MAIN_BUNDLE,
+      error => {
+        if (error) {
+          console.log("failed to load the sound", error);
+          return;
+        }
+        correctAnswer.setVolume(1);
+        correctAnswer.setNumberOfLoops(0);
+      }
+    );
+    wrongAnswer = new Sound("worng_answer.mp3", Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        console.log("failed to load the sound wrongAnswer", error);
+        return;
+      }
+      wrongAnswer.setVolume(1);
+      wrongAnswer.setNumberOfLoops(0);
+    });
     this.options = [0, 1, 2, 3];
     this.state = {
       i1: this.randomAssign(),
@@ -66,7 +97,9 @@ class GameScreen extends React.Component {
     }
     return 4;
   }
-
+  componentWillUnmount() {
+    gameMusic.release();
+  }
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;
     time = (this.props.settings.maxImageDuration + 1.5) * 1000;
@@ -280,8 +313,12 @@ class GameScreen extends React.Component {
                 this.state.i3
               );
               if (item == this.state.correctOption) {
+                correctAnswer.stop();
+                correctAnswer.play();
                 this.updateCorrectScore();
               } else {
+                wrongAnswer.stop();
+                wrongAnswer.play();
                 this.updateWrongScore();
               }
               this.setState({ correctOption: x, reset: false });

@@ -22,6 +22,7 @@ const FormInput = props => (
             borderColor: props.error ? "red" : "white",
             borderWidth: 1.5
           }}
+          autoCapitalize="none"
           disabled={props.disabled}
           onChange={props.onChange}
           secureTextEntry={props.isPassword}

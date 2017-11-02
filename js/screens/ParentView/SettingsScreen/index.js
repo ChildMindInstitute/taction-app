@@ -126,7 +126,8 @@ class SettingsScreen extends React.Component {
               <View style={{ flex: 1 }}>
                 <Input
                   style={{ backgroundColor: "#fff" }}
-                  placeholder={this.state.modalPlaceHolder}
+                  defaultValue={this.state.modalPlaceHolder}
+                  autoCapitalize="none"
                   keyboardType={
                     this.state.modalTitle == "Age of child"
                       ? "numeric"

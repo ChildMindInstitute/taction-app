@@ -5,7 +5,6 @@ import ModalContent from "../../../../storybook/stories/components/Modal/ModalCo
 import calculate from "../../../componentsCommon/calcutateStars";
 import { connect } from "react-redux";
 import { View } from "react-native";
-
 class OpeningScreen extends React.Component {
   static navigationOptions = {
     title: "OpeningScreen",

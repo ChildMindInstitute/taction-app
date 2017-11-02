@@ -47,7 +47,7 @@ class AddFolderScreen extends React.Component {
 
   async AddFolder() {
     let tempData = [];
-    for (let i = 0; i < dataNext.length; i++) {
+    for (let i = 0; i < dataNext.length - 1; i++) {
       tempData.push(dataNext[i].image);
     }
     if (this.validateInput()) {

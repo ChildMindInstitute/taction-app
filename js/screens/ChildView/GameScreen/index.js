@@ -375,9 +375,15 @@ class GameScreen extends React.Component {
               playNextDisabled={!this.props.nextFolder.folderDetails}
               isButtonNeeded={true}
               playNext={() => {
+                gameMusic.release();
+                correctAnswer.release();
+                wrongAnswer.release();
                 this.playNext();
               }}
               playAgain={() => {
+                gameMusic.release();
+                correctAnswer.release();
+                wrongAnswer.release();
                 this.playAgain();
               }}
               toggleVisiblity={() => {

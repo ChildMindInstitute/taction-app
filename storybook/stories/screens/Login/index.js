@@ -62,7 +62,6 @@ const Login = props => (
               label="Email"
               onChange={props.usernameChange}
               viewStyle={props.inputViewStyle}
-              error={props.emailHasError}
               labelColor={props.labelColor}
             />
             <FormInput
@@ -70,7 +69,6 @@ const Login = props => (
               label="Password"
               onChange={props.passwordChange}
               viewStyle={props.inputViewStyle}
-              error={props.passwordHasError}
               labelColor={props.labelColor}
             />
           </Form>

@@ -321,6 +321,7 @@ class SettingsScreen extends React.Component {
           }}
           noOfImagesPerSession={this.state.imagesPerSession}
           namePress={() => {
+            this.modalInput = this.props.parent.name;
             this.setState({
               modalTitle: "Name of parent",
               modalPlaceHolder: this.props.parent.name,
@@ -358,6 +359,7 @@ class SettingsScreen extends React.Component {
           }}
           age={this.props.child.childDetails ? this.state.childAge : "0"}
           agePress={() => {
+            this.modalInput = this.state.childAge;
             this.setState({
               modalTitle: "Age of child",
               modalPlaceHolder: this.state.childAge,
@@ -391,6 +393,7 @@ class SettingsScreen extends React.Component {
           childExists={this.props.child.childID ? true : false}
           nameChild={this.props.child.childID ? this.state.childName : ""}
           nameChildPress={() => {
+            this.modalInput = this.state.childName;
             this.setState({
               modalTitle: "Name of child",
               modalPlaceHolder: this.state.childName,

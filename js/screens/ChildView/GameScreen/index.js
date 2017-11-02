@@ -101,6 +101,8 @@ class GameScreen extends React.Component {
   }
   componentWillUnmount() {
     gameMusic.release();
+    correctAnswer.release();
+    wrongAnswer.release();
   }
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;

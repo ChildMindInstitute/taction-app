@@ -19,6 +19,7 @@ class OpeningScreen extends React.Component {
           ? this.props.navigation.state.params.showModal
           : true
         : false,
+      submitted: false,
       isPlayDisabled: true,
       todayScore: 0,
       prize: "",
@@ -34,7 +35,7 @@ class OpeningScreen extends React.Component {
       type: "SET_PRIZE_LIST",
       payload: this.props.childID
     });
-
+    this.setState({ submitted: false });
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({
@@ -95,9 +96,10 @@ class OpeningScreen extends React.Component {
             this.props.child.wrongTaps
           )}
           playOnPress={() => {
+            this.setState({ submitted: true });
             this.props.navigation.navigate("GameScreen");
           }}
-          isPlayDisabled={this.state.isPlayDisabled}
+          isPlayDisabled={this.state.isPlayDisabled || this.state.submitted}
           howToPlayOnPress={() => {
             this.props.navigation.navigate("HowToPlayScreen");
           }}

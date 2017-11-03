@@ -15,7 +15,8 @@ class ForgotPasswordScreen extends React.Component {
     };
     this.state = {
       disabled: true,
-      invalidEmail: false
+      invalidEmail: false,
+      loading: false
     };
     if (this.input.email != "") {
       this.setState({ disabled: false });
@@ -23,14 +24,25 @@ class ForgotPasswordScreen extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.error && !this.state.invalidEmail) {
-      Toast.show({
-        text: "Error:",
-        position: "bottom",
-        buttonText: "This email address does not exists",
-        duration: 5000
-      });
-      this.setState({ invalidEmail: true });
+    if (this.props.loaded && !this.state.loading) {
+      if (this.props.error && !this.state.invalidEmail) {
+        Toast.show({
+          text: "Error:",
+          position: "bottom",
+          buttonText: "This email address does not exists",
+          duration: 5000
+        });
+        this.setState({ invalidEmail: true });
+      } else {
+        Toast.show({
+          text: "",
+          position: "bottom",
+          buttonText: "A password reset mail has been sent!",
+          duration: 5000
+        });
+        this.props.navigation.goBack();
+      }
+      this.setState({ loading: true });
     }
   }
 
@@ -47,19 +59,12 @@ class ForgotPasswordScreen extends React.Component {
         labelColor="white"
         inputViewStyle={{ flex: 1 }}
         onPressSubmitButton={() => {
-          this.setState({ invalidEmail: false });
+          this.setState({ invalidEmail: false, loading: false });
           if (RegExEmail.test(this.input.email)) {
             this.props.dispatch({
               type: "RESET_PASSWORD",
               payload: this.input.email
             });
-            Toast.show({
-              text: "",
-              position: "bottom",
-              buttonText: "A password reset mail has been sent!",
-              duration: 5000
-            });
-            this.props.navigation.goBack();
           } else {
             Toast.show({
               text: "Error:",
@@ -84,7 +89,8 @@ class ForgotPasswordScreen extends React.Component {
 
 const mapStateToProps = store => {
   return {
-    error: store.error.invalidEmailError
+    error: store.error.invalidEmailError,
+    loaded: store.loaded.forgotPasswordLoaded
   };
 };
 

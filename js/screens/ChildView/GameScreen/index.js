@@ -356,8 +356,8 @@ class GameScreen extends React.Component {
               stars={
                 this.props.gameOver
                   ? calculate(
-                      this.props.child.correctTaps,
-                      this.props.child.wrongTaps
+                      this.props.child.childDetails.correctTaps,
+                      this.props.child.childDetails.wrongTaps
                     )
                   : require("../../../assets/zero-star.png")
               }

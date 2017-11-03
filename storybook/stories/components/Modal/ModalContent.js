@@ -146,7 +146,7 @@ class ModalContent extends React.Component {
                     {"Play Level " + this.props.nextLevelName}
                     <Icon
                       name="md-arrow-round-forward"
-                      style={{ color: "#fff" }}
+                      style={{ color: "#fff", fontSize: 20 }}
                     />
                   </Text>
                 </Button>

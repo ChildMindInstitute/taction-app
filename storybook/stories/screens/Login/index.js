@@ -86,7 +86,7 @@ const Login = props => (
             submitButtonStyle={styles.submitButtonStyle}
             submitButtonTextStyle={styles.submitButtonTextStyle}
             buttonText="Submit"
-            disabled={props.submitted}
+            disabled={props.submitted || props.disabled}
             submitted={props.submitted}
             iconName="md-arrow-round-forward"
             iconRight={true}

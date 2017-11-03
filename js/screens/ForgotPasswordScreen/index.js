@@ -14,12 +14,26 @@ class ForgotPasswordScreen extends React.Component {
       email: this.props.navigation.state.params.email
     };
     this.state = {
-      disabled: true
+      disabled: true,
+      invalidEmail: false
     };
     if (this.input.email != "") {
       this.setState({ disabled: false });
     }
   }
+
+  componentDidUpdate() {
+    if (this.props.error && !this.state.invalidEmail) {
+      Toast.show({
+        text: "Error:",
+        position: "bottom",
+        buttonText: "This email address does not exists",
+        duration: 5000
+      });
+      this.setState({ invalidEmail: true });
+    }
+  }
+
   render() {
     return (
       <ForgotPassword
@@ -33,6 +47,7 @@ class ForgotPasswordScreen extends React.Component {
         labelColor="white"
         inputViewStyle={{ flex: 1 }}
         onPressSubmitButton={() => {
+          this.setState({ invalidEmail: false });
           if (RegExEmail.test(this.input.email)) {
             this.props.dispatch({
               type: "RESET_PASSWORD",
@@ -67,7 +82,15 @@ class ForgotPasswordScreen extends React.Component {
   }
 }
 
+const mapStateToProps = store => {
+  return {
+    error: store.error.invalidEmailError
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return { dispatch };
 };
-export default connect(null, mapDispatchToProps)(ForgotPasswordScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ForgotPasswordScreen
+);

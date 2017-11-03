@@ -17,7 +17,7 @@ const FormInput = props => (
       </Text>
       <View style={styles.inputStyle}>
         <Input
-          value={props.value}
+          defaultValue={props.value}
           style={{
             borderColor: props.error && props.isSignUpPorCP ? "red" : "white",
             borderWidth: 1.5

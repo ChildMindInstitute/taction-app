@@ -20,7 +20,8 @@ class LoginScreen extends React.Component {
       emailHasError: false,
       passwordHasError: false,
       hasSubmitError: false,
-      submitted: false
+      submitted: false,
+      disabled: true
     };
     this.error = {
       submitError: "Please enter a valid username and password!"
@@ -79,23 +80,23 @@ class LoginScreen extends React.Component {
       })
     );
   }
-
+  setDisabled() {
+    if (this.input.userName == "" && this.input.password == "") {
+      this.setState({ disabled: true });
+    } else this.setState({ disabled: false });
+  }
   render() {
     return (
       <Login
         usernameChange={event => {
           this.input.userName = event.nativeEvent.text;
-          if (this.input.userName == "") {
-            this.setState({ emailHasError: true });
-          } else this.setState({ emailHasError: false });
+          this.setDisabled();
         }}
         labelColor="white"
         inputViewStyle={{ flex: 1 }}
         passwordChange={event => {
           this.input.password = event.nativeEvent.text;
-          if (this.input.password == "") {
-            this.setState({ passwordHasError: true });
-          } else this.setState({ passwordHasError: false });
+          this.setDisabled();
         }}
         forgotPasswordTextStyle={{ color: "white" }}
         forgotPasswordButtonStyle={{
@@ -124,6 +125,7 @@ class LoginScreen extends React.Component {
           alignSelf: "center",
           color: "#ccc"
         }}
+        disabled={this.state.disabled}
         submitted={this.state.submitted}
         hasSubmitError={this.state.hasSubmitError}
         emailHasError={this.state.emailHasError}

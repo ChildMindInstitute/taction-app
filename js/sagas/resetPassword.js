@@ -3,10 +3,13 @@ import Db from "../../js/services";
 
 const resetPassword = function* resetPassword(action) {
   yield put({ type: "NO_ERROR_EMAIL" });
+  yield put({ type: "FORGOT_PASSWORD_LOADING" });
   try {
     yield call(Db.resetPassword, action.payload);
+    yield put({ type: "FORGOT_PASSWORD_LOADED" });
   } catch (error) {
     yield put({ type: "ERROR_EMAIL" });
+    yield put({ type: "FORGOT_PASSWORD_LOADED" });
   }
 };
 

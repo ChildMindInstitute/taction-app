@@ -22,7 +22,9 @@ class ForgotPasswordScreen extends React.Component {
       this.setState({ disabled: false });
     }
   }
-
+  componentWillMount() {
+    this.props.dispatch({ type: "FORGOT_PASSWORD_LOADING" });
+  }
   componentDidUpdate() {
     if (this.props.loaded && !this.state.loading) {
       if (this.props.error && !this.state.invalidEmail) {

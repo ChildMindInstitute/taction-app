@@ -21,7 +21,6 @@ class GameScreen extends React.Component {
     if (this.props.settings.sound) {
       gameMusic = new Sound("game_music.mp3", Sound.MAIN_BUNDLE, error => {
         if (error) {
-          console.log("failed to load the sound", error);
           return;
         }
         gameMusic.setVolume(0.25);
@@ -34,7 +33,6 @@ class GameScreen extends React.Component {
         Sound.MAIN_BUNDLE,
         error => {
           if (error) {
-            console.log("failed to load the sound", error);
             return;
           }
           correctAnswer.setVolume(1);
@@ -43,7 +41,6 @@ class GameScreen extends React.Component {
       );
       wrongAnswer = new Sound("worng_answer.mp3", Sound.MAIN_BUNDLE, error => {
         if (error) {
-          console.log("failed to load the sound wrongAnswer", error);
           return;
         }
         wrongAnswer.setVolume(1);

@@ -53,7 +53,6 @@ class PrizesScreen extends React.Component {
         this.state.placeholderDesc == "" &&
         this.state.placeholderPoints == ""
       ) {
-        console.log(this.input, "Add");
         if (this.validateInput()) {
           this.props.dispatch({
             type: "ADD_PRIZE",
@@ -72,8 +71,6 @@ class PrizesScreen extends React.Component {
           });
         }
       } else {
-        console.log(this.input, "Edit");
-        console.log(this.state.prizeId);
         if (this.validateInput()) {
           this.props.dispatch({
             type: "UPDATE_PRIZE",
@@ -105,7 +102,6 @@ class PrizesScreen extends React.Component {
     }
   }
   deleteAction(item) {
-    console.log("delete Action", item);
     this.props.dispatch({
       type: "REMOVE_PRIZE",
       payload: { childID: this.props.child.childID, prizeID: item.prizeID }

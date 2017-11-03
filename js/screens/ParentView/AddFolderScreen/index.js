@@ -52,7 +52,6 @@ class AddFolderScreen extends React.Component {
     }
     if (this.validateInput()) {
       if (this.state.stockImagesSelected) {
-        console.log(tempData, "logging stock data");
         await this.props.dispatch({
           type: "ADD_STOCK_FOLDER",
           payload: {
@@ -142,9 +141,7 @@ class AddFolderScreen extends React.Component {
         }
         this.setState({ data: dataNext, galleryDisabled: true });
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   }
   updateCameraImage() {
     // ImagePicker.launchCameraAsync({ base64: true, quality: 0 }).then(image => {

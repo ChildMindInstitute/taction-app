@@ -17,9 +17,7 @@ const setParent = function* setParent() {
       }
     });
     yield put({ type: "PARENT_LOADED" });
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 const watchSetParent = function* watchSetParent() {

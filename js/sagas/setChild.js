@@ -9,9 +9,7 @@ const setChild = function* setChild() {
       payload: child
     });
     yield put({ type: "USER_LOADED" });
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 const watchSetChild = function* watchSetChild() {

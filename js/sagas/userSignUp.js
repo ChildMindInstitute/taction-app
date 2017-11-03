@@ -17,7 +17,6 @@ const userSignUp = function* userSignUp(action) {
     yield put({ type: "USER_LOADED" });
     yield call(Db.verifyEmail);
   } catch (err) {
-    console.log(err);
     yield put({ type: "ERROR_SIGNUP" });
     yield put({ type: "USER_LOADED" });
   }

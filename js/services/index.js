@@ -537,7 +537,17 @@ export default {
   },
 
   resetPassword(email) {
-    firebase.auth().sendPasswordResetEmail(email);
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .sendPasswordResetEmail(email)
+        .then(() => {
+          resolve("");
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
   },
 
   async addPrize(childID, points, description) {

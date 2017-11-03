@@ -3,7 +3,6 @@ import Db from "../../js/services";
 
 const removeFolders = function* removeFolders(action) {
   let list = action.payload.items;
-  console.log(list);
   let childID = action.payload.childID;
   for (let i in list) {
     yield call(Db.removeFolder, list[i].folderID, childID);

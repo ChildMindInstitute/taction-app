@@ -20,7 +20,6 @@ class ImagesFolderScreen extends React.Component {
       deleteDisabled: true
     };
     dashboardList.length = 0;
-    console.log(this.props.orderList);
   }
   getIndex(item) {
     for (let i = 0; i < dashboardList.length; i++) {

@@ -29,9 +29,7 @@ const setChildFolder = function* setChildFolder(action) {
         break;
       }
     }
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
   yield put({ type: "GAME_STARTED" });
 };
 

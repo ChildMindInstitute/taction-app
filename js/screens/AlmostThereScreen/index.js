@@ -18,7 +18,6 @@ class AlmostThereScreen extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("Get in");
     if (this.state.checked && this.props.loaded) {
       if (this.props.parent.emailVerified && this.state.getInPressed) {
         this.setState({ getInPressed: false });

@@ -5,7 +5,6 @@ const verifyEmail = function* verifyEmail() {
   yield put({ type: "EMAIL_VERIFY_LOADING" });
   try {
     yield call(Db.reloadUser);
-    console.log(Db.getAuth().currentUser);
     const res = yield call(Db.getUser);
     yield put({
       type: "PARENT",
@@ -17,9 +16,7 @@ const verifyEmail = function* verifyEmail() {
         settings: res.parent.settings
       }
     });
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
   yield put({ type: "USER_LOADED" });
   yield put({ type: "EMAIL_VERIFY_LOADED" });
 };

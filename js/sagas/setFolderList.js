@@ -15,9 +15,7 @@ const setFolderList = function* setFolderList(action) {
     yield put({ type: "SET_ORDER_LIST", payload: orderList });
     yield put({ type: "SET_DASHBOARD_LIST", payload: folderList });
     yield put({ type: "DASHBOARD_LOADED" });
-  } catch (err) {
-    console.log(err, "error logged in set folder list saga");
-  }
+  } catch (err) {}
 };
 
 const watchSetFolderList = function* watchSetFolderList() {

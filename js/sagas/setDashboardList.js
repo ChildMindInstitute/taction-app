@@ -64,9 +64,7 @@ const setDashboardList = function* setDashboardList(action) {
     yield put({ type: "DASHBOARD_LIST", payload: dashboardList });
     yield put({ type: "TODAY_LIST", payload: todayList });
     yield put({ type: "MONTH_LIST", payload: monthList });
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 const watchSetDashboardList = function* watchSetDashboardList() {

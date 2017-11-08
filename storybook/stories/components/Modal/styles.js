@@ -26,7 +26,11 @@ const styles = StyleSheet.create({
   contentMainViewTextStyle: {
     color: "#f2cd32",
     fontSize: 30,
-    fontWeight: "500"
+    fontWeight: "500",
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center"
   },
   text1: { marginBottom: "7%" },
   text2: { marginBottom: "3%" },
@@ -35,7 +39,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 38,
     fontStyle: "italic",
-    fontWeight: "400"
+    fontWeight: "400",
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center"
   },
   contentMainViewLevelDescriptionStyle: {
     color: "white",
@@ -65,7 +73,11 @@ const styles = StyleSheet.create({
   contentMainViewInnerViewButton2TextStyle: {
     color: "#eeae30",
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center"
   }
 });
 export default styles;

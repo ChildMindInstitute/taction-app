@@ -5,7 +5,6 @@ import ModalContent from "../../../../storybook/stories/components/Modal/ModalCo
 import calculate from "../../../componentsCommon/calcutateStars";
 import { connect } from "react-redux";
 import { View } from "react-native";
-
 class OpeningScreen extends React.Component {
   static navigationOptions = {
     title: "OpeningScreen",
@@ -19,6 +18,7 @@ class OpeningScreen extends React.Component {
           ? this.props.navigation.state.params.showModal
           : true
         : false,
+      submitted: false,
       isPlayDisabled: true,
       todayScore: 0,
       prize: "",
@@ -34,7 +34,6 @@ class OpeningScreen extends React.Component {
       type: "SET_PRIZE_LIST",
       payload: this.props.childID
     });
-
     this.props.dispatch({ type: "SET_CHILD" });
     this.props.dispatch({ type: "SET_RANDOM_IMAGE_LIST" });
     this.props.dispatch({
@@ -95,9 +94,13 @@ class OpeningScreen extends React.Component {
             this.props.child.wrongTaps
           )}
           playOnPress={() => {
+            this.setState({ submitted: true });
             this.props.navigation.navigate("GameScreen");
+            setTimeout(() => {
+              this.setState({ submitted: false });
+            }, 2000);
           }}
-          isPlayDisabled={this.state.isPlayDisabled}
+          isPlayDisabled={this.state.isPlayDisabled || this.state.submitted}
           howToPlayOnPress={() => {
             this.props.navigation.navigate("HowToPlayScreen");
           }}
@@ -116,6 +119,9 @@ class OpeningScreen extends React.Component {
                   ? "Welcome back"
                   : "Welcome to Taction"
               }
+              greetingLine1Style={{
+                fontSize: this.props.child.totalScore > 0 ? 30 : 28
+              }}
               line2needed={false}
               isDescriptionLine2Required={true}
               stars={calculate(

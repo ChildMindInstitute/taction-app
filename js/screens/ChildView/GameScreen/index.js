@@ -5,7 +5,8 @@ import ModalContent from "../../../../storybook/stories/components/Modal/ModalCo
 import { connect } from "react-redux";
 import { NavigationActions } from "react-navigation";
 import calculate from "../../../componentsCommon/calcutateStars";
-
+import Sound from "react-native-sound";
+let gameMusic, correctAnswer, wrongAnswer;
 let totalLevels = 10;
 const correctArrayItem = 0;
 let time;
@@ -17,6 +18,35 @@ class GameScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    if (this.props.settings.sound) {
+      gameMusic = new Sound("game_music.mp3", Sound.MAIN_BUNDLE, error => {
+        if (error) {
+          return;
+        }
+        gameMusic.setVolume(0.25);
+        gameMusic.setNumberOfLoops(-1);
+        gameMusic.play();
+      });
+
+      correctAnswer = new Sound(
+        "correct_answer.mp3",
+        Sound.MAIN_BUNDLE,
+        error => {
+          if (error) {
+            return;
+          }
+          correctAnswer.setVolume(1);
+          correctAnswer.setNumberOfLoops(0);
+        }
+      );
+      wrongAnswer = new Sound("worng_answer.mp3", Sound.MAIN_BUNDLE, error => {
+        if (error) {
+          return;
+        }
+        wrongAnswer.setVolume(1);
+        wrongAnswer.setNumberOfLoops(0);
+      });
+    }
     this.options = [0, 1, 2, 3];
     this.state = {
       i1: this.randomAssign(),
@@ -66,7 +96,11 @@ class GameScreen extends React.Component {
     }
     return 4;
   }
-
+  componentWillUnmount() {
+    gameMusic.release();
+    correctAnswer.release();
+    wrongAnswer.release();
+  }
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;
     time = (this.props.settings.maxImageDuration + 1.5) * 1000;
@@ -280,8 +314,16 @@ class GameScreen extends React.Component {
                 this.state.i3
               );
               if (item == this.state.correctOption) {
+                if (this.props.settings.sound) {
+                  correctAnswer.stop();
+                  correctAnswer.play();
+                }
                 this.updateCorrectScore();
               } else {
+                if (this.props.settings.sound) {
+                  wrongAnswer.stop();
+                  wrongAnswer.play();
+                }
                 this.updateWrongScore();
               }
               this.setState({ correctOption: x, reset: false });
@@ -311,8 +353,8 @@ class GameScreen extends React.Component {
               stars={
                 this.props.gameOver
                   ? calculate(
-                      this.props.child.correctTaps,
-                      this.props.child.wrongTaps
+                      this.props.child.childDetails.correctTaps,
+                      this.props.child.childDetails.wrongTaps
                     )
                   : require("../../../assets/zero-star.png")
               }
@@ -330,9 +372,15 @@ class GameScreen extends React.Component {
               playNextDisabled={!this.props.nextFolder.folderDetails}
               isButtonNeeded={true}
               playNext={() => {
+                gameMusic.release();
+                correctAnswer.release();
+                wrongAnswer.release();
                 this.playNext();
               }}
               playAgain={() => {
+                gameMusic.release();
+                correctAnswer.release();
+                wrongAnswer.release();
                 this.playAgain();
               }}
               toggleVisiblity={() => {

@@ -20,12 +20,11 @@ class LoginScreen extends React.Component {
       emailHasError: false,
       passwordHasError: false,
       hasSubmitError: false,
-      submitted: false
+      submitted: false,
+      disabled: true
     };
-    this.Error = {
-      username: "Required",
-      password: "Required",
-      submitError: "Please enter a valid userName and password"
+    this.error = {
+      submitError: "Please enter a valid username and password!"
     };
   }
 
@@ -38,8 +37,8 @@ class LoginScreen extends React.Component {
           password: this.input.password
         }
       });
-    } else if (this.input.userName == "" && this.input.password == "") {
-      this.setState({ submitted: false });
+    } else {
+      this.setState({ submitted: false, hasSubmitError: true });
     }
   }
 
@@ -50,10 +49,10 @@ class LoginScreen extends React.Component {
           this.redirect();
         } else {
           Toast.show({
-            text: "Please verify your email to proceed",
+            text: "Error: ",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 2000
+            buttonText: "Please verify your email to proceed",
+            duration: 5000
           });
           this.props.dispatch({ type: "USER_SIGN_OUT" });
         }
@@ -81,23 +80,23 @@ class LoginScreen extends React.Component {
       })
     );
   }
-
+  setDisabled() {
+    if (this.input.userName == "" && this.input.password == "") {
+      this.setState({ disabled: true });
+    } else this.setState({ disabled: false });
+  }
   render() {
     return (
       <Login
         usernameChange={event => {
           this.input.userName = event.nativeEvent.text;
-          if (this.input.userName == "") {
-            this.setState({ emailHasError: true });
-          } else this.setState({ emailHasError: false });
+          this.setDisabled();
         }}
         labelColor="white"
         inputViewStyle={{ flex: 1 }}
         passwordChange={event => {
           this.input.password = event.nativeEvent.text;
-          if (this.input.password == "") {
-            this.setState({ passwordHasError: true });
-          } else this.setState({ passwordHasError: false });
+          this.setDisabled();
         }}
         forgotPasswordTextStyle={{ color: "white" }}
         forgotPasswordButtonStyle={{
@@ -114,7 +113,7 @@ class LoginScreen extends React.Component {
           this.setState({ submitted: true, hasSubmitError: false });
           this.loginUser();
         }).bind(this)}
-        error={this.Error}
+        error={this.error}
         onPressRegisterNow={() => {
           this.props.navigation.navigate("Consent");
         }}
@@ -126,6 +125,7 @@ class LoginScreen extends React.Component {
           alignSelf: "center",
           color: "#ccc"
         }}
+        disabled={this.state.disabled}
         submitted={this.state.submitted}
         hasSubmitError={this.state.hasSubmitError}
         emailHasError={this.state.emailHasError}

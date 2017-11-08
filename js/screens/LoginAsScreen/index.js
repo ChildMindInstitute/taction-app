@@ -22,7 +22,6 @@ class LoginAsScreen extends React.Component {
         { name: this.props.child.childDetails.name }
       ];
     }
-    console.log(data);
   }
 
   render() {

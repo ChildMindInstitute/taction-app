@@ -20,7 +20,6 @@ class ImagesFolderScreen extends React.Component {
       deleteDisabled: true
     };
     dashboardList.length = 0;
-    console.log(this.props.orderList);
   }
   getIndex(item) {
     for (let i = 0; i < dashboardList.length; i++) {
@@ -87,10 +86,10 @@ class ImagesFolderScreen extends React.Component {
             });
           } else {
             Toast.show({
-              text: "No child Added yet!",
+              text: "Error:",
               position: "bottom",
-              buttonText: "Okay",
-              duration: 1500
+              buttonText: "No child added yet!",
+              duration: 5000
             });
           }
         }}

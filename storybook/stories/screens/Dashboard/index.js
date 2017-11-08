@@ -25,7 +25,11 @@ const Dashboard = props => (
       androidStatusBarColor="rgba(0, 70, 107, 1)"
     >
       <Left style={styles.leftStyle}>
-        <Button transparent onPress={props.leftPress}>
+        <Button
+          disabled={props.menuDisabled}
+          transparent
+          onPress={props.leftPress}
+        >
           <Icon name="menu" style={styles.headerLeftStyle} />
         </Button>
       </Left>
@@ -96,6 +100,7 @@ const Dashboard = props => (
 );
 
 Dashboard.propTypes = {
+  menuDisabled: PropTypes.bool,
   excerciseDataToday: PropTypes.array,
   excerciseDataMonth: PropTypes.array,
   leftPress: PropTypes.func

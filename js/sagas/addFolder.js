@@ -16,10 +16,10 @@ const addFolder = function* addFolder(action) {
     yield put({ type: "FOLDER_ADDED" });
   } catch (err) {
     Toast.show({
-      text: "Error creating folder",
+      text: "Error:",
       position: "bottom",
-      buttonText: "Okay",
-      duration: 1500
+      buttonText: "Cannot create folder",
+      duration: 5000
     });
   }
 };

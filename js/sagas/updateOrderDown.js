@@ -30,7 +30,6 @@ const updateOrderDown = function* updateOrderDown(action) {
       }
     }
   }
-  console.log(dashboardList, "reordered list");
 };
 
 const watchUpdateOrderDown = function* watchUpdateOrderDown() {

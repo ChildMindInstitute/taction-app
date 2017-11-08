@@ -1,5 +1,5 @@
 const errorReducer = (
-  state = { signinError: false, signUpError: false },
+  state = { signinError: false, signUpError: false, invalidEmailError: false },
   action
 ) => {
   switch (action.type) {
@@ -22,8 +22,23 @@ const errorReducer = (
       break;
     }
 
+    case "ERROR_EMAIL": {
+      state = { ...state, invalidEmailError: true };
+      break;
+    }
+
+    case "NO_ERROR_EMAIL": {
+      state = { ...state, invalidEmailError: false };
+      break;
+    }
+
     case "CLEAR_STORE": {
-      state = { ...state, signinError: false };
+      state = {
+        ...state,
+        signinError: false,
+        signUpError: false,
+        invalidEmailError: false
+      };
       break;
     }
   }

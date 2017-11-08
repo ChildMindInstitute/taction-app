@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     height: deviceHeight / 3.5,
     width: null,
+    paddingBottom: 10,
     position: "relative"
   },
   drawerImage: {

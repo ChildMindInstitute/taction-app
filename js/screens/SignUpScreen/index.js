@@ -22,17 +22,23 @@ class LoginScreen extends React.Component {
       confirmPasswordError: false,
       submitted: false,
       passwordError: false,
-      emailError: false,
-      usernameError: false,
-      hasToNavigate: false
-    };
-    this.error = {
-      confirmPassword: "Must match password",
-      password: "Required",
-      email: "Invalid email id",
-      username: "username already taken"
+      hasToNavigate: false,
+      disabled: true
     };
   }
+  setDisabled() {
+    if (
+      this.input.confirmPassword != "" &&
+      this.input.password != "" &&
+      this.input.email != "" &&
+      this.input.username != ""
+    ) {
+      this.setState({ disabled: false });
+    } else {
+      this.setState({ disabled: true });
+    }
+  }
+
   componentDidUpdate() {
     if (this.props.loaded && this.state.submitted) {
       this.setState({ submitted: false, hasToNavigate: true });
@@ -43,10 +49,10 @@ class LoginScreen extends React.Component {
 
     if (this.props.error && this.state.submitted) {
       Toast.show({
-        text: "The email address is already in use by another account.!",
+        text: "",
         position: "bottom",
-        buttonText: "Ok",
-        duration: 1500
+        buttonText: "The email address is already in use by another account!",
+        duration: 5000
       });
       this.props.dispatch({ type: "NO_ERROR_SIGNUP" });
       this.setState({ submitted: false });
@@ -55,7 +61,7 @@ class LoginScreen extends React.Component {
   signUp() {
     if (
       this.input.password == this.input.confirmPassword &&
-      !this.state.emailError
+      RegExEmail.test(this.input.email)
     ) {
       this.props.dispatch({
         type: "USER_SIGNUP",
@@ -67,6 +73,35 @@ class LoginScreen extends React.Component {
         }
       });
     }
+    if (!RegExEmail.test(this.input.email)) {
+      Toast.show({
+        text: "Error: ",
+        position: "bottom",
+        buttonText: "Email address entered is invalid!",
+        duration: 5000
+      });
+      this.setState({ submitted: false });
+    } else if (this.input.password.length < 6) {
+      Toast.show({
+        text: "",
+        position: "bottom",
+        buttonText: "Password length should be greater than 5",
+        duration: 5000
+      });
+      this.setState({ submitted: false });
+    } else if (this.input.password != this.input.confirmPassword) {
+      Toast.show({
+        text: "",
+        position: "bottom",
+        buttonText: "Password and confirm password mismatch!",
+        duration: 5000
+      });
+      this.setState({
+        submitted: false,
+        passwordError: true,
+        confirmPasswordError: true
+      });
+    }
   }
 
   render() {
@@ -75,27 +110,20 @@ class LoginScreen extends React.Component {
         backgroundColor="#0067a0"
         usernameChange={event => {
           this.input.username = event.nativeEvent.text;
-          if (this.input.username == "") {
-            this.setState({ usernameError: true });
-          } else {
-            this.setState({ usernameError: false });
-          }
+          this.setDisabled();
         }}
         inputViewStyle={{
           flex: 1
         }}
         passwordChange={event => {
           this.input.password = event.nativeEvent.text;
-          if (this.input.password == "" || this.input.password.length < 6) {
-            this.setState({ passwordError: true });
-          } else {
-            this.setState({ passwordError: false });
-            if (this.input.password == this.input.confirmPassword) {
-              this.setState({ confirmPasswordError: false });
-            } else {
-              this.setState({ confirmPasswordError: true });
-            }
+          if (this.input.password.length == 1) {
+            this.setState({
+              passwordError: false,
+              confirmPasswordError: false
+            });
           }
+          this.setDisabled();
         }}
         loginRedirectPress={() =>
           this.props.navigation.dispatch(
@@ -109,44 +137,23 @@ class LoginScreen extends React.Component {
           this.signUp();
         }}
         submitted={this.state.submitted}
-        disabled={
-          this.state.confirmPasswordError ||
-          this.state.emailError ||
-          this.state.passwordError ||
-          this.state.usernameError ||
-          (this.input.confirmPassword == "" ||
-            this.input.email == "" ||
-            this.input.password == "" ||
-            this.input.username == "") ||
-          this.state.submitted
-        }
+        disabled={this.state.disabled}
         confirmPasswordChange={event => {
           this.input.confirmPassword = event.nativeEvent.text;
-          if (
-            this.input.confirmPassword == this.input.password &&
-            this.input.password != ""
-          ) {
-            this.setState({ confirmPasswordError: false });
-          } else if (this.input.password == "") {
-            this.setState({ confirmPasswordError: true });
-            this.setState({ passwordError: true });
-          } else {
-            this.setState({ confirmPasswordError: true });
+          if (this.input.confirmPassword.length == 1) {
+            this.setState({
+              passwordError: false,
+              confirmPasswordError: false
+            });
           }
+          this.setDisabled();
         }}
         emailChange={event => {
           this.input.email = event.nativeEvent.text;
-          if (RegExEmail.test(this.input.email)) {
-            this.setState({ emailError: false });
-          } else {
-            this.setState({ emailError: true });
-          }
+          this.setDisabled();
         }}
         confirmPasswordError={this.state.confirmPasswordError}
         passwordError={this.state.passwordError}
-        emailError={this.state.emailError}
-        usernameError={this.state.usernameError}
-        error={this.error}
       />
     );
   }

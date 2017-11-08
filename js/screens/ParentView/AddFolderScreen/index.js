@@ -47,12 +47,16 @@ class AddFolderScreen extends React.Component {
 
   async AddFolder() {
     let tempData = [];
-    for (let i = 0; i < dataNext.length; i++) {
+    for (
+      let i = 0;
+      i <
+      (this.state.stockImagesSelected ? dataNext.length : dataNext.length - 1);
+      i++
+    ) {
       tempData.push(dataNext[i].image);
     }
     if (this.validateInput()) {
       if (this.state.stockImagesSelected) {
-        console.log(tempData, "logging stock data");
         await this.props.dispatch({
           type: "ADD_STOCK_FOLDER",
           payload: {
@@ -73,10 +77,10 @@ class AddFolderScreen extends React.Component {
       }
     } else {
       Toast.show({
-        text: "Folder name already exists!",
-        buttonText: "Okay",
+        text: "Error:",
+        buttonText: "Folder name already exists!",
         position: "bottom",
-        duration: 2000
+        duration: 5000
       });
       this.setState({ submitted: false });
     }
@@ -142,9 +146,7 @@ class AddFolderScreen extends React.Component {
         }
         this.setState({ data: dataNext, galleryDisabled: true });
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   }
   updateCameraImage() {
     // ImagePicker.launchCameraAsync({ base64: true, quality: 0 }).then(image => {
@@ -166,10 +168,10 @@ class AddFolderScreen extends React.Component {
           } else {
             this.setState({ submitted: false });
             Toast.show({
-              text: "Please add a child before adding a folder",
+              text: "",
               position: "bottom",
-              buttonText: "Okay",
-              duration: 1500
+              buttonText: "Please add a child before adding a folder",
+              duration: 5000
             });
           }
         }}

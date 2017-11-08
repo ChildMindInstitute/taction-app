@@ -32,10 +32,10 @@ class DashboardScreen extends React.Component {
     } else if (!this.props.isNewRegistration) {
       this.setState({ childExists: false });
       Toast.show({
-        text: "No child Added!",
+        text: "Error:",
         position: "bottom",
-        buttonText: "Okay",
-        duration: 1500
+        buttonText: "No child added!",
+        duration: 5000
       });
     }
   }
@@ -47,6 +47,7 @@ class DashboardScreen extends React.Component {
           leftPress={() => {
             this.props.navigation.navigate("DrawerOpen");
           }}
+          menuDisabled={!this.props.loaded}
           excerciseDataMonth={this.props.monthList}
           excerciseDataToday={this.props.todayList}
           loaded={this.props.loaded}

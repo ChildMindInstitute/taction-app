@@ -10,7 +10,8 @@ const waitReducer = (
     folderReordered: false,
     folderAdded: false,
     stockImagesLoaded: false,
-    verifyLoaded: false
+    verifyLoaded: false,
+    forgotPasswordLoaded: false
   },
   action
 ) => {
@@ -95,6 +96,14 @@ const waitReducer = (
       state = { ...state, verifyLoaded: true };
       break;
     }
+    case "FORGOT_PASSWORD_LOADING": {
+      state = { ...state, forgotPasswordLoaded: false };
+      break;
+    }
+    case "FORGOT_PASSWORD_LOADED": {
+      state = { ...state, forgotPasswordLoaded: true };
+      break;
+    }
 
     case "CLEAR_STORE": {
       state = {
@@ -110,7 +119,8 @@ const waitReducer = (
         folderAdded: false,
         prizeLoaded: false,
         stockImagesLoaded: false,
-        verifyLoaded: false
+        verifyLoaded: false,
+        forgotPasswordLoaded: false
       };
       break;
     }

@@ -282,7 +282,6 @@ export default {
 
         try {
           var newImg = imageRef.push();
-          console.log(newImg.key, "logging newImg");
           const metadata = {
             contentType: "image/jpeg"
           };
@@ -290,13 +289,11 @@ export default {
           let blob = await RNBlob.build(RNFetchBlob.wrap(images[i].path), {
             type: "image/jpg;"
           });
-          console.log(blob);
           const storageRef = await store.child(
             exeID + "/" + newImg.key + ".jpg"
           );
           await storageRef.put(blob, metadata);
           let URL = await storageRef.getDownloadURL();
-          console.log(URL);
           await newImg.set({
             correctTaps: 0,
             wrongTaps: 0,
@@ -309,7 +306,6 @@ export default {
           var image = await exeRef.push();
           await image.set({ imageID: newImg.key });
           if (i == images.length - 1) {
-            console.log("resolving now");
             resolve("success");
           }
         } catch (err) {
@@ -400,7 +396,6 @@ export default {
   },
 
   updateParent(name) {
-    console.log(name);
     return new Promise((resolve, reject) => {
       try {
         firebase
@@ -483,7 +478,7 @@ export default {
         const imgListRef = firebase
           .database()
           .ref("exercise/" + exeID + "/images");
-
+        let currentOrder;
         imgListRef.once("value").then(snapshot => {
           let count = 1;
           let numImg = snapshot.numChildren();
@@ -495,13 +490,32 @@ export default {
               exeRef.remove().then(() => {
                 childRef.once("value").then(snapshot => {
                   snapshot.forEach(exe => {
-                    console.log(exe.key, "logging child exe key");
                     if (exeID == exe.val().exerciseId) {
+                      currentOrder = exe.val().order;
                       firebase
                         .database()
                         .ref("child/" + childID + "/exercises/" + exe.key)
                         .remove()
-                        .then(() => resolve(""));
+                        .then(() => {
+                          let cnt = 0;
+                          childRef.once("value").then(snapshot => {
+                            snapshot.forEach(exe => {
+                              let newOrder = exe.val().order;
+                              if (newOrder > currentOrder) {
+                                firebase
+                                  .database()
+                                  .ref(
+                                    "child/" + childID + "/exercises/" + exe.key
+                                  )
+                                  .update({ order: --newOrder });
+                              }
+                              ++cnt;
+                              if (cnt == snapshot.numChildren()) {
+                                resolve("");
+                              }
+                            });
+                          });
+                        });
                     }
                   });
                 });
@@ -517,7 +531,17 @@ export default {
   },
 
   resetPassword(email) {
-    firebase.auth().sendPasswordResetEmail(email);
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .sendPasswordResetEmail(email)
+        .then(() => {
+          resolve("");
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
   },
 
   async addPrize(childID, points, description) {
@@ -569,7 +593,6 @@ export default {
         stockRef.once("value").then(snapshot => {
           let numFolder = snapshot.numChildren();
           snapshot.forEach(folder => {
-            console.log(folder.key);
             let dataFolderContent = [];
             const folderRef = firebase
               .database()
@@ -586,11 +609,6 @@ export default {
                   });
                 }
                 if (response.length == numFolder) {
-                  console.log(
-                    response[0].dataFolderContent.length,
-                    response[1].dataFolderContent.length,
-                    "logging response"
-                  );
                   resolve(response);
                 }
               });
@@ -604,8 +622,6 @@ export default {
   },
 
   removePrize(childID, prizeID) {
-    console.log(childID, "logging childID");
-    console.log(prizeID, "logging prizeID");
     return new Promise((resolve, reject) => {
       try {
         const prizeRef = firebase
@@ -644,9 +660,7 @@ export default {
         const imageRef = firebase.database().ref("image");
         try {
           var newImg = imageRef.push();
-          console.log(newImg.key, "logging newImg");
           let URL = images[i].path;
-          console.log(URL);
           await newImg.set({
             correctTaps: 0,
             wrongTaps: 0,
@@ -659,7 +673,6 @@ export default {
           var image = await exeRef.push();
           await image.set({ imageID: newImg.key });
           if (i == images.length - 1) {
-            console.log("resolving now");
             resolve("success");
           }
         } catch (err) {

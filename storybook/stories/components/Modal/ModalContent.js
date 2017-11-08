@@ -49,7 +49,13 @@ class ModalContent extends React.Component {
           ]}
         >
           <View style={{ flex: 1 }}>
-            <Text style={[styles.contentMainViewTextStyle, styles.text1]}>
+            <Text
+              style={[
+                styles.contentMainViewTextStyle,
+                styles.text1,
+                this.props.greetingLine1Style
+              ]}
+            >
               {this.props.greetingLine1}
             </Text>
           </View>
@@ -126,7 +132,11 @@ class ModalContent extends React.Component {
             )}
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={styles.contentMainViewNextPrizeDescriptionStyle}>
+            <Text
+              style={styles.contentMainViewNextPrizeDescriptionStyle}
+              ellipsizeMode="head"
+              numberOfLines={1}
+            >
               {this.props.nextPrizeDescription}
             </Text>
           </View>
@@ -146,7 +156,7 @@ class ModalContent extends React.Component {
                     {"Play Level " + this.props.nextLevelName}
                     <Icon
                       name="md-arrow-round-forward"
-                      style={{ color: "#fff" }}
+                      style={{ color: "#fff", fontSize: 20 }}
                     />
                   </Text>
                 </Button>

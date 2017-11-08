@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -42,6 +41,9 @@
 		3CE6372E55444B0780A774F0 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60D5502BBC7546BCB269B009 /* MaterialIcons.ttf */; };
 		493E5912D39D4491A1238963 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0890CD5958094986B4DA6932 /* Entypo.ttf */; };
 		4E0DE77E8C6D42CC8608DFA7 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36047F61D612436BB5D48546 /* Feather.ttf */; };
+		51636F201FAB0CE700BFEF0E /* game_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51636F1D1FAB0CE700BFEF0E /* game_music.mp3 */; };
+		51636F211FAB0CE700BFEF0E /* correct_answer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51636F1E1FAB0CE700BFEF0E /* correct_answer.mp3 */; };
+		51636F221FAB0CE700BFEF0E /* worng_answer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51636F1F1FAB0CE700BFEF0E /* worng_answer.mp3 */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		60E5845564AB4E9691AAC369 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C58B57EA27474E3D85574B99 /* MaterialCommunityIcons.ttf */; };
 		6CFF4CF4CA2B44C284E8ABAC /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A1B1298FC844EE4BD2EA486 /* SimpleLineIcons.ttf */; };
@@ -57,6 +59,7 @@
 		BAC5943AC92242E5A3D272D3 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEA2762083A047EC97B1815E /* Zocial.ttf */; };
 		BC1A02FB8EA24B178CADAE0C /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD9BE35104D4667BFA502F6 /* libRNVectorIcons.a */; };
 		C20632B2022F6DECFC3D4E1B /* libPods-childmind-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82DAEB1A745AC39359E10E7 /* libPods-childmind-tvOS.a */; };
+		C7D98B84A0DE427CB05C7EF8 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4A9DF6F01C41C4A5B0CA14 /* libRNSound.a */; };
 		D399A3380AF948058E71FEA8 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57037AEC31CF446AAA7818AB /* libRNFetchBlob.a */; };
 		DC82EBAB40284EA28E590273 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A13D17DEB643CF8786CB06 /* libRCTOrientation.a */; };
 		DE8406CD607B4C699DB96DA0 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6EA3889557A4E22AE27000F /* Foundation.ttf */; };
@@ -239,6 +242,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTOrientation;
 		};
+		51E137721FAAEFE000F46A01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7F0B6D324B54EE39416901A /* RNSound.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19825A1E1BD4A89800EE0337;
+			remoteInfo = RNSound;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -383,8 +393,12 @@
 		3A1B1298FC844EE4BD2EA486 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		46DC9B58332E4EB6AEAFC081 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		473A0EF483554688A6209DCA /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		51636F1D1FAB0CE700BFEF0E /* game_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = game_music.mp3; path = ../game_music.mp3; sourceTree = "<group>"; };
+		51636F1E1FAB0CE700BFEF0E /* correct_answer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = correct_answer.mp3; path = ../correct_answer.mp3; sourceTree = "<group>"; };
+		51636F1F1FAB0CE700BFEF0E /* worng_answer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = worng_answer.mp3; path = ../worng_answer.mp3; sourceTree = "<group>"; };
 		57037AEC31CF446AAA7818AB /* libRNFetchBlob.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFetchBlob.a; sourceTree = "<group>"; };
 		5BF57F5310FD4177A843E0D8 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		5D4A9DF6F01C41C4A5B0CA14 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		5DCBECBB33DC419C9CA048FD /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		60D5502BBC7546BCB269B009 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -405,6 +419,7 @@
 		A59B62B2344E0E34C19B70E9 /* libPods-childmind-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-childmind-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AF7FA967CE6B4F7F9B72FEE1 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		B7F0B6D324B54EE39416901A /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		B82DAEB1A745AC39359E10E7 /* libPods-childmind-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-childmind-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58B57EA27474E3D85574B99 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		C6EA3889557A4E22AE27000F /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -449,6 +464,7 @@
 				2F01EA217D0D547A451F2316 /* libPods-childmind.a in Frameworks */,
 				D399A3380AF948058E71FEA8 /* libRNFetchBlob.a in Frameworks */,
 				DC82EBAB40284EA28E590273 /* libRCTOrientation.a in Frameworks */,
+				C7D98B84A0DE427CB05C7EF8 /* libRNSound.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +645,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		51E1376F1FAAEFE000F46A01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51E137731FAAEFE000F46A01 /* libRNSound.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,6 +701,7 @@
 				6599A718D2154BB58F071563 /* imageCropPicker.xcodeproj */,
 				73C173C03586477E8B51B2E5 /* RNFetchBlob.xcodeproj */,
 				33185DE93EBF4F2A9028944F /* RCTOrientation.xcodeproj */,
+				B7F0B6D324B54EE39416901A /* RNSound.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -693,6 +718,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				51636F1E1FAB0CE700BFEF0E /* correct_answer.mp3 */,
+				51636F1D1FAB0CE700BFEF0E /* game_music.mp3 */,
+				51636F1F1FAB0CE700BFEF0E /* worng_answer.mp3 */,
 				13B07FAE1A68108700A75B9A /* childmind */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* childmindTests */,
@@ -765,6 +793,7 @@
 				E496DAA5507943BC90A322B0 /* libimageCropPicker.a */,
 				57037AEC31CF446AAA7818AB /* libRNFetchBlob.a */,
 				34A13D17DEB643CF8786CB06 /* libRCTOrientation.a */,
+				5D4A9DF6F01C41C4A5B0CA14 /* libRNSound.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -967,6 +996,10 @@
 					ProjectRef = 73C173C03586477E8B51B2E5 /* RNFetchBlob.xcodeproj */;
 				},
 				{
+					ProductGroup = 51E1376F1FAAEFE000F46A01 /* Products */;
+					ProjectRef = B7F0B6D324B54EE39416901A /* RNSound.xcodeproj */;
+				},
+				{
 					ProductGroup = E6ADACD61F9E2C7B006EBEA4 /* Products */;
 					ProjectRef = 98155DC4E6F74372A677D3EB /* RNVectorIcons.xcodeproj */;
 				},
@@ -1136,6 +1169,13 @@
 			remoteRef = 51654EB41FA8B196000E18FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		51E137731FAAEFE000F46A01 /* libRNSound.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSound.a;
+			remoteRef = 51E137721FAAEFE000F46A01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1257,6 +1297,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				51636F221FAB0CE700BFEF0E /* worng_answer.mp3 in Resources */,
 				493E5912D39D4491A1238963 /* Entypo.ttf in Resources */,
 				703C2B9C33D84C8F9AA72FA5 /* EvilIcons.ttf in Resources */,
 				A26C3E7EB98B400C838F6325 /* FontAwesome.ttf in Resources */,
@@ -1271,6 +1312,8 @@
 				F6C4F09403DC48C78ADBDF12 /* Zocial.ttf in Resources */,
 				E7985D0822334E3F804EFACD /* Entypo.ttf in Resources */,
 				E5F638E6B82A45B5B5E81A97 /* EvilIcons.ttf in Resources */,
+				51636F201FAB0CE700BFEF0E /* game_music.mp3 in Resources */,
+				51636F211FAB0CE700BFEF0E /* correct_answer.mp3 in Resources */,
 				4E0DE77E8C6D42CC8608DFA7 /* Feather.ttf in Resources */,
 				FEDA7FE53728416CAB1D538A /* FontAwesome.ttf in Resources */,
 				EBA361E1CF484A2C9F5A53D8 /* Foundation.ttf in Resources */,
@@ -1608,12 +1651,14 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = childmindTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1644,12 +1689,14 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = childmindTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1672,7 +1719,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 8RHKE85KB6;
 				HEADER_SEARCH_PATHS = (
@@ -1681,6 +1728,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = childmind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1704,7 +1752,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 8RHKE85KB6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1712,6 +1760,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = childmind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1747,11 +1796,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = "childmind-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1788,11 +1839,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = "childmind-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1830,6 +1883,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.childmind-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1855,6 +1909,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

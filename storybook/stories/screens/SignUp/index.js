@@ -23,8 +23,6 @@ const SignUp = props => (
               onChange={props.usernameChange}
               labelColor="white"
               viewStyle={props.inputViewStyle}
-              error={props.usernameError}
-              errorText={props.error.username}
             />
             <FormInput
               isPassword={false}
@@ -32,26 +30,24 @@ const SignUp = props => (
               labelColor="white"
               onChange={props.emailChange}
               viewStyle={props.inputViewStyle}
-              error={props.emailError}
-              errorText={props.error.email}
             />
             <FormInput
               isPassword={true}
               labelColor="white"
               label="Password"
+              isSignUpPorCP={true}
               onChange={props.passwordChange}
               viewStyle={props.inputViewStyle}
               error={props.passwordError}
-              errorText={props.error.password}
             />
             <FormInput
               isPassword={true}
               labelColor="white"
+              isSignUpPorCP={true}
               label="Confirm password"
               onChange={props.confirmPasswordChange}
               viewStyle={props.inputViewStyle}
               error={props.confirmPasswordError}
-              errorText={props.error.confirmPassword}
             />
           </Form>
         </View>

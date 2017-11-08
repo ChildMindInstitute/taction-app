@@ -23,7 +23,8 @@ class PrizesScreen extends React.Component {
       modalVisible: false,
       placeholderPoints: "",
       placeholderDesc: "",
-      prizeId: ""
+      prizeId: "",
+      edit: false
     };
     this.input = {
       pointsReq: "",
@@ -40,7 +41,10 @@ class PrizesScreen extends React.Component {
 
   validateInput() {
     for (let i in this.props.prizeList) {
-      if (parseInt(this.input.pointsReq) == this.props.prizeList[i].points) {
+      if (
+        parseInt(this.input.pointsReq) == this.props.prizeList[i].points &&
+        !this.state.edit
+      ) {
         return false;
       }
     }
@@ -53,7 +57,6 @@ class PrizesScreen extends React.Component {
         this.state.placeholderDesc == "" &&
         this.state.placeholderPoints == ""
       ) {
-        console.log(this.input, "Add");
         if (this.validateInput()) {
           this.props.dispatch({
             type: "ADD_PRIZE",
@@ -65,15 +68,13 @@ class PrizesScreen extends React.Component {
           });
         } else {
           Toast.show({
-            text: "Prize for these points already exists",
+            text: "Error",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 2000
+            buttonText: "Prize for these points already exists",
+            duration: 5000
           });
         }
       } else {
-        console.log(this.input, "Edit");
-        console.log(this.state.prizeId);
         if (this.validateInput()) {
           this.props.dispatch({
             type: "UPDATE_PRIZE",
@@ -86,26 +87,26 @@ class PrizesScreen extends React.Component {
               }
             }
           });
+          this.setState({ edit: false });
         } else {
           Toast.show({
-            text: "Prize for these points already exists",
+            text: "Error",
             position: "bottom",
-            buttonText: "Okay",
-            duration: 2000
+            buttonText: "Prize for these points already exists",
+            duration: 5000
           });
         }
       }
     } else {
       Toast.show({
-        text: "Error! Fields cannot be left blank",
+        text: "Error",
         position: "bottom",
-        buttonText: "Okay",
-        duration: 2000
+        buttonText: " Fields cannot be left blank",
+        duration: 5000
       });
     }
   }
   deleteAction(item) {
-    console.log("delete Action", item);
     this.props.dispatch({
       type: "REMOVE_PRIZE",
       payload: { childID: this.props.child.childID, prizeID: item.prizeID }
@@ -192,7 +193,8 @@ class PrizesScreen extends React.Component {
             this.setState({
               placeholderDesc: item.description,
               placeholderPoints: item.points,
-              prizeId: item.prizeID
+              prizeId: item.prizeID,
+              edit: true
             });
             this.setState({ modalVisible: true });
           }}
@@ -217,10 +219,10 @@ class PrizesScreen extends React.Component {
               this.setState({ modalVisible: true });
             } else {
               Toast.show({
-                text: "Please add a child first!",
-                buttonText: "Okay",
+                text: "Error:",
+                buttonText: "Please add a child first!",
                 position: "bottom",
-                duration: 1500
+                duration: 5000
               });
             }
           }}

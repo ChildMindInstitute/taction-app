@@ -120,7 +120,7 @@ class OpeningScreen extends React.Component {
                   : "Welcome to Taction"
               }
               greetingLine1Style={{
-                fontSize: this.props.child.totalScore > 0 ? 30 : 24
+                fontSize: this.props.child.totalScore > 0 ? 30 : 28
               }}
               line2needed={false}
               isDescriptionLine2Required={true}

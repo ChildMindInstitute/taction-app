@@ -5,7 +5,7 @@ import { Image } from "react-native";
 const Logo = props => (
   <Image
     source={require("../../../../js/assets/CMI-Logo.png")}
-    style={props.imageDimensions}
+    style={[props.imageDimensions, { marginBottom: 5 }]}
     resizeMethod="auto"
     resizeMode="contain"
   />

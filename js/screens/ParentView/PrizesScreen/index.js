@@ -23,7 +23,8 @@ class PrizesScreen extends React.Component {
       modalVisible: false,
       placeholderPoints: "",
       placeholderDesc: "",
-      prizeId: ""
+      prizeId: "",
+      edit: false
     };
     this.input = {
       pointsReq: "",
@@ -40,7 +41,10 @@ class PrizesScreen extends React.Component {
 
   validateInput() {
     for (let i in this.props.prizeList) {
-      if (parseInt(this.input.pointsReq) == this.props.prizeList[i].points) {
+      if (
+        parseInt(this.input.pointsReq) == this.props.prizeList[i].points &&
+        !this.state.edit
+      ) {
         return false;
       }
     }
@@ -83,6 +87,7 @@ class PrizesScreen extends React.Component {
               }
             }
           });
+          this.setState({ edit: false });
         } else {
           Toast.show({
             text: "Error",
@@ -188,7 +193,8 @@ class PrizesScreen extends React.Component {
             this.setState({
               placeholderDesc: item.description,
               placeholderPoints: item.points,
-              prizeId: item.prizeID
+              prizeId: item.prizeID,
+              edit: true
             });
             this.setState({ modalVisible: true });
           }}

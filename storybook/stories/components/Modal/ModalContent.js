@@ -49,7 +49,13 @@ class ModalContent extends React.Component {
           ]}
         >
           <View style={{ flex: 1 }}>
-            <Text style={[styles.contentMainViewTextStyle, styles.text1]}>
+            <Text
+              style={[
+                styles.contentMainViewTextStyle,
+                styles.text1,
+                this.props.greetingLine1Style
+              ]}
+            >
               {this.props.greetingLine1}
             </Text>
           </View>

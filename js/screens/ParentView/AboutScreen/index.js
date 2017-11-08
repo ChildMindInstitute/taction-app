@@ -26,7 +26,7 @@ class About extends React.Component {
               child in exposure therapy. In this simple game, the player taps on
               the correct image from among a set of distractor images to get
               points. You can add your own images or choose existing folders of
-              images, pair the app with a child's app to monitor the childs
+              images, pair the app with a child's app to monitor the child's
               progress, and add prizes to motivate the player to win more
               points.
             </Text>

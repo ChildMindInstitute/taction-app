@@ -119,6 +119,9 @@ class OpeningScreen extends React.Component {
                   ? "Welcome back"
                   : "Welcome to Taction"
               }
+              greetingLine1Style={{
+                fontSize: this.props.child.totalScore > 0 ? 30 : 24
+              }}
               line2needed={false}
               isDescriptionLine2Required={true}
               stars={calculate(

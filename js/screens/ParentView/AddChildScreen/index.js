@@ -23,7 +23,8 @@ class AddChildScreen extends React.Component {
         this.props.isNewRegistration ? "AddFolder" : "Dashboard",
         this.props.isNewRegistration
           ? {
-              noAddedImages: true
+              noAddedImages: true,
+              folderName:""
             }
           : {}
       );

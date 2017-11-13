@@ -51,7 +51,7 @@ const AlmostThere = props => (
           {props.getInPressed ? (
             <Spinner color="#fff" />
           ) : (
-            <Text style={{ color: "#fff" }}>Get in</Text>
+            <Text style={{ color: "#fff" }}>Start</Text>
           )}
           {props.getInPressed ? (
             false
@@ -64,7 +64,8 @@ const AlmostThere = props => (
           style={{
             backgroundColor: "#fff",
             margin: 10,
-            width: 130,
+            width: 135,
+            paddingHorizontal: 5,
             justifyContent: "center"
           }}
           onPress={props.onResendLinkPress}
@@ -97,6 +98,7 @@ const AlmostThere = props => (
             style={{
               fontWeight: "bold",
               paddingLeft: 0,
+              paddingBottom: 1,
               paddingRight: 0,
               color: "#fff"
             }}

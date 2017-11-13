@@ -20,7 +20,7 @@ class AddFolderScreen extends React.Component {
     this.state = {
       folderAdded: false,
       data: dataNext,
-      saveFolderButtonText: "",
+      saveFolderButtonText: this.props.navigation.state.params.folderName,
       saveDisabled: true,
       focussed: false,
       folderNameError: false,
@@ -175,13 +175,14 @@ class AddFolderScreen extends React.Component {
             });
           }
         }}
+        folderName={this.props.navigation.state.params.folderName}
         galleryDisabled={this.state.galleryDisabled}
         activeSegment={this.state.activeSegment}
         setActiveSegement={activeIndex => {
           if (this.state.activeSegment == 1 || this.state.activeSegment == 2) {
             Alert.alert(
               "",
-              "For each folder, pleaseselect images from either 'Gallery' OR 'Child Mind server'",
+              "For each folder, please select images from either 'Gallery' OR 'Child Mind server'",
               [
                 {
                   text: "OK",
@@ -193,7 +194,10 @@ class AddFolderScreen extends React.Component {
                     });
                     if (activeIndex == 1) {
                       this.updateImage();
-                    } else this.props.navigation.navigate("StockImages");
+                    } else
+                      this.props.navigation.navigate("StockImages", {
+                        folderName: this.state.saveFolderButtonText
+                      });
                   }
                 },
                 { text: "Cancel", onPress: () => {} }
@@ -204,7 +208,10 @@ class AddFolderScreen extends React.Component {
             this.setState({ activeSegment: activeIndex, data: dataNext });
             if (activeIndex == 1) {
               this.updateImage();
-            } else this.props.navigation.navigate("StockImages");
+            } else
+              this.props.navigation.navigate("StockImages", {
+                folderName: this.state.saveFolderButtonText
+              });
           }
         }}
         formDisabled={this.state.submitted}

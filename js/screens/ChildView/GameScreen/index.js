@@ -360,7 +360,7 @@ class GameScreen extends React.Component {
               }
               playLaterRequired={true}
               displayPoints={this.props.child.childDetails.totalScore}
-              description="Well played"
+              description=""
               extraDescriptionStyle={{ fontSize: 14 }}
               starExtraStyle={{ width: 200, height: 60 }}
               playLaterText="Play Later"

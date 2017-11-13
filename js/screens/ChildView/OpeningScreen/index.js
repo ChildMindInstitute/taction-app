@@ -134,7 +134,9 @@ class OpeningScreen extends React.Component {
                 this.props.child.totalScore > 0
                   ? "You have earned " +
                     this.state.todayScore +
-                    " points today!"
+                    " point" +
+                    (this.props.child.todayScore > 1 ? "s" : "") +
+                    " today!"
                   : "Time to earn some points!"
               }
               isDescriptionLine2Required={this.props.child.totalScore > 0}

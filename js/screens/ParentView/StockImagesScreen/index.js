@@ -31,12 +31,18 @@ class StockImagesScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <StockImages
-          back={() => this.props.navigation.navigate("AddFolder")}
+          back={() =>
+            this.props.navigation.navigate("AddFolder", {
+              stockImages: {},
+              noAddedImages: true,
+              folderName: this.props.navigation.state.params.folderName
+            })}
           excerciseData={this.props.stockImages}
           onDownloadPress={item => {
             this.props.navigation.navigate("AddFolder", {
               stockImages: item.dataFolderContent,
-              noAddedImages: false
+              noAddedImages: false,
+              folderName: this.props.navigation.state.params.folderName
             });
           }}
         />

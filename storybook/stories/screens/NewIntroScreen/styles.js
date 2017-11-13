@@ -1,14 +1,22 @@
-import { StyleSheet, Platform } from "react-native";
-// import { Constants } from "expo";
+import { StyleSheet, Platform, Dimensions } from "react-native";
+let { height, width } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   backgroundImage: {
     position: "absolute",
     width: "100%",
-    height: "100%"
+    height: "100%",
+    paddingBottom: 10
   },
-  mainOuterView: { flex: 1, backgroundColor: "#0067a0" },
+  mainOuterView: {
+    flex: 1,
+    backgroundColor: "#0067a0",
+    width: width,
+    height: height
+  },
   mainView: {
-    flex: 1
+    flex: 1,
+    width: width,
+    height: height
   },
   topSpace: { flex: 1 },
   topViewStyle: {

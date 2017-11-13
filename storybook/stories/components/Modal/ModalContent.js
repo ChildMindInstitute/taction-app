@@ -132,7 +132,11 @@ class ModalContent extends React.Component {
             )}
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={styles.contentMainViewNextPrizeDescriptionStyle}>
+            <Text
+              style={styles.contentMainViewNextPrizeDescriptionStyle}
+              ellipsizeMode="head"
+              numberOfLines={1}
+            >
               {this.props.nextPrizeDescription}
             </Text>
           </View>

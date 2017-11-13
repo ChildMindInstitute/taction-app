@@ -52,26 +52,6 @@ class Splash extends React.Component {
       }
     });
   }
-
-  componentDidMount() {
-    function handleConnectivityChange(isConnected) {
-      {
-        isConnected
-          ? {}
-          : Toast.show({
-              text: "Error:",
-              position: "bottom",
-              buttonText: "No Internet Connection!",
-              duration: 5000
-            });
-      }
-    }
-    NetInfo.isConnected.addEventListener(
-      "connectionChange",
-      handleConnectivityChange
-    );
-  }
-
   componentDidUpdate() {
     if (this.props.loaded) {
       if (this.props.parent.emailVerified) {

@@ -59,6 +59,7 @@ const AddFolder = props => (
             placeholder="Folder name (such as 'Spider')"
             onFocus={props.onFocus}
             disabled={props.formDisabled}
+            value={props.folderName}
           />
         </View>
         {props.errorDisplay ? (

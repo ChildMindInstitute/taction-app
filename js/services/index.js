@@ -154,7 +154,7 @@ export default {
             score: 0,
             isPlayed: false,
             timeStamp: timeStamp,
-            status: false,
+            status: true,
             totalDuration: 0
           })
           .then(() => {

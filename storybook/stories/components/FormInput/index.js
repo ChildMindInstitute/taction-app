@@ -22,7 +22,8 @@ const FormInput = props => (
             borderColor: props.error && props.isSignUpPorCP ? "red" : "white",
             borderWidth: 1.5,
             height: 40,
-            flex: 1
+            flex: 1,
+            paddingVertical: 0
           }}
           autoCapitalize="none"
           disabled={props.disabled}

@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderWidth: 1,
     height: 40,
+    alignSelf:'center',
     borderColor: "#0067a0"
   },
   errorContentStyle: {

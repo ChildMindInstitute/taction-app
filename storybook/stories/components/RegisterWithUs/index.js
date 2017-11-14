@@ -4,14 +4,17 @@ import { Text, Button, View } from "native-base";
 import styles from "./styles";
 const RegisterWithUs = props => (
   <View style={styles.mainView}>
-    <Text style={styles.mainViewText}>Don't have an Account?</Text>
-    <Button
-      style={styles.mainViewButton}
-      transparent
-      onPress={props.onPressRegisterNow}
-    >
-      <Text style={styles.mainViewButtonText}>Register Now</Text>
-    </Button>
+    <View style={{ height: 20, alignSelf: "flex-end" }}>
+      <Text style={styles.mainViewText}>
+        Don't have an Account?{"  "}
+        <Text
+          onPress={props.onPressRegisterNow}
+          style={styles.mainViewButtonText}
+        >
+          Register now
+        </Text>
+      </Text>
+    </View>
   </View>
 );
 

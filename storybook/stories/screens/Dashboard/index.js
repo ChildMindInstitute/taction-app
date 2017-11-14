@@ -75,24 +75,28 @@ const Dashboard = props => (
         tabStyle={{ backgroundColor: "#F8F8F8" }}
         activeTextStyle={{ color: "#0067a0" }}
       >
-        {props.excerciseDataMonth.length > 0 ? (
-          <DashBoardContent excerciseData={props.excerciseDataMonth}>
-            <Text>Month's Activities</Text>
-          </DashBoardContent>
+        {props.loaded ? (
+          props.excerciseDataToday.length > 0 ? (
+            <DashBoardContent excerciseData={props.excerciseDataMonth}>
+              <Text>Month's Activities</Text>
+            </DashBoardContent>
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#eee",
+                padding: 16
+              }}
+            >
+              <Text style={{ alignSelf: "center", fontSize: 14 }}>
+                No play this month!
+              </Text>
+            </View>
+          )
         ) : (
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "#eee",
-              padding: 16
-            }}
-          >
-            <Text style={{ alignSelf: "center", fontSize: 14 }}>
-              No play this month!
-            </Text>
-          </View>
+          false
         )}
       </Tab>
     </Tabs>

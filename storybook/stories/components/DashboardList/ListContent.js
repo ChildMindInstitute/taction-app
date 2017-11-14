@@ -110,7 +110,13 @@ class ListContent extends React.Component {
                       flexDirection: "row"
                     }}
                   >
-                    <Left style={{ flexDirection: "row" }}>
+                    <Left
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        paddingLeft: 10
+                      }}
+                    >
                       <Icon
                         name="md-checkmark"
                         style={{ fontSize: 20, color: "green" }}
@@ -120,10 +126,15 @@ class ListContent extends React.Component {
                       </Text>
                     </Left>
                     <Body />
-                    <Right style={{ flexDirection: "row" }}>
+                    <Right
+                      style={{ flexDirection: "row", alignItems: "center" }}
+                    >
                       <Icon
                         name="md-close"
-                        style={{ fontSize: 20, color: "red" }}
+                        style={{
+                          fontSize: 20,
+                          color: "red"
+                        }}
                       />
                       <Text style={styles.listItemGridItemInnerViewTextStyle}>
                         {data.wrongTaps}

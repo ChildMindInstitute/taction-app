@@ -27,18 +27,25 @@ const styles = StyleSheet.create({
   alreadyHaveAnAccountSpace: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "flex-end",
     alignSelf: "center",
     marginTop: "5%",
     marginBottom: "5%"
   },
-  alreadyHaveAnAccountTextColor: { color: "#fff", opacity: 0.8 },
+  alreadyHaveAnAccountTextColor: {
+    color: "rgba(255,255,255,0.8)",
+    height: 20,
+    alignSelf: "flex-end"
+  },
   loginRedirectButtonStyle: {
     paddingTop: 0,
-    paddingBottom: 0,
+    paddingBottom: -1,
     alignSelf: "flex-end",
-    height: 20
+    height: 18
   },
-  loginRedirectButtonTextStyle: { color: "#fff", fontWeight: "bold" }
+  loginRedirectButtonTextStyle: {
+    color: "#fff",
+    fontWeight: "bold",
+    paddingLeft: 6
+  }
 });
 export default styles;

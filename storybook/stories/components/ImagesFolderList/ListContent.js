@@ -93,6 +93,7 @@ class ListContent extends React.Component {
                   onTintColor="#eeae30"
                   value={this.props.listItem.switched}
                   onValueChange={this.props.switchToggled}
+                  thumbTintColor="#eee"
                 />
               </Right>
             </View>

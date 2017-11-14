@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Text } from "native-base";
+import { View, Text } from "native-base";
 
 const ForgotPassword = props => (
-  <Button
-    transparent
-    onPress={props.onPressForgotPassword}
-    style={props.forgotPasswordButtonStyle}
-  >
-    <Text style={props.forgotPasswordTextStyle}>Forgot password?</Text>
-  </Button>
+  <View transparent style={props.forgotPasswordButtonStyle}>
+    <Text
+      onPress={props.onPressForgotPassword}
+      style={{ fontSize: 16, color: "#fff" }}
+    >
+      Forgot password?
+    </Text>
+  </View>
 );
 
 ForgotPassword.propTypes = {

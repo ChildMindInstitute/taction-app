@@ -1,5 +1,4 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-// import { Constants } from "expo";
 let { width, height } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   mainOuterView: {
@@ -8,7 +7,7 @@ const styles = StyleSheet.create({
   mainView: {
     backgroundColor: "#0067a0",
     width: width - 30,
-    height: height - 30,
+    height: Platform.OS == "ios" ? height - 30 : height - 80,
     margin: 15
   },
   topSpace: {

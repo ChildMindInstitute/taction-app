@@ -2,10 +2,16 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
+    height: 20,
+    width: "100%",
     flexDirection: "row",
-    alignItems: "flex-end"
+    justifyContent: "center"
   },
-  mainViewText: { color: "#fff", opacity: 0.8 },
+  mainViewText: {
+    color: "rgba(255,255,255,0.8)",
+    alignSelf: "baseline",
+    height: 20
+  },
   mainViewButton: {
     alignSelf: "flex-end",
     paddingTop: 0,
@@ -14,10 +20,9 @@ const styles = StyleSheet.create({
   },
   mainViewButtonText: {
     color: "#ffffff",
-    fontWeight: "bold",
     paddingLeft: 6,
-    paddingBottom: 1,
-    paddingRight: 0
+    fontWeight: "bold",
+    textAlign: "justify"
   }
 });
 export default styles;

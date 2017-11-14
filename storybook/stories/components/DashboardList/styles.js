@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   listItemGridViewStyle: {
     flex: 3,
-    paddingLeft: 15
+    paddingLeft: 17
   },
   listItemGridItemStyle: {
     flex: 1,

@@ -67,15 +67,14 @@ const SignUp = props => (
         </View>
         <View style={styles.alreadyHaveAnAccountSpace}>
           <Text style={styles.alreadyHaveAnAccountTextColor}>
-            Already have an account?
+            Already have an account?{" "}
+            <Text
+              onPress={props.loginRedirectPress}
+              style={styles.loginRedirectButtonTextStyle}
+            >
+              Login
+            </Text>
           </Text>
-          <Button
-            transparent
-            style={styles.loginRedirectButtonStyle}
-            onPress={props.loginRedirectPress}
-          >
-            <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
-          </Button>
         </View>
         <View style={styles.BottomlogoSpace}>
           <Logo1 imageDimensions={styles.subLogoStyles} />

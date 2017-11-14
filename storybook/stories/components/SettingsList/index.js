@@ -83,6 +83,7 @@ const SettingsList = props => (
           }}
           onTintColor="#eeae30"
           value={props.randomSliderValue}
+          thumbTintColor="#eee"
         />
       </Right>
     </ListItem>
@@ -109,6 +110,7 @@ const SettingsList = props => (
           }}
           onTintColor="#eeae30"
           value={props.soundSliderValue}
+          thumbTintColor="#eee"
         />
       </Right>
     </ListItem>

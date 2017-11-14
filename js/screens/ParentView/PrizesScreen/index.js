@@ -139,22 +139,32 @@ class PrizesScreen extends React.Component {
                 <Item stackedLabel style={{ flex: 1 }}>
                   <Label>Points to be achieved</Label>
                   <Input
-                    style={{ backgroundColor: "#fff" }}
+                    style={{
+                      backgroundColor: "#fff",
+                      height: 40,
+                      flex: 1,
+                      paddingVertical: 0
+                    }}
                     onChange={event => {
                       this.input.pointsReq = event.nativeEvent.text;
                     }}
                     keyboardType="numeric"
-                    placeholder={this.state.placeholderPoints.toString()}
+                    defaultValue={this.state.placeholderPoints.toString()}
                   />
                 </Item>
                 <Item stackedLabel style={{ flex: 1 }}>
                   <Label>Prize</Label>
                   <Input
-                    style={{ backgroundColor: "#fff" }}
+                    style={{
+                      backgroundColor: "#fff",
+                      height: 40,
+                      flex: 1,
+                      paddingVertical: 0
+                    }}
                     onChange={event => {
                       this.input.prizeDesc = event.nativeEvent.text;
                     }}
-                    placeholder={this.state.placeholderDesc.toString()}
+                    defaultValue={this.state.placeholderDesc.toString()}
                   />
                 </Item>
               </View>
@@ -196,6 +206,8 @@ class PrizesScreen extends React.Component {
               prizeId: item.prizeID,
               edit: true
             });
+            this.input.pointsReq = item.points;
+            this.input.prizeDesc = item.description;
             this.setState({ modalVisible: true });
           }}
           deletePress={item => {

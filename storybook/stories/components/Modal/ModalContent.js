@@ -53,7 +53,8 @@ class ModalContent extends React.Component {
               style={[
                 styles.contentMainViewTextStyle,
                 styles.text1,
-                this.props.greetingLine1Style
+                this.props.greetingLine1Style,
+                { textAlign: "center" }
               ]}
             >
               {this.props.greetingLine1}
@@ -61,7 +62,13 @@ class ModalContent extends React.Component {
           </View>
           {this.props.line2needed ? (
             <View style={{ flex: 1 }}>
-              <Text style={[styles.contentMainViewTextStyle, styles.text2]}>
+              <Text
+                style={[
+                  styles.contentMainViewTextStyle,
+                  styles.text2,
+                  { textAlign: "center" }
+                ]}
+              >
                 {this.props.greetingLine2}
               </Text>
             </View>
@@ -88,7 +95,21 @@ class ModalContent extends React.Component {
               justifyContent: "center"
             }}
           >
-            <Text style={styles.contentMainViewPointsTextStyle}>
+            <Text
+              style={[
+                styles.contentMainViewLevelDescriptionStyle,
+                this.props.extraDescriptionStyle,
+                { textAlign: "center" }
+              ]}
+            >
+              Total Points:
+            </Text>
+            <Text
+              style={[
+                styles.contentMainViewPointsTextStyle,
+                { textAlign: "center" }
+              ]}
+            >
               {this.props.displayPoints}
             </Text>
           </View>
@@ -109,7 +130,8 @@ class ModalContent extends React.Component {
               <Text
                 style={[
                   styles.contentMainViewLevelDescriptionStyle,
-                  this.props.extraDescriptionStyle
+                  this.props.extraDescriptionStyle,
+                  { textAlign: "center" }
                 ]}
               >
                 {this.props.description}
@@ -123,7 +145,12 @@ class ModalContent extends React.Component {
                   alignItems: "flex-start"
                 }}
               >
-                <Text style={styles.contentMainViewLevelDescriptionStyle}>
+                <Text
+                  style={[
+                    styles.contentMainViewLevelDescriptionStyle,
+                    { textAlign: "center" }
+                  ]}
+                >
                   {this.props.descriptionLine2}
                 </Text>
               </View>
@@ -133,9 +160,10 @@ class ModalContent extends React.Component {
           </View>
           <View style={{ flex: 1 }}>
             <Text
-              style={styles.contentMainViewNextPrizeDescriptionStyle}
-              ellipsizeMode="head"
-              numberOfLines={1}
+              style={[
+                styles.contentMainViewNextPrizeDescriptionStyle,
+                { textAlign: "center" }
+              ]}
             >
               {this.props.nextPrizeDescription}
             </Text>

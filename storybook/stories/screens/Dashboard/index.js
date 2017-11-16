@@ -60,8 +60,8 @@ const Dashboard = props => (
                 padding: 16
               }}
             >
-              <Text style={{ alignSelf: "center", fontSize: 14 }}>
-                Seems like somebody has been lazy today!
+              <Text style={{ alignSelf: "center", textAlign: "center" }}>
+                No games played today!
               </Text>
             </View>
           )
@@ -90,7 +90,7 @@ const Dashboard = props => (
                 padding: 16
               }}
             >
-              <Text style={{ alignSelf: "center", fontSize: 14 }}>
+              <Text style={{ alignSelf: "center", textAlign: "center" }}>
                 No play this month!
               </Text>
             </View>

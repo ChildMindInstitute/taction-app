@@ -131,7 +131,7 @@ class OpeningScreen extends React.Component {
               isCloseButtonRequired={true}
               displayPoints={this.props.child.totalScore}
               description={
-                this.props.child.totalScore > 0
+                this.props.child.totalScore > 0 && this.state.todayScore > 0
                   ? "You have earned " +
                     this.state.todayScore +
                     " point" +

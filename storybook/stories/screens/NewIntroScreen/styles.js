@@ -9,14 +9,12 @@ const styles = StyleSheet.create({
   },
   mainOuterView: {
     flex: 1,
-    backgroundColor: "#0067a0",
-    width: width,
-    height: height
+    backgroundColor: "#fff"
   },
   mainView: {
     flex: 1,
     width: width,
-    height: height
+    height: height - 72
   },
   topSpace: { flex: 1 },
   topViewStyle: {

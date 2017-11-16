@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
   },
   alreadyHaveAnAccountTextColor: {
     color: "rgba(255,255,255,0.8)",
-    height: 20,
-    alignSelf: "flex-end"
+    height: 25,
+    alignSelf: "flex-end",
+    margin: 5
   },
   loginRedirectButtonStyle: {
     paddingTop: 0,

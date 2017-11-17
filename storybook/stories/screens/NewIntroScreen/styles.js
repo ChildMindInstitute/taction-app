@@ -1,4 +1,4 @@
-import { StyleSheet, Platform, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 let { height, width } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   backgroundImage: {

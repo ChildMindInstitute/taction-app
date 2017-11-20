@@ -7,12 +7,9 @@ const updateFolderScore = function* updateFolderScore(action) {
   let child = action.payload.child;
   let newWrongTaps = action.payload.newWrongTaps;
   let newCorrectTaps = action.payload.newCorrectTaps;
-  let newScore = newCorrectTaps - newWrongTaps;
+  let newScore =
+    newCorrectTaps - newWrongTaps > 0 ? newCorrectTaps - newWrongTaps : 0;
   if (folder.folderDetails.score < newScore) {
-    child.childDetails.totalScore -= folder.folderDetails.score;
-    child.childDetails.correctTaps -= folder.folderDetails.correctTaps;
-    child.childDetails.wrongTaps -= folder.folderDetails.wrongTaps;
-    child.childDetails.todayScore -= folder.folderDetails.score;
     folder.folderDetails.correctTaps = newCorrectTaps;
     folder.folderDetails.wrongTaps = newWrongTaps;
     folder.folderDetails.score = newScore;

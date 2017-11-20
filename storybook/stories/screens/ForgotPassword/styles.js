@@ -28,10 +28,9 @@ const styles = StyleSheet.create({
   submitButtonSpace: { flex: 1 },
   registerNowSpace: {
     flex: 4,
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    marginLeft: "10%",
     flexDirection: "row"
   },
   mainLogoStyles: { alignSelf: "center", height: 90, width: 90 },
@@ -39,18 +38,9 @@ const styles = StyleSheet.create({
   subLogoStyles: { alignSelf: "center", height: 40, width: 120 },
 
   submitButtonTextStyle: { color: "white" },
-  loginRedirectButtonStyle: {
-    paddingLeft: 0,
-    padding: 0,
-    alignSelf: "center",
-    height: 16,
-    width: 80
-  },
   loginRedirectButtonTextStyle: {
     color: "#fff",
-    fontWeight: "bold",
-    paddingLeft: 6,
-    marginBottom: -2
+    fontWeight: "bold"
   }
 });
 export default styles;

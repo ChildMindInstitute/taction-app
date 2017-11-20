@@ -83,16 +83,15 @@ const Login = props => (
         </View>
 
         <View style={styles.registerNowSpace}>
-          <Text style={{ color: "#fff", opacity: 0.8, alignSelf: "center" }}>
-            Back to the
+          <Text style={{ color: "rgba(255,255,255,0.8)", alignSelf: "center" }}>
+            Back to the{" "}
+            <Text
+              onPress={props.onReturnLoginPress}
+              style={styles.loginRedirectButtonTextStyle}
+            >
+              Login
+            </Text>
           </Text>
-          <Button
-            transparent
-            style={styles.loginRedirectButtonStyle}
-            onPress={props.onReturnLoginPress}
-          >
-            <Text style={styles.loginRedirectButtonTextStyle}>Login</Text>
-          </Button>
         </View>
       </View>
 

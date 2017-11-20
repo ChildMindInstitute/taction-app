@@ -3,6 +3,7 @@ import { ListItem, Text, Left, Right, Body, View, Icon } from "native-base";
 import { Image } from "react-native";
 import Grid from "react-native-grid-component";
 import styles from "./styles";
+import calculateStars from "../../../../js/componentsCommon/calcutateStars";
 class ListContent extends React.Component {
   static navigationOptions = {
     title: "ListContent",
@@ -44,12 +45,17 @@ class ListContent extends React.Component {
                 <Text style={styles.listItemBodyTextStyle}>
                   {this.props.listData.points}
                 </Text>
-                <Image
-                  source={this.props.listData.stars}
-                  style={styles.listItemBodyImageStyle}
-                  resizeMethod="auto"
-                  resizeMode="contain"
-                />
+                {
+                  <Image
+                    source={calculateStars(
+                      this.props.listData.correctTaps,
+                      this.props.listData.wrongTaps
+                    )}
+                    style={styles.listItemBodyImageStyle}
+                    resizeMethod="auto"
+                    resizeMode="stretch"
+                  />
+                }
               </Body>
               <Right style={styles.listItemRightStyle}>
                 <View style={styles.listItemRightViewStyle}>

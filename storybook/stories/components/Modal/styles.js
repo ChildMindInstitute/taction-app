@@ -32,8 +32,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center"
   },
-  text1: { marginBottom: "7%" },
-  text2: { marginBottom: "3%" },
   contentMainViewImageStyle: { width: 200, height: 75 },
   contentMainViewPointsTextStyle: {
     color: "white",

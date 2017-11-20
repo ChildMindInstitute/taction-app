@@ -204,8 +204,13 @@ class GameScreen extends React.Component {
       this.setState({ gameFinished: false });
     }
   }
-
+  releaseMusic() {
+    gameMusic.release();
+    correctAnswer.release();
+    wrongAnswer.release();
+  }
   playNext() {
+    this.releaseMusic();
     this.setModalVisible(false);
     this.props.dispatch({
       type: "SET_CHILD_FOLDER",
@@ -228,6 +233,7 @@ class GameScreen extends React.Component {
   }
 
   playAgain() {
+    this.releaseMusic();
     this.props.dispatch({
       type: "SET_PLAY_AGAIN",
       payload: {
@@ -250,7 +256,32 @@ class GameScreen extends React.Component {
       );
     }, 2000);
   }
-
+  playLater() {
+    this.releaseMusic();
+    this.props.dispatch({
+      type: "SET_PLAY_AGAIN",
+      payload: {
+        childID: this.props.child.childID,
+        exeID: this.state.currentFolder.folderID
+      }
+    });
+    this.closeModalExitGame();
+  }
+  closeModalExitGame() {
+    this.releaseMusic();
+    this.setModalVisible(false);
+    this.props.navigation.dispatch(
+      NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({
+            params: { showModal: false },
+            routeName: "IntroScreen"
+          })
+        ]
+      })
+    );
+  }
   render() {
     return (
       <Home
@@ -347,6 +378,7 @@ class GameScreen extends React.Component {
           extraModalViewStyle={{ backgroundColor: "#0067a0" }}
           content={
             <ModalContent
+              isCloseButtonRequired={true}
               greetingLine1={this.props.folder.folderDetails.exerciseName}
               line2needed={true}
               greetingLine2="Level Completed"
@@ -359,6 +391,7 @@ class GameScreen extends React.Component {
                   : require("../../../assets/zero-star.png")
               }
               playLaterRequired={true}
+              playLaterPress={this.playLater.bind(this)}
               displayPoints={this.props.child.childDetails.totalScore}
               description=""
               extraDescriptionStyle={{ fontSize: 14 }}
@@ -371,32 +404,9 @@ class GameScreen extends React.Component {
               }
               playNextDisabled={!this.props.nextFolder.folderDetails}
               isButtonNeeded={true}
-              playNext={() => {
-                gameMusic.release();
-                correctAnswer.release();
-                wrongAnswer.release();
-                this.playNext();
-              }}
-              playAgain={() => {
-                gameMusic.release();
-                correctAnswer.release();
-                wrongAnswer.release();
-                this.playAgain();
-              }}
-              toggleVisiblity={() => {
-                this.setModalVisible(false);
-                this.props.navigation.dispatch(
-                  NavigationActions.reset({
-                    index: 0,
-                    actions: [
-                      NavigationActions.navigate({
-                        params: { showModal: false },
-                        routeName: "IntroScreen"
-                      })
-                    ]
-                  })
-                );
-              }}
+              playNext={this.playNext.bind(this)}
+              playAgain={this.playAgain.bind(this)}
+              toggleVisiblity={this.closeModalExitGame.bind(this)}
             />
           }
         />

@@ -48,11 +48,10 @@ class ModalContent extends React.Component {
             }
           ]}
         >
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1.5 }}>
             <Text
               style={[
                 styles.contentMainViewTextStyle,
-                styles.text1,
                 this.props.greetingLine1Style,
                 { textAlign: "center" }
               ]}
@@ -214,7 +213,7 @@ class ModalContent extends React.Component {
               <Button
                 transparent
                 iconRight
-                onPress={this.props.toggleVisiblity}
+                onPress={this.props.playLaterPress}
                 style={{ marginLeft: 25 }}
               >
                 <Text

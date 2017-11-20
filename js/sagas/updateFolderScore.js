@@ -5,19 +5,20 @@ const updateFolderScore = function* updateFolderScore(action) {
   let list = action.payload.imageList;
   let folder = action.payload.folder;
   let child = action.payload.child;
-  child.childDetails.totalScore -= folder.folderDetails.score;
-  child.childDetails.correctTaps -= folder.folderDetails.correctTaps;
-  child.childDetails.wrongTaps -= folder.folderDetails.wrongTaps;
-  child.childDetails.todayScore -= folder.folderDetails.score;
-  folder.folderDetails.correctTaps = 0;
-  folder.folderDetails.wrongTaps = 0;
-  folder.folderDetails.score = 0;
+  let newWrongTaps = action.payload.newWrongTaps;
+  let newCorrectTaps = action.payload.newCorrectTaps;
+  let newScore = newCorrectTaps - newWrongTaps;
+  if (folder.folderDetails.score < newScore) {
+    child.childDetails.totalScore -= folder.folderDetails.score;
+    child.childDetails.correctTaps -= folder.folderDetails.correctTaps;
+    child.childDetails.wrongTaps -= folder.folderDetails.wrongTaps;
+    child.childDetails.todayScore -= folder.folderDetails.score;
+    folder.folderDetails.correctTaps = newCorrectTaps;
+    folder.folderDetails.wrongTaps = newWrongTaps;
+    folder.folderDetails.score = newScore;
+  }
   folder.folderDetails.isPlayed = true;
   for (let i = 0; i < list.length; i++) {
-    folder.folderDetails.correctTaps += list[i].imageDetails.correctTaps;
-    folder.folderDetails.wrongTaps += list[i].imageDetails.wrongTaps;
-    folder.folderDetails.score += list[i].imageDetails.score;
-
     yield call(Db.updateImage, list[i].imageID, {
       correctTaps: list[i].imageDetails.correctTaps,
       wrongTaps: list[i].imageDetails.wrongTaps,
@@ -25,14 +26,10 @@ const updateFolderScore = function* updateFolderScore(action) {
       status: true
     });
   }
-  child.childDetails.todayScore += folder.folderDetails.score;
-  child.childDetails.totalScore += folder.folderDetails.score;
-  child.childDetails.correctTaps += folder.folderDetails.correctTaps;
-  child.childDetails.wrongTaps += folder.folderDetails.wrongTaps;
-  if (folder.folderDetails.score > child.childDetails.highScore) {
-    child.childDetails.highScore = folder.folderDetails.score;
-  }
-
+  child.childDetails.todayScore += newScore;
+  child.childDetails.totalScore += newScore;
+  child.childDetails.correctTaps += newCorrectTaps;
+  child.childDetails.wrongTaps += newWrongTaps;
   yield call(Db.updateExercise, folder.folderID, {
     correctTaps: folder.folderDetails.correctTaps,
     wrongTaps: folder.folderDetails.wrongTaps,

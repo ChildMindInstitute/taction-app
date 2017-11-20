@@ -18,6 +18,8 @@ class GameScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.currentFolderCorrectTaps = 0;
+    this.currentFolderWrongTaps = 0;
     if (this.props.settings.sound) {
       gameMusic = new Sound("game_music.mp3", Sound.MAIN_BUNDLE, error => {
         if (error) {
@@ -129,6 +131,7 @@ class GameScreen extends React.Component {
   }
 
   updateCorrectScore() {
+    ++this.currentFolderCorrectTaps;
     ++image.imageDetails.correctTaps;
     ++image.imageDetails.score;
     this.props.dispatch({
@@ -157,6 +160,7 @@ class GameScreen extends React.Component {
   }
 
   updateWrongScore() {
+    ++this.currentFolderWrongTaps;
     ++image.imageDetails.wrongTaps;
     if (image.imageDetails.score > 0) {
       --image.imageDetails.score;
@@ -193,7 +197,9 @@ class GameScreen extends React.Component {
       payload: {
         imageList: this.props.imageList,
         folder: this.props.folder,
-        child: this.props.child
+        child: this.props.child,
+        newCorrectTaps: this.currentFolderCorrectTaps,
+        newWrongTaps: this.currentFolderWrongTaps
       }
     });
   }
@@ -385,8 +391,8 @@ class GameScreen extends React.Component {
               stars={
                 this.props.gameOver
                   ? calculate(
-                      this.props.child.childDetails.correctTaps,
-                      this.props.child.childDetails.wrongTaps
+                      this.currentFolderCorrectTaps,
+                      this.currentFolderWrongTaps
                     )
                   : require("../../../assets/zero-star.png")
               }

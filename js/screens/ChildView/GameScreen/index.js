@@ -99,9 +99,11 @@ class GameScreen extends React.Component {
     return 4;
   }
   componentWillUnmount() {
-    gameMusic.release();
-    correctAnswer.release();
-    wrongAnswer.release();
+    if (this.props.settings.sound) {
+      gameMusic.release();
+      correctAnswer.release();
+      wrongAnswer.release();
+    }
   }
   componentWillMount() {
     totalLevels = this.props.settings.imagesPerSession;
@@ -211,9 +213,11 @@ class GameScreen extends React.Component {
     }
   }
   releaseMusic() {
-    gameMusic.release();
-    correctAnswer.release();
-    wrongAnswer.release();
+    if (this.props.settings.sound) {
+      gameMusic.release();
+      correctAnswer.release();
+      wrongAnswer.release();
+    }
   }
   playNext() {
     this.releaseMusic();

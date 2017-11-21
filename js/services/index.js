@@ -47,7 +47,7 @@ export default {
               settings: {
                 imagesPerSession: 25,
                 maxImageDuration: 10,
-                sound: true,
+                sound: false,
                 random: false
               }
             })

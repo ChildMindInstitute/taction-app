@@ -47,6 +47,7 @@ class DashboardScreen extends React.Component {
           leftPress={() => {
             this.props.navigation.navigate("DrawerOpen");
           }}
+          childAdded={this.state.childExists}
           menuDisabled={!this.props.loaded}
           excerciseDataMonth={this.props.monthList}
           excerciseDataToday={this.props.todayList}

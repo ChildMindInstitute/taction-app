@@ -26,7 +26,7 @@ const Dashboard = props => (
     >
       <Left style={styles.leftStyle}>
         <Button
-          disabled={props.menuDisabled}
+          disabled={props.menuDisabled && props.childAdded}
           transparent
           onPress={props.leftPress}
         >

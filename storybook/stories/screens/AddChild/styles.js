@@ -16,10 +16,11 @@ const styles = StyleSheet.create({
   headerRightTotalPointsTextStyle: { fontSize: 6, color: "white", flex: 1 },
   contentStyle: {
     flex: 1,
+    backgroundColor: "#eee",
     paddingLeft: "5%",
     paddingRight: "5%",
     paddingTop: "40%",
-    paddingBottom: "40%"
+    paddingBottom: "60%"
   },
   mainSpace: { flex: 5, alignContent: "center", justifyContent: "center" },
   ContainerStyle: {

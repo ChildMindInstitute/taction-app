@@ -46,14 +46,6 @@ const AddChild = props => (
               iconColor="white"
             />
           </View>
-          <View style={{ flex: 1 }}>
-            <Button
-              onPress={props.onPressSkipButton}
-              submitButtonStyle={styles.submitButton2Style}
-              buttonText="Skip"
-              submitButtonTextStyle={styles.submitButton2TextStyle}
-            />
-          </View>
         </View>
       </View>
     </Content>

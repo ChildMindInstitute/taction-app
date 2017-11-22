@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import Logo1 from "../Logo.1";
 import styles from "./styles";
 import { connect } from "react-redux";
+let count = 0;
 const datas = [
   {
     name: "Dashboard",
@@ -42,7 +43,18 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  state = {
+    childAdded: false
+  };
+  componentWillUpdate() {
+    if (
+      this.props.child &&
+      this.props.child.childID &&
+      !this.state.childAdded
+    ) {
+      this.setState({ childAdded: true });
+    }
+  }
   render() {
     return (
       <View style={styles.containerStyle}>
@@ -53,28 +65,35 @@ class SideBar extends React.Component {
           <View style={styles.listSpace}>
             <List
               dataArray={datas}
-              renderRow={data => (
-                <ListItem
-                  button
-                  style={[
-                    styles.listItemStyle,
-                    {
-                      display:
-                        data.name == "Add Child" &&
-                        this.props.child &&
-                        this.props.child.childID
-                          ? "none"
-                          : "flex"
-                    }
-                  ]}
-                  underlayColor="#0067a0"
-                  onPress={() => {
-                    this.props.navigation.navigate(data.route);
-                  }}
-                >
-                  <Text style={styles.text}>{data.name}</Text>
-                </ListItem>
-              )}
+              renderRow={data =>
+                data.name == "Add Child" ? (
+                  !this.state.childAdded ? (
+                    <ListItem
+                      button
+                      style={styles.listItemStyle}
+                      underlayColor="#0067a0"
+                      onPress={() => {
+                        this.props.navigation.navigate(data.route);
+                      }}
+                    >
+                      <Text style={styles.text}>{data.name}</Text>
+                    </ListItem>
+                  ) : (
+                    false
+                  )
+                ) : (
+                  <ListItem
+                    button
+                    style={styles.listItemStyle}
+                    underlayColor="#0067a0"
+                    onPress={() => {
+                      this.props.navigation.navigate(data.route);
+                    }}
+                  >
+                    <Text style={styles.text}>{data.name}</Text>
+                  </ListItem>
+                )
+              }
             />
           </View>
           <View style={styles.footer}>

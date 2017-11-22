@@ -57,7 +57,7 @@ class GameScreen extends React.Component {
       i4: this.randomAssign(),
       time: time,
       correctOption: 0,
-      currentLevel: 0,
+      currentLevel: 1,
       reset: false,
       modalVisible: false,
       gameFinished: false,
@@ -117,7 +117,7 @@ class GameScreen extends React.Component {
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     } else {
-      index = this.state.currentLevel;
+      index = this.state.currentLevel - 1;
       image = this.props.imageList[index];
       something[0] = { uri: image.imageDetails.url };
     }
@@ -313,7 +313,7 @@ class GameScreen extends React.Component {
         timeExpiredImageShuffle={() => {
           this.options = [0, 1, 2, 3];
           if (!this.state.gameOver) {
-            if (this.state.currentLevel + 1 <= totalLevels) {
+            if (this.state.currentLevel <= totalLevels) {
               setTimeout(() => {
                 this.setState({
                   i1: this.randomAssign(),
@@ -339,7 +339,7 @@ class GameScreen extends React.Component {
         }}
         pressed={(item => {
           this.options = [0, 1, 2, 3];
-          if (this.state.currentLevel + 1 <= totalLevels)
+          if (this.state.currentLevel < totalLevels)
             setTimeout(() => {
               this.setState({
                 i1: this.randomAssign(),
@@ -370,6 +370,19 @@ class GameScreen extends React.Component {
               this.setState({ correctOption: x, reset: false });
             }, 500);
           else if (!this.state.gameOver) {
+            if (item == this.state.correctOption) {
+              if (this.props.settings.sound) {
+                correctAnswer.stop();
+                correctAnswer.play();
+              }
+              this.updateCorrectScore();
+            } else {
+              if (this.props.settings.sound) {
+                wrongAnswer.stop();
+                wrongAnswer.play();
+              }
+              this.updateWrongScore();
+            }
             this.setState({ isLast: true });
             this.updateFolderScore();
             this.setState({ gameFinished: true, gameOver: true });

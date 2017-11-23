@@ -24,7 +24,7 @@ class LoginScreen extends React.Component {
       disabled: true
     };
     this.error = {
-      submitError: "Please enter a valid username and password!"
+      submitError: "Please enter a valid email/password!"
     };
   }
 

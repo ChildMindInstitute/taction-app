@@ -10,9 +10,12 @@ const updateFolderScore = function* updateFolderScore(action) {
   let newScore =
     newCorrectTaps - newWrongTaps > 0 ? newCorrectTaps - newWrongTaps : 0;
   if (folder.folderDetails.correctTaps < newCorrectTaps) {
+    child.childDetails.totalScore -= folder.folderDetails.score;
     folder.folderDetails.correctTaps = newCorrectTaps;
     folder.folderDetails.wrongTaps = newWrongTaps;
     folder.folderDetails.score = newScore;
+    child.childDetails.todayScore += newScore;
+    child.childDetails.totalScore += newScore;
   }
   folder.folderDetails.isPlayed = true;
   for (let i = 0; i < list.length; i++) {
@@ -23,8 +26,7 @@ const updateFolderScore = function* updateFolderScore(action) {
       status: true
     });
   }
-  child.childDetails.todayScore += newScore;
-  child.childDetails.totalScore += newScore;
+
   child.childDetails.correctTaps += newCorrectTaps;
   child.childDetails.wrongTaps += newWrongTaps;
   yield call(Db.updateExercise, folder.folderID, {

@@ -46,7 +46,16 @@ class SideBar extends React.Component {
   state = {
     childAdded: false
   };
-  componentWillUpdate() {
+  componentDidUpdate() {
+    if (
+      this.props.child &&
+      this.props.child.childID &&
+      !this.state.childAdded
+    ) {
+      this.setState({ childAdded: true });
+    }
+  }
+  componentWillMount() {
     if (
       this.props.child &&
       this.props.child.childID &&

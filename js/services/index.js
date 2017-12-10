@@ -548,7 +548,12 @@ export default {
     const childRef = firebase.database().ref("child/" + childID + "/prizes/");
     let prize = childRef.push();
     try {
-      await prize.set({ description: description, points: parseInt(points) });
+      await prize.set({
+        description: description,
+        points: parseInt(points),
+        deliveredByParent: false,
+        recievedByChild: false
+      });
       return prize.key;
     } catch (err) {
       return err;
@@ -572,7 +577,9 @@ export default {
               response.push({
                 prizeID: prize.key,
                 points: prize.val().points,
-                description: prize.val().description
+                description: prize.val().description,
+                deliveredByParent: prize.val().deliveredByParent,
+                recievedByChild: prize.val().recievedByChild
               });
               if (response.length == numExe) {
                 resolve(response);

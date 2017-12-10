@@ -6,7 +6,7 @@ import LogoutTemp from "../../../../js/screens/ParentView/LogoutTemp";
 import NewIntroScreen from "../../../../js/screens/ChildView/OpeningScreen";
 import GameScreen from "../../../../js/screens/ChildView/GameScreen";
 import HowToPlayScreen from "../../../../js/screens/ChildView/HowToPlayScreen";
-
+import Prizes from "../../../../js/screens/ChildView/PrizesScreen";
 const DrawerParent = DrawerNavigator(
   {
     GameNavigator: {
@@ -17,7 +17,8 @@ const DrawerParent = DrawerNavigator(
       })
     },
     About: { screen: AboutScreen },
-    Logout: { screen: navProps => <LogoutTemp parentNavProps={navProps} /> }
+    Logout: { screen: navProps => <LogoutTemp parentNavProps={navProps} /> },
+    Prizes: { screen: Prizes }
   },
   {
     initialRouteName: "GameNavigator",

@@ -11,17 +11,12 @@ const AddPrizes = props => {
       closeOnRowBeginSwipe
       dataSource={ds.cloneWithRows(props.data)}
       renderRow={data => <ListContent item={data} />}
-      renderLeftHiddenRow={data => (
-        <Button full success onPress={() => props.editPress(data)}>
-          <Icon active name="nutrition" />
-        </Button>
-      )}
+      renderLeftHiddenRow={data => {}}
       renderRightHiddenRow={data => (
-        <Button full danger onPress={() => props.deletePress(data)}>
-          <Icon active name="trash" />
+        <Button full success onPress={() => props.onTick(data)}>
+          <Icon active name="md-checkmark" />
         </Button>
       )}
-      leftOpenValue={75}
       rightOpenValue={-75}
     />
   );

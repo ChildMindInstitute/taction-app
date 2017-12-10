@@ -14,7 +14,10 @@ const datas = [
     name: "About",
     route: "About"
   },
-
+  {
+    name: "Prizes",
+    route: "Prizes"
+  },
   {
     name: "Logout",
     route: "Logout"

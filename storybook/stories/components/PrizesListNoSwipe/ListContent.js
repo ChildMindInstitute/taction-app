@@ -13,22 +13,6 @@ class ListContent extends React.Component {
     };
   }
   render() {
-    // const rightButtons = [
-    //   <Button
-    //     style={{ height: "100%", width: 75, justifyContent: "center" }}
-    //     success
-    //     onPress={this.props.editPress}
-    //   >
-    //     <Icon name="ios-brush" />
-    //   </Button>,
-    //   <Button
-    //     style={{ height: "100%", width: 75, justifyContent: "center" }}
-    //     danger
-    //     onPress={this.props.deletePress}
-    //   >
-    //     <Icon name="trash" />
-    //   </Button>
-    // ];
     return (
       <ListItem
         style={{
@@ -49,9 +33,9 @@ class ListContent extends React.Component {
           >
             <Image
               source={require("../../../../js/assets/star-filled.png")}
-              style={{ width: 30, height: 30 }}
+              style={{ width: 25, height: 25 }}
               resizeMethod="auto"
-              resizeMode="contain"
+              resizeMode="stretch"
             />
             <Text style={{ color: "#eeae30", fontSize: 20 }}>
               {this.props.item.points + " Points"}

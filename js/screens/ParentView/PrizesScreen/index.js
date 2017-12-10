@@ -31,7 +31,6 @@ class PrizesScreen extends React.Component {
       prizeDesc: ""
     };
   }
-
   componentDidMount() {
     this.props.dispatch({
       type: "SET_PRIZE_LIST",
@@ -197,6 +196,7 @@ class PrizesScreen extends React.Component {
           }
         />
         <Prizes
+          childsPoints={this.props.child.childDetails.totalScore}
           data={this.props.prizeList}
           back={() => this.props.navigation.navigate("Settings")}
           editPress={item => {
@@ -209,6 +209,28 @@ class PrizesScreen extends React.Component {
             this.input.pointsReq = item.points;
             this.input.prizeDesc = item.description;
             this.setState({ modalVisible: true });
+          }}
+          onTickPress={() => {
+            //action to set delivered by parent true
+            Alert.alert(
+              "",
+              "Are you sure you have delivered the prize to your child?",
+              [
+                {
+                  text: "OK",
+                  onPress: () => {
+                    Toast.show({
+                      text: "Done",
+                      position: "bottom",
+                      buttonText: "Awaiting confirmation from your child",
+                      duration: 5000,
+                      type: "success"
+                    });
+                  }
+                },
+                { text: "Cancel", onPress: () => {} }
+              ]
+            );
           }}
           deletePress={item => {
             Alert.alert(

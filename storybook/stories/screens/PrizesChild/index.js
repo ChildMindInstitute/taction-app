@@ -1,5 +1,4 @@
 import React from "react";
-import PrizesListWithEditAndDelete from "../../components/PrizesListWithEditAndDelete";
 import PrizesListNoSwipe from "../../components/PrizesListNoSwipe";
 import PrizesListWithTick from "../../components/PrizesListWithTick";
 import {
@@ -46,11 +45,7 @@ class ImagesFolder extends React.Component {
           <Body>
             <Text style={{ color: "#fff" }}>Prizes</Text>
           </Body>
-          <Right>
-            <Button onPress={this.props.onAddPress} transparent>
-              <Icon name="ios-add-circle" style={{ color: "#fff" }} />
-            </Button>
-          </Right>
+          <Right />
         </Header>
         <Tabs
           locked
@@ -63,14 +58,12 @@ class ImagesFolder extends React.Component {
             tabStyle={{ backgroundColor: "#F8F8F8" }}
             activeTextStyle={{ color: "#0067a0" }}
           >
-            <PrizesListWithEditAndDelete
+            <PrizesListNoSwipe
               data={this.props.data.filter(
                 function(prize) {
                   return prize.points > this.props.childsPoints;
                 }.bind(this)
               )}
-              editPress={this.props.editPress}
-              deletePress={this.props.deletePress}
             />
           </Tab>
           <Tab
@@ -79,7 +72,7 @@ class ImagesFolder extends React.Component {
             tabStyle={{ backgroundColor: "#F8F8F8" }}
             activeTextStyle={{ color: "#0067a0" }}
           >
-            <PrizesListWithTick
+            <PrizesListNoSwipe
               data={this.props.data.filter(
                 function(prize) {
                   return (
@@ -88,23 +81,23 @@ class ImagesFolder extends React.Component {
                   );
                 }.bind(this)
               )}
-              onTick={this.props.onTickPress}
             />
           </Tab>
           <Tab
-            heading="Delivered"
+            heading="Confirm"
             activeTabStyle={{ backgroundColor: "#F8F8F8" }}
             tabStyle={{ backgroundColor: "#F8F8F8" }}
             activeTextStyle={{ color: "#0067a0" }}
           >
-            <PrizesListNoSwipe
+            <PrizesListWithTick
               data={this.props.data.filter(function(prize) {
                 return prize.deliveredByParent && !prize.recievedByChild;
               })}
+              onTick={this.props.onTickPress}
             />
           </Tab>
           <Tab
-            heading="Confirmed"
+            heading="Received"
             activeTabStyle={{ backgroundColor: "#F8F8F8" }}
             tabStyle={{ backgroundColor: "#F8F8F8" }}
             activeTextStyle={{ color: "#0067a0" }}

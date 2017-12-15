@@ -11,7 +11,7 @@ const AddPrizes = props => {
       closeOnRowBeginSwipe
       dataSource={ds.cloneWithRows(props.data)}
       renderRow={data => <ListContent item={data} />}
-      renderLeftHiddenRow={data => {}}
+      renderLeftHiddenRow={() => {}}
       renderRightHiddenRow={data => (
         <Button full success onPress={() => props.onTick(data)}>
           <Icon active name="md-checkmark" />

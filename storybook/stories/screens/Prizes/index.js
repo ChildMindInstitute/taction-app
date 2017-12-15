@@ -4,7 +4,6 @@ import PrizesListNoSwipe from "../../components/PrizesListNoSwipe";
 import PrizesListWithTick from "../../components/PrizesListWithTick";
 import {
   Container,
-  View,
   Button,
   Icon,
   Text,
@@ -28,7 +27,6 @@ class ImagesFolder extends React.Component {
     };
   }
   render() {
-    const thisPage = this;
     return (
       <Container style={styles.containerStyle}>
         <Header

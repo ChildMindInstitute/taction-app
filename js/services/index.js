@@ -559,7 +559,34 @@ export default {
       return err;
     }
   },
-
+  updatePrizeToDelivered(childID, prizeID) {
+    return new Promise((resolve, reject) => {
+      try {
+        const prizeRef = firebase
+          .database()
+          .ref("child/" + childID + "/prizes/" + prizeID);
+        prizeRef.update({ deliveredByParent: true }).then(() => {
+          resolve("success");
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  },
+  updatePrizeToRecieved(childID, prizeID) {
+    return new Promise((resolve, reject) => {
+      try {
+        const prizeRef = firebase
+          .database()
+          .ref("child/" + childID + "/prizes/" + prizeID);
+        prizeRef.update({ recievedByChild: true }).then(() => {
+          resolve("success");
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  },
   fetchPrizeList(childID) {
     return new Promise((resolve, reject) => {
       const childRef = firebase

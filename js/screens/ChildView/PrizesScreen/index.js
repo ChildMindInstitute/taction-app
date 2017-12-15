@@ -43,7 +43,7 @@ class PrizesScreen extends React.Component {
           childsPoints={this.props.child.childDetails.totalScore}
           data={this.props.prizeList}
           back={() => this.props.navigation.goBack()}
-          onTickPress={() => {
+          onTickPress={item => {
             //action to set recieved by child true
             Alert.alert(
               "",
@@ -51,15 +51,23 @@ class PrizesScreen extends React.Component {
               [
                 {
                   text: "OK",
-                  onPress: () => {
+
+                  onPress: (() => {
                     Toast.show({
                       text: "Done",
                       position: "bottom",
-                      buttonText: "Keep playing! Keep Achieving!",
+                      buttonText: "Awaiting confirmation from your child",
                       duration: 5000,
                       type: "success"
                     });
-                  }
+                    this.props.dispatch({
+                      type: "UPDATE_PRIZE_TO_RECIEVED",
+                      payload: {
+                        childID: this.props.child.childID,
+                        prizeID: item.prizeID
+                      }
+                    });
+                  }).bind(this)
                 },
                 { text: "Cancel", onPress: () => {} }
               ]

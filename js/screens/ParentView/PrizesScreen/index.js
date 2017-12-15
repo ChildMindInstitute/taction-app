@@ -210,15 +210,14 @@ class PrizesScreen extends React.Component {
             this.input.prizeDesc = item.description;
             this.setState({ modalVisible: true });
           }}
-          onTickPress={() => {
-            //action to set delivered by parent true
+          onTickPress={(item => {
             Alert.alert(
               "",
               "Are you sure you have delivered the prize to your child?",
               [
                 {
                   text: "OK",
-                  onPress: () => {
+                  onPress: (() => {
                     Toast.show({
                       text: "Done",
                       position: "bottom",
@@ -226,12 +225,19 @@ class PrizesScreen extends React.Component {
                       duration: 5000,
                       type: "success"
                     });
-                  }
+                    this.props.dispatch({
+                      type: "UPDATE_PRIZE_TO_DELIVERED",
+                      payload: {
+                        childID: this.props.child.childID,
+                        prizeID: item.prizeID
+                      }
+                    });
+                  }).bind(this)
                 },
                 { text: "Cancel", onPress: () => {} }
               ]
             );
-          }}
+          }).bind(this)}
           deletePress={item => {
             Alert.alert(
               "Delete Folders",

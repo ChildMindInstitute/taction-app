@@ -12,6 +12,11 @@ class App extends React.Component {
     isConnected: false
   };
   componentWillMount() {
+    NetInfo.isConnected.fetch().then(isConnected => {
+      isConnected
+        ? this.setState({ isConnected: true })
+        : this.setState({ isConnected: false });
+    });
     Orientation.lockToPortrait();
     NetInfo.isConnected.addEventListener(
       "connectionChange",
@@ -19,11 +24,9 @@ class App extends React.Component {
     );
   }
   handleConnectivityChange(isConnected) {
-    {
-      isConnected
-        ? this.setState({ isConnected: true })
-        : this.setState({ isConnected: false });
-    }
+    isConnected
+      ? this.setState({ isConnected: true })
+      : this.setState({ isConnected: false });
   }
 
   render() {

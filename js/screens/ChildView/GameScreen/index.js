@@ -140,25 +140,26 @@ class GameScreen extends React.Component {
       type: "UPDATE_IMAGE_SCORE",
       payload: { index: index, image: image }
     });
-
-    let something = this.state.input.slice();
-    if (this.props.settings.random) {
-      index = Math.floor(Math.random() * this.props.imageList.length);
-      image = this.props.imageList[index];
-      something[0] = { uri: image.imageDetails.url };
-    } else {
-      ++index;
-      if (index >= this.props.imageList.length) {
-        index = 0;
+    if (this.state.currentLevel < totalLevels) {
+      let something = this.state.input.slice();
+      if (this.props.settings.random) {
+        index = Math.floor(Math.random() * this.props.imageList.length);
+        image = this.props.imageList[index];
+        something[0] = { uri: image.imageDetails.url };
+      } else {
+        ++index;
+        if (index >= this.props.imageList.length) {
+          index = 0;
+        }
+        image = this.props.imageList[index];
+        something[0] = { uri: image.imageDetails.url };
       }
-      image = this.props.imageList[index];
-      something[0] = { uri: image.imageDetails.url };
+      for (let i = 1; i < 4; i++) {
+        randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
+        something[i] = { uri: this.props.randomImage[randomIndex].url };
+      }
+      this.setState({ currentImage: image, input: something });
     }
-    for (let i = 1; i < 4; i++) {
-      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
-      something[i] = { uri: this.props.randomImage[randomIndex].url };
-    }
-    this.setState({ currentImage: image, input: something });
   }
 
   updateWrongScore() {
@@ -172,27 +173,27 @@ class GameScreen extends React.Component {
       type: "UPDATE_IMAGE_SCORE",
       payload: { index: index, image: image }
     });
-
-    let something = this.state.input.slice();
-    if (this.props.settings.random) {
-      index = Math.floor(Math.random() * this.props.imageList.length);
-      image = this.props.imageList[index];
-      something[0] = { uri: image.imageDetails.url };
-    } else {
-      ++index;
-      if (index >= this.props.imageList.length) {
-        index = 0;
+    if (this.state.currentLevel < totalLevels) {
+      let something = this.state.input.slice();
+      if (this.props.settings.random) {
+        index = Math.floor(Math.random() * this.props.imageList.length);
+        image = this.props.imageList[index];
+        something[0] = { uri: image.imageDetails.url };
+      } else {
+        ++index;
+        if (index >= this.props.imageList.length) {
+          index = 0;
+        }
+        image = this.props.imageList[index];
+        something[0] = { uri: image.imageDetails.url };
       }
-      image = this.props.imageList[index];
-      something[0] = { uri: image.imageDetails.url };
+      for (let i = 1; i < 4; i++) {
+        randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
+        something[i] = { uri: this.props.randomImage[randomIndex].url };
+      }
+      this.setState({ currentImage: image, input: something });
     }
-    for (let i = 1; i < 4; i++) {
-      randomIndex = Math.floor(Math.random() * this.props.randomImage.length);
-      something[i] = { uri: this.props.randomImage[randomIndex].url };
-    }
-    this.setState({ currentImage: image, input: something });
   }
-
   updateFolderScore() {
     this.props.dispatch({
       type: "UPDATE_FOLDER_SCORE",
@@ -313,7 +314,7 @@ class GameScreen extends React.Component {
         timeExpiredImageShuffle={() => {
           this.options = [0, 1, 2, 3];
           if (!this.state.gameOver) {
-            if (this.state.currentLevel <= totalLevels) {
+            if (this.state.currentLevel < totalLevels) {
               setTimeout(() => {
                 this.setState({
                   i1: this.randomAssign(),
@@ -369,7 +370,7 @@ class GameScreen extends React.Component {
               }
               this.setState({ correctOption: x, reset: false });
             }, 500);
-          else if (!this.state.gameOver) {
+          else if (this.state.currentLevel == totalLevels) {
             if (item == this.state.correctOption) {
               if (this.props.settings.sound) {
                 correctAnswer.stop();

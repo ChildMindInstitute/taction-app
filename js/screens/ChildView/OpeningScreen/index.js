@@ -142,7 +142,10 @@ class OpeningScreen extends React.Component {
               isDescriptionLine2Required={this.state.prize}
               descriptionLine2={
                 this.state.prize
-                  ? this.state.prizePoints + " more points until next prize:"
+                  ? this.state.prizePoints +
+                    " more point" +
+                    (this.state.prizePoints == 1 ? "" : "s") +
+                    " until next prize:"
                   : ""
               }
               nextPrizeDescription={this.state.prize}

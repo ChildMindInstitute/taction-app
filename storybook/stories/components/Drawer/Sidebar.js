@@ -25,6 +25,7 @@ const datas = [
     route: "Images",
     types: "2"
   },
+  { name: "How to Use", route: "HowtoUse" },
   {
     name: "About",
     route: "About"

@@ -11,6 +11,7 @@ import LogoutTemp from "../../../../js/screens/ParentView/LogoutTemp";
 import StockImages from "../../../../js/screens/ParentView/StockImagesScreen";
 import PrizesScreen from "../../../../js/screens/ParentView/PrizesScreen";
 import SwitchUserTemp from "../../../../js/screens/ParentView/SwitchUserTemp";
+import HowtoUse from "../../../../js/screens/ParentView/HowToPlayScreen";
 const DrawerParent = DrawerNavigator(
   {
     StockImages: { screen: StockImages },
@@ -31,6 +32,7 @@ const DrawerParent = DrawerNavigator(
         />
       )
     },
+    HowtoUse: { screen: HowtoUse },
     Settings: { screen: SettingsScreen },
     Images: { screen: ImagesFolderScreen },
     About: { screen: AboutScreen },

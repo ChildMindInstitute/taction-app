@@ -164,8 +164,8 @@ class SwipeableParallaxCarousel extends Component {
               height: "11.7%",
               borderColor: "#0067a0",
               borderWidth: 2,
-              top: "26%",
-              left: "40%",
+              top: item.top ? item.top + "%" : "26%",
+              left: item.left ? item.left + "%" : "40%",
               justifyContent: "center",
               alignContent: "center",
               alignItems: "center"
@@ -184,13 +184,26 @@ class SwipeableParallaxCarousel extends Component {
               backgroundColor: "#fff",
               width: "6.2%",
               height: "3.5%",
-              borderBottomColor: "#0067a0",
-              borderBottomWidth: 2,
-              borderRightColor: "#0067a0",
-              borderRightWidth: 2,
+              borderBottomWidth: item.isTopLeft || item.isTopRight ? 0 : 2,
+              borderColor: "#0067a0",
+              borderRightWidth: item.isTopLeft || item.isTopRight ? 0 : 2,
+              borderTopWidth: item.isTopLeft || item.isTopRight ? 2 : 0,
+              borderLeftWidth: item.isTopLeft || item.isTopRight ? 2 : 0,
               transform: [{ rotate: "45deg" }],
-              top: "35.9%",
-              left: "70%"
+              top: item.top
+                ? item.isTopLeft
+                  ? item.top - 1.6 + "%"
+                  : item.isTopRight
+                    ? item.top - 1.7 + "%"
+                    : item.top + 9.9 + "%"
+                : "35.9%",
+              left: item.left
+                ? item.isTopLeft
+                  ? item.left + 10 + "%"
+                  : item.isTopRight
+                    ? item.left + 45 + "%"
+                    : item.left + 30 + "%"
+                : "70%"
             }}
           />
         </Animated.View>

@@ -1,7 +1,6 @@
 import React from "react";
 import PrizesListWithEditAndDelete from "../../components/PrizesListWithEditAndDelete";
 import PrizesListNoSwipe from "../../components/PrizesListNoSwipe";
-import PrizesListWithTick from "../../components/PrizesListWithTick";
 import {
   Container,
   Button,
@@ -77,40 +76,13 @@ class ImagesFolder extends React.Component {
             tabStyle={{ backgroundColor: "#F8F8F8" }}
             activeTextStyle={{ color: "#0067a0" }}
           >
-            <PrizesListWithTick
+            <PrizesListNoSwipe
               data={this.props.data.filter(
                 function(prize) {
-                  return (
-                    prize.points < this.props.childsPoints &&
-                    !prize.deliveredByParent
-                  );
+                  return prize.points < this.props.childsPoints;
                 }.bind(this)
               )}
               onTick={this.props.onTickPress}
-            />
-          </Tab>
-          <Tab
-            heading="Delivered"
-            activeTabStyle={{ backgroundColor: "#F8F8F8" }}
-            tabStyle={{ backgroundColor: "#F8F8F8" }}
-            activeTextStyle={{ color: "#0067a0" }}
-          >
-            <PrizesListNoSwipe
-              data={this.props.data.filter(function(prize) {
-                return prize.deliveredByParent && !prize.recievedByChild;
-              })}
-            />
-          </Tab>
-          <Tab
-            heading="Confirmed"
-            activeTabStyle={{ backgroundColor: "#F8F8F8" }}
-            tabStyle={{ backgroundColor: "#F8F8F8" }}
-            activeTextStyle={{ color: "#0067a0" }}
-          >
-            <PrizesListNoSwipe
-              data={this.props.data.filter(function(prize) {
-                return prize.recievedByChild;
-              })}
             />
           </Tab>
         </Tabs>

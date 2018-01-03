@@ -5,15 +5,14 @@ import { Platform } from "react-native";
 const datacarousel = [
   {
     id: 315631,
-    toolTipText: "Access your dashboard throught this drawer option",
+    toolTipText: "Access the Dashboard",
     imagePath: require("../../../assets/how-to-use-Parent/1.png"),
     top: 22,
     left: 35
   },
   {
     id: 315636,
-    toolTipText:
-      "Use today's activity tab to monitors child's activity for that particular day",
+    toolTipText: "Use Today's Activities to monitor child's activity for today",
     imagePath: require("../../../assets/how-to-use-Parent/2.png"),
     top: 20,
     left: 14,
@@ -22,7 +21,7 @@ const datacarousel = [
   {
     id: 315637,
     toolTipText:
-      "Use month's activity tab to monitors child's activity for that particular month",
+      "Use Month's Activities to monitor child's activity for the month",
     imagePath: require("../../../assets/how-to-use-Parent/3.png"),
     top: 20,
     left: 44,
@@ -30,30 +29,28 @@ const datacarousel = [
   },
   {
     id: 315638,
-    toolTipText: "Access app and game settings throught this drawer option",
+    toolTipText: "Access Settings",
     imagePath: require("../../../assets/how-to-use-Parent/4.png"),
     top: 32,
     left: 30
   },
   {
     id: 315639,
-    toolTipText:
-      "Random -> images order in a game level," +
-      " Images per session -> no of images in one level",
+    toolTipText: "Set number and order of images",
     imagePath: require("../../../assets/how-to-use-Parent/5.png"),
     top: 5,
     left: 30
   },
   {
     id: 315640,
-    toolTipText: "Add/Edit/Delete/Rearrange game levels through this option",
+    toolTipText: "Add/edit/delete/reorder image folders (game levels)",
     imagePath: require("../../../assets/how-to-use-Parent/6.png"),
     top: 40,
     left: 40
   },
   {
     id: 315641,
-    toolTipText: "Add new levels through this button",
+    toolTipText: "Add new image folders (game levels)",
     imagePath: require("../../../assets/how-to-use-Parent/7.png"),
     top: 22,
     left: 1,
@@ -61,46 +58,48 @@ const datacarousel = [
   },
   {
     id: 315642,
-    toolTipText: "For each level choose either our server images OR",
+    toolTipText:
+      "For each game level, choose an image folder from our server, or...",
     imagePath: require("../../../assets/how-to-use-Parent/8.png"),
     top: 35,
     left: 40
   },
   {
     id: 315643,
-    toolTipText: "Images in your gallery",
+    toolTipText: "...select images from your gallery",
     imagePath: require("../../../assets/how-to-use-Parent/9.png"),
     top: 35,
     left: 1
   },
   {
-    id: 315644,
-    toolTipText: "Rearrange a level using these buttons after selecting it",
+    id: 3156123,
+    toolTipText: "select folder(s) and...",
     imagePath: require("../../../assets/how-to-use-Parent/10.png"),
-    top: 1,
-    left: 42
+    top: 30,
+    left: 1,
+    isTopLeft: true
   },
   {
-    id: 315645,
-    toolTipText: "Rearrange a level using these buttons after selecting it",
-    imagePath: require("../../../assets/how-to-use-Parent/11.png"),
-    top: 1,
-    left: 42
+    id: 315644,
+    toolTipText: "...reorder them by tapping the up or down arrows",
+    imagePath: require("../../../assets/how-to-use-Parent/10.png"),
+    top: 20,
+    left: 28,
+    isTopRight: true
   },
   {
     id: 315651,
     toolTipText:
-      "Delete level/levels using this button after selecting a level/levels",
+      "Delete folder(s) by selecting (left checkbox) and tapping here",
     imagePath: require("../../../assets/how-to-use-Parent/12.png"),
     top: 23,
-    left: 23,
+    left: 24.5,
     isTopLeft: true
   },
 
   {
     id: 315661,
-    toolTipText:
-      "Add prizes at designated points to encourage your child to play more",
+    toolTipText: "Add prizes",
     imagePath: require("../../../assets/how-to-use-Parent/13.png"),
     top: 12,
     left: 44,
@@ -108,8 +107,7 @@ const datacarousel = [
   },
   {
     id: 315671,
-    toolTipText:
-      "Edit any prize anytime you want through this button, available on swiping left",
+    toolTipText: "Edit prizes by swiping to the right",
     imagePath: require("../../../assets/how-to-use-Parent/14.png"),
     isTopLeft: true,
     top: 35,
@@ -117,19 +115,8 @@ const datacarousel = [
   },
   {
     id: 315681,
-    toolTipText:
-      "Delete any prize anytime you want through this button, available on swiping right",
+    toolTipText: "Delete prizes by swiping to the left",
     imagePath: require("../../../assets/how-to-use-Parent/15.png"),
-    isTopRight: true,
-    top: 35,
-    left: 43
-  },
-
-  {
-    id: 315691,
-    toolTipText:
-      "Don't forget to deliver\nprizes on time and check delivered once done in the delivered tab on right swipe",
-    imagePath: require("../../../assets/how-to-use-Parent/16.png"),
     isTopRight: true,
     top: 35,
     left: 43

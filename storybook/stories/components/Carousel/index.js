@@ -173,7 +173,12 @@ class SwipeableParallaxCarousel extends Component {
             removeClippedSubviews={false}
           >
             <Text
-              style={{ alignSelf: "center", marginLeft: 10, marginRight: 10 }}
+              style={{
+                alignSelf: "center",
+                marginLeft: 10,
+                marginRight: 10,
+                textAlign: "center"
+              }}
             >
               {item.toolTipText}
             </Text>

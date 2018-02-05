@@ -1,34 +1,34 @@
-import React from "react";
-import { Text, View, Button, Right, Icon } from "native-base";
-import { Image } from "react-native";
-import Button2 from "../Button";
-import styles from "./styles";
+import React from 'react';
+import { Text, View, Button, Right, Icon } from 'native-base';
+import { Image } from 'react-native';
+import Button2 from '../Button';
+import styles from './styles';
 class ModalContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayNextLevel: "flex"
+      displayNextLevel: 'flex'
     };
   }
   componentDidUpdate() {
-    if (this.props.playNextDisabled && this.state.displayNextLevel == "flex")
-      this.setState({ displayNextLevel: "none" });
+    if (this.props.playNextDisabled && this.state.displayNextLevel == 'flex')
+      this.setState({ displayNextLevel: 'none' });
     else if (
       !this.props.playNextDisabled &&
-      this.state.displayNextLevel == "none"
+      this.state.displayNextLevel == 'none'
     )
-      this.setState({ displayNextLevel: "flex" });
+      this.setState({ displayNextLevel: 'flex' });
   }
   render() {
     return (
       <View style={styles.contentMainViewStyle}>
         {this.props.isCloseButtonRequired ? (
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: 'row' }}>
             <Right>
               <Button transparent onPress={this.props.toggleVisiblity}>
                 <Icon
                   name="md-close"
-                  style={{ color: "#eeae30", fontSize: 32 }}
+                  style={{ color: '#eeae30', fontSize: 32 }}
                 />
               </Button>
             </Right>
@@ -41,10 +41,10 @@ class ModalContent extends React.Component {
             styles.contentMainViewStyle,
             {
               flex: 1,
-              paddingTop: "7%",
-              paddingBottom: "15%",
-              paddingLeft: "5%",
-              paddingRight: "5%"
+              paddingTop: '7%',
+              paddingBottom: '15%',
+              paddingLeft: '5%',
+              paddingRight: '5%'
             }
           ]}
         >
@@ -53,7 +53,7 @@ class ModalContent extends React.Component {
               style={[
                 styles.contentMainViewTextStyle,
                 this.props.greetingLine1Style,
-                { textAlign: "center" }
+                { textAlign: 'center' }
               ]}
             >
               {this.props.greetingLine1}
@@ -65,7 +65,7 @@ class ModalContent extends React.Component {
                 style={[
                   styles.contentMainViewTextStyle,
                   styles.text2,
-                  { textAlign: "center" }
+                  { textAlign: 'center' }
                 ]}
               >
                 {this.props.greetingLine2}
@@ -75,7 +75,7 @@ class ModalContent extends React.Component {
             <View />
           )}
           <View
-            style={{ flex: 3, alignItems: "center", justifyContent: "center" }}
+            style={{ flex: 3, alignItems: 'center', justifyContent: 'center' }}
           >
             <Image
               source={this.props.stars}
@@ -90,15 +90,15 @@ class ModalContent extends React.Component {
           <View
             style={{
               flex: 2,
-              alignItems: "center",
-              justifyContent: "center"
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
           >
             <Text
               style={[
                 styles.contentMainViewLevelDescriptionStyle,
                 this.props.extraDescriptionStyle,
-                { textAlign: "center" }
+                { textAlign: 'center' }
               ]}
             >
               Total Points:
@@ -106,7 +106,7 @@ class ModalContent extends React.Component {
             <Text
               style={[
                 styles.contentMainViewPointsTextStyle,
-                { textAlign: "center" }
+                { textAlign: 'center' }
               ]}
             >
               {this.props.displayPoints}
@@ -115,22 +115,22 @@ class ModalContent extends React.Component {
           <View
             style={{
               flex: this.props.isDescriptionLine2Required ? 2 : 1,
-              justifyContent: "center",
-              alignItems: "center"
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
             <View
               style={{
                 flex: 1,
-                justifyContent: "flex-end",
-                alignItems: "flex-end"
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end'
               }}
             >
               <Text
                 style={[
                   styles.contentMainViewLevelDescriptionStyle,
                   this.props.extraDescriptionStyle,
-                  { textAlign: "center" }
+                  { textAlign: 'center' }
                 ]}
               >
                 {this.props.description}
@@ -140,14 +140,14 @@ class ModalContent extends React.Component {
               <View
                 style={{
                   flex: 1,
-                  justifyContent: "flex-start",
-                  alignItems: "flex-start"
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
                 }}
               >
                 <Text
                   style={[
                     styles.contentMainViewLevelDescriptionStyle,
-                    { textAlign: "center" }
+                    { textAlign: 'center' }
                   ]}
                 >
                   {this.props.descriptionLine2}
@@ -161,7 +161,7 @@ class ModalContent extends React.Component {
             <Text
               style={[
                 styles.contentMainViewNextPrizeDescriptionStyle,
-                { textAlign: "center" }
+                { textAlign: 'center' }
               ]}
             >
               {this.props.nextPrizeDescription}
@@ -170,23 +170,44 @@ class ModalContent extends React.Component {
           {this.props.isButtonNeeded ? (
             <View style={styles.contentMainViewInnerView}>
               <View style={{ flex: 1 }}>
-                <Button
-                  onPress={this.props.playNext}
-                  style={[
-                    styles.contentMainViewInnerViewButton1Style,
-                    { display: this.state.displayNextLevel }
-                  ]}
-                  iconRight
-                  disabled={this.props.playNextDisabled}
-                >
-                  <Text style={styles.contentMainViewInnerViewButton1TextStyle}>
-                    {"Play Level " + this.props.nextLevelName}
-                    <Icon
-                      name="md-arrow-round-forward"
-                      style={{ color: "#fff", fontSize: 20 }}
-                    />
-                  </Text>
-                </Button>
+                {this.props.playNextDisabled ? (
+                  <Button
+                    onPress={this.props.restartGame}
+                    style={[styles.contentMainViewInnerViewButton1Style]}
+                    iconRight
+                    disabled={!this.props.playNextDisabled}
+                  >
+                    <Text
+                      style={styles.contentMainViewInnerViewButton1TextStyle}
+                    >
+                      {'Restart game'}
+                      <Icon
+                        name="md-arrow-round-forward"
+                        style={{ color: '#fff', fontSize: 20 }}
+                      />
+                    </Text>
+                  </Button>
+                ) : (
+                  <Button
+                    onPress={this.props.playNext}
+                    style={[
+                      styles.contentMainViewInnerViewButton1Style,
+                      { display: this.state.displayNextLevel }
+                    ]}
+                    iconRight
+                    disabled={this.props.playNextDisabled}
+                  >
+                    <Text
+                      style={styles.contentMainViewInnerViewButton1TextStyle}
+                    >
+                      {'Play Level ' + this.props.nextLevelName}
+                      <Icon
+                        name="md-arrow-round-forward"
+                        style={{ color: '#fff', fontSize: 20 }}
+                      />
+                    </Text>
+                  </Button>
+                )}
               </View>
               <View style={{ flex: 1 }}>
                 <Button2
@@ -224,7 +245,7 @@ class ModalContent extends React.Component {
                 >
                   {this.props.playLaterText}
                 </Text>
-                <Icon name="md-arrow-round-forward" style={{ color: "#fff" }} />
+                <Icon name="md-arrow-round-forward" style={{ color: '#fff' }} />
               </Button>
             </View>
           ) : (

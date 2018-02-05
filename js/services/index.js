@@ -1,13 +1,13 @@
-import * as firebase from "firebase";
-import RNFetchBlob from "react-native-fetch-blob";
+import * as firebase from 'firebase';
+import RNFetchBlob from 'react-native-fetch-blob';
 
 const config = {
-  apiKey: "AIzaSyCRjJ3k7AmjPowyhdWswv56xfvdyEo_Thc",
-  authDomain: "childmind-7f9a6.firebaseapp.com",
-  databaseURL: "https://childmind-7f9a6.firebaseio.com",
-  projectId: "childmind-7f9a6",
-  storageBucket: "childmind-7f9a6.appspot.com",
-  messagingSenderId: "993751585054"
+  apiKey: 'AIzaSyCRjJ3k7AmjPowyhdWswv56xfvdyEo_Thc',
+  authDomain: 'childmind-7f9a6.firebaseapp.com',
+  databaseURL: 'https://childmind-7f9a6.firebaseio.com',
+  projectId: 'childmind-7f9a6',
+  storageBucket: 'childmind-7f9a6.appspot.com',
+  messagingSenderId: '993751585054'
 };
 
 window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
@@ -20,7 +20,7 @@ export default {
     } catch (err) {
       console.log(err);
       if (!/already exists/.test(err.message)) {
-        console.log("Firebase initialization error", err.stack);
+        console.log('Firebase initialization error', err.stack);
       }
     }
   },
@@ -40,7 +40,7 @@ export default {
         .createUserWithEmailAndPassword(email, password)
         .then(user => {
           user.updateProfile({ displayName: username });
-          const database = firebase.database().ref("parent/" + user.uid);
+          const database = firebase.database().ref('parent/' + user.uid);
           database
             .set({
               consent: consent,
@@ -76,8 +76,8 @@ export default {
   createChild(name, age) {
     return new Promise((resolve, reject) => {
       const auth = firebase.auth();
-      const child = firebase.database().ref("child/");
-      const parent = firebase.database().ref("parent/" + auth.currentUser.uid);
+      const child = firebase.database().ref('child/');
+      const parent = firebase.database().ref('parent/' + auth.currentUser.uid);
       try {
         var newChild = child.push();
         newChild
@@ -113,8 +113,8 @@ export default {
     await firebase.auth().currentUser.reload();
     const snapshot = await firebase
       .database()
-      .ref("parent/" + firebase.auth().currentUser.uid)
-      .once("value");
+      .ref('parent/' + firebase.auth().currentUser.uid)
+      .once('value');
     return { parent: snapshot.val(), user: firebase.auth().currentUser };
   },
 
@@ -123,13 +123,13 @@ export default {
     try {
       const snapshot = await firebase
         .database()
-        .ref("parent/" + auth.currentUser.uid)
-        .once("value");
+        .ref('parent/' + auth.currentUser.uid)
+        .once('value');
       const CID = snapshot.val().childID;
       const childRef = await firebase
         .database()
-        .ref("child/" + CID)
-        .once("value");
+        .ref('child/' + CID)
+        .once('value');
       return { childDetails: childRef.val(), childID: CID };
     } catch (err) {
       throw err;
@@ -141,8 +141,8 @@ export default {
       let timeStamp = new Date().toDateString();
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/exercises/");
-      const exeRef = firebase.database().ref("exercise/");
+        .ref('child/' + childID + '/exercises/');
+      const exeRef = firebase.database().ref('exercise/');
       try {
         var newExe = exeRef.push();
         newExe
@@ -158,7 +158,7 @@ export default {
             totalDuration: 0
           })
           .then(() => {
-            childRef.once("value").then(snapshot => {
+            childRef.once('value').then(snapshot => {
               var exercise = childRef.push();
               exercise
                 .set({ exerciseId: newExe.key, order: snapshot.numChildren() })
@@ -178,10 +178,10 @@ export default {
       var response = [];
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/exercises/")
-        .orderByChild("order");
+        .ref('child/' + childID + '/exercises/')
+        .orderByChild('order');
       try {
-        childRef.on("value", snapshot => {
+        childRef.on('value', snapshot => {
           var numExe = snapshot.numChildren();
           if (numExe == 0) {
             resolve(response);
@@ -189,8 +189,8 @@ export default {
           snapshot.forEach(exe => {
             var exeRef = firebase
               .database()
-              .ref("exercise/" + exe.val().exerciseId);
-            exeRef.once("value").then(snapshot => {
+              .ref('exercise/' + exe.val().exerciseId);
+            exeRef.once('value').then(snapshot => {
               response.push({
                 folderDetails: snapshot.val(),
                 folderID: snapshot.key
@@ -212,10 +212,10 @@ export default {
       var response = [];
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/exercises/")
-        .orderByChild("order");
+        .ref('child/' + childID + '/exercises/')
+        .orderByChild('order');
       try {
-        childRef.on("value", snapshot => {
+        childRef.on('value', snapshot => {
           var numExe = snapshot.numChildren();
           if (numExe == 0) {
             resolve(response);
@@ -242,10 +242,10 @@ export default {
       return new Promise((resolve, reject) => {
         const childRef = firebase
           .database()
-          .ref("child/" + childID + "/exercises/")
-          .orderByChild("order");
+          .ref('child/' + childID + '/exercises/')
+          .orderByChild('order');
         try {
-          childRef.on("value", snapshot => {
+          childRef.on('value', snapshot => {
             var numExe = snapshot.numChildren();
             if (numExe == 0) {
               resolve();
@@ -253,7 +253,7 @@ export default {
             snapshot.forEach(exe => {
               let exeRef = firebase
                 .database()
-                .ref("child/" + childID + "/exercises/" + exe.key);
+                .ref('child/' + childID + '/exercises/' + exe.key);
               if (exe.val().exerciseId == folder2ID) {
                 exeRef.update({ order: order2 });
               } else if (exe.val().exerciseId == folder1ID) {
@@ -276,21 +276,21 @@ export default {
       for (let i in images) {
         const exeRef = firebase
           .database()
-          .ref("exercise/" + exeID + "/images/");
-        const imageRef = firebase.database().ref("image");
+          .ref('exercise/' + exeID + '/images/');
+        const imageRef = firebase.database().ref('image');
         const store = firebase.storage().ref();
 
         try {
           var newImg = imageRef.push();
           const metadata = {
-            contentType: "image/jpeg"
+            contentType: 'image/jpeg'
           };
           const RNBlob = RNFetchBlob.polyfill.Blob;
           let blob = await RNBlob.build(RNFetchBlob.wrap(images[i].path), {
-            type: "image/jpg;"
+            type: 'image/jpg;'
           });
           const storageRef = await store.child(
-            exeID + "/" + newImg.key + ".jpg"
+            exeID + '/' + newImg.key + '.jpg'
           );
           await storageRef.put(blob, metadata);
           let URL = await storageRef.getDownloadURL();
@@ -306,7 +306,7 @@ export default {
           var image = await exeRef.push();
           await image.set({ imageID: newImg.key });
           if (i == images.length - 1) {
-            resolve("success");
+            resolve('success');
           }
         } catch (err) {
           reject(err);
@@ -318,13 +318,13 @@ export default {
   fetchImageList(exeID) {
     return new Promise((resolve, reject) => {
       var response = [];
-      const exeRef = firebase.database().ref("exercise/" + exeID + "/images/");
+      const exeRef = firebase.database().ref('exercise/' + exeID + '/images/');
       try {
-        exeRef.on("value", snapshot => {
+        exeRef.on('value', snapshot => {
           var numImg = snapshot.numChildren();
           snapshot.forEach(img => {
-            var imgRef = firebase.database().ref("image/" + img.val().imageID);
-            imgRef.once("value").then(snapshot => {
+            var imgRef = firebase.database().ref('image/' + img.val().imageID);
+            imgRef.once('value').then(snapshot => {
               response.push({
                 imageID: snapshot.key,
                 imageDetails: snapshot.val()
@@ -343,9 +343,9 @@ export default {
 
   getChild(childID) {
     return new Promise((resolve, reject) => {
-      const childRef = firebase.database().ref("child/" + childID);
+      const childRef = firebase.database().ref('child/' + childID);
       try {
-        childRef.once("value").then(snapshot => {
+        childRef.once('value').then(snapshot => {
           resolve(snapshot.val());
         });
       } catch (err) {
@@ -356,9 +356,9 @@ export default {
 
   getExercise(exeID) {
     return new Promise((resolve, reject) => {
-      const exeRef = firebase.database().ref("exercise/" + exeID);
+      const exeRef = firebase.database().ref('exercise/' + exeID);
       try {
-        exeRef.once("value").then(snapshot => {
+        exeRef.once('value').then(snapshot => {
           resolve({ folderDetails: snapshot.val(), folderID: exeID });
         });
       } catch (err) {
@@ -372,19 +372,40 @@ export default {
     return new Promise((resolve, reject) => {
       try {
         auth.currentUser.sendEmailVerification().then(() => {
-          resolve("success");
+          resolve('success');
         });
       } catch (err) {
         reject(err);
       }
     });
   },
-
+  resetAllExcercises(childID) {
+    return new Promise((resolve, reject) => {
+      const update = { isPlayed: false };
+      const childExcerciseRef = firebase
+        .database()
+        .ref('child/' + childID + '/exercises');
+      try {
+        childExcerciseRef.on('value', exeSnapshot => {
+          let excercises = exeSnapshot.val();
+          excercises = Object.values(excercises);
+          for (let i = 0; i < excercises.length; i++) {
+            var exeKey = excercises[i].exerciseId;
+            const exeRef = firebase.database().ref('exercise/' + exeKey);
+            exeRef.update(update).then(() => {
+              resolve(exeKey);
+            });
+          }
+        });
+      } catch (err) {
+        console.log(err);
+        reject(err);
+      }
+    });
+  },
   updateExercise(exeID, update) {
     return new Promise((resolve, reject) => {
-      // let timeStamp = new Date().toDateString();
-      // update = { ...update, timeStamp: timeStamp };
-      const exeRef = firebase.database().ref("exercise/" + exeID);
+      const exeRef = firebase.database().ref('exercise/' + exeID);
       try {
         exeRef.update(update).then(() => {
           resolve(exeID);
@@ -412,7 +433,7 @@ export default {
 
   updateChild(childID, update) {
     return new Promise((resolve, reject) => {
-      const childRef = firebase.database().ref("child/" + childID);
+      const childRef = firebase.database().ref('child/' + childID);
       try {
         childRef.update(update).then(() => {
           resolve(childID);
@@ -427,7 +448,7 @@ export default {
     return new Promise((resolve, reject) => {
       const childRef = firebase
         .database()
-        .ref("parent/" + firebase.auth().currentUser.uid + "/settings/");
+        .ref('parent/' + firebase.auth().currentUser.uid + '/settings/');
       try {
         childRef.update(update).then(() => {
           resolve();
@@ -440,10 +461,10 @@ export default {
 
   fetchRandomImageList() {
     return new Promise((resolve, reject) => {
-      const listRef = firebase.database().ref("auxilary/images/");
+      const listRef = firebase.database().ref('auxilary/images/');
       try {
         let list = [];
-        listRef.once("value").then(snapshot => {
+        listRef.once('value').then(snapshot => {
           snapshot.forEach(img => {
             list.push(img.val());
           });
@@ -457,7 +478,7 @@ export default {
 
   updateImage(imgID, update) {
     return new Promise((resolve, reject) => {
-      const imgRef = firebase.database().ref("image/" + imgID);
+      const imgRef = firebase.database().ref('image/' + imgID);
       try {
         imgRef.update(update).then(() => {
           resolve(imgID);
@@ -473,45 +494,45 @@ export default {
       try {
         const childRef = firebase
           .database()
-          .ref("child/" + childID + "/exercises");
-        const exeRef = firebase.database().ref("exercise/" + exeID);
+          .ref('child/' + childID + '/exercises');
+        const exeRef = firebase.database().ref('exercise/' + exeID);
         const imgListRef = firebase
           .database()
-          .ref("exercise/" + exeID + "/images");
+          .ref('exercise/' + exeID + '/images');
         let currentOrder;
-        imgListRef.once("value").then(snapshot => {
+        imgListRef.once('value').then(snapshot => {
           let count = 1;
           let numImg = snapshot.numChildren();
           snapshot.forEach(img => {
-            var imgRef = firebase.database().ref("image/" + img.val().imageID);
+            var imgRef = firebase.database().ref('image/' + img.val().imageID);
             imgRef.remove();
             ++count;
             if (count == numImg) {
               exeRef.remove().then(() => {
-                childRef.once("value").then(snapshot => {
+                childRef.once('value').then(snapshot => {
                   snapshot.forEach(exe => {
                     if (exeID == exe.val().exerciseId) {
                       currentOrder = exe.val().order;
                       firebase
                         .database()
-                        .ref("child/" + childID + "/exercises/" + exe.key)
+                        .ref('child/' + childID + '/exercises/' + exe.key)
                         .remove()
                         .then(() => {
                           let cnt = 0;
-                          childRef.once("value").then(snapshot => {
+                          childRef.once('value').then(snapshot => {
                             snapshot.forEach(exe => {
                               let newOrder = exe.val().order;
                               if (newOrder > currentOrder) {
                                 firebase
                                   .database()
                                   .ref(
-                                    "child/" + childID + "/exercises/" + exe.key
+                                    'child/' + childID + '/exercises/' + exe.key
                                   )
                                   .update({ order: --newOrder });
                               }
                               ++cnt;
                               if (cnt == snapshot.numChildren()) {
-                                resolve("");
+                                resolve('');
                               }
                             });
                           });
@@ -536,7 +557,7 @@ export default {
         .auth()
         .sendPasswordResetEmail(email)
         .then(() => {
-          resolve("");
+          resolve('');
         })
         .catch(err => {
           reject(err);
@@ -545,7 +566,7 @@ export default {
   },
 
   async addPrize(childID, points, description) {
-    const childRef = firebase.database().ref("child/" + childID + "/prizes/");
+    const childRef = firebase.database().ref('child/' + childID + '/prizes/');
     let prize = childRef.push();
     try {
       await prize.set({
@@ -561,11 +582,11 @@ export default {
     return new Promise((resolve, reject) => {
       const childRef = firebase
         .database()
-        .ref("child/" + childID + "/prizes/")
-        .orderByChild("points");
+        .ref('child/' + childID + '/prizes/')
+        .orderByChild('points');
       let response = [];
       try {
-        childRef.once("value").then(snapshot => {
+        childRef.once('value').then(snapshot => {
           var numExe = snapshot.numChildren();
           if (numExe == 0) {
             resolve(response);
@@ -592,16 +613,16 @@ export default {
   fetchStockImageList() {
     return new Promise((resolve, reject) => {
       try {
-        const stockRef = firebase.database().ref("stockImages");
+        const stockRef = firebase.database().ref('stockImages');
         let response = [];
-        stockRef.once("value").then(snapshot => {
+        stockRef.once('value').then(snapshot => {
           let numFolder = snapshot.numChildren();
           snapshot.forEach(folder => {
             let dataFolderContent = [];
             const folderRef = firebase
               .database()
-              .ref("stockImages/" + folder.key + "/");
-            folderRef.once("value").then(snapshot => {
+              .ref('stockImages/' + folder.key + '/');
+            folderRef.once('value').then(snapshot => {
               snapshot.forEach(img => {
                 dataFolderContent.push({
                   uri: img.val().url
@@ -630,9 +651,9 @@ export default {
       try {
         const prizeRef = firebase
           .database()
-          .ref("child/" + childID + "/prizes/" + prizeID);
+          .ref('child/' + childID + '/prizes/' + prizeID);
         prizeRef.remove().then(() => {
-          resolve("success");
+          resolve('success');
         });
       } catch (error) {
         reject(error);
@@ -645,9 +666,9 @@ export default {
       try {
         const prizeRef = firebase
           .database()
-          .ref("child/" + childID + "/prizes/" + prizeID);
+          .ref('child/' + childID + '/prizes/' + prizeID);
         prizeRef.update(update).then(() => {
-          resolve("success");
+          resolve('success');
         });
       } catch (error) {
         reject(error);
@@ -660,8 +681,8 @@ export default {
       for (let i in images) {
         const exeRef = firebase
           .database()
-          .ref("exercise/" + exeID + "/images/");
-        const imageRef = firebase.database().ref("image");
+          .ref('exercise/' + exeID + '/images/');
+        const imageRef = firebase.database().ref('image');
         try {
           var newImg = imageRef.push();
           let URL = images[i].path;
@@ -677,7 +698,7 @@ export default {
           var image = await exeRef.push();
           await image.set({ imageID: newImg.key });
           if (i == images.length - 1) {
-            resolve("success");
+            resolve('success');
           }
         } catch (err) {
           reject(err);

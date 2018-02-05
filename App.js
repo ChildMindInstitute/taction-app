@@ -2,12 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Root, Button } from 'native-base';
 import NavigationDetails from './js/Navigator';
-import { NetInfo, Dimensions, View, Text } from 'react-native';
+import { NetInfo, View, Text } from 'react-native';
 import store from './js/store';
-import StoryBookUI from './storybook';
 import Orientation from 'react-native-orientation';
 console.ignoredYellowBox = ['Setting a timer', 'Warning: Can only update'];
-let { height, width } = Dimensions.get('screen');
 class App extends React.Component {
   state = {
     isConnected: false

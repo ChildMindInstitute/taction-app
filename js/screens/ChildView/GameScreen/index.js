@@ -1,11 +1,11 @@
-import React from "react";
-import Home from "../../../../storybook/stories/screens/Home";
-import ModalCommon from "../../../../storybook/stories/components/Modal/modal";
-import ModalContent from "../../../../storybook/stories/components/Modal/ModalContent";
-import { connect } from "react-redux";
-import { NavigationActions } from "react-navigation";
-import calculate from "../../../componentsCommon/calcutateStars";
-import Sound from "react-native-sound";
+import React from 'react';
+import Home from '../../../../storybook/stories/screens/Home';
+import ModalCommon from '../../../../storybook/stories/components/Modal/modal';
+import ModalContent from '../../../../storybook/stories/components/Modal/ModalContent';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
+import calculate from '../../../componentsCommon/calcutateStars';
+import Sound from 'react-native-sound';
 let gameMusic, correctAnswer, wrongAnswer;
 let totalLevels = 10;
 const correctArrayItem = 0;
@@ -13,7 +13,7 @@ let time;
 let index, randomIndex, image;
 class GameScreen extends React.Component {
   static navigationOptions = {
-    title: "GameScreen",
+    title: 'GameScreen',
     header: null
   };
   constructor(props) {
@@ -21,7 +21,7 @@ class GameScreen extends React.Component {
     this.currentFolderCorrectTaps = 0;
     this.currentFolderWrongTaps = 0;
     if (this.props.settings.sound) {
-      gameMusic = new Sound("game_music.mp3", Sound.MAIN_BUNDLE, error => {
+      gameMusic = new Sound('game_music.mp3', Sound.MAIN_BUNDLE, error => {
         if (error) {
           return;
         }
@@ -31,7 +31,7 @@ class GameScreen extends React.Component {
       });
 
       correctAnswer = new Sound(
-        "correct_answer.mp3",
+        'correct_answer.mp3',
         Sound.MAIN_BUNDLE,
         error => {
           if (error) {
@@ -41,7 +41,7 @@ class GameScreen extends React.Component {
           correctAnswer.setNumberOfLoops(0);
         }
       );
-      wrongAnswer = new Sound("worng_answer.mp3", Sound.MAIN_BUNDLE, error => {
+      wrongAnswer = new Sound('worng_answer.mp3', Sound.MAIN_BUNDLE, error => {
         if (error) {
           return;
         }
@@ -65,10 +65,10 @@ class GameScreen extends React.Component {
       currentImage: {},
       currentFolder: {},
       input: [
-        require("../../../assets/ball-1.jpg"),
-        require("../../../assets/spiderman.jpg"),
-        require("../../../assets/minion.jpg"),
-        require("../../../assets/ball-2.jpg")
+        require('../../../assets/ball-1.jpg'),
+        require('../../../assets/spiderman.jpg'),
+        require('../../../assets/minion.jpg'),
+        require('../../../assets/ball-2.jpg')
       ],
       isLast: false
     };
@@ -137,7 +137,7 @@ class GameScreen extends React.Component {
     ++image.imageDetails.correctTaps;
     ++image.imageDetails.score;
     this.props.dispatch({
-      type: "UPDATE_IMAGE_SCORE",
+      type: 'UPDATE_IMAGE_SCORE',
       payload: { index: index, image: image }
     });
     if (this.state.currentLevel < totalLevels) {
@@ -170,7 +170,7 @@ class GameScreen extends React.Component {
     }
 
     this.props.dispatch({
-      type: "UPDATE_IMAGE_SCORE",
+      type: 'UPDATE_IMAGE_SCORE',
       payload: { index: index, image: image }
     });
     if (this.state.currentLevel < totalLevels) {
@@ -196,7 +196,7 @@ class GameScreen extends React.Component {
   }
   updateFolderScore() {
     this.props.dispatch({
-      type: "UPDATE_FOLDER_SCORE",
+      type: 'UPDATE_FOLDER_SCORE',
       payload: {
         imageList: this.props.imageList,
         folder: this.props.folder,
@@ -224,7 +224,7 @@ class GameScreen extends React.Component {
     this.releaseMusic();
     this.setModalVisible(false);
     this.props.dispatch({
-      type: "SET_CHILD_FOLDER",
+      type: 'SET_CHILD_FOLDER',
       payload: this.props.child.childID
     });
     setTimeout(() => {
@@ -234,9 +234,9 @@ class GameScreen extends React.Component {
           actions: [
             NavigationActions.navigate({
               params: { showModal: false },
-              routeName: "IntroScreen"
+              routeName: 'IntroScreen'
             }),
-            NavigationActions.navigate({ routeName: "GameScreen" })
+            NavigationActions.navigate({ routeName: 'GameScreen' })
           ]
         })
       );
@@ -246,7 +246,7 @@ class GameScreen extends React.Component {
   playAgain() {
     this.releaseMusic();
     this.props.dispatch({
-      type: "SET_PLAY_AGAIN",
+      type: 'SET_PLAY_AGAIN',
       payload: {
         childID: this.props.child.childID,
         exeID: this.state.currentFolder.folderID
@@ -259,9 +259,9 @@ class GameScreen extends React.Component {
           actions: [
             NavigationActions.navigate({
               params: { showModal: false },
-              routeName: "IntroScreen"
+              routeName: 'IntroScreen'
             }),
-            NavigationActions.navigate({ routeName: "GameScreen" })
+            NavigationActions.navigate({ routeName: 'GameScreen' })
           ]
         })
       );
@@ -270,7 +270,7 @@ class GameScreen extends React.Component {
   playLater() {
     this.releaseMusic();
     this.props.dispatch({
-      type: "SET_PLAY_AGAIN",
+      type: 'SET_PLAY_AGAIN',
       payload: {
         childID: this.props.child.childID,
         exeID: this.state.currentFolder.folderID
@@ -287,11 +287,21 @@ class GameScreen extends React.Component {
         actions: [
           NavigationActions.navigate({
             params: { showModal: false },
-            routeName: "IntroScreen"
+            routeName: 'IntroScreen'
           })
         ]
       })
     );
+  }
+  restartGame() {
+    this.releaseMusic();
+    this.props.dispatch({
+      type: 'RESTART_GAME',
+      payload: {
+        childID: this.props.child.childID
+      }
+    });
+    this.closeModalExitGame();
   }
   render() {
     return (
@@ -301,14 +311,14 @@ class GameScreen extends React.Component {
         }}
         totalPoints={this.props.child.childDetails.totalScore}
         timeLeft={time}
-        timeLeftDenomination={"Min"}
+        timeLeftDenomination={'Min'}
         image1={this.state.input[this.state.i1]}
         image2={this.state.input[this.state.i2]}
         image3={this.state.input[this.state.i3]}
         image4={this.state.input[this.state.i4]}
         hasToReset={this.state.reset}
-        crossImage={require("../../../assets/cross.png")}
-        tickImage={require("../../../assets/tick.png")}
+        crossImage={require('../../../assets/cross.png')}
+        tickImage={require('../../../assets/tick.png')}
         correctOption={this.state.correctOption}
         isLast={this.state.isLast}
         timeExpiredImageShuffle={() => {
@@ -391,15 +401,15 @@ class GameScreen extends React.Component {
         }).bind(this)}
         leftImages={this.state.currentLevel}
         totalImages={totalLevels}
-        question={"Tap on The " + this.props.folder.folderDetails.exerciseName}
+        question={'Tap on The ' + this.props.folder.folderDetails.exerciseName}
       >
         <ModalCommon
           isVisible={this.state.modalVisible}
           extraModalStyle={{
-            paddingTop: "20%",
-            paddingBottom: "30%"
+            paddingTop: '20%',
+            paddingBottom: '30%'
           }}
-          extraModalViewStyle={{ backgroundColor: "#0067a0" }}
+          extraModalViewStyle={{ backgroundColor: '#0067a0' }}
           content={
             <ModalContent
               isCloseButtonRequired={true}
@@ -412,7 +422,7 @@ class GameScreen extends React.Component {
                       this.currentFolderCorrectTaps,
                       this.currentFolderWrongTaps
                     )
-                  : require("../../../assets/zero-star.png")
+                  : require('../../../assets/zero-star.png')
               }
               playLaterRequired={true}
               playLaterPress={this.playLater.bind(this)}
@@ -424,8 +434,9 @@ class GameScreen extends React.Component {
               nextLevelName={
                 this.props.nextFolder.folderDetails
                   ? this.props.nextFolder.folderDetails.exerciseName
-                  : ""
+                  : ''
               }
+              restartGame={this.restartGame.bind(this)}
               playNextDisabled={!this.props.nextFolder.folderDetails}
               isButtonNeeded={true}
               playNext={this.playNext.bind(this)}

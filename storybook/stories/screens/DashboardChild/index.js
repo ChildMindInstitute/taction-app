@@ -38,7 +38,8 @@ DashboardChild.propTypes = {
 };
 DashboardChild.defaultProps = {
   drawerOpen: () => {},
-  itemPress: () => {}
+  itemPress: () => {},
+  excercisesAvailable: []
 };
 
 export { DashboardChild as default };

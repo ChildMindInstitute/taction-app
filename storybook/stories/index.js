@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View } from "react-native";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
-import { linkTo } from "@storybook/addon-links";
 import Spinner from "./components/Spinner";
 import FormInput from "./components/FormInput";
 import Logo from "./components/Logo";
@@ -32,170 +31,15 @@ import AlmostThere from "./screens/AlmostThere";
 import WelcomeApp from "./screens/Welcome";
 import AddChild from "./screens/AddChild";
 import AddFolder from "./screens/AddFolder";
-import ImagesFolderList from "./components/ImagesFolderList";
 import ImagesFolder from "./screens/ImagesFolder";
-import DashboardChildList from "./components/DashboardChildList";
-import DashboardChild from "./screens/DashboardChild";
-storiesOf("DashboardChild", module).add("DashboardChildList", () => (
-  <DashboardChildList
-    ExcercisesAvailable={[
-      {
-        Name: "Spider",
-        Image: require("../../js/assets/spiderman.jpg"),
-        Stars: require("../../js/assets/all-stars.png"),
-        IsPlayed: false
-      },
-      {
-        Name: "Basketball",
-        Image: require("../../js/assets/ball1.jpg"),
-        Stars: require("../../js/assets/all-stars.png"),
-        IsPlayed: true
-      },
-      {
-        Name: "FootBall",
-        Image: require("../../js/assets/ball2.jpg"),
-        Stars: require("../../js/assets/all-stars.png"),
-        IsPlayed: false
-      },
-      {
-        Name: "Minion",
-        Image: require("../../js/assets/minion.jpg"),
-        Stars: require("../../js/assets/all-stars.png"),
-        IsPlayed: false
-      }
-    ]}
-  />
-));
-storiesOf("ImagesFolder", module).add("ImagesFolderList", () => (
-  <ImagesFolderList
-    ListData={[
-      {
-        Name: "Spider",
-        Points: 100,
-        Taps: 13,
-        TotalTaps: 20,
-        Stars: require("../../js/assets/all-stars.png"),
-        IsContentVisible: true,
-        DataFolderContent: [
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: false
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: false
-          },
-          {
-            Image: require("../../js/assets/spiderman.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: false
-          }
-        ]
-      },
-      {
-        Name: "Ball",
-        Taps: 13,
-        TotalTaps: 20,
-        Points: 80,
-        Stars: require("../../js/assets/two_stars.png"),
-        IsContentVisible: true,
-        DataFolderContent: [
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: true
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: false
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: false
-          },
-          {
-            Image: require("../../js/assets/ball1.jpg"),
-            Taps: 3,
-            TotalTaps: 8,
-            IsCompleted: false
-          }
-        ]
-      }
-    ]}
-    ListItemPress={item => console.log(item)}
-  />
-));
+
 storiesOf("Home", module)
   .add("HomeContent", () => (
     <HomeContent
-      Image1={require("../../js/assets/ball1.jpg")}
+      Image1={require("../../js/assets/ball-1.jpg")}
       Image2={require("../../js/assets/spiderman.jpg")}
       Image3={require("../../js/assets/minion.jpg")}
-      Image4={require("../../js/assets/ball2.jpg")}
+      Image4={require("../../js/assets/ball-2.jpg")}
     />
   ))
   .add("HomeTimer", () => (
@@ -358,53 +202,53 @@ storiesOf("Dashboard", module)
           Taps: 13,
           TotalTaps: 20,
           Points: 80,
-          Stars: require("../../js/assets/two_stars.png"),
+          Stars: require("../../js/assets/two-star.png"),
           IsContentVisible: true,
           DataFolderContent: [
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
@@ -562,53 +406,53 @@ storiesOf("Screens", module)
           Taps: 13,
           TotalTaps: 20,
           Points: 80,
-          Stars: require("../../js/assets/two_stars.png"),
+          Stars: require("../../js/assets/two-star.png"),
           IsContentVisible: true,
           DataFolderContent: [
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
@@ -664,10 +508,10 @@ storiesOf("Screens", module)
       TotalPoints={100}
       TimeLeftDenomination={"Min"}
       TimeLeft={"2.07"}
-      Image1={require("../../js/assets/ball1.jpg")}
+      Image1={require("../../js/assets/ball-1.jpg")}
       Image2={require("../../js/assets/spiderman.jpg")}
       Image3={require("../../js/assets/minion.jpg")}
-      Image4={require("../../js/assets/ball2.jpg")}
+      Image4={require("../../js/assets/ball-2.jpg")}
       LeftImages={3}
       TotalImages={10}
       Question="Tap on The Spider"
@@ -828,53 +672,53 @@ storiesOf("Screens", module)
           Taps: 13,
           TotalTaps: 20,
           Points: 80,
-          Stars: require("../../js/assets/two_stars.png"),
+          Stars: require("../../js/assets/two-star.png"),
           IsContentVisible: true,
           DataFolderContent: [
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: true
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
             },
             {
-              Image: require("../../js/assets/ball1.jpg"),
+              Image: require("../../js/assets/ball-1.jpg"),
               Taps: 3,
               TotalTaps: 8,
               IsCompleted: false
@@ -900,13 +744,13 @@ storiesOf("Screens", module)
         },
         {
           Name: "Basketball",
-          Image: require("../../js/assets/ball1.jpg"),
+          Image: require("../../js/assets/ball-1.jpg"),
           Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: true
         },
         {
           Name: "FootBall",
-          Image: require("../../js/assets/ball2.jpg"),
+          Image: require("../../js/assets/ball-2.jpg"),
           Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: false
         },
@@ -918,7 +762,7 @@ storiesOf("Screens", module)
         },
         {
           Name: "FootBall",
-          Image: require("../../js/assets/ball2.jpg"),
+          Image: require("../../js/assets/ball-2.jpg"),
           Stars: require("../../js/assets/all-stars.png"),
           IsPlayed: false
         },

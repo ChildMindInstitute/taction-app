@@ -1,5 +1,4 @@
-import { StyleSheet, Platform } from "react-native";
-import { Constants } from "expo";
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   headerStyle: {
     backgroundColor: "#0067a0"

@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "childmind.app"
-               BlueprintName = "childmind"
-               ReferencedContainer = "container:childmind.xcodeproj">
+               BlueprintName = "Taction!"
+               ReferencedContainer = "container:Taction!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "childmindTests.xctest"
-               BlueprintName = "childmindTests"
-               ReferencedContainer = "container:childmind.xcodeproj">
+               BuildableName = "Taction!Tests.xctest"
+               BlueprintName = "Taction!Tests"
+               ReferencedContainer = "container:Taction!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -54,6 +54,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -61,9 +62,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "childmindTests.xctest"
-               BlueprintName = "childmindTests"
-               ReferencedContainer = "container:childmind.xcodeproj">
+               BuildableName = "Taction!Tests.xctest"
+               BlueprintName = "Taction!Tests"
+               ReferencedContainer = "container:Taction!.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -72,8 +73,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "childmind.app"
-            BlueprintName = "childmind"
-            ReferencedContainer = "container:childmind.xcodeproj">
+            BlueprintName = "Taction!"
+            ReferencedContainer = "container:Taction!.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,6 +84,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -95,8 +97,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "childmind.app"
-            BlueprintName = "childmind"
-            ReferencedContainer = "container:childmind.xcodeproj">
+            BlueprintName = "Taction!"
+            ReferencedContainer = "container:Taction!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -114,8 +116,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "childmind.app"
-            BlueprintName = "childmind"
-            ReferencedContainer = "container:childmind.xcodeproj">
+            BlueprintName = "Taction!"
+            ReferencedContainer = "container:Taction!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

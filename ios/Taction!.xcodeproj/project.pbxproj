@@ -364,7 +364,7 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* childmindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = childmindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* Taction!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taction!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* childmindTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = childmindTests.m; sourceTree = "<group>"; };
 		05307D2FF0F341E5ABB5497F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 		0FAF47B60FAD4FBDAC3D0E44 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* childmind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = childmind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Taction!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Taction!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = childmind/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = childmind/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -383,8 +383,8 @@
 		1B20C61AD0CA426D83FEE7F3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		257C8BEFD95F4C9C435FB3B0 /* libPods-childmind.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-childmind.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C71D654CF241D28B0080A3 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* childmind-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "childmind-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* childmind-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "childmind-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* Taction!-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Taction!-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Taction!-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taction!-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B14938429A4B78BE86EBFD /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		33185DE93EBF4F2A9028944F /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		3376E152393A9810CE72683C /* Pods-childmind-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-childmind-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-childmind-tvOS/Pods-childmind-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -739,10 +739,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* childmind.app */,
-				00E356EE1AD99517003FC87E /* childmindTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* childmind-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* childmind-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Taction!.app */,
+				00E356EE1AD99517003FC87E /* Taction!Tests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Taction!-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Taction!-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -810,9 +810,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* childmindTests */ = {
+		00E356ED1AD99517003FC87E /* Taction!Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "childmindTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Taction!Tests" */;
 			buildPhases = (
 				AD2FF2C400A720441C7A4101 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -826,14 +826,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = childmindTests;
+			name = "Taction!Tests";
 			productName = childmindTests;
-			productReference = 00E356EE1AD99517003FC87E /* childmindTests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* Taction!Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* childmind */ = {
+		13B07F861A680F5B00A75B9A /* Taction! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "childmind" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Taction!" */;
 			buildPhases = (
 				3C6B38B078F6DEC31AD059F2 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -847,14 +847,14 @@
 			);
 			dependencies = (
 			);
-			name = childmind;
+			name = "Taction!";
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* childmind.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Taction!.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* childmind-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Taction!-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "childmind-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Taction!-tvOS" */;
 			buildPhases = (
 				29E7334DC5E1D7D77E627452 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
@@ -868,14 +868,14 @@
 			);
 			dependencies = (
 			);
-			name = "childmind-tvOS";
+			name = "Taction!-tvOS";
 			productName = "childmind-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* childmind-tvOS.app */;
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Taction!-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* childmind-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Taction!-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "childmind-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Taction!-tvOSTests" */;
 			buildPhases = (
 				3FDE27097D2BAB737CDC119C /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -889,9 +889,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "childmind-tvOSTests";
+			name = "Taction!-tvOSTests";
 			productName = "childmind-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* childmind-tvOSTests.xctest */;
+			productReference = 2D02E4901E0B4A5D006451C7 /* Taction!-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -924,7 +924,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "childmind" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Taction!" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1007,10 +1007,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* childmind */,
-				00E356ED1AD99517003FC87E /* childmindTests */,
-				2D02E47A1E0B4A5D006451C7 /* childmind-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* childmind-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Taction! */,
+				00E356ED1AD99517003FC87E /* Taction!Tests */,
+				2D02E47A1E0B4A5D006451C7 /* Taction!-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Taction!-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1611,12 +1611,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* childmind */;
+			target = 13B07F861A680F5B00A75B9A /* Taction! */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* childmind-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Taction!-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1671,7 +1671,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/childmind.app/childmind";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taction!.app/Taction!";
 			};
 			name = Debug;
 		};
@@ -1709,7 +1709,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/childmind.app/childmind";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taction!.app/Taction!";
 			};
 			name = Release;
 		};
@@ -1739,7 +1739,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.childmindinstitute.exposuretherapy;
-				PRODUCT_NAME = childmind;
+				PRODUCT_NAME = "Taction!";
 				PROVISIONING_PROFILE = "20e45168-ccb1-412f-b05a-5fd266a00ec1";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.childmindinstitute.exposuretherapy";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1771,7 +1771,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.childmindinstitute.exposuretherapy;
-				PRODUCT_NAME = childmind;
+				PRODUCT_NAME = "Taction!";
 				PROVISIONING_PROFILE = "20e45168-ccb1-412f-b05a-5fd266a00ec1";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.childmindinstitute.exposuretherapy";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1889,7 +1889,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.childmind-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/childmind-tvOS.app/childmind-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taction!-tvOS.app/Taction!-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -1919,7 +1919,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.childmind-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/childmind-tvOS.app/childmind-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taction!-tvOS.app/Taction!-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -2003,7 +2003,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "childmindTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Taction!Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -2012,7 +2012,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "childmind" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Taction!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -2021,7 +2021,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "childmind-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Taction!-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -2030,7 +2030,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "childmind-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Taction!-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -2039,7 +2039,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "childmind" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Taction!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
